@@ -1,0 +1,12 @@
+   Build using "D:/Xilinx/Vivado/2019.2/tps/win64/msys64/mingw64/bin/g++"
+   Compiling huffman_canonize_tree.cpp_pre.cpp.tb.cpp
+   Compiling huffman_compute_bit_length.cpp_pre.cpp.tb.cpp
+   Compiling huffman_create_tree.cpp_pre.cpp.tb.cpp
+   Compiling huffman_encoding.cpp_pre.cpp.tb.cpp
+   Compiling huffman_sort.cpp_pre.cpp.tb.cpp
+   Compiling apatb_huffman_encoding.cpp
+   Compiling huffman_create_codeword.cpp_pre.cpp.tb.cpp
+   Compiling huffman_truncate_tree.cpp_pre.cpp.tb.cpp
+   Compiling huffman_encoding_test.cpp_pre.cpp.tb.cpp
+   Compiling huffman_filter.cpp_pre.cpp.tb.cpp
+   Generating cosim.tv.exe

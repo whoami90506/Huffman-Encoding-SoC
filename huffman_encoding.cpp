@@ -24,7 +24,8 @@ void huffman_encoding(
     CodewordLength symbol_bits[INPUT_SYMBOL_SIZE];
 
     int previous_frequency = -1;
- copy_sorted:
+
+    copy_sorted:
     for(int i = 0; i < n; i++) {
         sorted_copy1[i].value = sorted[i].value;
         sorted_copy1[i].frequency = sorted[i].frequency;
@@ -41,17 +42,20 @@ void huffman_encoding(
 #ifndef __SYNTHESIS__
     // Check the result of computing the tree histogram
     int codewords_in_tree = 0;
- merge_bit_length:
+    
+    merge_bit_length:
     for(int i = 0; i < TREE_DEPTH; i++) {
         #pragma HLS PIPELINE II=1
         if(length_histogram[i] > 0)
             std::cout << length_histogram[i] << " codewords with length " << i << "\n";
         codewords_in_tree += length_histogram[i];
     }
+
+    // std::cout << "codewords_in_tree = " << codewords_in_tree << ", n = " << n << "\n";
     assert(codewords_in_tree == n);
 #endif
 
-        truncate_tree(length_histogram, truncated_length_histogram1, truncated_length_histogram2);
+    truncate_tree(length_histogram, truncated_length_histogram1, truncated_length_histogram2);
     canonize_tree(sorted_copy2, n, truncated_length_histogram1, symbol_bits);
     create_codeword(symbol_bits, truncated_length_histogram2, encoding);
 

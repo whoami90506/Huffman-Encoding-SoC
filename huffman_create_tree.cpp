@@ -12,8 +12,9 @@ void create_tree (
 
     assert(num_symbols > 0);
     assert(num_symbols <= INPUT_SYMBOL_SIZE);
+    
     for(int i = 0; i < (num_symbols-1); i++) {
-#pragma HLS PIPELINE II=5
+    #pragma HLS PIPELINE II=5
         Frequency node_freq = 0;
 
         // There are two cases.

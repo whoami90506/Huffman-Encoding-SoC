@@ -1,0 +1,223 @@
+
+
+================================================================
+== Vivado HLS Report for 'create_tree'
+================================================================
+* Date:           Thu Nov 12 16:04:42 2020
+
+* Version:        2019.2 (Build 2704478 on Wed Nov 06 22:10:23 MST 2019)
+* Project:        hls_huffman_encoding
+* Solution:       solution1
+* Product family: zynq
+* Target device:  xc7z020-clg484-1
+
+
+================================================================
+== Performance Estimates
+================================================================
++ Timing: 
+    * Summary: 
+    +--------+---------+----------+------------+
+    |  Clock |  Target | Estimated| Uncertainty|
+    +--------+---------+----------+------------+
+    |ap_clk  | 5.00 ns | 7.683 ns |   0.63 ns  |
+    +--------+---------+----------+------------+
+
++ Latency: 
+    * Summary: 
+    +---------+---------+-----------+----------+-----+------+---------+
+    |  Latency (cycles) |  Latency (absolute)  |  Interval  | Pipeline|
+    |   min   |   max   |    min    |    max   | min |  max |   Type  |
+    +---------+---------+-----------+----------+-----+------+---------+
+    |        2|     1277| 15.366 ns | 9.811 us |    2|  1277|   none  |
+    +---------+---------+-----------+----------+-----+------+---------+
+
+    + Detail: 
+        * Instance: 
+        N/A
+
+        * Loop: 
+        +----------+---------+---------+----------+-----------+-----------+---------+----------+
+        |          |  Latency (cycles) | Iteration|  Initiation Interval  |   Trip  |          |
+        | Loop Name|   min   |   max   |  Latency |  achieved |   target  |  Count  | Pipelined|
+        +----------+---------+---------+----------+-----------+-----------+---------+----------+
+        |- Loop 1  |        0|     1275|         5|          5|          5| 0 ~ 255 |    yes   |
+        +----------+---------+---------+----------+-----------+-----------+---------+----------+
+
+
+
+================================================================
+== Utilization Estimates
+================================================================
+* Summary: 
++-----------------+---------+-------+--------+-------+-----+
+|       Name      | BRAM_18K| DSP48E|   FF   |  LUT  | URAM|
++-----------------+---------+-------+--------+-------+-----+
+|DSP              |        -|      -|       -|      -|    -|
+|Expression       |        -|      -|       0|    276|    -|
+|FIFO             |        -|      -|       -|      -|    -|
+|Instance         |        -|      -|       -|      -|    -|
+|Memory           |        1|      -|       0|      0|    0|
+|Multiplexer      |        -|      -|       -|    335|    -|
+|Register         |        -|      -|     256|      -|    -|
++-----------------+---------+-------+--------+-------+-----+
+|Total            |        1|      0|     256|    611|    0|
++-----------------+---------+-------+--------+-------+-----+
+|Available        |      280|    220|  106400|  53200|    0|
++-----------------+---------+-------+--------+-------+-----+
+|Utilization (%)  |    ~0   |      0|   ~0   |      1|    0|
++-----------------+---------+-------+--------+-------+-----+
+
++ Detail: 
+    * Instance: 
+    N/A
+
+    * DSP48E: 
+    N/A
+
+    * Memory: 
+    +---------------+----------------------+---------+---+----+-----+------+-----+------+-------------+
+    |     Memory    |        Module        | BRAM_18K| FF| LUT| URAM| Words| Bits| Banks| W*Bits*Banks|
+    +---------------+----------------------+---------+---+----+-----+------+-----+------+-------------+
+    |frequency_V_U  |create_tree_frequibs  |        1|  0|   0|    0|   255|   32|     1|         8160|
+    +---------------+----------------------+---------+---+----+-----+------+-----+------+-------------+
+    |Total          |                      |        1|  0|   0|    0|   255|   32|     1|         8160|
+    +---------------+----------------------+---------+---+----+-----+------+-----+------+-------------+
+
+    * FIFO: 
+    N/A
+
+    * Expression: 
+    +--------------------------+----------+-------+---+----+------------+------------+
+    |       Variable Name      | Operation| DSP48E| FF| LUT| Bitwidth P0| Bitwidth P1|
+    +--------------------------+----------+-------+---+----+------------+------------+
+    |add_ln16_fu_328_p2        |     +    |      0|  0|  13|          11|           2|
+    |add_ln209_1_fu_457_p2     |     +    |      0|  0|  39|          32|          32|
+    |add_ln209_fu_471_p2       |     +    |      0|  0|  39|          32|          32|
+    |i_fu_343_p2               |     +    |      0|  0|  14|          10|           1|
+    |in_count_V_1_fu_478_p2    |     +    |      0|  0|  14|          10|           1|
+    |in_count_V_fu_406_p2      |     +    |      0|  0|  14|          10|           1|
+    |tree_count_V_1_fu_464_p2  |     +    |      0|  0|  14|          10|           1|
+    |tree_count_V_fu_400_p2    |     +    |      0|  0|  14|          10|           1|
+    |and_ln27_fu_377_p2        |    and   |      0|  0|   2|           1|           1|
+    |and_ln43_fu_440_p2        |    and   |      0|  0|   2|           1|           1|
+    |icmp_ln16_fu_338_p2       |   icmp   |      0|  0|  13|          11|          11|
+    |icmp_ln27_1_fu_365_p2     |   icmp   |      0|  0|  18|          32|          32|
+    |icmp_ln27_fu_360_p2       |   icmp   |      0|  0|  13|          10|          10|
+    |icmp_ln43_1_fu_428_p2     |   icmp   |      0|  0|  18|          32|          32|
+    |icmp_ln43_fu_423_p2       |   icmp   |      0|  0|  13|          10|          10|
+    |icmp_ln879_2_fu_445_p2    |   icmp   |      0|  0|  13|          10|          10|
+    |icmp_ln879_fu_383_p2      |   icmp   |      0|  0|  13|          10|          10|
+    |ap_block_state1           |    or    |      0|  0|   2|           1|           1|
+    |or_ln27_fu_389_p2         |    or    |      0|  0|   2|           1|           1|
+    |or_ln43_fu_451_p2         |    or    |      0|  0|   2|           1|           1|
+    |xor_ln27_fu_371_p2        |    xor   |      0|  0|   2|           1|           2|
+    |xor_ln43_fu_434_p2        |    xor   |      0|  0|   2|           1|           2|
+    +--------------------------+----------+-------+---+----+------------+------------+
+    |Total                     |          |      0|  0| 276|         247|         195|
+    +--------------------------+----------+-------+---+----+------------+------------+
+
+    * Multiplexer: 
+    +---------------------------------------+----+-----------+-----+-----------+
+    |                  Name                 | LUT| Input Size| Bits| Total Bits|
+    +---------------------------------------+----+-----------+-----+-----------+
+    |ap_NS_fsm                              |  41|          8|    1|          8|
+    |ap_done                                |   9|          2|    1|          2|
+    |ap_phi_mux_p_0168_2_i_i_phi_fu_288_p4  |  15|          3|   10|         30|
+    |ap_phi_mux_p_094_2_i_i_phi_fu_300_p4   |  15|          3|   10|         30|
+    |ap_phi_mux_t_V_4_phi_fu_266_p4         |  15|          3|   10|         30|
+    |ap_phi_mux_t_V_5_phi_fu_255_p4         |  15|          3|   10|         30|
+    |extLd_loc_blk_n                        |   9|          2|    1|          2|
+    |extLd_loc_out_blk_n                    |   9|          2|    1|          2|
+    |frequency_V_address0                   |  27|          5|    8|         40|
+    |frequency_V_d0                         |  15|          3|   32|         96|
+    |in_frequency_V_address0                |  15|          3|    8|         24|
+    |in_value_V_address0                    |  15|          3|    8|         24|
+    |left_V_address0                        |  15|          3|    8|         24|
+    |left_V_d0                              |  15|          3|   10|         30|
+    |op_assign_reg_239                      |   9|          2|   10|         20|
+    |p_090_0_i_i_reg_274                    |   9|          2|   32|         64|
+    |parent_V_address0                      |  21|          4|    8|         32|
+    |parent_V_d0                            |  15|          3|   10|         30|
+    |right_V_d0                             |  15|          3|   10|         30|
+    |t_V_3_reg_215                          |   9|          2|   10|         20|
+    |t_V_4_reg_263                          |   9|          2|   10|         20|
+    |t_V_5_reg_252                          |   9|          2|   10|         20|
+    |t_V_reg_227                            |   9|          2|   10|         20|
+    +---------------------------------------+----+-----------+-----+-----------+
+    |Total                                  | 335|         68|  228|        628|
+    +---------------------------------------+----+-----------+-----+-----------+
+
+    * Register: 
+    +------------------------+----+----+-----+-----------+
+    |          Name          | FF | LUT| Bits| Const Bits|
+    +------------------------+----+----+-----+-----------+
+    |add_ln16_reg_496        |  11|   0|   11|          0|
+    |ap_CS_fsm               |   7|   0|    7|          0|
+    |ap_done_reg             |   1|   0|    1|          0|
+    |extLd_loc_read_reg_490  |  10|   0|   10|          0|
+    |i_reg_505               |  10|   0|   10|          0|
+    |icmp_ln16_reg_501       |   1|   0|    1|          0|
+    |icmp_ln43_reg_576       |   1|   0|    1|          0|
+    |in_count_V_reg_551      |  10|   0|   10|          0|
+    |left_V_addr_reg_541     |   8|   0|    8|          0|
+    |op_assign_reg_239       |  10|   0|   10|          0|
+    |or_ln27_reg_530         |   1|   0|    1|          0|
+    |p_090_0_i_i_reg_274     |  32|   0|   32|          0|
+    |reg_308                 |  32|   0|   32|          0|
+    |reg_313                 |  10|   0|   10|          0|
+    |reg_319                 |  32|   0|   32|          0|
+    |t_V_3_reg_215           |  10|   0|   10|          0|
+    |t_V_4_reg_263           |  10|   0|   10|          0|
+    |t_V_5_reg_252           |  10|   0|   10|          0|
+    |t_V_reg_227             |  10|   0|   10|          0|
+    |tree_count_V_reg_546    |  10|   0|   10|          0|
+    |zext_ln29_reg_534       |  10|   0|   64|         54|
+    |zext_ln544_5_reg_556    |  10|   0|   64|         54|
+    |zext_ln544_reg_510      |  10|   0|   64|         54|
+    +------------------------+----+----+-----+-----------+
+    |Total                   | 256|   0|  418|        162|
+    +------------------------+----+----+-----+-----------+
+
+
+
+================================================================
+== Interface
+================================================================
+* Summary: 
++-------------------------+-----+-----+------------+----------------+--------------+
+|        RTL Ports        | Dir | Bits|  Protocol  |  Source Object |    C Type    |
++-------------------------+-----+-----+------------+----------------+--------------+
+|ap_clk                   |  in |    1| ap_ctrl_hs |   create_tree  | return value |
+|ap_rst                   |  in |    1| ap_ctrl_hs |   create_tree  | return value |
+|ap_start                 |  in |    1| ap_ctrl_hs |   create_tree  | return value |
+|ap_done                  | out |    1| ap_ctrl_hs |   create_tree  | return value |
+|ap_continue              |  in |    1| ap_ctrl_hs |   create_tree  | return value |
+|ap_idle                  | out |    1| ap_ctrl_hs |   create_tree  | return value |
+|ap_ready                 | out |    1| ap_ctrl_hs |   create_tree  | return value |
+|in_value_V_address0      | out |    8|  ap_memory |   in_value_V   |     array    |
+|in_value_V_ce0           | out |    1|  ap_memory |   in_value_V   |     array    |
+|in_value_V_q0            |  in |   10|  ap_memory |   in_value_V   |     array    |
+|in_frequency_V_address0  | out |    8|  ap_memory | in_frequency_V |     array    |
+|in_frequency_V_ce0       | out |    1|  ap_memory | in_frequency_V |     array    |
+|in_frequency_V_q0        |  in |   32|  ap_memory | in_frequency_V |     array    |
+|extLd_loc_dout           |  in |   10|   ap_fifo  |    extLd_loc   |    pointer   |
+|extLd_loc_empty_n        |  in |    1|   ap_fifo  |    extLd_loc   |    pointer   |
+|extLd_loc_read           | out |    1|   ap_fifo  |    extLd_loc   |    pointer   |
+|parent_V_address0        | out |    8|  ap_memory |    parent_V    |     array    |
+|parent_V_ce0             | out |    1|  ap_memory |    parent_V    |     array    |
+|parent_V_we0             | out |    1|  ap_memory |    parent_V    |     array    |
+|parent_V_d0              | out |   10|  ap_memory |    parent_V    |     array    |
+|left_V_address0          | out |    8|  ap_memory |     left_V     |     array    |
+|left_V_ce0               | out |    1|  ap_memory |     left_V     |     array    |
+|left_V_we0               | out |    1|  ap_memory |     left_V     |     array    |
+|left_V_d0                | out |   10|  ap_memory |     left_V     |     array    |
+|right_V_address0         | out |    8|  ap_memory |     right_V    |     array    |
+|right_V_ce0              | out |    1|  ap_memory |     right_V    |     array    |
+|right_V_we0              | out |    1|  ap_memory |     right_V    |     array    |
+|right_V_d0               | out |   10|  ap_memory |     right_V    |     array    |
+|extLd_loc_out_din        | out |   10|   ap_fifo  |  extLd_loc_out |    pointer   |
+|extLd_loc_out_full_n     |  in |    1|   ap_fifo  |  extLd_loc_out |    pointer   |
+|extLd_loc_out_write      | out |    1|   ap_fifo  |  extLd_loc_out |    pointer   |
++-------------------------+-----+-----+------------+----------------+--------------+
+
