@@ -170,7 +170,7 @@ architecture behav of compute_bit_length is
     signal ap_condition_252 : BOOLEAN;
     signal ap_condition_182 : BOOLEAN;
 
-    component compute_bit_lengtjbC IS
+    component compute_bit_lengtkbM IS
     generic (
         DataWidth : INTEGER;
         AddressRange : INTEGER;
@@ -186,7 +186,7 @@ architecture behav of compute_bit_length is
     end component;
 
 
-    component compute_bit_lengtkbM IS
+    component compute_bit_lengtlbW IS
     generic (
         DataWidth : INTEGER;
         AddressRange : INTEGER;
@@ -204,7 +204,7 @@ architecture behav of compute_bit_length is
 
 
 begin
-    child_depth_V_U : component compute_bit_lengtjbC
+    child_depth_V_U : component compute_bit_lengtkbM
     generic map (
         DataWidth => 6,
         AddressRange => 255,
@@ -218,7 +218,7 @@ begin
         d0 => child_depth_V_d0,
         q0 => child_depth_V_q0);
 
-    internal_length_hist_U : component compute_bit_lengtkbM
+    internal_length_hist_U : component compute_bit_lengtlbW
     generic map (
         DataWidth => 9,
         AddressRange => 64,

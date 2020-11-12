@@ -174,7 +174,7 @@ initial begin
 #0 ap_enable_reg_pp1_iter2 = 1'b0;
 end
 
-compute_bit_lengtjbC #(
+compute_bit_lengtkbM #(
     .DataWidth( 6 ),
     .AddressRange( 255 ),
     .AddressWidth( 8 ))
@@ -188,7 +188,7 @@ child_depth_V_U(
     .q0(child_depth_V_q0)
 );
 
-compute_bit_lengtkbM #(
+compute_bit_lengtlbW #(
     .DataWidth( 9 ),
     .AddressRange( 64 ),
     .AddressWidth( 6 ))

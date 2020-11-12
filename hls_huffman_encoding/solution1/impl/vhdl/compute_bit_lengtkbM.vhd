@@ -9,10 +9,10 @@ use ieee.std_logic_unsigned.all;
 
 entity compute_bit_lengtkbM_ram is 
     generic(
-            MEM_TYPE    : string := "distributed"; 
-            DWIDTH     : integer := 9; 
-            AWIDTH     : integer := 6; 
-            MEM_SIZE    : integer := 64
+            MEM_TYPE    : string := "block"; 
+            DWIDTH     : integer := 6; 
+            AWIDTH     : integer := 8; 
+            MEM_SIZE    : integer := 255
     ); 
     port (
           addr0     : in std_logic_vector(AWIDTH-1 downto 0); 
@@ -32,7 +32,7 @@ type mem_array is array (0 to MEM_SIZE-1) of std_logic_vector (DWIDTH-1 downto 0
 shared variable ram : mem_array;
 
 attribute syn_ramstyle : string; 
-attribute syn_ramstyle of ram : variable is "select_ram";
+attribute syn_ramstyle of ram : variable is "block_ram";
 attribute ram_style : string;
 attribute ram_style of ram : variable is MEM_TYPE;
 
@@ -71,9 +71,9 @@ use IEEE.std_logic_1164.all;
 
 entity compute_bit_lengtkbM is
     generic (
-        DataWidth : INTEGER := 9;
-        AddressRange : INTEGER := 64;
-        AddressWidth : INTEGER := 6);
+        DataWidth : INTEGER := 6;
+        AddressRange : INTEGER := 255;
+        AddressWidth : INTEGER := 8);
     port (
         reset : IN STD_LOGIC;
         clk : IN STD_LOGIC;

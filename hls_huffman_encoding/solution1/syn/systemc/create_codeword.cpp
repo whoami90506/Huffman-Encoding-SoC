@@ -53,7 +53,7 @@ const sc_lv<27> create_codeword::ap_const_lv27_1 = "1";
 const sc_lv<32> create_codeword::ap_const_lv32_9 = "1001";
 
 create_codeword::create_codeword(sc_module_name name) : sc_module(name), mVcdFile(0) {
-    first_codeword_V_U = new create_codeword_flbW("first_codeword_V_U");
+    first_codeword_V_U = new create_codeword_fmb6("first_codeword_V_U");
     first_codeword_V_U->clk(ap_clk);
     first_codeword_V_U->reset(ap_rst);
     first_codeword_V_U->address0(first_codeword_V_address0);

@@ -13,8 +13,12 @@
     "Speed": "-1"
   },
   "HlsSolution": {"Config": [
+      "config_sdx -target=none",
       "config_export -format=ip_catalog",
-      "config_export -rtl=verilog"
+      "config_export -rtl=verilog",
+      "config_export -vivado_optimization_level=2",
+      "config_export -vivado_phys_opt=place",
+      "config_export -vivado_report_level=0"
     ]},
   "Args": {
     "symbol_histogram": {
@@ -125,37 +129,38 @@
       "impl\/vhdl\/Block_proc.vhd",
       "impl\/vhdl\/canonize_tree.vhd",
       "impl\/vhdl\/compute_bit_length.vhd",
-      "impl\/vhdl\/compute_bit_lengtjbC.vhd",
       "impl\/vhdl\/compute_bit_lengtkbM.vhd",
+      "impl\/vhdl\/compute_bit_lengtlbW.vhd",
       "impl\/vhdl\/create_codeword.vhd",
-      "impl\/vhdl\/create_codeword_flbW.vhd",
+      "impl\/vhdl\/create_codeword_fmb6.vhd",
       "impl\/vhdl\/create_tree.vhd",
       "impl\/vhdl\/create_tree_frequibs.vhd",
+      "impl\/vhdl\/create_tree_frequjbC.vhd",
       "impl\/vhdl\/fifo_w9_d2_A.vhd",
       "impl\/vhdl\/fifo_w9_d3_A.vhd",
       "impl\/vhdl\/fifo_w9_d5_A.vhd",
       "impl\/vhdl\/filter.vhd",
+      "impl\/vhdl\/huffman_encoding_Aem.vhd",
+      "impl\/vhdl\/huffman_encoding_Aem_memcore.vhd",
       "impl\/vhdl\/huffman_encoding_g8j.vhd",
       "impl\/vhdl\/huffman_encoding_hbi.vhd",
-      "impl\/vhdl\/huffman_encoding_mb6.vhd",
-      "impl\/vhdl\/huffman_encoding_mb6_memcore.vhd",
       "impl\/vhdl\/huffman_encoding_ncg.vhd",
       "impl\/vhdl\/huffman_encoding_ncg_memcore.vhd",
-      "impl\/vhdl\/huffman_encoding_tde.vhd",
-      "impl\/vhdl\/huffman_encoding_tde_memcore.vhd",
-      "impl\/vhdl\/huffman_encoding_wdI.vhd",
-      "impl\/vhdl\/huffman_encoding_wdI_memcore.vhd",
+      "impl\/vhdl\/huffman_encoding_ocq.vhd",
+      "impl\/vhdl\/huffman_encoding_ocq_memcore.vhd",
+      "impl\/vhdl\/huffman_encoding_udo.vhd",
+      "impl\/vhdl\/huffman_encoding_udo_memcore.vhd",
       "impl\/vhdl\/huffman_encoding_xdS.vhd",
       "impl\/vhdl\/huffman_encoding_xdS_memcore.vhd",
-      "impl\/vhdl\/huffman_encoding_zec.vhd",
-      "impl\/vhdl\/huffman_encoding_zec_memcore.vhd",
+      "impl\/vhdl\/huffman_encoding_yd2.vhd",
+      "impl\/vhdl\/huffman_encoding_yd2_memcore.vhd",
       "impl\/vhdl\/Loop_copy_sorted_pro.vhd",
       "impl\/vhdl\/sort.vhd",
       "impl\/vhdl\/sort_current_digifYi.vhd",
       "impl\/vhdl\/sort_previous_sorbkb.vhd",
       "impl\/vhdl\/sort_previous_sorcud.vhd",
-      "impl\/vhdl\/start_for_Block_cAem.vhd",
-      "impl\/vhdl\/start_for_Block_pBew.vhd",
+      "impl\/vhdl\/start_for_Block_cBew.vhd",
+      "impl\/vhdl\/start_for_Block_pCeG.vhd",
       "impl\/vhdl\/truncate_tree.vhd",
       "impl\/vhdl\/huffman_encoding.vhd"
     ],
@@ -164,37 +169,38 @@
       "impl\/verilog\/Block_proc.v",
       "impl\/verilog\/canonize_tree.v",
       "impl\/verilog\/compute_bit_length.v",
-      "impl\/verilog\/compute_bit_lengtjbC.v",
       "impl\/verilog\/compute_bit_lengtkbM.v",
+      "impl\/verilog\/compute_bit_lengtlbW.v",
       "impl\/verilog\/create_codeword.v",
-      "impl\/verilog\/create_codeword_flbW.v",
+      "impl\/verilog\/create_codeword_fmb6.v",
       "impl\/verilog\/create_tree.v",
       "impl\/verilog\/create_tree_frequibs.v",
+      "impl\/verilog\/create_tree_frequjbC.v",
       "impl\/verilog\/fifo_w9_d2_A.v",
       "impl\/verilog\/fifo_w9_d3_A.v",
       "impl\/verilog\/fifo_w9_d5_A.v",
       "impl\/verilog\/filter.v",
+      "impl\/verilog\/huffman_encoding_Aem.v",
+      "impl\/verilog\/huffman_encoding_Aem_memcore.v",
       "impl\/verilog\/huffman_encoding_g8j.v",
       "impl\/verilog\/huffman_encoding_hbi.v",
-      "impl\/verilog\/huffman_encoding_mb6.v",
-      "impl\/verilog\/huffman_encoding_mb6_memcore.v",
       "impl\/verilog\/huffman_encoding_ncg.v",
       "impl\/verilog\/huffman_encoding_ncg_memcore.v",
-      "impl\/verilog\/huffman_encoding_tde.v",
-      "impl\/verilog\/huffman_encoding_tde_memcore.v",
-      "impl\/verilog\/huffman_encoding_wdI.v",
-      "impl\/verilog\/huffman_encoding_wdI_memcore.v",
+      "impl\/verilog\/huffman_encoding_ocq.v",
+      "impl\/verilog\/huffman_encoding_ocq_memcore.v",
+      "impl\/verilog\/huffman_encoding_udo.v",
+      "impl\/verilog\/huffman_encoding_udo_memcore.v",
       "impl\/verilog\/huffman_encoding_xdS.v",
       "impl\/verilog\/huffman_encoding_xdS_memcore.v",
-      "impl\/verilog\/huffman_encoding_zec.v",
-      "impl\/verilog\/huffman_encoding_zec_memcore.v",
+      "impl\/verilog\/huffman_encoding_yd2.v",
+      "impl\/verilog\/huffman_encoding_yd2_memcore.v",
       "impl\/verilog\/Loop_copy_sorted_pro.v",
       "impl\/verilog\/sort.v",
       "impl\/verilog\/sort_current_digifYi.v",
       "impl\/verilog\/sort_previous_sorbkb.v",
       "impl\/verilog\/sort_previous_sorcud.v",
-      "impl\/verilog\/start_for_Block_cAem.v",
-      "impl\/verilog\/start_for_Block_pBew.v",
+      "impl\/verilog\/start_for_Block_cBew.v",
+      "impl\/verilog\/start_for_Block_pCeG.v",
       "impl\/verilog\/truncate_tree.v",
       "impl\/verilog\/huffman_encoding.v"
     ],
@@ -901,7 +907,7 @@
         "Timing": {
           "Target": "5.00",
           "Uncertainty": "0.63",
-          "Estimate": "7.683"
+          "Estimate": "4.429"
         },
         "Loops": [{
             "Name": "Loop 1",
@@ -910,12 +916,12 @@
             "LatencyMax": "1275",
             "Latency": "0 ~ 1275",
             "PipelineII": "5",
-            "PipelineDepth": "5"
+            "PipelineDepth": "6"
           }],
         "Area": {
-          "BRAM_18K": "1",
-          "FF": "242",
-          "LUT": "617",
+          "BRAM_18K": "4",
+          "FF": "455",
+          "LUT": "769",
           "URAM": "0",
           "DSP48E": "0"
         }
@@ -1152,12 +1158,12 @@
         "Timing": {
           "Target": "5.00",
           "Uncertainty": "0.63",
-          "Estimate": "7.683"
+          "Estimate": "7.018"
         },
         "Area": {
-          "BRAM_18K": "19",
-          "FF": "2723",
-          "LUT": "5896",
+          "BRAM_18K": "22",
+          "FF": "2936",
+          "LUT": "6048",
           "URAM": "0",
           "DSP48E": "0"
         }
@@ -1174,7 +1180,7 @@
   },
   "GenData": {
     "DataVersion": "0.2",
-    "Time": "2020-11-12 17:49:52 +0800",
+    "Time": "2020-11-12 22:57:53 +0800",
     "ToolName": "vivado_hls",
     "ToolVersion": "2019.2"
   }

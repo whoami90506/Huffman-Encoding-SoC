@@ -48,7 +48,7 @@ const sc_lv<9> compute_bit_length::ap_const_lv9_1FF = "111111111";
 const sc_lv<32> compute_bit_length::ap_const_lv32_7 = "111";
 
 compute_bit_length::compute_bit_length(sc_module_name name) : sc_module(name), mVcdFile(0) {
-    child_depth_V_U = new compute_bit_lengtjbC("child_depth_V_U");
+    child_depth_V_U = new compute_bit_lengtkbM("child_depth_V_U");
     child_depth_V_U->clk(ap_clk);
     child_depth_V_U->reset(ap_rst);
     child_depth_V_U->address0(child_depth_V_address0);
@@ -56,7 +56,7 @@ compute_bit_length::compute_bit_length(sc_module_name name) : sc_module(name), m
     child_depth_V_U->we0(child_depth_V_we0);
     child_depth_V_U->d0(child_depth_V_d0);
     child_depth_V_U->q0(child_depth_V_q0);
-    internal_length_hist_U = new compute_bit_lengtkbM("internal_length_hist_U");
+    internal_length_hist_U = new compute_bit_lengtlbW("internal_length_hist_U");
     internal_length_hist_U->clk(ap_clk);
     internal_length_hist_U->reset(ap_rst);
     internal_length_hist_U->address0(internal_length_hist_address0);

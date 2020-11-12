@@ -11,8 +11,8 @@
 #include "systemc.h"
 #include "AESL_pkg.h"
 
-#include "compute_bit_lengtjbC.h"
 #include "compute_bit_lengtkbM.h"
+#include "compute_bit_lengtlbW.h"
 
 namespace ap_rtl {
 
@@ -51,8 +51,8 @@ struct compute_bit_length : public sc_module {
 
     sc_trace_file* mVcdFile;
 
-    compute_bit_lengtjbC* child_depth_V_U;
-    compute_bit_lengtkbM* internal_length_hist_U;
+    compute_bit_lengtkbM* child_depth_V_U;
+    compute_bit_lengtlbW* internal_length_hist_U;
     sc_signal< sc_logic > ap_done_reg;
     sc_signal< sc_lv<8> > ap_CS_fsm;
     sc_signal< sc_logic > ap_CS_fsm_state1;

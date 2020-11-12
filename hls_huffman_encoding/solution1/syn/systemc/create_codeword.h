@@ -11,7 +11,7 @@
 #include "systemc.h"
 #include "AESL_pkg.h"
 
-#include "create_codeword_flbW.h"
+#include "create_codeword_fmb6.h"
 
 namespace ap_rtl {
 
@@ -44,7 +44,7 @@ struct create_codeword : public sc_module {
 
     sc_trace_file* mVcdFile;
 
-    create_codeword_flbW* first_codeword_V_U;
+    create_codeword_fmb6* first_codeword_V_U;
     sc_signal< sc_logic > ap_done_reg;
     sc_signal< sc_lv<10> > ap_CS_fsm;
     sc_signal< sc_logic > ap_CS_fsm_state1;

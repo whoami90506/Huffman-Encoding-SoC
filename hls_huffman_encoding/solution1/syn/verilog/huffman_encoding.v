@@ -7,7 +7,7 @@
 
 `timescale 1 ns / 1 ps 
 
-(* CORE_GENERATION_INFO="huffman_encoding,hls_ip_2019_2,{HLS_INPUT_TYPE=cxx,HLS_INPUT_FLOAT=0,HLS_INPUT_FIXED=1,HLS_INPUT_PART=xc7z020-clg484-1,HLS_INPUT_CLOCK=5.000000,HLS_INPUT_ARCH=dataflow,HLS_SYN_CLOCK=7.683000,HLS_SYN_LAT=-1,HLS_SYN_TPT=-1,HLS_SYN_MEM=19,HLS_SYN_DSP=0,HLS_SYN_FF=2723,HLS_SYN_LUT=5896,HLS_VERSION=2019_2}" *)
+(* CORE_GENERATION_INFO="huffman_encoding,hls_ip_2019_2,{HLS_INPUT_TYPE=cxx,HLS_INPUT_FLOAT=0,HLS_INPUT_FIXED=1,HLS_INPUT_PART=xc7z020-clg484-1,HLS_INPUT_CLOCK=5.000000,HLS_INPUT_ARCH=dataflow,HLS_SYN_CLOCK=7.017875,HLS_SYN_LAT=-1,HLS_SYN_TPT=-1,HLS_SYN_MEM=22,HLS_SYN_DSP=0,HLS_SYN_FF=2936,HLS_SYN_LUT=6048,HLS_VERSION=2019_2}" *)
 
 module huffman_encoding (
         ap_clk,
@@ -437,7 +437,7 @@ initial begin
 #0 ap_sync_reg_channel_write_truncated_length_his = 1'b0;
 end
 
-huffman_encoding_mb6 #(
+huffman_encoding_ncg #(
     .DataWidth( 9 ),
     .AddressRange( 256 ),
     .AddressWidth( 8 ))
@@ -462,7 +462,7 @@ filtered_value_V_U(
     .t_read(sort_U0_ap_ready)
 );
 
-huffman_encoding_ncg #(
+huffman_encoding_ocq #(
     .DataWidth( 32 ),
     .AddressRange( 256 ),
     .AddressWidth( 8 ))
@@ -487,7 +487,7 @@ filtered_frequency_V_U(
     .t_read(sort_U0_ap_ready)
 );
 
-huffman_encoding_mb6 #(
+huffman_encoding_ncg #(
     .DataWidth( 9 ),
     .AddressRange( 256 ),
     .AddressWidth( 8 ))
@@ -512,7 +512,7 @@ sorted_0_U(
     .t_read(Loop_copy_sorted_pro_U0_ap_ready)
 );
 
-huffman_encoding_ncg #(
+huffman_encoding_ocq #(
     .DataWidth( 32 ),
     .AddressRange( 256 ),
     .AddressWidth( 8 ))
@@ -537,7 +537,7 @@ sorted_1_U(
     .t_read(Loop_copy_sorted_pro_U0_ap_ready)
 );
 
-huffman_encoding_mb6 #(
+huffman_encoding_ncg #(
     .DataWidth( 9 ),
     .AddressRange( 256 ),
     .AddressWidth( 8 ))
@@ -562,7 +562,7 @@ sorted_copy1_value_V_U(
     .t_read(create_tree_U0_ap_ready)
 );
 
-huffman_encoding_ncg #(
+huffman_encoding_ocq #(
     .DataWidth( 32 ),
     .AddressRange( 256 ),
     .AddressWidth( 8 ))
@@ -587,7 +587,7 @@ sorted_copy1_frequen_U(
     .t_read(create_tree_U0_ap_ready)
 );
 
-huffman_encoding_mb6 #(
+huffman_encoding_ncg #(
     .DataWidth( 9 ),
     .AddressRange( 256 ),
     .AddressWidth( 8 ))
@@ -612,7 +612,7 @@ sorted_copy2_value_V_U(
     .t_read(canonize_tree_U0_ap_ready)
 );
 
-huffman_encoding_tde #(
+huffman_encoding_udo #(
     .DataWidth( 9 ),
     .AddressRange( 255 ),
     .AddressWidth( 8 ))
@@ -637,7 +637,7 @@ parent_V_U(
     .t_read(compute_bit_length_U0_ap_ready)
 );
 
-huffman_encoding_tde #(
+huffman_encoding_udo #(
     .DataWidth( 9 ),
     .AddressRange( 255 ),
     .AddressWidth( 8 ))
@@ -662,7 +662,7 @@ left_V_U(
     .t_read(compute_bit_length_U0_ap_ready)
 );
 
-huffman_encoding_tde #(
+huffman_encoding_udo #(
     .DataWidth( 9 ),
     .AddressRange( 255 ),
     .AddressWidth( 8 ))
@@ -687,7 +687,7 @@ right_V_U(
     .t_read(compute_bit_length_U0_ap_ready)
 );
 
-huffman_encoding_wdI #(
+huffman_encoding_xdS #(
     .DataWidth( 9 ),
     .AddressRange( 64 ),
     .AddressWidth( 6 ))
@@ -712,7 +712,7 @@ length_histogram_V_U(
     .t_read(truncate_tree_U0_ap_ready)
 );
 
-huffman_encoding_xdS #(
+huffman_encoding_yd2 #(
     .DataWidth( 9 ),
     .AddressRange( 64 ),
     .AddressWidth( 6 ))
@@ -747,7 +747,7 @@ truncated_length_his_U(
     .t_read(canonize_tree_U0_ap_ready)
 );
 
-huffman_encoding_wdI #(
+huffman_encoding_xdS #(
     .DataWidth( 9 ),
     .AddressRange( 64 ),
     .AddressWidth( 6 ))
@@ -772,7 +772,7 @@ truncated_length_his_1_U(
     .t_read(create_codeword_U0_ap_ready)
 );
 
-huffman_encoding_zec #(
+huffman_encoding_Aem #(
     .DataWidth( 5 ),
     .AddressRange( 256 ),
     .AddressWidth( 8 ))
@@ -1148,7 +1148,7 @@ fifo_w9_d2_A extLd_loc_c22_U(
     .if_read(compute_bit_length_U0_extLd_loc_read)
 );
 
-start_for_Block_cAem start_for_Block_cAem_U(
+start_for_Block_cBew start_for_Block_cBew_U(
     .clk(ap_clk),
     .reset(ap_rst),
     .if_read_ce(1'b1),
@@ -1161,7 +1161,7 @@ start_for_Block_cAem start_for_Block_cAem_U(
     .if_read(Block_codeRepl1012_p_U0_ap_ready)
 );
 
-start_for_Block_pBew start_for_Block_pBew_U(
+start_for_Block_pCeG start_for_Block_pCeG_U(
     .clk(ap_clk),
     .reset(ap_rst),
     .if_read_ce(1'b1),

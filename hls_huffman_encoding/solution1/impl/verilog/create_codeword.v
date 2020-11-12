@@ -165,7 +165,7 @@ initial begin
 #0 ap_enable_reg_pp1_iter1 = 1'b0;
 end
 
-create_codeword_flbW #(
+create_codeword_fmb6 #(
     .DataWidth( 27 ),
     .AddressRange( 27 ),
     .AddressWidth( 5 ))

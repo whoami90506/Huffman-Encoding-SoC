@@ -175,7 +175,7 @@ architecture behav of create_codeword is
     signal ap_idle_pp1 : STD_LOGIC;
     signal ap_enable_pp1 : STD_LOGIC;
 
-    component create_codeword_flbW IS
+    component create_codeword_fmb6 IS
     generic (
         DataWidth : INTEGER;
         AddressRange : INTEGER;
@@ -193,7 +193,7 @@ architecture behav of create_codeword is
 
 
 begin
-    first_codeword_V_U : component create_codeword_flbW
+    first_codeword_V_U : component create_codeword_fmb6
     generic map (
         DataWidth => 27,
         AddressRange => 27,

@@ -5,9 +5,9 @@
 `timescale 1 ns / 1 ps
 module compute_bit_lengtkbM_ram (addr0, ce0, d0, we0, q0,  clk);
 
-parameter DWIDTH = 9;
-parameter AWIDTH = 6;
-parameter MEM_SIZE = 64;
+parameter DWIDTH = 6;
+parameter AWIDTH = 8;
+parameter MEM_SIZE = 255;
 
 input[AWIDTH-1:0] addr0;
 input ce0;
@@ -16,7 +16,7 @@ input we0;
 output reg[DWIDTH-1:0] q0;
 input clk;
 
-(* ram_style = "distributed" *)reg [DWIDTH-1:0] ram[0:MEM_SIZE-1];
+(* ram_style = "block" *)reg [DWIDTH-1:0] ram[0:MEM_SIZE-1];
 
 
 
@@ -43,9 +43,9 @@ module compute_bit_lengtkbM(
     d0,
     q0);
 
-parameter DataWidth = 32'd9;
-parameter AddressRange = 32'd64;
-parameter AddressWidth = 32'd6;
+parameter DataWidth = 32'd6;
+parameter AddressRange = 32'd255;
+parameter AddressWidth = 32'd8;
 input reset;
 input clk;
 input[AddressWidth - 1:0] address0;

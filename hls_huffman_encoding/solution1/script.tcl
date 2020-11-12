@@ -19,7 +19,8 @@ add_files -tb huffman_encoding_test.cpp -cflags "-Wno-unknown-pragmas" -csimflag
 open_solution "solution1"
 set_part {xc7z020-clg484-1}
 create_clock -period 5 -name default
-config_export -format ip_catalog -rtl verilog
+config_sdx -target none
+config_export -format ip_catalog -rtl verilog -vivado_optimization_level 2 -vivado_phys_opt place -vivado_report_level 0
 #source "./hls_huffman_encoding/solution1/directives.tcl"
 csim_design
 csynth_design

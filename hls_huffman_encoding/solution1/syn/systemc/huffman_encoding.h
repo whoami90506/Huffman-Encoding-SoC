@@ -21,17 +21,17 @@
 #include "canonize_tree.h"
 #include "create_codeword.h"
 #include "Block_proc.h"
-#include "huffman_encoding_mb6.h"
 #include "huffman_encoding_ncg.h"
-#include "huffman_encoding_tde.h"
-#include "huffman_encoding_wdI.h"
+#include "huffman_encoding_ocq.h"
+#include "huffman_encoding_udo.h"
 #include "huffman_encoding_xdS.h"
-#include "huffman_encoding_zec.h"
+#include "huffman_encoding_yd2.h"
+#include "huffman_encoding_Aem.h"
 #include "fifo_w9_d2_A.h"
 #include "fifo_w9_d3_A.h"
 #include "fifo_w9_d5_A.h"
-#include "start_for_Block_cAem.h"
-#include "start_for_Block_pBew.h"
+#include "start_for_Block_cBew.h"
+#include "start_for_Block_pCeG.h"
 
 namespace ap_rtl {
 
@@ -93,20 +93,20 @@ struct huffman_encoding : public sc_module {
 
     ofstream mHdltvinHandle;
     ofstream mHdltvoutHandle;
-    huffman_encoding_mb6* filtered_value_V_U;
-    huffman_encoding_ncg* filtered_frequency_V_U;
-    huffman_encoding_mb6* sorted_0_U;
-    huffman_encoding_ncg* sorted_1_U;
-    huffman_encoding_mb6* sorted_copy1_value_V_U;
-    huffman_encoding_ncg* sorted_copy1_frequen_U;
-    huffman_encoding_mb6* sorted_copy2_value_V_U;
-    huffman_encoding_tde* parent_V_U;
-    huffman_encoding_tde* left_V_U;
-    huffman_encoding_tde* right_V_U;
-    huffman_encoding_wdI* length_histogram_V_U;
-    huffman_encoding_xdS* truncated_length_his_U;
-    huffman_encoding_wdI* truncated_length_his_1_U;
-    huffman_encoding_zec* symbol_bits_V_U;
+    huffman_encoding_ncg* filtered_value_V_U;
+    huffman_encoding_ocq* filtered_frequency_V_U;
+    huffman_encoding_ncg* sorted_0_U;
+    huffman_encoding_ocq* sorted_1_U;
+    huffman_encoding_ncg* sorted_copy1_value_V_U;
+    huffman_encoding_ocq* sorted_copy1_frequen_U;
+    huffman_encoding_ncg* sorted_copy2_value_V_U;
+    huffman_encoding_udo* parent_V_U;
+    huffman_encoding_udo* left_V_U;
+    huffman_encoding_udo* right_V_U;
+    huffman_encoding_xdS* length_histogram_V_U;
+    huffman_encoding_yd2* truncated_length_his_U;
+    huffman_encoding_xdS* truncated_length_his_1_U;
+    huffman_encoding_Aem* symbol_bits_V_U;
     filter* filter_U0;
     Block_codeRepl1012_p* Block_codeRepl1012_p_U0;
     sort* sort_U0;
@@ -124,8 +124,8 @@ struct huffman_encoding : public sc_module {
     fifo_w9_d2_A* extLd_loc_c_U;
     fifo_w9_d2_A* extLd_loc_c21_U;
     fifo_w9_d2_A* extLd_loc_c22_U;
-    start_for_Block_cAem* start_for_Block_cAem_U;
-    start_for_Block_pBew* start_for_Block_pBew_U;
+    start_for_Block_cBew* start_for_Block_cBew_U;
+    start_for_Block_pCeG* start_for_Block_pCeG_U;
     sc_signal< sc_lv<9> > filtered_value_V_i_q0;
     sc_signal< sc_lv<9> > filtered_value_V_t_q0;
     sc_signal< sc_lv<32> > filtered_frequency_V_i_q0;
