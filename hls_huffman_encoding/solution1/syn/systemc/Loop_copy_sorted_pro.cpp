@@ -24,8 +24,8 @@ const sc_lv<1> Loop_copy_sorted_pro::ap_const_lv1_1 = "1";
 const sc_lv<1> Loop_copy_sorted_pro::ap_const_lv1_0 = "0";
 const sc_lv<32> Loop_copy_sorted_pro::ap_const_lv32_2 = "10";
 const sc_lv<32> Loop_copy_sorted_pro::ap_const_lv32_3 = "11";
-const sc_lv<10> Loop_copy_sorted_pro::ap_const_lv10_0 = "0000000000";
-const sc_lv<10> Loop_copy_sorted_pro::ap_const_lv10_1 = "1";
+const sc_lv<9> Loop_copy_sorted_pro::ap_const_lv9_0 = "000000000";
+const sc_lv<9> Loop_copy_sorted_pro::ap_const_lv9_1 = "1";
 const bool Loop_copy_sorted_pro::ap_const_boolean_1 = true;
 
 Loop_copy_sorted_pro::Loop_copy_sorted_pro(sc_module_name name) : sc_module(name), mVcdFile(0) {
@@ -55,7 +55,7 @@ Loop_copy_sorted_pro::Loop_copy_sorted_pro(sc_module_name name) : sc_module(name
     sensitive << ( val_assign7_out_out_full_n );
     sensitive << ( extLd_out_out_full_n );
     sensitive << ( extLd_out_out1_full_n );
-    sensitive << ( icmp_ln29_fu_153_p2 );
+    sensitive << ( icmp_ln29_fu_191_p2 );
 
     SC_METHOD(thread_ap_done);
     sensitive << ( ap_done_reg );
@@ -63,7 +63,7 @@ Loop_copy_sorted_pro::Loop_copy_sorted_pro(sc_module_name name) : sc_module(name
     sensitive << ( extLd_out_out_full_n );
     sensitive << ( extLd_out_out1_full_n );
     sensitive << ( ap_CS_fsm_state2 );
-    sensitive << ( icmp_ln29_fu_153_p2 );
+    sensitive << ( icmp_ln29_fu_191_p2 );
 
     SC_METHOD(thread_ap_idle);
     sensitive << ( real_start );
@@ -75,61 +75,61 @@ Loop_copy_sorted_pro::Loop_copy_sorted_pro(sc_module_name name) : sc_module(name
     SC_METHOD(thread_extLd_out_out1_blk_n);
     sensitive << ( extLd_out_out1_full_n );
     sensitive << ( ap_CS_fsm_state2 );
-    sensitive << ( icmp_ln29_fu_153_p2 );
+    sensitive << ( icmp_ln29_fu_191_p2 );
 
     SC_METHOD(thread_extLd_out_out1_din);
     sensitive << ( val_assign7_out_out_full_n );
     sensitive << ( extLd_out_out_full_n );
     sensitive << ( extLd_out_out1_full_n );
     sensitive << ( ap_CS_fsm_state2 );
-    sensitive << ( icmp_ln29_fu_153_p2 );
-    sensitive << ( n_read_reg_170 );
+    sensitive << ( icmp_ln29_fu_191_p2 );
+    sensitive << ( n_read_reg_208 );
 
     SC_METHOD(thread_extLd_out_out1_write);
     sensitive << ( val_assign7_out_out_full_n );
     sensitive << ( extLd_out_out_full_n );
     sensitive << ( extLd_out_out1_full_n );
     sensitive << ( ap_CS_fsm_state2 );
-    sensitive << ( icmp_ln29_fu_153_p2 );
+    sensitive << ( icmp_ln29_fu_191_p2 );
 
     SC_METHOD(thread_extLd_out_out_blk_n);
     sensitive << ( extLd_out_out_full_n );
     sensitive << ( ap_CS_fsm_state2 );
-    sensitive << ( icmp_ln29_fu_153_p2 );
+    sensitive << ( icmp_ln29_fu_191_p2 );
 
     SC_METHOD(thread_extLd_out_out_din);
     sensitive << ( val_assign7_out_out_full_n );
     sensitive << ( extLd_out_out_full_n );
     sensitive << ( extLd_out_out1_full_n );
     sensitive << ( ap_CS_fsm_state2 );
-    sensitive << ( icmp_ln29_fu_153_p2 );
-    sensitive << ( n_read_reg_170 );
+    sensitive << ( icmp_ln29_fu_191_p2 );
+    sensitive << ( n_read_reg_208 );
 
     SC_METHOD(thread_extLd_out_out_write);
     sensitive << ( val_assign7_out_out_full_n );
     sensitive << ( extLd_out_out_full_n );
     sensitive << ( extLd_out_out1_full_n );
     sensitive << ( ap_CS_fsm_state2 );
-    sensitive << ( icmp_ln29_fu_153_p2 );
+    sensitive << ( icmp_ln29_fu_191_p2 );
 
-    SC_METHOD(thread_i_fu_158_p2);
-    sensitive << ( i_0_i_reg_142 );
+    SC_METHOD(thread_i_fu_196_p2);
+    sensitive << ( i_0_i_reg_180 );
 
-    SC_METHOD(thread_icmp_ln29_fu_153_p2);
+    SC_METHOD(thread_icmp_ln29_fu_191_p2);
     sensitive << ( val_assign7_out_out_full_n );
     sensitive << ( extLd_out_out_full_n );
     sensitive << ( extLd_out_out1_full_n );
     sensitive << ( ap_CS_fsm_state2 );
-    sensitive << ( icmp_ln29_fu_153_p2 );
-    sensitive << ( n_read_reg_170 );
-    sensitive << ( i_0_i_reg_142 );
+    sensitive << ( icmp_ln29_fu_191_p2 );
+    sensitive << ( n_read_reg_208 );
+    sensitive << ( i_0_i_reg_180 );
 
     SC_METHOD(thread_internal_ap_ready);
     sensitive << ( val_assign7_out_out_full_n );
     sensitive << ( extLd_out_out_full_n );
     sensitive << ( extLd_out_out1_full_n );
     sensitive << ( ap_CS_fsm_state2 );
-    sensitive << ( icmp_ln29_fu_153_p2 );
+    sensitive << ( icmp_ln29_fu_191_p2 );
 
     SC_METHOD(thread_n_blk_n);
     sensitive << ( real_start );
@@ -150,63 +150,63 @@ Loop_copy_sorted_pro::Loop_copy_sorted_pro(sc_module_name name) : sc_module(name
 
     SC_METHOD(thread_sorted_0_address0);
     sensitive << ( ap_CS_fsm_state2 );
-    sensitive << ( zext_ln30_fu_164_p1 );
+    sensitive << ( zext_ln30_fu_202_p1 );
 
     SC_METHOD(thread_sorted_0_ce0);
     sensitive << ( val_assign7_out_out_full_n );
     sensitive << ( extLd_out_out_full_n );
     sensitive << ( extLd_out_out1_full_n );
     sensitive << ( ap_CS_fsm_state2 );
-    sensitive << ( icmp_ln29_fu_153_p2 );
+    sensitive << ( icmp_ln29_fu_191_p2 );
 
     SC_METHOD(thread_sorted_1_address0);
     sensitive << ( ap_CS_fsm_state2 );
-    sensitive << ( zext_ln30_fu_164_p1 );
+    sensitive << ( zext_ln30_fu_202_p1 );
 
     SC_METHOD(thread_sorted_1_ce0);
     sensitive << ( val_assign7_out_out_full_n );
     sensitive << ( extLd_out_out_full_n );
     sensitive << ( extLd_out_out1_full_n );
     sensitive << ( ap_CS_fsm_state2 );
-    sensitive << ( icmp_ln29_fu_153_p2 );
+    sensitive << ( icmp_ln29_fu_191_p2 );
 
     SC_METHOD(thread_sorted_copy1_frequency_V_address0);
-    sensitive << ( zext_ln30_reg_186 );
+    sensitive << ( zext_ln30_reg_224 );
     sensitive << ( ap_CS_fsm_state4 );
 
     SC_METHOD(thread_sorted_copy1_frequency_V_ce0);
     sensitive << ( ap_CS_fsm_state4 );
 
     SC_METHOD(thread_sorted_copy1_frequency_V_d0);
-    sensitive << ( previous_frequency_reg_209 );
+    sensitive << ( previous_frequency_reg_247 );
     sensitive << ( ap_CS_fsm_state4 );
 
     SC_METHOD(thread_sorted_copy1_frequency_V_we0);
     sensitive << ( ap_CS_fsm_state4 );
 
     SC_METHOD(thread_sorted_copy1_value_V_address0);
-    sensitive << ( zext_ln30_reg_186 );
+    sensitive << ( zext_ln30_reg_224 );
     sensitive << ( ap_CS_fsm_state4 );
 
     SC_METHOD(thread_sorted_copy1_value_V_ce0);
     sensitive << ( ap_CS_fsm_state4 );
 
     SC_METHOD(thread_sorted_copy1_value_V_d0);
-    sensitive << ( sorted_0_load_reg_203 );
+    sensitive << ( sorted_0_load_reg_241 );
     sensitive << ( ap_CS_fsm_state4 );
 
     SC_METHOD(thread_sorted_copy1_value_V_we0);
     sensitive << ( ap_CS_fsm_state4 );
 
     SC_METHOD(thread_sorted_copy2_value_V_address0);
-    sensitive << ( zext_ln30_reg_186 );
+    sensitive << ( zext_ln30_reg_224 );
     sensitive << ( ap_CS_fsm_state4 );
 
     SC_METHOD(thread_sorted_copy2_value_V_ce0);
     sensitive << ( ap_CS_fsm_state4 );
 
     SC_METHOD(thread_sorted_copy2_value_V_d0);
-    sensitive << ( sorted_0_load_reg_203 );
+    sensitive << ( sorted_0_load_reg_241 );
     sensitive << ( ap_CS_fsm_state4 );
 
     SC_METHOD(thread_sorted_copy2_value_V_we0);
@@ -222,25 +222,25 @@ Loop_copy_sorted_pro::Loop_copy_sorted_pro(sc_module_name name) : sc_module(name
     SC_METHOD(thread_val_assign7_out_out_blk_n);
     sensitive << ( val_assign7_out_out_full_n );
     sensitive << ( ap_CS_fsm_state2 );
-    sensitive << ( icmp_ln29_fu_153_p2 );
+    sensitive << ( icmp_ln29_fu_191_p2 );
 
     SC_METHOD(thread_val_assign7_out_out_din);
     sensitive << ( val_assign7_out_out_full_n );
     sensitive << ( extLd_out_out_full_n );
     sensitive << ( extLd_out_out1_full_n );
     sensitive << ( ap_CS_fsm_state2 );
-    sensitive << ( icmp_ln29_fu_153_p2 );
-    sensitive << ( n_read_reg_170 );
+    sensitive << ( icmp_ln29_fu_191_p2 );
+    sensitive << ( n_read_reg_208 );
 
     SC_METHOD(thread_val_assign7_out_out_write);
     sensitive << ( val_assign7_out_out_full_n );
     sensitive << ( extLd_out_out_full_n );
     sensitive << ( extLd_out_out1_full_n );
     sensitive << ( ap_CS_fsm_state2 );
-    sensitive << ( icmp_ln29_fu_153_p2 );
+    sensitive << ( icmp_ln29_fu_191_p2 );
 
-    SC_METHOD(thread_zext_ln30_fu_164_p1);
-    sensitive << ( i_0_i_reg_142 );
+    SC_METHOD(thread_zext_ln30_fu_202_p1);
+    sensitive << ( i_0_i_reg_180 );
 
     SC_METHOD(thread_ap_NS_fsm);
     sensitive << ( real_start );
@@ -252,7 +252,7 @@ Loop_copy_sorted_pro::Loop_copy_sorted_pro(sc_module_name name) : sc_module(name
     sensitive << ( extLd_out_out_full_n );
     sensitive << ( extLd_out_out1_full_n );
     sensitive << ( ap_CS_fsm_state2 );
-    sensitive << ( icmp_ln29_fu_153_p2 );
+    sensitive << ( icmp_ln29_fu_191_p2 );
 
     start_once_reg = SC_LOGIC_0;
     ap_done_reg = SC_LOGIC_0;
@@ -316,20 +316,20 @@ Loop_copy_sorted_pro::Loop_copy_sorted_pro(sc_module_name name) : sc_module(name
     sc_trace(mVcdFile, n_blk_n, "n_blk_n");
     sc_trace(mVcdFile, val_assign7_out_out_blk_n, "val_assign7_out_out_blk_n");
     sc_trace(mVcdFile, ap_CS_fsm_state2, "ap_CS_fsm_state2");
-    sc_trace(mVcdFile, icmp_ln29_fu_153_p2, "icmp_ln29_fu_153_p2");
+    sc_trace(mVcdFile, icmp_ln29_fu_191_p2, "icmp_ln29_fu_191_p2");
     sc_trace(mVcdFile, extLd_out_out_blk_n, "extLd_out_out_blk_n");
     sc_trace(mVcdFile, extLd_out_out1_blk_n, "extLd_out_out1_blk_n");
-    sc_trace(mVcdFile, n_read_reg_170, "n_read_reg_170");
+    sc_trace(mVcdFile, n_read_reg_208, "n_read_reg_208");
     sc_trace(mVcdFile, ap_block_state1, "ap_block_state1");
-    sc_trace(mVcdFile, i_fu_158_p2, "i_fu_158_p2");
-    sc_trace(mVcdFile, i_reg_181, "i_reg_181");
+    sc_trace(mVcdFile, i_fu_196_p2, "i_fu_196_p2");
+    sc_trace(mVcdFile, i_reg_219, "i_reg_219");
     sc_trace(mVcdFile, ap_block_state2, "ap_block_state2");
-    sc_trace(mVcdFile, zext_ln30_fu_164_p1, "zext_ln30_fu_164_p1");
-    sc_trace(mVcdFile, zext_ln30_reg_186, "zext_ln30_reg_186");
-    sc_trace(mVcdFile, sorted_0_load_reg_203, "sorted_0_load_reg_203");
+    sc_trace(mVcdFile, zext_ln30_fu_202_p1, "zext_ln30_fu_202_p1");
+    sc_trace(mVcdFile, zext_ln30_reg_224, "zext_ln30_reg_224");
+    sc_trace(mVcdFile, sorted_0_load_reg_241, "sorted_0_load_reg_241");
     sc_trace(mVcdFile, ap_CS_fsm_state3, "ap_CS_fsm_state3");
-    sc_trace(mVcdFile, previous_frequency_reg_209, "previous_frequency_reg_209");
-    sc_trace(mVcdFile, i_0_i_reg_142, "i_0_i_reg_142");
+    sc_trace(mVcdFile, previous_frequency_reg_247, "previous_frequency_reg_247");
+    sc_trace(mVcdFile, i_0_i_reg_180, "i_0_i_reg_180");
     sc_trace(mVcdFile, ap_CS_fsm_state4, "ap_CS_fsm_state4");
     sc_trace(mVcdFile, ap_NS_fsm, "ap_NS_fsm");
 #endif
@@ -355,19 +355,19 @@ void Loop_copy_sorted_pro::thread_ap_clk_no_reset_() {
         if (esl_seteq<1,1,1>(ap_const_logic_1, ap_continue.read())) {
             ap_done_reg = ap_const_logic_0;
         } else if ((esl_seteq<1,1,1>(ap_const_logic_1, ap_CS_fsm_state2.read()) && 
-                    esl_seteq<1,1,1>(icmp_ln29_fu_153_p2.read(), ap_const_lv1_1) && 
-                    !((esl_seteq<1,1,1>(icmp_ln29_fu_153_p2.read(), ap_const_lv1_1) && 
-  esl_seteq<1,1,1>(ap_const_logic_0, val_assign7_out_out_full_n.read())) || (esl_seteq<1,1,1>(icmp_ln29_fu_153_p2.read(), ap_const_lv1_1) && 
-  esl_seteq<1,1,1>(ap_const_logic_0, extLd_out_out_full_n.read())) || (esl_seteq<1,1,1>(icmp_ln29_fu_153_p2.read(), ap_const_lv1_1) && 
+                    esl_seteq<1,1,1>(icmp_ln29_fu_191_p2.read(), ap_const_lv1_1) && 
+                    !((esl_seteq<1,1,1>(icmp_ln29_fu_191_p2.read(), ap_const_lv1_1) && 
+  esl_seteq<1,1,1>(ap_const_logic_0, val_assign7_out_out_full_n.read())) || (esl_seteq<1,1,1>(icmp_ln29_fu_191_p2.read(), ap_const_lv1_1) && 
+  esl_seteq<1,1,1>(ap_const_logic_0, extLd_out_out_full_n.read())) || (esl_seteq<1,1,1>(icmp_ln29_fu_191_p2.read(), ap_const_lv1_1) && 
   esl_seteq<1,1,1>(ap_const_logic_0, extLd_out_out1_full_n.read()))))) {
             ap_done_reg = ap_const_logic_1;
         }
     }
     if ((esl_seteq<1,1,1>(ap_const_logic_1, ap_CS_fsm_state1.read()) && 
          !(esl_seteq<1,1,1>(ap_const_logic_0, real_start.read()) || esl_seteq<1,1,1>(ap_done_reg.read(), ap_const_logic_1) || esl_seteq<1,1,1>(ap_const_logic_0, n_empty_n.read())))) {
-        i_0_i_reg_142 = ap_const_lv10_0;
+        i_0_i_reg_180 = ap_const_lv9_0;
     } else if (esl_seteq<1,1,1>(ap_const_logic_1, ap_CS_fsm_state4.read())) {
-        i_0_i_reg_142 = i_reg_181.read();
+        i_0_i_reg_180 = i_reg_219.read();
     }
     if ( ap_rst.read() == ap_const_logic_1) {
         start_once_reg = ap_const_logic_0;
@@ -379,24 +379,24 @@ void Loop_copy_sorted_pro::thread_ap_clk_no_reset_() {
             start_once_reg = ap_const_logic_0;
         }
     }
-    if ((esl_seteq<1,1,1>(ap_const_logic_1, ap_CS_fsm_state2.read()) && !((esl_seteq<1,1,1>(icmp_ln29_fu_153_p2.read(), ap_const_lv1_1) && 
-  esl_seteq<1,1,1>(ap_const_logic_0, val_assign7_out_out_full_n.read())) || (esl_seteq<1,1,1>(icmp_ln29_fu_153_p2.read(), ap_const_lv1_1) && 
-  esl_seteq<1,1,1>(ap_const_logic_0, extLd_out_out_full_n.read())) || (esl_seteq<1,1,1>(icmp_ln29_fu_153_p2.read(), ap_const_lv1_1) && 
+    if ((esl_seteq<1,1,1>(ap_const_logic_1, ap_CS_fsm_state2.read()) && !((esl_seteq<1,1,1>(icmp_ln29_fu_191_p2.read(), ap_const_lv1_1) && 
+  esl_seteq<1,1,1>(ap_const_logic_0, val_assign7_out_out_full_n.read())) || (esl_seteq<1,1,1>(icmp_ln29_fu_191_p2.read(), ap_const_lv1_1) && 
+  esl_seteq<1,1,1>(ap_const_logic_0, extLd_out_out_full_n.read())) || (esl_seteq<1,1,1>(icmp_ln29_fu_191_p2.read(), ap_const_lv1_1) && 
   esl_seteq<1,1,1>(ap_const_logic_0, extLd_out_out1_full_n.read()))))) {
-        i_reg_181 = i_fu_158_p2.read();
+        i_reg_219 = i_fu_196_p2.read();
     }
     if ((esl_seteq<1,1,1>(ap_const_logic_1, ap_CS_fsm_state1.read()) && !(esl_seteq<1,1,1>(ap_const_logic_0, real_start.read()) || esl_seteq<1,1,1>(ap_done_reg.read(), ap_const_logic_1) || esl_seteq<1,1,1>(ap_const_logic_0, n_empty_n.read())))) {
-        n_read_reg_170 = n_dout.read();
+        n_read_reg_208 = n_dout.read();
     }
     if (esl_seteq<1,1,1>(ap_const_logic_1, ap_CS_fsm_state3.read())) {
-        previous_frequency_reg_209 = sorted_1_q0.read();
-        sorted_0_load_reg_203 = sorted_0_q0.read();
+        previous_frequency_reg_247 = sorted_1_q0.read();
+        sorted_0_load_reg_241 = sorted_0_q0.read();
     }
-    if ((esl_seteq<1,1,1>(ap_const_logic_1, ap_CS_fsm_state2.read()) && !((esl_seteq<1,1,1>(icmp_ln29_fu_153_p2.read(), ap_const_lv1_1) && 
-  esl_seteq<1,1,1>(ap_const_logic_0, val_assign7_out_out_full_n.read())) || (esl_seteq<1,1,1>(icmp_ln29_fu_153_p2.read(), ap_const_lv1_1) && 
-  esl_seteq<1,1,1>(ap_const_logic_0, extLd_out_out_full_n.read())) || (esl_seteq<1,1,1>(icmp_ln29_fu_153_p2.read(), ap_const_lv1_1) && 
-  esl_seteq<1,1,1>(ap_const_logic_0, extLd_out_out1_full_n.read()))) && esl_seteq<1,1,1>(icmp_ln29_fu_153_p2.read(), ap_const_lv1_0))) {
-        zext_ln30_reg_186 = zext_ln30_fu_164_p1.read();
+    if ((esl_seteq<1,1,1>(ap_const_logic_1, ap_CS_fsm_state2.read()) && !((esl_seteq<1,1,1>(icmp_ln29_fu_191_p2.read(), ap_const_lv1_1) && 
+  esl_seteq<1,1,1>(ap_const_logic_0, val_assign7_out_out_full_n.read())) || (esl_seteq<1,1,1>(icmp_ln29_fu_191_p2.read(), ap_const_lv1_1) && 
+  esl_seteq<1,1,1>(ap_const_logic_0, extLd_out_out_full_n.read())) || (esl_seteq<1,1,1>(icmp_ln29_fu_191_p2.read(), ap_const_lv1_1) && 
+  esl_seteq<1,1,1>(ap_const_logic_0, extLd_out_out1_full_n.read()))) && esl_seteq<1,1,1>(icmp_ln29_fu_191_p2.read(), ap_const_lv1_0))) {
+        zext_ln30_reg_224 = zext_ln30_fu_202_p1.read();
     }
 }
 
@@ -421,18 +421,18 @@ void Loop_copy_sorted_pro::thread_ap_block_state1() {
 }
 
 void Loop_copy_sorted_pro::thread_ap_block_state2() {
-    ap_block_state2 = ((esl_seteq<1,1,1>(icmp_ln29_fu_153_p2.read(), ap_const_lv1_1) && 
-  esl_seteq<1,1,1>(ap_const_logic_0, val_assign7_out_out_full_n.read())) || (esl_seteq<1,1,1>(icmp_ln29_fu_153_p2.read(), ap_const_lv1_1) && 
-  esl_seteq<1,1,1>(ap_const_logic_0, extLd_out_out_full_n.read())) || (esl_seteq<1,1,1>(icmp_ln29_fu_153_p2.read(), ap_const_lv1_1) && 
+    ap_block_state2 = ((esl_seteq<1,1,1>(icmp_ln29_fu_191_p2.read(), ap_const_lv1_1) && 
+  esl_seteq<1,1,1>(ap_const_logic_0, val_assign7_out_out_full_n.read())) || (esl_seteq<1,1,1>(icmp_ln29_fu_191_p2.read(), ap_const_lv1_1) && 
+  esl_seteq<1,1,1>(ap_const_logic_0, extLd_out_out_full_n.read())) || (esl_seteq<1,1,1>(icmp_ln29_fu_191_p2.read(), ap_const_lv1_1) && 
   esl_seteq<1,1,1>(ap_const_logic_0, extLd_out_out1_full_n.read())));
 }
 
 void Loop_copy_sorted_pro::thread_ap_done() {
     if ((esl_seteq<1,1,1>(ap_const_logic_1, ap_CS_fsm_state2.read()) && 
-         esl_seteq<1,1,1>(icmp_ln29_fu_153_p2.read(), ap_const_lv1_1) && 
-         !((esl_seteq<1,1,1>(icmp_ln29_fu_153_p2.read(), ap_const_lv1_1) && 
-  esl_seteq<1,1,1>(ap_const_logic_0, val_assign7_out_out_full_n.read())) || (esl_seteq<1,1,1>(icmp_ln29_fu_153_p2.read(), ap_const_lv1_1) && 
-  esl_seteq<1,1,1>(ap_const_logic_0, extLd_out_out_full_n.read())) || (esl_seteq<1,1,1>(icmp_ln29_fu_153_p2.read(), ap_const_lv1_1) && 
+         esl_seteq<1,1,1>(icmp_ln29_fu_191_p2.read(), ap_const_lv1_1) && 
+         !((esl_seteq<1,1,1>(icmp_ln29_fu_191_p2.read(), ap_const_lv1_1) && 
+  esl_seteq<1,1,1>(ap_const_logic_0, val_assign7_out_out_full_n.read())) || (esl_seteq<1,1,1>(icmp_ln29_fu_191_p2.read(), ap_const_lv1_1) && 
+  esl_seteq<1,1,1>(ap_const_logic_0, extLd_out_out_full_n.read())) || (esl_seteq<1,1,1>(icmp_ln29_fu_191_p2.read(), ap_const_lv1_1) && 
   esl_seteq<1,1,1>(ap_const_logic_0, extLd_out_out1_full_n.read()))))) {
         ap_done = ap_const_logic_1;
     } else {
@@ -455,7 +455,7 @@ void Loop_copy_sorted_pro::thread_ap_ready() {
 
 void Loop_copy_sorted_pro::thread_extLd_out_out1_blk_n() {
     if ((esl_seteq<1,1,1>(ap_const_logic_1, ap_CS_fsm_state2.read()) && 
-         esl_seteq<1,1,1>(icmp_ln29_fu_153_p2.read(), ap_const_lv1_1))) {
+         esl_seteq<1,1,1>(icmp_ln29_fu_191_p2.read(), ap_const_lv1_1))) {
         extLd_out_out1_blk_n = extLd_out_out1_full_n.read();
     } else {
         extLd_out_out1_blk_n = ap_const_logic_1;
@@ -463,15 +463,15 @@ void Loop_copy_sorted_pro::thread_extLd_out_out1_blk_n() {
 }
 
 void Loop_copy_sorted_pro::thread_extLd_out_out1_din() {
-    extLd_out_out1_din = n_read_reg_170.read();
+    extLd_out_out1_din = n_read_reg_208.read();
 }
 
 void Loop_copy_sorted_pro::thread_extLd_out_out1_write() {
     if ((esl_seteq<1,1,1>(ap_const_logic_1, ap_CS_fsm_state2.read()) && 
-         esl_seteq<1,1,1>(icmp_ln29_fu_153_p2.read(), ap_const_lv1_1) && 
-         !((esl_seteq<1,1,1>(icmp_ln29_fu_153_p2.read(), ap_const_lv1_1) && 
-  esl_seteq<1,1,1>(ap_const_logic_0, val_assign7_out_out_full_n.read())) || (esl_seteq<1,1,1>(icmp_ln29_fu_153_p2.read(), ap_const_lv1_1) && 
-  esl_seteq<1,1,1>(ap_const_logic_0, extLd_out_out_full_n.read())) || (esl_seteq<1,1,1>(icmp_ln29_fu_153_p2.read(), ap_const_lv1_1) && 
+         esl_seteq<1,1,1>(icmp_ln29_fu_191_p2.read(), ap_const_lv1_1) && 
+         !((esl_seteq<1,1,1>(icmp_ln29_fu_191_p2.read(), ap_const_lv1_1) && 
+  esl_seteq<1,1,1>(ap_const_logic_0, val_assign7_out_out_full_n.read())) || (esl_seteq<1,1,1>(icmp_ln29_fu_191_p2.read(), ap_const_lv1_1) && 
+  esl_seteq<1,1,1>(ap_const_logic_0, extLd_out_out_full_n.read())) || (esl_seteq<1,1,1>(icmp_ln29_fu_191_p2.read(), ap_const_lv1_1) && 
   esl_seteq<1,1,1>(ap_const_logic_0, extLd_out_out1_full_n.read()))))) {
         extLd_out_out1_write = ap_const_logic_1;
     } else {
@@ -481,7 +481,7 @@ void Loop_copy_sorted_pro::thread_extLd_out_out1_write() {
 
 void Loop_copy_sorted_pro::thread_extLd_out_out_blk_n() {
     if ((esl_seteq<1,1,1>(ap_const_logic_1, ap_CS_fsm_state2.read()) && 
-         esl_seteq<1,1,1>(icmp_ln29_fu_153_p2.read(), ap_const_lv1_1))) {
+         esl_seteq<1,1,1>(icmp_ln29_fu_191_p2.read(), ap_const_lv1_1))) {
         extLd_out_out_blk_n = extLd_out_out_full_n.read();
     } else {
         extLd_out_out_blk_n = ap_const_logic_1;
@@ -489,15 +489,15 @@ void Loop_copy_sorted_pro::thread_extLd_out_out_blk_n() {
 }
 
 void Loop_copy_sorted_pro::thread_extLd_out_out_din() {
-    extLd_out_out_din = n_read_reg_170.read();
+    extLd_out_out_din = n_read_reg_208.read();
 }
 
 void Loop_copy_sorted_pro::thread_extLd_out_out_write() {
     if ((esl_seteq<1,1,1>(ap_const_logic_1, ap_CS_fsm_state2.read()) && 
-         esl_seteq<1,1,1>(icmp_ln29_fu_153_p2.read(), ap_const_lv1_1) && 
-         !((esl_seteq<1,1,1>(icmp_ln29_fu_153_p2.read(), ap_const_lv1_1) && 
-  esl_seteq<1,1,1>(ap_const_logic_0, val_assign7_out_out_full_n.read())) || (esl_seteq<1,1,1>(icmp_ln29_fu_153_p2.read(), ap_const_lv1_1) && 
-  esl_seteq<1,1,1>(ap_const_logic_0, extLd_out_out_full_n.read())) || (esl_seteq<1,1,1>(icmp_ln29_fu_153_p2.read(), ap_const_lv1_1) && 
+         esl_seteq<1,1,1>(icmp_ln29_fu_191_p2.read(), ap_const_lv1_1) && 
+         !((esl_seteq<1,1,1>(icmp_ln29_fu_191_p2.read(), ap_const_lv1_1) && 
+  esl_seteq<1,1,1>(ap_const_logic_0, val_assign7_out_out_full_n.read())) || (esl_seteq<1,1,1>(icmp_ln29_fu_191_p2.read(), ap_const_lv1_1) && 
+  esl_seteq<1,1,1>(ap_const_logic_0, extLd_out_out_full_n.read())) || (esl_seteq<1,1,1>(icmp_ln29_fu_191_p2.read(), ap_const_lv1_1) && 
   esl_seteq<1,1,1>(ap_const_logic_0, extLd_out_out1_full_n.read()))))) {
         extLd_out_out_write = ap_const_logic_1;
     } else {
@@ -505,20 +505,20 @@ void Loop_copy_sorted_pro::thread_extLd_out_out_write() {
     }
 }
 
-void Loop_copy_sorted_pro::thread_i_fu_158_p2() {
-    i_fu_158_p2 = (!i_0_i_reg_142.read().is_01() || !ap_const_lv10_1.is_01())? sc_lv<10>(): (sc_biguint<10>(i_0_i_reg_142.read()) + sc_biguint<10>(ap_const_lv10_1));
+void Loop_copy_sorted_pro::thread_i_fu_196_p2() {
+    i_fu_196_p2 = (!i_0_i_reg_180.read().is_01() || !ap_const_lv9_1.is_01())? sc_lv<9>(): (sc_biguint<9>(i_0_i_reg_180.read()) + sc_biguint<9>(ap_const_lv9_1));
 }
 
-void Loop_copy_sorted_pro::thread_icmp_ln29_fu_153_p2() {
-    icmp_ln29_fu_153_p2 = (!i_0_i_reg_142.read().is_01() || !n_read_reg_170.read().is_01())? sc_lv<1>(): sc_lv<1>(i_0_i_reg_142.read() == n_read_reg_170.read());
+void Loop_copy_sorted_pro::thread_icmp_ln29_fu_191_p2() {
+    icmp_ln29_fu_191_p2 = (!i_0_i_reg_180.read().is_01() || !n_read_reg_208.read().is_01())? sc_lv<1>(): sc_lv<1>(i_0_i_reg_180.read() == n_read_reg_208.read());
 }
 
 void Loop_copy_sorted_pro::thread_internal_ap_ready() {
     if ((esl_seteq<1,1,1>(ap_const_logic_1, ap_CS_fsm_state2.read()) && 
-         esl_seteq<1,1,1>(icmp_ln29_fu_153_p2.read(), ap_const_lv1_1) && 
-         !((esl_seteq<1,1,1>(icmp_ln29_fu_153_p2.read(), ap_const_lv1_1) && 
-  esl_seteq<1,1,1>(ap_const_logic_0, val_assign7_out_out_full_n.read())) || (esl_seteq<1,1,1>(icmp_ln29_fu_153_p2.read(), ap_const_lv1_1) && 
-  esl_seteq<1,1,1>(ap_const_logic_0, extLd_out_out_full_n.read())) || (esl_seteq<1,1,1>(icmp_ln29_fu_153_p2.read(), ap_const_lv1_1) && 
+         esl_seteq<1,1,1>(icmp_ln29_fu_191_p2.read(), ap_const_lv1_1) && 
+         !((esl_seteq<1,1,1>(icmp_ln29_fu_191_p2.read(), ap_const_lv1_1) && 
+  esl_seteq<1,1,1>(ap_const_logic_0, val_assign7_out_out_full_n.read())) || (esl_seteq<1,1,1>(icmp_ln29_fu_191_p2.read(), ap_const_lv1_1) && 
+  esl_seteq<1,1,1>(ap_const_logic_0, extLd_out_out_full_n.read())) || (esl_seteq<1,1,1>(icmp_ln29_fu_191_p2.read(), ap_const_lv1_1) && 
   esl_seteq<1,1,1>(ap_const_logic_0, extLd_out_out1_full_n.read()))))) {
         internal_ap_ready = ap_const_logic_1;
     } else {
@@ -554,14 +554,14 @@ void Loop_copy_sorted_pro::thread_real_start() {
 }
 
 void Loop_copy_sorted_pro::thread_sorted_0_address0() {
-    sorted_0_address0 =  (sc_lv<8>) (zext_ln30_fu_164_p1.read());
+    sorted_0_address0 =  (sc_lv<8>) (zext_ln30_fu_202_p1.read());
 }
 
 void Loop_copy_sorted_pro::thread_sorted_0_ce0() {
     if ((esl_seteq<1,1,1>(ap_const_logic_1, ap_CS_fsm_state2.read()) && 
-         !((esl_seteq<1,1,1>(icmp_ln29_fu_153_p2.read(), ap_const_lv1_1) && 
-  esl_seteq<1,1,1>(ap_const_logic_0, val_assign7_out_out_full_n.read())) || (esl_seteq<1,1,1>(icmp_ln29_fu_153_p2.read(), ap_const_lv1_1) && 
-  esl_seteq<1,1,1>(ap_const_logic_0, extLd_out_out_full_n.read())) || (esl_seteq<1,1,1>(icmp_ln29_fu_153_p2.read(), ap_const_lv1_1) && 
+         !((esl_seteq<1,1,1>(icmp_ln29_fu_191_p2.read(), ap_const_lv1_1) && 
+  esl_seteq<1,1,1>(ap_const_logic_0, val_assign7_out_out_full_n.read())) || (esl_seteq<1,1,1>(icmp_ln29_fu_191_p2.read(), ap_const_lv1_1) && 
+  esl_seteq<1,1,1>(ap_const_logic_0, extLd_out_out_full_n.read())) || (esl_seteq<1,1,1>(icmp_ln29_fu_191_p2.read(), ap_const_lv1_1) && 
   esl_seteq<1,1,1>(ap_const_logic_0, extLd_out_out1_full_n.read()))))) {
         sorted_0_ce0 = ap_const_logic_1;
     } else {
@@ -570,14 +570,14 @@ void Loop_copy_sorted_pro::thread_sorted_0_ce0() {
 }
 
 void Loop_copy_sorted_pro::thread_sorted_1_address0() {
-    sorted_1_address0 =  (sc_lv<8>) (zext_ln30_fu_164_p1.read());
+    sorted_1_address0 =  (sc_lv<8>) (zext_ln30_fu_202_p1.read());
 }
 
 void Loop_copy_sorted_pro::thread_sorted_1_ce0() {
     if ((esl_seteq<1,1,1>(ap_const_logic_1, ap_CS_fsm_state2.read()) && 
-         !((esl_seteq<1,1,1>(icmp_ln29_fu_153_p2.read(), ap_const_lv1_1) && 
-  esl_seteq<1,1,1>(ap_const_logic_0, val_assign7_out_out_full_n.read())) || (esl_seteq<1,1,1>(icmp_ln29_fu_153_p2.read(), ap_const_lv1_1) && 
-  esl_seteq<1,1,1>(ap_const_logic_0, extLd_out_out_full_n.read())) || (esl_seteq<1,1,1>(icmp_ln29_fu_153_p2.read(), ap_const_lv1_1) && 
+         !((esl_seteq<1,1,1>(icmp_ln29_fu_191_p2.read(), ap_const_lv1_1) && 
+  esl_seteq<1,1,1>(ap_const_logic_0, val_assign7_out_out_full_n.read())) || (esl_seteq<1,1,1>(icmp_ln29_fu_191_p2.read(), ap_const_lv1_1) && 
+  esl_seteq<1,1,1>(ap_const_logic_0, extLd_out_out_full_n.read())) || (esl_seteq<1,1,1>(icmp_ln29_fu_191_p2.read(), ap_const_lv1_1) && 
   esl_seteq<1,1,1>(ap_const_logic_0, extLd_out_out1_full_n.read()))))) {
         sorted_1_ce0 = ap_const_logic_1;
     } else {
@@ -586,7 +586,7 @@ void Loop_copy_sorted_pro::thread_sorted_1_ce0() {
 }
 
 void Loop_copy_sorted_pro::thread_sorted_copy1_frequency_V_address0() {
-    sorted_copy1_frequency_V_address0 =  (sc_lv<8>) (zext_ln30_reg_186.read());
+    sorted_copy1_frequency_V_address0 =  (sc_lv<8>) (zext_ln30_reg_224.read());
 }
 
 void Loop_copy_sorted_pro::thread_sorted_copy1_frequency_V_ce0() {
@@ -598,7 +598,7 @@ void Loop_copy_sorted_pro::thread_sorted_copy1_frequency_V_ce0() {
 }
 
 void Loop_copy_sorted_pro::thread_sorted_copy1_frequency_V_d0() {
-    sorted_copy1_frequency_V_d0 = previous_frequency_reg_209.read();
+    sorted_copy1_frequency_V_d0 = previous_frequency_reg_247.read();
 }
 
 void Loop_copy_sorted_pro::thread_sorted_copy1_frequency_V_we0() {
@@ -610,7 +610,7 @@ void Loop_copy_sorted_pro::thread_sorted_copy1_frequency_V_we0() {
 }
 
 void Loop_copy_sorted_pro::thread_sorted_copy1_value_V_address0() {
-    sorted_copy1_value_V_address0 =  (sc_lv<8>) (zext_ln30_reg_186.read());
+    sorted_copy1_value_V_address0 =  (sc_lv<8>) (zext_ln30_reg_224.read());
 }
 
 void Loop_copy_sorted_pro::thread_sorted_copy1_value_V_ce0() {
@@ -622,7 +622,7 @@ void Loop_copy_sorted_pro::thread_sorted_copy1_value_V_ce0() {
 }
 
 void Loop_copy_sorted_pro::thread_sorted_copy1_value_V_d0() {
-    sorted_copy1_value_V_d0 = sorted_0_load_reg_203.read();
+    sorted_copy1_value_V_d0 = sorted_0_load_reg_241.read();
 }
 
 void Loop_copy_sorted_pro::thread_sorted_copy1_value_V_we0() {
@@ -634,7 +634,7 @@ void Loop_copy_sorted_pro::thread_sorted_copy1_value_V_we0() {
 }
 
 void Loop_copy_sorted_pro::thread_sorted_copy2_value_V_address0() {
-    sorted_copy2_value_V_address0 =  (sc_lv<8>) (zext_ln30_reg_186.read());
+    sorted_copy2_value_V_address0 =  (sc_lv<8>) (zext_ln30_reg_224.read());
 }
 
 void Loop_copy_sorted_pro::thread_sorted_copy2_value_V_ce0() {
@@ -646,7 +646,7 @@ void Loop_copy_sorted_pro::thread_sorted_copy2_value_V_ce0() {
 }
 
 void Loop_copy_sorted_pro::thread_sorted_copy2_value_V_d0() {
-    sorted_copy2_value_V_d0 = sorted_0_load_reg_203.read();
+    sorted_copy2_value_V_d0 = sorted_0_load_reg_241.read();
 }
 
 void Loop_copy_sorted_pro::thread_sorted_copy2_value_V_we0() {
@@ -672,7 +672,7 @@ void Loop_copy_sorted_pro::thread_start_write() {
 
 void Loop_copy_sorted_pro::thread_val_assign7_out_out_blk_n() {
     if ((esl_seteq<1,1,1>(ap_const_logic_1, ap_CS_fsm_state2.read()) && 
-         esl_seteq<1,1,1>(icmp_ln29_fu_153_p2.read(), ap_const_lv1_1))) {
+         esl_seteq<1,1,1>(icmp_ln29_fu_191_p2.read(), ap_const_lv1_1))) {
         val_assign7_out_out_blk_n = val_assign7_out_out_full_n.read();
     } else {
         val_assign7_out_out_blk_n = ap_const_logic_1;
@@ -680,15 +680,15 @@ void Loop_copy_sorted_pro::thread_val_assign7_out_out_blk_n() {
 }
 
 void Loop_copy_sorted_pro::thread_val_assign7_out_out_din() {
-    val_assign7_out_out_din = n_read_reg_170.read();
+    val_assign7_out_out_din = n_read_reg_208.read();
 }
 
 void Loop_copy_sorted_pro::thread_val_assign7_out_out_write() {
     if ((esl_seteq<1,1,1>(ap_const_logic_1, ap_CS_fsm_state2.read()) && 
-         esl_seteq<1,1,1>(icmp_ln29_fu_153_p2.read(), ap_const_lv1_1) && 
-         !((esl_seteq<1,1,1>(icmp_ln29_fu_153_p2.read(), ap_const_lv1_1) && 
-  esl_seteq<1,1,1>(ap_const_logic_0, val_assign7_out_out_full_n.read())) || (esl_seteq<1,1,1>(icmp_ln29_fu_153_p2.read(), ap_const_lv1_1) && 
-  esl_seteq<1,1,1>(ap_const_logic_0, extLd_out_out_full_n.read())) || (esl_seteq<1,1,1>(icmp_ln29_fu_153_p2.read(), ap_const_lv1_1) && 
+         esl_seteq<1,1,1>(icmp_ln29_fu_191_p2.read(), ap_const_lv1_1) && 
+         !((esl_seteq<1,1,1>(icmp_ln29_fu_191_p2.read(), ap_const_lv1_1) && 
+  esl_seteq<1,1,1>(ap_const_logic_0, val_assign7_out_out_full_n.read())) || (esl_seteq<1,1,1>(icmp_ln29_fu_191_p2.read(), ap_const_lv1_1) && 
+  esl_seteq<1,1,1>(ap_const_logic_0, extLd_out_out_full_n.read())) || (esl_seteq<1,1,1>(icmp_ln29_fu_191_p2.read(), ap_const_lv1_1) && 
   esl_seteq<1,1,1>(ap_const_logic_0, extLd_out_out1_full_n.read()))))) {
         val_assign7_out_out_write = ap_const_logic_1;
     } else {
@@ -696,8 +696,8 @@ void Loop_copy_sorted_pro::thread_val_assign7_out_out_write() {
     }
 }
 
-void Loop_copy_sorted_pro::thread_zext_ln30_fu_164_p1() {
-    zext_ln30_fu_164_p1 = esl_zext<64,10>(i_0_i_reg_142.read());
+void Loop_copy_sorted_pro::thread_zext_ln30_fu_202_p1() {
+    zext_ln30_fu_202_p1 = esl_zext<64,9>(i_0_i_reg_180.read());
 }
 
 void Loop_copy_sorted_pro::thread_ap_NS_fsm() {
@@ -710,15 +710,15 @@ void Loop_copy_sorted_pro::thread_ap_NS_fsm() {
             }
             break;
         case 2 : 
-            if ((esl_seteq<1,1,1>(ap_const_logic_1, ap_CS_fsm_state2.read()) && esl_seteq<1,1,1>(icmp_ln29_fu_153_p2.read(), ap_const_lv1_1) && !((esl_seteq<1,1,1>(icmp_ln29_fu_153_p2.read(), ap_const_lv1_1) && 
-  esl_seteq<1,1,1>(ap_const_logic_0, val_assign7_out_out_full_n.read())) || (esl_seteq<1,1,1>(icmp_ln29_fu_153_p2.read(), ap_const_lv1_1) && 
-  esl_seteq<1,1,1>(ap_const_logic_0, extLd_out_out_full_n.read())) || (esl_seteq<1,1,1>(icmp_ln29_fu_153_p2.read(), ap_const_lv1_1) && 
+            if ((esl_seteq<1,1,1>(ap_const_logic_1, ap_CS_fsm_state2.read()) && esl_seteq<1,1,1>(icmp_ln29_fu_191_p2.read(), ap_const_lv1_1) && !((esl_seteq<1,1,1>(icmp_ln29_fu_191_p2.read(), ap_const_lv1_1) && 
+  esl_seteq<1,1,1>(ap_const_logic_0, val_assign7_out_out_full_n.read())) || (esl_seteq<1,1,1>(icmp_ln29_fu_191_p2.read(), ap_const_lv1_1) && 
+  esl_seteq<1,1,1>(ap_const_logic_0, extLd_out_out_full_n.read())) || (esl_seteq<1,1,1>(icmp_ln29_fu_191_p2.read(), ap_const_lv1_1) && 
   esl_seteq<1,1,1>(ap_const_logic_0, extLd_out_out1_full_n.read()))))) {
                 ap_NS_fsm = ap_ST_fsm_state1;
-            } else if ((esl_seteq<1,1,1>(ap_const_logic_1, ap_CS_fsm_state2.read()) && !((esl_seteq<1,1,1>(icmp_ln29_fu_153_p2.read(), ap_const_lv1_1) && 
-  esl_seteq<1,1,1>(ap_const_logic_0, val_assign7_out_out_full_n.read())) || (esl_seteq<1,1,1>(icmp_ln29_fu_153_p2.read(), ap_const_lv1_1) && 
-  esl_seteq<1,1,1>(ap_const_logic_0, extLd_out_out_full_n.read())) || (esl_seteq<1,1,1>(icmp_ln29_fu_153_p2.read(), ap_const_lv1_1) && 
-  esl_seteq<1,1,1>(ap_const_logic_0, extLd_out_out1_full_n.read()))) && esl_seteq<1,1,1>(icmp_ln29_fu_153_p2.read(), ap_const_lv1_0))) {
+            } else if ((esl_seteq<1,1,1>(ap_const_logic_1, ap_CS_fsm_state2.read()) && !((esl_seteq<1,1,1>(icmp_ln29_fu_191_p2.read(), ap_const_lv1_1) && 
+  esl_seteq<1,1,1>(ap_const_logic_0, val_assign7_out_out_full_n.read())) || (esl_seteq<1,1,1>(icmp_ln29_fu_191_p2.read(), ap_const_lv1_1) && 
+  esl_seteq<1,1,1>(ap_const_logic_0, extLd_out_out_full_n.read())) || (esl_seteq<1,1,1>(icmp_ln29_fu_191_p2.read(), ap_const_lv1_1) && 
+  esl_seteq<1,1,1>(ap_const_logic_0, extLd_out_out1_full_n.read()))) && esl_seteq<1,1,1>(icmp_ln29_fu_191_p2.read(), ap_const_lv1_0))) {
                 ap_NS_fsm = ap_ST_fsm_state3;
             } else {
                 ap_NS_fsm = ap_ST_fsm_state2;

@@ -1033,7 +1033,7 @@ void create_codeword::thread_trunc_ln796_fu_311_p1() {
 }
 
 void create_codeword::thread_zext_ln1503_fu_204_p1() {
-    zext_ln1503_fu_204_p1 = esl_zext<26,10>(codeword_length_histogram_V_q0.read());
+    zext_ln1503_fu_204_p1 = esl_zext<26,9>(codeword_length_histogram_V_q0.read());
 }
 
 void create_codeword::thread_zext_ln16_1_fu_193_p1() {

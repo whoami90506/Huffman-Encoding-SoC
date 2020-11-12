@@ -16,7 +16,7 @@ const sc_logic Block_codeRepl1012_p::ap_const_logic_1 = sc_dt::Log_1;
 const sc_logic Block_codeRepl1012_p::ap_const_logic_0 = sc_dt::Log_0;
 const sc_lv<1> Block_codeRepl1012_p::ap_ST_fsm_state1 = "1";
 const sc_lv<32> Block_codeRepl1012_p::ap_const_lv32_0 = "00000000000000000000000000000000";
-const sc_lv<10> Block_codeRepl1012_p::ap_const_lv10_0 = "0000000000";
+const sc_lv<9> Block_codeRepl1012_p::ap_const_lv9_0 = "000000000";
 const bool Block_codeRepl1012_p::ap_const_boolean_1 = true;
 
 Block_codeRepl1012_p::Block_codeRepl1012_p(sc_module_name name) : sc_module(name), mVcdFile(0) {
@@ -105,7 +105,7 @@ Block_codeRepl1012_p::Block_codeRepl1012_p(sc_module_name name) : sc_module(name
 
     ap_done_reg = SC_LOGIC_0;
     ap_CS_fsm = "1";
-    ap_return_preg = "0000000000";
+    ap_return_preg = "000000000";
     static int apTFileNum = 0;
     stringstream apTFilenSS;
     apTFilenSS << "Block_codeRepl1012_p_sc_trace_" << apTFileNum ++;
@@ -166,7 +166,7 @@ void Block_codeRepl1012_p::thread_ap_clk_no_reset_() {
         }
     }
     if ( ap_rst.read() == ap_const_logic_1) {
-        ap_return_preg = ap_const_lv10_0;
+        ap_return_preg = ap_const_lv9_0;
     } else {
         if ((esl_seteq<1,1,1>(ap_const_logic_1, ap_CS_fsm_state1.read()) && 
              !(esl_seteq<1,1,1>(ap_const_logic_0, ap_start.read()) || esl_seteq<1,1,1>(ap_done_reg.read(), ap_const_logic_1) || esl_seteq<1,1,1>(ap_const_logic_0, n_empty_n.read()) || esl_seteq<1,1,1>(ap_const_logic_0, n_out_full_n.read())))) {

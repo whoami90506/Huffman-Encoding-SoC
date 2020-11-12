@@ -33,20 +33,20 @@ output   ap_done;
 input   ap_continue;
 output   ap_idle;
 output   ap_ready;
-input  [9:0] n_dout;
+input  [8:0] n_dout;
 input   n_empty_n;
 output   n_read;
-output  [9:0] n_out_din;
+output  [8:0] n_out_din;
 input   n_out_full_n;
 output   n_out_write;
-output  [9:0] ap_return;
+output  [8:0] ap_return;
 
 reg ap_done;
 reg ap_idle;
 reg ap_ready;
 reg n_read;
 reg n_out_write;
-reg[9:0] ap_return;
+reg[8:0] ap_return;
 
 reg    ap_done_reg;
 (* fsm_encoding = "none" *) reg   [0:0] ap_CS_fsm;
@@ -54,14 +54,14 @@ wire    ap_CS_fsm_state1;
 reg    n_blk_n;
 reg    n_out_blk_n;
 reg    ap_block_state1;
-reg   [9:0] ap_return_preg;
+reg   [8:0] ap_return_preg;
 reg   [0:0] ap_NS_fsm;
 
 // power-on initialization
 initial begin
 #0 ap_done_reg = 1'b0;
 #0 ap_CS_fsm = 1'd1;
-#0 ap_return_preg = 10'd0;
+#0 ap_return_preg = 9'd0;
 end
 
 always @ (posedge ap_clk) begin
@@ -86,7 +86,7 @@ end
 
 always @ (posedge ap_clk) begin
     if (ap_rst == 1'b1) begin
-        ap_return_preg <= 10'd0;
+        ap_return_preg <= 9'd0;
     end else begin
         if ((~((ap_start == 1'b0) | (n_out_full_n == 1'b0) | (n_empty_n == 1'b0) | (ap_done_reg == 1'b1)) & (1'b1 == ap_CS_fsm_state1))) begin
             ap_return_preg <= n_dout;

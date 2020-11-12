@@ -3,7 +3,7 @@
 ================================================================
 == Vivado HLS Report for 'Block_proc'
 ================================================================
-* Date:           Thu Nov 12 16:04:45 2020
+* Date:           Thu Nov 12 17:49:43 2020
 
 * Version:        2019.2 (Build 2704478 on Wed Nov 06 22:10:23 MST 2019)
 * Project:        hls_huffman_encoding
@@ -54,9 +54,9 @@
 |Instance         |        -|      -|       -|      -|    -|
 |Memory           |        -|      -|       -|      -|    -|
 |Multiplexer      |        -|      -|       -|     27|    -|
-|Register         |        -|      -|      12|      -|    -|
+|Register         |        -|      -|      11|      -|    -|
 +-----------------+---------+-------+--------+-------+-----+
-|Total            |        0|      0|      12|     29|    0|
+|Total            |        0|      0|      11|     29|    0|
 +-----------------+---------+-------+--------+-------+-----+
 |Available        |      280|    220|  106400|  53200|    0|
 +-----------------+---------+-------+--------+-------+-----+
@@ -91,21 +91,21 @@
     +---------------------+----+-----------+-----+-----------+
     |ap_done              |   9|          2|    1|          2|
     |extLd_loc_blk_n      |   9|          2|    1|          2|
-    |num_nonzero_symbols  |   9|          2|   10|         20|
+    |num_nonzero_symbols  |   9|          2|    9|         18|
     +---------------------+----+-----------+-----+-----------+
-    |Total                |  27|          6|   12|         24|
+    |Total                |  27|          6|   11|         22|
     +---------------------+----+-----------+-----+-----------+
 
     * Register: 
-    +--------------------------+----+----+-----+-----------+
-    |           Name           | FF | LUT| Bits| Const Bits|
-    +--------------------------+----+----+-----+-----------+
-    |ap_CS_fsm                 |   1|   0|    1|          0|
-    |ap_done_reg               |   1|   0|    1|          0|
-    |num_nonzero_symbols_preg  |  10|   0|   32|         22|
-    +--------------------------+----+----+-----+-----------+
-    |Total                     |  12|   0|   34|         22|
-    +--------------------------+----+----+-----+-----------+
+    +--------------------------+---+----+-----+-----------+
+    |           Name           | FF| LUT| Bits| Const Bits|
+    +--------------------------+---+----+-----+-----------+
+    |ap_CS_fsm                 |  1|   0|    1|          0|
+    |ap_done_reg               |  1|   0|    1|          0|
+    |num_nonzero_symbols_preg  |  9|   0|   32|         23|
+    +--------------------------+---+----+-----+-----------+
+    |Total                     | 11|   0|   34|         23|
+    +--------------------------+---+----+-----+-----------+
 
 
 
@@ -123,7 +123,7 @@
 |ap_continue                 |  in |    1| ap_ctrl_hs |     Block__proc     | return value |
 |ap_idle                     | out |    1| ap_ctrl_hs |     Block__proc     | return value |
 |ap_ready                    | out |    1| ap_ctrl_hs |     Block__proc     | return value |
-|extLd_loc_dout              |  in |   10|   ap_fifo  |      extLd_loc      |    pointer   |
+|extLd_loc_dout              |  in |    9|   ap_fifo  |      extLd_loc      |    pointer   |
 |extLd_loc_empty_n           |  in |    1|   ap_fifo  |      extLd_loc      |    pointer   |
 |extLd_loc_read              | out |    1|   ap_fifo  |      extLd_loc      |    pointer   |
 |num_nonzero_symbols         | out |   32|   ap_vld   | num_nonzero_symbols |    pointer   |

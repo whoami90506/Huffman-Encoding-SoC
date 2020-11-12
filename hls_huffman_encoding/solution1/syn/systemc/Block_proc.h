@@ -23,7 +23,7 @@ struct Block_proc : public sc_module {
     sc_in< sc_logic > ap_continue;
     sc_out< sc_logic > ap_idle;
     sc_out< sc_logic > ap_ready;
-    sc_in< sc_lv<10> > extLd_loc_dout;
+    sc_in< sc_lv<9> > extLd_loc_dout;
     sc_in< sc_logic > extLd_loc_empty_n;
     sc_out< sc_logic > extLd_loc_read;
     sc_out< sc_lv<32> > num_nonzero_symbols;
@@ -43,7 +43,7 @@ struct Block_proc : public sc_module {
     sc_signal< sc_logic > ap_CS_fsm_state1;
     sc_signal< sc_logic > extLd_loc_blk_n;
     sc_signal< bool > ap_block_state1;
-    sc_signal< sc_lv<32> > extLd_fu_35_p1;
+    sc_signal< sc_lv<32> > extLd_fu_43_p1;
     sc_signal< sc_lv<32> > num_nonzero_symbols_preg;
     sc_signal< sc_lv<1> > ap_NS_fsm;
     static const sc_logic ap_const_logic_1;
@@ -58,7 +58,7 @@ struct Block_proc : public sc_module {
     void thread_ap_done();
     void thread_ap_idle();
     void thread_ap_ready();
-    void thread_extLd_fu_35_p1();
+    void thread_extLd_fu_43_p1();
     void thread_extLd_loc_blk_n();
     void thread_extLd_loc_read();
     void thread_num_nonzero_symbols();

@@ -23,25 +23,25 @@
 <unit>clock cycles</unit>
 <Best-caseLatency>1</Best-caseLatency>
 <Average-caseLatency>undef</Average-caseLatency>
-<Worst-caseLatency>3070</Worst-caseLatency>
+<Worst-caseLatency>1534</Worst-caseLatency>
 <Best-caseRealTimeLatency>5.000 ns</Best-caseRealTimeLatency>
 <Average-caseRealTimeLatency>undef</Average-caseRealTimeLatency>
-<Worst-caseRealTimeLatency>15.350 us</Worst-caseRealTimeLatency>
+<Worst-caseRealTimeLatency>7.670 us</Worst-caseRealTimeLatency>
 <Interval-min>1</Interval-min>
-<Interval-max>3070</Interval-max>
+<Interval-max>1534</Interval-max>
 </SummaryOfOverallLatency>
 <SummaryOfLoopLatency>
 <copy_sorted>
 <TripCount>
 <range>
 <min>0</min>
-<max>1023</max>
+<max>511</max>
 </range>
 </TripCount>
 <Latency>
 <range>
 <min>0</min>
-<max>3069</max>
+<max>1533</max>
 </range>
 </Latency>
 <IterationLatency>3</IterationLatency>
@@ -51,8 +51,8 @@
 
 <AreaEstimates>
 <Resources>
-<FF>88</FF>
-<LUT>121</LUT>
+<FF>83</FF>
+<LUT>122</LUT>
 <BRAM_18K>0</BRAM_18K>
 <DSP48E>0</DSP48E>
 <URAM>0</URAM>
@@ -185,7 +185,7 @@
 <IOProtocol>ap_fifo</IOProtocol>
 <IOConfig></IOConfig>
 <Dir>in</Dir>
-<Bits>10</Bits>
+<Bits>9</Bits>
 <Attribute>control</Attribute>
 </RtlPorts>
 <RtlPorts>
@@ -240,7 +240,7 @@
 <IOProtocol>ap_memory</IOProtocol>
 <IOConfig></IOConfig>
 <Dir>in</Dir>
-<Bits>10</Bits>
+<Bits>9</Bits>
 <Attribute>data</Attribute>
 </RtlPorts>
 <RtlPorts>
@@ -284,7 +284,7 @@
 <IOProtocol>ap_memory</IOProtocol>
 <IOConfig></IOConfig>
 <Dir>out</Dir>
-<Bits>10</Bits>
+<Bits>9</Bits>
 <Attribute>data</Attribute>
 </RtlPorts>
 <RtlPorts>
@@ -405,7 +405,7 @@
 <IOProtocol>ap_memory</IOProtocol>
 <IOConfig></IOConfig>
 <Dir>out</Dir>
-<Bits>10</Bits>
+<Bits>9</Bits>
 <Attribute>data</Attribute>
 </RtlPorts>
 <RtlPorts>
@@ -416,7 +416,7 @@
 <IOProtocol>ap_fifo</IOProtocol>
 <IOConfig></IOConfig>
 <Dir>out</Dir>
-<Bits>10</Bits>
+<Bits>9</Bits>
 <Attribute>control</Attribute>
 </RtlPorts>
 <RtlPorts>
@@ -449,7 +449,7 @@
 <IOProtocol>ap_fifo</IOProtocol>
 <IOConfig></IOConfig>
 <Dir>out</Dir>
-<Bits>10</Bits>
+<Bits>9</Bits>
 <Attribute>control</Attribute>
 </RtlPorts>
 <RtlPorts>
@@ -482,7 +482,7 @@
 <IOProtocol>ap_fifo</IOProtocol>
 <IOConfig></IOConfig>
 <Dir>out</Dir>
-<Bits>10</Bits>
+<Bits>9</Bits>
 <Attribute>control</Attribute>
 </RtlPorts>
 <RtlPorts>

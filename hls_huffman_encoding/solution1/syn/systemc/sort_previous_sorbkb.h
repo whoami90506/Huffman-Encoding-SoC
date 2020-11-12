@@ -18,7 +18,7 @@ using namespace sc_dt;
 
 struct sort_previous_sorbkb_ram : public sc_core::sc_module {
 
-  static const unsigned DataWidth = 10;
+  static const unsigned DataWidth = 9;
   static const unsigned AddressRange = 256;
   static const unsigned AddressWidth = 8;
 
@@ -75,7 +75,7 @@ void prc_write_0()
 SC_MODULE(sort_previous_sorbkb) {
 
 
-static const unsigned DataWidth = 10;
+static const unsigned DataWidth = 9;
 static const unsigned AddressRange = 256;
 static const unsigned AddressWidth = 8;
 

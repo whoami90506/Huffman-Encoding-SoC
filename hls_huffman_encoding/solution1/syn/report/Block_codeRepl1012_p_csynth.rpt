@@ -3,7 +3,7 @@
 ================================================================
 == Vivado HLS Report for 'Block_codeRepl1012_p'
 ================================================================
-* Date:           Thu Nov 12 16:04:39 2020
+* Date:           Thu Nov 12 17:49:39 2020
 
 * Version:        2019.2 (Build 2704478 on Wed Nov 06 22:10:23 MST 2019)
 * Project:        hls_huffman_encoding
@@ -54,9 +54,9 @@
 |Instance         |        -|      -|       -|      -|    -|
 |Memory           |        -|      -|       -|      -|    -|
 |Multiplexer      |        -|      -|       -|     36|    -|
-|Register         |        -|      -|      12|      -|    -|
+|Register         |        -|      -|      11|      -|    -|
 +-----------------+---------+-------+--------+-------+-----+
-|Total            |        0|      0|      12|     38|    0|
+|Total            |        0|      0|      11|     38|    0|
 +-----------------+---------+-------+--------+-------+-----+
 |Available        |      280|    220|  106400|  53200|    0|
 +-----------------+---------+-------+--------+-------+-----+
@@ -90,23 +90,23 @@
     |     Name    | LUT| Input Size| Bits| Total Bits|
     +-------------+----+-----------+-----+-----------+
     |ap_done      |   9|          2|    1|          2|
-    |ap_return    |   9|          2|   10|         20|
+    |ap_return    |   9|          2|    9|         18|
     |n_blk_n      |   9|          2|    1|          2|
     |n_out_blk_n  |   9|          2|    1|          2|
     +-------------+----+-----------+-----+-----------+
-    |Total        |  36|          8|   13|         26|
+    |Total        |  36|          8|   12|         24|
     +-------------+----+-----------+-----+-----------+
 
     * Register: 
-    +----------------+----+----+-----+-----------+
-    |      Name      | FF | LUT| Bits| Const Bits|
-    +----------------+----+----+-----+-----------+
-    |ap_CS_fsm       |   1|   0|    1|          0|
-    |ap_done_reg     |   1|   0|    1|          0|
-    |ap_return_preg  |  10|   0|   10|          0|
-    +----------------+----+----+-----+-----------+
-    |Total           |  12|   0|   12|          0|
-    +----------------+----+----+-----+-----------+
+    +----------------+---+----+-----+-----------+
+    |      Name      | FF| LUT| Bits| Const Bits|
+    +----------------+---+----+-----+-----------+
+    |ap_CS_fsm       |  1|   0|    1|          0|
+    |ap_done_reg     |  1|   0|    1|          0|
+    |ap_return_preg  |  9|   0|    9|          0|
+    +----------------+---+----+-----+-----------+
+    |Total           | 11|   0|   11|          0|
+    +----------------+---+----+-----+-----------+
 
 
 
@@ -124,11 +124,11 @@
 |ap_continue   |  in |    1| ap_ctrl_hs | Block_codeRepl1012_p | return value |
 |ap_idle       | out |    1| ap_ctrl_hs | Block_codeRepl1012_p | return value |
 |ap_ready      | out |    1| ap_ctrl_hs | Block_codeRepl1012_p | return value |
-|ap_return     | out |   10| ap_ctrl_hs | Block_codeRepl1012_p | return value |
-|n_dout        |  in |   10|   ap_fifo  |           n          |    pointer   |
+|ap_return     | out |    9| ap_ctrl_hs | Block_codeRepl1012_p | return value |
+|n_dout        |  in |    9|   ap_fifo  |           n          |    pointer   |
 |n_empty_n     |  in |    1|   ap_fifo  |           n          |    pointer   |
 |n_read        | out |    1|   ap_fifo  |           n          |    pointer   |
-|n_out_din     | out |   10|   ap_fifo  |         n_out        |    pointer   |
+|n_out_din     | out |    9|   ap_fifo  |         n_out        |    pointer   |
 |n_out_full_n  |  in |    1|   ap_fifo  |         n_out        |    pointer   |
 |n_out_write   | out |    1|   ap_fifo  |         n_out        |    pointer   |
 +--------------+-----+-----+------------+----------------------+--------------+

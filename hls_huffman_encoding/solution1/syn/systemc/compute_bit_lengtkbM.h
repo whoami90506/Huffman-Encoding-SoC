@@ -18,7 +18,7 @@ using namespace sc_dt;
 
 struct compute_bit_lengtkbM_ram : public sc_core::sc_module {
 
-  static const unsigned DataWidth = 10;
+  static const unsigned DataWidth = 9;
   static const unsigned AddressRange = 64;
   static const unsigned AddressWidth = 6;
 
@@ -75,7 +75,7 @@ void prc_write_0()
 SC_MODULE(compute_bit_lengtkbM) {
 
 
-static const unsigned DataWidth = 10;
+static const unsigned DataWidth = 9;
 static const unsigned AddressRange = 64;
 static const unsigned AddressWidth = 6;
 

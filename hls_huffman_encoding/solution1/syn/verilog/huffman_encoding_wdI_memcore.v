@@ -5,7 +5,7 @@
 `timescale 1 ns / 1 ps
 module huffman_encoding_wdI_memcore_ram (addr0, ce0, d0, we0, q0, addr1, ce1, d1, we1, q1,  clk);
 
-parameter DWIDTH = 10;
+parameter DWIDTH = 9;
 parameter AWIDTH = 7;
 parameter MEM_SIZE = 128;
 
@@ -63,7 +63,7 @@ module huffman_encoding_wdI_memcore(
     d1,
     q1);
 
-parameter DataWidth = 32'd10;
+parameter DataWidth = 32'd9;
 parameter AddressRange = 32'd128;
 parameter AddressWidth = 32'd7;
 input reset;

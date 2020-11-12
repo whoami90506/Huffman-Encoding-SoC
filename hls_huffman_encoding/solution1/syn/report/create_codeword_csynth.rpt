@@ -3,7 +3,7 @@
 ================================================================
 == Vivado HLS Report for 'create_codeword'
 ================================================================
-* Date:           Thu Nov 12 16:04:45 2020
+* Date:           Thu Nov 12 17:49:43 2020
 
 * Version:        2019.2 (Build 2704478 on Wed Nov 06 22:10:23 MST 2019)
 * Project:        hls_huffman_encoding
@@ -176,7 +176,7 @@
 |symbol_bits_V_q0                      |  in |    5|  ap_memory |        symbol_bits_V        |     array    |
 |codeword_length_histogram_V_address0  | out |    6|  ap_memory | codeword_length_histogram_V |     array    |
 |codeword_length_histogram_V_ce0       | out |    1|  ap_memory | codeword_length_histogram_V |     array    |
-|codeword_length_histogram_V_q0        |  in |   10|  ap_memory | codeword_length_histogram_V |     array    |
+|codeword_length_histogram_V_q0        |  in |    9|  ap_memory | codeword_length_histogram_V |     array    |
 |encoding_V_address0                   | out |    8|  ap_memory |          encoding_V         |     array    |
 |encoding_V_ce0                        | out |    1|  ap_memory |          encoding_V         |     array    |
 |encoding_V_we0                        | out |    1|  ap_memory |          encoding_V         |     array    |

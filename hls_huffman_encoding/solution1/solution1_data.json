@@ -31,7 +31,7 @@
           "value": {
             "order": "0",
             "dataType": "ap_uint",
-            "dataWidth": "10",
+            "dataWidth": "9",
             "multiInterfaceRef": [
               "symbol_histogram_value_V_address0",
               "symbol_histogram_value_V_address1",
@@ -111,14 +111,14 @@
   },
   "Files": {
     "CSource": [
-      "..\/..\/huffman_canonize_tree.cpp",
-      "..\/..\/huffman_create_tree.cpp",
-      "..\/..\/huffman_filter.cpp",
-      "..\/..\/huffman_compute_bit_length.cpp",
-      "..\/..\/huffman_encoding.cpp",
-      "..\/..\/huffman_sort.cpp",
+      "..\/..\/huffman_truncate_tree.cpp",
       "..\/..\/huffman_create_codeword.cpp",
-      "..\/..\/huffman_truncate_tree.cpp"
+      "..\/..\/huffman_sort.cpp",
+      "..\/..\/huffman_encoding.cpp",
+      "..\/..\/huffman_compute_bit_length.cpp",
+      "..\/..\/huffman_filter.cpp",
+      "..\/..\/huffman_create_tree.cpp",
+      "..\/..\/huffman_canonize_tree.cpp"
     ],
     "Vhdl": [
       "impl\/vhdl\/Block_codeRepl1012_p.vhd",
@@ -131,9 +131,9 @@
       "impl\/vhdl\/create_codeword_flbW.vhd",
       "impl\/vhdl\/create_tree.vhd",
       "impl\/vhdl\/create_tree_frequibs.vhd",
-      "impl\/vhdl\/fifo_w10_d2_A.vhd",
-      "impl\/vhdl\/fifo_w10_d3_A.vhd",
-      "impl\/vhdl\/fifo_w10_d5_A.vhd",
+      "impl\/vhdl\/fifo_w9_d2_A.vhd",
+      "impl\/vhdl\/fifo_w9_d3_A.vhd",
+      "impl\/vhdl\/fifo_w9_d5_A.vhd",
       "impl\/vhdl\/filter.vhd",
       "impl\/vhdl\/huffman_encoding_g8j.vhd",
       "impl\/vhdl\/huffman_encoding_hbi.vhd",
@@ -170,9 +170,9 @@
       "impl\/verilog\/create_codeword_flbW.v",
       "impl\/verilog\/create_tree.v",
       "impl\/verilog\/create_tree_frequibs.v",
-      "impl\/verilog\/fifo_w10_d2_A.v",
-      "impl\/verilog\/fifo_w10_d3_A.v",
-      "impl\/verilog\/fifo_w10_d5_A.v",
+      "impl\/verilog\/fifo_w9_d2_A.v",
+      "impl\/verilog\/fifo_w9_d3_A.v",
+      "impl\/verilog\/fifo_w9_d5_A.v",
       "impl\/verilog\/filter.v",
       "impl\/verilog\/huffman_encoding_g8j.v",
       "impl\/verilog\/huffman_encoding_hbi.v",
@@ -401,10 +401,10 @@
     "symbol_histogram_value_V_d0": {
       "type": "data",
       "dir": "out",
-      "width": "10",
+      "width": "9",
       "ctype": {"DATA": {
           "Type": "integer unsigned",
-          "Width": "10"
+          "Width": "9"
         }},
       "bundle_name": "symbol_histogram_value_V",
       "bundle_role": "d0"
@@ -412,10 +412,10 @@
     "symbol_histogram_value_V_d1": {
       "type": "data",
       "dir": "out",
-      "width": "10",
+      "width": "9",
       "ctype": {"DATA": {
           "Type": "integer unsigned",
-          "Width": "10"
+          "Width": "9"
         }},
       "bundle_name": "symbol_histogram_value_V",
       "bundle_role": "d1"
@@ -423,10 +423,10 @@
     "symbol_histogram_value_V_q0": {
       "type": "data",
       "dir": "in",
-      "width": "10",
+      "width": "9",
       "ctype": {"DATA": {
           "Type": "integer unsigned",
-          "Width": "10"
+          "Width": "9"
         }},
       "bundle_name": "symbol_histogram_value_V",
       "bundle_role": "q0"
@@ -434,10 +434,10 @@
     "symbol_histogram_value_V_q1": {
       "type": "data",
       "dir": "in",
-      "width": "10",
+      "width": "9",
       "ctype": {"DATA": {
           "Type": "integer unsigned",
-          "Width": "10"
+          "Width": "9"
         }},
       "bundle_name": "symbol_histogram_value_V",
       "bundle_role": "q1"
@@ -478,11 +478,11 @@
     },
     "symbol_histogram_value_V_d0": {
       "dir": "out",
-      "width": "10"
+      "width": "9"
     },
     "symbol_histogram_value_V_q0": {
       "dir": "in",
-      "width": "10"
+      "width": "9"
     },
     "symbol_histogram_value_V_we0": {
       "dir": "out",
@@ -498,11 +498,11 @@
     },
     "symbol_histogram_value_V_d1": {
       "dir": "out",
-      "width": "10"
+      "width": "9"
     },
     "symbol_histogram_value_V_q1": {
       "dir": "in",
-      "width": "10"
+      "width": "9"
     },
     "symbol_histogram_value_V_we1": {
       "dir": "out",
@@ -735,7 +735,7 @@
         "Timing": {
           "Target": "5.00",
           "Uncertainty": "0.63",
-          "Estimate": "3.500"
+          "Estimate": "3.592"
         },
         "Loops": [{
             "Name": "Loop 1",
@@ -745,8 +745,8 @@
             "PipelineDepth": "5"
           }],
         "Area": {
-          "FF": "111",
-          "LUT": "150",
+          "FF": "107",
+          "LUT": "151",
           "BRAM_18K": "0",
           "DSP48E": "0",
           "URAM": "0"
@@ -767,7 +767,7 @@
           "Estimate": "4.375"
         },
         "Area": {
-          "FF": "12",
+          "FF": "11",
           "LUT": "38",
           "BRAM_18K": "0",
           "DSP48E": "0",
@@ -788,7 +788,7 @@
         "Timing": {
           "Target": "5.00",
           "Uncertainty": "0.63",
-          "Estimate": "5.564"
+          "Estimate": "5.656"
         },
         "Loops": [
           {
@@ -825,7 +825,7 @@
                 "LatencyMax": "260",
                 "Latency": "4 ~ 260",
                 "PipelineII": "1",
-                "PipelineDepth": "5"
+                "PipelineDepth": "6"
               },
               {
                 "Name": "find_digit_location",
@@ -848,8 +848,8 @@
         ],
         "Area": {
           "BRAM_18K": "5",
-          "FF": "2058",
-          "LUT": "2904",
+          "FF": "1484",
+          "LUT": "2931",
           "URAM": "0",
           "DSP48E": "0"
         }
@@ -858,10 +858,10 @@
         "Latency": {
           "LatencyBest": "1",
           "LatencyAvg": "",
-          "LatencyWorst": "3070",
+          "LatencyWorst": "1534",
           "PipelineIIMin": "1",
-          "PipelineIIMax": "3070",
-          "PipelineII": "1 ~ 3070",
+          "PipelineIIMax": "1534",
+          "PipelineII": "1 ~ 1534",
           "PipelineDepth": "",
           "PipelineType": "none"
         },
@@ -874,14 +874,14 @@
             "Name": "copy_sorted",
             "TripCount": "",
             "LatencyMin": "0",
-            "LatencyMax": "3069",
-            "Latency": "0 ~ 3069",
+            "LatencyMax": "1533",
+            "Latency": "0 ~ 1533",
             "PipelineII": "",
             "PipelineDepth": "3"
           }],
         "Area": {
-          "FF": "88",
-          "LUT": "121",
+          "FF": "83",
+          "LUT": "122",
           "BRAM_18K": "0",
           "DSP48E": "0",
           "URAM": "0"
@@ -914,8 +914,8 @@
           }],
         "Area": {
           "BRAM_18K": "1",
-          "FF": "256",
-          "LUT": "611",
+          "FF": "242",
+          "LUT": "617",
           "URAM": "0",
           "DSP48E": "0"
         }
@@ -932,7 +932,7 @@
         "Timing": {
           "Target": "5.00",
           "Uncertainty": "0.63",
-          "Estimate": "6.980"
+          "Estimate": "6.871"
         },
         "Loops": [
           {
@@ -952,8 +952,8 @@
         ],
         "Area": {
           "BRAM_18K": "1",
-          "FF": "234",
-          "LUT": "381",
+          "FF": "228",
+          "LUT": "383",
           "URAM": "0",
           "DSP48E": "0"
         }
@@ -972,7 +972,7 @@
         "Timing": {
           "Target": "5.00",
           "Uncertainty": "0.63",
-          "Estimate": "4.093"
+          "Estimate": "4.145"
         },
         "Loops": [
           {
@@ -1020,8 +1020,8 @@
           }
         ],
         "Area": {
-          "FF": "158",
-          "LUT": "470",
+          "FF": "152",
+          "LUT": "477",
           "BRAM_18K": "0",
           "DSP48E": "0",
           "URAM": "0"
@@ -1041,7 +1041,7 @@
         "Timing": {
           "Target": "5.00",
           "Uncertainty": "0.63",
-          "Estimate": "4.093"
+          "Estimate": "4.145"
         },
         "Loops": [
           {
@@ -1073,8 +1073,8 @@
           }
         ],
         "Area": {
-          "FF": "108",
-          "LUT": "245",
+          "FF": "99",
+          "LUT": "248",
           "BRAM_18K": "0",
           "DSP48E": "0",
           "URAM": "0"
@@ -1133,7 +1133,7 @@
           "Estimate": "2.188"
         },
         "Area": {
-          "FF": "12",
+          "FF": "11",
           "LUT": "29",
           "BRAM_18K": "0",
           "DSP48E": "0",
@@ -1156,8 +1156,8 @@
         },
         "Area": {
           "BRAM_18K": "19",
-          "FF": "3347",
-          "LUT": "5858",
+          "FF": "2723",
+          "LUT": "5896",
           "URAM": "0",
           "DSP48E": "0"
         }
@@ -1174,7 +1174,7 @@
   },
   "GenData": {
     "DataVersion": "0.2",
-    "Time": "2020-11-12 16:05:00 +0800",
+    "Time": "2020-11-12 17:49:52 +0800",
     "ToolName": "vivado_hls",
     "ToolVersion": "2019.2"
   }

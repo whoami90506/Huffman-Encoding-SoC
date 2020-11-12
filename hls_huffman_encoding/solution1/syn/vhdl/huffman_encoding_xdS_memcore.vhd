@@ -10,7 +10,7 @@ use ieee.std_logic_unsigned.all;
 entity huffman_encoding_xdS_memcore_ram is 
     generic(
             MEM_TYPE    : string := "block"; 
-            DWIDTH     : integer := 10; 
+            DWIDTH     : integer := 9; 
             AWIDTH     : integer := 6; 
             MEM_SIZE    : integer := 64
     ); 
@@ -101,7 +101,7 @@ use IEEE.std_logic_1164.all;
 
 entity huffman_encoding_xdS_memcore is
     generic (
-        DataWidth : INTEGER := 10;
+        DataWidth : INTEGER := 9;
         AddressRange : INTEGER := 64;
         AddressWidth : INTEGER := 6);
     port (

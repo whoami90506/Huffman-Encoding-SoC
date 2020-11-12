@@ -3,7 +3,7 @@
 ================================================================
 == Vivado HLS Report for 'truncate_tree'
 ================================================================
-* Date:           Thu Nov 12 16:04:44 2020
+* Date:           Thu Nov 12 17:49:42 2020
 
 * Version:        2019.2 (Build 2704478 on Wed Nov 06 22:10:23 MST 2019)
 * Project:        hls_huffman_encoding
@@ -20,7 +20,7 @@
     +--------+---------+----------+------------+
     |  Clock |  Target | Estimated| Uncertainty|
     +--------+---------+----------+------------+
-    |ap_clk  | 5.00 ns | 4.093 ns |   0.63 ns  |
+    |ap_clk  | 5.00 ns | 4.145 ns |   0.63 ns  |
     +--------+---------+----------+------------+
 
 + Latency: 
@@ -58,14 +58,14 @@
 |       Name      | BRAM_18K| DSP48E|   FF   |  LUT  | URAM|
 +-----------------+---------+-------+--------+-------+-----+
 |DSP              |        -|      -|       -|      -|    -|
-|Expression       |        -|      -|       0|    203|    -|
+|Expression       |        -|      -|       0|    210|    -|
 |FIFO             |        -|      -|       -|      -|    -|
 |Instance         |        -|      -|       -|      -|    -|
 |Memory           |        -|      -|       -|      -|    -|
 |Multiplexer      |        -|      -|       -|    267|    -|
-|Register         |        -|      -|     158|      -|    -|
+|Register         |        -|      -|     152|      -|    -|
 +-----------------+---------+-------+--------+-------+-----+
-|Total            |        0|      0|     158|    470|    0|
+|Total            |        0|      0|     152|    477|    0|
 +-----------------+---------+-------+--------+-------+-----+
 |Available        |      280|    220|  106400|  53200|    0|
 +-----------------+---------+-------+--------+-------+-----+
@@ -89,24 +89,24 @@
     +-----------------------+----------+-------+---+----+------------+------------+
     |     Variable Name     | Operation| DSP48E| FF| LUT| Bitwidth P0| Bitwidth P1|
     +-----------------------+----------+-------+---+----+------------+------------+
-    |add_ln700_1_fu_327_p2  |     +    |      0|  0|  14|          10|           1|
-    |add_ln700_fu_320_p2    |     +    |      0|  0|  14|          10|           2|
-    |add_ln701_1_fu_334_p2  |     +    |      0|  0|  14|          10|           3|
-    |add_ln701_fu_313_p2    |     +    |      0|  0|  14|          10|           2|
+    |add_ln700_1_fu_327_p2  |     +    |      0|  0|  15|           9|           1|
+    |add_ln700_fu_320_p2    |     +    |      0|  0|  15|           9|           2|
+    |add_ln701_1_fu_334_p2  |     +    |      0|  0|  15|           9|           3|
+    |add_ln701_fu_313_p2    |     +    |      0|  0|  15|           9|           2|
     |i_1_fu_250_p2          |     +    |      0|  0|  15|           6|           2|
     |i_2_fu_347_p2          |     +    |      0|  0|  15|           7|           1|
     |i_fu_223_p2            |     +    |      0|  0|  15|           7|           1|
-    |j_V_3_fu_302_p2        |     +    |      0|  0|  14|          10|           1|
-    |j_V_fu_267_p2          |     +    |      0|  0|  14|          10|           2|
-    |ret_V_fu_291_p2        |     +    |      0|  0|  13|          11|           1|
-    |grp_fu_197_p2          |   icmp   |      0|  0|  13|          10|           1|
+    |j_V_3_fu_302_p2        |     +    |      0|  0|  15|           9|           1|
+    |j_V_fu_267_p2          |     +    |      0|  0|  15|           9|           2|
+    |ret_V_fu_291_p2        |     +    |      0|  0|  14|          10|           1|
+    |grp_fu_197_p2          |   icmp   |      0|  0|  13|           9|           1|
     |icmp_ln10_fu_217_p2    |   icmp   |      0|  0|  11|           7|           8|
     |icmp_ln16_fu_239_p2    |   icmp   |      0|  0|  11|           6|           5|
     |icmp_ln44_fu_341_p2    |   icmp   |      0|  0|  11|           7|           8|
-    |icmp_ln879_fu_261_p2   |   icmp   |      0|  0|  13|          10|           5|
+    |icmp_ln879_fu_261_p2   |   icmp   |      0|  0|  13|           9|           5|
     |ap_block_state1        |    or    |      0|  0|   2|           1|           1|
     +-----------------------+----------+-------+---+----+------------+------------+
-    |Total                  |          |      0|  0| 203|         132|          44|
+    |Total                  |          |      0|  0| 210|         123|          44|
     +-----------------------+----------+-------+---+----+------------+------------+
 
     * Multiplexer: 
@@ -118,16 +118,16 @@
     |i1_0_reg_164                         |   9|          2|    6|         12|
     |i2_0_reg_186                         |   9|          2|    7|         14|
     |i_0_reg_153                          |   9|          2|    7|         14|
-    |j_V_2_fu_60                          |  15|          3|   10|         30|
+    |j_V_2_fu_60                          |  15|          3|    9|         27|
     |output_length_histogram1_V_address0  |  33|          6|    6|         36|
     |output_length_histogram1_V_address1  |  27|          5|    6|         30|
-    |output_length_histogram1_V_d0        |  21|          4|   10|         40|
-    |output_length_histogram1_V_d1        |  15|          3|   10|         30|
-    |reg_206                              |   9|          2|   10|         20|
-    |reg_212                              |   9|          2|   10|         20|
-    |t_V_reg_175                          |   9|          2|   10|         20|
+    |output_length_histogram1_V_d0        |  21|          4|    9|         36|
+    |output_length_histogram1_V_d1        |  15|          3|    9|         27|
+    |reg_206                              |   9|          2|    9|         18|
+    |reg_212                              |   9|          2|    9|         18|
+    |t_V_reg_175                          |   9|          2|    9|         18|
     +-------------------------------------+----+-----------+-----+-----------+
-    |Total                                | 267|         54|   94|        287|
+    |Total                                | 267|         54|   88|        271|
     +-------------------------------------+----+-----------+-----+-----------+
 
     * Register: 
@@ -143,20 +143,20 @@
     |i_2_reg_443                     |   7|   0|    7|          0|
     |i_reg_361                       |   7|   0|    7|          0|
     |icmp_ln879_reg_410              |   1|   0|    1|          0|
-    |input_length_histogr_1_reg_384  |  10|   0|   10|          0|
-    |j_V_2_fu_60                     |  10|   0|   10|          0|
-    |j_V_reg_414                     |  10|   0|   10|          0|
+    |input_length_histogr_1_reg_384  |   9|   0|    9|          0|
+    |j_V_2_fu_60                     |   9|   0|    9|          0|
+    |j_V_reg_414                     |   9|   0|    9|          0|
     |output_length_histog_1_reg_392  |   6|   0|    6|          0|
     |output_length_histog_2_reg_402  |   6|   0|    6|          0|
     |output_length_histog_6_reg_428  |   6|   0|    6|          0|
     |output_length_histog_8_reg_434  |   6|   0|    6|          0|
-    |reg_206                         |  10|   0|   10|          0|
-    |reg_212                         |  10|   0|   10|          0|
-    |t_V_reg_175                     |  10|   0|   10|          0|
+    |reg_206                         |   9|   0|    9|          0|
+    |reg_212                         |   9|   0|    9|          0|
+    |t_V_reg_175                     |   9|   0|    9|          0|
     |zext_ln11_reg_366               |   7|   0|   64|         57|
     |zext_ln45_reg_448               |   7|   0|   64|         57|
     +--------------------------------+----+----+-----+-----------+
-    |Total                           | 158|   0|  272|        114|
+    |Total                           | 152|   0|  266|        114|
     +--------------------------------+----+----+-----+-----------+
 
 
@@ -177,20 +177,20 @@
 |ap_ready                             | out |    1| ap_ctrl_hs |        truncate_tree       | return value |
 |input_length_histogram_V_address0    | out |    6|  ap_memory |  input_length_histogram_V  |     array    |
 |input_length_histogram_V_ce0         | out |    1|  ap_memory |  input_length_histogram_V  |     array    |
-|input_length_histogram_V_q0          |  in |   10|  ap_memory |  input_length_histogram_V  |     array    |
+|input_length_histogram_V_q0          |  in |    9|  ap_memory |  input_length_histogram_V  |     array    |
 |output_length_histogram1_V_address0  | out |    6|  ap_memory | output_length_histogram1_V |     array    |
 |output_length_histogram1_V_ce0       | out |    1|  ap_memory | output_length_histogram1_V |     array    |
 |output_length_histogram1_V_we0       | out |    1|  ap_memory | output_length_histogram1_V |     array    |
-|output_length_histogram1_V_d0        | out |   10|  ap_memory | output_length_histogram1_V |     array    |
-|output_length_histogram1_V_q0        |  in |   10|  ap_memory | output_length_histogram1_V |     array    |
+|output_length_histogram1_V_d0        | out |    9|  ap_memory | output_length_histogram1_V |     array    |
+|output_length_histogram1_V_q0        |  in |    9|  ap_memory | output_length_histogram1_V |     array    |
 |output_length_histogram1_V_address1  | out |    6|  ap_memory | output_length_histogram1_V |     array    |
 |output_length_histogram1_V_ce1       | out |    1|  ap_memory | output_length_histogram1_V |     array    |
 |output_length_histogram1_V_we1       | out |    1|  ap_memory | output_length_histogram1_V |     array    |
-|output_length_histogram1_V_d1        | out |   10|  ap_memory | output_length_histogram1_V |     array    |
-|output_length_histogram1_V_q1        |  in |   10|  ap_memory | output_length_histogram1_V |     array    |
+|output_length_histogram1_V_d1        | out |    9|  ap_memory | output_length_histogram1_V |     array    |
+|output_length_histogram1_V_q1        |  in |    9|  ap_memory | output_length_histogram1_V |     array    |
 |output_length_histogram2_V_address0  | out |    6|  ap_memory | output_length_histogram2_V |     array    |
 |output_length_histogram2_V_ce0       | out |    1|  ap_memory | output_length_histogram2_V |     array    |
 |output_length_histogram2_V_we0       | out |    1|  ap_memory | output_length_histogram2_V |     array    |
-|output_length_histogram2_V_d0        | out |   10|  ap_memory | output_length_histogram2_V |     array    |
+|output_length_histogram2_V_d0        | out |    9|  ap_memory | output_length_histogram2_V |     array    |
 +-------------------------------------+-----+-----+------------+----------------------------+--------------+
 

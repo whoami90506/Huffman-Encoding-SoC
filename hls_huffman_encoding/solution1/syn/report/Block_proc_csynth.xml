@@ -34,7 +34,7 @@
 
 <AreaEstimates>
 <Resources>
-<FF>12</FF>
+<FF>11</FF>
 <LUT>29</LUT>
 <BRAM_18K>0</BRAM_18K>
 <DSP48E>0</DSP48E>
@@ -135,7 +135,7 @@
 <IOProtocol>ap_fifo</IOProtocol>
 <IOConfig></IOConfig>
 <Dir>in</Dir>
-<Bits>10</Bits>
+<Bits>9</Bits>
 <Attribute>control</Attribute>
 </RtlPorts>
 <RtlPorts>

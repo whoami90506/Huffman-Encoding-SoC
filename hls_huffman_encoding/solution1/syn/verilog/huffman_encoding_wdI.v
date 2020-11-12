@@ -7,7 +7,7 @@
 
 module huffman_encoding_wdI
 #(parameter
-    DataWidth    = 10,
+    DataWidth    = 9,
     AddressRange = 32,
     AddressWidth = 6,
     BufferCount  = 2,

@@ -18,7 +18,7 @@ using namespace sc_dt;
 
 struct huffman_encoding_xdS_memcore_ram : public sc_core::sc_module {
 
-  static const unsigned DataWidth = 10;
+  static const unsigned DataWidth = 9;
   static const unsigned AddressRange = 64;
   static const unsigned AddressWidth = 6;
 
@@ -108,7 +108,7 @@ void prc_write_1()
 SC_MODULE(huffman_encoding_xdS_memcore) {
 
 
-static const unsigned DataWidth = 10;
+static const unsigned DataWidth = 9;
 static const unsigned AddressRange = 64;
 static const unsigned AddressWidth = 6;
 

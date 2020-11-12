@@ -23,7 +23,7 @@ port (
     symbol_bits_V_q0 : IN STD_LOGIC_VECTOR (4 downto 0);
     codeword_length_histogram_V_address0 : OUT STD_LOGIC_VECTOR (5 downto 0);
     codeword_length_histogram_V_ce0 : OUT STD_LOGIC;
-    codeword_length_histogram_V_q0 : IN STD_LOGIC_VECTOR (9 downto 0);
+    codeword_length_histogram_V_q0 : IN STD_LOGIC_VECTOR (8 downto 0);
     encoding_V_address0 : OUT STD_LOGIC_VECTOR (7 downto 0);
     encoding_V_ce0 : OUT STD_LOGIC;
     encoding_V_we0 : OUT STD_LOGIC;

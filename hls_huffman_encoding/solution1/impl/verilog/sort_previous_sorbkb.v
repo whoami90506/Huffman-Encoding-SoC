@@ -5,7 +5,7 @@
 `timescale 1 ns / 1 ps
 module sort_previous_sorbkb_ram (addr0, ce0, d0, we0, q0,  clk);
 
-parameter DWIDTH = 10;
+parameter DWIDTH = 9;
 parameter AWIDTH = 8;
 parameter MEM_SIZE = 256;
 
@@ -43,7 +43,7 @@ module sort_previous_sorbkb(
     d0,
     q0);
 
-parameter DataWidth = 32'd10;
+parameter DataWidth = 32'd9;
 parameter AddressRange = 32'd256;
 parameter AddressWidth = 32'd8;
 input reset;

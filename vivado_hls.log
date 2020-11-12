@@ -1,15 +1,8 @@
-
-****** Vivado(TM) HLS - High-Level Synthesis from C, C++ and SystemC v2019.2 (64-bit)
-  **** SW Build 2708876 on Wed Nov  6 21:40:23 MST 2019
-  **** IP Build 2700528 on Thu Nov  7 00:09:20 MST 2019
-    ** Copyright 1986-2019 Xilinx, Inc. All Rights Reserved.
-
-source D:/Xilinx/Vivado/2019.2/scripts/vivado_hls/hls.tcl -notrace
 INFO: [HLS 200-10] Running 'D:/Xilinx/Vivado/2019.2/bin/unwrapped/win64.o/vivado_hls.exe'
-INFO: [HLS 200-10] For user 'user' on host 'chengde-dell' (Windows NT_amd64 version 6.2) on Thu Nov 12 16:01:48 +0800 2020
+INFO: [HLS 200-10] For user 'user' on host 'chengde-dell' (Windows NT_amd64 version 6.2) on Thu Nov 12 17:47:41 +0800 2020
 INFO: [HLS 200-10] In directory 'D:/Workspace/huffman_encoding_fpga'
-Sourcing Tcl script 'huffman_encoding.tcl'
-INFO: [HLS 200-10] Opening and resetting project 'D:/Workspace/huffman_encoding_fpga/hls_huffman_encoding'.
+Sourcing Tcl script 'D:/Workspace/huffman_encoding_fpga/hls_huffman_encoding/solution1/csynth.tcl'
+INFO: [HLS 200-10] Opening project 'D:/Workspace/huffman_encoding_fpga/hls_huffman_encoding'.
 INFO: [HLS 200-10] Adding design file 'huffman_canonize_tree.cpp' to the project
 INFO: [HLS 200-10] Adding design file 'huffman_create_tree.cpp' to the project
 INFO: [HLS 200-10] Adding design file 'huffman_filter.cpp' to the project
@@ -18,255 +11,32 @@ INFO: [HLS 200-10] Adding design file 'huffman_encoding.cpp' to the project
 INFO: [HLS 200-10] Adding design file 'huffman_sort.cpp' to the project
 INFO: [HLS 200-10] Adding design file 'huffman_create_codeword.cpp' to the project
 INFO: [HLS 200-10] Adding design file 'huffman_truncate_tree.cpp' to the project
-INFO: [HLS 200-10] Adding test bench file 'huffman_encoding_test.cpp' to the project
 INFO: [HLS 200-10] Adding test bench file 'huffman.random256.txt' to the project
 INFO: [HLS 200-10] Adding test bench file 'huffman.random256.golden' to the project
-INFO: [HLS 200-10] Opening and resetting solution 'D:/Workspace/huffman_encoding_fpga/hls_huffman_encoding/solution1'.
-INFO: [HLS 200-10] Cleaning up the solution database.
-INFO: [HLS 200-10] Setting target device to 'xc7z020-clg484-1'
+INFO: [HLS 200-10] Adding test bench file 'huffman_encoding_test.cpp' to the project
+INFO: [HLS 200-10] Opening solution 'D:/Workspace/huffman_encoding_fpga/hls_huffman_encoding/solution1'.
 INFO: [SYN 201-201] Setting up clock 'default' with a period of 5ns.
-INFO: [SIM 211-2] *************** CSIM start ***************
-INFO: [SIM 211-4] CSIM will launch GCC as the compiler.
-   Compiling ../../../../huffman_encoding_test.cpp in debug mode
-   Compiling ../../../../huffman_canonize_tree.cpp in debug mode
-   Compiling ../../../../huffman_create_tree.cpp in debug mode
-   Compiling ../../../../huffman_filter.cpp in debug mode
-   Compiling ../../../../huffman_compute_bit_length.cpp in debug mode
-   Compiling ../../../../huffman_encoding.cpp in debug mode
-   Compiling ../../../../huffman_sort.cpp in debug mode
-   Compiling ../../../../huffman_create_codeword.cpp in debug mode
-   Compiling ../../../../huffman_truncate_tree.cpp in debug mode
-   Generating csim.exe
-In file included from D:/Xilinx/Vivado/2019.2/include/floating_point_v7_0_bitacc_cmodel.h:143:0,
-                 from D:/Xilinx/Vivado/2019.2/include/hls_fpo.h:186,
-                 from D:/Xilinx/Vivado/2019.2/include/hls_half.h:44,
-                 from D:/Xilinx/Vivado/2019.2/include/etc/ap_private.h:90,
-                 from D:/Xilinx/Vivado/2019.2/include/ap_common.h:641,
-                 from D:/Xilinx/Vivado/2019.2/include/ap_int.h:54,
-                 from ../../../../huffman.h:1,
-                 from ../../../../huffman_encoding_test.cpp:1:
-D:/Xilinx/Vivado/2019.2/include/gmp.h:62:0: warning: "__GMP_LIBGMP_DLL" redefined
- #define __GMP_LIBGMP_DLL  0
- 
-In file included from D:/Xilinx/Vivado/2019.2/include/hls_fpo.h:186:0,
-                 from D:/Xilinx/Vivado/2019.2/include/hls_half.h:44,
-                 from D:/Xilinx/Vivado/2019.2/include/etc/ap_private.h:90,
-                 from D:/Xilinx/Vivado/2019.2/include/ap_common.h:641,
-                 from D:/Xilinx/Vivado/2019.2/include/ap_int.h:54,
-                 from ../../../../huffman.h:1,
-                 from ../../../../huffman_encoding_test.cpp:1:
-D:/Xilinx/Vivado/2019.2/include/floating_point_v7_0_bitacc_cmodel.h:135:0: note: this is the location of the previous definition
- #define __GMP_LIBGMP_DLL 1
- 
-In file included from D:/Xilinx/Vivado/2019.2/include/floating_point_v7_0_bitacc_cmodel.h:143:0,
-                 from D:/Xilinx/Vivado/2019.2/include/hls_fpo.h:186,
-                 from D:/Xilinx/Vivado/2019.2/include/hls_half.h:44,
-                 from D:/Xilinx/Vivado/2019.2/include/etc/ap_private.h:90,
-                 from D:/Xilinx/Vivado/2019.2/include/ap_common.h:641,
-                 from D:/Xilinx/Vivado/2019.2/include/ap_int.h:54,
-                 from ../../../../huffman.h:1,
-                 from ../../../../huffman_canonize_tree.cpp:1:
-D:/Xilinx/Vivado/2019.2/include/gmp.h:62:0: warning: "__GMP_LIBGMP_DLL" redefined
- #define __GMP_LIBGMP_DLL  0
- 
-In file included from D:/Xilinx/Vivado/2019.2/include/hls_fpo.h:186:0,
-                 from D:/Xilinx/Vivado/2019.2/include/hls_half.h:44,
-                 from D:/Xilinx/Vivado/2019.2/include/etc/ap_private.h:90,
-                 from D:/Xilinx/Vivado/2019.2/include/ap_common.h:641,
-                 from D:/Xilinx/Vivado/2019.2/include/ap_int.h:54,
-                 from ../../../../huffman.h:1,
-                 from ../../../../huffman_canonize_tree.cpp:1:
-D:/Xilinx/Vivado/2019.2/include/floating_point_v7_0_bitacc_cmodel.h:135:0: note: this is the location of the previous definition
- #define __GMP_LIBGMP_DLL 1
- 
-In file included from D:/Xilinx/Vivado/2019.2/include/floating_point_v7_0_bitacc_cmodel.h:143:0,
-                 from D:/Xilinx/Vivado/2019.2/include/hls_fpo.h:186,
-                 from D:/Xilinx/Vivado/2019.2/include/hls_half.h:44,
-                 from D:/Xilinx/Vivado/2019.2/include/etc/ap_private.h:90,
-                 from D:/Xilinx/Vivado/2019.2/include/ap_common.h:641,
-                 from D:/Xilinx/Vivado/2019.2/include/ap_int.h:54,
-                 from ../../../../huffman.h:1,
-                 from ../../../../huffman_create_tree.cpp:1:
-D:/Xilinx/Vivado/2019.2/include/gmp.h:62:0: warning: "__GMP_LIBGMP_DLL" redefined
- #define __GMP_LIBGMP_DLL  0
- 
-In file included from D:/Xilinx/Vivado/2019.2/include/hls_fpo.h:186:0,
-                 from D:/Xilinx/Vivado/2019.2/include/hls_half.h:44,
-                 from D:/Xilinx/Vivado/2019.2/include/etc/ap_private.h:90,
-                 from D:/Xilinx/Vivado/2019.2/include/ap_common.h:641,
-                 from D:/Xilinx/Vivado/2019.2/include/ap_int.h:54,
-                 from ../../../../huffman.h:1,
-                 from ../../../../huffman_create_tree.cpp:1:
-D:/Xilinx/Vivado/2019.2/include/floating_point_v7_0_bitacc_cmodel.h:135:0: note: this is the location of the previous definition
- #define __GMP_LIBGMP_DLL 1
- 
-In file included from D:/Xilinx/Vivado/2019.2/include/floating_point_v7_0_bitacc_cmodel.h:143:0,
-                 from D:/Xilinx/Vivado/2019.2/include/hls_fpo.h:186,
-                 from D:/Xilinx/Vivado/2019.2/include/hls_half.h:44,
-                 from D:/Xilinx/Vivado/2019.2/include/etc/ap_private.h:90,
-                 from D:/Xilinx/Vivado/2019.2/include/ap_common.h:641,
-                 from D:/Xilinx/Vivado/2019.2/include/ap_int.h:54,
-                 from ../../../../huffman.h:1,
-                 from ../../../../huffman_filter.cpp:1:
-D:/Xilinx/Vivado/2019.2/include/gmp.h:62:0: warning: "__GMP_LIBGMP_DLL" redefined
- #define __GMP_LIBGMP_DLL  0
- 
-In file included from D:/Xilinx/Vivado/2019.2/include/hls_fpo.h:186:0,
-                 from D:/Xilinx/Vivado/2019.2/include/hls_half.h:44,
-                 from D:/Xilinx/Vivado/2019.2/include/etc/ap_private.h:90,
-                 from D:/Xilinx/Vivado/2019.2/include/ap_common.h:641,
-                 from D:/Xilinx/Vivado/2019.2/include/ap_int.h:54,
-                 from ../../../../huffman.h:1,
-                 from ../../../../huffman_filter.cpp:1:
-D:/Xilinx/Vivado/2019.2/include/floating_point_v7_0_bitacc_cmodel.h:135:0: note: this is the location of the previous definition
- #define __GMP_LIBGMP_DLL 1
- 
-In file included from D:/Xilinx/Vivado/2019.2/include/floating_point_v7_0_bitacc_cmodel.h:143:0,
-                 from D:/Xilinx/Vivado/2019.2/include/hls_fpo.h:186,
-                 from D:/Xilinx/Vivado/2019.2/include/hls_half.h:44,
-                 from D:/Xilinx/Vivado/2019.2/include/etc/ap_private.h:90,
-                 from D:/Xilinx/Vivado/2019.2/include/ap_common.h:641,
-                 from D:/Xilinx/Vivado/2019.2/include/ap_int.h:54,
-                 from ../../../../huffman.h:1,
-                 from ../../../../huffman_compute_bit_length.cpp:1:
-D:/Xilinx/Vivado/2019.2/include/gmp.h:62:0: warning: "__GMP_LIBGMP_DLL" redefined
- #define __GMP_LIBGMP_DLL  0
- 
-In file included from D:/Xilinx/Vivado/2019.2/include/hls_fpo.h:186:0,
-                 from D:/Xilinx/Vivado/2019.2/include/hls_half.h:44,
-                 from D:/Xilinx/Vivado/2019.2/include/etc/ap_private.h:90,
-                 from D:/Xilinx/Vivado/2019.2/include/ap_common.h:641,
-                 from D:/Xilinx/Vivado/2019.2/include/ap_int.h:54,
-                 from ../../../../huffman.h:1,
-                 from ../../../../huffman_compute_bit_length.cpp:1:
-D:/Xilinx/Vivado/2019.2/include/floating_point_v7_0_bitacc_cmodel.h:135:0: note: this is the location of the previous definition
- #define __GMP_LIBGMP_DLL 1
- 
-In file included from D:/Xilinx/Vivado/2019.2/include/floating_point_v7_0_bitacc_cmodel.h:143:0,
-                 from D:/Xilinx/Vivado/2019.2/include/hls_fpo.h:186,
-                 from D:/Xilinx/Vivado/2019.2/include/hls_half.h:44,
-                 from D:/Xilinx/Vivado/2019.2/include/etc/ap_private.h:90,
-                 from D:/Xilinx/Vivado/2019.2/include/ap_common.h:641,
-                 from D:/Xilinx/Vivado/2019.2/include/ap_int.h:54,
-                 from ../../../../huffman.h:1,
-                 from ../../../../huffman_encoding.cpp:1:
-D:/Xilinx/Vivado/2019.2/include/gmp.h:62:0: warning: "__GMP_LIBGMP_DLL" redefined
- #define __GMP_LIBGMP_DLL  0
- 
-In file included from D:/Xilinx/Vivado/2019.2/include/hls_fpo.h:186:0,
-                 from D:/Xilinx/Vivado/2019.2/include/hls_half.h:44,
-                 from D:/Xilinx/Vivado/2019.2/include/etc/ap_private.h:90,
-                 from D:/Xilinx/Vivado/2019.2/include/ap_common.h:641,
-                 from D:/Xilinx/Vivado/2019.2/include/ap_int.h:54,
-                 from ../../../../huffman.h:1,
-                 from ../../../../huffman_encoding.cpp:1:
-D:/Xilinx/Vivado/2019.2/include/floating_point_v7_0_bitacc_cmodel.h:135:0: note: this is the location of the previous definition
- #define __GMP_LIBGMP_DLL 1
- 
-In file included from D:/Xilinx/Vivado/2019.2/include/floating_point_v7_0_bitacc_cmodel.h:143:0,
-                 from D:/Xilinx/Vivado/2019.2/include/hls_fpo.h:186,
-                 from D:/Xilinx/Vivado/2019.2/include/hls_half.h:44,
-                 from D:/Xilinx/Vivado/2019.2/include/etc/ap_private.h:90,
-                 from D:/Xilinx/Vivado/2019.2/include/ap_common.h:641,
-                 from D:/Xilinx/Vivado/2019.2/include/ap_int.h:54,
-                 from ../../../../huffman.h:1,
-                 from ../../../../huffman_sort.cpp:1:
-D:/Xilinx/Vivado/2019.2/include/gmp.h:62:0: warning: "__GMP_LIBGMP_DLL" redefined
- #define __GMP_LIBGMP_DLL  0
- 
-In file included from D:/Xilinx/Vivado/2019.2/include/hls_fpo.h:186:0,
-                 from D:/Xilinx/Vivado/2019.2/include/hls_half.h:44,
-                 from D:/Xilinx/Vivado/2019.2/include/etc/ap_private.h:90,
-                 from D:/Xilinx/Vivado/2019.2/include/ap_common.h:641,
-                 from D:/Xilinx/Vivado/2019.2/include/ap_int.h:54,
-                 from ../../../../huffman.h:1,
-                 from ../../../../huffman_sort.cpp:1:
-D:/Xilinx/Vivado/2019.2/include/floating_point_v7_0_bitacc_cmodel.h:135:0: note: this is the location of the previous definition
- #define __GMP_LIBGMP_DLL 1
- 
-In file included from D:/Xilinx/Vivado/2019.2/include/floating_point_v7_0_bitacc_cmodel.h:143:0,
-                 from D:/Xilinx/Vivado/2019.2/include/hls_fpo.h:186,
-                 from D:/Xilinx/Vivado/2019.2/include/hls_half.h:44,
-                 from D:/Xilinx/Vivado/2019.2/include/etc/ap_private.h:90,
-                 from D:/Xilinx/Vivado/2019.2/include/ap_common.h:641,
-                 from D:/Xilinx/Vivado/2019.2/include/ap_int.h:54,
-                 from ../../../../huffman.h:1,
-                 from ../../../../huffman_create_codeword.cpp:1:
-D:/Xilinx/Vivado/2019.2/include/gmp.h:62:0: warning: "__GMP_LIBGMP_DLL" redefined
- #define __GMP_LIBGMP_DLL  0
- 
-In file included from D:/Xilinx/Vivado/2019.2/include/hls_fpo.h:186:0,
-                 from D:/Xilinx/Vivado/2019.2/include/hls_half.h:44,
-                 from D:/Xilinx/Vivado/2019.2/include/etc/ap_private.h:90,
-                 from D:/Xilinx/Vivado/2019.2/include/ap_common.h:641,
-                 from D:/Xilinx/Vivado/2019.2/include/ap_int.h:54,
-                 from ../../../../huffman.h:1,
-                 from ../../../../huffman_create_codeword.cpp:1:
-D:/Xilinx/Vivado/2019.2/include/floating_point_v7_0_bitacc_cmodel.h:135:0: note: this is the location of the previous definition
- #define __GMP_LIBGMP_DLL 1
- 
-In file included from D:/Xilinx/Vivado/2019.2/include/floating_point_v7_0_bitacc_cmodel.h:143:0,
-                 from D:/Xilinx/Vivado/2019.2/include/hls_fpo.h:186,
-                 from D:/Xilinx/Vivado/2019.2/include/hls_half.h:44,
-                 from D:/Xilinx/Vivado/2019.2/include/etc/ap_private.h:90,
-                 from D:/Xilinx/Vivado/2019.2/include/ap_common.h:641,
-                 from D:/Xilinx/Vivado/2019.2/include/ap_int.h:54,
-                 from ../../../../huffman.h:1,
-                 from ../../../../huffman_truncate_tree.cpp:1:
-D:/Xilinx/Vivado/2019.2/include/gmp.h:62:0: warning: "__GMP_LIBGMP_DLL" redefined
- #define __GMP_LIBGMP_DLL  0
- 
-In file included from D:/Xilinx/Vivado/2019.2/include/hls_fpo.h:186:0,
-                 from D:/Xilinx/Vivado/2019.2/include/hls_half.h:44,
-                 from D:/Xilinx/Vivado/2019.2/include/etc/ap_private.h:90,
-                 from D:/Xilinx/Vivado/2019.2/include/ap_common.h:641,
-                 from D:/Xilinx/Vivado/2019.2/include/ap_int.h:54,
-                 from ../../../../huffman.h:1,
-                 from ../../../../huffman_truncate_tree.cpp:1:
-D:/Xilinx/Vivado/2019.2/include/floating_point_v7_0_bitacc_cmodel.h:135:0: note: this is the location of the previous definition
- #define __GMP_LIBGMP_DLL 1
- 
-Starting canonical Huffman encoding testbench
-Start reading file [huffman.random256.txt]
-61 codewords with length 7
-104 codewords with length 8
-43 codewords with length 9
-28 codewords with length 10
-10 codewords with length 11
-2 codewords with length 12
-2 codewords with length 13
-3 codewords with length 14
-1 codewords with length 15
-2 codewords with length 16
-
-***************Comparing against output data*************** 
-
-*******************************************
- PASS: The output matches the golden output
-*******************************************
-Ending canonical Huffman encoding testbench
-INFO: [SIM 211-1] CSim done with 0 errors.
-INFO: [SIM 211-3] *************** CSIM finish ***************
+INFO: [HLS 200-10] Setting target device to 'xc7z020-clg484-1'
 INFO: [SCHED 204-61] Option 'relax_ii_for_timing' is enabled, will increase II to preserve clock frequency constraints.
-INFO: [HLS 200-10] Analyzing design file 'huffman_canonize_tree.cpp' ... 
-INFO: [HLS 200-10] Analyzing design file 'huffman_create_tree.cpp' ... 
-INFO: [HLS 200-10] Analyzing design file 'huffman_filter.cpp' ... 
-INFO: [HLS 200-10] Analyzing design file 'huffman_compute_bit_length.cpp' ... 
+INFO: [HLS 200-10] Analyzing design file 'huffman_truncate_tree.cpp' ... 
+INFO: [HLS 200-10] Analyzing design file 'huffman_create_codeword.cpp' ... 
+INFO: [HLS 200-10] Analyzing design file 'huffman_sort.cpp' ... 
 INFO: [HLS 200-10] Analyzing design file 'huffman_encoding.cpp' ... 
 WARNING: [HLS 214-114] Since the only kind of statements allowed in a canonical dataflow region are variable declarations and function calls, the compiler may not be able to correctly handle the region: huffman_encoding.cpp:28:5
 WARNING: [HLS 214-114] Since the only kind of statements allowed in a canonical dataflow region are variable declarations and function calls, the compiler may not be able to correctly handle the region: huffman_encoding.cpp:62:5
 WARNING: [HLS 200-471] Dataflow form checks found 2 issue(s) in file huffman_encoding.cpp
-INFO: [HLS 200-10] Analyzing design file 'huffman_sort.cpp' ... 
-INFO: [HLS 200-10] Analyzing design file 'huffman_create_codeword.cpp' ... 
-INFO: [HLS 200-10] Analyzing design file 'huffman_truncate_tree.cpp' ... 
-INFO: [HLS 200-111] Finished Linking Time (s): cpu = 00:00:04 ; elapsed = 00:02:31 . Memory (MB): peak = 165.887 ; gain = 76.180
-INFO: [HLS 200-111] Finished Checking Pragmas Time (s): cpu = 00:00:04 ; elapsed = 00:02:31 . Memory (MB): peak = 165.887 ; gain = 76.180
+INFO: [HLS 200-10] Analyzing design file 'huffman_compute_bit_length.cpp' ... 
+INFO: [HLS 200-10] Analyzing design file 'huffman_filter.cpp' ... 
+INFO: [HLS 200-10] Analyzing design file 'huffman_create_tree.cpp' ... 
+INFO: [HLS 200-10] Analyzing design file 'huffman_canonize_tree.cpp' ... 
+INFO: [HLS 200-111] Finished Linking Time (s): cpu = 00:00:04 ; elapsed = 00:01:44 . Memory (MB): peak = 186.254 ; gain = 95.543
+INFO: [HLS 200-111] Finished Checking Pragmas Time (s): cpu = 00:00:04 ; elapsed = 00:01:44 . Memory (MB): peak = 186.254 ; gain = 95.543
 INFO: [HLS 200-10] Starting code transformations ...
-INFO: [HLS 200-111] Finished Standard Transforms Time (s): cpu = 00:00:04 ; elapsed = 00:02:35 . Memory (MB): peak = 169.586 ; gain = 79.879
+INFO: [HLS 200-111] Finished Standard Transforms Time (s): cpu = 00:00:04 ; elapsed = 00:01:46 . Memory (MB): peak = 186.254 ; gain = 95.543
 INFO: [HLS 200-10] Checking synthesizability ...
-INFO: [HLS 200-111] Finished Checking Synthesizability Time (s): cpu = 00:00:05 ; elapsed = 00:02:35 . Memory (MB): peak = 188.957 ; gain = 99.250
-INFO: [XFORM 203-101] Partitioning array 'digit_location.V' (huffman_sort.cpp:12) in dimension 1 completely.
-INFO: [XFORM 203-101] Partitioning array 'digit_histogram.V' (huffman_sort.cpp:12) in dimension 1 completely.
+INFO: [HLS 200-111] Finished Checking Synthesizability Time (s): cpu = 00:00:04 ; elapsed = 00:01:46 . Memory (MB): peak = 200.563 ; gain = 109.852
+INFO: [XFORM 203-101] Partitioning array 'digit_location.V' (huffman_sort.cpp:16) in dimension 1 completely.
+INFO: [XFORM 203-101] Partitioning array 'digit_histogram.V' (huffman_sort.cpp:16) in dimension 1 completely.
 INFO: [XFORM 203-721] Changing loop 'Loop_copy_sorted_proc' (huffman_encoding.cpp:29) to a process function for dataflow in function 'huffman_encoding'.
 WARNING: [XFORM 203-713] All the elements of global array 'filtered.value.V' should be updated in process function 'filter', otherwise it may not be synthesized correctly.
 WARNING: [XFORM 203-713] All the elements of global array 'filtered.frequency.V' should be updated in process function 'filter', otherwise it may not be synthesized correctly.
@@ -294,8 +64,8 @@ INFO: [XFORM 203-712] Applying dataflow to function 'huffman_encoding', detected
 	 'create_codeword'
 	 'Block__proc'.
 INFO: [XFORM 203-401] Performing if-conversion on hyperblock from (huffman_create_codeword.cpp:29:50) to (huffman_create_codeword.cpp:35:7) in function 'create_codeword'... converting 4 basic blocks.
-INFO: [HLS 200-111] Finished Pre-synthesis Time (s): cpu = 00:00:06 ; elapsed = 00:02:38 . Memory (MB): peak = 233.551 ; gain = 143.844
-WARNING: [XFORM 203-542] Cannot flatten a loop nest 'radix_sort' (huffman_sort.cpp:26:61) in function 'sort' : 
+INFO: [HLS 200-111] Finished Pre-synthesis Time (s): cpu = 00:00:06 ; elapsed = 00:01:48 . Memory (MB): peak = 246.883 ; gain = 156.172
+WARNING: [XFORM 203-542] Cannot flatten a loop nest 'radix_sort' (huffman_sort.cpp:29:61) in function 'sort' : 
 
 more than one sub loop.
 WARNING: [XFORM 203-631] Renaming function 'Loop_copy_sorted_proc' to 'Loop_copy_sorted_pro' (huffman_encoding.cpp:29:27)
@@ -333,14 +103,14 @@ INFO: [HLS 200-472] Inferring partial write operation for 'sorted_copy1.frequenc
 INFO: [HLS 200-472] Inferring partial write operation for 'sorted_copy2.value.V' (huffman_encoding.cpp:32:9)
 INFO: [HLS 200-472] Inferring partial write operation for 'sorting.value.V.i' (./huffman.h:30:8)
 INFO: [HLS 200-472] Inferring partial write operation for 'sorting.frequency.V.i' (./huffman.h:30:8)
-INFO: [HLS 200-472] Inferring partial write operation for 'current_digit.V.i' (huffman_sort.cpp:37:13)
+INFO: [HLS 200-472] Inferring partial write operation for 'current_digit.V.i' (huffman_sort.cpp:41:13)
 INFO: [HLS 200-472] Inferring partial write operation for 'previous_sorting.val.i' (./huffman.h:30:8)
 INFO: [HLS 200-472] Inferring partial write operation for 'previous_sorting.fre.i' (./huffman.h:30:8)
 INFO: [HLS 200-472] Inferring partial write operation for 'sorting.value.V.i' (./huffman.h:30:8)
 INFO: [HLS 200-472] Inferring partial write operation for 'sorting.frequency.V.i' (./huffman.h:30:8)
 INFO: [HLS 200-472] Inferring partial write operation for 'sorted.0' (./huffman.h:30:8)
 INFO: [HLS 200-472] Inferring partial write operation for 'sorted.1' (./huffman.h:30:8)
-INFO: [HLS 200-111] Finished Architecture Synthesis Time (s): cpu = 00:00:08 ; elapsed = 00:02:40 . Memory (MB): peak = 334.809 ; gain = 245.102
+INFO: [HLS 200-111] Finished Architecture Synthesis Time (s): cpu = 00:00:07 ; elapsed = 00:01:50 . Memory (MB): peak = 346.121 ; gain = 255.410
 INFO: [HLS 200-10] Starting hardware synthesis ...
 INFO: [HLS 200-10] Synthesizing 'huffman_encoding' ...
 WARNING: [SYN 201-103] Legalizing function name 'Block__proc' to 'Block_proc'.
@@ -351,25 +121,25 @@ INFO: [SCHED 204-11] Starting scheduling ...
 INFO: [SCHED 204-61] Pipelining loop 'Loop 1'.
 INFO: [SCHED 204-61] Pipelining result : Target II = 1, Final II = 1, Depth = 5.
 INFO: [SCHED 204-11] Finished scheduling.
-INFO: [HLS 200-111]  Elapsed time: 160.674 seconds; current allocated memory: 278.288 MB.
+INFO: [HLS 200-111]  Elapsed time: 109.805 seconds; current allocated memory: 289.131 MB.
 INFO: [BIND 205-100] Starting micro-architecture generation ...
 INFO: [BIND 205-101] Performing variable lifetime analysis.
 INFO: [BIND 205-101] Exploring resource sharing.
 INFO: [BIND 205-101] Binding ...
 INFO: [BIND 205-100] Finished micro-architecture generation.
-INFO: [HLS 200-111]  Elapsed time: 0.488 seconds; current allocated memory: 278.427 MB.
+INFO: [HLS 200-111]  Elapsed time: 0.169 seconds; current allocated memory: 289.271 MB.
 INFO: [HLS 200-10] ----------------------------------------------------------------
 INFO: [HLS 200-42] -- Implementing module 'Block_codeRepl1012_p' 
 INFO: [HLS 200-10] ----------------------------------------------------------------
 INFO: [SCHED 204-11] Starting scheduling ...
 INFO: [SCHED 204-11] Finished scheduling.
-INFO: [HLS 200-111]  Elapsed time: 0.397 seconds; current allocated memory: 278.456 MB.
+INFO: [HLS 200-111]  Elapsed time: 0.242 seconds; current allocated memory: 289.315 MB.
 INFO: [BIND 205-100] Starting micro-architecture generation ...
 INFO: [BIND 205-101] Performing variable lifetime analysis.
 INFO: [BIND 205-101] Exploring resource sharing.
 INFO: [BIND 205-101] Binding ...
 INFO: [BIND 205-100] Finished micro-architecture generation.
-INFO: [HLS 200-111]  Elapsed time: 0.154 seconds; current allocated memory: 278.504 MB.
+INFO: [HLS 200-111]  Elapsed time: 0.124 seconds; current allocated memory: 289.369 MB.
 INFO: [HLS 200-10] ----------------------------------------------------------------
 INFO: [HLS 200-42] -- Implementing module 'sort' 
 INFO: [HLS 200-10] ----------------------------------------------------------------
@@ -379,38 +149,38 @@ INFO: [SCHED 204-61] Pipelining result : Target II = 1, Final II = 1, Depth = 3.
 INFO: [SCHED 204-61] Pipelining loop 'init_histogram'.
 INFO: [SCHED 204-61] Pipelining result : Target II = 1, Final II = 1, Depth = 1.
 INFO: [SCHED 204-61] Pipelining loop 'compute_histogram'.
-INFO: [SCHED 204-61] Pipelining result : Target II = 1, Final II = 1, Depth = 5.
+INFO: [SCHED 204-61] Pipelining result : Target II = 1, Final II = 1, Depth = 6.
 INFO: [SCHED 204-61] Pipelining loop 'find_digit_location'.
 INFO: [SCHED 204-61] Pipelining result : Target II = 1, Final II = 1, Depth = 2.
 INFO: [SCHED 204-61] Pipelining loop 're_sort'.
 INFO: [SCHED 204-61] Pipelining result : Target II = 1, Final II = 1, Depth = 4.
-WARNING: [SCHED 204-21] Estimated clock period (5.564ns) exceeds the target (target clock period: 5ns, clock uncertainty: 0.625ns, effective delay budget: 4.375ns).
+WARNING: [SCHED 204-21] Estimated clock period (5.656ns) exceeds the target (target clock period: 5ns, clock uncertainty: 0.625ns, effective delay budget: 4.375ns).
 WARNING: [SCHED 204-21] The critical path in module 'sort' consists of the following:
-	'phi' operation ('digit_histogram_15_3', huffman_sort.cpp:38->huffman_encoding.cpp:19->huffman_encoding.cpp:19) with incoming values : ('digit_histogram[0].V', huffman_sort.cpp:38->huffman_encoding.cpp:19->huffman_encoding.cpp:19) [157]  (0 ns)
-	'mux' operation ('t.V', huffman_sort.cpp:38->huffman_encoding.cpp:19->huffman_encoding.cpp:19) [189]  (2.06 ns)
-	'add' operation ('digit_histogram[0].V', huffman_sort.cpp:38->huffman_encoding.cpp:19->huffman_encoding.cpp:19) [190]  (1.73 ns)
-	multiplexor before 'phi' operation ('digit_histogram[15].V') with incoming values : ('digit_histogram[0].V', huffman_sort.cpp:38->huffman_encoding.cpp:19->huffman_encoding.cpp:19) [223]  (1.77 ns)
-	'phi' operation ('digit_histogram[15].V') with incoming values : ('digit_histogram[0].V', huffman_sort.cpp:38->huffman_encoding.cpp:19->huffman_encoding.cpp:19) [223]  (0 ns)
+	multiplexor before 'phi' operation ('digit_histogram[0].V') with incoming values : ('digit_histogram[0].V', huffman_sort.cpp:42->huffman_encoding.cpp:19->huffman_encoding.cpp:19) [238]  (1.77 ns)
+	'phi' operation ('digit_histogram[0].V') with incoming values : ('digit_histogram[0].V', huffman_sort.cpp:42->huffman_encoding.cpp:19->huffman_encoding.cpp:19) [238]  (0 ns)
+	'phi' operation ('digit_histogram_0_V_4', huffman_sort.cpp:42->huffman_encoding.cpp:19->huffman_encoding.cpp:19) with incoming values : ('digit_histogram[0].V', huffman_sort.cpp:42->huffman_encoding.cpp:19->huffman_encoding.cpp:19) [172]  (0 ns)
+	'mux' operation ('t.V', huffman_sort.cpp:42->huffman_encoding.cpp:19->huffman_encoding.cpp:19) [189]  (2.06 ns)
+	'add' operation ('digit_histogram[0].V', huffman_sort.cpp:42->huffman_encoding.cpp:19->huffman_encoding.cpp:19) [190]  (1.82 ns)
 INFO: [SCHED 204-11] Finished scheduling.
-INFO: [HLS 200-111]  Elapsed time: 1.84 seconds; current allocated memory: 279.593 MB.
+INFO: [HLS 200-111]  Elapsed time: 1.549 seconds; current allocated memory: 290.458 MB.
 INFO: [BIND 205-100] Starting micro-architecture generation ...
 INFO: [BIND 205-101] Performing variable lifetime analysis.
 INFO: [BIND 205-101] Exploring resource sharing.
 INFO: [BIND 205-101] Binding ...
 INFO: [BIND 205-100] Finished micro-architecture generation.
-INFO: [HLS 200-111]  Elapsed time: 0.676 seconds; current allocated memory: 283.087 MB.
+INFO: [HLS 200-111]  Elapsed time: 0.461 seconds; current allocated memory: 293.989 MB.
 INFO: [HLS 200-10] ----------------------------------------------------------------
 INFO: [HLS 200-42] -- Implementing module 'Loop_copy_sorted_pro' 
 INFO: [HLS 200-10] ----------------------------------------------------------------
 INFO: [SCHED 204-11] Starting scheduling ...
 INFO: [SCHED 204-11] Finished scheduling.
-INFO: [HLS 200-111]  Elapsed time: 1.124 seconds; current allocated memory: 283.288 MB.
+INFO: [HLS 200-111]  Elapsed time: 0.667 seconds; current allocated memory: 294.175 MB.
 INFO: [BIND 205-100] Starting micro-architecture generation ...
 INFO: [BIND 205-101] Performing variable lifetime analysis.
 INFO: [BIND 205-101] Exploring resource sharing.
 INFO: [BIND 205-101] Binding ...
 INFO: [BIND 205-100] Finished micro-architecture generation.
-INFO: [HLS 200-111]  Elapsed time: 0.188 seconds; current allocated memory: 283.422 MB.
+INFO: [HLS 200-111]  Elapsed time: 0.155 seconds; current allocated memory: 294.321 MB.
 INFO: [HLS 200-10] ----------------------------------------------------------------
 INFO: [HLS 200-42] -- Implementing module 'create_tree' 
 INFO: [HLS 200-10] ----------------------------------------------------------------
@@ -426,13 +196,13 @@ WARNING: [SCHED 204-21] The critical path in module 'create_tree' consists of th
 	'or' operation ('or_ln27', huffman_create_tree.cpp:27->huffman_encoding.cpp:39) [41]  (0.978 ns)
 	blocking operation 0.978 ns on control path)
 INFO: [SCHED 204-11] Finished scheduling.
-INFO: [HLS 200-111]  Elapsed time: 0.439 seconds; current allocated memory: 283.644 MB.
+INFO: [HLS 200-111]  Elapsed time: 0.39 seconds; current allocated memory: 294.543 MB.
 INFO: [BIND 205-100] Starting micro-architecture generation ...
 INFO: [BIND 205-101] Performing variable lifetime analysis.
 INFO: [BIND 205-101] Exploring resource sharing.
 INFO: [BIND 205-101] Binding ...
 INFO: [BIND 205-100] Finished micro-architecture generation.
-INFO: [HLS 200-111]  Elapsed time: 0.263 seconds; current allocated memory: 283.934 MB.
+INFO: [HLS 200-111]  Elapsed time: 0.228 seconds; current allocated memory: 294.839 MB.
 INFO: [HLS 200-10] ----------------------------------------------------------------
 INFO: [HLS 200-42] -- Implementing module 'compute_bit_length' 
 INFO: [HLS 200-10] ----------------------------------------------------------------
@@ -441,43 +211,43 @@ INFO: [SCHED 204-61] Pipelining loop 'init_histogram'.
 INFO: [SCHED 204-61] Pipelining result : Target II = 1, Final II = 1, Depth = 1.
 INFO: [SCHED 204-61] Pipelining loop 'traverse_tree'.
 INFO: [SCHED 204-61] Pipelining result : Target II = 3, Final II = 3, Depth = 7.
-WARNING: [SCHED 204-21] Estimated clock period (6.9805ns) exceeds the target (target clock period: 5ns, clock uncertainty: 0.625ns, effective delay budget: 4.375ns).
+WARNING: [SCHED 204-21] Estimated clock period (6.87075ns) exceeds the target (target clock period: 5ns, clock uncertainty: 0.625ns, effective delay budget: 4.375ns).
 WARNING: [SCHED 204-21] The critical path in module 'compute_bit_length' consists of the following:
 	'add' operation ('length.V', huffman_compute_bit_length.cpp:27->huffman_encoding.cpp:40) [51]  (1.83 ns)
 	'store' operation ('child_depth_V_addr_2_write_ln28', huffman_compute_bit_length.cpp:28->huffman_encoding.cpp:40) of variable 'length.V', huffman_compute_bit_length.cpp:27->huffman_encoding.cpp:40 on array 'child_depth.V', huffman_compute_bit_length.cpp:12->huffman_encoding.cpp:40 [53]  (3.25 ns)
-	blocking operation 1.9 ns on control path)
+	blocking operation 1.79 ns on control path)
 INFO: [SCHED 204-11] Finished scheduling.
-INFO: [HLS 200-111]  Elapsed time: 0.474 seconds; current allocated memory: 284.185 MB.
+INFO: [HLS 200-111]  Elapsed time: 0.404 seconds; current allocated memory: 295.090 MB.
 INFO: [BIND 205-100] Starting micro-architecture generation ...
 INFO: [BIND 205-101] Performing variable lifetime analysis.
 INFO: [BIND 205-101] Exploring resource sharing.
 INFO: [BIND 205-101] Binding ...
 INFO: [BIND 205-100] Finished micro-architecture generation.
-INFO: [HLS 200-111]  Elapsed time: 0.251 seconds; current allocated memory: 284.415 MB.
+INFO: [HLS 200-111]  Elapsed time: 0.272 seconds; current allocated memory: 295.322 MB.
 INFO: [HLS 200-10] ----------------------------------------------------------------
 INFO: [HLS 200-42] -- Implementing module 'truncate_tree' 
 INFO: [HLS 200-10] ----------------------------------------------------------------
 INFO: [SCHED 204-11] Starting scheduling ...
 INFO: [SCHED 204-11] Finished scheduling.
-INFO: [HLS 200-111]  Elapsed time: 0.279 seconds; current allocated memory: 284.631 MB.
+INFO: [HLS 200-111]  Elapsed time: 0.24 seconds; current allocated memory: 295.538 MB.
 INFO: [BIND 205-100] Starting micro-architecture generation ...
 INFO: [BIND 205-101] Performing variable lifetime analysis.
 INFO: [BIND 205-101] Exploring resource sharing.
 INFO: [BIND 205-101] Binding ...
 INFO: [BIND 205-100] Finished micro-architecture generation.
-INFO: [HLS 200-111]  Elapsed time: 0.308 seconds; current allocated memory: 284.929 MB.
+INFO: [HLS 200-111]  Elapsed time: 0.207 seconds; current allocated memory: 295.800 MB.
 INFO: [HLS 200-10] ----------------------------------------------------------------
 INFO: [HLS 200-42] -- Implementing module 'canonize_tree' 
 INFO: [HLS 200-10] ----------------------------------------------------------------
 INFO: [SCHED 204-11] Starting scheduling ...
 INFO: [SCHED 204-11] Finished scheduling.
-INFO: [HLS 200-111]  Elapsed time: 0.336 seconds; current allocated memory: 285.066 MB.
+INFO: [HLS 200-111]  Elapsed time: 0.278 seconds; current allocated memory: 295.957 MB.
 INFO: [BIND 205-100] Starting micro-architecture generation ...
 INFO: [BIND 205-101] Performing variable lifetime analysis.
 INFO: [BIND 205-101] Exploring resource sharing.
 INFO: [BIND 205-101] Binding ...
 INFO: [BIND 205-100] Finished micro-architecture generation.
-INFO: [HLS 200-111]  Elapsed time: 0.202 seconds; current allocated memory: 285.243 MB.
+INFO: [HLS 200-111]  Elapsed time: 0.178 seconds; current allocated memory: 296.135 MB.
 INFO: [HLS 200-10] ----------------------------------------------------------------
 INFO: [HLS 200-42] -- Implementing module 'create_codeword' 
 INFO: [HLS 200-10] ----------------------------------------------------------------
@@ -494,47 +264,47 @@ WARNING: [SCHED 204-21] The critical path in module 'create_codeword' consists o
 	'add' operation ('add_ln1503', huffman_create_codeword.cpp:16) [26]  (2.37 ns)
 	'store' operation ('first_codeword_V_add_2_write_ln16', huffman_create_codeword.cpp:16) of variable 'shl_ln', huffman_create_codeword.cpp:16 on array 'first_codeword.V', huffman_create_codeword.cpp:9 [29]  (2.32 ns)
 INFO: [SCHED 204-11] Finished scheduling.
-INFO: [HLS 200-111]  Elapsed time: 0.39 seconds; current allocated memory: 285.439 MB.
+INFO: [HLS 200-111]  Elapsed time: 0.328 seconds; current allocated memory: 296.331 MB.
 INFO: [BIND 205-100] Starting micro-architecture generation ...
 INFO: [BIND 205-101] Performing variable lifetime analysis.
 INFO: [BIND 205-101] Exploring resource sharing.
 INFO: [BIND 205-101] Binding ...
 INFO: [BIND 205-100] Finished micro-architecture generation.
-INFO: [HLS 200-111]  Elapsed time: 0.427 seconds; current allocated memory: 285.666 MB.
+INFO: [HLS 200-111]  Elapsed time: 0.204 seconds; current allocated memory: 296.558 MB.
 INFO: [HLS 200-10] ----------------------------------------------------------------
 INFO: [HLS 200-42] -- Implementing module 'Block_proc' 
 INFO: [HLS 200-10] ----------------------------------------------------------------
 INFO: [SCHED 204-11] Starting scheduling ...
 INFO: [SCHED 204-11] Finished scheduling.
-INFO: [HLS 200-111]  Elapsed time: 0.355 seconds; current allocated memory: 285.714 MB.
+INFO: [HLS 200-111]  Elapsed time: 0.257 seconds; current allocated memory: 296.585 MB.
 INFO: [BIND 205-100] Starting micro-architecture generation ...
 INFO: [BIND 205-101] Performing variable lifetime analysis.
 INFO: [BIND 205-101] Exploring resource sharing.
 INFO: [BIND 205-101] Binding ...
 INFO: [BIND 205-100] Finished micro-architecture generation.
-INFO: [HLS 200-111]  Elapsed time: 0.166 seconds; current allocated memory: 285.759 MB.
+INFO: [HLS 200-111]  Elapsed time: 0.138 seconds; current allocated memory: 296.632 MB.
 INFO: [HLS 200-10] ----------------------------------------------------------------
 INFO: [HLS 200-42] -- Implementing module 'huffman_encoding' 
 INFO: [HLS 200-10] ----------------------------------------------------------------
 INFO: [SCHED 204-11] Starting scheduling ...
 INFO: [SCHED 204-11] Finished scheduling.
-INFO: [HLS 200-111]  Elapsed time: 0.192 seconds; current allocated memory: 285.887 MB.
+INFO: [HLS 200-111]  Elapsed time: 0.146 seconds; current allocated memory: 296.745 MB.
 INFO: [BIND 205-100] Starting micro-architecture generation ...
 INFO: [BIND 205-101] Performing variable lifetime analysis.
 INFO: [BIND 205-101] Exploring resource sharing.
 INFO: [BIND 205-101] Binding ...
 INFO: [BIND 205-100] Finished micro-architecture generation.
-INFO: [HLS 200-111]  Elapsed time: 1.013 seconds; current allocated memory: 286.277 MB.
+INFO: [HLS 200-111]  Elapsed time: 0.901 seconds; current allocated memory: 297.213 MB.
 INFO: [HLS 200-10] ----------------------------------------------------------------
 INFO: [HLS 200-10] -- Generating RTL for module 'filter' 
 INFO: [HLS 200-10] ----------------------------------------------------------------
 INFO: [RTGEN 206-100] Finished creating RTL model for 'filter'.
-INFO: [HLS 200-111]  Elapsed time: 0.604 seconds; current allocated memory: 286.727 MB.
+INFO: [HLS 200-111]  Elapsed time: 0.417 seconds; current allocated memory: 297.631 MB.
 INFO: [HLS 200-10] ----------------------------------------------------------------
 INFO: [HLS 200-10] -- Generating RTL for module 'Block_codeRepl1012_p' 
 INFO: [HLS 200-10] ----------------------------------------------------------------
 INFO: [RTGEN 206-100] Finished creating RTL model for 'Block_codeRepl1012_p'.
-INFO: [HLS 200-111]  Elapsed time: 0.497 seconds; current allocated memory: 286.893 MB.
+INFO: [HLS 200-111]  Elapsed time: 0.305 seconds; current allocated memory: 297.782 MB.
 INFO: [HLS 200-10] ----------------------------------------------------------------
 INFO: [HLS 200-10] -- Generating RTL for module 'sort' 
 INFO: [HLS 200-10] ----------------------------------------------------------------
@@ -544,50 +314,50 @@ INFO: [SYN 201-210] Renamed object name 'sort_sorting_value_V' to 'sort_sorting_
 INFO: [SYN 201-210] Renamed object name 'sort_sorting_frequency_V' to 'sort_sorting_freqeOg' due to the length limit 20
 INFO: [SYN 201-210] Renamed object name 'sort_current_digit_V' to 'sort_current_digifYi' due to the length limit 20
 INFO: [SYN 201-210] Renamed object name 'huffman_encoding_lshr_32ns_6ns_32_2_1' to 'huffman_encoding_g8j' due to the length limit 20
-INFO: [SYN 201-210] Renamed object name 'huffman_encoding_mux_164_10_1_1' to 'huffman_encoding_hbi' due to the length limit 20
+INFO: [SYN 201-210] Renamed object name 'huffman_encoding_mux_164_9_1_1' to 'huffman_encoding_hbi' due to the length limit 20
 INFO: [RTGEN 206-100] Generating core module 'huffman_encoding_g8j': 1 instance(s).
 INFO: [RTGEN 206-100] Generating core module 'huffman_encoding_hbi': 3 instance(s).
 INFO: [RTGEN 206-100] Finished creating RTL model for 'sort'.
-INFO: [HLS 200-111]  Elapsed time: 0.741 seconds; current allocated memory: 290.178 MB.
+INFO: [HLS 200-111]  Elapsed time: 0.66 seconds; current allocated memory: 301.187 MB.
 INFO: [HLS 200-10] ----------------------------------------------------------------
 INFO: [HLS 200-10] -- Generating RTL for module 'Loop_copy_sorted_pro' 
 INFO: [HLS 200-10] ----------------------------------------------------------------
 INFO: [RTGEN 206-100] Finished creating RTL model for 'Loop_copy_sorted_pro'.
-INFO: [HLS 200-111]  Elapsed time: 1.995 seconds; current allocated memory: 290.791 MB.
+INFO: [HLS 200-111]  Elapsed time: 1.302 seconds; current allocated memory: 301.748 MB.
 INFO: [HLS 200-10] ----------------------------------------------------------------
 INFO: [HLS 200-10] -- Generating RTL for module 'create_tree' 
 INFO: [HLS 200-10] ----------------------------------------------------------------
 INFO: [SYN 201-210] Renamed object name 'create_tree_frequency_V' to 'create_tree_frequibs' due to the length limit 20
 INFO: [RTGEN 206-100] Finished creating RTL model for 'create_tree'.
-INFO: [HLS 200-111]  Elapsed time: 0.408 seconds; current allocated memory: 291.327 MB.
+INFO: [HLS 200-111]  Elapsed time: 0.335 seconds; current allocated memory: 302.283 MB.
 INFO: [HLS 200-10] ----------------------------------------------------------------
 INFO: [HLS 200-10] -- Generating RTL for module 'compute_bit_length' 
 INFO: [HLS 200-10] ----------------------------------------------------------------
 INFO: [SYN 201-210] Renamed object name 'compute_bit_length_child_depth_V' to 'compute_bit_lengtjbC' due to the length limit 20
 INFO: [SYN 201-210] Renamed object name 'compute_bit_length_internal_length_hist' to 'compute_bit_lengtkbM' due to the length limit 20
 INFO: [RTGEN 206-100] Finished creating RTL model for 'compute_bit_length'.
-INFO: [HLS 200-111]  Elapsed time: 0.734 seconds; current allocated memory: 291.918 MB.
+INFO: [HLS 200-111]  Elapsed time: 0.534 seconds; current allocated memory: 302.875 MB.
 INFO: [HLS 200-10] ----------------------------------------------------------------
 INFO: [HLS 200-10] -- Generating RTL for module 'truncate_tree' 
 INFO: [HLS 200-10] ----------------------------------------------------------------
 INFO: [RTGEN 206-100] Finished creating RTL model for 'truncate_tree'.
-INFO: [HLS 200-111]  Elapsed time: 0.565 seconds; current allocated memory: 292.473 MB.
+INFO: [HLS 200-111]  Elapsed time: 0.521 seconds; current allocated memory: 303.430 MB.
 INFO: [HLS 200-10] ----------------------------------------------------------------
 INFO: [HLS 200-10] -- Generating RTL for module 'canonize_tree' 
 INFO: [HLS 200-10] ----------------------------------------------------------------
 INFO: [RTGEN 206-100] Finished creating RTL model for 'canonize_tree'.
-INFO: [HLS 200-111]  Elapsed time: 0.574 seconds; current allocated memory: 292.876 MB.
+INFO: [HLS 200-111]  Elapsed time: 0.45 seconds; current allocated memory: 303.795 MB.
 INFO: [HLS 200-10] ----------------------------------------------------------------
 INFO: [HLS 200-10] -- Generating RTL for module 'create_codeword' 
 INFO: [HLS 200-10] ----------------------------------------------------------------
 INFO: [SYN 201-210] Renamed object name 'create_codeword_first_codeword_V' to 'create_codeword_flbW' due to the length limit 20
 INFO: [RTGEN 206-100] Finished creating RTL model for 'create_codeword'.
-INFO: [HLS 200-111]  Elapsed time: 0.479 seconds; current allocated memory: 293.435 MB.
+INFO: [HLS 200-111]  Elapsed time: 0.503 seconds; current allocated memory: 304.391 MB.
 INFO: [HLS 200-10] ----------------------------------------------------------------
 INFO: [HLS 200-10] -- Generating RTL for module 'Block_proc' 
 INFO: [HLS 200-10] ----------------------------------------------------------------
 INFO: [RTGEN 206-100] Finished creating RTL model for 'Block_proc'.
-INFO: [HLS 200-111]  Elapsed time: 0.588 seconds; current allocated memory: 293.572 MB.
+INFO: [HLS 200-111]  Elapsed time: 0.435 seconds; current allocated memory: 304.528 MB.
 INFO: [HLS 200-10] ----------------------------------------------------------------
 INFO: [HLS 200-10] -- Generating RTL for module 'huffman_encoding' 
 INFO: [HLS 200-10] ----------------------------------------------------------------
@@ -613,7 +383,7 @@ INFO: [SYN 201-210] Renamed object name 'huffman_encoding_symbol_bits_V' to 'huf
 INFO: [SYN 201-210] Renamed object name 'start_for_Block_codeRepl1012_p_U0' to 'start_for_Block_cAem' due to the length limit 20
 INFO: [SYN 201-210] Renamed object name 'start_for_Block_proc_U0' to 'start_for_Block_pBew' due to the length limit 20
 INFO: [RTGEN 206-100] Finished creating RTL model for 'huffman_encoding'.
-INFO: [HLS 200-111]  Elapsed time: 1.026 seconds; current allocated memory: 295.704 MB.
+INFO: [HLS 200-111]  Elapsed time: 0.858 seconds; current allocated memory: 306.623 MB.
 INFO: [HLS 200-790] **** Loop Constraint Status: All loop constraints were NOT satisfied.
 INFO: [HLS 200-789] **** Estimated Fmax: 130.16 MHz
 INFO: [RTMG 210-286] Generating pipelined shifter : 'huffman_encoding_g8j'
@@ -636,13 +406,13 @@ INFO: [HLS 200-740] Implementing PIPO huffman_encoding_xdS_memcore using a separ
 INFO: [RTMG 210-278] Implementing memory 'huffman_encoding_xdS_memcore_ram (RAM)' using block RAMs.
 INFO: [HLS 200-741] Implementing PIPO huffman_encoding_zec_memcore using a single memory for all blocks
 INFO: [RTMG 210-278] Implementing memory 'huffman_encoding_zec_memcore_ram (RAM)' using block RAMs.
-INFO: [RTMG 210-285] Implementing FIFO 'n_c_U(fifo_w10_d2_A)' using Shift Registers.
-INFO: [RTMG 210-285] Implementing FIFO 'n_c20_U(fifo_w10_d3_A)' using Shift Registers.
-INFO: [RTMG 210-285] Implementing FIFO 'extLd9_loc_channel_U(fifo_w10_d2_A)' using Shift Registers.
-INFO: [RTMG 210-285] Implementing FIFO 'val_assign7_loc_c_U(fifo_w10_d5_A)' using Shift Registers.
-INFO: [RTMG 210-285] Implementing FIFO 'extLd_loc_c_U(fifo_w10_d2_A)' using Shift Registers.
-INFO: [RTMG 210-285] Implementing FIFO 'extLd_loc_c21_U(fifo_w10_d2_A)' using Shift Registers.
-INFO: [RTMG 210-285] Implementing FIFO 'extLd_loc_c22_U(fifo_w10_d2_A)' using Shift Registers.
+INFO: [RTMG 210-285] Implementing FIFO 'n_c_U(fifo_w9_d2_A)' using Shift Registers.
+INFO: [RTMG 210-285] Implementing FIFO 'n_c20_U(fifo_w9_d3_A)' using Shift Registers.
+INFO: [RTMG 210-285] Implementing FIFO 'extLd9_loc_channel_U(fifo_w9_d2_A)' using Shift Registers.
+INFO: [RTMG 210-285] Implementing FIFO 'val_assign7_loc_c_U(fifo_w9_d5_A)' using Shift Registers.
+INFO: [RTMG 210-285] Implementing FIFO 'extLd_loc_c_U(fifo_w9_d2_A)' using Shift Registers.
+INFO: [RTMG 210-285] Implementing FIFO 'extLd_loc_c21_U(fifo_w9_d2_A)' using Shift Registers.
+INFO: [RTMG 210-285] Implementing FIFO 'extLd_loc_c22_U(fifo_w9_d2_A)' using Shift Registers.
 INFO: [RTMG 210-285] Implementing FIFO 'start_for_Block_cAem_U(start_for_Block_cAem)' using Shift Registers.
 INFO: [RTMG 210-285] Implementing FIFO 'start_for_Block_pBew_U(start_for_Block_pBew)' using Shift Registers.
 INFO: [HLS 200-741] Implementing PIPO huffman_encoding_mb6_memcore using a single memory for all blocks
@@ -657,313 +427,7 @@ INFO: [HLS 200-741] Implementing PIPO huffman_encoding_tde_memcore using a singl
 INFO: [HLS 200-741] Implementing PIPO huffman_encoding_wdI_memcore using a single memory for all blocks
 INFO: [HLS 200-740] Implementing PIPO huffman_encoding_xdS_memcore using a separate memory for each block
 INFO: [HLS 200-741] Implementing PIPO huffman_encoding_zec_memcore using a single memory for all blocks
-INFO: [HLS 200-111] Finished generating all RTL models Time (s): cpu = 00:00:22 ; elapsed = 00:03:13 . Memory (MB): peak = 382.680 ; gain = 292.973
+INFO: [HLS 200-111] Finished generating all RTL models Time (s): cpu = 00:00:19 ; elapsed = 00:02:12 . Memory (MB): peak = 393.602 ; gain = 302.891
 INFO: [VHDL 208-304] Generating VHDL RTL for huffman_encoding.
 INFO: [VLOG 209-307] Generating Verilog RTL for huffman_encoding.
-INFO: [COSIM 212-47] Using XSIM for RTL simulation.
-INFO: [COSIM 212-14] Instrumenting C test bench ...
-   Build using "D:/Xilinx/Vivado/2019.2/tps/win64/msys64/mingw64/bin/g++"
-   Compiling huffman_canonize_tree.cpp_pre.cpp.tb.cpp
-   Compiling huffman_compute_bit_length.cpp_pre.cpp.tb.cpp
-   Compiling huffman_create_tree.cpp_pre.cpp.tb.cpp
-   Compiling huffman_encoding.cpp_pre.cpp.tb.cpp
-   Compiling huffman_sort.cpp_pre.cpp.tb.cpp
-   Compiling apatb_huffman_encoding.cpp
-   Compiling huffman_create_codeword.cpp_pre.cpp.tb.cpp
-   Compiling huffman_truncate_tree.cpp_pre.cpp.tb.cpp
-   Compiling huffman_encoding_test.cpp_pre.cpp.tb.cpp
-   Compiling huffman_filter.cpp_pre.cpp.tb.cpp
-   Generating cosim.tv.exe
-INFO: [COSIM 212-302] Starting C TB testing ... 
-Starting canonical Huffman encoding testbench
-Start reading file [huffman.random256.txt]
-61 codewords with length 7
-104 codewords with length 8
-43 codewords with length 9
-28 codewords with length 10
-10 codewords with length 11
-2 codewords with length 12
-2 codewords with length 13
-3 codewords with length 14
-1 codewords with length 15
-2 codewords with length 16
-
-***************Comparing against output data*************** 
-
-*******************************************
- PASS: The output matches the golden output
-*******************************************
-Ending canonical Huffman encoding testbench
-INFO: [COSIM 212-333] Generating C post check test bench ...
-INFO: [COSIM 212-12] Generating RTL test bench ...
-INFO: [COSIM 212-1] *** C/RTL co-simulation file generation completed. ***
-INFO: [COSIM 212-323] Starting verilog simulation. 
-INFO: [COSIM 212-15] Starting XSIM ...
-
-D:\Workspace\huffman_encoding_fpga\hls_huffman_encoding\solution1\sim\verilog>set PATH= 
-
-D:\Workspace\huffman_encoding_fpga\hls_huffman_encoding\solution1\sim\verilog>call D:/Xilinx/Vivado/2019.2/bin/xelab xil_defaultlib.apatb_huffman_encoding_top glbl -prj huffman_encoding.prj -L smartconnect_v1_0 -L axi_protocol_checker_v1_1_12 -L axi_protocol_checker_v1_1_13 -L axis_protocol_checker_v1_1_11 -L axis_protocol_checker_v1_1_12 -L xil_defaultlib -L unisims_ver -L xpm --initfile "D:/Xilinx/Vivado/2019.2/data/xsim/ip/xsim_ip.ini" --lib "ieee_proposed=./ieee_proposed" -s huffman_encoding  
-INFO: [XSIM 43-3496] Using init file passed via -initfile option "D:/Xilinx/Vivado/2019.2/data/xsim/ip/xsim_ip.ini".
-Vivado Simulator 2019.2
-Copyright 1986-1999, 2001-2019 Xilinx, Inc. All Rights Reserved.
-Running: D:/Xilinx/Vivado/2019.2/bin/unwrapped/win64.o/xelab.exe xil_defaultlib.apatb_huffman_encoding_top glbl -prj huffman_encoding.prj -L smartconnect_v1_0 -L axi_protocol_checker_v1_1_12 -L axi_protocol_checker_v1_1_13 -L axis_protocol_checker_v1_1_11 -L axis_protocol_checker_v1_1_12 -L xil_defaultlib -L unisims_ver -L xpm --initfile D:/Xilinx/Vivado/2019.2/data/xsim/ip/xsim_ip.ini --lib ieee_proposed=./ieee_proposed -s huffman_encoding 
-Multi-threading is on. Using 2 slave threads.
-INFO: [VRFC 10-2263] Analyzing SystemVerilog file "D:/Workspace/huffman_encoding_fpga/hls_huffman_encoding/solution1/sim/verilog/glbl.v" into library work
-INFO: [VRFC 10-311] analyzing module glbl
-INFO: [VRFC 10-2263] Analyzing SystemVerilog file "D:/Workspace/huffman_encoding_fpga/hls_huffman_encoding/solution1/sim/verilog/AESL_automem_encoding_V.v" into library xil_defaultlib
-INFO: [VRFC 10-311] analyzing module AESL_automem_encoding_V
-INFO: [VRFC 10-2263] Analyzing SystemVerilog file "D:/Workspace/huffman_encoding_fpga/hls_huffman_encoding/solution1/sim/verilog/AESL_automem_symbol_histogram_frequency_V.v" into library xil_defaultlib
-INFO: [VRFC 10-311] analyzing module AESL_automem_symbol_histogram_frequency_V
-INFO: [VRFC 10-2263] Analyzing SystemVerilog file "D:/Workspace/huffman_encoding_fpga/hls_huffman_encoding/solution1/sim/verilog/AESL_automem_symbol_histogram_value_V.v" into library xil_defaultlib
-INFO: [VRFC 10-311] analyzing module AESL_automem_symbol_histogram_value_V
-INFO: [VRFC 10-2263] Analyzing SystemVerilog file "D:/Workspace/huffman_encoding_fpga/hls_huffman_encoding/solution1/sim/verilog/AESL_deadlock_detection_unit.v" into library xil_defaultlib
-INFO: [VRFC 10-311] analyzing module AESL_deadlock_detect_unit
-INFO: [VRFC 10-2263] Analyzing SystemVerilog file "D:/Workspace/huffman_encoding_fpga/hls_huffman_encoding/solution1/sim/verilog/AESL_deadlock_detector.v" into library xil_defaultlib
-INFO: [VRFC 10-311] analyzing module AESL_deadlock_detector
-INFO: [VRFC 10-2263] Analyzing SystemVerilog file "D:/Workspace/huffman_encoding_fpga/hls_huffman_encoding/solution1/sim/verilog/AESL_deadlock_report_unit.v" into library xil_defaultlib
-INFO: [VRFC 10-311] analyzing module AESL_deadlock_report_unit
-INFO: [VRFC 10-2263] Analyzing SystemVerilog file "D:/Workspace/huffman_encoding_fpga/hls_huffman_encoding/solution1/sim/verilog/Block_codeRepl1012_p.v" into library xil_defaultlib
-INFO: [VRFC 10-311] analyzing module Block_codeRepl1012_p
-INFO: [VRFC 10-2263] Analyzing SystemVerilog file "D:/Workspace/huffman_encoding_fpga/hls_huffman_encoding/solution1/sim/verilog/Block_proc.v" into library xil_defaultlib
-INFO: [VRFC 10-311] analyzing module Block_proc
-INFO: [VRFC 10-2263] Analyzing SystemVerilog file "D:/Workspace/huffman_encoding_fpga/hls_huffman_encoding/solution1/sim/verilog/canonize_tree.v" into library xil_defaultlib
-INFO: [VRFC 10-311] analyzing module canonize_tree
-INFO: [VRFC 10-2263] Analyzing SystemVerilog file "D:/Workspace/huffman_encoding_fpga/hls_huffman_encoding/solution1/sim/verilog/compute_bit_length.v" into library xil_defaultlib
-INFO: [VRFC 10-311] analyzing module compute_bit_length
-INFO: [VRFC 10-2263] Analyzing SystemVerilog file "D:/Workspace/huffman_encoding_fpga/hls_huffman_encoding/solution1/sim/verilog/compute_bit_lengtjbC.v" into library xil_defaultlib
-INFO: [VRFC 10-311] analyzing module compute_bit_lengtjbC_ram
-INFO: [VRFC 10-311] analyzing module compute_bit_lengtjbC
-INFO: [VRFC 10-2263] Analyzing SystemVerilog file "D:/Workspace/huffman_encoding_fpga/hls_huffman_encoding/solution1/sim/verilog/compute_bit_lengtkbM.v" into library xil_defaultlib
-INFO: [VRFC 10-311] analyzing module compute_bit_lengtkbM_ram
-INFO: [VRFC 10-311] analyzing module compute_bit_lengtkbM
-INFO: [VRFC 10-2263] Analyzing SystemVerilog file "D:/Workspace/huffman_encoding_fpga/hls_huffman_encoding/solution1/sim/verilog/create_codeword.v" into library xil_defaultlib
-INFO: [VRFC 10-311] analyzing module create_codeword
-INFO: [VRFC 10-2263] Analyzing SystemVerilog file "D:/Workspace/huffman_encoding_fpga/hls_huffman_encoding/solution1/sim/verilog/create_codeword_flbW.v" into library xil_defaultlib
-INFO: [VRFC 10-311] analyzing module create_codeword_flbW_ram
-INFO: [VRFC 10-311] analyzing module create_codeword_flbW
-INFO: [VRFC 10-2263] Analyzing SystemVerilog file "D:/Workspace/huffman_encoding_fpga/hls_huffman_encoding/solution1/sim/verilog/create_tree.v" into library xil_defaultlib
-INFO: [VRFC 10-311] analyzing module create_tree
-INFO: [VRFC 10-2263] Analyzing SystemVerilog file "D:/Workspace/huffman_encoding_fpga/hls_huffman_encoding/solution1/sim/verilog/create_tree_frequibs.v" into library xil_defaultlib
-INFO: [VRFC 10-311] analyzing module create_tree_frequibs_ram
-INFO: [VRFC 10-311] analyzing module create_tree_frequibs
-INFO: [VRFC 10-2263] Analyzing SystemVerilog file "D:/Workspace/huffman_encoding_fpga/hls_huffman_encoding/solution1/sim/verilog/fifo_w10_d2_A.v" into library xil_defaultlib
-INFO: [VRFC 10-311] analyzing module fifo_w10_d2_A_shiftReg
-INFO: [VRFC 10-311] analyzing module fifo_w10_d2_A
-INFO: [VRFC 10-2263] Analyzing SystemVerilog file "D:/Workspace/huffman_encoding_fpga/hls_huffman_encoding/solution1/sim/verilog/fifo_w10_d3_A.v" into library xil_defaultlib
-INFO: [VRFC 10-311] analyzing module fifo_w10_d3_A_shiftReg
-INFO: [VRFC 10-311] analyzing module fifo_w10_d3_A
-INFO: [VRFC 10-2263] Analyzing SystemVerilog file "D:/Workspace/huffman_encoding_fpga/hls_huffman_encoding/solution1/sim/verilog/fifo_w10_d5_A.v" into library xil_defaultlib
-INFO: [VRFC 10-311] analyzing module fifo_w10_d5_A_shiftReg
-INFO: [VRFC 10-311] analyzing module fifo_w10_d5_A
-INFO: [VRFC 10-2263] Analyzing SystemVerilog file "D:/Workspace/huffman_encoding_fpga/hls_huffman_encoding/solution1/sim/verilog/filter.v" into library xil_defaultlib
-INFO: [VRFC 10-311] analyzing module filter
-INFO: [VRFC 10-2263] Analyzing SystemVerilog file "D:/Workspace/huffman_encoding_fpga/hls_huffman_encoding/solution1/sim/verilog/huffman_encoding.autotb.v" into library xil_defaultlib
-INFO: [VRFC 10-311] analyzing module apatb_huffman_encoding_top
-INFO: [VRFC 10-2263] Analyzing SystemVerilog file "D:/Workspace/huffman_encoding_fpga/hls_huffman_encoding/solution1/sim/verilog/huffman_encoding.v" into library xil_defaultlib
-INFO: [VRFC 10-311] analyzing module huffman_encoding
-INFO: [VRFC 10-2263] Analyzing SystemVerilog file "D:/Workspace/huffman_encoding_fpga/hls_huffman_encoding/solution1/sim/verilog/huffman_encoding_g8j.v" into library xil_defaultlib
-INFO: [VRFC 10-311] analyzing module huffman_encoding_g8j
-INFO: [VRFC 10-2263] Analyzing SystemVerilog file "D:/Workspace/huffman_encoding_fpga/hls_huffman_encoding/solution1/sim/verilog/huffman_encoding_hbi.v" into library xil_defaultlib
-INFO: [VRFC 10-311] analyzing module huffman_encoding_hbi
-INFO: [VRFC 10-2263] Analyzing SystemVerilog file "D:/Workspace/huffman_encoding_fpga/hls_huffman_encoding/solution1/sim/verilog/huffman_encoding_mb6.v" into library xil_defaultlib
-INFO: [VRFC 10-311] analyzing module huffman_encoding_mb6
-INFO: [VRFC 10-2263] Analyzing SystemVerilog file "D:/Workspace/huffman_encoding_fpga/hls_huffman_encoding/solution1/sim/verilog/huffman_encoding_mb6_memcore.v" into library xil_defaultlib
-INFO: [VRFC 10-311] analyzing module huffman_encoding_mb6_memcore_ram
-INFO: [VRFC 10-311] analyzing module huffman_encoding_mb6_memcore
-INFO: [VRFC 10-2263] Analyzing SystemVerilog file "D:/Workspace/huffman_encoding_fpga/hls_huffman_encoding/solution1/sim/verilog/huffman_encoding_ncg.v" into library xil_defaultlib
-INFO: [VRFC 10-311] analyzing module huffman_encoding_ncg
-INFO: [VRFC 10-2263] Analyzing SystemVerilog file "D:/Workspace/huffman_encoding_fpga/hls_huffman_encoding/solution1/sim/verilog/huffman_encoding_ncg_memcore.v" into library xil_defaultlib
-INFO: [VRFC 10-311] analyzing module huffman_encoding_ncg_memcore_ram
-INFO: [VRFC 10-311] analyzing module huffman_encoding_ncg_memcore
-INFO: [VRFC 10-2263] Analyzing SystemVerilog file "D:/Workspace/huffman_encoding_fpga/hls_huffman_encoding/solution1/sim/verilog/huffman_encoding_tde.v" into library xil_defaultlib
-INFO: [VRFC 10-311] analyzing module huffman_encoding_tde
-INFO: [VRFC 10-2263] Analyzing SystemVerilog file "D:/Workspace/huffman_encoding_fpga/hls_huffman_encoding/solution1/sim/verilog/huffman_encoding_tde_memcore.v" into library xil_defaultlib
-INFO: [VRFC 10-311] analyzing module huffman_encoding_tde_memcore_ram
-INFO: [VRFC 10-311] analyzing module huffman_encoding_tde_memcore
-INFO: [VRFC 10-2263] Analyzing SystemVerilog file "D:/Workspace/huffman_encoding_fpga/hls_huffman_encoding/solution1/sim/verilog/huffman_encoding_wdI.v" into library xil_defaultlib
-INFO: [VRFC 10-311] analyzing module huffman_encoding_wdI
-INFO: [VRFC 10-2263] Analyzing SystemVerilog file "D:/Workspace/huffman_encoding_fpga/hls_huffman_encoding/solution1/sim/verilog/huffman_encoding_wdI_memcore.v" into library xil_defaultlib
-INFO: [VRFC 10-311] analyzing module huffman_encoding_wdI_memcore_ram
-INFO: [VRFC 10-311] analyzing module huffman_encoding_wdI_memcore
-INFO: [VRFC 10-2263] Analyzing SystemVerilog file "D:/Workspace/huffman_encoding_fpga/hls_huffman_encoding/solution1/sim/verilog/huffman_encoding_xdS.v" into library xil_defaultlib
-INFO: [VRFC 10-311] analyzing module huffman_encoding_xdS
-INFO: [VRFC 10-2263] Analyzing SystemVerilog file "D:/Workspace/huffman_encoding_fpga/hls_huffman_encoding/solution1/sim/verilog/huffman_encoding_xdS_memcore.v" into library xil_defaultlib
-INFO: [VRFC 10-311] analyzing module huffman_encoding_xdS_memcore_ram
-INFO: [VRFC 10-311] analyzing module huffman_encoding_xdS_memcore
-INFO: [VRFC 10-2263] Analyzing SystemVerilog file "D:/Workspace/huffman_encoding_fpga/hls_huffman_encoding/solution1/sim/verilog/huffman_encoding_zec.v" into library xil_defaultlib
-INFO: [VRFC 10-311] analyzing module huffman_encoding_zec
-INFO: [VRFC 10-2263] Analyzing SystemVerilog file "D:/Workspace/huffman_encoding_fpga/hls_huffman_encoding/solution1/sim/verilog/huffman_encoding_zec_memcore.v" into library xil_defaultlib
-INFO: [VRFC 10-311] analyzing module huffman_encoding_zec_memcore_ram
-INFO: [VRFC 10-311] analyzing module huffman_encoding_zec_memcore
-INFO: [VRFC 10-2263] Analyzing SystemVerilog file "D:/Workspace/huffman_encoding_fpga/hls_huffman_encoding/solution1/sim/verilog/Loop_copy_sorted_pro.v" into library xil_defaultlib
-INFO: [VRFC 10-311] analyzing module Loop_copy_sorted_pro
-INFO: [VRFC 10-2263] Analyzing SystemVerilog file "D:/Workspace/huffman_encoding_fpga/hls_huffman_encoding/solution1/sim/verilog/sort.v" into library xil_defaultlib
-INFO: [VRFC 10-311] analyzing module sort
-INFO: [VRFC 10-2263] Analyzing SystemVerilog file "D:/Workspace/huffman_encoding_fpga/hls_huffman_encoding/solution1/sim/verilog/sort_current_digifYi.v" into library xil_defaultlib
-INFO: [VRFC 10-311] analyzing module sort_current_digifYi_ram
-INFO: [VRFC 10-311] analyzing module sort_current_digifYi
-INFO: [VRFC 10-2263] Analyzing SystemVerilog file "D:/Workspace/huffman_encoding_fpga/hls_huffman_encoding/solution1/sim/verilog/sort_previous_sorbkb.v" into library xil_defaultlib
-INFO: [VRFC 10-311] analyzing module sort_previous_sorbkb_ram
-INFO: [VRFC 10-311] analyzing module sort_previous_sorbkb
-INFO: [VRFC 10-2263] Analyzing SystemVerilog file "D:/Workspace/huffman_encoding_fpga/hls_huffman_encoding/solution1/sim/verilog/sort_previous_sorcud.v" into library xil_defaultlib
-INFO: [VRFC 10-311] analyzing module sort_previous_sorcud_ram
-INFO: [VRFC 10-311] analyzing module sort_previous_sorcud
-INFO: [VRFC 10-2263] Analyzing SystemVerilog file "D:/Workspace/huffman_encoding_fpga/hls_huffman_encoding/solution1/sim/verilog/start_for_Block_cAem.v" into library xil_defaultlib
-INFO: [VRFC 10-311] analyzing module start_for_Block_cAem_shiftReg
-INFO: [VRFC 10-311] analyzing module start_for_Block_cAem
-INFO: [VRFC 10-2263] Analyzing SystemVerilog file "D:/Workspace/huffman_encoding_fpga/hls_huffman_encoding/solution1/sim/verilog/start_for_Block_pBew.v" into library xil_defaultlib
-INFO: [VRFC 10-311] analyzing module start_for_Block_pBew_shiftReg
-INFO: [VRFC 10-311] analyzing module start_for_Block_pBew
-INFO: [VRFC 10-2263] Analyzing SystemVerilog file "D:/Workspace/huffman_encoding_fpga/hls_huffman_encoding/solution1/sim/verilog/truncate_tree.v" into library xil_defaultlib
-INFO: [VRFC 10-311] analyzing module truncate_tree
-Starting static elaboration
-Pass Through NonSizing Optimizer
-Completed static elaboration
-Starting simulation data flow analysis
-Completed simulation data flow analysis
-Time Resolution for simulation is 1ps
-Compiling module xil_defaultlib.huffman_encoding_mb6_memcore_ram
-Compiling module xil_defaultlib.huffman_encoding_mb6_memcore
-Compiling module xil_defaultlib.huffman_encoding_mb6(AddressRang...
-Compiling module xil_defaultlib.huffman_encoding_ncg_memcore_ram
-Compiling module xil_defaultlib.huffman_encoding_ncg_memcore
-Compiling module xil_defaultlib.huffman_encoding_ncg(AddressRang...
-Compiling module xil_defaultlib.huffman_encoding_tde_memcore_ram
-Compiling module xil_defaultlib.huffman_encoding_tde_memcore
-Compiling module xil_defaultlib.huffman_encoding_tde(AddressRang...
-Compiling module xil_defaultlib.huffman_encoding_wdI_memcore_ram
-Compiling module xil_defaultlib.huffman_encoding_wdI_memcore
-Compiling module xil_defaultlib.huffman_encoding_wdI(AddressRang...
-Compiling module xil_defaultlib.huffman_encoding_xdS_memcore_ram
-Compiling module xil_defaultlib.huffman_encoding_xdS_memcore
-Compiling module xil_defaultlib.huffman_encoding_xdS(AddressRang...
-Compiling module xil_defaultlib.huffman_encoding_zec_memcore_ram
-Compiling module xil_defaultlib.huffman_encoding_zec_memcore
-Compiling module xil_defaultlib.huffman_encoding_zec(AddressRang...
-Compiling module xil_defaultlib.filter
-Compiling module xil_defaultlib.Block_codeRepl1012_p
-Compiling module xil_defaultlib.sort_previous_sorbkb_ram
-Compiling module xil_defaultlib.sort_previous_sorbkb(DataWidth=1...
-Compiling module xil_defaultlib.sort_previous_sorcud_ram
-Compiling module xil_defaultlib.sort_previous_sorcud(DataWidth=3...
-Compiling module xil_defaultlib.sort_current_digifYi_ram
-Compiling module xil_defaultlib.sort_current_digifYi(DataWidth=4...
-Compiling module xil_defaultlib.huffman_encoding_g8j(din1_WIDTH=...
-Compiling module xil_defaultlib.huffman_encoding_hbi(ID=1,din0_W...
-Compiling module xil_defaultlib.sort
-Compiling module xil_defaultlib.Loop_copy_sorted_pro
-Compiling module xil_defaultlib.create_tree_frequibs_ram
-Compiling module xil_defaultlib.create_tree_frequibs(DataWidth=3...
-Compiling module xil_defaultlib.create_tree
-Compiling module xil_defaultlib.compute_bit_lengtjbC_ram
-Compiling module xil_defaultlib.compute_bit_lengtjbC(DataWidth=6...
-Compiling module xil_defaultlib.compute_bit_lengtkbM_ram
-Compiling module xil_defaultlib.compute_bit_lengtkbM(DataWidth=1...
-Compiling module xil_defaultlib.compute_bit_length
-Compiling module xil_defaultlib.truncate_tree
-Compiling module xil_defaultlib.canonize_tree
-Compiling module xil_defaultlib.create_codeword_flbW_ram
-Compiling module xil_defaultlib.create_codeword_flbW(DataWidth=2...
-Compiling module xil_defaultlib.create_codeword
-Compiling module xil_defaultlib.Block_proc
-Compiling module xil_defaultlib.fifo_w10_d2_A_shiftReg
-Compiling module xil_defaultlib.fifo_w10_d2_A
-Compiling module xil_defaultlib.fifo_w10_d3_A_shiftReg
-Compiling module xil_defaultlib.fifo_w10_d3_A
-Compiling module xil_defaultlib.fifo_w10_d5_A_shiftReg
-Compiling module xil_defaultlib.fifo_w10_d5_A
-Compiling module xil_defaultlib.start_for_Block_cAem_shiftReg
-Compiling module xil_defaultlib.start_for_Block_cAem
-Compiling module xil_defaultlib.start_for_Block_pBew_shiftReg
-Compiling module xil_defaultlib.start_for_Block_pBew
-Compiling module xil_defaultlib.huffman_encoding
-Compiling module xil_defaultlib.AESL_automem_symbol_histogram_va...
-Compiling module xil_defaultlib.AESL_automem_symbol_histogram_fr...
-Compiling module xil_defaultlib.AESL_automem_encoding_V
-Compiling module xil_defaultlib.AESL_deadlock_detect_unit(PROC_N...
-Compiling module xil_defaultlib.AESL_deadlock_detect_unit(PROC_N...
-Compiling module xil_defaultlib.AESL_deadlock_detect_unit(PROC_N...
-Compiling module xil_defaultlib.AESL_deadlock_detect_unit(PROC_N...
-Compiling module xil_defaultlib.AESL_deadlock_detect_unit(PROC_N...
-Compiling module xil_defaultlib.AESL_deadlock_detect_unit(PROC_N...
-Compiling module xil_defaultlib.AESL_deadlock_detect_unit(PROC_N...
-Compiling module xil_defaultlib.AESL_deadlock_detect_unit(PROC_N...
-Compiling module xil_defaultlib.AESL_deadlock_detect_unit(PROC_N...
-Compiling module xil_defaultlib.AESL_deadlock_detect_unit(PROC_N...
-Compiling module xil_defaultlib.AESL_deadlock_report_unit(PROC_N...
-Compiling module xil_defaultlib.AESL_deadlock_detector_1
-Compiling module xil_defaultlib.apatb_huffman_encoding_top
-Compiling module work.glbl
-Built simulation snapshot huffman_encoding
-
-****** Webtalk v2019.2 (64-bit)
-  **** SW Build 2708876 on Wed Nov  6 21:40:23 MST 2019
-  **** IP Build 2700528 on Thu Nov  7 00:09:20 MST 2019
-    ** Copyright 1986-2019 Xilinx, Inc. All Rights Reserved.
-
-source D:/Workspace/huffman_encoding_fpga/hls_huffman_encoding/solution1/sim/verilog/xsim.dir/huffman_encoding/webtalk/xsim_webtalk.tcl -notrace
-INFO: [Common 17-186] 'D:/Workspace/huffman_encoding_fpga/hls_huffman_encoding/solution1/sim/verilog/xsim.dir/huffman_encoding/webtalk/usage_statistics_ext_xsim.xml' has been successfully sent to Xilinx on Thu Nov 12 16:06:56 2020. For additional details about this file, please refer to the WebTalk help file at D:/Xilinx/Vivado/2019.2/doc/webtalk_introduction.html.
-INFO: [Common 17-206] Exiting Webtalk at Thu Nov 12 16:06:56 2020...
-
-****** xsim v2019.2 (64-bit)
-  **** SW Build 2708876 on Wed Nov  6 21:40:23 MST 2019
-  **** IP Build 2700528 on Thu Nov  7 00:09:20 MST 2019
-    ** Copyright 1986-2019 Xilinx, Inc. All Rights Reserved.
-
-source xsim.dir/huffman_encoding/xsim_script.tcl
-# xsim {huffman_encoding} -autoloadwcfg -tclbatch {huffman_encoding.tcl}
-Vivado Simulator 2019.2
-Time resolution is 1 ps
-source huffman_encoding.tcl
-## run all
-////////////////////////////////////////////////////////////////////////////////////
-// Inter-Transaction Progress: Completed Transaction / Total Transaction
-// Intra-Transaction Progress: Measured Latency / Latency Estimation * 100%
-//
-// RTL Simulation : "Inter-Transaction Progress" ["Intra-Transaction Progress"] @ "Simulation Time"
-////////////////////////////////////////////////////////////////////////////////////
-// RTL Simulation : 0 / 1 [n/a] @ "113000"
-// RTL Simulation : 1 / 1 [n/a] @ "55613000"
-////////////////////////////////////////////////////////////////////////////////////
-$finish called at time : 55632500 ps : File "D:/Workspace/huffman_encoding_fpga/hls_huffman_encoding/solution1/sim/verilog/huffman_encoding.autotb.v" Line 417
-## quit
-INFO: [Common 17-206] Exiting xsim at Thu Nov 12 16:07:28 2020...
-INFO: [COSIM 212-316] Starting C post checking ...
-Starting canonical Huffman encoding testbench
-Start reading file [huffman.random256.txt]
-
-***************Comparing against output data*************** 
-
-*******************************************
- PASS: The output matches the golden output
-*******************************************
-Ending canonical Huffman encoding testbench
-INFO: [COSIM 212-1000] *** C/RTL co-simulation finished: PASS ***
-INFO: [COSIM 212-211] II is measurable only when transaction number is greater than 1 in RTL simulation. Otherwise, they will be marked as all NA. If user wants to calculate them, please make sure there are at least 2 transactions in RTL simulation.
-INFO: [IMPL 213-8] Exporting RTL as a Vivado IP.
-INFO: [HLS 200-741] Implementing PIPO huffman_encoding_mb6_memcore using a single memory for all blocks
-INFO: [HLS 200-741] Implementing PIPO huffman_encoding_ncg_memcore using a single memory for all blocks
-INFO: [HLS 200-741] Implementing PIPO huffman_encoding_tde_memcore using a single memory for all blocks
-INFO: [HLS 200-741] Implementing PIPO huffman_encoding_wdI_memcore using a single memory for all blocks
-INFO: [HLS 200-740] Implementing PIPO huffman_encoding_xdS_memcore using a separate memory for each block
-INFO: [HLS 200-741] Implementing PIPO huffman_encoding_zec_memcore using a single memory for all blocks
-INFO: [HLS 200-741] Implementing PIPO huffman_encoding_mb6_memcore using a single memory for all blocks
-INFO: [HLS 200-741] Implementing PIPO huffman_encoding_ncg_memcore using a single memory for all blocks
-INFO: [HLS 200-741] Implementing PIPO huffman_encoding_tde_memcore using a single memory for all blocks
-INFO: [HLS 200-741] Implementing PIPO huffman_encoding_wdI_memcore using a single memory for all blocks
-INFO: [HLS 200-740] Implementing PIPO huffman_encoding_xdS_memcore using a separate memory for each block
-INFO: [HLS 200-741] Implementing PIPO huffman_encoding_zec_memcore using a single memory for all blocks
-
-****** Vivado v2019.2 (64-bit)
-  **** SW Build 2708876 on Wed Nov  6 21:40:23 MST 2019
-  **** IP Build 2700528 on Thu Nov  7 00:09:20 MST 2019
-    ** Copyright 1986-2019 Xilinx, Inc. All Rights Reserved.
-
-source run_ippack.tcl -notrace
-ipx::create_core: Time (s): cpu = 00:00:03 ; elapsed = 00:00:08 . Memory (MB): peak = 428.313 ; gain = 156.625
-INFO: [IP_Flow 19-234] Refreshing IP repositories
-INFO: [IP_Flow 19-1704] No user IP repositories specified
-INFO: [IP_Flow 19-2313] Loaded Vivado IP repository 'D:/Xilinx/Vivado/2019.2/data/ip'.
-INFO: [Common 17-206] Exiting Vivado at Thu Nov 12 16:08:31 2020...
-INFO: [HLS 200-112] Total elapsed time: 406.453 seconds; peak allocated memory: 295.704 MB.
-INFO: [Common 17-206] Exiting vivado_hls at Thu Nov 12 16:08:33 2020...
+INFO: [HLS 200-112] Total elapsed time: 132.434 seconds; peak allocated memory: 306.623 MB.

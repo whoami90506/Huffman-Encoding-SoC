@@ -5,7 +5,7 @@
 `timescale 1 ns / 1 ps
 module compute_bit_lengtkbM_ram (addr0, ce0, d0, we0, q0,  clk);
 
-parameter DWIDTH = 10;
+parameter DWIDTH = 9;
 parameter AWIDTH = 6;
 parameter MEM_SIZE = 64;
 
@@ -43,7 +43,7 @@ module compute_bit_lengtkbM(
     d0,
     q0);
 
-parameter DataWidth = 32'd10;
+parameter DataWidth = 32'd9;
 parameter AddressRange = 32'd64;
 parameter AddressWidth = 32'd6;
 input reset;

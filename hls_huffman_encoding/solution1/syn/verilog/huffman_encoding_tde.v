@@ -7,7 +7,7 @@
 
 module huffman_encoding_tde
 #(parameter
-    DataWidth    = 10,
+    DataWidth    = 9,
     AddressRange = 32,
     AddressWidth = 8,
     BufferCount  = 2,

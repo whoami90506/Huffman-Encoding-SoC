@@ -29,7 +29,7 @@ struct create_codeword : public sc_module {
     sc_in< sc_lv<5> > symbol_bits_V_q0;
     sc_out< sc_lv<6> > codeword_length_histogram_V_address0;
     sc_out< sc_logic > codeword_length_histogram_V_ce0;
-    sc_in< sc_lv<10> > codeword_length_histogram_V_q0;
+    sc_in< sc_lv<9> > codeword_length_histogram_V_q0;
     sc_out< sc_lv<8> > encoding_V_address0;
     sc_out< sc_logic > encoding_V_ce0;
     sc_out< sc_logic > encoding_V_we0;

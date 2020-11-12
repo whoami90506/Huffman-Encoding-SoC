@@ -23,13 +23,13 @@ struct Block_codeRepl1012_p : public sc_module {
     sc_in< sc_logic > ap_continue;
     sc_out< sc_logic > ap_idle;
     sc_out< sc_logic > ap_ready;
-    sc_in< sc_lv<10> > n_dout;
+    sc_in< sc_lv<9> > n_dout;
     sc_in< sc_logic > n_empty_n;
     sc_out< sc_logic > n_read;
-    sc_out< sc_lv<10> > n_out_din;
+    sc_out< sc_lv<9> > n_out_din;
     sc_in< sc_logic > n_out_full_n;
     sc_out< sc_logic > n_out_write;
-    sc_out< sc_lv<10> > ap_return;
+    sc_out< sc_lv<9> > ap_return;
 
 
     // Module declarations
@@ -46,13 +46,13 @@ struct Block_codeRepl1012_p : public sc_module {
     sc_signal< sc_logic > n_blk_n;
     sc_signal< sc_logic > n_out_blk_n;
     sc_signal< bool > ap_block_state1;
-    sc_signal< sc_lv<10> > ap_return_preg;
+    sc_signal< sc_lv<9> > ap_return_preg;
     sc_signal< sc_lv<1> > ap_NS_fsm;
     static const sc_logic ap_const_logic_1;
     static const sc_logic ap_const_logic_0;
     static const sc_lv<1> ap_ST_fsm_state1;
     static const sc_lv<32> ap_const_lv32_0;
-    static const sc_lv<10> ap_const_lv10_0;
+    static const sc_lv<9> ap_const_lv9_0;
     static const bool ap_const_boolean_1;
     // Thread declarations
     void thread_ap_clk_no_reset_();

@@ -8,7 +8,7 @@ use ieee.numeric_std.all;
 
 entity huffman_encoding_tde  is
     generic (
-        DataWidth    : integer := 10;
+        DataWidth    : integer := 9;
         AddressRange : integer := 32;
         AddressWidth : integer := 8;
         BufferCount  : integer := 2;
@@ -48,13 +48,13 @@ port (
     ce0      : in  std_logic;
     we0      : in  std_logic;
     address0 : in  std_logic_vector(8 downto 0);
-    d0       : in  std_logic_vector(9 downto 0);
-    q0       : out std_logic_vector(9 downto 0);
+    d0       : in  std_logic_vector(8 downto 0);
+    q0       : out std_logic_vector(8 downto 0);
     ce1      : in  std_logic;
     we1      : in  std_logic;
     address1 : in  std_logic_vector(8 downto 0);
-    d1       : in  std_logic_vector(9 downto 0);
-    q1       : out std_logic_vector(9 downto 0)
+    d1       : in  std_logic_vector(8 downto 0);
+    q1       : out std_logic_vector(8 downto 0)
 );
 end component;
 

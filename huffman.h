@@ -9,8 +9,8 @@ const static int TREE_DEPTH = 64;
 // maximum codeword tree length after rebalancing
 const static int MAX_CODEWORD_LENGTH = 27;
 
-// Should be log2(INPUT_SYMBOL_SIZE)
-const static int SYMBOL_BITS = 10;
+// Should be ceil(log2(INPUT_SYMBOL_SIZE+1))
+const static int SYMBOL_BITS = 9;
 
 // Should be log2(TREE_DEPTH)
 const static int TREE_DEPTH_BITS = 6;

@@ -50,7 +50,7 @@ output   symbol_bits_V_ce0;
 input  [4:0] symbol_bits_V_q0;
 output  [5:0] codeword_length_histogram_V_address0;
 output   codeword_length_histogram_V_ce0;
-input  [9:0] codeword_length_histogram_V_q0;
+input  [8:0] codeword_length_histogram_V_q0;
 output  [7:0] encoding_V_address0;
 output   encoding_V_ce0;
 output   encoding_V_we0;

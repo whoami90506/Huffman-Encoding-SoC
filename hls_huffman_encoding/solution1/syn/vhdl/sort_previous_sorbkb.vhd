@@ -10,7 +10,7 @@ use ieee.std_logic_unsigned.all;
 entity sort_previous_sorbkb_ram is 
     generic(
             MEM_TYPE    : string := "block"; 
-            DWIDTH     : integer := 10; 
+            DWIDTH     : integer := 9; 
             AWIDTH     : integer := 8; 
             MEM_SIZE    : integer := 256
     ); 
@@ -71,7 +71,7 @@ use IEEE.std_logic_1164.all;
 
 entity sort_previous_sorbkb is
     generic (
-        DataWidth : INTEGER := 10;
+        DataWidth : INTEGER := 9;
         AddressRange : INTEGER := 256;
         AddressWidth : INTEGER := 8);
     port (

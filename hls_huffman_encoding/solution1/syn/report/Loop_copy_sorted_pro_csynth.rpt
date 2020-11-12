@@ -3,7 +3,7 @@
 ================================================================
 == Vivado HLS Report for 'Loop_copy_sorted_pro'
 ================================================================
-* Date:           Thu Nov 12 16:04:42 2020
+* Date:           Thu Nov 12 17:49:41 2020
 
 * Version:        2019.2 (Build 2704478 on Wed Nov 06 22:10:23 MST 2019)
 * Project:        hls_huffman_encoding
@@ -25,24 +25,24 @@
 
 + Latency: 
     * Summary: 
-    +---------+---------+----------+-----------+-----+------+---------+
-    |  Latency (cycles) |  Latency (absolute)  |  Interval  | Pipeline|
-    |   min   |   max   |    min   |    max    | min |  max |   Type  |
-    +---------+---------+----------+-----------+-----+------+---------+
-    |        1|     3070| 5.000 ns | 15.350 us |    1|  3070|   none  |
-    +---------+---------+----------+-----------+-----+------+---------+
+    +---------+---------+----------+----------+-----+------+---------+
+    |  Latency (cycles) |  Latency (absolute) |  Interval  | Pipeline|
+    |   min   |   max   |    min   |    max   | min |  max |   Type  |
+    +---------+---------+----------+----------+-----+------+---------+
+    |        1|     1534| 5.000 ns | 7.670 us |    1|  1534|   none  |
+    +---------+---------+----------+----------+-----+------+---------+
 
     + Detail: 
         * Instance: 
         N/A
 
         * Loop: 
-        +---------------+---------+---------+----------+-----------+-----------+----------+----------+
-        |               |  Latency (cycles) | Iteration|  Initiation Interval  |   Trip   |          |
-        |   Loop Name   |   min   |   max   |  Latency |  achieved |   target  |   Count  | Pipelined|
-        +---------------+---------+---------+----------+-----------+-----------+----------+----------+
-        |- copy_sorted  |        0|     3069|         3|          -|          -| 0 ~ 1023 |    no    |
-        +---------------+---------+---------+----------+-----------+-----------+----------+----------+
+        +---------------+---------+---------+----------+-----------+-----------+---------+----------+
+        |               |  Latency (cycles) | Iteration|  Initiation Interval  |   Trip  |          |
+        |   Loop Name   |   min   |   max   |  Latency |  achieved |   target  |  Count  | Pipelined|
+        +---------------+---------+---------+----------+-----------+-----------+---------+----------+
+        |- copy_sorted  |        0|     1533|         3|          -|          -| 0 ~ 511 |    no    |
+        +---------------+---------+---------+----------+-----------+-----------+---------+----------+
 
 
 
@@ -54,14 +54,14 @@
 |       Name      | BRAM_18K| DSP48E|   FF   |  LUT  | URAM|
 +-----------------+---------+-------+--------+-------+-----+
 |DSP              |        -|      -|       -|      -|    -|
-|Expression       |        -|      -|       0|     31|    -|
+|Expression       |        -|      -|       0|     32|    -|
 |FIFO             |        -|      -|       -|      -|    -|
 |Instance         |        -|      -|       -|      -|    -|
 |Memory           |        -|      -|       -|      -|    -|
 |Multiplexer      |        -|      -|       -|     90|    -|
-|Register         |        -|      -|      88|      -|    -|
+|Register         |        -|      -|      83|      -|    -|
 +-----------------+---------+-------+--------+-------+-----+
-|Total            |        0|      0|      88|    121|    0|
+|Total            |        0|      0|      83|    122|    0|
 +-----------------+---------+-------+--------+-------+-----+
 |Available        |      280|    220|  106400|  53200|    0|
 +-----------------+---------+-------+--------+-------+-----+
@@ -85,12 +85,12 @@
     +---------------------+----------+-------+---+----+------------+------------+
     |    Variable Name    | Operation| DSP48E| FF| LUT| Bitwidth P0| Bitwidth P1|
     +---------------------+----------+-------+---+----+------------+------------+
-    |i_fu_158_p2          |     +    |      0|  0|  14|          10|           1|
-    |icmp_ln29_fu_153_p2  |   icmp   |      0|  0|  13|          10|          10|
+    |i_fu_196_p2          |     +    |      0|  0|  15|           9|           1|
+    |icmp_ln29_fu_191_p2  |   icmp   |      0|  0|  13|           9|           9|
     |ap_block_state1      |    or    |      0|  0|   2|           1|           1|
     |ap_block_state2      |    or    |      0|  0|   2|           1|           1|
     +---------------------+----------+-------+---+----+------------+------------+
-    |Total                |          |      0|  0|  31|          22|          13|
+    |Total                |          |      0|  0|  32|          20|          12|
     +---------------------+----------+-------+---+----+------------+------------+
 
     * Multiplexer: 
@@ -101,12 +101,12 @@
     |ap_done                    |   9|          2|    1|          2|
     |extLd_out_out1_blk_n       |   9|          2|    1|          2|
     |extLd_out_out_blk_n        |   9|          2|    1|          2|
-    |i_0_i_reg_142              |   9|          2|   10|         20|
+    |i_0_i_reg_180              |   9|          2|    9|         18|
     |n_blk_n                    |   9|          2|    1|          2|
     |real_start                 |   9|          2|    1|          2|
     |val_assign7_out_out_blk_n  |   9|          2|    1|          2|
     +---------------------------+----+-----------+-----+-----------+
-    |Total                      |  90|         19|   17|         37|
+    |Total                      |  90|         19|   16|         35|
     +---------------------------+----+-----------+-----+-----------+
 
     * Register: 
@@ -115,15 +115,15 @@
     +----------------------------+----+----+-----+-----------+
     |ap_CS_fsm                   |   4|   0|    4|          0|
     |ap_done_reg                 |   1|   0|    1|          0|
-    |i_0_i_reg_142               |  10|   0|   10|          0|
-    |i_reg_181                   |  10|   0|   10|          0|
-    |n_read_reg_170              |  10|   0|   10|          0|
-    |previous_frequency_reg_209  |  32|   0|   32|          0|
-    |sorted_0_load_reg_203       |  10|   0|   10|          0|
+    |i_0_i_reg_180               |   9|   0|    9|          0|
+    |i_reg_219                   |   9|   0|    9|          0|
+    |n_read_reg_208              |   9|   0|    9|          0|
+    |previous_frequency_reg_247  |  32|   0|   32|          0|
+    |sorted_0_load_reg_241       |   9|   0|    9|          0|
     |start_once_reg              |   1|   0|    1|          0|
-    |zext_ln30_reg_186           |  10|   0|   64|         54|
+    |zext_ln30_reg_224           |   9|   0|   64|         55|
     +----------------------------+----+----+-----+-----------+
-    |Total                       |  88|   0|  142|         54|
+    |Total                       |  83|   0|  138|         55|
     +----------------------------+----+----+-----+-----------+
 
 
@@ -145,16 +145,16 @@
 |ap_ready                           | out |    1| ap_ctrl_hs |   Loop_copy_sorted_pro   | return value |
 |start_out                          | out |    1| ap_ctrl_hs |   Loop_copy_sorted_pro   | return value |
 |start_write                        | out |    1| ap_ctrl_hs |   Loop_copy_sorted_pro   | return value |
-|n_dout                             |  in |   10|   ap_fifo  |             n            |    pointer   |
+|n_dout                             |  in |    9|   ap_fifo  |             n            |    pointer   |
 |n_empty_n                          |  in |    1|   ap_fifo  |             n            |    pointer   |
 |n_read                             | out |    1|   ap_fifo  |             n            |    pointer   |
 |sorted_0_address0                  | out |    8|  ap_memory |         sorted_0         |     array    |
 |sorted_0_ce0                       | out |    1|  ap_memory |         sorted_0         |     array    |
-|sorted_0_q0                        |  in |   10|  ap_memory |         sorted_0         |     array    |
+|sorted_0_q0                        |  in |    9|  ap_memory |         sorted_0         |     array    |
 |sorted_copy1_value_V_address0      | out |    8|  ap_memory |   sorted_copy1_value_V   |     array    |
 |sorted_copy1_value_V_ce0           | out |    1|  ap_memory |   sorted_copy1_value_V   |     array    |
 |sorted_copy1_value_V_we0           | out |    1|  ap_memory |   sorted_copy1_value_V   |     array    |
-|sorted_copy1_value_V_d0            | out |   10|  ap_memory |   sorted_copy1_value_V   |     array    |
+|sorted_copy1_value_V_d0            | out |    9|  ap_memory |   sorted_copy1_value_V   |     array    |
 |sorted_1_address0                  | out |    8|  ap_memory |         sorted_1         |     array    |
 |sorted_1_ce0                       | out |    1|  ap_memory |         sorted_1         |     array    |
 |sorted_1_q0                        |  in |   32|  ap_memory |         sorted_1         |     array    |
@@ -165,14 +165,14 @@
 |sorted_copy2_value_V_address0      | out |    8|  ap_memory |   sorted_copy2_value_V   |     array    |
 |sorted_copy2_value_V_ce0           | out |    1|  ap_memory |   sorted_copy2_value_V   |     array    |
 |sorted_copy2_value_V_we0           | out |    1|  ap_memory |   sorted_copy2_value_V   |     array    |
-|sorted_copy2_value_V_d0            | out |   10|  ap_memory |   sorted_copy2_value_V   |     array    |
-|val_assign7_out_out_din            | out |   10|   ap_fifo  |    val_assign7_out_out   |    pointer   |
+|sorted_copy2_value_V_d0            | out |    9|  ap_memory |   sorted_copy2_value_V   |     array    |
+|val_assign7_out_out_din            | out |    9|   ap_fifo  |    val_assign7_out_out   |    pointer   |
 |val_assign7_out_out_full_n         |  in |    1|   ap_fifo  |    val_assign7_out_out   |    pointer   |
 |val_assign7_out_out_write          | out |    1|   ap_fifo  |    val_assign7_out_out   |    pointer   |
-|extLd_out_out_din                  | out |   10|   ap_fifo  |       extLd_out_out      |    pointer   |
+|extLd_out_out_din                  | out |    9|   ap_fifo  |       extLd_out_out      |    pointer   |
 |extLd_out_out_full_n               |  in |    1|   ap_fifo  |       extLd_out_out      |    pointer   |
 |extLd_out_out_write                | out |    1|   ap_fifo  |       extLd_out_out      |    pointer   |
-|extLd_out_out1_din                 | out |   10|   ap_fifo  |      extLd_out_out1      |    pointer   |
+|extLd_out_out1_din                 | out |    9|   ap_fifo  |      extLd_out_out1      |    pointer   |
 |extLd_out_out1_full_n              |  in |    1|   ap_fifo  |      extLd_out_out1      |    pointer   |
 |extLd_out_out1_write               | out |    1|   ap_fifo  |      extLd_out_out1      |    pointer   |
 +-----------------------------------+-----+-----+------------+--------------------------+--------------+

@@ -18,13 +18,13 @@ port (
     ap_continue : IN STD_LOGIC;
     ap_idle : OUT STD_LOGIC;
     ap_ready : OUT STD_LOGIC;
-    n_dout : IN STD_LOGIC_VECTOR (9 downto 0);
+    n_dout : IN STD_LOGIC_VECTOR (8 downto 0);
     n_empty_n : IN STD_LOGIC;
     n_read : OUT STD_LOGIC;
-    n_out_din : OUT STD_LOGIC_VECTOR (9 downto 0);
+    n_out_din : OUT STD_LOGIC_VECTOR (8 downto 0);
     n_out_full_n : IN STD_LOGIC;
     n_out_write : OUT STD_LOGIC;
-    ap_return : OUT STD_LOGIC_VECTOR (9 downto 0) );
+    ap_return : OUT STD_LOGIC_VECTOR (8 downto 0) );
 end;
 
 
@@ -33,7 +33,7 @@ architecture behav of Block_codeRepl1012_p is
     constant ap_const_logic_0 : STD_LOGIC := '0';
     constant ap_ST_fsm_state1 : STD_LOGIC_VECTOR (0 downto 0) := "1";
     constant ap_const_lv32_0 : STD_LOGIC_VECTOR (31 downto 0) := "00000000000000000000000000000000";
-    constant ap_const_lv10_0 : STD_LOGIC_VECTOR (9 downto 0) := "0000000000";
+    constant ap_const_lv9_0 : STD_LOGIC_VECTOR (8 downto 0) := "000000000";
     constant ap_const_boolean_1 : BOOLEAN := true;
 
     signal ap_done_reg : STD_LOGIC := '0';
@@ -45,7 +45,7 @@ architecture behav of Block_codeRepl1012_p is
     signal n_blk_n : STD_LOGIC;
     signal n_out_blk_n : STD_LOGIC;
     signal ap_block_state1 : BOOLEAN;
-    signal ap_return_preg : STD_LOGIC_VECTOR (9 downto 0) := "0000000000";
+    signal ap_return_preg : STD_LOGIC_VECTOR (8 downto 0) := "000000000";
     signal ap_NS_fsm : STD_LOGIC_VECTOR (0 downto 0);
 
 
@@ -86,7 +86,7 @@ begin
     begin
         if (ap_clk'event and ap_clk =  '1') then
             if (ap_rst = '1') then
-                ap_return_preg <= ap_const_lv10_0;
+                ap_return_preg <= ap_const_lv9_0;
             else
                 if ((not(((ap_start = ap_const_logic_0) or (n_out_full_n = ap_const_logic_0) or (n_empty_n = ap_const_logic_0) or (ap_done_reg = ap_const_logic_1))) and (ap_const_logic_1 = ap_CS_fsm_state1))) then 
                     ap_return_preg <= n_dout;

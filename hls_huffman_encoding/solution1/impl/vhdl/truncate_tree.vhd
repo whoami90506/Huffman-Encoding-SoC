@@ -20,21 +20,21 @@ port (
     ap_ready : OUT STD_LOGIC;
     input_length_histogram_V_address0 : OUT STD_LOGIC_VECTOR (5 downto 0);
     input_length_histogram_V_ce0 : OUT STD_LOGIC;
-    input_length_histogram_V_q0 : IN STD_LOGIC_VECTOR (9 downto 0);
+    input_length_histogram_V_q0 : IN STD_LOGIC_VECTOR (8 downto 0);
     output_length_histogram1_V_address0 : OUT STD_LOGIC_VECTOR (5 downto 0);
     output_length_histogram1_V_ce0 : OUT STD_LOGIC;
     output_length_histogram1_V_we0 : OUT STD_LOGIC;
-    output_length_histogram1_V_d0 : OUT STD_LOGIC_VECTOR (9 downto 0);
-    output_length_histogram1_V_q0 : IN STD_LOGIC_VECTOR (9 downto 0);
+    output_length_histogram1_V_d0 : OUT STD_LOGIC_VECTOR (8 downto 0);
+    output_length_histogram1_V_q0 : IN STD_LOGIC_VECTOR (8 downto 0);
     output_length_histogram1_V_address1 : OUT STD_LOGIC_VECTOR (5 downto 0);
     output_length_histogram1_V_ce1 : OUT STD_LOGIC;
     output_length_histogram1_V_we1 : OUT STD_LOGIC;
-    output_length_histogram1_V_d1 : OUT STD_LOGIC_VECTOR (9 downto 0);
-    output_length_histogram1_V_q1 : IN STD_LOGIC_VECTOR (9 downto 0);
+    output_length_histogram1_V_d1 : OUT STD_LOGIC_VECTOR (8 downto 0);
+    output_length_histogram1_V_q1 : IN STD_LOGIC_VECTOR (8 downto 0);
     output_length_histogram2_V_address0 : OUT STD_LOGIC_VECTOR (5 downto 0);
     output_length_histogram2_V_ce0 : OUT STD_LOGIC;
     output_length_histogram2_V_we0 : OUT STD_LOGIC;
-    output_length_histogram2_V_d0 : OUT STD_LOGIC_VECTOR (9 downto 0) );
+    output_length_histogram2_V_d0 : OUT STD_LOGIC_VECTOR (8 downto 0) );
 end;
 
 
@@ -76,21 +76,21 @@ architecture behav of truncate_tree is
     constant ap_const_lv32_3 : STD_LOGIC_VECTOR (31 downto 0) := "00000000000000000000000000000011";
     constant ap_const_lv6_3F : STD_LOGIC_VECTOR (5 downto 0) := "111111";
     constant ap_const_lv32_8 : STD_LOGIC_VECTOR (31 downto 0) := "00000000000000000000000000001000";
-    constant ap_const_lv10_1B : STD_LOGIC_VECTOR (9 downto 0) := "0000011011";
+    constant ap_const_lv9_1B : STD_LOGIC_VECTOR (8 downto 0) := "000011011";
     constant ap_const_lv32_11 : STD_LOGIC_VECTOR (31 downto 0) := "00000000000000000000000000010001";
     constant ap_const_lv32_5 : STD_LOGIC_VECTOR (31 downto 0) := "00000000000000000000000000000101";
     constant ap_const_lv32_B : STD_LOGIC_VECTOR (31 downto 0) := "00000000000000000000000000001011";
     constant ap_const_lv32_C : STD_LOGIC_VECTOR (31 downto 0) := "00000000000000000000000000001100";
     constant ap_const_lv32_E : STD_LOGIC_VECTOR (31 downto 0) := "00000000000000000000000000001110";
-    constant ap_const_lv10_0 : STD_LOGIC_VECTOR (9 downto 0) := "0000000000";
+    constant ap_const_lv9_0 : STD_LOGIC_VECTOR (8 downto 0) := "000000000";
     constant ap_const_lv7_40 : STD_LOGIC_VECTOR (6 downto 0) := "1000000";
     constant ap_const_lv7_1 : STD_LOGIC_VECTOR (6 downto 0) := "0000001";
     constant ap_const_lv6_1B : STD_LOGIC_VECTOR (5 downto 0) := "011011";
-    constant ap_const_lv10_3FF : STD_LOGIC_VECTOR (9 downto 0) := "1111111111";
-    constant ap_const_lv11_1 : STD_LOGIC_VECTOR (10 downto 0) := "00000000001";
+    constant ap_const_lv9_1FF : STD_LOGIC_VECTOR (8 downto 0) := "111111111";
     constant ap_const_lv10_1 : STD_LOGIC_VECTOR (9 downto 0) := "0000000001";
-    constant ap_const_lv10_2 : STD_LOGIC_VECTOR (9 downto 0) := "0000000010";
-    constant ap_const_lv10_3FE : STD_LOGIC_VECTOR (9 downto 0) := "1111111110";
+    constant ap_const_lv9_1 : STD_LOGIC_VECTOR (8 downto 0) := "000000001";
+    constant ap_const_lv9_2 : STD_LOGIC_VECTOR (8 downto 0) := "000000010";
+    constant ap_const_lv9_1FE : STD_LOGIC_VECTOR (8 downto 0) := "111111110";
     constant ap_const_boolean_1 : BOOLEAN := true;
 
     signal ap_done_reg : STD_LOGIC := '0';
@@ -99,14 +99,14 @@ architecture behav of truncate_tree is
     attribute fsm_encoding of ap_CS_fsm : signal is "none";
     signal ap_CS_fsm_state1 : STD_LOGIC;
     attribute fsm_encoding of ap_CS_fsm_state1 : signal is "none";
-    signal reg_206 : STD_LOGIC_VECTOR (9 downto 0);
+    signal reg_206 : STD_LOGIC_VECTOR (8 downto 0);
     signal ap_CS_fsm_state11 : STD_LOGIC;
     attribute fsm_encoding of ap_CS_fsm_state11 : signal is "none";
     signal ap_CS_fsm_state14 : STD_LOGIC;
     attribute fsm_encoding of ap_CS_fsm_state14 : signal is "none";
     signal ap_CS_fsm_state17 : STD_LOGIC;
     attribute fsm_encoding of ap_CS_fsm_state17 : signal is "none";
-    signal reg_212 : STD_LOGIC_VECTOR (9 downto 0);
+    signal reg_212 : STD_LOGIC_VECTOR (8 downto 0);
     signal i_fu_223_p2 : STD_LOGIC_VECTOR (6 downto 0);
     signal i_reg_361 : STD_LOGIC_VECTOR (6 downto 0);
     signal ap_CS_fsm_state2 : STD_LOGIC;
@@ -114,7 +114,7 @@ architecture behav of truncate_tree is
     signal zext_ln11_fu_229_p1 : STD_LOGIC_VECTOR (63 downto 0);
     signal zext_ln11_reg_366 : STD_LOGIC_VECTOR (63 downto 0);
     signal icmp_ln10_fu_217_p2 : STD_LOGIC_VECTOR (0 downto 0);
-    signal input_length_histogr_1_reg_384 : STD_LOGIC_VECTOR (9 downto 0);
+    signal input_length_histogr_1_reg_384 : STD_LOGIC_VECTOR (8 downto 0);
     signal ap_CS_fsm_state3 : STD_LOGIC;
     attribute fsm_encoding of ap_CS_fsm_state3 : signal is "none";
     signal output_length_histog_1_reg_392 : STD_LOGIC_VECTOR (5 downto 0);
@@ -129,8 +129,8 @@ architecture behav of truncate_tree is
     signal ap_CS_fsm_state7 : STD_LOGIC;
     attribute fsm_encoding of ap_CS_fsm_state7 : signal is "none";
     signal grp_fu_197_p2 : STD_LOGIC_VECTOR (0 downto 0);
-    signal j_V_fu_267_p2 : STD_LOGIC_VECTOR (9 downto 0);
-    signal j_V_reg_414 : STD_LOGIC_VECTOR (9 downto 0);
+    signal j_V_fu_267_p2 : STD_LOGIC_VECTOR (8 downto 0);
+    signal j_V_reg_414 : STD_LOGIC_VECTOR (8 downto 0);
     signal ap_CS_fsm_state8 : STD_LOGIC;
     attribute fsm_encoding of ap_CS_fsm_state8 : signal is "none";
     signal output_length_histog_6_reg_428 : STD_LOGIC_VECTOR (5 downto 0);
@@ -149,7 +149,7 @@ architecture behav of truncate_tree is
     signal ap_CS_fsm_state4 : STD_LOGIC;
     attribute fsm_encoding of ap_CS_fsm_state4 : signal is "none";
     signal i1_0_reg_164 : STD_LOGIC_VECTOR (5 downto 0);
-    signal t_V_reg_175 : STD_LOGIC_VECTOR (9 downto 0);
+    signal t_V_reg_175 : STD_LOGIC_VECTOR (8 downto 0);
     signal ap_CS_fsm_state9 : STD_LOGIC;
     attribute fsm_encoding of ap_CS_fsm_state9 : signal is "none";
     signal i2_0_reg_186 : STD_LOGIC_VECTOR (6 downto 0);
@@ -160,22 +160,22 @@ architecture behav of truncate_tree is
     signal zext_ln544_fu_273_p1 : STD_LOGIC_VECTOR (63 downto 0);
     signal zext_ln544_1_fu_282_p1 : STD_LOGIC_VECTOR (63 downto 0);
     signal zext_ln544_2_fu_297_p1 : STD_LOGIC_VECTOR (63 downto 0);
-    signal j_V_2_fu_60 : STD_LOGIC_VECTOR (9 downto 0);
-    signal j_V_3_fu_302_p2 : STD_LOGIC_VECTOR (9 downto 0);
+    signal j_V_2_fu_60 : STD_LOGIC_VECTOR (8 downto 0);
+    signal j_V_3_fu_302_p2 : STD_LOGIC_VECTOR (8 downto 0);
     signal ap_CS_fsm_state6 : STD_LOGIC;
     attribute fsm_encoding of ap_CS_fsm_state6 : signal is "none";
     signal ap_CS_fsm_state12 : STD_LOGIC;
     attribute fsm_encoding of ap_CS_fsm_state12 : signal is "none";
-    signal add_ln701_fu_313_p2 : STD_LOGIC_VECTOR (9 downto 0);
-    signal add_ln700_fu_320_p2 : STD_LOGIC_VECTOR (9 downto 0);
+    signal add_ln701_fu_313_p2 : STD_LOGIC_VECTOR (8 downto 0);
+    signal add_ln700_fu_320_p2 : STD_LOGIC_VECTOR (8 downto 0);
     signal ap_CS_fsm_state13 : STD_LOGIC;
     attribute fsm_encoding of ap_CS_fsm_state13 : signal is "none";
     signal ap_CS_fsm_state15 : STD_LOGIC;
     attribute fsm_encoding of ap_CS_fsm_state15 : signal is "none";
-    signal add_ln700_1_fu_327_p2 : STD_LOGIC_VECTOR (9 downto 0);
-    signal add_ln701_1_fu_334_p2 : STD_LOGIC_VECTOR (9 downto 0);
-    signal zext_ln215_fu_287_p1 : STD_LOGIC_VECTOR (10 downto 0);
-    signal ret_V_fu_291_p2 : STD_LOGIC_VECTOR (10 downto 0);
+    signal add_ln700_1_fu_327_p2 : STD_LOGIC_VECTOR (8 downto 0);
+    signal add_ln701_1_fu_334_p2 : STD_LOGIC_VECTOR (8 downto 0);
+    signal zext_ln215_fu_287_p1 : STD_LOGIC_VECTOR (9 downto 0);
+    signal ret_V_fu_291_p2 : STD_LOGIC_VECTOR (9 downto 0);
     signal ap_NS_fsm : STD_LOGIC_VECTOR (17 downto 0);
 
 
@@ -253,7 +253,7 @@ begin
             elsif (((grp_fu_197_p2 = ap_const_lv1_0) and (ap_const_logic_1 = ap_CS_fsm_state9) and (icmp_ln879_reg_410 = ap_const_lv1_1))) then 
                 j_V_2_fu_60 <= j_V_reg_414;
             elsif (((icmp_ln10_fu_217_p2 = ap_const_lv1_1) and (ap_const_logic_1 = ap_CS_fsm_state2))) then 
-                j_V_2_fu_60 <= ap_const_lv10_1B;
+                j_V_2_fu_60 <= ap_const_lv9_1B;
             end if; 
         end if;
     end process;
@@ -284,7 +284,7 @@ begin
     begin
         if (ap_clk'event and ap_clk = '1') then
             if (((grp_fu_197_p2 = ap_const_lv1_0) and (ap_const_logic_1 = ap_CS_fsm_state7) and (icmp_ln879_fu_261_p2 = ap_const_lv1_1))) then 
-                t_V_reg_175 <= ap_const_lv10_1B;
+                t_V_reg_175 <= ap_const_lv9_1B;
             elsif (((ap_const_logic_1 = ap_CS_fsm_state9) and (grp_fu_197_p2 = ap_const_lv1_1) and (icmp_ln879_reg_410 = ap_const_lv1_1))) then 
                 t_V_reg_175 <= j_V_reg_414;
             end if; 
@@ -437,10 +437,10 @@ begin
                 ap_NS_fsm <= "XXXXXXXXXXXXXXXXXX";
         end case;
     end process;
-    add_ln700_1_fu_327_p2 <= std_logic_vector(unsigned(reg_206) + unsigned(ap_const_lv10_1));
-    add_ln700_fu_320_p2 <= std_logic_vector(unsigned(reg_212) + unsigned(ap_const_lv10_2));
-    add_ln701_1_fu_334_p2 <= std_logic_vector(unsigned(reg_212) + unsigned(ap_const_lv10_3FE));
-    add_ln701_fu_313_p2 <= std_logic_vector(unsigned(reg_206) + unsigned(ap_const_lv10_3FF));
+    add_ln700_1_fu_327_p2 <= std_logic_vector(unsigned(reg_206) + unsigned(ap_const_lv9_1));
+    add_ln700_fu_320_p2 <= std_logic_vector(unsigned(reg_212) + unsigned(ap_const_lv9_2));
+    add_ln701_1_fu_334_p2 <= std_logic_vector(unsigned(reg_212) + unsigned(ap_const_lv9_1FE));
+    add_ln701_fu_313_p2 <= std_logic_vector(unsigned(reg_206) + unsigned(ap_const_lv9_1FF));
     ap_CS_fsm_state1 <= ap_CS_fsm(0);
     ap_CS_fsm_state10 <= ap_CS_fsm(9);
     ap_CS_fsm_state11 <= ap_CS_fsm(10);
@@ -495,14 +495,14 @@ begin
         end if; 
     end process;
 
-    grp_fu_197_p2 <= "1" when (output_length_histogram1_V_q0 = ap_const_lv10_0) else "0";
+    grp_fu_197_p2 <= "1" when (output_length_histogram1_V_q0 = ap_const_lv9_0) else "0";
     i_1_fu_250_p2 <= std_logic_vector(unsigned(i1_0_reg_164) + unsigned(ap_const_lv6_3F));
     i_2_fu_347_p2 <= std_logic_vector(unsigned(i2_0_reg_186) + unsigned(ap_const_lv7_1));
     i_fu_223_p2 <= std_logic_vector(unsigned(i_0_reg_153) + unsigned(ap_const_lv7_1));
     icmp_ln10_fu_217_p2 <= "1" when (i_0_reg_153 = ap_const_lv7_40) else "0";
     icmp_ln16_fu_239_p2 <= "1" when (unsigned(i1_0_reg_164) > unsigned(ap_const_lv6_1B)) else "0";
     icmp_ln44_fu_341_p2 <= "1" when (i2_0_reg_186 = ap_const_lv7_40) else "0";
-    icmp_ln879_fu_261_p2 <= "1" when (j_V_2_fu_60 = ap_const_lv10_1B) else "0";
+    icmp_ln879_fu_261_p2 <= "1" when (j_V_2_fu_60 = ap_const_lv9_1B) else "0";
     input_length_histogram_V_address0 <= zext_ln11_fu_229_p1(6 - 1 downto 0);
 
     input_length_histogram_V_ce0_assign_proc : process(ap_CS_fsm_state2)
@@ -514,8 +514,8 @@ begin
         end if; 
     end process;
 
-    j_V_3_fu_302_p2 <= std_logic_vector(unsigned(j_V_2_fu_60) + unsigned(ap_const_lv10_1));
-    j_V_fu_267_p2 <= std_logic_vector(unsigned(t_V_reg_175) + unsigned(ap_const_lv10_3FF));
+    j_V_3_fu_302_p2 <= std_logic_vector(unsigned(j_V_2_fu_60) + unsigned(ap_const_lv9_1));
+    j_V_fu_267_p2 <= std_logic_vector(unsigned(t_V_reg_175) + unsigned(ap_const_lv9_1FF));
 
     output_length_histogram1_V_address0_assign_proc : process(zext_ln11_reg_366, output_length_histog_1_reg_392, ap_CS_fsm_state8, ap_CS_fsm_state10, output_length_histog_8_reg_434, ap_CS_fsm_state4, zext_ln544_fu_273_p1, zext_ln544_1_fu_282_p1, ap_CS_fsm_state6, ap_CS_fsm_state12, ap_CS_fsm_state13, ap_CS_fsm_state15)
     begin
@@ -580,7 +580,7 @@ begin
         elsif ((ap_const_logic_1 = ap_CS_fsm_state4)) then 
             output_length_histogram1_V_d0 <= input_length_histogr_1_reg_384;
         else 
-            output_length_histogram1_V_d0 <= "XXXXXXXXXX";
+            output_length_histogram1_V_d0 <= "XXXXXXXXX";
         end if; 
     end process;
 
@@ -592,7 +592,7 @@ begin
         elsif ((ap_const_logic_1 = ap_CS_fsm_state12)) then 
             output_length_histogram1_V_d1 <= add_ln701_fu_313_p2;
         else 
-            output_length_histogram1_V_d1 <= "XXXXXXXXXX";
+            output_length_histogram1_V_d1 <= "XXXXXXXXX";
         end if; 
     end process;
 
@@ -638,10 +638,10 @@ begin
         end if; 
     end process;
 
-    ret_V_fu_291_p2 <= std_logic_vector(unsigned(zext_ln215_fu_287_p1) + unsigned(ap_const_lv11_1));
+    ret_V_fu_291_p2 <= std_logic_vector(unsigned(zext_ln215_fu_287_p1) + unsigned(ap_const_lv10_1));
     zext_ln11_fu_229_p1 <= std_logic_vector(IEEE.numeric_std.resize(unsigned(i_0_reg_153),64));
     zext_ln19_fu_245_p1 <= std_logic_vector(IEEE.numeric_std.resize(unsigned(i1_0_reg_164),64));
-    zext_ln215_fu_287_p1 <= std_logic_vector(IEEE.numeric_std.resize(unsigned(j_V_2_fu_60),11));
+    zext_ln215_fu_287_p1 <= std_logic_vector(IEEE.numeric_std.resize(unsigned(j_V_2_fu_60),10));
     zext_ln32_fu_256_p1 <= std_logic_vector(IEEE.numeric_std.resize(unsigned(i_1_fu_250_p2),64));
     zext_ln45_fu_353_p1 <= std_logic_vector(IEEE.numeric_std.resize(unsigned(i2_0_reg_186),64));
     zext_ln544_1_fu_282_p1 <= std_logic_vector(IEEE.numeric_std.resize(unsigned(j_V_2_fu_60),64));

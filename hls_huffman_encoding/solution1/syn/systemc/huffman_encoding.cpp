@@ -15,12 +15,12 @@ namespace ap_rtl {
 const sc_logic huffman_encoding::ap_const_logic_1 = sc_dt::Log_1;
 const sc_lv<8> huffman_encoding::ap_const_lv8_0 = "00000000";
 const sc_logic huffman_encoding::ap_const_logic_0 = sc_dt::Log_0;
-const sc_lv<10> huffman_encoding::ap_const_lv10_0 = "0000000000";
+const sc_lv<9> huffman_encoding::ap_const_lv9_0 = "000000000";
 const sc_lv<32> huffman_encoding::ap_const_lv32_0 = "00000000000000000000000000000000";
 const sc_lv<5> huffman_encoding::ap_const_lv5_0 = "00000";
 const sc_lv<6> huffman_encoding::ap_const_lv6_0 = "000000";
 const sc_lv<6> huffman_encoding::ap_const_lv6_1 = "1";
-const sc_lv<10> huffman_encoding::ap_const_lv10_1 = "1";
+const sc_lv<9> huffman_encoding::ap_const_lv9_1 = "1";
 const bool huffman_encoding::ap_const_boolean_1 = true;
 
 huffman_encoding::huffman_encoding(sc_module_name name) : sc_module(name), mVcdFile(0) {
@@ -540,7 +540,7 @@ huffman_encoding::huffman_encoding(sc_module_name name) : sc_module(name), mVcdF
     Block_proc_U0->extLd_loc_read(Block_proc_U0_extLd_loc_read);
     Block_proc_U0->num_nonzero_symbols(Block_proc_U0_num_nonzero_symbols);
     Block_proc_U0->num_nonzero_symbols_ap_vld(Block_proc_U0_num_nonzero_symbols_ap_vld);
-    n_c_U = new fifo_w10_d2_A("n_c_U");
+    n_c_U = new fifo_w9_d2_A("n_c_U");
     n_c_U->clk(ap_clk);
     n_c_U->reset(ap_rst);
     n_c_U->if_read_ce(ap_var_for_const2);
@@ -551,7 +551,7 @@ huffman_encoding::huffman_encoding(sc_module_name name) : sc_module(name), mVcdF
     n_c_U->if_dout(n_c_dout);
     n_c_U->if_empty_n(n_c_empty_n);
     n_c_U->if_read(Block_codeRepl1012_p_U0_n_read);
-    n_c20_U = new fifo_w10_d3_A("n_c20_U");
+    n_c20_U = new fifo_w9_d3_A("n_c20_U");
     n_c20_U->clk(ap_clk);
     n_c20_U->reset(ap_rst);
     n_c20_U->if_read_ce(ap_var_for_const2);
@@ -562,7 +562,7 @@ huffman_encoding::huffman_encoding(sc_module_name name) : sc_module(name), mVcdF
     n_c20_U->if_dout(n_c20_dout);
     n_c20_U->if_empty_n(n_c20_empty_n);
     n_c20_U->if_read(Loop_copy_sorted_pro_U0_n_read);
-    extLd9_loc_channel_U = new fifo_w10_d2_A("extLd9_loc_channel_U");
+    extLd9_loc_channel_U = new fifo_w9_d2_A("extLd9_loc_channel_U");
     extLd9_loc_channel_U->clk(ap_clk);
     extLd9_loc_channel_U->reset(ap_rst);
     extLd9_loc_channel_U->if_read_ce(ap_var_for_const2);
@@ -573,7 +573,7 @@ huffman_encoding::huffman_encoding(sc_module_name name) : sc_module(name), mVcdF
     extLd9_loc_channel_U->if_dout(extLd9_loc_channel_dout);
     extLd9_loc_channel_U->if_empty_n(extLd9_loc_channel_empty_n);
     extLd9_loc_channel_U->if_read(sort_U0_ap_ready);
-    val_assign7_loc_c_U = new fifo_w10_d5_A("val_assign7_loc_c_U");
+    val_assign7_loc_c_U = new fifo_w9_d5_A("val_assign7_loc_c_U");
     val_assign7_loc_c_U->clk(ap_clk);
     val_assign7_loc_c_U->reset(ap_rst);
     val_assign7_loc_c_U->if_read_ce(ap_var_for_const2);
@@ -584,7 +584,7 @@ huffman_encoding::huffman_encoding(sc_module_name name) : sc_module(name), mVcdF
     val_assign7_loc_c_U->if_dout(val_assign7_loc_c_dout);
     val_assign7_loc_c_U->if_empty_n(val_assign7_loc_c_empty_n);
     val_assign7_loc_c_U->if_read(canonize_tree_U0_val_assign7_loc_read);
-    extLd_loc_c_U = new fifo_w10_d2_A("extLd_loc_c_U");
+    extLd_loc_c_U = new fifo_w9_d2_A("extLd_loc_c_U");
     extLd_loc_c_U->clk(ap_clk);
     extLd_loc_c_U->reset(ap_rst);
     extLd_loc_c_U->if_read_ce(ap_var_for_const2);
@@ -595,7 +595,7 @@ huffman_encoding::huffman_encoding(sc_module_name name) : sc_module(name), mVcdF
     extLd_loc_c_U->if_dout(extLd_loc_c_dout);
     extLd_loc_c_U->if_empty_n(extLd_loc_c_empty_n);
     extLd_loc_c_U->if_read(create_tree_U0_extLd_loc_read);
-    extLd_loc_c21_U = new fifo_w10_d2_A("extLd_loc_c21_U");
+    extLd_loc_c21_U = new fifo_w9_d2_A("extLd_loc_c21_U");
     extLd_loc_c21_U->clk(ap_clk);
     extLd_loc_c21_U->reset(ap_rst);
     extLd_loc_c21_U->if_read_ce(ap_var_for_const2);
@@ -606,7 +606,7 @@ huffman_encoding::huffman_encoding(sc_module_name name) : sc_module(name), mVcdF
     extLd_loc_c21_U->if_dout(extLd_loc_c21_dout);
     extLd_loc_c21_U->if_empty_n(extLd_loc_c21_empty_n);
     extLd_loc_c21_U->if_read(Block_proc_U0_extLd_loc_read);
-    extLd_loc_c22_U = new fifo_w10_d2_A("extLd_loc_c22_U");
+    extLd_loc_c22_U = new fifo_w9_d2_A("extLd_loc_c22_U");
     extLd_loc_c22_U->clk(ap_clk);
     extLd_loc_c22_U->reset(ap_rst);
     extLd_loc_c22_U->if_read_ce(ap_var_for_const2);
@@ -1483,7 +1483,7 @@ void huffman_encoding::thread_ap_var_for_const0() {
 }
 
 void huffman_encoding::thread_ap_var_for_const1() {
-    ap_var_for_const1 = ap_const_lv10_0;
+    ap_var_for_const1 = ap_const_lv9_0;
 }
 
 void huffman_encoding::thread_ap_var_for_const3() {
@@ -2065,11 +2065,11 @@ void huffman_encoding::thread_symbol_histogram_value_V_ce1() {
 }
 
 void huffman_encoding::thread_symbol_histogram_value_V_d0() {
-    symbol_histogram_value_V_d0 = ap_const_lv10_0;
+    symbol_histogram_value_V_d0 = ap_const_lv9_0;
 }
 
 void huffman_encoding::thread_symbol_histogram_value_V_d1() {
-    symbol_histogram_value_V_d1 = ap_const_lv10_0;
+    symbol_histogram_value_V_d1 = ap_const_lv9_0;
 }
 
 void huffman_encoding::thread_symbol_histogram_value_V_we0() {
