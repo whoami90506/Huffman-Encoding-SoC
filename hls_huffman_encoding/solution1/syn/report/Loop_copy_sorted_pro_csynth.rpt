@@ -3,7 +3,7 @@
 ================================================================
 == Vivado HLS Report for 'Loop_copy_sorted_pro'
 ================================================================
-* Date:           Thu Nov 12 22:57:40 2020
+* Date:           Thu Nov 12 23:53:42 2020
 
 * Version:        2019.2 (Build 2704478 on Wed Nov 06 22:10:23 MST 2019)
 * Project:        hls_huffman_encoding
@@ -54,14 +54,14 @@
 |       Name      | BRAM_18K| DSP48E|   FF   |  LUT  | URAM|
 +-----------------+---------+-------+--------+-------+-----+
 |DSP              |        -|      -|       -|      -|    -|
-|Expression       |        -|      -|       0|     32|    -|
+|Expression       |        -|      -|       0|     34|    -|
 |FIFO             |        -|      -|       -|      -|    -|
 |Instance         |        -|      -|       -|      -|    -|
 |Memory           |        -|      -|       -|      -|    -|
-|Multiplexer      |        -|      -|       -|     90|    -|
+|Multiplexer      |        -|      -|       -|    108|    -|
 |Register         |        -|      -|      83|      -|    -|
 +-----------------+---------+-------+--------+-------+-----+
-|Total            |        0|      0|      83|    122|    0|
+|Total            |        0|      0|      83|    142|    0|
 +-----------------+---------+-------+--------+-------+-----+
 |Available        |      280|    220|  106400|  53200|    0|
 +-----------------+---------+-------+--------+-------+-----+
@@ -85,12 +85,13 @@
     +---------------------+----------+-------+---+----+------------+------------+
     |    Variable Name    | Operation| DSP48E| FF| LUT| Bitwidth P0| Bitwidth P1|
     +---------------------+----------+-------+---+----+------------+------------+
-    |i_fu_196_p2          |     +    |      0|  0|  15|           9|           1|
-    |icmp_ln29_fu_191_p2  |   icmp   |      0|  0|  13|           9|           9|
+    |i_fu_212_p2          |     +    |      0|  0|  15|           9|           1|
+    |icmp_ln29_fu_207_p2  |   icmp   |      0|  0|  13|           9|           9|
     |ap_block_state1      |    or    |      0|  0|   2|           1|           1|
     |ap_block_state2      |    or    |      0|  0|   2|           1|           1|
+    |ap_block_state4      |    or    |      0|  0|   2|           1|           1|
     +---------------------+----------+-------+---+----+------------+------------+
-    |Total                |          |      0|  0|  32|          20|          12|
+    |Total                |          |      0|  0|  34|          21|          13|
     +---------------------+----------+-------+---+----+------------+------------+
 
     * Multiplexer: 
@@ -101,12 +102,14 @@
     |ap_done                    |   9|          2|    1|          2|
     |extLd_out_out1_blk_n       |   9|          2|    1|          2|
     |extLd_out_out_blk_n        |   9|          2|    1|          2|
-    |i_0_i_reg_180              |   9|          2|    9|         18|
+    |i_0_i_reg_196              |   9|          2|    9|         18|
     |n_blk_n                    |   9|          2|    1|          2|
     |real_start                 |   9|          2|    1|          2|
+    |sorted_copy1_0_blk_n       |   9|          2|    1|          2|
+    |sorted_copy1_1_blk_n       |   9|          2|    1|          2|
     |val_assign7_out_out_blk_n  |   9|          2|    1|          2|
     +---------------------------+----+-----------+-----+-----------+
-    |Total                      |  90|         19|   16|         35|
+    |Total                      | 108|         23|   18|         39|
     +---------------------------+----+-----------+-----+-----------+
 
     * Register: 
@@ -115,13 +118,13 @@
     +----------------------------+----+----+-----+-----------+
     |ap_CS_fsm                   |   4|   0|    4|          0|
     |ap_done_reg                 |   1|   0|    1|          0|
-    |i_0_i_reg_180               |   9|   0|    9|          0|
-    |i_reg_219                   |   9|   0|    9|          0|
-    |n_read_reg_208              |   9|   0|    9|          0|
-    |previous_frequency_reg_247  |  32|   0|   32|          0|
-    |sorted_0_load_reg_241       |   9|   0|    9|          0|
+    |i_0_i_reg_196               |   9|   0|    9|          0|
+    |i_reg_235                   |   9|   0|    9|          0|
+    |n_read_reg_224              |   9|   0|    9|          0|
+    |previous_frequency_reg_261  |  32|   0|   32|          0|
+    |sorted_0_load_reg_255       |   9|   0|    9|          0|
     |start_once_reg              |   1|   0|    1|          0|
-    |zext_ln30_reg_224           |   9|   0|   64|         55|
+    |zext_ln30_reg_240           |   9|   0|   64|         55|
     +----------------------------+----+----+-----+-----------+
     |Total                       |  83|   0|  138|         55|
     +----------------------------+----+----+-----+-----------+
@@ -132,48 +135,46 @@
 == Interface
 ================================================================
 * Summary: 
-+-----------------------------------+-----+-----+------------+--------------------------+--------------+
-|             RTL Ports             | Dir | Bits|  Protocol  |       Source Object      |    C Type    |
-+-----------------------------------+-----+-----+------------+--------------------------+--------------+
-|ap_clk                             |  in |    1| ap_ctrl_hs |   Loop_copy_sorted_pro   | return value |
-|ap_rst                             |  in |    1| ap_ctrl_hs |   Loop_copy_sorted_pro   | return value |
-|ap_start                           |  in |    1| ap_ctrl_hs |   Loop_copy_sorted_pro   | return value |
-|start_full_n                       |  in |    1| ap_ctrl_hs |   Loop_copy_sorted_pro   | return value |
-|ap_done                            | out |    1| ap_ctrl_hs |   Loop_copy_sorted_pro   | return value |
-|ap_continue                        |  in |    1| ap_ctrl_hs |   Loop_copy_sorted_pro   | return value |
-|ap_idle                            | out |    1| ap_ctrl_hs |   Loop_copy_sorted_pro   | return value |
-|ap_ready                           | out |    1| ap_ctrl_hs |   Loop_copy_sorted_pro   | return value |
-|start_out                          | out |    1| ap_ctrl_hs |   Loop_copy_sorted_pro   | return value |
-|start_write                        | out |    1| ap_ctrl_hs |   Loop_copy_sorted_pro   | return value |
-|n_dout                             |  in |    9|   ap_fifo  |             n            |    pointer   |
-|n_empty_n                          |  in |    1|   ap_fifo  |             n            |    pointer   |
-|n_read                             | out |    1|   ap_fifo  |             n            |    pointer   |
-|sorted_0_address0                  | out |    8|  ap_memory |         sorted_0         |     array    |
-|sorted_0_ce0                       | out |    1|  ap_memory |         sorted_0         |     array    |
-|sorted_0_q0                        |  in |    9|  ap_memory |         sorted_0         |     array    |
-|sorted_copy1_value_V_address0      | out |    8|  ap_memory |   sorted_copy1_value_V   |     array    |
-|sorted_copy1_value_V_ce0           | out |    1|  ap_memory |   sorted_copy1_value_V   |     array    |
-|sorted_copy1_value_V_we0           | out |    1|  ap_memory |   sorted_copy1_value_V   |     array    |
-|sorted_copy1_value_V_d0            | out |    9|  ap_memory |   sorted_copy1_value_V   |     array    |
-|sorted_1_address0                  | out |    8|  ap_memory |         sorted_1         |     array    |
-|sorted_1_ce0                       | out |    1|  ap_memory |         sorted_1         |     array    |
-|sorted_1_q0                        |  in |   32|  ap_memory |         sorted_1         |     array    |
-|sorted_copy1_frequency_V_address0  | out |    8|  ap_memory | sorted_copy1_frequency_V |     array    |
-|sorted_copy1_frequency_V_ce0       | out |    1|  ap_memory | sorted_copy1_frequency_V |     array    |
-|sorted_copy1_frequency_V_we0       | out |    1|  ap_memory | sorted_copy1_frequency_V |     array    |
-|sorted_copy1_frequency_V_d0        | out |   32|  ap_memory | sorted_copy1_frequency_V |     array    |
-|sorted_copy2_value_V_address0      | out |    8|  ap_memory |   sorted_copy2_value_V   |     array    |
-|sorted_copy2_value_V_ce0           | out |    1|  ap_memory |   sorted_copy2_value_V   |     array    |
-|sorted_copy2_value_V_we0           | out |    1|  ap_memory |   sorted_copy2_value_V   |     array    |
-|sorted_copy2_value_V_d0            | out |    9|  ap_memory |   sorted_copy2_value_V   |     array    |
-|val_assign7_out_out_din            | out |    9|   ap_fifo  |    val_assign7_out_out   |    pointer   |
-|val_assign7_out_out_full_n         |  in |    1|   ap_fifo  |    val_assign7_out_out   |    pointer   |
-|val_assign7_out_out_write          | out |    1|   ap_fifo  |    val_assign7_out_out   |    pointer   |
-|extLd_out_out_din                  | out |    9|   ap_fifo  |       extLd_out_out      |    pointer   |
-|extLd_out_out_full_n               |  in |    1|   ap_fifo  |       extLd_out_out      |    pointer   |
-|extLd_out_out_write                | out |    1|   ap_fifo  |       extLd_out_out      |    pointer   |
-|extLd_out_out1_din                 | out |    9|   ap_fifo  |      extLd_out_out1      |    pointer   |
-|extLd_out_out1_full_n              |  in |    1|   ap_fifo  |      extLd_out_out1      |    pointer   |
-|extLd_out_out1_write               | out |    1|   ap_fifo  |      extLd_out_out1      |    pointer   |
-+-----------------------------------+-----+-----+------------+--------------------------+--------------+
++-------------------------------+-----+-----+------------+----------------------+--------------+
+|           RTL Ports           | Dir | Bits|  Protocol  |     Source Object    |    C Type    |
++-------------------------------+-----+-----+------------+----------------------+--------------+
+|ap_clk                         |  in |    1| ap_ctrl_hs | Loop_copy_sorted_pro | return value |
+|ap_rst                         |  in |    1| ap_ctrl_hs | Loop_copy_sorted_pro | return value |
+|ap_start                       |  in |    1| ap_ctrl_hs | Loop_copy_sorted_pro | return value |
+|start_full_n                   |  in |    1| ap_ctrl_hs | Loop_copy_sorted_pro | return value |
+|ap_done                        | out |    1| ap_ctrl_hs | Loop_copy_sorted_pro | return value |
+|ap_continue                    |  in |    1| ap_ctrl_hs | Loop_copy_sorted_pro | return value |
+|ap_idle                        | out |    1| ap_ctrl_hs | Loop_copy_sorted_pro | return value |
+|ap_ready                       | out |    1| ap_ctrl_hs | Loop_copy_sorted_pro | return value |
+|start_out                      | out |    1| ap_ctrl_hs | Loop_copy_sorted_pro | return value |
+|start_write                    | out |    1| ap_ctrl_hs | Loop_copy_sorted_pro | return value |
+|n_dout                         |  in |    9|   ap_fifo  |           n          |    pointer   |
+|n_empty_n                      |  in |    1|   ap_fifo  |           n          |    pointer   |
+|n_read                         | out |    1|   ap_fifo  |           n          |    pointer   |
+|sorted_0_address0              | out |    8|  ap_memory |       sorted_0       |     array    |
+|sorted_0_ce0                   | out |    1|  ap_memory |       sorted_0       |     array    |
+|sorted_0_q0                    |  in |    9|  ap_memory |       sorted_0       |     array    |
+|sorted_copy1_0_din             | out |    9|   ap_fifo  |    sorted_copy1_0    |    pointer   |
+|sorted_copy1_0_full_n          |  in |    1|   ap_fifo  |    sorted_copy1_0    |    pointer   |
+|sorted_copy1_0_write           | out |    1|   ap_fifo  |    sorted_copy1_0    |    pointer   |
+|sorted_1_address0              | out |    8|  ap_memory |       sorted_1       |     array    |
+|sorted_1_ce0                   | out |    1|  ap_memory |       sorted_1       |     array    |
+|sorted_1_q0                    |  in |   32|  ap_memory |       sorted_1       |     array    |
+|sorted_copy1_1_din             | out |   32|   ap_fifo  |    sorted_copy1_1    |    pointer   |
+|sorted_copy1_1_full_n          |  in |    1|   ap_fifo  |    sorted_copy1_1    |    pointer   |
+|sorted_copy1_1_write           | out |    1|   ap_fifo  |    sorted_copy1_1    |    pointer   |
+|sorted_copy2_value_V_address0  | out |    8|  ap_memory | sorted_copy2_value_V |     array    |
+|sorted_copy2_value_V_ce0       | out |    1|  ap_memory | sorted_copy2_value_V |     array    |
+|sorted_copy2_value_V_we0       | out |    1|  ap_memory | sorted_copy2_value_V |     array    |
+|sorted_copy2_value_V_d0        | out |    9|  ap_memory | sorted_copy2_value_V |     array    |
+|val_assign7_out_out_din        | out |    9|   ap_fifo  |  val_assign7_out_out |    pointer   |
+|val_assign7_out_out_full_n     |  in |    1|   ap_fifo  |  val_assign7_out_out |    pointer   |
+|val_assign7_out_out_write      | out |    1|   ap_fifo  |  val_assign7_out_out |    pointer   |
+|extLd_out_out_din              | out |    9|   ap_fifo  |     extLd_out_out    |    pointer   |
+|extLd_out_out_full_n           |  in |    1|   ap_fifo  |     extLd_out_out    |    pointer   |
+|extLd_out_out_write            | out |    1|   ap_fifo  |     extLd_out_out    |    pointer   |
+|extLd_out_out1_din             | out |    9|   ap_fifo  |    extLd_out_out1    |    pointer   |
+|extLd_out_out1_full_n          |  in |    1|   ap_fifo  |    extLd_out_out1    |    pointer   |
+|extLd_out_out1_write           | out |    1|   ap_fifo  |    extLd_out_out1    |    pointer   |
++-------------------------------+-----+-----+------------+----------------------+--------------+
 

@@ -102,7 +102,7 @@ reg   [8:0] t_V_6_reg_159;
 wire   [63:0] zext_ln12_fu_188_p1;
 wire   [63:0] zext_ln544_fu_221_p1;
 wire   [63:0] zext_ln32_fu_232_p1;
-wire   [63:0] zext_ln544_9_fu_243_p1;
+wire   [63:0] zext_ln544_7_fu_243_p1;
 reg   [8:0] length_V_1_fu_66;
 wire   [4:0] trunc_ln209_fu_247_p1;
 reg   [6:0] ap_NS_fsm;
@@ -246,7 +246,7 @@ end
 
 always @ (*) begin
     if ((1'b1 == ap_CS_fsm_state7)) begin
-        symbol_bits_V_address0 = zext_ln544_9_fu_243_p1;
+        symbol_bits_V_address0 = zext_ln544_7_fu_243_p1;
     end else if ((1'b1 == ap_CS_fsm_state2)) begin
         symbol_bits_V_address0 = zext_ln12_fu_188_p1;
     end else begin
@@ -387,7 +387,7 @@ assign zext_ln12_fu_188_p1 = i_0_i_i_reg_124;
 
 assign zext_ln32_fu_232_p1 = i_op_assign_reg_147;
 
-assign zext_ln544_9_fu_243_p1 = sorted_value_V_load_reg_307;
+assign zext_ln544_7_fu_243_p1 = sorted_value_V_load_reg_307;
 
 assign zext_ln544_fu_221_p1 = length_V_fu_215_p2;
 

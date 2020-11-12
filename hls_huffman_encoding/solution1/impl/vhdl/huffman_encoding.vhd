@@ -55,7 +55,7 @@ end;
 architecture behav of huffman_encoding is 
     attribute CORE_GENERATION_INFO : STRING;
     attribute CORE_GENERATION_INFO of behav : architecture is
-    "huffman_encoding,hls_ip_2019_2,{HLS_INPUT_TYPE=cxx,HLS_INPUT_FLOAT=0,HLS_INPUT_FIXED=1,HLS_INPUT_PART=xc7z020-clg484-1,HLS_INPUT_CLOCK=5.000000,HLS_INPUT_ARCH=dataflow,HLS_SYN_CLOCK=7.017875,HLS_SYN_LAT=-1,HLS_SYN_TPT=-1,HLS_SYN_MEM=22,HLS_SYN_DSP=0,HLS_SYN_FF=2936,HLS_SYN_LUT=6048,HLS_VERSION=2019_2}";
+    "huffman_encoding,hls_ip_2019_2,{HLS_INPUT_TYPE=cxx,HLS_INPUT_FLOAT=0,HLS_INPUT_FIXED=1,HLS_INPUT_PART=xc7z020-clg484-1,HLS_INPUT_CLOCK=5.000000,HLS_INPUT_ARCH=dataflow,HLS_SYN_CLOCK=7.017875,HLS_SYN_LAT=-1,HLS_SYN_TPT=-1,HLS_SYN_MEM=23,HLS_SYN_DSP=0,HLS_SYN_FF=3185,HLS_SYN_LUT=6246,HLS_VERSION=2019_2}";
     constant ap_const_logic_1 : STD_LOGIC := '1';
     constant ap_const_lv8_0 : STD_LOGIC_VECTOR (7 downto 0) := "00000000";
     constant ap_const_logic_0 : STD_LOGIC := '0';
@@ -75,10 +75,6 @@ architecture behav of huffman_encoding is
     signal sorted_0_t_q0 : STD_LOGIC_VECTOR (8 downto 0);
     signal sorted_1_i_q0 : STD_LOGIC_VECTOR (31 downto 0);
     signal sorted_1_t_q0 : STD_LOGIC_VECTOR (31 downto 0);
-    signal sorted_copy1_value_V_i_q0 : STD_LOGIC_VECTOR (8 downto 0);
-    signal sorted_copy1_value_V_t_q0 : STD_LOGIC_VECTOR (8 downto 0);
-    signal sorted_copy1_frequen_i_q0 : STD_LOGIC_VECTOR (31 downto 0);
-    signal sorted_copy1_frequen_t_q0 : STD_LOGIC_VECTOR (31 downto 0);
     signal sorted_copy2_value_V_i_q0 : STD_LOGIC_VECTOR (8 downto 0);
     signal sorted_copy2_value_V_t_q0 : STD_LOGIC_VECTOR (8 downto 0);
     signal parent_V_i_q0 : STD_LOGIC_VECTOR (8 downto 0);
@@ -163,6 +159,7 @@ architecture behav of huffman_encoding is
     signal ap_sync_reg_channel_write_sorted_0 : STD_LOGIC := '0';
     signal ap_sync_channel_write_sorted_0 : STD_LOGIC;
     signal Loop_copy_sorted_pro_U0_ap_start : STD_LOGIC;
+    signal Loop_copy_sorted_pro_U0_start_full_n : STD_LOGIC;
     signal Loop_copy_sorted_pro_U0_ap_done : STD_LOGIC;
     signal Loop_copy_sorted_pro_U0_ap_continue : STD_LOGIC;
     signal Loop_copy_sorted_pro_U0_ap_idle : STD_LOGIC;
@@ -172,16 +169,12 @@ architecture behav of huffman_encoding is
     signal Loop_copy_sorted_pro_U0_n_read : STD_LOGIC;
     signal Loop_copy_sorted_pro_U0_sorted_0_address0 : STD_LOGIC_VECTOR (7 downto 0);
     signal Loop_copy_sorted_pro_U0_sorted_0_ce0 : STD_LOGIC;
-    signal Loop_copy_sorted_pro_U0_sorted_copy1_value_V_address0 : STD_LOGIC_VECTOR (7 downto 0);
-    signal Loop_copy_sorted_pro_U0_sorted_copy1_value_V_ce0 : STD_LOGIC;
-    signal Loop_copy_sorted_pro_U0_sorted_copy1_value_V_we0 : STD_LOGIC;
-    signal Loop_copy_sorted_pro_U0_sorted_copy1_value_V_d0 : STD_LOGIC_VECTOR (8 downto 0);
+    signal Loop_copy_sorted_pro_U0_sorted_copy1_0_din : STD_LOGIC_VECTOR (8 downto 0);
+    signal Loop_copy_sorted_pro_U0_sorted_copy1_0_write : STD_LOGIC;
     signal Loop_copy_sorted_pro_U0_sorted_1_address0 : STD_LOGIC_VECTOR (7 downto 0);
     signal Loop_copy_sorted_pro_U0_sorted_1_ce0 : STD_LOGIC;
-    signal Loop_copy_sorted_pro_U0_sorted_copy1_frequency_V_address0 : STD_LOGIC_VECTOR (7 downto 0);
-    signal Loop_copy_sorted_pro_U0_sorted_copy1_frequency_V_ce0 : STD_LOGIC;
-    signal Loop_copy_sorted_pro_U0_sorted_copy1_frequency_V_we0 : STD_LOGIC;
-    signal Loop_copy_sorted_pro_U0_sorted_copy1_frequency_V_d0 : STD_LOGIC_VECTOR (31 downto 0);
+    signal Loop_copy_sorted_pro_U0_sorted_copy1_1_din : STD_LOGIC_VECTOR (31 downto 0);
+    signal Loop_copy_sorted_pro_U0_sorted_copy1_1_write : STD_LOGIC;
     signal Loop_copy_sorted_pro_U0_sorted_copy2_value_V_address0 : STD_LOGIC_VECTOR (7 downto 0);
     signal Loop_copy_sorted_pro_U0_sorted_copy2_value_V_ce0 : STD_LOGIC;
     signal Loop_copy_sorted_pro_U0_sorted_copy2_value_V_we0 : STD_LOGIC;
@@ -194,25 +187,13 @@ architecture behav of huffman_encoding is
     signal Loop_copy_sorted_pro_U0_extLd_out_out1_write : STD_LOGIC;
     signal ap_channel_done_sorted_copy2_value_V : STD_LOGIC;
     signal Loop_copy_sorted_pro_U0_sorted_copy2_value_V_full_n : STD_LOGIC;
-    signal ap_sync_reg_channel_write_sorted_copy2_value_V : STD_LOGIC := '0';
-    signal ap_sync_channel_write_sorted_copy2_value_V : STD_LOGIC;
-    signal ap_channel_done_sorted_copy1_frequen : STD_LOGIC;
-    signal Loop_copy_sorted_pro_U0_sorted_copy1_frequency_V_full_n : STD_LOGIC;
-    signal ap_sync_reg_channel_write_sorted_copy1_frequen : STD_LOGIC := '0';
-    signal ap_sync_channel_write_sorted_copy1_frequen : STD_LOGIC;
-    signal ap_channel_done_sorted_copy1_value_V : STD_LOGIC;
-    signal Loop_copy_sorted_pro_U0_sorted_copy1_value_V_full_n : STD_LOGIC;
-    signal ap_sync_reg_channel_write_sorted_copy1_value_V : STD_LOGIC := '0';
-    signal ap_sync_channel_write_sorted_copy1_value_V : STD_LOGIC;
     signal create_tree_U0_ap_start : STD_LOGIC;
     signal create_tree_U0_ap_done : STD_LOGIC;
     signal create_tree_U0_ap_continue : STD_LOGIC;
     signal create_tree_U0_ap_idle : STD_LOGIC;
     signal create_tree_U0_ap_ready : STD_LOGIC;
-    signal create_tree_U0_in_value_V_address0 : STD_LOGIC_VECTOR (7 downto 0);
-    signal create_tree_U0_in_value_V_ce0 : STD_LOGIC;
-    signal create_tree_U0_in_frequency_V_address0 : STD_LOGIC_VECTOR (7 downto 0);
-    signal create_tree_U0_in_frequency_V_ce0 : STD_LOGIC;
+    signal create_tree_U0_in_value_V_read : STD_LOGIC;
+    signal create_tree_U0_in_frequency_V_read : STD_LOGIC;
     signal create_tree_U0_extLd_loc_read : STD_LOGIC;
     signal create_tree_U0_parent_V_address0 : STD_LOGIC_VECTOR (7 downto 0);
     signal create_tree_U0_parent_V_ce0 : STD_LOGIC;
@@ -331,10 +312,6 @@ architecture behav of huffman_encoding is
     signal sorted_0_t_empty_n : STD_LOGIC;
     signal sorted_1_i_full_n : STD_LOGIC;
     signal sorted_1_t_empty_n : STD_LOGIC;
-    signal sorted_copy1_value_V_i_full_n : STD_LOGIC;
-    signal sorted_copy1_value_V_t_empty_n : STD_LOGIC;
-    signal sorted_copy1_frequen_i_full_n : STD_LOGIC;
-    signal sorted_copy1_frequen_t_empty_n : STD_LOGIC;
     signal sorted_copy2_value_V_i_full_n : STD_LOGIC;
     signal sorted_copy2_value_V_t_empty_n : STD_LOGIC;
     signal parent_V_i_full_n : STD_LOGIC;
@@ -359,6 +336,12 @@ architecture behav of huffman_encoding is
     signal n_c20_empty_n : STD_LOGIC;
     signal extLd9_loc_channel_dout : STD_LOGIC_VECTOR (8 downto 0);
     signal extLd9_loc_channel_empty_n : STD_LOGIC;
+    signal sorted_copy1_0_chann_full_n : STD_LOGIC;
+    signal sorted_copy1_0_chann_dout : STD_LOGIC_VECTOR (8 downto 0);
+    signal sorted_copy1_0_chann_empty_n : STD_LOGIC;
+    signal sorted_copy1_1_chann_full_n : STD_LOGIC;
+    signal sorted_copy1_1_chann_dout : STD_LOGIC_VECTOR (31 downto 0);
+    signal sorted_copy1_1_chann_empty_n : STD_LOGIC;
     signal val_assign7_loc_c_full_n : STD_LOGIC;
     signal val_assign7_loc_c_dout : STD_LOGIC_VECTOR (8 downto 0);
     signal val_assign7_loc_c_empty_n : STD_LOGIC;
@@ -381,6 +364,10 @@ architecture behav of huffman_encoding is
     signal Block_codeRepl1012_p_U0_start_write : STD_LOGIC;
     signal sort_U0_start_full_n : STD_LOGIC;
     signal sort_U0_start_write : STD_LOGIC;
+    signal start_for_create_tree_U0_din : STD_LOGIC_VECTOR (0 downto 0);
+    signal start_for_create_tree_U0_full_n : STD_LOGIC;
+    signal start_for_create_tree_U0_dout : STD_LOGIC_VECTOR (0 downto 0);
+    signal start_for_create_tree_U0_empty_n : STD_LOGIC;
     signal start_for_Block_proc_U0_din : STD_LOGIC_VECTOR (0 downto 0);
     signal start_for_Block_proc_U0_full_n : STD_LOGIC;
     signal start_for_Block_proc_U0_dout : STD_LOGIC_VECTOR (0 downto 0);
@@ -494,17 +481,15 @@ architecture behav of huffman_encoding is
         sorted_0_address0 : OUT STD_LOGIC_VECTOR (7 downto 0);
         sorted_0_ce0 : OUT STD_LOGIC;
         sorted_0_q0 : IN STD_LOGIC_VECTOR (8 downto 0);
-        sorted_copy1_value_V_address0 : OUT STD_LOGIC_VECTOR (7 downto 0);
-        sorted_copy1_value_V_ce0 : OUT STD_LOGIC;
-        sorted_copy1_value_V_we0 : OUT STD_LOGIC;
-        sorted_copy1_value_V_d0 : OUT STD_LOGIC_VECTOR (8 downto 0);
+        sorted_copy1_0_din : OUT STD_LOGIC_VECTOR (8 downto 0);
+        sorted_copy1_0_full_n : IN STD_LOGIC;
+        sorted_copy1_0_write : OUT STD_LOGIC;
         sorted_1_address0 : OUT STD_LOGIC_VECTOR (7 downto 0);
         sorted_1_ce0 : OUT STD_LOGIC;
         sorted_1_q0 : IN STD_LOGIC_VECTOR (31 downto 0);
-        sorted_copy1_frequency_V_address0 : OUT STD_LOGIC_VECTOR (7 downto 0);
-        sorted_copy1_frequency_V_ce0 : OUT STD_LOGIC;
-        sorted_copy1_frequency_V_we0 : OUT STD_LOGIC;
-        sorted_copy1_frequency_V_d0 : OUT STD_LOGIC_VECTOR (31 downto 0);
+        sorted_copy1_1_din : OUT STD_LOGIC_VECTOR (31 downto 0);
+        sorted_copy1_1_full_n : IN STD_LOGIC;
+        sorted_copy1_1_write : OUT STD_LOGIC;
         sorted_copy2_value_V_address0 : OUT STD_LOGIC_VECTOR (7 downto 0);
         sorted_copy2_value_V_ce0 : OUT STD_LOGIC;
         sorted_copy2_value_V_we0 : OUT STD_LOGIC;
@@ -530,12 +515,12 @@ architecture behav of huffman_encoding is
         ap_continue : IN STD_LOGIC;
         ap_idle : OUT STD_LOGIC;
         ap_ready : OUT STD_LOGIC;
-        in_value_V_address0 : OUT STD_LOGIC_VECTOR (7 downto 0);
-        in_value_V_ce0 : OUT STD_LOGIC;
-        in_value_V_q0 : IN STD_LOGIC_VECTOR (8 downto 0);
-        in_frequency_V_address0 : OUT STD_LOGIC_VECTOR (7 downto 0);
-        in_frequency_V_ce0 : OUT STD_LOGIC;
-        in_frequency_V_q0 : IN STD_LOGIC_VECTOR (31 downto 0);
+        in_value_V_dout : IN STD_LOGIC_VECTOR (8 downto 0);
+        in_value_V_empty_n : IN STD_LOGIC;
+        in_value_V_read : OUT STD_LOGIC;
+        in_frequency_V_dout : IN STD_LOGIC_VECTOR (31 downto 0);
+        in_frequency_V_empty_n : IN STD_LOGIC;
+        in_frequency_V_read : OUT STD_LOGIC;
         extLd_loc_dout : IN STD_LOGIC_VECTOR (8 downto 0);
         extLd_loc_empty_n : IN STD_LOGIC;
         extLd_loc_read : OUT STD_LOGIC;
@@ -732,7 +717,7 @@ architecture behav of huffman_encoding is
     end component;
 
 
-    component huffman_encoding_udo IS
+    component huffman_encoding_sc4 IS
     generic (
         DataWidth : INTEGER;
         AddressRange : INTEGER;
@@ -759,7 +744,7 @@ architecture behav of huffman_encoding is
     end component;
 
 
-    component huffman_encoding_xdS IS
+    component huffman_encoding_vdy IS
     generic (
         DataWidth : INTEGER;
         AddressRange : INTEGER;
@@ -786,7 +771,7 @@ architecture behav of huffman_encoding is
     end component;
 
 
-    component huffman_encoding_yd2 IS
+    component huffman_encoding_wdI IS
     generic (
         DataWidth : INTEGER;
         AddressRange : INTEGER;
@@ -823,7 +808,7 @@ architecture behav of huffman_encoding is
     end component;
 
 
-    component huffman_encoding_Aem IS
+    component huffman_encoding_yd2 IS
     generic (
         DataWidth : INTEGER;
         AddressRange : INTEGER;
@@ -880,6 +865,36 @@ architecture behav of huffman_encoding is
     end component;
 
 
+    component fifo_w9_d256_A IS
+    port (
+        clk : IN STD_LOGIC;
+        reset : IN STD_LOGIC;
+        if_read_ce : IN STD_LOGIC;
+        if_write_ce : IN STD_LOGIC;
+        if_din : IN STD_LOGIC_VECTOR (8 downto 0);
+        if_full_n : OUT STD_LOGIC;
+        if_write : IN STD_LOGIC;
+        if_dout : OUT STD_LOGIC_VECTOR (8 downto 0);
+        if_empty_n : OUT STD_LOGIC;
+        if_read : IN STD_LOGIC );
+    end component;
+
+
+    component fifo_w32_d256_A IS
+    port (
+        clk : IN STD_LOGIC;
+        reset : IN STD_LOGIC;
+        if_read_ce : IN STD_LOGIC;
+        if_write_ce : IN STD_LOGIC;
+        if_din : IN STD_LOGIC_VECTOR (31 downto 0);
+        if_full_n : OUT STD_LOGIC;
+        if_write : IN STD_LOGIC;
+        if_dout : OUT STD_LOGIC_VECTOR (31 downto 0);
+        if_empty_n : OUT STD_LOGIC;
+        if_read : IN STD_LOGIC );
+    end component;
+
+
     component fifo_w9_d5_A IS
     port (
         clk : IN STD_LOGIC;
@@ -895,7 +910,7 @@ architecture behav of huffman_encoding is
     end component;
 
 
-    component start_for_Block_cBew IS
+    component start_for_Block_czec IS
     port (
         clk : IN STD_LOGIC;
         reset : IN STD_LOGIC;
@@ -910,7 +925,22 @@ architecture behav of huffman_encoding is
     end component;
 
 
-    component start_for_Block_pCeG IS
+    component start_for_create_Aem IS
+    port (
+        clk : IN STD_LOGIC;
+        reset : IN STD_LOGIC;
+        if_read_ce : IN STD_LOGIC;
+        if_write_ce : IN STD_LOGIC;
+        if_din : IN STD_LOGIC_VECTOR (0 downto 0);
+        if_full_n : OUT STD_LOGIC;
+        if_write : IN STD_LOGIC;
+        if_dout : OUT STD_LOGIC_VECTOR (0 downto 0);
+        if_empty_n : OUT STD_LOGIC;
+        if_read : IN STD_LOGIC );
+    end component;
+
+
+    component start_for_Block_pBew IS
     port (
         clk : IN STD_LOGIC;
         reset : IN STD_LOGIC;
@@ -1027,56 +1057,6 @@ begin
         t_empty_n => sorted_1_t_empty_n,
         t_read => Loop_copy_sorted_pro_U0_ap_ready);
 
-    sorted_copy1_value_V_U : component huffman_encoding_ncg
-    generic map (
-        DataWidth => 9,
-        AddressRange => 256,
-        AddressWidth => 8)
-    port map (
-        clk => ap_clk,
-        reset => ap_rst,
-        i_address0 => Loop_copy_sorted_pro_U0_sorted_copy1_value_V_address0,
-        i_ce0 => Loop_copy_sorted_pro_U0_sorted_copy1_value_V_ce0,
-        i_we0 => Loop_copy_sorted_pro_U0_sorted_copy1_value_V_we0,
-        i_d0 => Loop_copy_sorted_pro_U0_sorted_copy1_value_V_d0,
-        i_q0 => sorted_copy1_value_V_i_q0,
-        t_address0 => create_tree_U0_in_value_V_address0,
-        t_ce0 => create_tree_U0_in_value_V_ce0,
-        t_we0 => ap_const_logic_0,
-        t_d0 => ap_const_lv9_0,
-        t_q0 => sorted_copy1_value_V_t_q0,
-        i_ce => ap_const_logic_1,
-        t_ce => ap_const_logic_1,
-        i_full_n => sorted_copy1_value_V_i_full_n,
-        i_write => ap_channel_done_sorted_copy1_value_V,
-        t_empty_n => sorted_copy1_value_V_t_empty_n,
-        t_read => create_tree_U0_ap_ready);
-
-    sorted_copy1_frequen_U : component huffman_encoding_ocq
-    generic map (
-        DataWidth => 32,
-        AddressRange => 256,
-        AddressWidth => 8)
-    port map (
-        clk => ap_clk,
-        reset => ap_rst,
-        i_address0 => Loop_copy_sorted_pro_U0_sorted_copy1_frequency_V_address0,
-        i_ce0 => Loop_copy_sorted_pro_U0_sorted_copy1_frequency_V_ce0,
-        i_we0 => Loop_copy_sorted_pro_U0_sorted_copy1_frequency_V_we0,
-        i_d0 => Loop_copy_sorted_pro_U0_sorted_copy1_frequency_V_d0,
-        i_q0 => sorted_copy1_frequen_i_q0,
-        t_address0 => create_tree_U0_in_frequency_V_address0,
-        t_ce0 => create_tree_U0_in_frequency_V_ce0,
-        t_we0 => ap_const_logic_0,
-        t_d0 => ap_const_lv32_0,
-        t_q0 => sorted_copy1_frequen_t_q0,
-        i_ce => ap_const_logic_1,
-        t_ce => ap_const_logic_1,
-        i_full_n => sorted_copy1_frequen_i_full_n,
-        i_write => ap_channel_done_sorted_copy1_frequen,
-        t_empty_n => sorted_copy1_frequen_t_empty_n,
-        t_read => create_tree_U0_ap_ready);
-
     sorted_copy2_value_V_U : component huffman_encoding_ncg
     generic map (
         DataWidth => 9,
@@ -1098,11 +1078,11 @@ begin
         i_ce => ap_const_logic_1,
         t_ce => ap_const_logic_1,
         i_full_n => sorted_copy2_value_V_i_full_n,
-        i_write => ap_channel_done_sorted_copy2_value_V,
+        i_write => Loop_copy_sorted_pro_U0_ap_done,
         t_empty_n => sorted_copy2_value_V_t_empty_n,
         t_read => canonize_tree_U0_ap_ready);
 
-    parent_V_U : component huffman_encoding_udo
+    parent_V_U : component huffman_encoding_sc4
     generic map (
         DataWidth => 9,
         AddressRange => 255,
@@ -1127,7 +1107,7 @@ begin
         t_empty_n => parent_V_t_empty_n,
         t_read => compute_bit_length_U0_ap_ready);
 
-    left_V_U : component huffman_encoding_udo
+    left_V_U : component huffman_encoding_sc4
     generic map (
         DataWidth => 9,
         AddressRange => 255,
@@ -1152,7 +1132,7 @@ begin
         t_empty_n => left_V_t_empty_n,
         t_read => compute_bit_length_U0_ap_ready);
 
-    right_V_U : component huffman_encoding_udo
+    right_V_U : component huffman_encoding_sc4
     generic map (
         DataWidth => 9,
         AddressRange => 255,
@@ -1177,7 +1157,7 @@ begin
         t_empty_n => right_V_t_empty_n,
         t_read => compute_bit_length_U0_ap_ready);
 
-    length_histogram_V_U : component huffman_encoding_xdS
+    length_histogram_V_U : component huffman_encoding_vdy
     generic map (
         DataWidth => 9,
         AddressRange => 64,
@@ -1202,7 +1182,7 @@ begin
         t_empty_n => length_histogram_V_t_empty_n,
         t_read => truncate_tree_U0_ap_ready);
 
-    truncated_length_his_U : component huffman_encoding_yd2
+    truncated_length_his_U : component huffman_encoding_wdI
     generic map (
         DataWidth => 9,
         AddressRange => 64,
@@ -1237,7 +1217,7 @@ begin
         t_empty_n => truncated_length_his_t_empty_n,
         t_read => canonize_tree_U0_ap_ready);
 
-    truncated_length_his_1_U : component huffman_encoding_xdS
+    truncated_length_his_1_U : component huffman_encoding_vdy
     generic map (
         DataWidth => 9,
         AddressRange => 64,
@@ -1262,7 +1242,7 @@ begin
         t_empty_n => truncated_length_his_1_t_empty_n,
         t_read => create_codeword_U0_ap_ready);
 
-    symbol_bits_V_U : component huffman_encoding_Aem
+    symbol_bits_V_U : component huffman_encoding_yd2
     generic map (
         DataWidth => 5,
         AddressRange => 256,
@@ -1364,7 +1344,7 @@ begin
         ap_clk => ap_clk,
         ap_rst => ap_rst,
         ap_start => Loop_copy_sorted_pro_U0_ap_start,
-        start_full_n => start_for_Block_proc_U0_full_n,
+        start_full_n => Loop_copy_sorted_pro_U0_start_full_n,
         ap_done => Loop_copy_sorted_pro_U0_ap_done,
         ap_continue => Loop_copy_sorted_pro_U0_ap_continue,
         ap_idle => Loop_copy_sorted_pro_U0_ap_idle,
@@ -1377,17 +1357,15 @@ begin
         sorted_0_address0 => Loop_copy_sorted_pro_U0_sorted_0_address0,
         sorted_0_ce0 => Loop_copy_sorted_pro_U0_sorted_0_ce0,
         sorted_0_q0 => sorted_0_t_q0,
-        sorted_copy1_value_V_address0 => Loop_copy_sorted_pro_U0_sorted_copy1_value_V_address0,
-        sorted_copy1_value_V_ce0 => Loop_copy_sorted_pro_U0_sorted_copy1_value_V_ce0,
-        sorted_copy1_value_V_we0 => Loop_copy_sorted_pro_U0_sorted_copy1_value_V_we0,
-        sorted_copy1_value_V_d0 => Loop_copy_sorted_pro_U0_sorted_copy1_value_V_d0,
+        sorted_copy1_0_din => Loop_copy_sorted_pro_U0_sorted_copy1_0_din,
+        sorted_copy1_0_full_n => sorted_copy1_0_chann_full_n,
+        sorted_copy1_0_write => Loop_copy_sorted_pro_U0_sorted_copy1_0_write,
         sorted_1_address0 => Loop_copy_sorted_pro_U0_sorted_1_address0,
         sorted_1_ce0 => Loop_copy_sorted_pro_U0_sorted_1_ce0,
         sorted_1_q0 => sorted_1_t_q0,
-        sorted_copy1_frequency_V_address0 => Loop_copy_sorted_pro_U0_sorted_copy1_frequency_V_address0,
-        sorted_copy1_frequency_V_ce0 => Loop_copy_sorted_pro_U0_sorted_copy1_frequency_V_ce0,
-        sorted_copy1_frequency_V_we0 => Loop_copy_sorted_pro_U0_sorted_copy1_frequency_V_we0,
-        sorted_copy1_frequency_V_d0 => Loop_copy_sorted_pro_U0_sorted_copy1_frequency_V_d0,
+        sorted_copy1_1_din => Loop_copy_sorted_pro_U0_sorted_copy1_1_din,
+        sorted_copy1_1_full_n => sorted_copy1_1_chann_full_n,
+        sorted_copy1_1_write => Loop_copy_sorted_pro_U0_sorted_copy1_1_write,
         sorted_copy2_value_V_address0 => Loop_copy_sorted_pro_U0_sorted_copy2_value_V_address0,
         sorted_copy2_value_V_ce0 => Loop_copy_sorted_pro_U0_sorted_copy2_value_V_ce0,
         sorted_copy2_value_V_we0 => Loop_copy_sorted_pro_U0_sorted_copy2_value_V_we0,
@@ -1411,12 +1389,12 @@ begin
         ap_continue => create_tree_U0_ap_continue,
         ap_idle => create_tree_U0_ap_idle,
         ap_ready => create_tree_U0_ap_ready,
-        in_value_V_address0 => create_tree_U0_in_value_V_address0,
-        in_value_V_ce0 => create_tree_U0_in_value_V_ce0,
-        in_value_V_q0 => sorted_copy1_value_V_t_q0,
-        in_frequency_V_address0 => create_tree_U0_in_frequency_V_address0,
-        in_frequency_V_ce0 => create_tree_U0_in_frequency_V_ce0,
-        in_frequency_V_q0 => sorted_copy1_frequen_t_q0,
+        in_value_V_dout => sorted_copy1_0_chann_dout,
+        in_value_V_empty_n => sorted_copy1_0_chann_empty_n,
+        in_value_V_read => create_tree_U0_in_value_V_read,
+        in_frequency_V_dout => sorted_copy1_1_chann_dout,
+        in_frequency_V_empty_n => sorted_copy1_1_chann_empty_n,
+        in_frequency_V_read => create_tree_U0_in_frequency_V_read,
         extLd_loc_dout => extLd_loc_c_dout,
         extLd_loc_empty_n => extLd_loc_c_empty_n,
         extLd_loc_read => create_tree_U0_extLd_loc_read,
@@ -1586,6 +1564,32 @@ begin
         if_empty_n => extLd9_loc_channel_empty_n,
         if_read => sort_U0_ap_ready);
 
+    sorted_copy1_0_chann_U : component fifo_w9_d256_A
+    port map (
+        clk => ap_clk,
+        reset => ap_rst,
+        if_read_ce => ap_const_logic_1,
+        if_write_ce => ap_const_logic_1,
+        if_din => Loop_copy_sorted_pro_U0_sorted_copy1_0_din,
+        if_full_n => sorted_copy1_0_chann_full_n,
+        if_write => Loop_copy_sorted_pro_U0_sorted_copy1_0_write,
+        if_dout => sorted_copy1_0_chann_dout,
+        if_empty_n => sorted_copy1_0_chann_empty_n,
+        if_read => create_tree_U0_in_value_V_read);
+
+    sorted_copy1_1_chann_U : component fifo_w32_d256_A
+    port map (
+        clk => ap_clk,
+        reset => ap_rst,
+        if_read_ce => ap_const_logic_1,
+        if_write_ce => ap_const_logic_1,
+        if_din => Loop_copy_sorted_pro_U0_sorted_copy1_1_din,
+        if_full_n => sorted_copy1_1_chann_full_n,
+        if_write => Loop_copy_sorted_pro_U0_sorted_copy1_1_write,
+        if_dout => sorted_copy1_1_chann_dout,
+        if_empty_n => sorted_copy1_1_chann_empty_n,
+        if_read => create_tree_U0_in_frequency_V_read);
+
     val_assign7_loc_c_U : component fifo_w9_d5_A
     port map (
         clk => ap_clk,
@@ -1638,7 +1642,7 @@ begin
         if_empty_n => extLd_loc_c22_empty_n,
         if_read => compute_bit_length_U0_extLd_loc_read);
 
-    start_for_Block_cBew_U : component start_for_Block_cBew
+    start_for_Block_czec_U : component start_for_Block_czec
     port map (
         clk => ap_clk,
         reset => ap_rst,
@@ -1651,7 +1655,20 @@ begin
         if_empty_n => start_for_Block_codeRepl1012_p_U0_empty_n,
         if_read => Block_codeRepl1012_p_U0_ap_ready);
 
-    start_for_Block_pCeG_U : component start_for_Block_pCeG
+    start_for_create_Aem_U : component start_for_create_Aem
+    port map (
+        clk => ap_clk,
+        reset => ap_rst,
+        if_read_ce => ap_const_logic_1,
+        if_write_ce => ap_const_logic_1,
+        if_din => start_for_create_tree_U0_din,
+        if_full_n => start_for_create_tree_U0_full_n,
+        if_write => Loop_copy_sorted_pro_U0_start_write,
+        if_dout => start_for_create_tree_U0_dout,
+        if_empty_n => start_for_create_tree_U0_empty_n,
+        if_read => create_tree_U0_ap_ready);
+
+    start_for_Block_pBew_U : component start_for_Block_pBew
     port map (
         clk => ap_clk,
         reset => ap_rst,
@@ -1780,54 +1797,6 @@ begin
     end process;
 
 
-    ap_sync_reg_channel_write_sorted_copy1_frequen_assign_proc : process(ap_clk)
-    begin
-        if (ap_clk'event and ap_clk =  '1') then
-            if (ap_rst = '1') then
-                ap_sync_reg_channel_write_sorted_copy1_frequen <= ap_const_logic_0;
-            else
-                if (((Loop_copy_sorted_pro_U0_ap_done and Loop_copy_sorted_pro_U0_ap_continue) = ap_const_logic_1)) then 
-                    ap_sync_reg_channel_write_sorted_copy1_frequen <= ap_const_logic_0;
-                else 
-                    ap_sync_reg_channel_write_sorted_copy1_frequen <= ap_sync_channel_write_sorted_copy1_frequen;
-                end if; 
-            end if;
-        end if;
-    end process;
-
-
-    ap_sync_reg_channel_write_sorted_copy1_value_V_assign_proc : process(ap_clk)
-    begin
-        if (ap_clk'event and ap_clk =  '1') then
-            if (ap_rst = '1') then
-                ap_sync_reg_channel_write_sorted_copy1_value_V <= ap_const_logic_0;
-            else
-                if (((Loop_copy_sorted_pro_U0_ap_done and Loop_copy_sorted_pro_U0_ap_continue) = ap_const_logic_1)) then 
-                    ap_sync_reg_channel_write_sorted_copy1_value_V <= ap_const_logic_0;
-                else 
-                    ap_sync_reg_channel_write_sorted_copy1_value_V <= ap_sync_channel_write_sorted_copy1_value_V;
-                end if; 
-            end if;
-        end if;
-    end process;
-
-
-    ap_sync_reg_channel_write_sorted_copy2_value_V_assign_proc : process(ap_clk)
-    begin
-        if (ap_clk'event and ap_clk =  '1') then
-            if (ap_rst = '1') then
-                ap_sync_reg_channel_write_sorted_copy2_value_V <= ap_const_logic_0;
-            else
-                if (((Loop_copy_sorted_pro_U0_ap_done and Loop_copy_sorted_pro_U0_ap_continue) = ap_const_logic_1)) then 
-                    ap_sync_reg_channel_write_sorted_copy2_value_V <= ap_const_logic_0;
-                else 
-                    ap_sync_reg_channel_write_sorted_copy2_value_V <= ap_sync_channel_write_sorted_copy2_value_V;
-                end if; 
-            end if;
-        end if;
-    end process;
-
-
     ap_sync_reg_channel_write_truncated_length_his_assign_proc : process(ap_clk)
     begin
         if (ap_clk'event and ap_clk =  '1') then
@@ -1867,11 +1836,10 @@ begin
     Block_proc_U0_ap_start <= start_for_Block_proc_U0_empty_n;
     Block_proc_U0_start_full_n <= ap_const_logic_1;
     Block_proc_U0_start_write <= ap_const_logic_0;
-    Loop_copy_sorted_pro_U0_ap_continue <= (ap_sync_channel_write_sorted_copy2_value_V and ap_sync_channel_write_sorted_copy1_value_V and ap_sync_channel_write_sorted_copy1_frequen);
+    Loop_copy_sorted_pro_U0_ap_continue <= sorted_copy2_value_V_i_full_n;
     Loop_copy_sorted_pro_U0_ap_start <= (sorted_1_t_empty_n and sorted_0_t_empty_n);
-    Loop_copy_sorted_pro_U0_sorted_copy1_frequency_V_full_n <= sorted_copy1_frequen_i_full_n;
-    Loop_copy_sorted_pro_U0_sorted_copy1_value_V_full_n <= sorted_copy1_value_V_i_full_n;
     Loop_copy_sorted_pro_U0_sorted_copy2_value_V_full_n <= sorted_copy2_value_V_i_full_n;
+    Loop_copy_sorted_pro_U0_start_full_n <= (start_for_create_tree_U0_full_n and start_for_Block_proc_U0_full_n);
     ap_channel_done_extLd9_loc_channel <= Block_codeRepl1012_p_U0_ap_done;
     ap_channel_done_filtered_frequency_V <= (filter_U0_ap_done and (ap_sync_reg_channel_write_filtered_frequency_V xor ap_const_logic_1));
     ap_channel_done_filtered_value_V <= (filter_U0_ap_done and (ap_sync_reg_channel_write_filtered_value_V xor ap_const_logic_1));
@@ -1881,14 +1849,12 @@ begin
     ap_channel_done_right_V <= ((ap_sync_reg_channel_write_right_V xor ap_const_logic_1) and create_tree_U0_ap_done);
     ap_channel_done_sorted_0 <= (sort_U0_ap_done and (ap_sync_reg_channel_write_sorted_0 xor ap_const_logic_1));
     ap_channel_done_sorted_1 <= (sort_U0_ap_done and (ap_sync_reg_channel_write_sorted_1 xor ap_const_logic_1));
-    ap_channel_done_sorted_copy1_frequen <= ((ap_sync_reg_channel_write_sorted_copy1_frequen xor ap_const_logic_1) and Loop_copy_sorted_pro_U0_ap_done);
-    ap_channel_done_sorted_copy1_value_V <= ((ap_sync_reg_channel_write_sorted_copy1_value_V xor ap_const_logic_1) and Loop_copy_sorted_pro_U0_ap_done);
-    ap_channel_done_sorted_copy2_value_V <= ((ap_sync_reg_channel_write_sorted_copy2_value_V xor ap_const_logic_1) and Loop_copy_sorted_pro_U0_ap_done);
+    ap_channel_done_sorted_copy2_value_V <= Loop_copy_sorted_pro_U0_ap_done;
     ap_channel_done_symbol_bits_V <= canonize_tree_U0_ap_done;
     ap_channel_done_truncated_length_his <= (truncate_tree_U0_ap_done and (ap_sync_reg_channel_write_truncated_length_his xor ap_const_logic_1));
     ap_channel_done_truncated_length_his_1 <= (truncate_tree_U0_ap_done and (ap_sync_reg_channel_write_truncated_length_his_1 xor ap_const_logic_1));
     ap_done <= ap_sync_done;
-    ap_idle <= (truncate_tree_U0_ap_idle and sort_U0_ap_idle and filter_U0_ap_idle and (extLd9_loc_channel_empty_n xor ap_const_logic_1) and (symbol_bits_V_t_empty_n xor ap_const_logic_1) and (truncated_length_his_1_t_empty_n xor ap_const_logic_1) and (truncated_length_his_t_empty_n xor ap_const_logic_1) and (length_histogram_V_t_empty_n xor ap_const_logic_1) and (right_V_t_empty_n xor ap_const_logic_1) and (left_V_t_empty_n xor ap_const_logic_1) and (parent_V_t_empty_n xor ap_const_logic_1) and (sorted_copy2_value_V_t_empty_n xor ap_const_logic_1) and (sorted_copy1_frequen_t_empty_n xor ap_const_logic_1) and (sorted_copy1_value_V_t_empty_n xor ap_const_logic_1) and (sorted_1_t_empty_n xor ap_const_logic_1) and (sorted_0_t_empty_n xor ap_const_logic_1) and (filtered_frequency_V_t_empty_n xor ap_const_logic_1) and (filtered_value_V_t_empty_n xor ap_const_logic_1) and create_tree_U0_ap_idle and create_codeword_U0_ap_idle and compute_bit_length_U0_ap_idle and canonize_tree_U0_ap_idle and Loop_copy_sorted_pro_U0_ap_idle and Block_proc_U0_ap_idle and Block_codeRepl1012_p_U0_ap_idle);
+    ap_idle <= (truncate_tree_U0_ap_idle and sort_U0_ap_idle and filter_U0_ap_idle and (extLd9_loc_channel_empty_n xor ap_const_logic_1) and (symbol_bits_V_t_empty_n xor ap_const_logic_1) and (truncated_length_his_1_t_empty_n xor ap_const_logic_1) and (truncated_length_his_t_empty_n xor ap_const_logic_1) and (length_histogram_V_t_empty_n xor ap_const_logic_1) and (right_V_t_empty_n xor ap_const_logic_1) and (left_V_t_empty_n xor ap_const_logic_1) and (parent_V_t_empty_n xor ap_const_logic_1) and (sorted_copy2_value_V_t_empty_n xor ap_const_logic_1) and (sorted_1_t_empty_n xor ap_const_logic_1) and (sorted_0_t_empty_n xor ap_const_logic_1) and (filtered_frequency_V_t_empty_n xor ap_const_logic_1) and (filtered_value_V_t_empty_n xor ap_const_logic_1) and create_tree_U0_ap_idle and create_codeword_U0_ap_idle and compute_bit_length_U0_ap_idle and canonize_tree_U0_ap_idle and Loop_copy_sorted_pro_U0_ap_idle and Block_proc_U0_ap_idle and Block_codeRepl1012_p_U0_ap_idle);
     ap_ready <= filter_U0_ap_ready;
     ap_sync_channel_write_filtered_frequency_V <= ((filter_U0_out_frequency_V_full_n and ap_channel_done_filtered_frequency_V) or ap_sync_reg_channel_write_filtered_frequency_V);
     ap_sync_channel_write_filtered_value_V <= ((filter_U0_out_value_V_full_n and ap_channel_done_filtered_value_V) or ap_sync_reg_channel_write_filtered_value_V);
@@ -1897,9 +1863,6 @@ begin
     ap_sync_channel_write_right_V <= ((create_tree_U0_right_V_full_n and ap_channel_done_right_V) or ap_sync_reg_channel_write_right_V);
     ap_sync_channel_write_sorted_0 <= ((sort_U0_out_value_V_full_n and ap_channel_done_sorted_0) or ap_sync_reg_channel_write_sorted_0);
     ap_sync_channel_write_sorted_1 <= ((sort_U0_out_frequency_V_full_n and ap_channel_done_sorted_1) or ap_sync_reg_channel_write_sorted_1);
-    ap_sync_channel_write_sorted_copy1_frequen <= ((ap_channel_done_sorted_copy1_frequen and Loop_copy_sorted_pro_U0_sorted_copy1_frequency_V_full_n) or ap_sync_reg_channel_write_sorted_copy1_frequen);
-    ap_sync_channel_write_sorted_copy1_value_V <= ((ap_channel_done_sorted_copy1_value_V and Loop_copy_sorted_pro_U0_sorted_copy1_value_V_full_n) or ap_sync_reg_channel_write_sorted_copy1_value_V);
-    ap_sync_channel_write_sorted_copy2_value_V <= ((ap_channel_done_sorted_copy2_value_V and Loop_copy_sorted_pro_U0_sorted_copy2_value_V_full_n) or ap_sync_reg_channel_write_sorted_copy2_value_V);
     ap_sync_channel_write_truncated_length_his <= ((truncate_tree_U0_output_length_histogram1_V_full_n and ap_channel_done_truncated_length_his) or ap_sync_reg_channel_write_truncated_length_his);
     ap_sync_channel_write_truncated_length_his_1 <= ((truncate_tree_U0_output_length_histogram2_V_full_n and ap_channel_done_truncated_length_his_1) or ap_sync_reg_channel_write_truncated_length_his_1);
     ap_sync_continue <= ap_sync_done;
@@ -1920,7 +1883,7 @@ begin
     create_codeword_U0_start_full_n <= ap_const_logic_1;
     create_codeword_U0_start_write <= ap_const_logic_0;
     create_tree_U0_ap_continue <= (ap_sync_channel_write_right_V and ap_sync_channel_write_parent_V and ap_sync_channel_write_left_V);
-    create_tree_U0_ap_start <= (sorted_copy1_value_V_t_empty_n and sorted_copy1_frequen_t_empty_n);
+    create_tree_U0_ap_start <= start_for_create_tree_U0_empty_n;
     create_tree_U0_left_V_full_n <= left_V_i_full_n;
     create_tree_U0_parent_V_full_n <= parent_V_i_full_n;
     create_tree_U0_right_V_full_n <= right_V_i_full_n;
@@ -1948,6 +1911,7 @@ begin
     sort_U0_start_write <= ap_const_logic_0;
     start_for_Block_codeRepl1012_p_U0_din <= (0=>ap_const_logic_1, others=>'-');
     start_for_Block_proc_U0_din <= (0=>ap_const_logic_1, others=>'-');
+    start_for_create_tree_U0_din <= (0=>ap_const_logic_1, others=>'-');
     symbol_histogram_frequency_V_address0 <= filter_U0_in_frequency_V_address0;
     symbol_histogram_frequency_V_address1 <= ap_const_lv8_0;
     symbol_histogram_frequency_V_ce0 <= filter_U0_in_frequency_V_ce0;

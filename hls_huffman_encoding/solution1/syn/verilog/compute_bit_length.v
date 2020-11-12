@@ -123,8 +123,8 @@ wire   [0:0] icmp_ln883_fu_311_p2;
 reg   [0:0] icmp_ln883_reg_409;
 wire   [0:0] icmp_ln883_1_fu_317_p2;
 reg   [0:0] icmp_ln883_1_reg_413;
-wire   [63:0] zext_ln544_8_fu_323_p1;
-reg   [63:0] zext_ln544_8_reg_417;
+wire   [63:0] zext_ln544_6_fu_323_p1;
+reg   [63:0] zext_ln544_6_reg_417;
 reg   [5:0] internal_length_hist_2_reg_422;
 wire   [8:0] internal_length_hist_q0;
 reg   [8:0] count_V_reg_427;
@@ -155,7 +155,7 @@ wire    ap_block_pp1_stage1;
 wire   [8:0] count_V_1_fu_332_p2;
 wire   [5:0] length_V_fu_305_p2;
 wire   [9:0] i_fu_273_p2;
-wire   [8:0] zext_ln544_7_fu_328_p1;
+wire   [8:0] zext_ln544_5_fu_328_p1;
 wire    ap_CS_fsm_state12;
 reg   [7:0] ap_NS_fsm;
 wire    ap_block_pp1_stage1_subdone;
@@ -323,8 +323,8 @@ end
 
 always @ (posedge ap_clk) begin
     if (((1'b1 == ap_CS_fsm_pp1_stage1) & (1'b0 == ap_block_pp1_stage1_11001) & ((icmp_ln883_1_fu_317_p2 == 1'd0) | (icmp_ln883_fu_311_p2 == 1'd0)))) begin
-        internal_length_hist_2_reg_422 <= zext_ln544_8_fu_323_p1;
-        zext_ln544_8_reg_417[5 : 0] <= zext_ln544_8_fu_323_p1[5 : 0];
+        internal_length_hist_2_reg_422 <= zext_ln544_6_fu_323_p1;
+        zext_ln544_6_reg_417[5 : 0] <= zext_ln544_6_fu_323_p1[5 : 0];
     end
 end
 
@@ -460,7 +460,7 @@ always @ (*) begin
     if (((1'b0 == ap_block_pp1_stage0) & (ap_enable_reg_pp1_iter2 == 1'b1) & (1'b1 == ap_CS_fsm_pp1_stage0))) begin
         internal_length_hist_address0 = internal_length_hist_2_reg_422;
     end else if (((1'b0 == ap_block_pp1_stage1) & (ap_enable_reg_pp1_iter1 == 1'b1) & (1'b1 == ap_CS_fsm_pp1_stage1))) begin
-        internal_length_hist_address0 = zext_ln544_8_fu_323_p1;
+        internal_length_hist_address0 = zext_ln544_6_fu_323_p1;
     end else if ((1'b1 == ap_CS_fsm_state2)) begin
         internal_length_hist_address0 = zext_ln18_fu_258_p1;
     end else begin
@@ -504,7 +504,7 @@ end
 
 always @ (*) begin
     if (((1'b0 == ap_block_pp1_stage0) & (ap_enable_reg_pp1_iter2 == 1'b1) & (1'b1 == ap_CS_fsm_pp1_stage0))) begin
-        length_histogram_V_address0 = zext_ln544_8_reg_417;
+        length_histogram_V_address0 = zext_ln544_6_reg_417;
     end else if ((1'b1 == ap_CS_fsm_state2)) begin
         length_histogram_V_address0 = zext_ln18_fu_258_p1;
     end else begin
@@ -678,7 +678,7 @@ assign ap_enable_pp1 = (ap_idle_pp1 ^ 1'b1);
 
 assign ap_phi_reg_pp1_iter0_phi_ln700_i_i_reg_229 = 'bx;
 
-assign count_V_1_fu_332_p2 = (count_V_reg_427 + zext_ln544_7_fu_328_p1);
+assign count_V_1_fu_332_p2 = (count_V_reg_427 + zext_ln544_5_fu_328_p1);
 
 assign i_5_fu_252_p2 = (i_0_i_i_reg_208 + 7'd1);
 
@@ -712,9 +712,9 @@ assign zext_ln18_fu_258_p1 = i_0_i_i_reg_208;
 
 assign zext_ln27_fu_290_p1 = ap_phi_mux_i2_0_i_i_phi_fu_222_p4;
 
-assign zext_ln544_7_fu_328_p1 = ap_phi_reg_pp1_iter2_phi_ln700_i_i_reg_229;
+assign zext_ln544_5_fu_328_p1 = ap_phi_reg_pp1_iter2_phi_ln700_i_i_reg_229;
 
-assign zext_ln544_8_fu_323_p1 = length_V_fu_305_p2;
+assign zext_ln544_6_fu_323_p1 = length_V_fu_305_p2;
 
 assign zext_ln544_fu_295_p1 = parent_V_load_reg_379;
 
@@ -722,7 +722,7 @@ always @ (posedge ap_clk) begin
     zext_ln12_reg_339[9] <= 1'b0;
     zext_ln27_reg_367[63:32] <= 32'b00000000000000000000000000000000;
     zext_ln27_reg_367_pp1_iter1_reg[63:32] <= 32'b00000000000000000000000000000000;
-    zext_ln544_8_reg_417[63:6] <= 58'b0000000000000000000000000000000000000000000000000000000000;
+    zext_ln544_6_reg_417[63:6] <= 58'b0000000000000000000000000000000000000000000000000000000000;
 end
 
 endmodule //compute_bit_length

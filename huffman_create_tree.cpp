@@ -6,7 +6,7 @@ void create_tree (
     /* output */ ap_uint<SYMBOL_BITS> parent[INPUT_SYMBOL_SIZE-1],
     /* output */ ap_uint<SYMBOL_BITS> left[INPUT_SYMBOL_SIZE-1],
     /* output */ ap_uint<SYMBOL_BITS> right[INPUT_SYMBOL_SIZE-1]) {
-    #pragma HLS INTERFACE ap_memory port=in bundle=BUS_IN
+    #pragma HLS INTERFACE ap_fifo port=in
 
     Frequency frequency[INPUT_SYMBOL_SIZE-1];
     ap_uint<SYMBOL_BITS> tree_count = 0;  // Number of intermediate nodes assigned a parent.
@@ -15,7 +15,9 @@ void create_tree (
 
     assert(num_symbols > 0);
     assert(num_symbols <= INPUT_SYMBOL_SIZE);
-    
+
+    Symbol s = in[0];
+    Symbol s_next = in[1];
     for(int i = 0; i < (num_symbols-1); i++) {
         #pragma HLS PIPELINE II=5
         Frequency node_freq = 0;
@@ -27,17 +29,16 @@ void create_tree (
         assert(in_count < num_symbols || tree_count < i);
 
         Frequency intermediate_freq = frequency[tree_count];
-        Symbol s = in[in_count];
         Frequency intermediate_freq_next = frequency[tree_count+1];
-        Symbol s_next = in[in_count+1];
 
         if((in_count < num_symbols && s.frequency <= intermediate_freq) || tree_count == i) {
             // Pick symbol from in[].
             left[i] = s.value; // Set input symbol as left node
             node_freq = s.frequency; // Add symbol frequency to total node frequency
+            s = s_next;
+            s_next = in[in_count+2];
             in_count++; // Move to the next input symbol
             assert(in_count < num_symbols || tree_count < i);
-            s = s_next;
         } else {
             // Pick internal node without a parent.
             left[i] = INTERNAL_NODE; // Set symbol to indicate an internal node
@@ -52,6 +53,8 @@ void create_tree (
             // Pick symbol from in[].
             right[i] = s.value;
             frequency[i] = node_freq + s.frequency;
+            s = s_next;
+            s_next = in[in_count+2];
             in_count++;
         } else {
             // Pick internal node without a parent.

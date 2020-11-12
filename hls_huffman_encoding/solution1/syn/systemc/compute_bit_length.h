@@ -98,8 +98,8 @@ struct compute_bit_length : public sc_module {
     sc_signal< sc_lv<1> > icmp_ln883_reg_409;
     sc_signal< sc_lv<1> > icmp_ln883_1_fu_317_p2;
     sc_signal< sc_lv<1> > icmp_ln883_1_reg_413;
-    sc_signal< sc_lv<64> > zext_ln544_8_fu_323_p1;
-    sc_signal< sc_lv<64> > zext_ln544_8_reg_417;
+    sc_signal< sc_lv<64> > zext_ln544_6_fu_323_p1;
+    sc_signal< sc_lv<64> > zext_ln544_6_reg_417;
     sc_signal< sc_lv<6> > internal_length_hist_2_reg_422;
     sc_signal< sc_lv<9> > internal_length_hist_q0;
     sc_signal< sc_lv<9> > count_V_reg_427;
@@ -130,7 +130,7 @@ struct compute_bit_length : public sc_module {
     sc_signal< sc_lv<9> > count_V_1_fu_332_p2;
     sc_signal< sc_lv<6> > length_V_fu_305_p2;
     sc_signal< sc_lv<10> > i_fu_273_p2;
-    sc_signal< sc_lv<9> > zext_ln544_7_fu_328_p1;
+    sc_signal< sc_lv<9> > zext_ln544_5_fu_328_p1;
     sc_signal< sc_logic > ap_CS_fsm_state12;
     sc_signal< sc_lv<8> > ap_NS_fsm;
     sc_signal< bool > ap_block_pp1_stage1_subdone;
@@ -246,8 +246,8 @@ struct compute_bit_length : public sc_module {
     void thread_zext_ln12_fu_242_p1();
     void thread_zext_ln18_fu_258_p1();
     void thread_zext_ln27_fu_290_p1();
-    void thread_zext_ln544_7_fu_328_p1();
-    void thread_zext_ln544_8_fu_323_p1();
+    void thread_zext_ln544_5_fu_328_p1();
+    void thread_zext_ln544_6_fu_323_p1();
     void thread_zext_ln544_fu_295_p1();
     void thread_ap_NS_fsm();
 };

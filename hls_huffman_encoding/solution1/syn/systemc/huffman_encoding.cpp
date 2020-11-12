@@ -100,44 +100,6 @@ huffman_encoding::huffman_encoding(sc_module_name name) : sc_module(name), mVcdF
     sorted_1_U->i_write(ap_channel_done_sorted_1);
     sorted_1_U->t_empty_n(sorted_1_t_empty_n);
     sorted_1_U->t_read(Loop_copy_sorted_pro_U0_ap_ready);
-    sorted_copy1_value_V_U = new huffman_encoding_ncg("sorted_copy1_value_V_U");
-    sorted_copy1_value_V_U->clk(ap_clk);
-    sorted_copy1_value_V_U->reset(ap_rst);
-    sorted_copy1_value_V_U->i_address0(Loop_copy_sorted_pro_U0_sorted_copy1_value_V_address0);
-    sorted_copy1_value_V_U->i_ce0(Loop_copy_sorted_pro_U0_sorted_copy1_value_V_ce0);
-    sorted_copy1_value_V_U->i_we0(Loop_copy_sorted_pro_U0_sorted_copy1_value_V_we0);
-    sorted_copy1_value_V_U->i_d0(Loop_copy_sorted_pro_U0_sorted_copy1_value_V_d0);
-    sorted_copy1_value_V_U->i_q0(sorted_copy1_value_V_i_q0);
-    sorted_copy1_value_V_U->t_address0(create_tree_U0_in_value_V_address0);
-    sorted_copy1_value_V_U->t_ce0(create_tree_U0_in_value_V_ce0);
-    sorted_copy1_value_V_U->t_we0(ap_var_for_const0);
-    sorted_copy1_value_V_U->t_d0(ap_var_for_const1);
-    sorted_copy1_value_V_U->t_q0(sorted_copy1_value_V_t_q0);
-    sorted_copy1_value_V_U->i_ce(ap_var_for_const2);
-    sorted_copy1_value_V_U->t_ce(ap_var_for_const2);
-    sorted_copy1_value_V_U->i_full_n(sorted_copy1_value_V_i_full_n);
-    sorted_copy1_value_V_U->i_write(ap_channel_done_sorted_copy1_value_V);
-    sorted_copy1_value_V_U->t_empty_n(sorted_copy1_value_V_t_empty_n);
-    sorted_copy1_value_V_U->t_read(create_tree_U0_ap_ready);
-    sorted_copy1_frequen_U = new huffman_encoding_ocq("sorted_copy1_frequen_U");
-    sorted_copy1_frequen_U->clk(ap_clk);
-    sorted_copy1_frequen_U->reset(ap_rst);
-    sorted_copy1_frequen_U->i_address0(Loop_copy_sorted_pro_U0_sorted_copy1_frequency_V_address0);
-    sorted_copy1_frequen_U->i_ce0(Loop_copy_sorted_pro_U0_sorted_copy1_frequency_V_ce0);
-    sorted_copy1_frequen_U->i_we0(Loop_copy_sorted_pro_U0_sorted_copy1_frequency_V_we0);
-    sorted_copy1_frequen_U->i_d0(Loop_copy_sorted_pro_U0_sorted_copy1_frequency_V_d0);
-    sorted_copy1_frequen_U->i_q0(sorted_copy1_frequen_i_q0);
-    sorted_copy1_frequen_U->t_address0(create_tree_U0_in_frequency_V_address0);
-    sorted_copy1_frequen_U->t_ce0(create_tree_U0_in_frequency_V_ce0);
-    sorted_copy1_frequen_U->t_we0(ap_var_for_const0);
-    sorted_copy1_frequen_U->t_d0(ap_var_for_const3);
-    sorted_copy1_frequen_U->t_q0(sorted_copy1_frequen_t_q0);
-    sorted_copy1_frequen_U->i_ce(ap_var_for_const2);
-    sorted_copy1_frequen_U->t_ce(ap_var_for_const2);
-    sorted_copy1_frequen_U->i_full_n(sorted_copy1_frequen_i_full_n);
-    sorted_copy1_frequen_U->i_write(ap_channel_done_sorted_copy1_frequen);
-    sorted_copy1_frequen_U->t_empty_n(sorted_copy1_frequen_t_empty_n);
-    sorted_copy1_frequen_U->t_read(create_tree_U0_ap_ready);
     sorted_copy2_value_V_U = new huffman_encoding_ncg("sorted_copy2_value_V_U");
     sorted_copy2_value_V_U->clk(ap_clk);
     sorted_copy2_value_V_U->reset(ap_rst);
@@ -154,10 +116,10 @@ huffman_encoding::huffman_encoding(sc_module_name name) : sc_module(name), mVcdF
     sorted_copy2_value_V_U->i_ce(ap_var_for_const2);
     sorted_copy2_value_V_U->t_ce(ap_var_for_const2);
     sorted_copy2_value_V_U->i_full_n(sorted_copy2_value_V_i_full_n);
-    sorted_copy2_value_V_U->i_write(ap_channel_done_sorted_copy2_value_V);
+    sorted_copy2_value_V_U->i_write(Loop_copy_sorted_pro_U0_ap_done);
     sorted_copy2_value_V_U->t_empty_n(sorted_copy2_value_V_t_empty_n);
     sorted_copy2_value_V_U->t_read(canonize_tree_U0_ap_ready);
-    parent_V_U = new huffman_encoding_udo("parent_V_U");
+    parent_V_U = new huffman_encoding_sc4("parent_V_U");
     parent_V_U->clk(ap_clk);
     parent_V_U->reset(ap_rst);
     parent_V_U->i_address0(create_tree_U0_parent_V_address0);
@@ -176,7 +138,7 @@ huffman_encoding::huffman_encoding(sc_module_name name) : sc_module(name), mVcdF
     parent_V_U->i_write(ap_channel_done_parent_V);
     parent_V_U->t_empty_n(parent_V_t_empty_n);
     parent_V_U->t_read(compute_bit_length_U0_ap_ready);
-    left_V_U = new huffman_encoding_udo("left_V_U");
+    left_V_U = new huffman_encoding_sc4("left_V_U");
     left_V_U->clk(ap_clk);
     left_V_U->reset(ap_rst);
     left_V_U->i_address0(create_tree_U0_left_V_address0);
@@ -195,7 +157,7 @@ huffman_encoding::huffman_encoding(sc_module_name name) : sc_module(name), mVcdF
     left_V_U->i_write(ap_channel_done_left_V);
     left_V_U->t_empty_n(left_V_t_empty_n);
     left_V_U->t_read(compute_bit_length_U0_ap_ready);
-    right_V_U = new huffman_encoding_udo("right_V_U");
+    right_V_U = new huffman_encoding_sc4("right_V_U");
     right_V_U->clk(ap_clk);
     right_V_U->reset(ap_rst);
     right_V_U->i_address0(create_tree_U0_right_V_address0);
@@ -214,7 +176,7 @@ huffman_encoding::huffman_encoding(sc_module_name name) : sc_module(name), mVcdF
     right_V_U->i_write(ap_channel_done_right_V);
     right_V_U->t_empty_n(right_V_t_empty_n);
     right_V_U->t_read(compute_bit_length_U0_ap_ready);
-    length_histogram_V_U = new huffman_encoding_xdS("length_histogram_V_U");
+    length_histogram_V_U = new huffman_encoding_vdy("length_histogram_V_U");
     length_histogram_V_U->clk(ap_clk);
     length_histogram_V_U->reset(ap_rst);
     length_histogram_V_U->i_address0(compute_bit_length_U0_length_histogram_V_address0);
@@ -233,7 +195,7 @@ huffman_encoding::huffman_encoding(sc_module_name name) : sc_module(name), mVcdF
     length_histogram_V_U->i_write(compute_bit_length_U0_ap_done);
     length_histogram_V_U->t_empty_n(length_histogram_V_t_empty_n);
     length_histogram_V_U->t_read(truncate_tree_U0_ap_ready);
-    truncated_length_his_U = new huffman_encoding_yd2("truncated_length_his_U");
+    truncated_length_his_U = new huffman_encoding_wdI("truncated_length_his_U");
     truncated_length_his_U->clk(ap_clk);
     truncated_length_his_U->reset(ap_rst);
     truncated_length_his_U->i_address0(truncate_tree_U0_output_length_histogram1_V_address0);
@@ -262,7 +224,7 @@ huffman_encoding::huffman_encoding(sc_module_name name) : sc_module(name), mVcdF
     truncated_length_his_U->i_write(ap_channel_done_truncated_length_his);
     truncated_length_his_U->t_empty_n(truncated_length_his_t_empty_n);
     truncated_length_his_U->t_read(canonize_tree_U0_ap_ready);
-    truncated_length_his_1_U = new huffman_encoding_xdS("truncated_length_his_1_U");
+    truncated_length_his_1_U = new huffman_encoding_vdy("truncated_length_his_1_U");
     truncated_length_his_1_U->clk(ap_clk);
     truncated_length_his_1_U->reset(ap_rst);
     truncated_length_his_1_U->i_address0(truncate_tree_U0_output_length_histogram2_V_address0);
@@ -281,7 +243,7 @@ huffman_encoding::huffman_encoding(sc_module_name name) : sc_module(name), mVcdF
     truncated_length_his_1_U->i_write(ap_channel_done_truncated_length_his_1);
     truncated_length_his_1_U->t_empty_n(truncated_length_his_1_t_empty_n);
     truncated_length_his_1_U->t_read(create_codeword_U0_ap_ready);
-    symbol_bits_V_U = new huffman_encoding_Aem("symbol_bits_V_U");
+    symbol_bits_V_U = new huffman_encoding_yd2("symbol_bits_V_U");
     symbol_bits_V_U->clk(ap_clk);
     symbol_bits_V_U->reset(ap_rst);
     symbol_bits_V_U->i_address0(canonize_tree_U0_symbol_bits_V_address0);
@@ -370,7 +332,7 @@ huffman_encoding::huffman_encoding(sc_module_name name) : sc_module(name), mVcdF
     Loop_copy_sorted_pro_U0->ap_clk(ap_clk);
     Loop_copy_sorted_pro_U0->ap_rst(ap_rst);
     Loop_copy_sorted_pro_U0->ap_start(Loop_copy_sorted_pro_U0_ap_start);
-    Loop_copy_sorted_pro_U0->start_full_n(start_for_Block_proc_U0_full_n);
+    Loop_copy_sorted_pro_U0->start_full_n(Loop_copy_sorted_pro_U0_start_full_n);
     Loop_copy_sorted_pro_U0->ap_done(Loop_copy_sorted_pro_U0_ap_done);
     Loop_copy_sorted_pro_U0->ap_continue(Loop_copy_sorted_pro_U0_ap_continue);
     Loop_copy_sorted_pro_U0->ap_idle(Loop_copy_sorted_pro_U0_ap_idle);
@@ -383,17 +345,15 @@ huffman_encoding::huffman_encoding(sc_module_name name) : sc_module(name), mVcdF
     Loop_copy_sorted_pro_U0->sorted_0_address0(Loop_copy_sorted_pro_U0_sorted_0_address0);
     Loop_copy_sorted_pro_U0->sorted_0_ce0(Loop_copy_sorted_pro_U0_sorted_0_ce0);
     Loop_copy_sorted_pro_U0->sorted_0_q0(sorted_0_t_q0);
-    Loop_copy_sorted_pro_U0->sorted_copy1_value_V_address0(Loop_copy_sorted_pro_U0_sorted_copy1_value_V_address0);
-    Loop_copy_sorted_pro_U0->sorted_copy1_value_V_ce0(Loop_copy_sorted_pro_U0_sorted_copy1_value_V_ce0);
-    Loop_copy_sorted_pro_U0->sorted_copy1_value_V_we0(Loop_copy_sorted_pro_U0_sorted_copy1_value_V_we0);
-    Loop_copy_sorted_pro_U0->sorted_copy1_value_V_d0(Loop_copy_sorted_pro_U0_sorted_copy1_value_V_d0);
+    Loop_copy_sorted_pro_U0->sorted_copy1_0_din(Loop_copy_sorted_pro_U0_sorted_copy1_0_din);
+    Loop_copy_sorted_pro_U0->sorted_copy1_0_full_n(sorted_copy1_0_chann_full_n);
+    Loop_copy_sorted_pro_U0->sorted_copy1_0_write(Loop_copy_sorted_pro_U0_sorted_copy1_0_write);
     Loop_copy_sorted_pro_U0->sorted_1_address0(Loop_copy_sorted_pro_U0_sorted_1_address0);
     Loop_copy_sorted_pro_U0->sorted_1_ce0(Loop_copy_sorted_pro_U0_sorted_1_ce0);
     Loop_copy_sorted_pro_U0->sorted_1_q0(sorted_1_t_q0);
-    Loop_copy_sorted_pro_U0->sorted_copy1_frequency_V_address0(Loop_copy_sorted_pro_U0_sorted_copy1_frequency_V_address0);
-    Loop_copy_sorted_pro_U0->sorted_copy1_frequency_V_ce0(Loop_copy_sorted_pro_U0_sorted_copy1_frequency_V_ce0);
-    Loop_copy_sorted_pro_U0->sorted_copy1_frequency_V_we0(Loop_copy_sorted_pro_U0_sorted_copy1_frequency_V_we0);
-    Loop_copy_sorted_pro_U0->sorted_copy1_frequency_V_d0(Loop_copy_sorted_pro_U0_sorted_copy1_frequency_V_d0);
+    Loop_copy_sorted_pro_U0->sorted_copy1_1_din(Loop_copy_sorted_pro_U0_sorted_copy1_1_din);
+    Loop_copy_sorted_pro_U0->sorted_copy1_1_full_n(sorted_copy1_1_chann_full_n);
+    Loop_copy_sorted_pro_U0->sorted_copy1_1_write(Loop_copy_sorted_pro_U0_sorted_copy1_1_write);
     Loop_copy_sorted_pro_U0->sorted_copy2_value_V_address0(Loop_copy_sorted_pro_U0_sorted_copy2_value_V_address0);
     Loop_copy_sorted_pro_U0->sorted_copy2_value_V_ce0(Loop_copy_sorted_pro_U0_sorted_copy2_value_V_ce0);
     Loop_copy_sorted_pro_U0->sorted_copy2_value_V_we0(Loop_copy_sorted_pro_U0_sorted_copy2_value_V_we0);
@@ -415,12 +375,12 @@ huffman_encoding::huffman_encoding(sc_module_name name) : sc_module(name), mVcdF
     create_tree_U0->ap_continue(create_tree_U0_ap_continue);
     create_tree_U0->ap_idle(create_tree_U0_ap_idle);
     create_tree_U0->ap_ready(create_tree_U0_ap_ready);
-    create_tree_U0->in_value_V_address0(create_tree_U0_in_value_V_address0);
-    create_tree_U0->in_value_V_ce0(create_tree_U0_in_value_V_ce0);
-    create_tree_U0->in_value_V_q0(sorted_copy1_value_V_t_q0);
-    create_tree_U0->in_frequency_V_address0(create_tree_U0_in_frequency_V_address0);
-    create_tree_U0->in_frequency_V_ce0(create_tree_U0_in_frequency_V_ce0);
-    create_tree_U0->in_frequency_V_q0(sorted_copy1_frequen_t_q0);
+    create_tree_U0->in_value_V_dout(sorted_copy1_0_chann_dout);
+    create_tree_U0->in_value_V_empty_n(sorted_copy1_0_chann_empty_n);
+    create_tree_U0->in_value_V_read(create_tree_U0_in_value_V_read);
+    create_tree_U0->in_frequency_V_dout(sorted_copy1_1_chann_dout);
+    create_tree_U0->in_frequency_V_empty_n(sorted_copy1_1_chann_empty_n);
+    create_tree_U0->in_frequency_V_read(create_tree_U0_in_frequency_V_read);
     create_tree_U0->extLd_loc_dout(extLd_loc_c_dout);
     create_tree_U0->extLd_loc_empty_n(extLd_loc_c_empty_n);
     create_tree_U0->extLd_loc_read(create_tree_U0_extLd_loc_read);
@@ -573,6 +533,28 @@ huffman_encoding::huffman_encoding(sc_module_name name) : sc_module(name), mVcdF
     extLd9_loc_channel_U->if_dout(extLd9_loc_channel_dout);
     extLd9_loc_channel_U->if_empty_n(extLd9_loc_channel_empty_n);
     extLd9_loc_channel_U->if_read(sort_U0_ap_ready);
+    sorted_copy1_0_chann_U = new fifo_w9_d256_A("sorted_copy1_0_chann_U");
+    sorted_copy1_0_chann_U->clk(ap_clk);
+    sorted_copy1_0_chann_U->reset(ap_rst);
+    sorted_copy1_0_chann_U->if_read_ce(ap_var_for_const2);
+    sorted_copy1_0_chann_U->if_write_ce(ap_var_for_const2);
+    sorted_copy1_0_chann_U->if_din(Loop_copy_sorted_pro_U0_sorted_copy1_0_din);
+    sorted_copy1_0_chann_U->if_full_n(sorted_copy1_0_chann_full_n);
+    sorted_copy1_0_chann_U->if_write(Loop_copy_sorted_pro_U0_sorted_copy1_0_write);
+    sorted_copy1_0_chann_U->if_dout(sorted_copy1_0_chann_dout);
+    sorted_copy1_0_chann_U->if_empty_n(sorted_copy1_0_chann_empty_n);
+    sorted_copy1_0_chann_U->if_read(create_tree_U0_in_value_V_read);
+    sorted_copy1_1_chann_U = new fifo_w32_d256_A("sorted_copy1_1_chann_U");
+    sorted_copy1_1_chann_U->clk(ap_clk);
+    sorted_copy1_1_chann_U->reset(ap_rst);
+    sorted_copy1_1_chann_U->if_read_ce(ap_var_for_const2);
+    sorted_copy1_1_chann_U->if_write_ce(ap_var_for_const2);
+    sorted_copy1_1_chann_U->if_din(Loop_copy_sorted_pro_U0_sorted_copy1_1_din);
+    sorted_copy1_1_chann_U->if_full_n(sorted_copy1_1_chann_full_n);
+    sorted_copy1_1_chann_U->if_write(Loop_copy_sorted_pro_U0_sorted_copy1_1_write);
+    sorted_copy1_1_chann_U->if_dout(sorted_copy1_1_chann_dout);
+    sorted_copy1_1_chann_U->if_empty_n(sorted_copy1_1_chann_empty_n);
+    sorted_copy1_1_chann_U->if_read(create_tree_U0_in_frequency_V_read);
     val_assign7_loc_c_U = new fifo_w9_d5_A("val_assign7_loc_c_U");
     val_assign7_loc_c_U->clk(ap_clk);
     val_assign7_loc_c_U->reset(ap_rst);
@@ -617,28 +599,39 @@ huffman_encoding::huffman_encoding(sc_module_name name) : sc_module(name), mVcdF
     extLd_loc_c22_U->if_dout(extLd_loc_c22_dout);
     extLd_loc_c22_U->if_empty_n(extLd_loc_c22_empty_n);
     extLd_loc_c22_U->if_read(compute_bit_length_U0_extLd_loc_read);
-    start_for_Block_cBew_U = new start_for_Block_cBew("start_for_Block_cBew_U");
-    start_for_Block_cBew_U->clk(ap_clk);
-    start_for_Block_cBew_U->reset(ap_rst);
-    start_for_Block_cBew_U->if_read_ce(ap_var_for_const2);
-    start_for_Block_cBew_U->if_write_ce(ap_var_for_const2);
-    start_for_Block_cBew_U->if_din(start_for_Block_codeRepl1012_p_U0_din);
-    start_for_Block_cBew_U->if_full_n(start_for_Block_codeRepl1012_p_U0_full_n);
-    start_for_Block_cBew_U->if_write(filter_U0_start_write);
-    start_for_Block_cBew_U->if_dout(start_for_Block_codeRepl1012_p_U0_dout);
-    start_for_Block_cBew_U->if_empty_n(start_for_Block_codeRepl1012_p_U0_empty_n);
-    start_for_Block_cBew_U->if_read(Block_codeRepl1012_p_U0_ap_ready);
-    start_for_Block_pCeG_U = new start_for_Block_pCeG("start_for_Block_pCeG_U");
-    start_for_Block_pCeG_U->clk(ap_clk);
-    start_for_Block_pCeG_U->reset(ap_rst);
-    start_for_Block_pCeG_U->if_read_ce(ap_var_for_const2);
-    start_for_Block_pCeG_U->if_write_ce(ap_var_for_const2);
-    start_for_Block_pCeG_U->if_din(start_for_Block_proc_U0_din);
-    start_for_Block_pCeG_U->if_full_n(start_for_Block_proc_U0_full_n);
-    start_for_Block_pCeG_U->if_write(Loop_copy_sorted_pro_U0_start_write);
-    start_for_Block_pCeG_U->if_dout(start_for_Block_proc_U0_dout);
-    start_for_Block_pCeG_U->if_empty_n(start_for_Block_proc_U0_empty_n);
-    start_for_Block_pCeG_U->if_read(Block_proc_U0_ap_ready);
+    start_for_Block_czec_U = new start_for_Block_czec("start_for_Block_czec_U");
+    start_for_Block_czec_U->clk(ap_clk);
+    start_for_Block_czec_U->reset(ap_rst);
+    start_for_Block_czec_U->if_read_ce(ap_var_for_const2);
+    start_for_Block_czec_U->if_write_ce(ap_var_for_const2);
+    start_for_Block_czec_U->if_din(start_for_Block_codeRepl1012_p_U0_din);
+    start_for_Block_czec_U->if_full_n(start_for_Block_codeRepl1012_p_U0_full_n);
+    start_for_Block_czec_U->if_write(filter_U0_start_write);
+    start_for_Block_czec_U->if_dout(start_for_Block_codeRepl1012_p_U0_dout);
+    start_for_Block_czec_U->if_empty_n(start_for_Block_codeRepl1012_p_U0_empty_n);
+    start_for_Block_czec_U->if_read(Block_codeRepl1012_p_U0_ap_ready);
+    start_for_create_Aem_U = new start_for_create_Aem("start_for_create_Aem_U");
+    start_for_create_Aem_U->clk(ap_clk);
+    start_for_create_Aem_U->reset(ap_rst);
+    start_for_create_Aem_U->if_read_ce(ap_var_for_const2);
+    start_for_create_Aem_U->if_write_ce(ap_var_for_const2);
+    start_for_create_Aem_U->if_din(start_for_create_tree_U0_din);
+    start_for_create_Aem_U->if_full_n(start_for_create_tree_U0_full_n);
+    start_for_create_Aem_U->if_write(Loop_copy_sorted_pro_U0_start_write);
+    start_for_create_Aem_U->if_dout(start_for_create_tree_U0_dout);
+    start_for_create_Aem_U->if_empty_n(start_for_create_tree_U0_empty_n);
+    start_for_create_Aem_U->if_read(create_tree_U0_ap_ready);
+    start_for_Block_pBew_U = new start_for_Block_pBew("start_for_Block_pBew_U");
+    start_for_Block_pBew_U->clk(ap_clk);
+    start_for_Block_pBew_U->reset(ap_rst);
+    start_for_Block_pBew_U->if_read_ce(ap_var_for_const2);
+    start_for_Block_pBew_U->if_write_ce(ap_var_for_const2);
+    start_for_Block_pBew_U->if_din(start_for_Block_proc_U0_din);
+    start_for_Block_pBew_U->if_full_n(start_for_Block_proc_U0_full_n);
+    start_for_Block_pBew_U->if_write(Loop_copy_sorted_pro_U0_start_write);
+    start_for_Block_pBew_U->if_dout(start_for_Block_proc_U0_dout);
+    start_for_Block_pBew_U->if_empty_n(start_for_Block_proc_U0_empty_n);
+    start_for_Block_pBew_U->if_read(Block_proc_U0_ap_ready);
 
     SC_METHOD(thread_ap_clk_no_reset_);
     dont_initialize();
@@ -665,22 +658,18 @@ huffman_encoding::huffman_encoding(sc_module_name name) : sc_module(name), mVcdF
     SC_METHOD(thread_Block_proc_U0_start_write);
 
     SC_METHOD(thread_Loop_copy_sorted_pro_U0_ap_continue);
-    sensitive << ( ap_sync_channel_write_sorted_copy2_value_V );
-    sensitive << ( ap_sync_channel_write_sorted_copy1_frequen );
-    sensitive << ( ap_sync_channel_write_sorted_copy1_value_V );
+    sensitive << ( sorted_copy2_value_V_i_full_n );
 
     SC_METHOD(thread_Loop_copy_sorted_pro_U0_ap_start);
     sensitive << ( sorted_0_t_empty_n );
     sensitive << ( sorted_1_t_empty_n );
 
-    SC_METHOD(thread_Loop_copy_sorted_pro_U0_sorted_copy1_frequency_V_full_n);
-    sensitive << ( sorted_copy1_frequen_i_full_n );
-
-    SC_METHOD(thread_Loop_copy_sorted_pro_U0_sorted_copy1_value_V_full_n);
-    sensitive << ( sorted_copy1_value_V_i_full_n );
-
     SC_METHOD(thread_Loop_copy_sorted_pro_U0_sorted_copy2_value_V_full_n);
     sensitive << ( sorted_copy2_value_V_i_full_n );
+
+    SC_METHOD(thread_Loop_copy_sorted_pro_U0_start_full_n);
+    sensitive << ( start_for_create_tree_U0_full_n );
+    sensitive << ( start_for_Block_proc_U0_full_n );
 
     SC_METHOD(thread_ap_channel_done_extLd9_loc_channel);
     sensitive << ( Block_codeRepl1012_p_U0_ap_done );
@@ -716,17 +705,8 @@ huffman_encoding::huffman_encoding(sc_module_name name) : sc_module(name), mVcdF
     sensitive << ( sort_U0_ap_done );
     sensitive << ( ap_sync_reg_channel_write_sorted_1 );
 
-    SC_METHOD(thread_ap_channel_done_sorted_copy1_frequen);
-    sensitive << ( Loop_copy_sorted_pro_U0_ap_done );
-    sensitive << ( ap_sync_reg_channel_write_sorted_copy1_frequen );
-
-    SC_METHOD(thread_ap_channel_done_sorted_copy1_value_V);
-    sensitive << ( Loop_copy_sorted_pro_U0_ap_done );
-    sensitive << ( ap_sync_reg_channel_write_sorted_copy1_value_V );
-
     SC_METHOD(thread_ap_channel_done_sorted_copy2_value_V);
     sensitive << ( Loop_copy_sorted_pro_U0_ap_done );
-    sensitive << ( ap_sync_reg_channel_write_sorted_copy2_value_V );
 
     SC_METHOD(thread_ap_channel_done_symbol_bits_V);
     sensitive << ( canonize_tree_U0_ap_done );
@@ -757,8 +737,6 @@ huffman_encoding::huffman_encoding(sc_module_name name) : sc_module(name), mVcdF
     sensitive << ( filtered_frequency_V_t_empty_n );
     sensitive << ( sorted_0_t_empty_n );
     sensitive << ( sorted_1_t_empty_n );
-    sensitive << ( sorted_copy1_value_V_t_empty_n );
-    sensitive << ( sorted_copy1_frequen_t_empty_n );
     sensitive << ( sorted_copy2_value_V_t_empty_n );
     sensitive << ( parent_V_t_empty_n );
     sensitive << ( left_V_t_empty_n );
@@ -806,21 +784,6 @@ huffman_encoding::huffman_encoding(sc_module_name name) : sc_module(name), mVcdF
     sensitive << ( ap_channel_done_sorted_1 );
     sensitive << ( sort_U0_out_frequency_V_full_n );
     sensitive << ( ap_sync_reg_channel_write_sorted_1 );
-
-    SC_METHOD(thread_ap_sync_channel_write_sorted_copy1_frequen);
-    sensitive << ( ap_channel_done_sorted_copy1_frequen );
-    sensitive << ( Loop_copy_sorted_pro_U0_sorted_copy1_frequency_V_full_n );
-    sensitive << ( ap_sync_reg_channel_write_sorted_copy1_frequen );
-
-    SC_METHOD(thread_ap_sync_channel_write_sorted_copy1_value_V);
-    sensitive << ( ap_channel_done_sorted_copy1_value_V );
-    sensitive << ( Loop_copy_sorted_pro_U0_sorted_copy1_value_V_full_n );
-    sensitive << ( ap_sync_reg_channel_write_sorted_copy1_value_V );
-
-    SC_METHOD(thread_ap_sync_channel_write_sorted_copy2_value_V);
-    sensitive << ( ap_channel_done_sorted_copy2_value_V );
-    sensitive << ( Loop_copy_sorted_pro_U0_sorted_copy2_value_V_full_n );
-    sensitive << ( ap_sync_reg_channel_write_sorted_copy2_value_V );
 
     SC_METHOD(thread_ap_sync_channel_write_truncated_length_his);
     sensitive << ( ap_channel_done_truncated_length_his );
@@ -888,8 +851,7 @@ huffman_encoding::huffman_encoding(sc_module_name name) : sc_module(name), mVcdF
     sensitive << ( ap_sync_channel_write_parent_V );
 
     SC_METHOD(thread_create_tree_U0_ap_start);
-    sensitive << ( sorted_copy1_value_V_t_empty_n );
-    sensitive << ( sorted_copy1_frequen_t_empty_n );
+    sensitive << ( start_for_create_tree_U0_empty_n );
 
     SC_METHOD(thread_create_tree_U0_left_V_full_n);
     sensitive << ( left_V_i_full_n );
@@ -966,6 +928,8 @@ huffman_encoding::huffman_encoding(sc_module_name name) : sc_module(name), mVcdF
 
     SC_METHOD(thread_start_for_Block_proc_U0_din);
 
+    SC_METHOD(thread_start_for_create_tree_U0_din);
+
     SC_METHOD(thread_symbol_histogram_frequency_V_address0);
     sensitive << ( filter_U0_in_frequency_V_address0 );
 
@@ -1038,9 +1002,6 @@ huffman_encoding::huffman_encoding(sc_module_name name) : sc_module(name), mVcdF
     ap_sync_reg_channel_write_filtered_value_V = SC_LOGIC_0;
     ap_sync_reg_channel_write_sorted_1 = SC_LOGIC_0;
     ap_sync_reg_channel_write_sorted_0 = SC_LOGIC_0;
-    ap_sync_reg_channel_write_sorted_copy2_value_V = SC_LOGIC_0;
-    ap_sync_reg_channel_write_sorted_copy1_frequen = SC_LOGIC_0;
-    ap_sync_reg_channel_write_sorted_copy1_value_V = SC_LOGIC_0;
     ap_sync_reg_channel_write_right_V = SC_LOGIC_0;
     ap_sync_reg_channel_write_left_V = SC_LOGIC_0;
     ap_sync_reg_channel_write_parent_V = SC_LOGIC_0;
@@ -1102,10 +1063,6 @@ huffman_encoding::huffman_encoding(sc_module_name name) : sc_module(name), mVcdF
     sc_trace(mVcdFile, sorted_0_t_q0, "sorted_0_t_q0");
     sc_trace(mVcdFile, sorted_1_i_q0, "sorted_1_i_q0");
     sc_trace(mVcdFile, sorted_1_t_q0, "sorted_1_t_q0");
-    sc_trace(mVcdFile, sorted_copy1_value_V_i_q0, "sorted_copy1_value_V_i_q0");
-    sc_trace(mVcdFile, sorted_copy1_value_V_t_q0, "sorted_copy1_value_V_t_q0");
-    sc_trace(mVcdFile, sorted_copy1_frequen_i_q0, "sorted_copy1_frequen_i_q0");
-    sc_trace(mVcdFile, sorted_copy1_frequen_t_q0, "sorted_copy1_frequen_t_q0");
     sc_trace(mVcdFile, sorted_copy2_value_V_i_q0, "sorted_copy2_value_V_i_q0");
     sc_trace(mVcdFile, sorted_copy2_value_V_t_q0, "sorted_copy2_value_V_t_q0");
     sc_trace(mVcdFile, parent_V_i_q0, "parent_V_i_q0");
@@ -1190,6 +1147,7 @@ huffman_encoding::huffman_encoding(sc_module_name name) : sc_module(name), mVcdF
     sc_trace(mVcdFile, ap_sync_reg_channel_write_sorted_0, "ap_sync_reg_channel_write_sorted_0");
     sc_trace(mVcdFile, ap_sync_channel_write_sorted_0, "ap_sync_channel_write_sorted_0");
     sc_trace(mVcdFile, Loop_copy_sorted_pro_U0_ap_start, "Loop_copy_sorted_pro_U0_ap_start");
+    sc_trace(mVcdFile, Loop_copy_sorted_pro_U0_start_full_n, "Loop_copy_sorted_pro_U0_start_full_n");
     sc_trace(mVcdFile, Loop_copy_sorted_pro_U0_ap_done, "Loop_copy_sorted_pro_U0_ap_done");
     sc_trace(mVcdFile, Loop_copy_sorted_pro_U0_ap_continue, "Loop_copy_sorted_pro_U0_ap_continue");
     sc_trace(mVcdFile, Loop_copy_sorted_pro_U0_ap_idle, "Loop_copy_sorted_pro_U0_ap_idle");
@@ -1199,16 +1157,12 @@ huffman_encoding::huffman_encoding(sc_module_name name) : sc_module(name), mVcdF
     sc_trace(mVcdFile, Loop_copy_sorted_pro_U0_n_read, "Loop_copy_sorted_pro_U0_n_read");
     sc_trace(mVcdFile, Loop_copy_sorted_pro_U0_sorted_0_address0, "Loop_copy_sorted_pro_U0_sorted_0_address0");
     sc_trace(mVcdFile, Loop_copy_sorted_pro_U0_sorted_0_ce0, "Loop_copy_sorted_pro_U0_sorted_0_ce0");
-    sc_trace(mVcdFile, Loop_copy_sorted_pro_U0_sorted_copy1_value_V_address0, "Loop_copy_sorted_pro_U0_sorted_copy1_value_V_address0");
-    sc_trace(mVcdFile, Loop_copy_sorted_pro_U0_sorted_copy1_value_V_ce0, "Loop_copy_sorted_pro_U0_sorted_copy1_value_V_ce0");
-    sc_trace(mVcdFile, Loop_copy_sorted_pro_U0_sorted_copy1_value_V_we0, "Loop_copy_sorted_pro_U0_sorted_copy1_value_V_we0");
-    sc_trace(mVcdFile, Loop_copy_sorted_pro_U0_sorted_copy1_value_V_d0, "Loop_copy_sorted_pro_U0_sorted_copy1_value_V_d0");
+    sc_trace(mVcdFile, Loop_copy_sorted_pro_U0_sorted_copy1_0_din, "Loop_copy_sorted_pro_U0_sorted_copy1_0_din");
+    sc_trace(mVcdFile, Loop_copy_sorted_pro_U0_sorted_copy1_0_write, "Loop_copy_sorted_pro_U0_sorted_copy1_0_write");
     sc_trace(mVcdFile, Loop_copy_sorted_pro_U0_sorted_1_address0, "Loop_copy_sorted_pro_U0_sorted_1_address0");
     sc_trace(mVcdFile, Loop_copy_sorted_pro_U0_sorted_1_ce0, "Loop_copy_sorted_pro_U0_sorted_1_ce0");
-    sc_trace(mVcdFile, Loop_copy_sorted_pro_U0_sorted_copy1_frequency_V_address0, "Loop_copy_sorted_pro_U0_sorted_copy1_frequency_V_address0");
-    sc_trace(mVcdFile, Loop_copy_sorted_pro_U0_sorted_copy1_frequency_V_ce0, "Loop_copy_sorted_pro_U0_sorted_copy1_frequency_V_ce0");
-    sc_trace(mVcdFile, Loop_copy_sorted_pro_U0_sorted_copy1_frequency_V_we0, "Loop_copy_sorted_pro_U0_sorted_copy1_frequency_V_we0");
-    sc_trace(mVcdFile, Loop_copy_sorted_pro_U0_sorted_copy1_frequency_V_d0, "Loop_copy_sorted_pro_U0_sorted_copy1_frequency_V_d0");
+    sc_trace(mVcdFile, Loop_copy_sorted_pro_U0_sorted_copy1_1_din, "Loop_copy_sorted_pro_U0_sorted_copy1_1_din");
+    sc_trace(mVcdFile, Loop_copy_sorted_pro_U0_sorted_copy1_1_write, "Loop_copy_sorted_pro_U0_sorted_copy1_1_write");
     sc_trace(mVcdFile, Loop_copy_sorted_pro_U0_sorted_copy2_value_V_address0, "Loop_copy_sorted_pro_U0_sorted_copy2_value_V_address0");
     sc_trace(mVcdFile, Loop_copy_sorted_pro_U0_sorted_copy2_value_V_ce0, "Loop_copy_sorted_pro_U0_sorted_copy2_value_V_ce0");
     sc_trace(mVcdFile, Loop_copy_sorted_pro_U0_sorted_copy2_value_V_we0, "Loop_copy_sorted_pro_U0_sorted_copy2_value_V_we0");
@@ -1221,25 +1175,13 @@ huffman_encoding::huffman_encoding(sc_module_name name) : sc_module(name), mVcdF
     sc_trace(mVcdFile, Loop_copy_sorted_pro_U0_extLd_out_out1_write, "Loop_copy_sorted_pro_U0_extLd_out_out1_write");
     sc_trace(mVcdFile, ap_channel_done_sorted_copy2_value_V, "ap_channel_done_sorted_copy2_value_V");
     sc_trace(mVcdFile, Loop_copy_sorted_pro_U0_sorted_copy2_value_V_full_n, "Loop_copy_sorted_pro_U0_sorted_copy2_value_V_full_n");
-    sc_trace(mVcdFile, ap_sync_reg_channel_write_sorted_copy2_value_V, "ap_sync_reg_channel_write_sorted_copy2_value_V");
-    sc_trace(mVcdFile, ap_sync_channel_write_sorted_copy2_value_V, "ap_sync_channel_write_sorted_copy2_value_V");
-    sc_trace(mVcdFile, ap_channel_done_sorted_copy1_frequen, "ap_channel_done_sorted_copy1_frequen");
-    sc_trace(mVcdFile, Loop_copy_sorted_pro_U0_sorted_copy1_frequency_V_full_n, "Loop_copy_sorted_pro_U0_sorted_copy1_frequency_V_full_n");
-    sc_trace(mVcdFile, ap_sync_reg_channel_write_sorted_copy1_frequen, "ap_sync_reg_channel_write_sorted_copy1_frequen");
-    sc_trace(mVcdFile, ap_sync_channel_write_sorted_copy1_frequen, "ap_sync_channel_write_sorted_copy1_frequen");
-    sc_trace(mVcdFile, ap_channel_done_sorted_copy1_value_V, "ap_channel_done_sorted_copy1_value_V");
-    sc_trace(mVcdFile, Loop_copy_sorted_pro_U0_sorted_copy1_value_V_full_n, "Loop_copy_sorted_pro_U0_sorted_copy1_value_V_full_n");
-    sc_trace(mVcdFile, ap_sync_reg_channel_write_sorted_copy1_value_V, "ap_sync_reg_channel_write_sorted_copy1_value_V");
-    sc_trace(mVcdFile, ap_sync_channel_write_sorted_copy1_value_V, "ap_sync_channel_write_sorted_copy1_value_V");
     sc_trace(mVcdFile, create_tree_U0_ap_start, "create_tree_U0_ap_start");
     sc_trace(mVcdFile, create_tree_U0_ap_done, "create_tree_U0_ap_done");
     sc_trace(mVcdFile, create_tree_U0_ap_continue, "create_tree_U0_ap_continue");
     sc_trace(mVcdFile, create_tree_U0_ap_idle, "create_tree_U0_ap_idle");
     sc_trace(mVcdFile, create_tree_U0_ap_ready, "create_tree_U0_ap_ready");
-    sc_trace(mVcdFile, create_tree_U0_in_value_V_address0, "create_tree_U0_in_value_V_address0");
-    sc_trace(mVcdFile, create_tree_U0_in_value_V_ce0, "create_tree_U0_in_value_V_ce0");
-    sc_trace(mVcdFile, create_tree_U0_in_frequency_V_address0, "create_tree_U0_in_frequency_V_address0");
-    sc_trace(mVcdFile, create_tree_U0_in_frequency_V_ce0, "create_tree_U0_in_frequency_V_ce0");
+    sc_trace(mVcdFile, create_tree_U0_in_value_V_read, "create_tree_U0_in_value_V_read");
+    sc_trace(mVcdFile, create_tree_U0_in_frequency_V_read, "create_tree_U0_in_frequency_V_read");
     sc_trace(mVcdFile, create_tree_U0_extLd_loc_read, "create_tree_U0_extLd_loc_read");
     sc_trace(mVcdFile, create_tree_U0_parent_V_address0, "create_tree_U0_parent_V_address0");
     sc_trace(mVcdFile, create_tree_U0_parent_V_ce0, "create_tree_U0_parent_V_ce0");
@@ -1358,10 +1300,6 @@ huffman_encoding::huffman_encoding(sc_module_name name) : sc_module(name), mVcdF
     sc_trace(mVcdFile, sorted_0_t_empty_n, "sorted_0_t_empty_n");
     sc_trace(mVcdFile, sorted_1_i_full_n, "sorted_1_i_full_n");
     sc_trace(mVcdFile, sorted_1_t_empty_n, "sorted_1_t_empty_n");
-    sc_trace(mVcdFile, sorted_copy1_value_V_i_full_n, "sorted_copy1_value_V_i_full_n");
-    sc_trace(mVcdFile, sorted_copy1_value_V_t_empty_n, "sorted_copy1_value_V_t_empty_n");
-    sc_trace(mVcdFile, sorted_copy1_frequen_i_full_n, "sorted_copy1_frequen_i_full_n");
-    sc_trace(mVcdFile, sorted_copy1_frequen_t_empty_n, "sorted_copy1_frequen_t_empty_n");
     sc_trace(mVcdFile, sorted_copy2_value_V_i_full_n, "sorted_copy2_value_V_i_full_n");
     sc_trace(mVcdFile, sorted_copy2_value_V_t_empty_n, "sorted_copy2_value_V_t_empty_n");
     sc_trace(mVcdFile, parent_V_i_full_n, "parent_V_i_full_n");
@@ -1386,6 +1324,12 @@ huffman_encoding::huffman_encoding(sc_module_name name) : sc_module(name), mVcdF
     sc_trace(mVcdFile, n_c20_empty_n, "n_c20_empty_n");
     sc_trace(mVcdFile, extLd9_loc_channel_dout, "extLd9_loc_channel_dout");
     sc_trace(mVcdFile, extLd9_loc_channel_empty_n, "extLd9_loc_channel_empty_n");
+    sc_trace(mVcdFile, sorted_copy1_0_chann_full_n, "sorted_copy1_0_chann_full_n");
+    sc_trace(mVcdFile, sorted_copy1_0_chann_dout, "sorted_copy1_0_chann_dout");
+    sc_trace(mVcdFile, sorted_copy1_0_chann_empty_n, "sorted_copy1_0_chann_empty_n");
+    sc_trace(mVcdFile, sorted_copy1_1_chann_full_n, "sorted_copy1_1_chann_full_n");
+    sc_trace(mVcdFile, sorted_copy1_1_chann_dout, "sorted_copy1_1_chann_dout");
+    sc_trace(mVcdFile, sorted_copy1_1_chann_empty_n, "sorted_copy1_1_chann_empty_n");
     sc_trace(mVcdFile, val_assign7_loc_c_full_n, "val_assign7_loc_c_full_n");
     sc_trace(mVcdFile, val_assign7_loc_c_dout, "val_assign7_loc_c_dout");
     sc_trace(mVcdFile, val_assign7_loc_c_empty_n, "val_assign7_loc_c_empty_n");
@@ -1408,6 +1352,10 @@ huffman_encoding::huffman_encoding(sc_module_name name) : sc_module(name), mVcdF
     sc_trace(mVcdFile, Block_codeRepl1012_p_U0_start_write, "Block_codeRepl1012_p_U0_start_write");
     sc_trace(mVcdFile, sort_U0_start_full_n, "sort_U0_start_full_n");
     sc_trace(mVcdFile, sort_U0_start_write, "sort_U0_start_write");
+    sc_trace(mVcdFile, start_for_create_tree_U0_din, "start_for_create_tree_U0_din");
+    sc_trace(mVcdFile, start_for_create_tree_U0_full_n, "start_for_create_tree_U0_full_n");
+    sc_trace(mVcdFile, start_for_create_tree_U0_dout, "start_for_create_tree_U0_dout");
+    sc_trace(mVcdFile, start_for_create_tree_U0_empty_n, "start_for_create_tree_U0_empty_n");
     sc_trace(mVcdFile, start_for_Block_proc_U0_din, "start_for_Block_proc_U0_din");
     sc_trace(mVcdFile, start_for_Block_proc_U0_full_n, "start_for_Block_proc_U0_full_n");
     sc_trace(mVcdFile, start_for_Block_proc_U0_dout, "start_for_Block_proc_U0_dout");
@@ -1443,8 +1391,6 @@ huffman_encoding::~huffman_encoding() {
     delete filtered_frequency_V_U;
     delete sorted_0_U;
     delete sorted_1_U;
-    delete sorted_copy1_value_V_U;
-    delete sorted_copy1_frequen_U;
     delete sorted_copy2_value_V_U;
     delete parent_V_U;
     delete left_V_U;
@@ -1466,12 +1412,15 @@ huffman_encoding::~huffman_encoding() {
     delete n_c_U;
     delete n_c20_U;
     delete extLd9_loc_channel_U;
+    delete sorted_copy1_0_chann_U;
+    delete sorted_copy1_1_chann_U;
     delete val_assign7_loc_c_U;
     delete extLd_loc_c_U;
     delete extLd_loc_c21_U;
     delete extLd_loc_c22_U;
-    delete start_for_Block_cBew_U;
-    delete start_for_Block_pCeG_U;
+    delete start_for_Block_czec_U;
+    delete start_for_create_Aem_U;
+    delete start_for_Block_pBew_U;
 }
 
 void huffman_encoding::thread_ap_var_for_const2() {
@@ -1570,36 +1519,6 @@ void huffman_encoding::thread_ap_clk_no_reset_() {
         }
     }
     if ( ap_rst.read() == ap_const_logic_1) {
-        ap_sync_reg_channel_write_sorted_copy1_frequen = ap_const_logic_0;
-    } else {
-        if (esl_seteq<1,1,1>(ap_const_logic_1, (Loop_copy_sorted_pro_U0_ap_done.read() & 
-             Loop_copy_sorted_pro_U0_ap_continue.read()))) {
-            ap_sync_reg_channel_write_sorted_copy1_frequen = ap_const_logic_0;
-        } else {
-            ap_sync_reg_channel_write_sorted_copy1_frequen = ap_sync_channel_write_sorted_copy1_frequen.read();
-        }
-    }
-    if ( ap_rst.read() == ap_const_logic_1) {
-        ap_sync_reg_channel_write_sorted_copy1_value_V = ap_const_logic_0;
-    } else {
-        if (esl_seteq<1,1,1>(ap_const_logic_1, (Loop_copy_sorted_pro_U0_ap_done.read() & 
-             Loop_copy_sorted_pro_U0_ap_continue.read()))) {
-            ap_sync_reg_channel_write_sorted_copy1_value_V = ap_const_logic_0;
-        } else {
-            ap_sync_reg_channel_write_sorted_copy1_value_V = ap_sync_channel_write_sorted_copy1_value_V.read();
-        }
-    }
-    if ( ap_rst.read() == ap_const_logic_1) {
-        ap_sync_reg_channel_write_sorted_copy2_value_V = ap_const_logic_0;
-    } else {
-        if (esl_seteq<1,1,1>(ap_const_logic_1, (Loop_copy_sorted_pro_U0_ap_done.read() & 
-             Loop_copy_sorted_pro_U0_ap_continue.read()))) {
-            ap_sync_reg_channel_write_sorted_copy2_value_V = ap_const_logic_0;
-        } else {
-            ap_sync_reg_channel_write_sorted_copy2_value_V = ap_sync_channel_write_sorted_copy2_value_V.read();
-        }
-    }
-    if ( ap_rst.read() == ap_const_logic_1) {
         ap_sync_reg_channel_write_truncated_length_his = ap_const_logic_0;
     } else {
         if (esl_seteq<1,1,1>(ap_const_logic_1, (truncate_tree_U0_ap_done.read() & 
@@ -1654,23 +1573,19 @@ void huffman_encoding::thread_Block_proc_U0_start_write() {
 }
 
 void huffman_encoding::thread_Loop_copy_sorted_pro_U0_ap_continue() {
-    Loop_copy_sorted_pro_U0_ap_continue = (ap_sync_channel_write_sorted_copy2_value_V.read() & ap_sync_channel_write_sorted_copy1_frequen.read() & ap_sync_channel_write_sorted_copy1_value_V.read());
+    Loop_copy_sorted_pro_U0_ap_continue = sorted_copy2_value_V_i_full_n.read();
 }
 
 void huffman_encoding::thread_Loop_copy_sorted_pro_U0_ap_start() {
     Loop_copy_sorted_pro_U0_ap_start = (sorted_0_t_empty_n.read() & sorted_1_t_empty_n.read());
 }
 
-void huffman_encoding::thread_Loop_copy_sorted_pro_U0_sorted_copy1_frequency_V_full_n() {
-    Loop_copy_sorted_pro_U0_sorted_copy1_frequency_V_full_n = sorted_copy1_frequen_i_full_n.read();
-}
-
-void huffman_encoding::thread_Loop_copy_sorted_pro_U0_sorted_copy1_value_V_full_n() {
-    Loop_copy_sorted_pro_U0_sorted_copy1_value_V_full_n = sorted_copy1_value_V_i_full_n.read();
-}
-
 void huffman_encoding::thread_Loop_copy_sorted_pro_U0_sorted_copy2_value_V_full_n() {
     Loop_copy_sorted_pro_U0_sorted_copy2_value_V_full_n = sorted_copy2_value_V_i_full_n.read();
+}
+
+void huffman_encoding::thread_Loop_copy_sorted_pro_U0_start_full_n() {
+    Loop_copy_sorted_pro_U0_start_full_n = (start_for_create_tree_U0_full_n.read() & start_for_Block_proc_U0_full_n.read());
 }
 
 void huffman_encoding::thread_ap_channel_done_extLd9_loc_channel() {
@@ -1716,19 +1631,8 @@ void huffman_encoding::thread_ap_channel_done_sorted_1() {
   ap_const_logic_1));
 }
 
-void huffman_encoding::thread_ap_channel_done_sorted_copy1_frequen() {
-    ap_channel_done_sorted_copy1_frequen = (Loop_copy_sorted_pro_U0_ap_done.read() & (ap_sync_reg_channel_write_sorted_copy1_frequen.read() ^ 
-  ap_const_logic_1));
-}
-
-void huffman_encoding::thread_ap_channel_done_sorted_copy1_value_V() {
-    ap_channel_done_sorted_copy1_value_V = (Loop_copy_sorted_pro_U0_ap_done.read() & (ap_sync_reg_channel_write_sorted_copy1_value_V.read() ^ 
-  ap_const_logic_1));
-}
-
 void huffman_encoding::thread_ap_channel_done_sorted_copy2_value_V() {
-    ap_channel_done_sorted_copy2_value_V = (Loop_copy_sorted_pro_U0_ap_done.read() & (ap_sync_reg_channel_write_sorted_copy2_value_V.read() ^ 
-  ap_const_logic_1));
+    ap_channel_done_sorted_copy2_value_V = Loop_copy_sorted_pro_U0_ap_done.read();
 }
 
 void huffman_encoding::thread_ap_channel_done_symbol_bits_V() {
@@ -1755,8 +1659,6 @@ void huffman_encoding::thread_ap_idle() {
   ap_const_logic_1) & (extLd9_loc_channel_empty_n.read() ^ 
   ap_const_logic_1) & (sorted_0_t_empty_n.read() ^ 
   ap_const_logic_1) & (sorted_1_t_empty_n.read() ^ 
-  ap_const_logic_1) & (sorted_copy1_value_V_t_empty_n.read() ^ 
-  ap_const_logic_1) & (sorted_copy1_frequen_t_empty_n.read() ^ 
   ap_const_logic_1) & (sorted_copy2_value_V_t_empty_n.read() ^ 
   ap_const_logic_1) & (parent_V_t_empty_n.read() ^ 
   ap_const_logic_1) & (left_V_t_empty_n.read() ^ 
@@ -1805,21 +1707,6 @@ void huffman_encoding::thread_ap_sync_channel_write_sorted_0() {
 void huffman_encoding::thread_ap_sync_channel_write_sorted_1() {
     ap_sync_channel_write_sorted_1 = ((ap_channel_done_sorted_1.read() & 
   sort_U0_out_frequency_V_full_n.read()) | ap_sync_reg_channel_write_sorted_1.read());
-}
-
-void huffman_encoding::thread_ap_sync_channel_write_sorted_copy1_frequen() {
-    ap_sync_channel_write_sorted_copy1_frequen = ((ap_channel_done_sorted_copy1_frequen.read() & 
-  Loop_copy_sorted_pro_U0_sorted_copy1_frequency_V_full_n.read()) | ap_sync_reg_channel_write_sorted_copy1_frequen.read());
-}
-
-void huffman_encoding::thread_ap_sync_channel_write_sorted_copy1_value_V() {
-    ap_sync_channel_write_sorted_copy1_value_V = ((ap_channel_done_sorted_copy1_value_V.read() & 
-  Loop_copy_sorted_pro_U0_sorted_copy1_value_V_full_n.read()) | ap_sync_reg_channel_write_sorted_copy1_value_V.read());
-}
-
-void huffman_encoding::thread_ap_sync_channel_write_sorted_copy2_value_V() {
-    ap_sync_channel_write_sorted_copy2_value_V = ((ap_channel_done_sorted_copy2_value_V.read() & 
-  Loop_copy_sorted_pro_U0_sorted_copy2_value_V_full_n.read()) | ap_sync_reg_channel_write_sorted_copy2_value_V.read());
 }
 
 void huffman_encoding::thread_ap_sync_channel_write_truncated_length_his() {
@@ -1905,7 +1792,7 @@ void huffman_encoding::thread_create_tree_U0_ap_continue() {
 }
 
 void huffman_encoding::thread_create_tree_U0_ap_start() {
-    create_tree_U0_ap_start = (sorted_copy1_value_V_t_empty_n.read() & sorted_copy1_frequen_t_empty_n.read());
+    create_tree_U0_ap_start = start_for_create_tree_U0_empty_n.read();
 }
 
 void huffman_encoding::thread_create_tree_U0_left_V_full_n() {
@@ -2014,6 +1901,10 @@ void huffman_encoding::thread_start_for_Block_codeRepl1012_p_U0_din() {
 
 void huffman_encoding::thread_start_for_Block_proc_U0_din() {
     start_for_Block_proc_U0_din =  (sc_lv<1>) (ap_const_logic_1);
+}
+
+void huffman_encoding::thread_start_for_create_tree_U0_din() {
+    start_for_create_tree_U0_din =  (sc_lv<1>) (ap_const_logic_1);
 }
 
 void huffman_encoding::thread_symbol_histogram_frequency_V_address0() {
