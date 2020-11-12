@@ -132,7 +132,7 @@ canonize_tree::canonize_tree(sc_module_name name) : sc_module(name), mVcdFile(0)
     sensitive << ( ap_CS_fsm_state2 );
     sensitive << ( ap_CS_fsm_state7 );
     sensitive << ( zext_ln12_fu_188_p1 );
-    sensitive << ( zext_ln544_7_fu_243_p1 );
+    sensitive << ( zext_ln544_9_fu_243_p1 );
 
     SC_METHOD(thread_symbol_bits_V_ce0);
     sensitive << ( ap_CS_fsm_state2 );
@@ -169,7 +169,7 @@ canonize_tree::canonize_tree(sc_module_name name) : sc_module(name), mVcdFile(0)
     SC_METHOD(thread_zext_ln32_fu_232_p1);
     sensitive << ( i_op_assign_reg_147 );
 
-    SC_METHOD(thread_zext_ln544_7_fu_243_p1);
+    SC_METHOD(thread_zext_ln544_9_fu_243_p1);
     sensitive << ( sorted_value_V_load_reg_307 );
 
     SC_METHOD(thread_zext_ln544_fu_221_p1);
@@ -254,7 +254,7 @@ canonize_tree::canonize_tree(sc_module_name name) : sc_module(name), mVcdFile(0)
     sc_trace(mVcdFile, zext_ln12_fu_188_p1, "zext_ln12_fu_188_p1");
     sc_trace(mVcdFile, zext_ln544_fu_221_p1, "zext_ln544_fu_221_p1");
     sc_trace(mVcdFile, zext_ln32_fu_232_p1, "zext_ln32_fu_232_p1");
-    sc_trace(mVcdFile, zext_ln544_7_fu_243_p1, "zext_ln544_7_fu_243_p1");
+    sc_trace(mVcdFile, zext_ln544_9_fu_243_p1, "zext_ln544_9_fu_243_p1");
     sc_trace(mVcdFile, length_V_1_fu_66, "length_V_1_fu_66");
     sc_trace(mVcdFile, trunc_ln209_fu_247_p1, "trunc_ln209_fu_247_p1");
     sc_trace(mVcdFile, ap_NS_fsm, "ap_NS_fsm");
@@ -459,7 +459,7 @@ void canonize_tree::thread_sorted_value_V_ce0() {
 
 void canonize_tree::thread_symbol_bits_V_address0() {
     if (esl_seteq<1,1,1>(ap_const_logic_1, ap_CS_fsm_state7.read())) {
-        symbol_bits_V_address0 =  (sc_lv<8>) (zext_ln544_7_fu_243_p1.read());
+        symbol_bits_V_address0 =  (sc_lv<8>) (zext_ln544_9_fu_243_p1.read());
     } else if (esl_seteq<1,1,1>(ap_const_logic_1, ap_CS_fsm_state2.read())) {
         symbol_bits_V_address0 =  (sc_lv<8>) (zext_ln12_fu_188_p1.read());
     } else {
@@ -526,8 +526,8 @@ void canonize_tree::thread_zext_ln32_fu_232_p1() {
     zext_ln32_fu_232_p1 = esl_zext<64,9>(i_op_assign_reg_147.read());
 }
 
-void canonize_tree::thread_zext_ln544_7_fu_243_p1() {
-    zext_ln544_7_fu_243_p1 = esl_zext<64,9>(sorted_value_V_load_reg_307.read());
+void canonize_tree::thread_zext_ln544_9_fu_243_p1() {
+    zext_ln544_9_fu_243_p1 = esl_zext<64,9>(sorted_value_V_load_reg_307.read());
 }
 
 void canonize_tree::thread_zext_ln544_fu_221_p1() {

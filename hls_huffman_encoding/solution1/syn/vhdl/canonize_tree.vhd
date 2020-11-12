@@ -102,7 +102,7 @@ architecture behav of canonize_tree is
     signal zext_ln12_fu_188_p1 : STD_LOGIC_VECTOR (63 downto 0);
     signal zext_ln544_fu_221_p1 : STD_LOGIC_VECTOR (63 downto 0);
     signal zext_ln32_fu_232_p1 : STD_LOGIC_VECTOR (63 downto 0);
-    signal zext_ln544_7_fu_243_p1 : STD_LOGIC_VECTOR (63 downto 0);
+    signal zext_ln544_9_fu_243_p1 : STD_LOGIC_VECTOR (63 downto 0);
     signal length_V_1_fu_66 : STD_LOGIC_VECTOR (8 downto 0);
     signal trunc_ln209_fu_247_p1 : STD_LOGIC_VECTOR (4 downto 0);
     signal ap_NS_fsm : STD_LOGIC_VECTOR (6 downto 0);
@@ -350,10 +350,10 @@ begin
     end process;
 
 
-    symbol_bits_V_address0_assign_proc : process(ap_CS_fsm_state2, ap_CS_fsm_state7, zext_ln12_fu_188_p1, zext_ln544_7_fu_243_p1)
+    symbol_bits_V_address0_assign_proc : process(ap_CS_fsm_state2, ap_CS_fsm_state7, zext_ln12_fu_188_p1, zext_ln544_9_fu_243_p1)
     begin
         if ((ap_const_logic_1 = ap_CS_fsm_state7)) then 
-            symbol_bits_V_address0 <= zext_ln544_7_fu_243_p1(8 - 1 downto 0);
+            symbol_bits_V_address0 <= zext_ln544_9_fu_243_p1(8 - 1 downto 0);
         elsif ((ap_const_logic_1 = ap_CS_fsm_state2)) then 
             symbol_bits_V_address0 <= zext_ln12_fu_188_p1(8 - 1 downto 0);
         else 
@@ -416,6 +416,6 @@ begin
 
     zext_ln12_fu_188_p1 <= std_logic_vector(IEEE.numeric_std.resize(unsigned(i_0_i_i_reg_124),64));
     zext_ln32_fu_232_p1 <= std_logic_vector(IEEE.numeric_std.resize(unsigned(i_op_assign_reg_147),64));
-    zext_ln544_7_fu_243_p1 <= std_logic_vector(IEEE.numeric_std.resize(unsigned(sorted_value_V_load_reg_307),64));
+    zext_ln544_9_fu_243_p1 <= std_logic_vector(IEEE.numeric_std.resize(unsigned(sorted_value_V_load_reg_307),64));
     zext_ln544_fu_221_p1 <= std_logic_vector(IEEE.numeric_std.resize(unsigned(length_V_fu_215_p2),64));
 end behav;

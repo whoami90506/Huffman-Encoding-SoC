@@ -78,7 +78,7 @@ struct canonize_tree : public sc_module {
     sc_signal< sc_lv<64> > zext_ln12_fu_188_p1;
     sc_signal< sc_lv<64> > zext_ln544_fu_221_p1;
     sc_signal< sc_lv<64> > zext_ln32_fu_232_p1;
-    sc_signal< sc_lv<64> > zext_ln544_7_fu_243_p1;
+    sc_signal< sc_lv<64> > zext_ln544_9_fu_243_p1;
     sc_signal< sc_lv<9> > length_V_1_fu_66;
     sc_signal< sc_lv<5> > trunc_ln209_fu_247_p1;
     sc_signal< sc_lv<7> > ap_NS_fsm;
@@ -141,7 +141,7 @@ struct canonize_tree : public sc_module {
     void thread_val_assign7_loc_read();
     void thread_zext_ln12_fu_188_p1();
     void thread_zext_ln32_fu_232_p1();
-    void thread_zext_ln544_7_fu_243_p1();
+    void thread_zext_ln544_9_fu_243_p1();
     void thread_zext_ln544_fu_221_p1();
     void thread_ap_NS_fsm();
 };
