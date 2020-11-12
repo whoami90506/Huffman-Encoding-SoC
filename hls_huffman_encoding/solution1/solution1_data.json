@@ -1094,25 +1094,25 @@
       },
       "create_codeword": {
         "Latency": {
-          "LatencyBest": "1336",
-          "LatencyAvg": "1336",
-          "LatencyWorst": "1336",
-          "PipelineII": "1336",
+          "LatencyBest": "1312",
+          "LatencyAvg": "1312",
+          "LatencyWorst": "1312",
+          "PipelineII": "1312",
           "PipelineDepth": "",
           "PipelineType": "none"
         },
         "Timing": {
           "Target": "5.00",
           "Uncertainty": "0.63",
-          "Estimate": "7.018"
+          "Estimate": "4.285"
         },
         "Loops": [
           {
             "Name": "first_codewords",
-            "TripCount": "26",
-            "Latency": "52",
-            "PipelineII": "2",
-            "PipelineDepth": "2"
+            "TripCount": "27",
+            "Latency": "28",
+            "PipelineII": "1",
+            "PipelineDepth": "3"
           },
           {
             "Name": "assign_codewords",
@@ -1124,8 +1124,8 @@
         ],
         "Area": {
           "BRAM_18K": "0",
-          "FF": "223",
-          "LUT": "553",
+          "FF": "272",
+          "LUT": "548",
           "URAM": "0",
           "DSP48E": "0"
         }
@@ -1164,12 +1164,12 @@
         "Timing": {
           "Target": "5.00",
           "Uncertainty": "0.63",
-          "Estimate": "7.018"
+          "Estimate": "6.871"
         },
         "Area": {
           "BRAM_18K": "23",
-          "FF": "3185",
-          "LUT": "6246",
+          "FF": "3234",
+          "LUT": "6241",
           "URAM": "0",
           "DSP48E": "0"
         }
@@ -1186,7 +1186,7 @@
   },
   "GenData": {
     "DataVersion": "0.2",
-    "Time": "2020-11-12 23:53:59 +0800",
+    "Time": "2020-11-13 01:51:10 +0800",
     "ToolName": "vivado_hls",
     "ToolVersion": "2019.2"
   }
