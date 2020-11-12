@@ -9,6 +9,7 @@ void compute_bit_length (
     
     assert(num_symbols > 0);
     assert(num_symbols <= INPUT_SYMBOL_SIZE);
+
     ap_uint<TREE_DEPTH_BITS> child_depth[INPUT_SYMBOL_SIZE-1];
     ap_uint<SYMBOL_BITS> internal_length_histogram[TREE_DEPTH];
 
@@ -21,14 +22,22 @@ void compute_bit_length (
 
     child_depth[num_symbols-2] = 1; // Depth of the root node is 1.
 
+    ap_uint<SYMBOL_BITS> parent_curr = parent[num_symbols-3];
+    ap_uint<SYMBOL_BITS> parent_next = parent[num_symbols-4];
+    ap_uint<SYMBOL_BITS> left_curr   = left[num_symbols-3];
+    ap_uint<SYMBOL_BITS> left_next   = left[num_symbols-4];
+    ap_uint<SYMBOL_BITS> right_curr  = right[num_symbols-3];
+    ap_uint<SYMBOL_BITS> right_next  = right[num_symbols-4];
+
     traverse_tree:
     for(int i = num_symbols-3; i >= 0; i--) {
-    #pragma HLS pipeline II=3
-        ap_uint<TREE_DEPTH_BITS> length = child_depth[parent[i]] + 1;
+        #pragma HLS pipeline II=3
+
+        ap_uint<TREE_DEPTH_BITS> length = child_depth[parent_curr] + 1;
         child_depth[i] = length;
-        if(left[i] != INTERNAL_NODE || right[i] != INTERNAL_NODE){
+        if(left_curr != INTERNAL_NODE || right_curr != INTERNAL_NODE){
             int children;
-            if(left[i] != INTERNAL_NODE && right[i] != INTERNAL_NODE) {
+            if(left_curr != INTERNAL_NODE && right_curr != INTERNAL_NODE) {
                 // Both the children of the original node were symbols
                 children = 2;
             } else {
@@ -40,5 +49,13 @@ void compute_bit_length (
             internal_length_histogram[length] = count;
             length_histogram[length] = count;
         }
+
+        parent_curr = parent_next;
+        left_curr = left_next;
+        right_curr = right_next;
+
+        parent_next = parent[i-2];
+        left_next = left[i-2];
+        right_next = right[i-2];
     }
 }

@@ -7,7 +7,7 @@
 
 `timescale 1 ns / 1 ps 
 
-(* CORE_GENERATION_INFO="huffman_encoding,hls_ip_2019_2,{HLS_INPUT_TYPE=cxx,HLS_INPUT_FLOAT=0,HLS_INPUT_FIXED=1,HLS_INPUT_PART=xc7z020-clg484-1,HLS_INPUT_CLOCK=5.000000,HLS_INPUT_ARCH=dataflow,HLS_SYN_CLOCK=6.870750,HLS_SYN_LAT=-1,HLS_SYN_TPT=-1,HLS_SYN_MEM=23,HLS_SYN_DSP=0,HLS_SYN_FF=3234,HLS_SYN_LUT=6241,HLS_VERSION=2019_2}" *)
+(* CORE_GENERATION_INFO="huffman_encoding,hls_ip_2019_2,{HLS_INPUT_TYPE=cxx,HLS_INPUT_FLOAT=0,HLS_INPUT_FIXED=1,HLS_INPUT_PART=xc7z020-clg484-1,HLS_INPUT_CLOCK=5.000000,HLS_INPUT_ARCH=dataflow,HLS_SYN_CLOCK=5.656000,HLS_SYN_LAT=-1,HLS_SYN_TPT=-1,HLS_SYN_MEM=23,HLS_SYN_DSP=0,HLS_SYN_FF=3348,HLS_SYN_LUT=6414,HLS_VERSION=2019_2}" *)
 
 module huffman_encoding (
         ap_clk,
@@ -101,11 +101,17 @@ wire   [31:0] sorted_1_t_q0;
 wire   [8:0] sorted_copy2_value_V_i_q0;
 wire   [8:0] sorted_copy2_value_V_t_q0;
 wire   [8:0] parent_V_i_q0;
+wire   [8:0] parent_V_i_q1;
 wire   [8:0] parent_V_t_q0;
+wire   [8:0] parent_V_t_q1;
 wire   [8:0] left_V_i_q0;
+wire   [8:0] left_V_i_q1;
 wire   [8:0] left_V_t_q0;
+wire   [8:0] left_V_t_q1;
 wire   [8:0] right_V_i_q0;
+wire   [8:0] right_V_i_q1;
 wire   [8:0] right_V_t_q0;
+wire   [8:0] right_V_t_q1;
 wire   [8:0] length_histogram_V_i_q0;
 wire   [8:0] length_histogram_V_t_q0;
 wire   [8:0] truncated_length_his_i_q0;
@@ -251,10 +257,16 @@ wire    compute_bit_length_U0_ap_idle;
 wire    compute_bit_length_U0_ap_ready;
 wire   [7:0] compute_bit_length_U0_parent_V_address0;
 wire    compute_bit_length_U0_parent_V_ce0;
+wire   [7:0] compute_bit_length_U0_parent_V_address1;
+wire    compute_bit_length_U0_parent_V_ce1;
 wire   [7:0] compute_bit_length_U0_left_V_address0;
 wire    compute_bit_length_U0_left_V_ce0;
+wire   [7:0] compute_bit_length_U0_left_V_address1;
+wire    compute_bit_length_U0_left_V_ce1;
 wire   [7:0] compute_bit_length_U0_right_V_address0;
 wire    compute_bit_length_U0_right_V_ce0;
+wire   [7:0] compute_bit_length_U0_right_V_address1;
+wire    compute_bit_length_U0_right_V_ce1;
 wire    compute_bit_length_U0_extLd_loc_read;
 wire   [5:0] compute_bit_length_U0_length_histogram_V_address0;
 wire    compute_bit_length_U0_length_histogram_V_ce0;
@@ -339,10 +351,16 @@ wire    sorted_copy2_value_V_i_full_n;
 wire    sorted_copy2_value_V_t_empty_n;
 wire    parent_V_i_full_n;
 wire    parent_V_t_empty_n;
+wire   [8:0] parent_V_t_d1;
+wire    parent_V_t_we1;
 wire    left_V_i_full_n;
 wire    left_V_t_empty_n;
+wire   [8:0] left_V_t_d1;
+wire    left_V_t_we1;
 wire    right_V_i_full_n;
 wire    right_V_t_empty_n;
+wire   [8:0] right_V_t_d1;
+wire    right_V_t_we1;
 wire    length_histogram_V_i_full_n;
 wire    length_histogram_V_t_empty_n;
 wire    truncated_length_his_i_full_n;
@@ -558,11 +576,17 @@ parent_V_U(
     .i_we0(create_tree_U0_parent_V_we0),
     .i_d0(create_tree_U0_parent_V_d0),
     .i_q0(parent_V_i_q0),
+    .i_address1(8'd0),
+    .i_ce1(1'b0),
+    .i_q1(parent_V_i_q1),
     .t_address0(compute_bit_length_U0_parent_V_address0),
     .t_ce0(compute_bit_length_U0_parent_V_ce0),
     .t_we0(1'b0),
     .t_d0(9'd0),
     .t_q0(parent_V_t_q0),
+    .t_address1(compute_bit_length_U0_parent_V_address1),
+    .t_ce1(compute_bit_length_U0_parent_V_ce1),
+    .t_q1(parent_V_t_q1),
     .i_ce(1'b1),
     .t_ce(1'b1),
     .i_full_n(parent_V_i_full_n),
@@ -583,11 +607,17 @@ left_V_U(
     .i_we0(create_tree_U0_left_V_we0),
     .i_d0(create_tree_U0_left_V_d0),
     .i_q0(left_V_i_q0),
+    .i_address1(8'd0),
+    .i_ce1(1'b0),
+    .i_q1(left_V_i_q1),
     .t_address0(compute_bit_length_U0_left_V_address0),
     .t_ce0(compute_bit_length_U0_left_V_ce0),
     .t_we0(1'b0),
     .t_d0(9'd0),
     .t_q0(left_V_t_q0),
+    .t_address1(compute_bit_length_U0_left_V_address1),
+    .t_ce1(compute_bit_length_U0_left_V_ce1),
+    .t_q1(left_V_t_q1),
     .i_ce(1'b1),
     .t_ce(1'b1),
     .i_full_n(left_V_i_full_n),
@@ -608,11 +638,17 @@ right_V_U(
     .i_we0(create_tree_U0_right_V_we0),
     .i_d0(create_tree_U0_right_V_d0),
     .i_q0(right_V_i_q0),
+    .i_address1(8'd0),
+    .i_ce1(1'b0),
+    .i_q1(right_V_i_q1),
     .t_address0(compute_bit_length_U0_right_V_address0),
     .t_ce0(compute_bit_length_U0_right_V_ce0),
     .t_we0(1'b0),
     .t_d0(9'd0),
     .t_q0(right_V_t_q0),
+    .t_address1(compute_bit_length_U0_right_V_address1),
+    .t_ce1(compute_bit_length_U0_right_V_ce1),
+    .t_q1(right_V_t_q1),
     .i_ce(1'b1),
     .t_ce(1'b1),
     .i_full_n(right_V_i_full_n),
@@ -889,12 +925,21 @@ compute_bit_length compute_bit_length_U0(
     .parent_V_address0(compute_bit_length_U0_parent_V_address0),
     .parent_V_ce0(compute_bit_length_U0_parent_V_ce0),
     .parent_V_q0(parent_V_t_q0),
+    .parent_V_address1(compute_bit_length_U0_parent_V_address1),
+    .parent_V_ce1(compute_bit_length_U0_parent_V_ce1),
+    .parent_V_q1(parent_V_t_q1),
     .left_V_address0(compute_bit_length_U0_left_V_address0),
     .left_V_ce0(compute_bit_length_U0_left_V_ce0),
     .left_V_q0(left_V_t_q0),
+    .left_V_address1(compute_bit_length_U0_left_V_address1),
+    .left_V_ce1(compute_bit_length_U0_left_V_ce1),
+    .left_V_q1(left_V_t_q1),
     .right_V_address0(compute_bit_length_U0_right_V_address0),
     .right_V_ce0(compute_bit_length_U0_right_V_ce0),
     .right_V_q0(right_V_t_q0),
+    .right_V_address1(compute_bit_length_U0_right_V_address1),
+    .right_V_ce1(compute_bit_length_U0_right_V_ce1),
+    .right_V_q1(right_V_t_q1),
     .extLd_loc_dout(extLd_loc_c22_dout),
     .extLd_loc_empty_n(extLd_loc_c22_empty_n),
     .extLd_loc_read(compute_bit_length_U0_extLd_loc_read),
@@ -1399,9 +1444,21 @@ assign filter_U0_out_frequency_V_full_n = filtered_frequency_V_i_full_n;
 
 assign filter_U0_out_value_V_full_n = filtered_value_V_i_full_n;
 
+assign left_V_t_d1 = 9'd0;
+
+assign left_V_t_we1 = 1'b0;
+
 assign num_nonzero_symbols = Block_proc_U0_num_nonzero_symbols;
 
 assign num_nonzero_symbols_ap_vld = Block_proc_U0_num_nonzero_symbols_ap_vld;
+
+assign parent_V_t_d1 = 9'd0;
+
+assign parent_V_t_we1 = 1'b0;
+
+assign right_V_t_d1 = 9'd0;
+
+assign right_V_t_we1 = 1'b0;
 
 assign sort_U0_ap_continue = (ap_sync_channel_write_sorted_1 & ap_sync_channel_write_sorted_0);
 

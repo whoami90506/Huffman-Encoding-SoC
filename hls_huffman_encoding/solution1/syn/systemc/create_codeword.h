@@ -67,8 +67,8 @@ struct create_codeword : public sc_module {
     sc_signal< sc_lv<9> > codeword_length_hist_1_reg_341;
     sc_signal< sc_lv<27> > temp_V_fu_204_p3;
     sc_signal< sc_logic > ap_enable_reg_pp0_iter2;
-    sc_signal< sc_lv<1> > icmp_ln27_fu_212_p2;
-    sc_signal< sc_lv<1> > icmp_ln27_reg_351;
+    sc_signal< sc_lv<1> > icmp_ln24_fu_212_p2;
+    sc_signal< sc_lv<1> > icmp_ln24_reg_351;
     sc_signal< sc_logic > ap_CS_fsm_pp1_stage0;
     sc_signal< bool > ap_block_state6_pp1_stage0_iter0;
     sc_signal< bool > ap_block_state11_pp1_stage0_iter1;
@@ -76,8 +76,8 @@ struct create_codeword : public sc_module {
     sc_signal< sc_lv<9> > i_4_fu_218_p2;
     sc_signal< sc_lv<9> > i_4_reg_355;
     sc_signal< sc_logic > ap_enable_reg_pp1_iter0;
-    sc_signal< sc_lv<64> > zext_ln29_fu_224_p1;
-    sc_signal< sc_lv<64> > zext_ln29_reg_360;
+    sc_signal< sc_lv<64> > zext_ln26_fu_224_p1;
+    sc_signal< sc_lv<64> > zext_ln26_reg_360;
     sc_signal< sc_lv<5> > length_V_reg_371;
     sc_signal< sc_logic > ap_CS_fsm_pp1_stage1;
     sc_signal< bool > ap_block_state7_pp1_stage1_iter0;
@@ -249,7 +249,7 @@ struct create_codeword : public sc_module {
     void thread_i_4_fu_218_p2();
     void thread_i_fu_180_p2();
     void thread_icmp_ln16_fu_174_p2();
-    void thread_icmp_ln27_fu_212_p2();
+    void thread_icmp_ln24_fu_212_p2();
     void thread_icmp_ln883_fu_229_p2();
     void thread_lshr_ln808_fu_285_p2();
     void thread_p_Result_1_fu_267_p3();
@@ -270,7 +270,7 @@ struct create_codeword : public sc_module {
     void thread_zext_ln19_fu_186_p1();
     void thread_zext_ln209_fu_317_p1();
     void thread_zext_ln215_fu_248_p1();
-    void thread_zext_ln29_fu_224_p1();
+    void thread_zext_ln26_fu_224_p1();
     void thread_zext_ln544_fu_234_p1();
     void thread_zext_ln556_fu_274_p1();
     void thread_zext_ln808_fu_282_p1();

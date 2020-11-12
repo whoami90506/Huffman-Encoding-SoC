@@ -55,13 +55,14 @@ end;
 architecture behav of huffman_encoding is 
     attribute CORE_GENERATION_INFO : STRING;
     attribute CORE_GENERATION_INFO of behav : architecture is
-    "huffman_encoding,hls_ip_2019_2,{HLS_INPUT_TYPE=cxx,HLS_INPUT_FLOAT=0,HLS_INPUT_FIXED=1,HLS_INPUT_PART=xc7z020-clg484-1,HLS_INPUT_CLOCK=5.000000,HLS_INPUT_ARCH=dataflow,HLS_SYN_CLOCK=6.870750,HLS_SYN_LAT=-1,HLS_SYN_TPT=-1,HLS_SYN_MEM=23,HLS_SYN_DSP=0,HLS_SYN_FF=3234,HLS_SYN_LUT=6241,HLS_VERSION=2019_2}";
+    "huffman_encoding,hls_ip_2019_2,{HLS_INPUT_TYPE=cxx,HLS_INPUT_FLOAT=0,HLS_INPUT_FIXED=1,HLS_INPUT_PART=xc7z020-clg484-1,HLS_INPUT_CLOCK=5.000000,HLS_INPUT_ARCH=dataflow,HLS_SYN_CLOCK=5.656000,HLS_SYN_LAT=-1,HLS_SYN_TPT=-1,HLS_SYN_MEM=23,HLS_SYN_DSP=0,HLS_SYN_FF=3348,HLS_SYN_LUT=6414,HLS_VERSION=2019_2}";
     constant ap_const_logic_1 : STD_LOGIC := '1';
     constant ap_const_lv8_0 : STD_LOGIC_VECTOR (7 downto 0) := "00000000";
     constant ap_const_logic_0 : STD_LOGIC := '0';
     constant ap_const_lv9_0 : STD_LOGIC_VECTOR (8 downto 0) := "000000000";
     constant ap_const_lv32_0 : STD_LOGIC_VECTOR (31 downto 0) := "00000000000000000000000000000000";
     constant ap_const_lv5_0 : STD_LOGIC_VECTOR (4 downto 0) := "00000";
+    constant ap_const_lv8_1 : STD_LOGIC_VECTOR (7 downto 0) := "00000001";
     constant ap_const_lv6_0 : STD_LOGIC_VECTOR (5 downto 0) := "000000";
     constant ap_const_lv6_1 : STD_LOGIC_VECTOR (5 downto 0) := "000001";
     constant ap_const_lv9_1 : STD_LOGIC_VECTOR (8 downto 0) := "000000001";
@@ -78,11 +79,17 @@ architecture behav of huffman_encoding is
     signal sorted_copy2_value_V_i_q0 : STD_LOGIC_VECTOR (8 downto 0);
     signal sorted_copy2_value_V_t_q0 : STD_LOGIC_VECTOR (8 downto 0);
     signal parent_V_i_q0 : STD_LOGIC_VECTOR (8 downto 0);
+    signal parent_V_i_q1 : STD_LOGIC_VECTOR (8 downto 0);
     signal parent_V_t_q0 : STD_LOGIC_VECTOR (8 downto 0);
+    signal parent_V_t_q1 : STD_LOGIC_VECTOR (8 downto 0);
     signal left_V_i_q0 : STD_LOGIC_VECTOR (8 downto 0);
+    signal left_V_i_q1 : STD_LOGIC_VECTOR (8 downto 0);
     signal left_V_t_q0 : STD_LOGIC_VECTOR (8 downto 0);
+    signal left_V_t_q1 : STD_LOGIC_VECTOR (8 downto 0);
     signal right_V_i_q0 : STD_LOGIC_VECTOR (8 downto 0);
+    signal right_V_i_q1 : STD_LOGIC_VECTOR (8 downto 0);
     signal right_V_t_q0 : STD_LOGIC_VECTOR (8 downto 0);
+    signal right_V_t_q1 : STD_LOGIC_VECTOR (8 downto 0);
     signal length_histogram_V_i_q0 : STD_LOGIC_VECTOR (8 downto 0);
     signal length_histogram_V_t_q0 : STD_LOGIC_VECTOR (8 downto 0);
     signal truncated_length_his_i_q0 : STD_LOGIC_VECTOR (8 downto 0);
@@ -228,10 +235,16 @@ architecture behav of huffman_encoding is
     signal compute_bit_length_U0_ap_ready : STD_LOGIC;
     signal compute_bit_length_U0_parent_V_address0 : STD_LOGIC_VECTOR (7 downto 0);
     signal compute_bit_length_U0_parent_V_ce0 : STD_LOGIC;
+    signal compute_bit_length_U0_parent_V_address1 : STD_LOGIC_VECTOR (7 downto 0);
+    signal compute_bit_length_U0_parent_V_ce1 : STD_LOGIC;
     signal compute_bit_length_U0_left_V_address0 : STD_LOGIC_VECTOR (7 downto 0);
     signal compute_bit_length_U0_left_V_ce0 : STD_LOGIC;
+    signal compute_bit_length_U0_left_V_address1 : STD_LOGIC_VECTOR (7 downto 0);
+    signal compute_bit_length_U0_left_V_ce1 : STD_LOGIC;
     signal compute_bit_length_U0_right_V_address0 : STD_LOGIC_VECTOR (7 downto 0);
     signal compute_bit_length_U0_right_V_ce0 : STD_LOGIC;
+    signal compute_bit_length_U0_right_V_address1 : STD_LOGIC_VECTOR (7 downto 0);
+    signal compute_bit_length_U0_right_V_ce1 : STD_LOGIC;
     signal compute_bit_length_U0_extLd_loc_read : STD_LOGIC;
     signal compute_bit_length_U0_length_histogram_V_address0 : STD_LOGIC_VECTOR (5 downto 0);
     signal compute_bit_length_U0_length_histogram_V_ce0 : STD_LOGIC;
@@ -316,10 +329,16 @@ architecture behav of huffman_encoding is
     signal sorted_copy2_value_V_t_empty_n : STD_LOGIC;
     signal parent_V_i_full_n : STD_LOGIC;
     signal parent_V_t_empty_n : STD_LOGIC;
+    signal parent_V_t_d1 : STD_LOGIC_VECTOR (8 downto 0);
+    signal parent_V_t_we1 : STD_LOGIC;
     signal left_V_i_full_n : STD_LOGIC;
     signal left_V_t_empty_n : STD_LOGIC;
+    signal left_V_t_d1 : STD_LOGIC_VECTOR (8 downto 0);
+    signal left_V_t_we1 : STD_LOGIC;
     signal right_V_i_full_n : STD_LOGIC;
     signal right_V_t_empty_n : STD_LOGIC;
+    signal right_V_t_d1 : STD_LOGIC_VECTOR (8 downto 0);
+    signal right_V_t_we1 : STD_LOGIC;
     signal length_histogram_V_i_full_n : STD_LOGIC;
     signal length_histogram_V_t_empty_n : STD_LOGIC;
     signal truncated_length_his_i_full_n : STD_LOGIC;
@@ -554,12 +573,21 @@ architecture behav of huffman_encoding is
         parent_V_address0 : OUT STD_LOGIC_VECTOR (7 downto 0);
         parent_V_ce0 : OUT STD_LOGIC;
         parent_V_q0 : IN STD_LOGIC_VECTOR (8 downto 0);
+        parent_V_address1 : OUT STD_LOGIC_VECTOR (7 downto 0);
+        parent_V_ce1 : OUT STD_LOGIC;
+        parent_V_q1 : IN STD_LOGIC_VECTOR (8 downto 0);
         left_V_address0 : OUT STD_LOGIC_VECTOR (7 downto 0);
         left_V_ce0 : OUT STD_LOGIC;
         left_V_q0 : IN STD_LOGIC_VECTOR (8 downto 0);
+        left_V_address1 : OUT STD_LOGIC_VECTOR (7 downto 0);
+        left_V_ce1 : OUT STD_LOGIC;
+        left_V_q1 : IN STD_LOGIC_VECTOR (8 downto 0);
         right_V_address0 : OUT STD_LOGIC_VECTOR (7 downto 0);
         right_V_ce0 : OUT STD_LOGIC;
         right_V_q0 : IN STD_LOGIC_VECTOR (8 downto 0);
+        right_V_address1 : OUT STD_LOGIC_VECTOR (7 downto 0);
+        right_V_ce1 : OUT STD_LOGIC;
+        right_V_q1 : IN STD_LOGIC_VECTOR (8 downto 0);
         extLd_loc_dout : IN STD_LOGIC_VECTOR (8 downto 0);
         extLd_loc_empty_n : IN STD_LOGIC;
         extLd_loc_read : OUT STD_LOGIC;
@@ -730,11 +758,17 @@ architecture behav of huffman_encoding is
         i_we0 : IN STD_LOGIC;
         i_d0 : IN STD_LOGIC_VECTOR (8 downto 0);
         i_q0 : OUT STD_LOGIC_VECTOR (8 downto 0);
+        i_address1 : IN STD_LOGIC_VECTOR (7 downto 0);
+        i_ce1 : IN STD_LOGIC;
+        i_q1 : OUT STD_LOGIC_VECTOR (8 downto 0);
         t_address0 : IN STD_LOGIC_VECTOR (7 downto 0);
         t_ce0 : IN STD_LOGIC;
         t_we0 : IN STD_LOGIC;
         t_d0 : IN STD_LOGIC_VECTOR (8 downto 0);
         t_q0 : OUT STD_LOGIC_VECTOR (8 downto 0);
+        t_address1 : IN STD_LOGIC_VECTOR (7 downto 0);
+        t_ce1 : IN STD_LOGIC;
+        t_q1 : OUT STD_LOGIC_VECTOR (8 downto 0);
         i_ce : IN STD_LOGIC;
         t_ce : IN STD_LOGIC;
         i_full_n : OUT STD_LOGIC;
@@ -1095,11 +1129,17 @@ begin
         i_we0 => create_tree_U0_parent_V_we0,
         i_d0 => create_tree_U0_parent_V_d0,
         i_q0 => parent_V_i_q0,
+        i_address1 => ap_const_lv8_0,
+        i_ce1 => ap_const_logic_0,
+        i_q1 => parent_V_i_q1,
         t_address0 => compute_bit_length_U0_parent_V_address0,
         t_ce0 => compute_bit_length_U0_parent_V_ce0,
         t_we0 => ap_const_logic_0,
         t_d0 => ap_const_lv9_0,
         t_q0 => parent_V_t_q0,
+        t_address1 => compute_bit_length_U0_parent_V_address1,
+        t_ce1 => compute_bit_length_U0_parent_V_ce1,
+        t_q1 => parent_V_t_q1,
         i_ce => ap_const_logic_1,
         t_ce => ap_const_logic_1,
         i_full_n => parent_V_i_full_n,
@@ -1120,11 +1160,17 @@ begin
         i_we0 => create_tree_U0_left_V_we0,
         i_d0 => create_tree_U0_left_V_d0,
         i_q0 => left_V_i_q0,
+        i_address1 => ap_const_lv8_0,
+        i_ce1 => ap_const_logic_0,
+        i_q1 => left_V_i_q1,
         t_address0 => compute_bit_length_U0_left_V_address0,
         t_ce0 => compute_bit_length_U0_left_V_ce0,
         t_we0 => ap_const_logic_0,
         t_d0 => ap_const_lv9_0,
         t_q0 => left_V_t_q0,
+        t_address1 => compute_bit_length_U0_left_V_address1,
+        t_ce1 => compute_bit_length_U0_left_V_ce1,
+        t_q1 => left_V_t_q1,
         i_ce => ap_const_logic_1,
         t_ce => ap_const_logic_1,
         i_full_n => left_V_i_full_n,
@@ -1145,11 +1191,17 @@ begin
         i_we0 => create_tree_U0_right_V_we0,
         i_d0 => create_tree_U0_right_V_d0,
         i_q0 => right_V_i_q0,
+        i_address1 => ap_const_lv8_0,
+        i_ce1 => ap_const_logic_0,
+        i_q1 => right_V_i_q1,
         t_address0 => compute_bit_length_U0_right_V_address0,
         t_ce0 => compute_bit_length_U0_right_V_ce0,
         t_we0 => ap_const_logic_0,
         t_d0 => ap_const_lv9_0,
         t_q0 => right_V_t_q0,
+        t_address1 => compute_bit_length_U0_right_V_address1,
+        t_ce1 => compute_bit_length_U0_right_V_ce1,
+        t_q1 => right_V_t_q1,
         i_ce => ap_const_logic_1,
         t_ce => ap_const_logic_1,
         i_full_n => right_V_i_full_n,
@@ -1426,12 +1478,21 @@ begin
         parent_V_address0 => compute_bit_length_U0_parent_V_address0,
         parent_V_ce0 => compute_bit_length_U0_parent_V_ce0,
         parent_V_q0 => parent_V_t_q0,
+        parent_V_address1 => compute_bit_length_U0_parent_V_address1,
+        parent_V_ce1 => compute_bit_length_U0_parent_V_ce1,
+        parent_V_q1 => parent_V_t_q1,
         left_V_address0 => compute_bit_length_U0_left_V_address0,
         left_V_ce0 => compute_bit_length_U0_left_V_ce0,
         left_V_q0 => left_V_t_q0,
+        left_V_address1 => compute_bit_length_U0_left_V_address1,
+        left_V_ce1 => compute_bit_length_U0_left_V_ce1,
+        left_V_q1 => left_V_t_q1,
         right_V_address0 => compute_bit_length_U0_right_V_address0,
         right_V_ce0 => compute_bit_length_U0_right_V_ce0,
         right_V_q0 => right_V_t_q0,
+        right_V_address1 => compute_bit_length_U0_right_V_address1,
+        right_V_ce1 => compute_bit_length_U0_right_V_ce1,
+        right_V_q1 => right_V_t_q1,
         extLd_loc_dout => extLd_loc_c22_dout,
         extLd_loc_empty_n => extLd_loc_c22_empty_n,
         extLd_loc_read => compute_bit_length_U0_extLd_loc_read,
@@ -1901,8 +1962,14 @@ begin
     filter_U0_ap_start <= ap_start;
     filter_U0_out_frequency_V_full_n <= filtered_frequency_V_i_full_n;
     filter_U0_out_value_V_full_n <= filtered_value_V_i_full_n;
+    left_V_t_d1 <= ap_const_lv9_0;
+    left_V_t_we1 <= ap_const_logic_0;
     num_nonzero_symbols <= Block_proc_U0_num_nonzero_symbols;
     num_nonzero_symbols_ap_vld <= Block_proc_U0_num_nonzero_symbols_ap_vld;
+    parent_V_t_d1 <= ap_const_lv9_0;
+    parent_V_t_we1 <= ap_const_logic_0;
+    right_V_t_d1 <= ap_const_lv9_0;
+    right_V_t_we1 <= ap_const_logic_0;
     sort_U0_ap_continue <= (ap_sync_channel_write_sorted_1 and ap_sync_channel_write_sorted_0);
     sort_U0_ap_start <= (filtered_value_V_t_empty_n and filtered_frequency_V_t_empty_n and extLd9_loc_channel_empty_n);
     sort_U0_out_frequency_V_full_n <= sorted_1_i_full_n;
