@@ -1,0 +1,29 @@
+INFO: [SIM 2] *************** CSIM start ***************
+INFO: [SIM 4] CSIM will launch GCC as the compiler.
+   Compiling ../../../../huffman_encoding_test.cpp in debug mode
+   Compiling ../../../../huffman_canonize_tree.cpp in debug mode
+   Compiling ../../../../huffman_create_tree.cpp in debug mode
+   Compiling ../../../../huffman_filter.cpp in debug mode
+   Compiling ../../../../huffman_compute_bit_length.cpp in debug mode
+   Compiling ../../../../huffman_encoding.cpp in debug mode
+   Compiling ../../../../huffman_sort.cpp in debug mode
+   Compiling ../../../../huffman_create_codeword.cpp in debug mode
+   Compiling ../../../../huffman_truncate_tree.cpp in debug mode
+   Generating csim.exe
+Starting canonical Huffman encoding testbench
+Start reading file [huffman.random256.txt]
+61 codewords with length 7
+104 codewords with length 8
+43 codewords with length 9
+28 codewords with length 10
+10 codewords with length 11
+2 codewords with length 12
+2 codewords with length 13
+3 codewords with length 14
+1 codewords with length 15
+2 codewords with length 16
+8 codewords with length 56
+930 codewords with length 57
+807 codewords with length 58
+ERR: [SIM 100] 'csim_design' failed: nonzero return value.
+INFO: [SIM 3] *************** CSIM finish ***************
