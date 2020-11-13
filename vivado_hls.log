@@ -1,5 +1,5 @@
 INFO: [HLS 200-10] Running 'D:/Xilinx/Vivado/2019.2/bin/unwrapped/win64.o/vivado_hls.exe'
-INFO: [HLS 200-10] For user 'user' on host 'chengde-dell' (Windows NT_amd64 version 6.2) on Fri Nov 13 12:02:33 +0800 2020
+INFO: [HLS 200-10] For user 'user' on host 'chengde-dell' (Windows NT_amd64 version 6.2) on Fri Nov 13 14:49:37 +0800 2020
 INFO: [HLS 200-10] In directory 'D:/Workspace/huffman_encoding_fpga'
 Sourcing Tcl script 'D:/Workspace/huffman_encoding_fpga/hls_huffman_encoding/solution1/csynth.tcl'
 INFO: [HLS 200-10] Opening project 'D:/Workspace/huffman_encoding_fpga/hls_huffman_encoding'.
@@ -34,12 +34,12 @@ WARNING: [HLS 200-471] Dataflow form checks found 2 issue(s) in file huffman_enc
 INFO: [HLS 200-10] Analyzing design file 'huffman_sort.cpp' ... 
 INFO: [HLS 200-10] Analyzing design file 'huffman_create_codeword.cpp' ... 
 INFO: [HLS 200-10] Analyzing design file 'huffman_truncate_tree.cpp' ... 
-INFO: [HLS 200-111] Finished Linking Time (s): cpu = 00:00:04 ; elapsed = 00:01:38 . Memory (MB): peak = 186.680 ; gain = 95.813
-INFO: [HLS 200-111] Finished Checking Pragmas Time (s): cpu = 00:00:04 ; elapsed = 00:01:38 . Memory (MB): peak = 186.680 ; gain = 95.813
+INFO: [HLS 200-111] Finished Linking Time (s): cpu = 00:00:04 ; elapsed = 00:01:39 . Memory (MB): peak = 187.086 ; gain = 97.645
+INFO: [HLS 200-111] Finished Checking Pragmas Time (s): cpu = 00:00:04 ; elapsed = 00:01:39 . Memory (MB): peak = 187.086 ; gain = 97.645
 INFO: [HLS 200-10] Starting code transformations ...
-INFO: [HLS 200-111] Finished Standard Transforms Time (s): cpu = 00:00:04 ; elapsed = 00:01:39 . Memory (MB): peak = 186.680 ; gain = 95.813
+INFO: [HLS 200-111] Finished Standard Transforms Time (s): cpu = 00:00:05 ; elapsed = 00:01:41 . Memory (MB): peak = 187.086 ; gain = 97.645
 INFO: [HLS 200-10] Checking synthesizability ...
-INFO: [HLS 200-111] Finished Checking Synthesizability Time (s): cpu = 00:00:05 ; elapsed = 00:01:40 . Memory (MB): peak = 202.574 ; gain = 111.707
+INFO: [HLS 200-111] Finished Checking Synthesizability Time (s): cpu = 00:00:05 ; elapsed = 00:01:42 . Memory (MB): peak = 202.465 ; gain = 113.023
 INFO: [XFORM 203-101] Partitioning array 'frequency.V' (huffman_create_tree.cpp:11) in dimension 1 with a cyclic factor 2.
 INFO: [XFORM 203-101] Partitioning array 'digit_location.V' (huffman_sort.cpp:16) in dimension 1 completely.
 INFO: [XFORM 203-101] Partitioning array 'digit_histogram.V' (huffman_sort.cpp:16) in dimension 1 completely.
@@ -75,7 +75,7 @@ INFO: [XFORM 203-401] Performing if-conversion on hyperblock from (huffman_sort.
 INFO: [XFORM 203-401] Performing if-conversion on hyperblock from (huffman_sort.cpp:67:47) to (huffman_sort.cpp:76:28) in function 'sort'... converting 3 basic blocks.
 INFO: [XFORM 203-401] Performing if-conversion on hyperblock from (huffman_create_tree.cpp:21:47) to (huffman_create_tree.cpp:34:13) in function 'create_tree'... converting 7 basic blocks.
 INFO: [XFORM 203-401] Performing if-conversion on hyperblock from (huffman_create_codeword.cpp:32:52) to (huffman_create_codeword.cpp:38:9) in function 'create_codeword'... converting 4 basic blocks.
-INFO: [HLS 200-111] Finished Pre-synthesis Time (s): cpu = 00:00:06 ; elapsed = 00:01:42 . Memory (MB): peak = 248.500 ; gain = 157.633
+INFO: [HLS 200-111] Finished Pre-synthesis Time (s): cpu = 00:00:07 ; elapsed = 00:01:44 . Memory (MB): peak = 249.230 ; gain = 159.789
 WARNING: [XFORM 203-542] Cannot flatten a loop nest 'radix_sort' (huffman_sort.cpp:29:61) in function 'sort' : 
 
 more than one sub loop.
@@ -118,7 +118,7 @@ INFO: [HLS 200-472] Inferring partial write operation for 'sorting.value.V.i' (.
 INFO: [HLS 200-472] Inferring partial write operation for 'sorting.frequency.V.i' (./huffman.h:30:8)
 INFO: [HLS 200-472] Inferring partial write operation for 'sorted.0' (./huffman.h:30:8)
 INFO: [HLS 200-472] Inferring partial write operation for 'sorted.1' (./huffman.h:30:8)
-INFO: [HLS 200-111] Finished Architecture Synthesis Time (s): cpu = 00:00:08 ; elapsed = 00:01:44 . Memory (MB): peak = 349.906 ; gain = 259.039
+INFO: [HLS 200-111] Finished Architecture Synthesis Time (s): cpu = 00:00:09 ; elapsed = 00:01:46 . Memory (MB): peak = 350.180 ; gain = 260.738
 INFO: [HLS 200-10] Starting hardware synthesis ...
 INFO: [HLS 200-10] Synthesizing 'huffman_encoding' ...
 WARNING: [SYN 201-103] Legalizing function name 'Block__proc' to 'Block_proc'.
@@ -129,25 +129,25 @@ INFO: [SCHED 204-11] Starting scheduling ...
 INFO: [SCHED 204-61] Pipelining loop 'Loop 1'.
 INFO: [SCHED 204-61] Pipelining result : Target II = 1, Final II = 1, Depth = 5.
 INFO: [SCHED 204-11] Finished scheduling.
-INFO: [HLS 200-111]  Elapsed time: 104.056 seconds; current allocated memory: 292.025 MB.
+INFO: [HLS 200-111]  Elapsed time: 106.171 seconds; current allocated memory: 292.033 MB.
 INFO: [BIND 205-100] Starting micro-architecture generation ...
 INFO: [BIND 205-101] Performing variable lifetime analysis.
 INFO: [BIND 205-101] Exploring resource sharing.
 INFO: [BIND 205-101] Binding ...
 INFO: [BIND 205-100] Finished micro-architecture generation.
-INFO: [HLS 200-111]  Elapsed time: 0.185 seconds; current allocated memory: 292.162 MB.
+INFO: [HLS 200-111]  Elapsed time: 0.192 seconds; current allocated memory: 292.170 MB.
 INFO: [HLS 200-10] ----------------------------------------------------------------
 INFO: [HLS 200-42] -- Implementing module 'Block_codeRepl1012_p' 
 INFO: [HLS 200-10] ----------------------------------------------------------------
 INFO: [SCHED 204-11] Starting scheduling ...
 INFO: [SCHED 204-11] Finished scheduling.
-INFO: [HLS 200-111]  Elapsed time: 0.19 seconds; current allocated memory: 292.206 MB.
+INFO: [HLS 200-111]  Elapsed time: 0.204 seconds; current allocated memory: 292.214 MB.
 INFO: [BIND 205-100] Starting micro-architecture generation ...
 INFO: [BIND 205-101] Performing variable lifetime analysis.
 INFO: [BIND 205-101] Exploring resource sharing.
 INFO: [BIND 205-101] Binding ...
 INFO: [BIND 205-100] Finished micro-architecture generation.
-INFO: [HLS 200-111]  Elapsed time: 0.132 seconds; current allocated memory: 292.255 MB.
+INFO: [HLS 200-111]  Elapsed time: 0.132 seconds; current allocated memory: 292.263 MB.
 INFO: [HLS 200-10] ----------------------------------------------------------------
 INFO: [HLS 200-42] -- Implementing module 'sort' 
 INFO: [HLS 200-10] ----------------------------------------------------------------
@@ -165,30 +165,30 @@ INFO: [SCHED 204-61] Pipelining result : Target II = 1, Final II = 1, Depth = 4.
 WARNING: [SCHED 204-21] Estimated clock period (4.5595ns) exceeds the target (target clock period: 5ns, clock uncertainty: 0.625ns, effective delay budget: 4.375ns).
 WARNING: [SCHED 204-21] The critical path in module 'sort' consists of the following:
 	'select' operation ('histogram_curr.V', huffman_sort.cpp:48->huffman_encoding.cpp:19->huffman_encoding.cpp:19) [199]  (0.968 ns)
-	'add' operation ('symbol_bits_temp.V', huffman_sort.cpp:50->huffman_encoding.cpp:19->huffman_encoding.cpp:19) [248]  (1.82 ns)
-	'phi' operation ('symbol_bits_temp.V') with incoming values : ('symbol_bits_temp.V', huffman_sort.cpp:50->huffman_encoding.cpp:19->huffman_encoding.cpp:19) [173]  (0 ns)
-	multiplexor before 'phi' operation ('digit_histogram[15].V') with incoming values : ('symbol_bits_temp.V', huffman_sort.cpp:50->huffman_encoding.cpp:19->huffman_encoding.cpp:19) [232]  (1.77 ns)
-	'phi' operation ('digit_histogram[15].V') with incoming values : ('symbol_bits_temp.V', huffman_sort.cpp:50->huffman_encoding.cpp:19->huffman_encoding.cpp:19) [232]  (0 ns)
+	'add' operation ('compute_histogram_histogram_last.V', huffman_sort.cpp:50->huffman_encoding.cpp:19->huffman_encoding.cpp:19) [248]  (1.82 ns)
+	'phi' operation ('compute_histogram_histogram_last.V') with incoming values : ('compute_histogram_histogram_last.V', huffman_sort.cpp:50->huffman_encoding.cpp:19->huffman_encoding.cpp:19) [173]  (0 ns)
+	multiplexor before 'phi' operation ('digit_histogram[15].V') with incoming values : ('compute_histogram_histogram_last.V', huffman_sort.cpp:50->huffman_encoding.cpp:19->huffman_encoding.cpp:19) [232]  (1.77 ns)
+	'phi' operation ('digit_histogram[15].V') with incoming values : ('compute_histogram_histogram_last.V', huffman_sort.cpp:50->huffman_encoding.cpp:19->huffman_encoding.cpp:19) [232]  (0 ns)
 INFO: [SCHED 204-11] Finished scheduling.
-INFO: [HLS 200-111]  Elapsed time: 2.251 seconds; current allocated memory: 293.549 MB.
+INFO: [HLS 200-111]  Elapsed time: 2.336 seconds; current allocated memory: 293.558 MB.
 INFO: [BIND 205-100] Starting micro-architecture generation ...
 INFO: [BIND 205-101] Performing variable lifetime analysis.
 INFO: [BIND 205-101] Exploring resource sharing.
 INFO: [BIND 205-101] Binding ...
 INFO: [BIND 205-100] Finished micro-architecture generation.
-INFO: [HLS 200-111]  Elapsed time: 0.533 seconds; current allocated memory: 298.056 MB.
+INFO: [HLS 200-111]  Elapsed time: 0.623 seconds; current allocated memory: 298.065 MB.
 INFO: [HLS 200-10] ----------------------------------------------------------------
 INFO: [HLS 200-42] -- Implementing module 'Loop_copy_sorted_pro' 
 INFO: [HLS 200-10] ----------------------------------------------------------------
 INFO: [SCHED 204-11] Starting scheduling ...
 INFO: [SCHED 204-11] Finished scheduling.
-INFO: [HLS 200-111]  Elapsed time: 0.638 seconds; current allocated memory: 298.237 MB.
+INFO: [HLS 200-111]  Elapsed time: 0.681 seconds; current allocated memory: 298.247 MB.
 INFO: [BIND 205-100] Starting micro-architecture generation ...
 INFO: [BIND 205-101] Performing variable lifetime analysis.
 INFO: [BIND 205-101] Exploring resource sharing.
 INFO: [BIND 205-101] Binding ...
 INFO: [BIND 205-100] Finished micro-architecture generation.
-INFO: [HLS 200-111]  Elapsed time: 0.163 seconds; current allocated memory: 298.377 MB.
+INFO: [HLS 200-111]  Elapsed time: 0.184 seconds; current allocated memory: 298.387 MB.
 INFO: [HLS 200-10] ----------------------------------------------------------------
 INFO: [HLS 200-42] -- Implementing module 'create_tree' 
 INFO: [HLS 200-10] ----------------------------------------------------------------
@@ -203,13 +203,13 @@ WARNING: [SCHED 204-21] The critical path in module 'create_tree' consists of th
 	'or' operation ('or_ln34', huffman_create_tree.cpp:34->huffman_encoding.cpp:39) [65]  (0.978 ns)
 	blocking operation 0.978 ns on control path)
 INFO: [SCHED 204-11] Finished scheduling.
-INFO: [HLS 200-111]  Elapsed time: 0.427 seconds; current allocated memory: 298.693 MB.
+INFO: [HLS 200-111]  Elapsed time: 0.464 seconds; current allocated memory: 298.703 MB.
 INFO: [BIND 205-100] Starting micro-architecture generation ...
 INFO: [BIND 205-101] Performing variable lifetime analysis.
 INFO: [BIND 205-101] Exploring resource sharing.
 INFO: [BIND 205-101] Binding ...
 INFO: [BIND 205-100] Finished micro-architecture generation.
-INFO: [HLS 200-111]  Elapsed time: 0.353 seconds; current allocated memory: 299.153 MB.
+INFO: [HLS 200-111]  Elapsed time: 0.306 seconds; current allocated memory: 299.162 MB.
 INFO: [HLS 200-10] ----------------------------------------------------------------
 INFO: [HLS 200-42] -- Implementing module 'compute_bit_length' 
 INFO: [HLS 200-10] ----------------------------------------------------------------
@@ -219,37 +219,37 @@ INFO: [SCHED 204-61] Pipelining result : Target II = 1, Final II = 1, Depth = 1.
 INFO: [SCHED 204-61] Pipelining loop 'traverse_tree'.
 INFO: [SCHED 204-61] Pipelining result : Target II = 3, Final II = 3, Depth = 5.
 INFO: [SCHED 204-11] Finished scheduling.
-INFO: [HLS 200-111]  Elapsed time: 0.401 seconds; current allocated memory: 299.462 MB.
+INFO: [HLS 200-111]  Elapsed time: 0.417 seconds; current allocated memory: 299.471 MB.
 INFO: [BIND 205-100] Starting micro-architecture generation ...
 INFO: [BIND 205-101] Performing variable lifetime analysis.
 INFO: [BIND 205-101] Exploring resource sharing.
 INFO: [BIND 205-101] Binding ...
 INFO: [BIND 205-100] Finished micro-architecture generation.
-INFO: [HLS 200-111]  Elapsed time: 0.269 seconds; current allocated memory: 299.824 MB.
+INFO: [HLS 200-111]  Elapsed time: 0.289 seconds; current allocated memory: 299.834 MB.
 INFO: [HLS 200-10] ----------------------------------------------------------------
 INFO: [HLS 200-42] -- Implementing module 'truncate_tree' 
 INFO: [HLS 200-10] ----------------------------------------------------------------
 INFO: [SCHED 204-11] Starting scheduling ...
 INFO: [SCHED 204-11] Finished scheduling.
-INFO: [HLS 200-111]  Elapsed time: 0.295 seconds; current allocated memory: 300.093 MB.
+INFO: [HLS 200-111]  Elapsed time: 0.302 seconds; current allocated memory: 300.102 MB.
 INFO: [BIND 205-100] Starting micro-architecture generation ...
 INFO: [BIND 205-101] Performing variable lifetime analysis.
 INFO: [BIND 205-101] Exploring resource sharing.
 INFO: [BIND 205-101] Binding ...
 INFO: [BIND 205-100] Finished micro-architecture generation.
-INFO: [HLS 200-111]  Elapsed time: 0.22 seconds; current allocated memory: 300.354 MB.
+INFO: [HLS 200-111]  Elapsed time: 0.235 seconds; current allocated memory: 300.363 MB.
 INFO: [HLS 200-10] ----------------------------------------------------------------
 INFO: [HLS 200-42] -- Implementing module 'canonize_tree' 
 INFO: [HLS 200-10] ----------------------------------------------------------------
 INFO: [SCHED 204-11] Starting scheduling ...
 INFO: [SCHED 204-11] Finished scheduling.
-INFO: [HLS 200-111]  Elapsed time: 0.299 seconds; current allocated memory: 300.491 MB.
+INFO: [HLS 200-111]  Elapsed time: 0.286 seconds; current allocated memory: 300.500 MB.
 INFO: [BIND 205-100] Starting micro-architecture generation ...
 INFO: [BIND 205-101] Performing variable lifetime analysis.
 INFO: [BIND 205-101] Exploring resource sharing.
 INFO: [BIND 205-101] Binding ...
 INFO: [BIND 205-100] Finished micro-architecture generation.
-INFO: [HLS 200-111]  Elapsed time: 0.186 seconds; current allocated memory: 300.666 MB.
+INFO: [HLS 200-111]  Elapsed time: 0.202 seconds; current allocated memory: 300.676 MB.
 INFO: [HLS 200-10] ----------------------------------------------------------------
 INFO: [HLS 200-42] -- Implementing module 'create_codeword' 
 INFO: [HLS 200-10] ----------------------------------------------------------------
@@ -259,47 +259,47 @@ INFO: [SCHED 204-61] Pipelining result : Target II = 1, Final II = 1, Depth = 3.
 INFO: [SCHED 204-61] Pipelining loop 'assign_codewords'.
 INFO: [SCHED 204-61] Pipelining result : Target II = 5, Final II = 5, Depth = 6.
 INFO: [SCHED 204-11] Finished scheduling.
-INFO: [HLS 200-111]  Elapsed time: 0.281 seconds; current allocated memory: 300.831 MB.
+INFO: [HLS 200-111]  Elapsed time: 0.297 seconds; current allocated memory: 300.840 MB.
 INFO: [BIND 205-100] Starting micro-architecture generation ...
 INFO: [BIND 205-101] Performing variable lifetime analysis.
 INFO: [BIND 205-101] Exploring resource sharing.
 INFO: [BIND 205-101] Binding ...
 INFO: [BIND 205-100] Finished micro-architecture generation.
-INFO: [HLS 200-111]  Elapsed time: 0.205 seconds; current allocated memory: 301.052 MB.
+INFO: [HLS 200-111]  Elapsed time: 0.213 seconds; current allocated memory: 301.061 MB.
 INFO: [HLS 200-10] ----------------------------------------------------------------
 INFO: [HLS 200-42] -- Implementing module 'Block_proc' 
 INFO: [HLS 200-10] ----------------------------------------------------------------
 INFO: [SCHED 204-11] Starting scheduling ...
 INFO: [SCHED 204-11] Finished scheduling.
-INFO: [HLS 200-111]  Elapsed time: 0.231 seconds; current allocated memory: 301.116 MB.
+INFO: [HLS 200-111]  Elapsed time: 0.254 seconds; current allocated memory: 301.125 MB.
 INFO: [BIND 205-100] Starting micro-architecture generation ...
 INFO: [BIND 205-101] Performing variable lifetime analysis.
 INFO: [BIND 205-101] Exploring resource sharing.
 INFO: [BIND 205-101] Binding ...
 INFO: [BIND 205-100] Finished micro-architecture generation.
-INFO: [HLS 200-111]  Elapsed time: 0.152 seconds; current allocated memory: 301.161 MB.
+INFO: [HLS 200-111]  Elapsed time: 0.146 seconds; current allocated memory: 301.170 MB.
 INFO: [HLS 200-10] ----------------------------------------------------------------
 INFO: [HLS 200-42] -- Implementing module 'huffman_encoding' 
 INFO: [HLS 200-10] ----------------------------------------------------------------
 INFO: [SCHED 204-11] Starting scheduling ...
 INFO: [SCHED 204-11] Finished scheduling.
-INFO: [HLS 200-111]  Elapsed time: 0.164 seconds; current allocated memory: 301.279 MB.
+INFO: [HLS 200-111]  Elapsed time: 0.172 seconds; current allocated memory: 301.289 MB.
 INFO: [BIND 205-100] Starting micro-architecture generation ...
 INFO: [BIND 205-101] Performing variable lifetime analysis.
 INFO: [BIND 205-101] Exploring resource sharing.
 INFO: [BIND 205-101] Binding ...
 INFO: [BIND 205-100] Finished micro-architecture generation.
-INFO: [HLS 200-111]  Elapsed time: 0.917 seconds; current allocated memory: 301.748 MB.
+INFO: [HLS 200-111]  Elapsed time: 0.967 seconds; current allocated memory: 301.758 MB.
 INFO: [HLS 200-10] ----------------------------------------------------------------
 INFO: [HLS 200-10] -- Generating RTL for module 'filter' 
 INFO: [HLS 200-10] ----------------------------------------------------------------
 INFO: [RTGEN 206-100] Finished creating RTL model for 'filter'.
-INFO: [HLS 200-111]  Elapsed time: 0.463 seconds; current allocated memory: 302.145 MB.
+INFO: [HLS 200-111]  Elapsed time: 0.476 seconds; current allocated memory: 302.155 MB.
 INFO: [HLS 200-10] ----------------------------------------------------------------
 INFO: [HLS 200-10] -- Generating RTL for module 'Block_codeRepl1012_p' 
 INFO: [HLS 200-10] ----------------------------------------------------------------
 INFO: [RTGEN 206-100] Finished creating RTL model for 'Block_codeRepl1012_p'.
-INFO: [HLS 200-111]  Elapsed time: 0.36 seconds; current allocated memory: 302.348 MB.
+INFO: [HLS 200-111]  Elapsed time: 0.351 seconds; current allocated memory: 302.358 MB.
 INFO: [HLS 200-10] ----------------------------------------------------------------
 INFO: [HLS 200-10] -- Generating RTL for module 'sort' 
 INFO: [HLS 200-10] ----------------------------------------------------------------
@@ -313,47 +313,47 @@ INFO: [SYN 201-210] Renamed object name 'huffman_encoding_mux_164_9_1_1' to 'huf
 INFO: [RTGEN 206-100] Generating core module 'huffman_encoding_g8j': 1 instance(s).
 INFO: [RTGEN 206-100] Generating core module 'huffman_encoding_hbi': 3 instance(s).
 INFO: [RTGEN 206-100] Finished creating RTL model for 'sort'.
-INFO: [HLS 200-111]  Elapsed time: 0.77 seconds; current allocated memory: 306.550 MB.
+INFO: [HLS 200-111]  Elapsed time: 0.836 seconds; current allocated memory: 306.558 MB.
 INFO: [HLS 200-10] ----------------------------------------------------------------
 INFO: [HLS 200-10] -- Generating RTL for module 'Loop_copy_sorted_pro' 
 INFO: [HLS 200-10] ----------------------------------------------------------------
 INFO: [RTGEN 206-100] Finished creating RTL model for 'Loop_copy_sorted_pro'.
-INFO: [HLS 200-111]  Elapsed time: 1.77 seconds; current allocated memory: 307.169 MB.
+INFO: [HLS 200-111]  Elapsed time: 1.692 seconds; current allocated memory: 307.178 MB.
 INFO: [HLS 200-10] ----------------------------------------------------------------
 INFO: [HLS 200-10] -- Generating RTL for module 'create_tree' 
 INFO: [HLS 200-10] ----------------------------------------------------------------
 INFO: [SYN 201-210] Renamed object name 'create_tree_frequency_0_V' to 'create_tree_frequibs' due to the length limit 20
 INFO: [SYN 201-210] Renamed object name 'create_tree_frequency_1_V' to 'create_tree_frequjbC' due to the length limit 20
 INFO: [RTGEN 206-100] Finished creating RTL model for 'create_tree'.
-INFO: [HLS 200-111]  Elapsed time: 0.407 seconds; current allocated memory: 308.085 MB.
+INFO: [HLS 200-111]  Elapsed time: 0.422 seconds; current allocated memory: 308.093 MB.
 INFO: [HLS 200-10] ----------------------------------------------------------------
 INFO: [HLS 200-10] -- Generating RTL for module 'compute_bit_length' 
 INFO: [HLS 200-10] ----------------------------------------------------------------
 INFO: [SYN 201-210] Renamed object name 'compute_bit_length_child_depth_V' to 'compute_bit_lengtkbM' due to the length limit 20
 INFO: [SYN 201-210] Renamed object name 'compute_bit_length_internal_length_hist' to 'compute_bit_lengtlbW' due to the length limit 20
 INFO: [RTGEN 206-100] Finished creating RTL model for 'compute_bit_length'.
-INFO: [HLS 200-111]  Elapsed time: 0.726 seconds; current allocated memory: 308.905 MB.
+INFO: [HLS 200-111]  Elapsed time: 0.735 seconds; current allocated memory: 308.914 MB.
 INFO: [HLS 200-10] ----------------------------------------------------------------
 INFO: [HLS 200-10] -- Generating RTL for module 'truncate_tree' 
 INFO: [HLS 200-10] ----------------------------------------------------------------
 INFO: [RTGEN 206-100] Finished creating RTL model for 'truncate_tree'.
-INFO: [HLS 200-111]  Elapsed time: 0.552 seconds; current allocated memory: 309.464 MB.
+INFO: [HLS 200-111]  Elapsed time: 0.563 seconds; current allocated memory: 309.472 MB.
 INFO: [HLS 200-10] ----------------------------------------------------------------
 INFO: [HLS 200-10] -- Generating RTL for module 'canonize_tree' 
 INFO: [HLS 200-10] ----------------------------------------------------------------
 INFO: [RTGEN 206-100] Finished creating RTL model for 'canonize_tree'.
-INFO: [HLS 200-111]  Elapsed time: 0.48 seconds; current allocated memory: 309.867 MB.
+INFO: [HLS 200-111]  Elapsed time: 0.5 seconds; current allocated memory: 309.875 MB.
 INFO: [HLS 200-10] ----------------------------------------------------------------
 INFO: [HLS 200-10] -- Generating RTL for module 'create_codeword' 
 INFO: [HLS 200-10] ----------------------------------------------------------------
 INFO: [SYN 201-210] Renamed object name 'create_codeword_first_codeword_V' to 'create_codeword_fmb6' due to the length limit 20
 INFO: [RTGEN 206-100] Finished creating RTL model for 'create_codeword'.
-INFO: [HLS 200-111]  Elapsed time: 0.418 seconds; current allocated memory: 310.465 MB.
+INFO: [HLS 200-111]  Elapsed time: 0.441 seconds; current allocated memory: 310.474 MB.
 INFO: [HLS 200-10] ----------------------------------------------------------------
 INFO: [HLS 200-10] -- Generating RTL for module 'Block_proc' 
 INFO: [HLS 200-10] ----------------------------------------------------------------
 INFO: [RTGEN 206-100] Finished creating RTL model for 'Block_proc'.
-INFO: [HLS 200-111]  Elapsed time: 0.437 seconds; current allocated memory: 310.671 MB.
+INFO: [HLS 200-111]  Elapsed time: 0.466 seconds; current allocated memory: 310.680 MB.
 INFO: [HLS 200-10] ----------------------------------------------------------------
 INFO: [HLS 200-10] -- Generating RTL for module 'huffman_encoding' 
 INFO: [HLS 200-10] ----------------------------------------------------------------
@@ -378,7 +378,7 @@ INFO: [SYN 201-210] Renamed object name 'start_for_Block_codeRepl1012_p_U0' to '
 INFO: [SYN 201-210] Renamed object name 'start_for_create_tree_U0' to 'start_for_create_Aem' due to the length limit 20
 INFO: [SYN 201-210] Renamed object name 'start_for_Block_proc_U0' to 'start_for_Block_pBew' due to the length limit 20
 INFO: [RTGEN 206-100] Finished creating RTL model for 'huffman_encoding'.
-INFO: [HLS 200-111]  Elapsed time: 0.851 seconds; current allocated memory: 312.733 MB.
+INFO: [HLS 200-111]  Elapsed time: 0.9 seconds; current allocated memory: 312.741 MB.
 INFO: [HLS 200-790] **** Loop Constraint Status: All loop constraints were satisfied.
 INFO: [HLS 200-789] **** Estimated Fmax: 219.32 MHz
 INFO: [RTMG 210-286] Generating pipelined shifter : 'huffman_encoding_g8j'
@@ -426,7 +426,7 @@ INFO: [HLS 200-740] Implementing PIPO huffman_encoding_sc4_memcore using a separ
 INFO: [HLS 200-741] Implementing PIPO huffman_encoding_vdy_memcore using a single memory for all blocks
 INFO: [HLS 200-740] Implementing PIPO huffman_encoding_wdI_memcore using a separate memory for each block
 INFO: [HLS 200-741] Implementing PIPO huffman_encoding_yd2_memcore using a single memory for all blocks
-INFO: [HLS 200-111] Finished generating all RTL models Time (s): cpu = 00:00:23 ; elapsed = 00:02:09 . Memory (MB): peak = 405.340 ; gain = 314.473
+INFO: [HLS 200-111] Finished generating all RTL models Time (s): cpu = 00:00:24 ; elapsed = 00:02:12 . Memory (MB): peak = 405.305 ; gain = 315.863
 INFO: [VHDL 208-304] Generating VHDL RTL for huffman_encoding.
 INFO: [VLOG 209-307] Generating Verilog RTL for huffman_encoding.
-INFO: [HLS 200-112] Total elapsed time: 129.515 seconds; peak allocated memory: 312.733 MB.
+INFO: [HLS 200-112] Total elapsed time: 132.231 seconds; peak allocated memory: 312.741 MB.

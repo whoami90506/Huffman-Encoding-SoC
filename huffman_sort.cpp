@@ -33,8 +33,8 @@ void sort(
             digit_histogram[i] = 0;
         }
 
-        Digit digit_last = 0;
-        ap_uint<SYMBOL_BITS> symbol_bits_temp = 0;
+        Digit compute_histogram_digit_last = 0;
+        ap_uint<SYMBOL_BITS> compute_histogram_histogram_last = 0;
 
         compute_histogram:
         for(int j = 0; j < num_symbols; j++) {
@@ -45,12 +45,12 @@ void sort(
             previous_sorting[j] = sorting[j]; // Save the current sorted order of symbols
 
             // digit_histogram[digit]++;
-            ap_uint<SYMBOL_BITS> histogram_curr = digit == digit_last ? symbol_bits_temp : digit_histogram[digit];
-            digit_histogram[digit_last] = symbol_bits_temp;
-            symbol_bits_temp = histogram_curr + 1;
-            digit_last = digit;
+            ap_uint<SYMBOL_BITS> histogram_curr = digit == compute_histogram_digit_last ? compute_histogram_histogram_last : digit_histogram[digit];
+            digit_histogram[compute_histogram_digit_last] = compute_histogram_histogram_last;
+            compute_histogram_histogram_last = histogram_curr + 1;
+            compute_histogram_digit_last = digit;
         }
-        digit_histogram[digit_last] = symbol_bits_temp;
+        digit_histogram[compute_histogram_digit_last] = compute_histogram_histogram_last;
 
         digit_location[0] = 0;
 
@@ -60,23 +60,23 @@ void sort(
             digit_location[i] = digit_location[i-1] + digit_histogram[i-1];
         }
 
-        digit_last = RADIX-1;
-        symbol_bits_temp = digit_location[RADIX-1];
+        Digit re_sort_digit_last = RADIX-1;
+        ap_uint<SYMBOL_BITS> re_sort_location_last = digit_location[RADIX-1];
 
         re_sort:
         for(int j = 0; j < num_symbols; j++) {
             #pragma HLS PIPELINE II=1
             Digit digit = current_digit[j];
-            ap_uint<SYMBOL_BITS> location_curr = digit_last == digit ? symbol_bits_temp : digit_location[digit];
+            ap_uint<SYMBOL_BITS> location_curr = re_sort_digit_last == digit ? re_sort_location_last : digit_location[digit];
 
             sorting[location_curr] = previous_sorting[j]; // Move symbol to new sorted location
             out[location_curr] = previous_sorting[j]; // Also copy to output
 
             // digit_location[digit]++; // Update digit_location
-            digit_location[digit_last] = symbol_bits_temp;
-            symbol_bits_temp = location_curr + 1;
-            digit_last = digit;
+            digit_location[re_sort_digit_last] = re_sort_location_last;
+            re_sort_location_last = location_curr + 1;
+            re_sort_digit_last = digit;
         }
-        digit_location[digit_last] = symbol_bits_temp;
+        digit_location[re_sort_digit_last] = re_sort_location_last;
     }
 }
