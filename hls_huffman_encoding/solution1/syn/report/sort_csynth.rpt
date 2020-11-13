@@ -3,7 +3,7 @@
 ================================================================
 == Vivado HLS Report for 'sort'
 ================================================================
-* Date:           Fri Nov 13 02:52:00 2020
+* Date:           Fri Nov 13 12:04:27 2020
 
 * Version:        2019.2 (Build 2704478 on Wed Nov 06 22:10:23 MST 2019)
 * Project:        hls_huffman_encoding
@@ -20,7 +20,7 @@
     +--------+---------+----------+------------+
     |  Clock |  Target | Estimated| Uncertainty|
     +--------+---------+----------+------------+
-    |ap_clk  | 5.00 ns | 5.656 ns |   0.63 ns  |
+    |ap_clk  | 5.00 ns | 4.559 ns |   0.63 ns  |
     +--------+---------+----------+------------+
 
 + Latency: 
@@ -29,7 +29,7 @@
     |  Latency (cycles) |  Latency (absolute)  |  Interval  | Pipeline|
     |   min   |   max   |    min   |    max    | min |  max |   Type  |
     +---------+---------+----------+-----------+-----+------+---------+
-    |      379|     4732| 2.144 us | 26.764 us |  379|  4732|   none  |
+    |      379|     4732| 1.895 us | 23.660 us |  379|  4732|   none  |
     +---------+---------+----------+-----------+-----+------+---------+
 
     + Detail: 
@@ -59,18 +59,18 @@
 |       Name      | BRAM_18K| DSP48E|   FF   |  LUT  | URAM|
 +-----------------+---------+-------+--------+-------+-----+
 |DSP              |        -|      -|       -|      -|    -|
-|Expression       |        -|      -|       0|    212|    -|
+|Expression       |        -|      -|       0|    248|    -|
 |FIFO             |        -|      -|       -|      -|    -|
 |Instance         |        -|      -|     140|    321|    -|
 |Memory           |        5|      -|       0|      0|    0|
-|Multiplexer      |        -|      -|       -|   2302|    -|
-|Register         |        0|      -|    1344|     96|    -|
+|Multiplexer      |        -|      -|       -|   2743|    -|
+|Register         |        0|      -|    1795|     96|    -|
 +-----------------+---------+-------+--------+-------+-----+
-|Total            |        5|      0|    1484|   2931|    0|
+|Total            |        5|      0|    1935|   3408|    0|
 +-----------------+---------+-------+--------+-------+-----+
 |Available        |      280|    220|  106400|  53200|    0|
 +-----------------+---------+-------+--------+-------+-----+
-|Utilization (%)  |        1|      0|       1|      5|    0|
+|Utilization (%)  |        1|      0|       1|      6|    0|
 +-----------------+---------+-------+--------+-------+-----+
 
 + Detail: 
@@ -106,34 +106,38 @@
     N/A
 
     * Expression: 
-    +--------------------------------+----------+-------+---+----+------------+------------+
-    |          Variable Name         | Operation| DSP48E| FF| LUT| Bitwidth P0| Bitwidth P1|
-    +--------------------------------+----------+-------+---+----+------------+------------+
-    |digit_histogram_0_V_fu_4986_p2  |     +    |      0|  0|  15|           1|           9|
-    |digit_location_0_V_fu_5119_p2   |     +    |      0|  0|  15|           9|           1|
-    |digit_location_1_V_fu_5046_p2   |     +    |      0|  0|  15|           9|           9|
-    |i_3_fu_5040_p2                  |     +    |      0|  0|  15|           5|           1|
-    |i_fu_4914_p2                    |     +    |      0|  0|  15|           5|           1|
-    |j_1_fu_4929_p2                  |     +    |      0|  0|  15|           9|           1|
-    |j_2_fu_5071_p2                  |     +    |      0|  0|  15|           9|           1|
-    |j_fu_4884_p2                    |     +    |      0|  0|  15|           9|           1|
-    |shift_fu_5132_p2                |     +    |      0|  0|  15|           6|           3|
-    |ap_condition_408                |    and   |      0|  0|   2|           1|           1|
-    |icmp_ln23_fu_4879_p2            |   icmp   |      0|  0|  13|           9|           9|
-    |icmp_ln31_fu_4908_p2            |   icmp   |      0|  0|  11|           5|           6|
-    |icmp_ln37_fu_4924_p2            |   icmp   |      0|  0|  13|           9|           9|
-    |icmp_ln49_fu_4992_p2            |   icmp   |      0|  0|  11|           5|           6|
-    |icmp_ln55_fu_5066_p2            |   icmp   |      0|  0|  13|           9|           9|
-    |ap_block_state1                 |    or    |      0|  0|   2|           1|           1|
-    |ap_condition_1387               |    or    |      0|  0|   2|           1|           1|
-    |ap_enable_pp0                   |    xor   |      0|  0|   2|           1|           2|
-    |ap_enable_pp2                   |    xor   |      0|  0|   2|           1|           2|
-    |ap_enable_pp3                   |    xor   |      0|  0|   2|           1|           2|
-    |ap_enable_pp4                   |    xor   |      0|  0|   2|           1|           2|
-    |ap_enable_reg_pp0_iter1         |    xor   |      0|  0|   2|           2|           1|
-    +--------------------------------+----------+-------+---+----+------------+------------+
-    |Total                           |          |      0|  0| 212|         108|          78|
-    +--------------------------------+----------+-------+---+----+------------+------------+
+    +---------------------------------+----------+-------+---+----+------------+------------+
+    |          Variable Name          | Operation| DSP48E| FF| LUT| Bitwidth P0| Bitwidth P1|
+    +---------------------------------+----------+-------+---+----+------------+------------+
+    |digit_location_1_V_fu_6811_p2    |     +    |      0|  0|  15|           9|           9|
+    |i_3_fu_6805_p2                   |     +    |      0|  0|  15|           5|           1|
+    |i_fu_6668_p2                     |     +    |      0|  0|  15|           5|           1|
+    |j_1_fu_6683_p2                   |     +    |      0|  0|  15|           9|           1|
+    |j_2_fu_6836_p2                   |     +    |      0|  0|  15|           9|           1|
+    |j_fu_6638_p2                     |     +    |      0|  0|  15|           9|           1|
+    |shift_fu_6909_p2                 |     +    |      0|  0|  15|           6|           3|
+    |symbol_bits_temp_V_2_fu_6903_p2  |     +    |      0|  0|  15|           9|           1|
+    |symbol_bits_temp_V_fu_6751_p2    |     +    |      0|  0|  15|           9|           1|
+    |ap_condition_428                 |    and   |      0|  0|   2|           1|           1|
+    |icmp_ln23_fu_6633_p2             |   icmp   |      0|  0|  13|           9|           9|
+    |icmp_ln31_fu_6662_p2             |   icmp   |      0|  0|  11|           5|           6|
+    |icmp_ln40_fu_6678_p2             |   icmp   |      0|  0|  13|           9|           9|
+    |icmp_ln58_fu_6757_p2             |   icmp   |      0|  0|  11|           5|           6|
+    |icmp_ln67_fu_6831_p2             |   icmp   |      0|  0|  13|           9|           9|
+    |icmp_ln879_2_fu_6847_p2          |   icmp   |      0|  0|   9|           4|           4|
+    |icmp_ln879_fu_6703_p2            |   icmp   |      0|  0|   9|           4|           4|
+    |ap_block_state1                  |    or    |      0|  0|   2|           1|           1|
+    |ap_condition_1623                |    or    |      0|  0|   2|           1|           1|
+    |histogram_curr_V_fu_6745_p3      |  select  |      0|  0|   9|           1|           9|
+    |location_curr_V_fu_6889_p3       |  select  |      0|  0|   9|           1|           9|
+    |ap_enable_pp0                    |    xor   |      0|  0|   2|           1|           2|
+    |ap_enable_pp2                    |    xor   |      0|  0|   2|           1|           2|
+    |ap_enable_pp3                    |    xor   |      0|  0|   2|           1|           2|
+    |ap_enable_pp4                    |    xor   |      0|  0|   2|           1|           2|
+    |ap_enable_reg_pp0_iter1          |    xor   |      0|  0|   2|           2|           1|
+    +---------------------------------+----------+-------+---+----+------------+------------+
+    |Total                            |          |      0|  0| 248|         126|          96|
+    +---------------------------------+----------+-------+---+----+------------+------------+
 
     * Multiplexer: 
     +--------------------------------------------------+----+-----------+-----+-----------+
@@ -148,194 +152,233 @@
     |ap_enable_reg_pp3_iter1                           |   9|          2|    1|          2|
     |ap_enable_reg_pp4_iter2                           |   9|          2|    1|          2|
     |ap_enable_reg_pp4_iter3                           |  15|          3|    1|          3|
-    |ap_phi_mux_digit_histogram_0_V_3_phi_fu_1702_p32  |  15|          3|    9|         27|
-    |ap_phi_mux_digit_histogram_0_V_4_phi_fu_1948_p4   |   9|          2|    9|         18|
-    |ap_phi_mux_digit_histogram_0_V_5_phi_fu_2770_p32  |  15|          3|    9|         27|
-    |ap_phi_mux_digit_histogram_10_2_phi_fu_1152_p32   |  15|          3|    9|         27|
-    |ap_phi_mux_digit_histogram_10_3_phi_fu_1828_p4    |   9|          2|    9|         18|
-    |ap_phi_mux_digit_histogram_10_4_phi_fu_2230_p32   |  15|          3|    9|         27|
-    |ap_phi_mux_digit_histogram_11_2_phi_fu_1097_p32   |  15|          3|    9|         27|
-    |ap_phi_mux_digit_histogram_11_3_phi_fu_1816_p4    |   9|          2|    9|         18|
-    |ap_phi_mux_digit_histogram_11_4_phi_fu_2176_p32   |  15|          3|    9|         27|
-    |ap_phi_mux_digit_histogram_12_2_phi_fu_1042_p32   |  15|          3|    9|         27|
-    |ap_phi_mux_digit_histogram_12_3_phi_fu_1804_p4    |   9|          2|    9|         18|
-    |ap_phi_mux_digit_histogram_12_4_phi_fu_2122_p32   |  15|          3|    9|         27|
-    |ap_phi_mux_digit_histogram_13_2_phi_fu_987_p32    |  15|          3|    9|         27|
-    |ap_phi_mux_digit_histogram_13_3_phi_fu_1792_p4    |   9|          2|    9|         18|
-    |ap_phi_mux_digit_histogram_13_4_phi_fu_2068_p32   |  15|          3|    9|         27|
-    |ap_phi_mux_digit_histogram_14_2_phi_fu_932_p32    |  15|          3|    9|         27|
+    |ap_phi_mux_digit_histogram_0_V_3_phi_fu_1704_p32  |  15|          3|    9|         27|
+    |ap_phi_mux_digit_histogram_0_V_4_phi_fu_1934_p4   |   9|          2|    9|         18|
+    |ap_phi_mux_digit_histogram_0_V_phi_fu_1946_p4     |   9|          2|    9|         18|
+    |ap_phi_mux_digit_histogram_10_2_phi_fu_1154_p32   |  15|          3|    9|         27|
+    |ap_phi_mux_digit_histogram_10_3_phi_fu_1824_p4    |   9|          2|    9|         18|
+    |ap_phi_mux_digit_histogram_11_2_phi_fu_1099_p32   |  15|          3|    9|         27|
+    |ap_phi_mux_digit_histogram_11_3_phi_fu_1813_p4    |   9|          2|    9|         18|
+    |ap_phi_mux_digit_histogram_12_2_phi_fu_1044_p32   |  15|          3|    9|         27|
+    |ap_phi_mux_digit_histogram_12_3_phi_fu_1802_p4    |   9|          2|    9|         18|
+    |ap_phi_mux_digit_histogram_13_2_phi_fu_989_p32    |  15|          3|    9|         27|
+    |ap_phi_mux_digit_histogram_13_3_phi_fu_1791_p4    |   9|          2|    9|         18|
+    |ap_phi_mux_digit_histogram_14_2_phi_fu_934_p32    |  15|          3|    9|         27|
     |ap_phi_mux_digit_histogram_14_3_phi_fu_1780_p4    |   9|          2|    9|         18|
-    |ap_phi_mux_digit_histogram_14_4_phi_fu_2014_p32   |  15|          3|    9|         27|
-    |ap_phi_mux_digit_histogram_15_2_phi_fu_877_p32    |  15|          3|    9|         27|
-    |ap_phi_mux_digit_histogram_15_3_phi_fu_1768_p4    |   9|          2|    9|         18|
-    |ap_phi_mux_digit_histogram_15_4_phi_fu_1960_p32   |  15|          3|    9|         27|
-    |ap_phi_mux_digit_histogram_1_V_2_phi_fu_1647_p32  |  15|          3|    9|         27|
-    |ap_phi_mux_digit_histogram_1_V_3_phi_fu_1936_p4   |   9|          2|    9|         18|
-    |ap_phi_mux_digit_histogram_1_V_4_phi_fu_2716_p32  |  15|          3|    9|         27|
-    |ap_phi_mux_digit_histogram_2_V_2_phi_fu_1592_p32  |  15|          3|    9|         27|
-    |ap_phi_mux_digit_histogram_2_V_3_phi_fu_1924_p4   |   9|          2|    9|         18|
-    |ap_phi_mux_digit_histogram_2_V_4_phi_fu_2662_p32  |  15|          3|    9|         27|
-    |ap_phi_mux_digit_histogram_3_V_2_phi_fu_1537_p32  |  15|          3|    9|         27|
-    |ap_phi_mux_digit_histogram_3_V_3_phi_fu_1912_p4   |   9|          2|    9|         18|
-    |ap_phi_mux_digit_histogram_3_V_4_phi_fu_2608_p32  |  15|          3|    9|         27|
-    |ap_phi_mux_digit_histogram_4_V_2_phi_fu_1482_p32  |  15|          3|    9|         27|
-    |ap_phi_mux_digit_histogram_4_V_3_phi_fu_1900_p4   |   9|          2|    9|         18|
-    |ap_phi_mux_digit_histogram_4_V_4_phi_fu_2554_p32  |  15|          3|    9|         27|
-    |ap_phi_mux_digit_histogram_5_V_2_phi_fu_1427_p32  |  15|          3|    9|         27|
-    |ap_phi_mux_digit_histogram_5_V_3_phi_fu_1888_p4   |   9|          2|    9|         18|
-    |ap_phi_mux_digit_histogram_5_V_4_phi_fu_2500_p32  |  15|          3|    9|         27|
-    |ap_phi_mux_digit_histogram_6_V_2_phi_fu_1372_p32  |  15|          3|    9|         27|
-    |ap_phi_mux_digit_histogram_6_V_3_phi_fu_1876_p4   |   9|          2|    9|         18|
-    |ap_phi_mux_digit_histogram_6_V_4_phi_fu_2446_p32  |  15|          3|    9|         27|
-    |ap_phi_mux_digit_histogram_7_V_2_phi_fu_1317_p32  |  15|          3|    9|         27|
-    |ap_phi_mux_digit_histogram_7_V_3_phi_fu_1864_p4   |   9|          2|    9|         18|
-    |ap_phi_mux_digit_histogram_7_V_4_phi_fu_2392_p32  |  15|          3|    9|         27|
-    |ap_phi_mux_digit_histogram_8_V_2_phi_fu_1262_p32  |  15|          3|    9|         27|
-    |ap_phi_mux_digit_histogram_8_V_3_phi_fu_1852_p4   |   9|          2|    9|         18|
-    |ap_phi_mux_digit_histogram_8_V_4_phi_fu_2338_p32  |  15|          3|    9|         27|
-    |ap_phi_mux_digit_histogram_9_V_2_phi_fu_1207_p32  |  15|          3|    9|         27|
-    |ap_phi_mux_digit_histogram_9_V_3_phi_fu_1840_p4   |   9|          2|    9|         18|
-    |ap_phi_mux_digit_histogram_9_V_4_phi_fu_2284_p32  |  15|          3|    9|         27|
-    |ap_phi_mux_digit_location_0_V_1_phi_fu_4829_p32   |  15|          3|    9|         27|
-    |ap_phi_mux_digit_location_0_V_s_phi_fu_4007_p4    |   9|          2|    9|         18|
-    |ap_phi_mux_digit_location_10_V_1_phi_fu_2867_p4   |   9|          2|    9|         18|
-    |ap_phi_mux_digit_location_10_V_2_phi_fu_3306_p30  |  15|          3|    9|         27|
-    |ap_phi_mux_digit_location_10_V_3_phi_fu_3887_p4   |   9|          2|    9|         18|
-    |ap_phi_mux_digit_location_10_V_4_phi_fu_4289_p32  |  15|          3|    9|         27|
-    |ap_phi_mux_digit_location_11_V_1_phi_fu_2856_p4   |   9|          2|    9|         18|
-    |ap_phi_mux_digit_location_11_V_2_phi_fu_3255_p30  |  15|          3|    9|         27|
-    |ap_phi_mux_digit_location_11_V_3_phi_fu_3875_p4   |   9|          2|    9|         18|
-    |ap_phi_mux_digit_location_11_V_4_phi_fu_4235_p32  |  15|          3|    9|         27|
-    |ap_phi_mux_digit_location_12_V_1_phi_fu_2845_p4   |   9|          2|    9|         18|
-    |ap_phi_mux_digit_location_12_V_2_phi_fu_3204_p30  |  15|          3|    9|         27|
-    |ap_phi_mux_digit_location_12_V_3_phi_fu_3863_p4   |   9|          2|    9|         18|
-    |ap_phi_mux_digit_location_12_V_4_phi_fu_4181_p32  |  15|          3|    9|         27|
-    |ap_phi_mux_digit_location_13_V_1_phi_fu_2834_p4   |   9|          2|    9|         18|
-    |ap_phi_mux_digit_location_13_V_2_phi_fu_3153_p30  |  15|          3|    9|         27|
-    |ap_phi_mux_digit_location_13_V_3_phi_fu_3851_p4   |   9|          2|    9|         18|
-    |ap_phi_mux_digit_location_13_V_4_phi_fu_4127_p32  |  15|          3|    9|         27|
-    |ap_phi_mux_digit_location_14_V_2_phi_fu_2823_p4   |   9|          2|    9|         18|
-    |ap_phi_mux_digit_location_14_V_3_phi_fu_3102_p30  |  15|          3|    9|         27|
-    |ap_phi_mux_digit_location_14_V_4_phi_fu_3839_p4   |   9|          2|    9|         18|
-    |ap_phi_mux_digit_location_14_V_5_phi_fu_4073_p32  |  15|          3|    9|         27|
-    |ap_phi_mux_digit_location_15_V_2_phi_fu_3051_p30  |  15|          3|    9|         27|
-    |ap_phi_mux_digit_location_15_V_3_phi_fu_3827_p4   |   9|          2|    9|         18|
-    |ap_phi_mux_digit_location_15_V_4_phi_fu_4019_p32  |  15|          3|    9|         27|
-    |ap_phi_mux_digit_location_1_V_1_phi_fu_2966_p4    |   9|          2|    9|         18|
-    |ap_phi_mux_digit_location_1_V_2_phi_fu_3765_p30   |  15|          3|    9|         27|
-    |ap_phi_mux_digit_location_1_V_3_phi_fu_3995_p4    |   9|          2|    9|         18|
-    |ap_phi_mux_digit_location_1_V_4_phi_fu_4775_p32   |  15|          3|    9|         27|
-    |ap_phi_mux_digit_location_2_V_1_phi_fu_2955_p4    |   9|          2|    9|         18|
-    |ap_phi_mux_digit_location_2_V_2_phi_fu_3714_p30   |  15|          3|    9|         27|
-    |ap_phi_mux_digit_location_2_V_3_phi_fu_3983_p4    |   9|          2|    9|         18|
-    |ap_phi_mux_digit_location_2_V_4_phi_fu_4721_p32   |  15|          3|    9|         27|
-    |ap_phi_mux_digit_location_3_V_1_phi_fu_2944_p4    |   9|          2|    9|         18|
-    |ap_phi_mux_digit_location_3_V_2_phi_fu_3663_p30   |  15|          3|    9|         27|
-    |ap_phi_mux_digit_location_3_V_3_phi_fu_3971_p4    |   9|          2|    9|         18|
-    |ap_phi_mux_digit_location_3_V_4_phi_fu_4667_p32   |  15|          3|    9|         27|
-    |ap_phi_mux_digit_location_4_V_1_phi_fu_2933_p4    |   9|          2|    9|         18|
-    |ap_phi_mux_digit_location_4_V_2_phi_fu_3612_p30   |  15|          3|    9|         27|
-    |ap_phi_mux_digit_location_4_V_3_phi_fu_3959_p4    |   9|          2|    9|         18|
-    |ap_phi_mux_digit_location_4_V_4_phi_fu_4613_p32   |  15|          3|    9|         27|
-    |ap_phi_mux_digit_location_5_V_1_phi_fu_2922_p4    |   9|          2|    9|         18|
-    |ap_phi_mux_digit_location_5_V_2_phi_fu_3561_p30   |  15|          3|    9|         27|
-    |ap_phi_mux_digit_location_5_V_3_phi_fu_3947_p4    |   9|          2|    9|         18|
-    |ap_phi_mux_digit_location_5_V_4_phi_fu_4559_p32   |  15|          3|    9|         27|
-    |ap_phi_mux_digit_location_6_V_1_phi_fu_2911_p4    |   9|          2|    9|         18|
-    |ap_phi_mux_digit_location_6_V_2_phi_fu_3510_p30   |  15|          3|    9|         27|
-    |ap_phi_mux_digit_location_6_V_3_phi_fu_3935_p4    |   9|          2|    9|         18|
-    |ap_phi_mux_digit_location_6_V_4_phi_fu_4505_p32   |  15|          3|    9|         27|
-    |ap_phi_mux_digit_location_7_V_1_phi_fu_2900_p4    |   9|          2|    9|         18|
-    |ap_phi_mux_digit_location_7_V_2_phi_fu_3459_p30   |  15|          3|    9|         27|
-    |ap_phi_mux_digit_location_7_V_3_phi_fu_3923_p4    |   9|          2|    9|         18|
-    |ap_phi_mux_digit_location_7_V_4_phi_fu_4451_p32   |  15|          3|    9|         27|
-    |ap_phi_mux_digit_location_8_V_1_phi_fu_2889_p4    |   9|          2|    9|         18|
-    |ap_phi_mux_digit_location_8_V_2_phi_fu_3408_p30   |  15|          3|    9|         27|
-    |ap_phi_mux_digit_location_8_V_3_phi_fu_3911_p4    |   9|          2|    9|         18|
-    |ap_phi_mux_digit_location_8_V_4_phi_fu_4397_p32   |  15|          3|    9|         27|
-    |ap_phi_mux_digit_location_9_V_1_phi_fu_2878_p4    |   9|          2|    9|         18|
-    |ap_phi_mux_digit_location_9_V_2_phi_fu_3357_p30   |  15|          3|    9|         27|
-    |ap_phi_mux_digit_location_9_V_3_phi_fu_3899_p4    |   9|          2|    9|         18|
-    |ap_phi_mux_digit_location_9_V_4_phi_fu_4343_p32   |  15|          3|    9|         27|
-    |ap_phi_reg_pp3_iter1_phi_ln215_reg_2996           |  65|         16|    9|        144|
+    |ap_phi_mux_digit_histogram_15_2_phi_fu_879_p32    |  15|          3|    9|         27|
+    |ap_phi_mux_digit_histogram_15_3_phi_fu_1769_p4    |   9|          2|    9|         18|
+    |ap_phi_mux_digit_histogram_1_V_2_phi_fu_1649_p32  |  15|          3|    9|         27|
+    |ap_phi_mux_digit_histogram_1_V_3_phi_fu_1923_p4   |   9|          2|    9|         18|
+    |ap_phi_mux_digit_histogram_2_V_2_phi_fu_1594_p32  |  15|          3|    9|         27|
+    |ap_phi_mux_digit_histogram_2_V_3_phi_fu_1912_p4   |   9|          2|    9|         18|
+    |ap_phi_mux_digit_histogram_3_V_2_phi_fu_1539_p32  |  15|          3|    9|         27|
+    |ap_phi_mux_digit_histogram_3_V_3_phi_fu_1901_p4   |   9|          2|    9|         18|
+    |ap_phi_mux_digit_histogram_4_V_2_phi_fu_1484_p32  |  15|          3|    9|         27|
+    |ap_phi_mux_digit_histogram_4_V_3_phi_fu_1890_p4   |   9|          2|    9|         18|
+    |ap_phi_mux_digit_histogram_5_V_2_phi_fu_1429_p32  |  15|          3|    9|         27|
+    |ap_phi_mux_digit_histogram_5_V_3_phi_fu_1879_p4   |   9|          2|    9|         18|
+    |ap_phi_mux_digit_histogram_6_V_2_phi_fu_1374_p32  |  15|          3|    9|         27|
+    |ap_phi_mux_digit_histogram_6_V_3_phi_fu_1868_p4   |   9|          2|    9|         18|
+    |ap_phi_mux_digit_histogram_7_V_2_phi_fu_1319_p32  |  15|          3|    9|         27|
+    |ap_phi_mux_digit_histogram_7_V_3_phi_fu_1857_p4   |   9|          2|    9|         18|
+    |ap_phi_mux_digit_histogram_8_V_2_phi_fu_1264_p32  |  15|          3|    9|         27|
+    |ap_phi_mux_digit_histogram_8_V_3_phi_fu_1846_p4   |   9|          2|    9|         18|
+    |ap_phi_mux_digit_histogram_9_V_2_phi_fu_1209_p32  |  15|          3|    9|         27|
+    |ap_phi_mux_digit_histogram_9_V_3_phi_fu_1835_p4   |   9|          2|    9|         18|
+    |ap_phi_mux_digit_location_0_V_phi_fu_4908_p4      |   9|          2|    9|         18|
+    |ap_phi_mux_digit_location_0_V_s_phi_fu_4898_p4    |   9|          2|    9|         18|
+    |ap_phi_mux_digit_location_10_V_1_phi_fu_3773_p4   |   9|          2|    9|         18|
+    |ap_phi_mux_digit_location_10_V_2_phi_fu_4212_p30  |  15|          3|    9|         27|
+    |ap_phi_mux_digit_location_10_V_3_phi_fu_4787_p4   |   9|          2|    9|         18|
+    |ap_phi_mux_digit_location_10_V_5_phi_fu_6087_p32  |  15|          3|    9|         27|
+    |ap_phi_mux_digit_location_11_V_1_phi_fu_3762_p4   |   9|          2|    9|         18|
+    |ap_phi_mux_digit_location_11_V_2_phi_fu_4161_p30  |  15|          3|    9|         27|
+    |ap_phi_mux_digit_location_11_V_3_phi_fu_4776_p4   |   9|          2|    9|         18|
+    |ap_phi_mux_digit_location_11_V_5_phi_fu_6032_p32  |  15|          3|    9|         27|
+    |ap_phi_mux_digit_location_12_V_1_phi_fu_3751_p4   |   9|          2|    9|         18|
+    |ap_phi_mux_digit_location_12_V_2_phi_fu_4110_p30  |  15|          3|    9|         27|
+    |ap_phi_mux_digit_location_12_V_3_phi_fu_4765_p4   |   9|          2|    9|         18|
+    |ap_phi_mux_digit_location_12_V_5_phi_fu_5977_p32  |  15|          3|    9|         27|
+    |ap_phi_mux_digit_location_13_V_1_phi_fu_3740_p4   |   9|          2|    9|         18|
+    |ap_phi_mux_digit_location_13_V_2_phi_fu_4059_p30  |  15|          3|    9|         27|
+    |ap_phi_mux_digit_location_13_V_3_phi_fu_4754_p4   |   9|          2|    9|         18|
+    |ap_phi_mux_digit_location_13_V_5_phi_fu_5922_p32  |  15|          3|    9|         27|
+    |ap_phi_mux_digit_location_14_V_2_phi_fu_3729_p4   |   9|          2|    9|         18|
+    |ap_phi_mux_digit_location_14_V_3_phi_fu_4008_p30  |  15|          3|    9|         27|
+    |ap_phi_mux_digit_location_14_V_4_phi_fu_4743_p4   |   9|          2|    9|         18|
+    |ap_phi_mux_digit_location_14_V_6_phi_fu_5867_p32  |  15|          3|    9|         27|
+    |ap_phi_mux_digit_location_15_V_1_phi_fu_3957_p30  |  15|          3|    9|         27|
+    |ap_phi_mux_digit_location_15_V_2_phi_fu_4732_p4   |   9|          2|    9|         18|
+    |ap_phi_mux_digit_location_15_V_4_phi_fu_5812_p32  |  15|          3|    9|         27|
+    |ap_phi_mux_digit_location_1_V_1_phi_fu_3872_p4    |   9|          2|    9|         18|
+    |ap_phi_mux_digit_location_1_V_2_phi_fu_4671_p30   |  15|          3|    9|         27|
+    |ap_phi_mux_digit_location_1_V_3_phi_fu_4886_p4    |   9|          2|    9|         18|
+    |ap_phi_mux_digit_location_1_V_5_phi_fu_6582_p32   |  15|          3|    9|         27|
+    |ap_phi_mux_digit_location_2_V_1_phi_fu_3861_p4    |   9|          2|    9|         18|
+    |ap_phi_mux_digit_location_2_V_2_phi_fu_4620_p30   |  15|          3|    9|         27|
+    |ap_phi_mux_digit_location_2_V_3_phi_fu_4875_p4    |   9|          2|    9|         18|
+    |ap_phi_mux_digit_location_2_V_5_phi_fu_6527_p32   |  15|          3|    9|         27|
+    |ap_phi_mux_digit_location_3_V_1_phi_fu_3850_p4    |   9|          2|    9|         18|
+    |ap_phi_mux_digit_location_3_V_2_phi_fu_4569_p30   |  15|          3|    9|         27|
+    |ap_phi_mux_digit_location_3_V_3_phi_fu_4864_p4    |   9|          2|    9|         18|
+    |ap_phi_mux_digit_location_3_V_5_phi_fu_6472_p32   |  15|          3|    9|         27|
+    |ap_phi_mux_digit_location_4_V_1_phi_fu_3839_p4    |   9|          2|    9|         18|
+    |ap_phi_mux_digit_location_4_V_2_phi_fu_4518_p30   |  15|          3|    9|         27|
+    |ap_phi_mux_digit_location_4_V_3_phi_fu_4853_p4    |   9|          2|    9|         18|
+    |ap_phi_mux_digit_location_4_V_5_phi_fu_6417_p32   |  15|          3|    9|         27|
+    |ap_phi_mux_digit_location_5_V_1_phi_fu_3828_p4    |   9|          2|    9|         18|
+    |ap_phi_mux_digit_location_5_V_2_phi_fu_4467_p30   |  15|          3|    9|         27|
+    |ap_phi_mux_digit_location_5_V_3_phi_fu_4842_p4    |   9|          2|    9|         18|
+    |ap_phi_mux_digit_location_5_V_5_phi_fu_6362_p32   |  15|          3|    9|         27|
+    |ap_phi_mux_digit_location_6_V_1_phi_fu_3817_p4    |   9|          2|    9|         18|
+    |ap_phi_mux_digit_location_6_V_2_phi_fu_4416_p30   |  15|          3|    9|         27|
+    |ap_phi_mux_digit_location_6_V_3_phi_fu_4831_p4    |   9|          2|    9|         18|
+    |ap_phi_mux_digit_location_6_V_5_phi_fu_6307_p32   |  15|          3|    9|         27|
+    |ap_phi_mux_digit_location_7_V_1_phi_fu_3806_p4    |   9|          2|    9|         18|
+    |ap_phi_mux_digit_location_7_V_2_phi_fu_4365_p30   |  15|          3|    9|         27|
+    |ap_phi_mux_digit_location_7_V_3_phi_fu_4820_p4    |   9|          2|    9|         18|
+    |ap_phi_mux_digit_location_7_V_5_phi_fu_6252_p32   |  15|          3|    9|         27|
+    |ap_phi_mux_digit_location_8_V_1_phi_fu_3795_p4    |   9|          2|    9|         18|
+    |ap_phi_mux_digit_location_8_V_2_phi_fu_4314_p30   |  15|          3|    9|         27|
+    |ap_phi_mux_digit_location_8_V_3_phi_fu_4809_p4    |   9|          2|    9|         18|
+    |ap_phi_mux_digit_location_8_V_5_phi_fu_6197_p32   |  15|          3|    9|         27|
+    |ap_phi_mux_digit_location_9_V_1_phi_fu_3784_p4    |   9|          2|    9|         18|
+    |ap_phi_mux_digit_location_9_V_2_phi_fu_4263_p30   |  15|          3|    9|         27|
+    |ap_phi_mux_digit_location_9_V_3_phi_fu_4798_p4    |   9|          2|    9|         18|
+    |ap_phi_mux_digit_location_9_V_5_phi_fu_6142_p32   |  15|          3|    9|         27|
+    |ap_phi_mux_p_0190_0_i_i_phi_fu_1958_p4            |   9|          2|    4|          8|
+    |ap_phi_mux_p_0190_1_i_i_phi_fu_4920_p4            |   9|          2|    4|          8|
+    |ap_phi_reg_pp3_iter1_phi_ln215_reg_3902           |  65|         16|    9|        144|
     |current_digit_V_address0                          |  15|          3|    8|         24|
-    |digit_histogram_0_V_2_reg_851                     |   9|          2|    9|         18|
-    |digit_histogram_0_V_4_reg_1944                    |   9|          2|    9|         18|
-    |digit_histogram_10_1_reg_741                      |   9|          2|    9|         18|
-    |digit_histogram_10_3_reg_1824                     |   9|          2|    9|         18|
-    |digit_histogram_11_1_reg_730                      |   9|          2|    9|         18|
-    |digit_histogram_11_3_reg_1812                     |   9|          2|    9|         18|
-    |digit_histogram_12_1_reg_719                      |   9|          2|    9|         18|
-    |digit_histogram_12_3_reg_1800                     |   9|          2|    9|         18|
-    |digit_histogram_13_1_reg_708                      |   9|          2|    9|         18|
+    |digit_histogram_0_V_2_reg_853                     |   9|          2|    9|         18|
+    |digit_histogram_0_V_4_reg_1931                    |   9|          2|    9|         18|
+    |digit_histogram_0_V_5_reg_2791                    |  15|          3|    9|         27|
+    |digit_histogram_0_V_6_reg_3671                    |   9|          2|    9|         18|
+    |digit_histogram_0_V_reg_1942                      |   9|          2|    9|         18|
+    |digit_histogram_10_1_reg_743                      |   9|          2|    9|         18|
+    |digit_histogram_10_3_reg_1821                     |   9|          2|    9|         18|
+    |digit_histogram_10_4_reg_2241                     |  15|          3|    9|         27|
+    |digit_histogram_10_5_reg_3121                     |   9|          2|    9|         18|
+    |digit_histogram_11_1_reg_732                      |   9|          2|    9|         18|
+    |digit_histogram_11_3_reg_1810                     |   9|          2|    9|         18|
+    |digit_histogram_11_4_reg_2186                     |  15|          3|    9|         27|
+    |digit_histogram_11_5_reg_3066                     |   9|          2|    9|         18|
+    |digit_histogram_12_1_reg_721                      |   9|          2|    9|         18|
+    |digit_histogram_12_3_reg_1799                     |   9|          2|    9|         18|
+    |digit_histogram_12_4_reg_2131                     |  15|          3|    9|         27|
+    |digit_histogram_12_5_reg_3011                     |   9|          2|    9|         18|
+    |digit_histogram_13_1_reg_710                      |   9|          2|    9|         18|
     |digit_histogram_13_3_reg_1788                     |   9|          2|    9|         18|
-    |digit_histogram_14_1_reg_697                      |   9|          2|    9|         18|
-    |digit_histogram_14_3_reg_1776                     |   9|          2|    9|         18|
-    |digit_histogram_15_1_reg_686                      |   9|          2|    9|         18|
-    |digit_histogram_15_3_reg_1764                     |   9|          2|    9|         18|
-    |digit_histogram_1_V_1_reg_840                     |   9|          2|    9|         18|
-    |digit_histogram_1_V_3_reg_1932                    |   9|          2|    9|         18|
-    |digit_histogram_2_V_1_reg_829                     |   9|          2|    9|         18|
-    |digit_histogram_2_V_3_reg_1920                    |   9|          2|    9|         18|
-    |digit_histogram_3_V_1_reg_818                     |   9|          2|    9|         18|
-    |digit_histogram_3_V_3_reg_1908                    |   9|          2|    9|         18|
-    |digit_histogram_4_V_1_reg_807                     |   9|          2|    9|         18|
-    |digit_histogram_4_V_3_reg_1896                    |   9|          2|    9|         18|
-    |digit_histogram_5_V_1_reg_796                     |   9|          2|    9|         18|
-    |digit_histogram_5_V_3_reg_1884                    |   9|          2|    9|         18|
-    |digit_histogram_6_V_1_reg_785                     |   9|          2|    9|         18|
-    |digit_histogram_6_V_3_reg_1872                    |   9|          2|    9|         18|
-    |digit_histogram_7_V_1_reg_774                     |   9|          2|    9|         18|
-    |digit_histogram_7_V_3_reg_1860                    |   9|          2|    9|         18|
-    |digit_histogram_8_V_1_reg_763                     |   9|          2|    9|         18|
-    |digit_histogram_8_V_3_reg_1848                    |   9|          2|    9|         18|
-    |digit_histogram_9_V_1_reg_752                     |   9|          2|    9|         18|
-    |digit_histogram_9_V_3_reg_1836                    |   9|          2|    9|         18|
-    |digit_location_0_V_s_reg_4003                     |   9|          2|    9|         18|
-    |digit_location_10_V_1_reg_2864                    |   9|          2|    9|         18|
-    |digit_location_10_V_3_reg_3883                    |   9|          2|    9|         18|
-    |digit_location_11_V_1_reg_2853                    |   9|          2|    9|         18|
-    |digit_location_11_V_3_reg_3871                    |   9|          2|    9|         18|
-    |digit_location_12_V_1_reg_2842                    |   9|          2|    9|         18|
-    |digit_location_12_V_3_reg_3859                    |   9|          2|    9|         18|
-    |digit_location_13_V_1_reg_2831                    |   9|          2|    9|         18|
-    |digit_location_13_V_3_reg_3847                    |   9|          2|    9|         18|
-    |digit_location_14_V_2_reg_2820                    |   9|          2|    9|         18|
-    |digit_location_14_V_4_reg_3835                    |   9|          2|    9|         18|
-    |digit_location_15_V_1_reg_2985                    |   9|          2|    9|         18|
-    |digit_location_15_V_3_reg_3823                    |   9|          2|    9|         18|
-    |digit_location_1_V_1_reg_2963                     |   9|          2|    9|         18|
-    |digit_location_1_V_3_reg_3991                     |   9|          2|    9|         18|
-    |digit_location_2_V_1_reg_2952                     |   9|          2|    9|         18|
-    |digit_location_2_V_3_reg_3979                     |   9|          2|    9|         18|
-    |digit_location_3_V_1_reg_2941                     |   9|          2|    9|         18|
-    |digit_location_3_V_3_reg_3967                     |   9|          2|    9|         18|
-    |digit_location_4_V_1_reg_2930                     |   9|          2|    9|         18|
-    |digit_location_4_V_3_reg_3955                     |   9|          2|    9|         18|
-    |digit_location_5_V_1_reg_2919                     |   9|          2|    9|         18|
-    |digit_location_5_V_3_reg_3943                     |   9|          2|    9|         18|
-    |digit_location_6_V_1_reg_2908                     |   9|          2|    9|         18|
-    |digit_location_6_V_3_reg_3931                     |   9|          2|    9|         18|
-    |digit_location_7_V_1_reg_2897                     |   9|          2|    9|         18|
-    |digit_location_7_V_3_reg_3919                     |   9|          2|    9|         18|
-    |digit_location_8_V_1_reg_2886                     |   9|          2|    9|         18|
-    |digit_location_8_V_3_reg_3907                     |   9|          2|    9|         18|
-    |digit_location_9_V_1_reg_2875                     |   9|          2|    9|         18|
-    |digit_location_9_V_3_reg_3895                     |   9|          2|    9|         18|
-    |i6_0_i_i_reg_2974                                 |   9|          2|    5|         10|
-    |i_0_i_i_reg_862                                   |   9|          2|    5|         10|
-    |j5_0_i_i_reg_1753                                 |   9|          2|    9|         18|
-    |j7_0_i_i_reg_3812                                 |   9|          2|    9|         18|
-    |j_0_i_i_reg_291                                   |   9|          2|    9|         18|
-    |op2_assign_i_reg_674                              |   9|          2|    6|         12|
+    |digit_histogram_13_4_reg_2076                     |  15|          3|    9|         27|
+    |digit_histogram_13_5_reg_2956                     |   9|          2|    9|         18|
+    |digit_histogram_14_1_reg_699                      |   9|          2|    9|         18|
+    |digit_histogram_14_3_reg_1777                     |   9|          2|    9|         18|
+    |digit_histogram_14_4_reg_2021                     |  15|          3|    9|         27|
+    |digit_histogram_14_5_reg_2901                     |   9|          2|    9|         18|
+    |digit_histogram_15_1_reg_688                      |   9|          2|    9|         18|
+    |digit_histogram_15_3_reg_1766                     |   9|          2|    9|         18|
+    |digit_histogram_15_4_reg_1966                     |  15|          3|    9|         27|
+    |digit_histogram_15_5_reg_2846                     |   9|          2|    9|         18|
+    |digit_histogram_1_V_1_reg_842                     |   9|          2|    9|         18|
+    |digit_histogram_1_V_3_reg_1920                    |   9|          2|    9|         18|
+    |digit_histogram_1_V_4_reg_2736                    |  15|          3|    9|         27|
+    |digit_histogram_1_V_5_reg_3616                    |   9|          2|    9|         18|
+    |digit_histogram_2_V_1_reg_831                     |   9|          2|    9|         18|
+    |digit_histogram_2_V_3_reg_1909                    |   9|          2|    9|         18|
+    |digit_histogram_2_V_4_reg_2681                    |  15|          3|    9|         27|
+    |digit_histogram_2_V_5_reg_3561                    |   9|          2|    9|         18|
+    |digit_histogram_3_V_1_reg_820                     |   9|          2|    9|         18|
+    |digit_histogram_3_V_3_reg_1898                    |   9|          2|    9|         18|
+    |digit_histogram_3_V_4_reg_2626                    |  15|          3|    9|         27|
+    |digit_histogram_3_V_5_reg_3506                    |   9|          2|    9|         18|
+    |digit_histogram_4_V_1_reg_809                     |   9|          2|    9|         18|
+    |digit_histogram_4_V_3_reg_1887                    |   9|          2|    9|         18|
+    |digit_histogram_4_V_4_reg_2571                    |  15|          3|    9|         27|
+    |digit_histogram_4_V_5_reg_3451                    |   9|          2|    9|         18|
+    |digit_histogram_5_V_1_reg_798                     |   9|          2|    9|         18|
+    |digit_histogram_5_V_3_reg_1876                    |   9|          2|    9|         18|
+    |digit_histogram_5_V_4_reg_2516                    |  15|          3|    9|         27|
+    |digit_histogram_5_V_5_reg_3396                    |   9|          2|    9|         18|
+    |digit_histogram_6_V_1_reg_787                     |   9|          2|    9|         18|
+    |digit_histogram_6_V_3_reg_1865                    |   9|          2|    9|         18|
+    |digit_histogram_6_V_4_reg_2461                    |  15|          3|    9|         27|
+    |digit_histogram_6_V_5_reg_3341                    |   9|          2|    9|         18|
+    |digit_histogram_7_V_1_reg_776                     |   9|          2|    9|         18|
+    |digit_histogram_7_V_3_reg_1854                    |   9|          2|    9|         18|
+    |digit_histogram_7_V_4_reg_2406                    |  15|          3|    9|         27|
+    |digit_histogram_7_V_5_reg_3286                    |   9|          2|    9|         18|
+    |digit_histogram_8_V_1_reg_765                     |   9|          2|    9|         18|
+    |digit_histogram_8_V_3_reg_1843                    |   9|          2|    9|         18|
+    |digit_histogram_8_V_4_reg_2351                    |  15|          3|    9|         27|
+    |digit_histogram_8_V_5_reg_3231                    |   9|          2|    9|         18|
+    |digit_histogram_9_V_1_reg_754                     |   9|          2|    9|         18|
+    |digit_histogram_9_V_3_reg_1832                    |   9|          2|    9|         18|
+    |digit_histogram_9_V_4_reg_2296                    |  15|          3|    9|         27|
+    |digit_histogram_9_V_5_reg_3176                    |   9|          2|    9|         18|
+    |digit_location_0_V_1_reg_5753                     |  15|          3|    9|         27|
+    |digit_location_0_V_reg_4905                       |   9|          2|    9|         18|
+    |digit_location_0_V_s_reg_4894                     |   9|          2|    9|         18|
+    |digit_location_10_V_1_reg_3770                    |   9|          2|    9|         18|
+    |digit_location_10_V_3_reg_4784                    |   9|          2|    9|         18|
+    |digit_location_10_V_4_reg_5203                    |  15|          3|    9|         27|
+    |digit_location_11_V_1_reg_3759                    |   9|          2|    9|         18|
+    |digit_location_11_V_3_reg_4773                    |   9|          2|    9|         18|
+    |digit_location_11_V_4_reg_5148                    |  15|          3|    9|         27|
+    |digit_location_12_V_1_reg_3748                    |   9|          2|    9|         18|
+    |digit_location_12_V_3_reg_4762                    |   9|          2|    9|         18|
+    |digit_location_12_V_4_reg_5093                    |  15|          3|    9|         27|
+    |digit_location_13_V_1_reg_3737                    |   9|          2|    9|         18|
+    |digit_location_13_V_3_reg_4751                    |   9|          2|    9|         18|
+    |digit_location_13_V_4_reg_5038                    |  15|          3|    9|         27|
+    |digit_location_14_V_2_reg_3726                    |   9|          2|    9|         18|
+    |digit_location_14_V_4_reg_4740                    |   9|          2|    9|         18|
+    |digit_location_14_V_5_reg_4983                    |  15|          3|    9|         27|
+    |digit_location_15_V_2_reg_4729                    |   9|          2|    9|         18|
+    |digit_location_15_V_3_reg_4928                    |  15|          3|    9|         27|
+    |digit_location_1_V_1_reg_3869                     |   9|          2|    9|         18|
+    |digit_location_1_V_3_reg_4883                     |   9|          2|    9|         18|
+    |digit_location_1_V_4_reg_5698                     |  15|          3|    9|         27|
+    |digit_location_2_V_1_reg_3858                     |   9|          2|    9|         18|
+    |digit_location_2_V_3_reg_4872                     |   9|          2|    9|         18|
+    |digit_location_2_V_4_reg_5643                     |  15|          3|    9|         27|
+    |digit_location_3_V_1_reg_3847                     |   9|          2|    9|         18|
+    |digit_location_3_V_3_reg_4861                     |   9|          2|    9|         18|
+    |digit_location_3_V_4_reg_5588                     |  15|          3|    9|         27|
+    |digit_location_4_V_1_reg_3836                     |   9|          2|    9|         18|
+    |digit_location_4_V_3_reg_4850                     |   9|          2|    9|         18|
+    |digit_location_4_V_4_reg_5533                     |  15|          3|    9|         27|
+    |digit_location_5_V_1_reg_3825                     |   9|          2|    9|         18|
+    |digit_location_5_V_3_reg_4839                     |   9|          2|    9|         18|
+    |digit_location_5_V_4_reg_5478                     |  15|          3|    9|         27|
+    |digit_location_6_V_1_reg_3814                     |   9|          2|    9|         18|
+    |digit_location_6_V_3_reg_4828                     |   9|          2|    9|         18|
+    |digit_location_6_V_4_reg_5423                     |  15|          3|    9|         27|
+    |digit_location_7_V_1_reg_3803                     |   9|          2|    9|         18|
+    |digit_location_7_V_3_reg_4817                     |   9|          2|    9|         18|
+    |digit_location_7_V_4_reg_5368                     |  15|          3|    9|         27|
+    |digit_location_8_V_1_reg_3792                     |   9|          2|    9|         18|
+    |digit_location_8_V_3_reg_4806                     |   9|          2|    9|         18|
+    |digit_location_8_V_4_reg_5313                     |  15|          3|    9|         27|
+    |digit_location_9_V_1_reg_3781                     |   9|          2|    9|         18|
+    |digit_location_9_V_3_reg_4795                     |   9|          2|    9|         18|
+    |digit_location_9_V_4_reg_5258                     |  15|          3|    9|         27|
+    |i6_0_i_i_reg_3880                                 |   9|          2|    5|         10|
+    |i_0_i_i_reg_864                                   |   9|          2|    5|         10|
+    |j5_0_i_i_reg_1755                                 |   9|          2|    9|         18|
+    |j7_0_i_i_reg_4718                                 |   9|          2|    9|         18|
+    |j_0_i_i_reg_293                                   |   9|          2|    9|         18|
+    |op2_assign_i_reg_676                              |   9|          2|    6|         12|
+    |p_0190_0_i_i_reg_1954                             |   9|          2|    4|          8|
+    |p_0190_1_i_i_reg_4916                             |   9|          2|    4|          8|
     |previous_sorting_fre_address0                     |  15|          3|    8|         24|
     |previous_sorting_val_address0                     |  15|          3|    8|         24|
     |sorting_frequency_V_address0                      |  21|          4|    8|         32|
     |sorting_frequency_V_d0                            |  15|          3|   32|         96|
     |sorting_value_V_address0                          |  21|          4|    8|         32|
     |sorting_value_V_d0                                |  15|          3|    9|         27|
+    |symbol_bits_temp_V_1_reg_3891                     |   9|          2|    9|         18|
     +--------------------------------------------------+----+-----------+-----+-----------+
-    |Total                                             |2302|        489| 1690|       4183|
+    |Total                                             |2743|        582| 2021|       4980|
     +--------------------------------------------------+----+-----------+-----+-----------+
 
     * Register: 
@@ -359,137 +402,190 @@
     |ap_enable_reg_pp4_iter1                  |   1|   0|    1|          0|
     |ap_enable_reg_pp4_iter2                  |   1|   0|    1|          0|
     |ap_enable_reg_pp4_iter3                  |   1|   0|    1|          0|
-    |ap_phi_reg_pp3_iter1_phi_ln215_reg_2996  |   9|   0|    9|          0|
-    |digit_V_1_reg_5301                       |   4|   0|    4|          0|
-    |digit_V_1_reg_5301_pp4_iter2_reg         |   4|   0|    4|          0|
-    |digit_V_reg_5237                         |   4|   0|    4|          0|
-    |digit_V_reg_5237_pp2_iter4_reg           |   4|   0|    4|          0|
-    |digit_histogram_0_V_1_reg_662            |   9|   0|    9|          0|
-    |digit_histogram_0_V_2_reg_851            |   9|   0|    9|          0|
-    |digit_histogram_0_V_4_reg_1944           |   9|   0|    9|          0|
-    |digit_histogram_0_V_reg_5243             |   9|   0|    9|          0|
-    |digit_histogram_10_1_reg_741             |   9|   0|    9|          0|
-    |digit_histogram_10_3_reg_1824            |   9|   0|    9|          0|
-    |digit_histogram_10_s_reg_542             |   9|   0|    9|          0|
-    |digit_histogram_11_1_reg_730             |   9|   0|    9|          0|
-    |digit_histogram_11_3_reg_1812            |   9|   0|    9|          0|
-    |digit_histogram_11_s_reg_530             |   9|   0|    9|          0|
-    |digit_histogram_12_1_reg_719             |   9|   0|    9|          0|
-    |digit_histogram_12_3_reg_1800            |   9|   0|    9|          0|
-    |digit_histogram_12_s_reg_518             |   9|   0|    9|          0|
-    |digit_histogram_13_1_reg_708             |   9|   0|    9|          0|
+    |ap_phi_reg_pp3_iter1_phi_ln215_reg_3902  |   9|   0|    9|          0|
+    |digit_V_1_reg_7075                       |   4|   0|    4|          0|
+    |digit_V_1_reg_7075_pp4_iter2_reg         |   4|   0|    4|          0|
+    |digit_V_reg_7014                         |   4|   0|    4|          0|
+    |digit_V_reg_7014_pp2_iter4_reg           |   4|   0|    4|          0|
+    |digit_histogram_0_V_1_reg_664            |   9|   0|    9|          0|
+    |digit_histogram_0_V_2_reg_853            |   9|   0|    9|          0|
+    |digit_histogram_0_V_4_reg_1931           |   9|   0|    9|          0|
+    |digit_histogram_0_V_5_reg_2791           |   9|   0|    9|          0|
+    |digit_histogram_0_V_6_reg_3671           |   9|   0|    9|          0|
+    |digit_histogram_0_V_reg_1942             |   9|   0|    9|          0|
+    |digit_histogram_10_1_reg_743             |   9|   0|    9|          0|
+    |digit_histogram_10_3_reg_1821            |   9|   0|    9|          0|
+    |digit_histogram_10_4_reg_2241            |   9|   0|    9|          0|
+    |digit_histogram_10_5_reg_3121            |   9|   0|    9|          0|
+    |digit_histogram_10_s_reg_544             |   9|   0|    9|          0|
+    |digit_histogram_11_1_reg_732             |   9|   0|    9|          0|
+    |digit_histogram_11_3_reg_1810            |   9|   0|    9|          0|
+    |digit_histogram_11_4_reg_2186            |   9|   0|    9|          0|
+    |digit_histogram_11_5_reg_3066            |   9|   0|    9|          0|
+    |digit_histogram_11_s_reg_532             |   9|   0|    9|          0|
+    |digit_histogram_12_1_reg_721             |   9|   0|    9|          0|
+    |digit_histogram_12_3_reg_1799            |   9|   0|    9|          0|
+    |digit_histogram_12_4_reg_2131            |   9|   0|    9|          0|
+    |digit_histogram_12_5_reg_3011            |   9|   0|    9|          0|
+    |digit_histogram_12_s_reg_520             |   9|   0|    9|          0|
+    |digit_histogram_13_1_reg_710             |   9|   0|    9|          0|
     |digit_histogram_13_3_reg_1788            |   9|   0|    9|          0|
-    |digit_histogram_13_s_reg_506             |   9|   0|    9|          0|
-    |digit_histogram_14_1_reg_697             |   9|   0|    9|          0|
-    |digit_histogram_14_3_reg_1776            |   9|   0|    9|          0|
-    |digit_histogram_14_s_reg_494             |   9|   0|    9|          0|
-    |digit_histogram_15_1_reg_686             |   9|   0|    9|          0|
-    |digit_histogram_15_3_reg_1764            |   9|   0|    9|          0|
-    |digit_histogram_15_s_reg_482             |   9|   0|    9|          0|
-    |digit_histogram_1_V_1_reg_840            |   9|   0|    9|          0|
-    |digit_histogram_1_V_3_reg_1932           |   9|   0|    9|          0|
-    |digit_histogram_1_V_reg_650              |   9|   0|    9|          0|
-    |digit_histogram_2_V_1_reg_829            |   9|   0|    9|          0|
-    |digit_histogram_2_V_3_reg_1920           |   9|   0|    9|          0|
-    |digit_histogram_2_V_reg_638              |   9|   0|    9|          0|
-    |digit_histogram_3_V_1_reg_818            |   9|   0|    9|          0|
-    |digit_histogram_3_V_3_reg_1908           |   9|   0|    9|          0|
-    |digit_histogram_3_V_reg_626              |   9|   0|    9|          0|
-    |digit_histogram_4_V_1_reg_807            |   9|   0|    9|          0|
-    |digit_histogram_4_V_3_reg_1896           |   9|   0|    9|          0|
-    |digit_histogram_4_V_reg_614              |   9|   0|    9|          0|
-    |digit_histogram_5_V_1_reg_796            |   9|   0|    9|          0|
-    |digit_histogram_5_V_3_reg_1884           |   9|   0|    9|          0|
-    |digit_histogram_5_V_reg_602              |   9|   0|    9|          0|
-    |digit_histogram_6_V_1_reg_785            |   9|   0|    9|          0|
-    |digit_histogram_6_V_3_reg_1872           |   9|   0|    9|          0|
-    |digit_histogram_6_V_reg_590              |   9|   0|    9|          0|
-    |digit_histogram_7_V_1_reg_774            |   9|   0|    9|          0|
-    |digit_histogram_7_V_3_reg_1860           |   9|   0|    9|          0|
-    |digit_histogram_7_V_reg_578              |   9|   0|    9|          0|
-    |digit_histogram_8_V_1_reg_763            |   9|   0|    9|          0|
-    |digit_histogram_8_V_3_reg_1848           |   9|   0|    9|          0|
-    |digit_histogram_8_V_reg_566              |   9|   0|    9|          0|
-    |digit_histogram_9_V_1_reg_752            |   9|   0|    9|          0|
-    |digit_histogram_9_V_3_reg_1836           |   9|   0|    9|          0|
-    |digit_histogram_9_V_reg_554              |   9|   0|    9|          0|
-    |digit_location_0_V_reg_5333              |   9|   0|    9|          0|
-    |digit_location_0_V_s_reg_4003            |   9|   0|    9|          0|
-    |digit_location_10_V_1_reg_2864           |   9|   0|    9|          0|
-    |digit_location_10_V_3_reg_3883           |   9|   0|    9|          0|
-    |digit_location_10_V_reg_362              |   9|   0|    9|          0|
-    |digit_location_11_V_1_reg_2853           |   9|   0|    9|          0|
-    |digit_location_11_V_3_reg_3871           |   9|   0|    9|          0|
-    |digit_location_11_V_reg_350              |   9|   0|    9|          0|
-    |digit_location_12_V_1_reg_2842           |   9|   0|    9|          0|
-    |digit_location_12_V_3_reg_3859           |   9|   0|    9|          0|
-    |digit_location_12_V_reg_338              |   9|   0|    9|          0|
-    |digit_location_13_V_1_reg_2831           |   9|   0|    9|          0|
-    |digit_location_13_V_3_reg_3847           |   9|   0|    9|          0|
-    |digit_location_13_V_reg_326              |   9|   0|    9|          0|
-    |digit_location_14_V_2_reg_2820           |   9|   0|    9|          0|
-    |digit_location_14_V_4_reg_3835           |   9|   0|    9|          0|
-    |digit_location_14_V_reg_314              |   9|   0|    9|          0|
-    |digit_location_15_V_1_reg_2985           |   9|   0|    9|          0|
-    |digit_location_15_V_3_reg_3823           |   9|   0|    9|          0|
-    |digit_location_15_V_reg_302              |   9|   0|    9|          0|
-    |digit_location_1_V_1_reg_2963            |   9|   0|    9|          0|
-    |digit_location_1_V_3_reg_3991            |   9|   0|    9|          0|
-    |digit_location_1_V_s_reg_470             |   9|   0|    9|          0|
-    |digit_location_2_V_1_reg_2952            |   9|   0|    9|          0|
-    |digit_location_2_V_3_reg_3979            |   9|   0|    9|          0|
-    |digit_location_2_V_s_reg_458             |   9|   0|    9|          0|
-    |digit_location_3_V_1_reg_2941            |   9|   0|    9|          0|
-    |digit_location_3_V_3_reg_3967            |   9|   0|    9|          0|
-    |digit_location_3_V_s_reg_446             |   9|   0|    9|          0|
-    |digit_location_4_V_1_reg_2930            |   9|   0|    9|          0|
-    |digit_location_4_V_3_reg_3955            |   9|   0|    9|          0|
-    |digit_location_4_V_s_reg_434             |   9|   0|    9|          0|
-    |digit_location_5_V_1_reg_2919            |   9|   0|    9|          0|
-    |digit_location_5_V_3_reg_3943            |   9|   0|    9|          0|
-    |digit_location_5_V_s_reg_422             |   9|   0|    9|          0|
-    |digit_location_6_V_1_reg_2908            |   9|   0|    9|          0|
-    |digit_location_6_V_3_reg_3931            |   9|   0|    9|          0|
-    |digit_location_6_V_s_reg_410             |   9|   0|    9|          0|
-    |digit_location_7_V_1_reg_2897            |   9|   0|    9|          0|
-    |digit_location_7_V_3_reg_3919            |   9|   0|    9|          0|
-    |digit_location_7_V_s_reg_398             |   9|   0|    9|          0|
-    |digit_location_8_V_1_reg_2886            |   9|   0|    9|          0|
-    |digit_location_8_V_3_reg_3907            |   9|   0|    9|          0|
-    |digit_location_8_V_s_reg_386             |   9|   0|    9|          0|
-    |digit_location_9_V_1_reg_2875            |   9|   0|    9|          0|
-    |digit_location_9_V_3_reg_3895            |   9|   0|    9|          0|
-    |digit_location_9_V_s_reg_374             |   9|   0|    9|          0|
-    |i6_0_i_i_reg_2974                        |   5|   0|    5|          0|
-    |i_0_i_i_reg_862                          |   5|   0|    5|          0|
-    |icmp_ln23_reg_5145                       |   1|   0|    1|          0|
-    |icmp_ln23_reg_5145_pp0_iter1_reg         |   1|   0|    1|          0|
-    |icmp_ln37_reg_5200                       |   1|   0|    1|          0|
-    |icmp_ln49_reg_5263                       |   1|   0|    1|          0|
-    |icmp_ln55_reg_5281                       |   1|   0|    1|          0|
-    |in_frequency_V_load_reg_5175             |  32|   0|   32|          0|
-    |in_value_V_load_reg_5170                 |   9|   0|    9|          0|
-    |j5_0_i_i_reg_1753                        |   9|   0|    9|          0|
-    |j7_0_i_i_reg_3812                        |   9|   0|    9|          0|
-    |j_0_i_i_reg_291                          |   9|   0|    9|          0|
-    |op2_assign_i_reg_674                     |   6|   0|    6|          0|
-    |phi_ln215_1_i_reg_5271                   |   9|   0|    9|          0|
-    |previous_sorting_fre_3_reg_5327          |  32|   0|   32|          0|
-    |previous_sorting_val_3_reg_5321          |   9|   0|    9|          0|
-    |sorting_frequency_V_2_reg_5226           |  32|   0|   32|          0|
-    |sorting_value_V_load_reg_5232            |   9|   0|    9|          0|
-    |t_V_2_reg_5316                           |   9|   0|    9|          0|
-    |trunc_ln51_reg_5267                      |   4|   0|    4|          0|
-    |zext_ln25_reg_5154                       |   9|   0|   64|         55|
-    |zext_ln25_reg_5154_pp0_iter1_reg         |   9|   0|   64|         55|
-    |zext_ln29_reg_5184                       |   6|   0|   32|         26|
-    |zext_ln40_reg_5209                       |   9|   0|   64|         55|
-    |zext_ln57_reg_5290                       |   9|   0|   64|         55|
-    |icmp_ln37_reg_5200                       |  64|  32|    1|          0|
-    |icmp_ln55_reg_5281                       |  64|  32|    1|          0|
-    |zext_ln40_reg_5209                       |  64|  32|   64|         55|
+    |digit_histogram_13_4_reg_2076            |   9|   0|    9|          0|
+    |digit_histogram_13_5_reg_2956            |   9|   0|    9|          0|
+    |digit_histogram_13_s_reg_508             |   9|   0|    9|          0|
+    |digit_histogram_14_1_reg_699             |   9|   0|    9|          0|
+    |digit_histogram_14_3_reg_1777            |   9|   0|    9|          0|
+    |digit_histogram_14_4_reg_2021            |   9|   0|    9|          0|
+    |digit_histogram_14_5_reg_2901            |   9|   0|    9|          0|
+    |digit_histogram_14_s_reg_496             |   9|   0|    9|          0|
+    |digit_histogram_15_1_reg_688             |   9|   0|    9|          0|
+    |digit_histogram_15_3_reg_1766            |   9|   0|    9|          0|
+    |digit_histogram_15_4_reg_1966            |   9|   0|    9|          0|
+    |digit_histogram_15_5_reg_2846            |   9|   0|    9|          0|
+    |digit_histogram_15_s_reg_484             |   9|   0|    9|          0|
+    |digit_histogram_1_V_1_reg_842            |   9|   0|    9|          0|
+    |digit_histogram_1_V_3_reg_1920           |   9|   0|    9|          0|
+    |digit_histogram_1_V_4_reg_2736           |   9|   0|    9|          0|
+    |digit_histogram_1_V_5_reg_3616           |   9|   0|    9|          0|
+    |digit_histogram_1_V_reg_652              |   9|   0|    9|          0|
+    |digit_histogram_2_V_1_reg_831            |   9|   0|    9|          0|
+    |digit_histogram_2_V_3_reg_1909           |   9|   0|    9|          0|
+    |digit_histogram_2_V_4_reg_2681           |   9|   0|    9|          0|
+    |digit_histogram_2_V_5_reg_3561           |   9|   0|    9|          0|
+    |digit_histogram_2_V_reg_640              |   9|   0|    9|          0|
+    |digit_histogram_3_V_1_reg_820            |   9|   0|    9|          0|
+    |digit_histogram_3_V_3_reg_1898           |   9|   0|    9|          0|
+    |digit_histogram_3_V_4_reg_2626           |   9|   0|    9|          0|
+    |digit_histogram_3_V_5_reg_3506           |   9|   0|    9|          0|
+    |digit_histogram_3_V_reg_628              |   9|   0|    9|          0|
+    |digit_histogram_4_V_1_reg_809            |   9|   0|    9|          0|
+    |digit_histogram_4_V_3_reg_1887           |   9|   0|    9|          0|
+    |digit_histogram_4_V_4_reg_2571           |   9|   0|    9|          0|
+    |digit_histogram_4_V_5_reg_3451           |   9|   0|    9|          0|
+    |digit_histogram_4_V_reg_616              |   9|   0|    9|          0|
+    |digit_histogram_5_V_1_reg_798            |   9|   0|    9|          0|
+    |digit_histogram_5_V_3_reg_1876           |   9|   0|    9|          0|
+    |digit_histogram_5_V_4_reg_2516           |   9|   0|    9|          0|
+    |digit_histogram_5_V_5_reg_3396           |   9|   0|    9|          0|
+    |digit_histogram_5_V_reg_604              |   9|   0|    9|          0|
+    |digit_histogram_6_V_1_reg_787            |   9|   0|    9|          0|
+    |digit_histogram_6_V_3_reg_1865           |   9|   0|    9|          0|
+    |digit_histogram_6_V_4_reg_2461           |   9|   0|    9|          0|
+    |digit_histogram_6_V_5_reg_3341           |   9|   0|    9|          0|
+    |digit_histogram_6_V_reg_592              |   9|   0|    9|          0|
+    |digit_histogram_7_V_1_reg_776            |   9|   0|    9|          0|
+    |digit_histogram_7_V_3_reg_1854           |   9|   0|    9|          0|
+    |digit_histogram_7_V_4_reg_2406           |   9|   0|    9|          0|
+    |digit_histogram_7_V_5_reg_3286           |   9|   0|    9|          0|
+    |digit_histogram_7_V_reg_580              |   9|   0|    9|          0|
+    |digit_histogram_8_V_1_reg_765            |   9|   0|    9|          0|
+    |digit_histogram_8_V_3_reg_1843           |   9|   0|    9|          0|
+    |digit_histogram_8_V_4_reg_2351           |   9|   0|    9|          0|
+    |digit_histogram_8_V_5_reg_3231           |   9|   0|    9|          0|
+    |digit_histogram_8_V_reg_568              |   9|   0|    9|          0|
+    |digit_histogram_9_V_1_reg_754            |   9|   0|    9|          0|
+    |digit_histogram_9_V_3_reg_1832           |   9|   0|    9|          0|
+    |digit_histogram_9_V_4_reg_2296           |   9|   0|    9|          0|
+    |digit_histogram_9_V_5_reg_3176           |   9|   0|    9|          0|
+    |digit_histogram_9_V_reg_556              |   9|   0|    9|          0|
+    |digit_location_0_V_1_reg_5753            |   9|   0|    9|          0|
+    |digit_location_0_V_reg_4905              |   9|   0|    9|          0|
+    |digit_location_0_V_s_reg_4894            |   9|   0|    9|          0|
+    |digit_location_10_V_1_reg_3770           |   9|   0|    9|          0|
+    |digit_location_10_V_3_reg_4784           |   9|   0|    9|          0|
+    |digit_location_10_V_4_reg_5203           |   9|   0|    9|          0|
+    |digit_location_10_V_reg_364              |   9|   0|    9|          0|
+    |digit_location_11_V_1_reg_3759           |   9|   0|    9|          0|
+    |digit_location_11_V_3_reg_4773           |   9|   0|    9|          0|
+    |digit_location_11_V_4_reg_5148           |   9|   0|    9|          0|
+    |digit_location_11_V_reg_352              |   9|   0|    9|          0|
+    |digit_location_12_V_1_reg_3748           |   9|   0|    9|          0|
+    |digit_location_12_V_3_reg_4762           |   9|   0|    9|          0|
+    |digit_location_12_V_4_reg_5093           |   9|   0|    9|          0|
+    |digit_location_12_V_reg_340              |   9|   0|    9|          0|
+    |digit_location_13_V_1_reg_3737           |   9|   0|    9|          0|
+    |digit_location_13_V_3_reg_4751           |   9|   0|    9|          0|
+    |digit_location_13_V_4_reg_5038           |   9|   0|    9|          0|
+    |digit_location_13_V_reg_328              |   9|   0|    9|          0|
+    |digit_location_14_V_2_reg_3726           |   9|   0|    9|          0|
+    |digit_location_14_V_4_reg_4740           |   9|   0|    9|          0|
+    |digit_location_14_V_5_reg_4983           |   9|   0|    9|          0|
+    |digit_location_14_V_reg_316              |   9|   0|    9|          0|
+    |digit_location_15_V_2_reg_4729           |   9|   0|    9|          0|
+    |digit_location_15_V_3_reg_4928           |   9|   0|    9|          0|
+    |digit_location_15_V_reg_304              |   9|   0|    9|          0|
+    |digit_location_1_V_1_reg_3869            |   9|   0|    9|          0|
+    |digit_location_1_V_3_reg_4883            |   9|   0|    9|          0|
+    |digit_location_1_V_4_reg_5698            |   9|   0|    9|          0|
+    |digit_location_1_V_s_reg_472             |   9|   0|    9|          0|
+    |digit_location_2_V_1_reg_3858            |   9|   0|    9|          0|
+    |digit_location_2_V_3_reg_4872            |   9|   0|    9|          0|
+    |digit_location_2_V_4_reg_5643            |   9|   0|    9|          0|
+    |digit_location_2_V_s_reg_460             |   9|   0|    9|          0|
+    |digit_location_3_V_1_reg_3847            |   9|   0|    9|          0|
+    |digit_location_3_V_3_reg_4861            |   9|   0|    9|          0|
+    |digit_location_3_V_4_reg_5588            |   9|   0|    9|          0|
+    |digit_location_3_V_s_reg_448             |   9|   0|    9|          0|
+    |digit_location_4_V_1_reg_3836            |   9|   0|    9|          0|
+    |digit_location_4_V_3_reg_4850            |   9|   0|    9|          0|
+    |digit_location_4_V_4_reg_5533            |   9|   0|    9|          0|
+    |digit_location_4_V_s_reg_436             |   9|   0|    9|          0|
+    |digit_location_5_V_1_reg_3825            |   9|   0|    9|          0|
+    |digit_location_5_V_3_reg_4839            |   9|   0|    9|          0|
+    |digit_location_5_V_4_reg_5478            |   9|   0|    9|          0|
+    |digit_location_5_V_s_reg_424             |   9|   0|    9|          0|
+    |digit_location_6_V_1_reg_3814            |   9|   0|    9|          0|
+    |digit_location_6_V_3_reg_4828            |   9|   0|    9|          0|
+    |digit_location_6_V_4_reg_5423            |   9|   0|    9|          0|
+    |digit_location_6_V_s_reg_412             |   9|   0|    9|          0|
+    |digit_location_7_V_1_reg_3803            |   9|   0|    9|          0|
+    |digit_location_7_V_3_reg_4817            |   9|   0|    9|          0|
+    |digit_location_7_V_4_reg_5368            |   9|   0|    9|          0|
+    |digit_location_7_V_s_reg_400             |   9|   0|    9|          0|
+    |digit_location_8_V_1_reg_3792            |   9|   0|    9|          0|
+    |digit_location_8_V_3_reg_4806            |   9|   0|    9|          0|
+    |digit_location_8_V_4_reg_5313            |   9|   0|    9|          0|
+    |digit_location_8_V_s_reg_388             |   9|   0|    9|          0|
+    |digit_location_9_V_1_reg_3781            |   9|   0|    9|          0|
+    |digit_location_9_V_3_reg_4795            |   9|   0|    9|          0|
+    |digit_location_9_V_4_reg_5258            |   9|   0|    9|          0|
+    |digit_location_9_V_s_reg_376             |   9|   0|    9|          0|
+    |i6_0_i_i_reg_3880                        |   5|   0|    5|          0|
+    |i_0_i_i_reg_864                          |   5|   0|    5|          0|
+    |icmp_ln23_reg_6922                       |   1|   0|    1|          0|
+    |icmp_ln23_reg_6922_pp0_iter1_reg         |   1|   0|    1|          0|
+    |icmp_ln40_reg_6977                       |   1|   0|    1|          0|
+    |icmp_ln58_reg_7037                       |   1|   0|    1|          0|
+    |icmp_ln67_reg_7055                       |   1|   0|    1|          0|
+    |icmp_ln879_2_reg_7092                    |   1|   0|    1|          0|
+    |icmp_ln879_reg_7022                      |   1|   0|    1|          0|
+    |in_frequency_V_load_reg_6952             |  32|   0|   32|          0|
+    |in_value_V_load_reg_6947                 |   9|   0|    9|          0|
+    |j5_0_i_i_reg_1755                        |   9|   0|    9|          0|
+    |j7_0_i_i_reg_4718                        |   9|   0|    9|          0|
+    |j_0_i_i_reg_293                          |   9|   0|    9|          0|
+    |op2_assign_i_reg_676                     |   6|   0|    6|          0|
+    |p_0190_0_i_i_reg_1954                    |   4|   0|    4|          0|
+    |p_0190_1_i_i_reg_4916                    |   4|   0|    4|          0|
+    |phi_ln215_1_i_reg_7045                   |   9|   0|    9|          0|
+    |previous_sorting_fre_3_reg_7108          |  32|   0|   32|          0|
+    |previous_sorting_val_3_reg_7102          |   9|   0|    9|          0|
+    |sorting_frequency_V_2_reg_7003           |  32|   0|   32|          0|
+    |sorting_value_V_load_reg_7009            |   9|   0|    9|          0|
+    |symbol_bits_temp_V_1_reg_3891            |   9|   0|    9|          0|
+    |tmp_1_i_reg_7097                         |   9|   0|    9|          0|
+    |tmp_i_reg_7027                           |   9|   0|    9|          0|
+    |trunc_ln60_reg_7041                      |   4|   0|    4|          0|
+    |zext_ln25_reg_6931                       |   9|   0|   64|         55|
+    |zext_ln25_reg_6931_pp0_iter1_reg         |   9|   0|   64|         55|
+    |zext_ln29_reg_6961                       |   6|   0|   32|         26|
+    |zext_ln43_reg_6986                       |   9|   0|   64|         55|
+    |zext_ln69_reg_7064                       |   9|   0|   64|         55|
+    |icmp_ln40_reg_6977                       |  64|  32|    1|          0|
+    |icmp_ln67_reg_7055                       |  64|  32|    1|          0|
+    |zext_ln43_reg_6986                       |  64|  32|   64|         55|
     +-----------------------------------------+----+----+-----+-----------+
-    |Total                                    |1344|  96| 1464|        301|
+    |Total                                    |1795|  96| 1915|        301|
     +-----------------------------------------+----+----+-----+-----------+
 
 

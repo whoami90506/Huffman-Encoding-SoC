@@ -49,7 +49,7 @@ reg    ap_done_reg;
 wire    ap_CS_fsm_state1;
 reg    extLd_loc_blk_n;
 reg    ap_block_state1;
-wire   [31:0] extLd_fu_43_p1;
+wire   [31:0] extLd_fu_35_p1;
 reg   [31:0] num_nonzero_symbols_preg;
 reg   [0:0] ap_NS_fsm;
 
@@ -93,7 +93,7 @@ always @ (posedge ap_clk) begin
         num_nonzero_symbols_preg[8] <= 1'b0;
     end else begin
         if ((~((ap_start == 1'b0) | (extLd_loc_empty_n == 1'b0) | (ap_done_reg == 1'b1)) & (1'b1 == ap_CS_fsm_state1))) begin
-                        num_nonzero_symbols_preg[8 : 0] <= extLd_fu_43_p1[8 : 0];
+                        num_nonzero_symbols_preg[8 : 0] <= extLd_fu_35_p1[8 : 0];
         end
     end
 end
@@ -140,7 +140,7 @@ end
 
 always @ (*) begin
     if ((~((ap_start == 1'b0) | (extLd_loc_empty_n == 1'b0) | (ap_done_reg == 1'b1)) & (1'b1 == ap_CS_fsm_state1))) begin
-        num_nonzero_symbols = extLd_fu_43_p1;
+        num_nonzero_symbols = extLd_fu_35_p1;
     end else begin
         num_nonzero_symbols = num_nonzero_symbols_preg;
     end
@@ -171,7 +171,7 @@ always @ (*) begin
     ap_block_state1 = ((ap_start == 1'b0) | (extLd_loc_empty_n == 1'b0) | (ap_done_reg == 1'b1));
 end
 
-assign extLd_fu_43_p1 = extLd_loc_dout;
+assign extLd_fu_35_p1 = extLd_loc_dout;
 
 always @ (posedge ap_clk) begin
     num_nonzero_symbols_preg[31:9] <= 23'b00000000000000000000000;

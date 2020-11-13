@@ -3,7 +3,7 @@
 ================================================================
 == Vivado HLS Report for 'huffman_encoding'
 ================================================================
-* Date:           Fri Nov 13 02:52:05 2020
+* Date:           Fri Nov 13 12:04:33 2020
 
 * Version:        2019.2 (Build 2704478 on Wed Nov 06 22:10:23 MST 2019)
 * Project:        hls_huffman_encoding
@@ -20,7 +20,7 @@
     +--------+---------+----------+------------+
     |  Clock |  Target | Estimated| Uncertainty|
     +--------+---------+----------+------------+
-    |ap_clk  | 5.00 ns | 5.656 ns |   0.63 ns  |
+    |ap_clk  | 5.00 ns | 4.559 ns |   0.63 ns  |
     +--------+---------+----------+------------+
 
 + Latency: 
@@ -38,14 +38,14 @@
         |                         |                      |  Latency (cycles) |   Latency (absolute)  |   Interval  | Pipeline|
         |         Instance        |        Module        |   min   |   max   |    min    |    max    |  min |  max |   Type  |
         +-------------------------+----------------------+---------+---------+-----------+-----------+------+------+---------+
-        |sort_U0                  |sort                  |      379|     4732|  2.144 us | 26.764 us |   379|  4732|   none  |
-        |create_tree_U0           |create_tree           |        4|     1279| 22.624 ns |  7.234 us |     4|  1279|   none  |
+        |sort_U0                  |sort                  |      379|     4732|  1.895 us | 23.660 us |   379|  4732|   none  |
+        |create_tree_U0           |create_tree           |        4|     1279| 20.000 ns |  6.395 us |     4|  1279|   none  |
         |compute_bit_length_U0    |compute_bit_length    |        ?|        ?|          ?|          ?|     ?|     ?|   none  |
-        |create_codeword_U0       |create_codeword       |     1312|     1312|  7.421 us |  7.421 us |  1312|  1312|   none  |
-        |truncate_tree_U0         |truncate_tree         |     1467|     1575|  8.297 us |  8.908 us |  1467|  1575|   none  |
-        |canonize_tree_U0         |canonize_tree         |      258|     2562|  1.459 us | 14.491 us |   258|  2562|   none  |
-        |filter_U0                |filter                |      261|      261|  1.476 us |  1.476 us |   261|   261|   none  |
-        |Loop_copy_sorted_pro_U0  |Loop_copy_sorted_pro  |        1|     1534|  5.656 ns |  8.676 us |     1|  1534|   none  |
+        |create_codeword_U0       |create_codeword       |     1312|     1312|  6.560 us |  6.560 us |  1312|  1312|   none  |
+        |truncate_tree_U0         |truncate_tree         |     1467|     1575|  7.335 us |  7.875 us |  1467|  1575|   none  |
+        |canonize_tree_U0         |canonize_tree         |      258|     2562|  1.290 us | 12.810 us |   258|  2562|   none  |
+        |filter_U0                |filter                |      261|      261|  1.305 us |  1.305 us |   261|   261|   none  |
+        |Loop_copy_sorted_pro_U0  |Loop_copy_sorted_pro  |        1|     1534|  5.000 ns |  7.670 us |     1|  1534|   none  |
         |Block_proc_U0            |Block_proc            |        0|        0|    0 ns   |    0 ns   |     0|     0|   none  |
         |Block_codeRepl1012_p_U0  |Block_codeRepl1012_p  |        0|        0|    0 ns   |    0 ns   |     0|     0|   none  |
         +-------------------------+----------------------+---------+---------+-----------+-----------+------+------+---------+
@@ -65,16 +65,16 @@
 |DSP              |        -|      -|       -|      -|    -|
 |Expression       |        -|      -|       0|     60|    -|
 |FIFO             |        3|      -|     132|    270|    -|
-|Instance         |       10|      -|    3185|   6052|    0|
+|Instance         |       10|      -|    3636|   6529|    0|
 |Memory           |       10|      -|      36|     18|    0|
 |Multiplexer      |        -|      -|       -|     81|    -|
 |Register         |        -|      -|       9|      -|    -|
 +-----------------+---------+-------+--------+-------+-----+
-|Total            |       23|      0|    3362|   6481|    0|
+|Total            |       23|      0|    3813|   6958|    0|
 +-----------------+---------+-------+--------+-------+-----+
 |Available        |      280|    220|  106400|  53200|    0|
 +-----------------+---------+-------+--------+-------+-----+
-|Utilization (%)  |        8|      0|       3|     12|    0|
+|Utilization (%)  |        8|      0|       3|     13|    0|
 +-----------------+---------+-------+--------+-------+-----+
 
 + Detail: 
@@ -90,10 +90,10 @@
     |create_codeword_U0       |create_codeword       |        0|      0|   272|   548|    0|
     |create_tree_U0           |create_tree           |        4|      0|   610|   865|    0|
     |filter_U0                |filter                |        0|      0|   107|   151|    0|
-    |sort_U0                  |sort                  |        5|      0|  1484|  2931|    0|
+    |sort_U0                  |sort                  |        5|      0|  1935|  3408|    0|
     |truncate_tree_U0         |truncate_tree         |        0|      0|   152|   477|    0|
     +-------------------------+----------------------+---------+-------+------+------+-----+
-    |Total                    |                      |       10|      0|  3185|  6052|    0|
+    |Total                    |                      |       10|      0|  3636|  6529|    0|
     +-------------------------+----------------------+---------+-------+------+------+-----+
 
     * DSP48E: 

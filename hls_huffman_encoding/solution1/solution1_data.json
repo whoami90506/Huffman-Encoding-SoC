@@ -115,14 +115,14 @@
   },
   "Files": {
     "CSource": [
-      "..\/..\/huffman_truncate_tree.cpp",
-      "..\/..\/huffman_create_codeword.cpp",
-      "..\/..\/huffman_sort.cpp",
-      "..\/..\/huffman_encoding.cpp",
-      "..\/..\/huffman_compute_bit_length.cpp",
-      "..\/..\/huffman_filter.cpp",
+      "..\/..\/huffman_canonize_tree.cpp",
       "..\/..\/huffman_create_tree.cpp",
-      "..\/..\/huffman_canonize_tree.cpp"
+      "..\/..\/huffman_filter.cpp",
+      "..\/..\/huffman_compute_bit_length.cpp",
+      "..\/..\/huffman_encoding.cpp",
+      "..\/..\/huffman_sort.cpp",
+      "..\/..\/huffman_create_codeword.cpp",
+      "..\/..\/huffman_truncate_tree.cpp"
     ],
     "Vhdl": [
       "impl\/vhdl\/Block_codeRepl1012_p.vhd",
@@ -800,7 +800,7 @@
         "Timing": {
           "Target": "5.00",
           "Uncertainty": "0.63",
-          "Estimate": "5.656"
+          "Estimate": "4.559"
         },
         "Loops": [
           {
@@ -860,8 +860,8 @@
         ],
         "Area": {
           "BRAM_18K": "5",
-          "FF": "1484",
-          "LUT": "2931",
+          "FF": "1935",
+          "LUT": "3408",
           "URAM": "0",
           "DSP48E": "0"
         }
@@ -1164,12 +1164,12 @@
         "Timing": {
           "Target": "5.00",
           "Uncertainty": "0.63",
-          "Estimate": "5.656"
+          "Estimate": "4.559"
         },
         "Area": {
           "BRAM_18K": "23",
-          "FF": "3362",
-          "LUT": "6481",
+          "FF": "3813",
+          "LUT": "6958",
           "URAM": "0",
           "DSP48E": "0"
         }
@@ -1186,7 +1186,7 @@
   },
   "GenData": {
     "DataVersion": "0.2",
-    "Time": "2020-11-13 02:52:15 +0800",
+    "Time": "2020-11-13 12:04:42 +0800",
     "ToolName": "vivado_hls",
     "ToolVersion": "2019.2"
   }

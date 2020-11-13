@@ -48,7 +48,7 @@ Block_proc::Block_proc(sc_module_name name) : sc_module(name), mVcdFile(0) {
     sensitive << ( ap_CS_fsm_state1 );
     sensitive << ( extLd_loc_empty_n );
 
-    SC_METHOD(thread_extLd_fu_43_p1);
+    SC_METHOD(thread_extLd_fu_35_p1);
     sensitive << ( extLd_loc_dout );
 
     SC_METHOD(thread_extLd_loc_blk_n);
@@ -68,7 +68,7 @@ Block_proc::Block_proc(sc_module_name name) : sc_module(name), mVcdFile(0) {
     sensitive << ( ap_done_reg );
     sensitive << ( ap_CS_fsm_state1 );
     sensitive << ( extLd_loc_empty_n );
-    sensitive << ( extLd_fu_43_p1 );
+    sensitive << ( extLd_fu_35_p1 );
     sensitive << ( num_nonzero_symbols_preg );
 
     SC_METHOD(thread_num_nonzero_symbols_ap_vld);
@@ -114,7 +114,7 @@ Block_proc::Block_proc(sc_module_name name) : sc_module(name), mVcdFile(0) {
     sc_trace(mVcdFile, ap_CS_fsm_state1, "ap_CS_fsm_state1");
     sc_trace(mVcdFile, extLd_loc_blk_n, "extLd_loc_blk_n");
     sc_trace(mVcdFile, ap_block_state1, "ap_block_state1");
-    sc_trace(mVcdFile, extLd_fu_43_p1, "extLd_fu_43_p1");
+    sc_trace(mVcdFile, extLd_fu_35_p1, "extLd_fu_35_p1");
     sc_trace(mVcdFile, num_nonzero_symbols_preg, "num_nonzero_symbols_preg");
     sc_trace(mVcdFile, ap_NS_fsm, "ap_NS_fsm");
 #endif
@@ -149,7 +149,7 @@ void Block_proc::thread_ap_clk_no_reset_() {
     } else {
         if ((esl_seteq<1,1,1>(ap_const_logic_1, ap_CS_fsm_state1.read()) && 
              !(esl_seteq<1,1,1>(ap_const_logic_0, ap_start.read()) || esl_seteq<1,1,1>(ap_done_reg.read(), ap_const_logic_1) || esl_seteq<1,1,1>(ap_const_logic_0, extLd_loc_empty_n.read())))) {
-            num_nonzero_symbols_preg = extLd_fu_43_p1.read();
+            num_nonzero_symbols_preg = extLd_fu_35_p1.read();
         }
     }
 }
@@ -189,8 +189,8 @@ void Block_proc::thread_ap_ready() {
     }
 }
 
-void Block_proc::thread_extLd_fu_43_p1() {
-    extLd_fu_43_p1 = esl_zext<32,9>(extLd_loc_dout.read());
+void Block_proc::thread_extLd_fu_35_p1() {
+    extLd_fu_35_p1 = esl_zext<32,9>(extLd_loc_dout.read());
 }
 
 void Block_proc::thread_extLd_loc_blk_n() {
@@ -214,7 +214,7 @@ void Block_proc::thread_extLd_loc_read() {
 void Block_proc::thread_num_nonzero_symbols() {
     if ((esl_seteq<1,1,1>(ap_const_logic_1, ap_CS_fsm_state1.read()) && 
          !(esl_seteq<1,1,1>(ap_const_logic_0, ap_start.read()) || esl_seteq<1,1,1>(ap_done_reg.read(), ap_const_logic_1) || esl_seteq<1,1,1>(ap_const_logic_0, extLd_loc_empty_n.read())))) {
-        num_nonzero_symbols = extLd_fu_43_p1.read();
+        num_nonzero_symbols = extLd_fu_35_p1.read();
     } else {
         num_nonzero_symbols = num_nonzero_symbols_preg.read();
     }
