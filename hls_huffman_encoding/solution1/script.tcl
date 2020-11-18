@@ -26,4 +26,4 @@ set_clock_uncertainty 12.5%
 csim_design
 csynth_design
 cosim_design
-export_design -format ip_catalog
+export_design -rtl verilog -format ip_catalog

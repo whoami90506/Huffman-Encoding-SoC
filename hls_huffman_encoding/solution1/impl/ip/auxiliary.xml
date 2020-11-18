@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<xd:acceleratorMap xmlns:xd="http://www.xilinx.com/xidane" xd:functionName="huffman_encoding" xd:componentRef="huffman_encoding" xd:initiationInterval="x" xd:clockPeriod="5.000" xd:sequential="true" xd:hostMachine="64" xd:reset="control">
+  <xd:controlReg xd:name="control" xd:interfaceRef="ap_ctrl" xd:busTypeRef="acc_handshake" xd:type="acc_handshake"/>
+  <xd:arg xd:name="*(num_nonzero_symbols)" xd:originalName="num_nonzero_symbols" xd:direction="out" xd:interfaceRef="num_nonzero_symbols" xd:busTypeRef="register" xd:handshakeRef="ap_vld" xd:dataWidth="32" xd:firstOut="0"/>
+  <xd:arg xd:name="symbol_histogram_value_V_d0" xd:originalName="symbol_histogram_value_V_d0" xd:direction="out" xd:interfaceRef="symbol_histogram_value_V_d0" xd:busTypeRef="ap_memory" xd:arraySize="1" xd:dataWidth="9"/>
+  <xd:arg xd:name="symbol_histogram_value_V_q0" xd:originalName="symbol_histogram_value_V_q0" xd:direction="in" xd:interfaceRef="symbol_histogram_value_V_q0" xd:busTypeRef="ap_memory" xd:arraySize="1" xd:dataWidth="9"/>
+  <xd:arg xd:name="symbol_histogram_value_V_d1" xd:originalName="symbol_histogram_value_V_d1" xd:direction="out" xd:interfaceRef="symbol_histogram_value_V_d1" xd:busTypeRef="ap_memory" xd:arraySize="1" xd:dataWidth="9"/>
+  <xd:arg xd:name="symbol_histogram_value_V_q1" xd:originalName="symbol_histogram_value_V_q1" xd:direction="in" xd:interfaceRef="symbol_histogram_value_V_q1" xd:busTypeRef="ap_memory" xd:arraySize="1" xd:dataWidth="9"/>
+  <xd:arg xd:name="symbol_histogram_frequency_V_d0" xd:originalName="symbol_histogram_frequency_V_d0" xd:direction="out" xd:interfaceRef="symbol_histogram_frequency_V_d0" xd:busTypeRef="ap_memory" xd:arraySize="1" xd:dataWidth="32"/>
+  <xd:arg xd:name="symbol_histogram_frequency_V_q0" xd:originalName="symbol_histogram_frequency_V_q0" xd:direction="in" xd:interfaceRef="symbol_histogram_frequency_V_q0" xd:busTypeRef="ap_memory" xd:arraySize="1" xd:dataWidth="32"/>
+  <xd:arg xd:name="symbol_histogram_frequency_V_d1" xd:originalName="symbol_histogram_frequency_V_d1" xd:direction="out" xd:interfaceRef="symbol_histogram_frequency_V_d1" xd:busTypeRef="ap_memory" xd:arraySize="1" xd:dataWidth="32"/>
+  <xd:arg xd:name="symbol_histogram_frequency_V_q1" xd:originalName="symbol_histogram_frequency_V_q1" xd:direction="in" xd:interfaceRef="symbol_histogram_frequency_V_q1" xd:busTypeRef="ap_memory" xd:arraySize="1" xd:dataWidth="32"/>
+  <xd:arg xd:name="encoding_V_d0" xd:originalName="encoding_V_d0" xd:direction="out" xd:interfaceRef="encoding_V_d0" xd:busTypeRef="ap_memory" xd:arraySize="1" xd:dataWidth="32"/>
+  <xd:arg xd:name="encoding_V_q0" xd:originalName="encoding_V_q0" xd:direction="in" xd:interfaceRef="encoding_V_q0" xd:busTypeRef="ap_memory" xd:arraySize="1" xd:dataWidth="32"/>
+  <xd:arg xd:name="encoding_V_d1" xd:originalName="encoding_V_d1" xd:direction="out" xd:interfaceRef="encoding_V_d1" xd:busTypeRef="ap_memory" xd:arraySize="1" xd:dataWidth="32"/>
+  <xd:arg xd:name="encoding_V_q1" xd:originalName="encoding_V_q1" xd:direction="in" xd:interfaceRef="encoding_V_q1" xd:busTypeRef="ap_memory" xd:arraySize="1" xd:dataWidth="32"/>
+  <xd:latencyEstimates xd:best-case="undef" xd:worst-case="undef" xd:average-case="undef"/>
+  <xd:resourceEstimates xd:LUT="6958" xd:FF="3813" xd:BRAM="23" xd:DSP="0"/>
+</xd:acceleratorMap>
