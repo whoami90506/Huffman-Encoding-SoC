@@ -7,15 +7,31 @@
 
 `timescale 1 ns / 1 ps 
 
-(* CORE_GENERATION_INFO="huffman_encoding,hls_ip_2019_2,{HLS_INPUT_TYPE=cxx,HLS_INPUT_FLOAT=0,HLS_INPUT_FIXED=1,HLS_INPUT_PART=xc7z020-clg484-1,HLS_INPUT_CLOCK=5.000000,HLS_INPUT_ARCH=dataflow,HLS_SYN_CLOCK=4.559500,HLS_SYN_LAT=-1,HLS_SYN_TPT=-1,HLS_SYN_MEM=23,HLS_SYN_DSP=0,HLS_SYN_FF=3698,HLS_SYN_LUT=6966,HLS_VERSION=2019_2}" *)
+(* CORE_GENERATION_INFO="huffman_encoding,hls_ip_2019_2,{HLS_INPUT_TYPE=cxx,HLS_INPUT_FLOAT=0,HLS_INPUT_FIXED=1,HLS_INPUT_PART=xc7z020-clg484-1,HLS_INPUT_CLOCK=5.000000,HLS_INPUT_ARCH=dataflow,HLS_SYN_CLOCK=4.559500,HLS_SYN_LAT=-1,HLS_SYN_TPT=-1,HLS_SYN_MEM=23,HLS_SYN_DSP=0,HLS_SYN_FF=3766,HLS_SYN_LUT=7070,HLS_VERSION=2019_2}" *)
 
 module huffman_encoding (
+        s_axi_AXILiteS_AWVALID,
+        s_axi_AXILiteS_AWREADY,
+        s_axi_AXILiteS_AWADDR,
+        s_axi_AXILiteS_WVALID,
+        s_axi_AXILiteS_WREADY,
+        s_axi_AXILiteS_WDATA,
+        s_axi_AXILiteS_WSTRB,
+        s_axi_AXILiteS_ARVALID,
+        s_axi_AXILiteS_ARREADY,
+        s_axi_AXILiteS_ARADDR,
+        s_axi_AXILiteS_RVALID,
+        s_axi_AXILiteS_RREADY,
+        s_axi_AXILiteS_RDATA,
+        s_axi_AXILiteS_RRESP,
+        s_axi_AXILiteS_BVALID,
+        s_axi_AXILiteS_BREADY,
+        s_axi_AXILiteS_BRESP,
         ap_clk,
         ap_rst_n,
         symbol_histogram_value_V_TDATA,
         symbol_histogram_frequency_V_TDATA,
         encoding_V_TDATA,
-        num_nonzero_symbols,
         symbol_histogram_value_V_TVALID,
         symbol_histogram_value_V_TREADY,
         symbol_histogram_frequency_V_TVALID,
@@ -24,18 +40,40 @@ module huffman_encoding (
         encoding_V_TVALID,
         encoding_V_TREADY,
         ap_done,
-        num_nonzero_symbols_ap_vld,
         ap_ready,
         ap_idle
 );
 
+parameter    C_S_AXI_AXILITES_DATA_WIDTH = 32;
+parameter    C_S_AXI_AXILITES_ADDR_WIDTH = 5;
+parameter    C_S_AXI_DATA_WIDTH = 32;
+parameter    C_S_AXI_ADDR_WIDTH = 32;
 
+parameter C_S_AXI_AXILITES_WSTRB_WIDTH = (32 / 8);
+parameter C_S_AXI_WSTRB_WIDTH = (32 / 8);
+
+input   s_axi_AXILiteS_AWVALID;
+output   s_axi_AXILiteS_AWREADY;
+input  [C_S_AXI_AXILITES_ADDR_WIDTH - 1:0] s_axi_AXILiteS_AWADDR;
+input   s_axi_AXILiteS_WVALID;
+output   s_axi_AXILiteS_WREADY;
+input  [C_S_AXI_AXILITES_DATA_WIDTH - 1:0] s_axi_AXILiteS_WDATA;
+input  [C_S_AXI_AXILITES_WSTRB_WIDTH - 1:0] s_axi_AXILiteS_WSTRB;
+input   s_axi_AXILiteS_ARVALID;
+output   s_axi_AXILiteS_ARREADY;
+input  [C_S_AXI_AXILITES_ADDR_WIDTH - 1:0] s_axi_AXILiteS_ARADDR;
+output   s_axi_AXILiteS_RVALID;
+input   s_axi_AXILiteS_RREADY;
+output  [C_S_AXI_AXILITES_DATA_WIDTH - 1:0] s_axi_AXILiteS_RDATA;
+output  [1:0] s_axi_AXILiteS_RRESP;
+output   s_axi_AXILiteS_BVALID;
+input   s_axi_AXILiteS_BREADY;
+output  [1:0] s_axi_AXILiteS_BRESP;
 input   ap_clk;
 input   ap_rst_n;
 input  [15:0] symbol_histogram_value_V_TDATA;
 input  [31:0] symbol_histogram_frequency_V_TDATA;
 output  [31:0] encoding_V_TDATA;
-output  [31:0] num_nonzero_symbols;
 input   symbol_histogram_value_V_TVALID;
 output   symbol_histogram_value_V_TREADY;
 input   symbol_histogram_frequency_V_TVALID;
@@ -44,7 +82,6 @@ input   ap_start;
 output   encoding_V_TVALID;
 input   encoding_V_TREADY;
 output   ap_done;
-output   num_nonzero_symbols_ap_vld;
 output   ap_ready;
 output   ap_idle;
 
@@ -393,6 +430,34 @@ initial begin
 #0 ap_sync_reg_channel_write_truncated_length_his_1 = 1'b0;
 #0 ap_sync_reg_channel_write_truncated_length_his = 1'b0;
 end
+
+huffman_encoding_AXILiteS_s_axi #(
+    .C_S_AXI_ADDR_WIDTH( C_S_AXI_AXILITES_ADDR_WIDTH ),
+    .C_S_AXI_DATA_WIDTH( C_S_AXI_AXILITES_DATA_WIDTH ))
+huffman_encoding_AXILiteS_s_axi_U(
+    .AWVALID(s_axi_AXILiteS_AWVALID),
+    .AWREADY(s_axi_AXILiteS_AWREADY),
+    .AWADDR(s_axi_AXILiteS_AWADDR),
+    .WVALID(s_axi_AXILiteS_WVALID),
+    .WREADY(s_axi_AXILiteS_WREADY),
+    .WDATA(s_axi_AXILiteS_WDATA),
+    .WSTRB(s_axi_AXILiteS_WSTRB),
+    .ARVALID(s_axi_AXILiteS_ARVALID),
+    .ARREADY(s_axi_AXILiteS_ARREADY),
+    .ARADDR(s_axi_AXILiteS_ARADDR),
+    .RVALID(s_axi_AXILiteS_RVALID),
+    .RREADY(s_axi_AXILiteS_RREADY),
+    .RDATA(s_axi_AXILiteS_RDATA),
+    .RRESP(s_axi_AXILiteS_RRESP),
+    .BVALID(s_axi_AXILiteS_BVALID),
+    .BREADY(s_axi_AXILiteS_BREADY),
+    .BRESP(s_axi_AXILiteS_BRESP),
+    .ACLK(ap_clk),
+    .ARESET(ap_rst_n_inv),
+    .ACLK_EN(1'b1),
+    .num_nonzero_symbols(Block_proc_U0_num_nonzero_symbols),
+    .num_nonzero_symbols_ap_vld(Block_proc_U0_num_nonzero_symbols_ap_vld)
+);
 
 huffman_encoding_ncg #(
     .DataWidth( 9 ),
@@ -1393,10 +1458,6 @@ assign filter_U0_out_value_V_full_n = filtered_value_V_i_full_n;
 assign left_V_t_d1 = 9'd0;
 
 assign left_V_t_we1 = 1'b0;
-
-assign num_nonzero_symbols = Block_proc_U0_num_nonzero_symbols;
-
-assign num_nonzero_symbols_ap_vld = Block_proc_U0_num_nonzero_symbols_ap_vld;
 
 assign parent_V_t_d1 = 9'd0;
 

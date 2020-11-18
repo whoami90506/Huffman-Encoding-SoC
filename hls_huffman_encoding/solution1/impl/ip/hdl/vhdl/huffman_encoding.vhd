@@ -10,13 +10,32 @@ use IEEE.std_logic_1164.all;
 use IEEE.numeric_std.all;
 
 entity huffman_encoding is
+generic (
+    C_S_AXI_AXILITES_ADDR_WIDTH : INTEGER := 5;
+    C_S_AXI_AXILITES_DATA_WIDTH : INTEGER := 32 );
 port (
+    s_axi_AXILiteS_AWVALID : IN STD_LOGIC;
+    s_axi_AXILiteS_AWREADY : OUT STD_LOGIC;
+    s_axi_AXILiteS_AWADDR : IN STD_LOGIC_VECTOR (C_S_AXI_AXILITES_ADDR_WIDTH-1 downto 0);
+    s_axi_AXILiteS_WVALID : IN STD_LOGIC;
+    s_axi_AXILiteS_WREADY : OUT STD_LOGIC;
+    s_axi_AXILiteS_WDATA : IN STD_LOGIC_VECTOR (C_S_AXI_AXILITES_DATA_WIDTH-1 downto 0);
+    s_axi_AXILiteS_WSTRB : IN STD_LOGIC_VECTOR (C_S_AXI_AXILITES_DATA_WIDTH/8-1 downto 0);
+    s_axi_AXILiteS_ARVALID : IN STD_LOGIC;
+    s_axi_AXILiteS_ARREADY : OUT STD_LOGIC;
+    s_axi_AXILiteS_ARADDR : IN STD_LOGIC_VECTOR (C_S_AXI_AXILITES_ADDR_WIDTH-1 downto 0);
+    s_axi_AXILiteS_RVALID : OUT STD_LOGIC;
+    s_axi_AXILiteS_RREADY : IN STD_LOGIC;
+    s_axi_AXILiteS_RDATA : OUT STD_LOGIC_VECTOR (C_S_AXI_AXILITES_DATA_WIDTH-1 downto 0);
+    s_axi_AXILiteS_RRESP : OUT STD_LOGIC_VECTOR (1 downto 0);
+    s_axi_AXILiteS_BVALID : OUT STD_LOGIC;
+    s_axi_AXILiteS_BREADY : IN STD_LOGIC;
+    s_axi_AXILiteS_BRESP : OUT STD_LOGIC_VECTOR (1 downto 0);
     ap_clk : IN STD_LOGIC;
     ap_rst_n : IN STD_LOGIC;
     symbol_histogram_value_V_TDATA : IN STD_LOGIC_VECTOR (15 downto 0);
     symbol_histogram_frequency_V_TDATA : IN STD_LOGIC_VECTOR (31 downto 0);
     encoding_V_TDATA : OUT STD_LOGIC_VECTOR (31 downto 0);
-    num_nonzero_symbols : OUT STD_LOGIC_VECTOR (31 downto 0);
     symbol_histogram_value_V_TVALID : IN STD_LOGIC;
     symbol_histogram_value_V_TREADY : OUT STD_LOGIC;
     symbol_histogram_frequency_V_TVALID : IN STD_LOGIC;
@@ -25,7 +44,6 @@ port (
     encoding_V_TVALID : OUT STD_LOGIC;
     encoding_V_TREADY : IN STD_LOGIC;
     ap_done : OUT STD_LOGIC;
-    num_nonzero_symbols_ap_vld : OUT STD_LOGIC;
     ap_ready : OUT STD_LOGIC;
     ap_idle : OUT STD_LOGIC );
 end;
@@ -34,7 +52,10 @@ end;
 architecture behav of huffman_encoding is 
     attribute CORE_GENERATION_INFO : STRING;
     attribute CORE_GENERATION_INFO of behav : architecture is
-    "huffman_encoding,hls_ip_2019_2,{HLS_INPUT_TYPE=cxx,HLS_INPUT_FLOAT=0,HLS_INPUT_FIXED=1,HLS_INPUT_PART=xc7z020-clg484-1,HLS_INPUT_CLOCK=5.000000,HLS_INPUT_ARCH=dataflow,HLS_SYN_CLOCK=4.559500,HLS_SYN_LAT=-1,HLS_SYN_TPT=-1,HLS_SYN_MEM=23,HLS_SYN_DSP=0,HLS_SYN_FF=3698,HLS_SYN_LUT=6966,HLS_VERSION=2019_2}";
+    "huffman_encoding,hls_ip_2019_2,{HLS_INPUT_TYPE=cxx,HLS_INPUT_FLOAT=0,HLS_INPUT_FIXED=1,HLS_INPUT_PART=xc7z020-clg484-1,HLS_INPUT_CLOCK=5.000000,HLS_INPUT_ARCH=dataflow,HLS_SYN_CLOCK=4.559500,HLS_SYN_LAT=-1,HLS_SYN_TPT=-1,HLS_SYN_MEM=23,HLS_SYN_DSP=0,HLS_SYN_FF=3766,HLS_SYN_LUT=7070,HLS_VERSION=2019_2}";
+    constant C_S_AXI_DATA_WIDTH : INTEGER range 63 downto 0 := 20;
+    constant C_S_AXI_WSTRB_WIDTH : INTEGER range 63 downto 0 := 4;
+    constant C_S_AXI_ADDR_WIDTH : INTEGER range 63 downto 0 := 20;
     constant ap_const_logic_1 : STD_LOGIC := '1';
     constant ap_const_lv32_0 : STD_LOGIC_VECTOR (31 downto 0) := "00000000000000000000000000000000";
     constant ap_const_logic_0 : STD_LOGIC := '0';
@@ -964,8 +985,66 @@ architecture behav of huffman_encoding is
     end component;
 
 
+    component huffman_encoding_AXILiteS_s_axi IS
+    generic (
+        C_S_AXI_ADDR_WIDTH : INTEGER;
+        C_S_AXI_DATA_WIDTH : INTEGER );
+    port (
+        AWVALID : IN STD_LOGIC;
+        AWREADY : OUT STD_LOGIC;
+        AWADDR : IN STD_LOGIC_VECTOR (C_S_AXI_ADDR_WIDTH-1 downto 0);
+        WVALID : IN STD_LOGIC;
+        WREADY : OUT STD_LOGIC;
+        WDATA : IN STD_LOGIC_VECTOR (C_S_AXI_DATA_WIDTH-1 downto 0);
+        WSTRB : IN STD_LOGIC_VECTOR (C_S_AXI_DATA_WIDTH/8-1 downto 0);
+        ARVALID : IN STD_LOGIC;
+        ARREADY : OUT STD_LOGIC;
+        ARADDR : IN STD_LOGIC_VECTOR (C_S_AXI_ADDR_WIDTH-1 downto 0);
+        RVALID : OUT STD_LOGIC;
+        RREADY : IN STD_LOGIC;
+        RDATA : OUT STD_LOGIC_VECTOR (C_S_AXI_DATA_WIDTH-1 downto 0);
+        RRESP : OUT STD_LOGIC_VECTOR (1 downto 0);
+        BVALID : OUT STD_LOGIC;
+        BREADY : IN STD_LOGIC;
+        BRESP : OUT STD_LOGIC_VECTOR (1 downto 0);
+        ACLK : IN STD_LOGIC;
+        ARESET : IN STD_LOGIC;
+        ACLK_EN : IN STD_LOGIC;
+        num_nonzero_symbols : IN STD_LOGIC_VECTOR (31 downto 0);
+        num_nonzero_symbols_ap_vld : IN STD_LOGIC );
+    end component;
+
+
 
 begin
+    huffman_encoding_AXILiteS_s_axi_U : component huffman_encoding_AXILiteS_s_axi
+    generic map (
+        C_S_AXI_ADDR_WIDTH => C_S_AXI_AXILITES_ADDR_WIDTH,
+        C_S_AXI_DATA_WIDTH => C_S_AXI_AXILITES_DATA_WIDTH)
+    port map (
+        AWVALID => s_axi_AXILiteS_AWVALID,
+        AWREADY => s_axi_AXILiteS_AWREADY,
+        AWADDR => s_axi_AXILiteS_AWADDR,
+        WVALID => s_axi_AXILiteS_WVALID,
+        WREADY => s_axi_AXILiteS_WREADY,
+        WDATA => s_axi_AXILiteS_WDATA,
+        WSTRB => s_axi_AXILiteS_WSTRB,
+        ARVALID => s_axi_AXILiteS_ARVALID,
+        ARREADY => s_axi_AXILiteS_ARREADY,
+        ARADDR => s_axi_AXILiteS_ARADDR,
+        RVALID => s_axi_AXILiteS_RVALID,
+        RREADY => s_axi_AXILiteS_RREADY,
+        RDATA => s_axi_AXILiteS_RDATA,
+        RRESP => s_axi_AXILiteS_RRESP,
+        BVALID => s_axi_AXILiteS_BVALID,
+        BREADY => s_axi_AXILiteS_BREADY,
+        BRESP => s_axi_AXILiteS_BRESP,
+        ACLK => ap_clk,
+        ARESET => ap_rst_n_inv,
+        ACLK_EN => ap_const_logic_1,
+        num_nonzero_symbols => Block_proc_U0_num_nonzero_symbols,
+        num_nonzero_symbols_ap_vld => Block_proc_U0_num_nonzero_symbols_ap_vld);
+
     filtered_value_V_U : component huffman_encoding_ncg
     generic map (
         DataWidth => 9,
@@ -1938,8 +2017,6 @@ begin
     filter_U0_out_value_V_full_n <= filtered_value_V_i_full_n;
     left_V_t_d1 <= ap_const_lv9_0;
     left_V_t_we1 <= ap_const_logic_0;
-    num_nonzero_symbols <= Block_proc_U0_num_nonzero_symbols;
-    num_nonzero_symbols_ap_vld <= Block_proc_U0_num_nonzero_symbols_ap_vld;
     parent_V_t_d1 <= ap_const_lv9_0;
     parent_V_t_we1 <= ap_const_logic_0;
     right_V_t_d1 <= ap_const_lv9_0;

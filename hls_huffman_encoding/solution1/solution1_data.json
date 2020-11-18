@@ -68,7 +68,8 @@
         "kinds": ["pointer"],
         "dataType": "int",
         "dataWidth": "32",
-        "interfaceRef": "num_nonzero_symbols"
+        "interfaceRef": "s_axi_AXILiteS",
+        "registerRefs": ["num_nonzero_symbols"]
       }
     }
   },
@@ -124,6 +125,7 @@
       "impl\/vhdl\/fifo_w9_d256_A.vhd",
       "impl\/vhdl\/fifo_w32_d256_A.vhd",
       "impl\/vhdl\/filter.vhd",
+      "impl\/vhdl\/huffman_encoding_AXILiteS_s_axi.vhd",
       "impl\/vhdl\/huffman_encoding_g8j.vhd",
       "impl\/vhdl\/huffman_encoding_hbi.vhd",
       "impl\/vhdl\/huffman_encoding_ncg.vhd",
@@ -168,6 +170,7 @@
       "impl\/verilog\/fifo_w9_d256_A.v",
       "impl\/verilog\/fifo_w32_d256_A.v",
       "impl\/verilog\/filter.v",
+      "impl\/verilog\/huffman_encoding_AXILiteS_s_axi.v",
       "impl\/verilog\/huffman_encoding_g8j.v",
       "impl\/verilog\/huffman_encoding_hbi.v",
       "impl\/verilog\/huffman_encoding_ncg.v",
@@ -194,6 +197,16 @@
       "impl\/verilog\/truncate_tree.v",
       "impl\/verilog\/huffman_encoding.v"
     ],
+    "SwDriver": [
+      "impl\/misc\/drivers\/huffman_encoding_v1_0\/data\/huffman_encoding.mdd",
+      "impl\/misc\/drivers\/huffman_encoding_v1_0\/data\/huffman_encoding.tcl",
+      "impl\/misc\/drivers\/huffman_encoding_v1_0\/src\/Makefile",
+      "impl\/misc\/drivers\/huffman_encoding_v1_0\/src\/xhuffman_encoding.c",
+      "impl\/misc\/drivers\/huffman_encoding_v1_0\/src\/xhuffman_encoding.h",
+      "impl\/misc\/drivers\/huffman_encoding_v1_0\/src\/xhuffman_encoding_hw.h",
+      "impl\/misc\/drivers\/huffman_encoding_v1_0\/src\/xhuffman_encoding_linux.c",
+      "impl\/misc\/drivers\/huffman_encoding_v1_0\/src\/xhuffman_encoding_sinit.c"
+    ],
     "Misc": ["impl\/misc\/logo.png"],
     "DesignXml": "D:\/Workspace\/huffman_encoding_fpga\/hls_huffman_encoding\/solution1\/.autopilot\/db\/huffman_encoding.design.xml",
     "DebugDir": "D:\/Workspace\/huffman_encoding_fpga\/hls_huffman_encoding\/solution1\/.debug",
@@ -210,7 +223,7 @@
       "ctype": {"CLK": {"Type": "bool"}},
       "bundle_name": "ap_clk",
       "bundle_role": "default",
-      "buses": "symbol_histogram_value_V symbol_histogram_frequency_V encoding_V",
+      "buses": "s_axi_AXILiteS symbol_histogram_value_V symbol_histogram_frequency_V encoding_V",
       "reset": "ap_rst_n"
     },
     "ap_ctrl": {
@@ -245,16 +258,103 @@
       },
       "port_width": {"TDATA": "32"}
     },
-    "num_nonzero_symbols": {
-      "type": "data",
-      "dir": "out",
-      "width": "32",
-      "ctype": {"DATA": {
+    "s_axi_AXILiteS": {
+      "type": "axi4lite",
+      "is_adaptor": "true",
+      "mode": "slave",
+      "port_prefix": "s_axi_AXILiteS",
+      "param_prefix": "C_S_AXI_AXILITES",
+      "addr_bits": "5",
+      "registers": [
+        {
+          "offset": "0x10",
+          "name": "num_nonzero_symbols",
+          "access": "R",
+          "reset_value": "0x0",
+          "description": "Data signal of num_nonzero_symbols",
+          "fields": [{
+              "offset": "0",
+              "width": "32",
+              "name": "num_nonzero_symbols",
+              "access": "R",
+              "reset_value": "0",
+              "description": "Bit 31 to 0 Data signal of num_nonzero_symbols"
+            }]
+        },
+        {
+          "offset": "0x14",
+          "name": "num_nonzero_symbols_ctrl",
+          "access": "R",
+          "reset_value": "0x0",
+          "description": "Control signal of num_nonzero_symbols",
+          "fields": [
+            {
+              "offset": "0",
+              "width": "1",
+              "name": "num_nonzero_symbols_ap_vld",
+              "access": "R",
+              "reset_value": "0",
+              "description": "Control signal num_nonzero_symbols_ap_vld"
+            },
+            {
+              "offset": "1",
+              "width": "31",
+              "name": "RESERVED",
+              "access": "R",
+              "reset_value": "0",
+              "description": "Reserved.  0s on read."
+            }
+          ]
+        }
+      ],
+      "ctype": {
+        "AWVALID": {"Type": "bool"},
+        "AWREADY": {"Type": "bool"},
+        "WVALID": {"Type": "bool"},
+        "WREADY": {"Type": "bool"},
+        "BVALID": {"Type": "bool"},
+        "BREADY": {"Type": "bool"},
+        "BRESP": {
+          "Type": "integer unsigned",
+          "Width": "2"
+        },
+        "ARVALID": {"Type": "bool"},
+        "ARREADY": {"Type": "bool"},
+        "RVALID": {"Type": "bool"},
+        "RREADY": {"Type": "bool"},
+        "RRESP": {
+          "Type": "integer unsigned",
+          "Width": "2"
+        },
+        "AWADDR": {
+          "Type": "integer unsigned",
+          "Width": "5"
+        },
+        "WDATA": {
           "Type": "integer signed",
           "Width": "32"
-        }},
-      "bundle_name": "num_nonzero_symbols",
-      "bundle_role": "default"
+        },
+        "WSTRB": {
+          "Type": "integer unsigned",
+          "Width": "4"
+        },
+        "ARADDR": {
+          "Type": "integer unsigned",
+          "Width": "5"
+        },
+        "RDATA": {
+          "Type": "integer signed",
+          "Width": "32"
+        }
+      },
+      "data_width": "32",
+      "port_width": {
+        "ARADDR": "5",
+        "AWADDR": "5",
+        "RDATA": "32",
+        "WDATA": "32",
+        "WSTRB": "4"
+      }
     },
     "symbol_histogram_frequency_V": {
       "type": "axi4stream",
@@ -289,6 +389,74 @@
     }
   },
   "RtlPorts": {
+    "s_axi_AXILiteS_AWVALID": {
+      "dir": "in",
+      "width": "1"
+    },
+    "s_axi_AXILiteS_AWREADY": {
+      "dir": "out",
+      "width": "1"
+    },
+    "s_axi_AXILiteS_AWADDR": {
+      "dir": "in",
+      "width": "5"
+    },
+    "s_axi_AXILiteS_WVALID": {
+      "dir": "in",
+      "width": "1"
+    },
+    "s_axi_AXILiteS_WREADY": {
+      "dir": "out",
+      "width": "1"
+    },
+    "s_axi_AXILiteS_WDATA": {
+      "dir": "in",
+      "width": "32"
+    },
+    "s_axi_AXILiteS_WSTRB": {
+      "dir": "in",
+      "width": "4"
+    },
+    "s_axi_AXILiteS_ARVALID": {
+      "dir": "in",
+      "width": "1"
+    },
+    "s_axi_AXILiteS_ARREADY": {
+      "dir": "out",
+      "width": "1"
+    },
+    "s_axi_AXILiteS_ARADDR": {
+      "dir": "in",
+      "width": "5"
+    },
+    "s_axi_AXILiteS_RVALID": {
+      "dir": "out",
+      "width": "1"
+    },
+    "s_axi_AXILiteS_RREADY": {
+      "dir": "in",
+      "width": "1"
+    },
+    "s_axi_AXILiteS_RDATA": {
+      "dir": "out",
+      "width": "32"
+    },
+    "s_axi_AXILiteS_RRESP": {
+      "dir": "out",
+      "width": "2"
+    },
+    "s_axi_AXILiteS_BVALID": {
+      "dir": "out",
+      "width": "1"
+    },
+    "s_axi_AXILiteS_BREADY": {
+      "dir": "in",
+      "width": "1"
+    },
+    "s_axi_AXILiteS_BRESP": {
+      "dir": "out",
+      "width": "2"
+    },
     "ap_clk": {
       "dir": "in",
       "width": "1"
@@ -347,14 +515,6 @@
     },
     "encoding_V_TREADY": {
       "dir": "in",
-      "width": "1"
-    },
-    "num_nonzero_symbols": {
-      "dir": "out",
-      "width": "32"
-    },
-    "num_nonzero_symbols_ap_vld": {
-      "dir": "out",
       "width": "1"
     }
   },
@@ -917,8 +1077,8 @@
         },
         "Area": {
           "BRAM_18K": "23",
-          "FF": "3698",
-          "LUT": "6966",
+          "FF": "3766",
+          "LUT": "7070",
           "URAM": "0",
           "DSP48E": "0"
         }
@@ -935,7 +1095,7 @@
   },
   "GenData": {
     "DataVersion": "0.2",
-    "Time": "2020-11-18 16:56:13 +0800",
+    "Time": "2020-11-18 17:20:24 +0800",
     "ToolName": "vivado_hls",
     "ToolVersion": "2019.2"
   }

@@ -63740,7 +63740,7 @@ void huffman_encoding(
                  int *num_nonzero_symbols) {
 #pragma HLS INTERFACE axis port=symbol_histogram
 #pragma HLS INTERFACE axis port=encoding
-#pragma HLS INTERFACE ap_vld port=num_nonzero_symbols
+#pragma HLS INTERFACE s_axilite port=num_nonzero_symbols
 
 #pragma HLS DATAFLOW
 

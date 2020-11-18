@@ -66,10 +66,26 @@ reg AESL_done_delay2 = 0;
 reg AESL_ready_delay = 0;
 wire ready;
 wire ready_wire;
+wire [4 : 0] AXILiteS_AWADDR;
+wire  AXILiteS_AWVALID;
+wire  AXILiteS_AWREADY;
+wire  AXILiteS_WVALID;
+wire  AXILiteS_WREADY;
+wire [31 : 0] AXILiteS_WDATA;
+wire [3 : 0] AXILiteS_WSTRB;
+wire [4 : 0] AXILiteS_ARADDR;
+wire  AXILiteS_ARVALID;
+wire  AXILiteS_ARREADY;
+wire  AXILiteS_RVALID;
+wire  AXILiteS_RREADY;
+wire [31 : 0] AXILiteS_RDATA;
+wire [1 : 0] AXILiteS_RRESP;
+wire  AXILiteS_BVALID;
+wire  AXILiteS_BREADY;
+wire [1 : 0] AXILiteS_BRESP;
 wire [15 : 0] symbol_histogram_value_V_TDATA;
 wire [31 : 0] symbol_histogram_frequency_V_TDATA;
 wire [31 : 0] encoding_V_TDATA;
-wire [31 : 0] num_nonzero_symbols;
 wire  symbol_histogram_value_V_TVALID;
 wire  symbol_histogram_value_V_TREADY;
 wire  symbol_histogram_frequency_V_TVALID;
@@ -78,7 +94,6 @@ wire ap_start;
 wire  encoding_V_TVALID;
 wire  encoding_V_TREADY;
 wire ap_done;
-wire  num_nonzero_symbols_ap_vld;
 wire ap_ready;
 wire ap_idle;
 integer done_cnt = 0;
@@ -90,18 +105,47 @@ reg ready_last_n;
 reg ready_delay_last_n;
 reg done_delay_last_n;
 reg interface_done = 0;
+wire AXILiteS_read_data_finish;
+wire AESL_slave_start;
+reg AESL_slave_start_lock = 0;
+wire AESL_slave_write_start_in;
+wire AESL_slave_write_start_finish;
+reg AESL_slave_ready;
+wire AESL_slave_output_done;
+wire AESL_slave_done;
+reg ready_rise = 0;
+reg start_rise = 0;
+reg slave_start_status = 0;
+reg slave_done_status = 0;
+reg ap_done_lock = 0;
 
 wire ap_clk;
 wire ap_rst_n;
 wire ap_rst_n_n;
 
 `AUTOTB_DUT `AUTOTB_DUT_INST(
+    .s_axi_AXILiteS_AWADDR(AXILiteS_AWADDR),
+    .s_axi_AXILiteS_AWVALID(AXILiteS_AWVALID),
+    .s_axi_AXILiteS_AWREADY(AXILiteS_AWREADY),
+    .s_axi_AXILiteS_WVALID(AXILiteS_WVALID),
+    .s_axi_AXILiteS_WREADY(AXILiteS_WREADY),
+    .s_axi_AXILiteS_WDATA(AXILiteS_WDATA),
+    .s_axi_AXILiteS_WSTRB(AXILiteS_WSTRB),
+    .s_axi_AXILiteS_ARADDR(AXILiteS_ARADDR),
+    .s_axi_AXILiteS_ARVALID(AXILiteS_ARVALID),
+    .s_axi_AXILiteS_ARREADY(AXILiteS_ARREADY),
+    .s_axi_AXILiteS_RVALID(AXILiteS_RVALID),
+    .s_axi_AXILiteS_RREADY(AXILiteS_RREADY),
+    .s_axi_AXILiteS_RDATA(AXILiteS_RDATA),
+    .s_axi_AXILiteS_RRESP(AXILiteS_RRESP),
+    .s_axi_AXILiteS_BVALID(AXILiteS_BVALID),
+    .s_axi_AXILiteS_BREADY(AXILiteS_BREADY),
+    .s_axi_AXILiteS_BRESP(AXILiteS_BRESP),
     .ap_clk(ap_clk),
     .ap_rst_n(ap_rst_n),
     .symbol_histogram_value_V_TDATA(symbol_histogram_value_V_TDATA),
     .symbol_histogram_frequency_V_TDATA(symbol_histogram_frequency_V_TDATA),
     .encoding_V_TDATA(encoding_V_TDATA),
-    .num_nonzero_symbols(num_nonzero_symbols),
     .symbol_histogram_value_V_TVALID(symbol_histogram_value_V_TVALID),
     .symbol_histogram_value_V_TREADY(symbol_histogram_value_V_TREADY),
     .symbol_histogram_frequency_V_TVALID(symbol_histogram_frequency_V_TVALID),
@@ -110,7 +154,6 @@ wire ap_rst_n_n;
     .encoding_V_TVALID(encoding_V_TVALID),
     .encoding_V_TREADY(encoding_V_TREADY),
     .ap_done(ap_done),
-    .num_nonzero_symbols_ap_vld(num_nonzero_symbols_ap_vld),
     .ap_ready(ap_ready),
     .ap_idle(ap_idle));
 
@@ -119,13 +162,100 @@ assign ap_clk = AESL_clock;
 assign ap_rst_n = AESL_reset;
 assign ap_rst_n_n = ~AESL_reset;
 assign AESL_reset = rst;
-assign ap_start = AESL_start;
+assign ap_start = AESL_slave_start | AESL_slave_start_lock;
 assign AESL_start = start;
-assign AESL_done = ap_done;
 assign AESL_ready = ap_ready;
 assign AESL_idle = ap_idle;
 assign AESL_ce = ce;
 assign AESL_continue = tb_continue;
+  assign AESL_slave_write_start_in = slave_start_status ;
+  assign AESL_slave_write_start_finish = AESL_slave_write_start_in;
+  assign AESL_slave_start = AESL_slave_write_start_finish;
+  assign AESL_slave_done =  1  & AXILiteS_read_data_finish;
+  assign AESL_done = (ap_done_lock | ap_done) & AESL_slave_done & slave_done_status;
+
+always @(posedge AESL_clock)
+begin
+    if(AESL_reset === 0)
+    begin
+        AESL_slave_start_lock <= 0;
+    end
+    else begin
+        if (AESL_ready == 1) begin
+            AESL_slave_start_lock <= 0;
+        end
+        else if (AESL_slave_start == 1) begin
+            AESL_slave_start_lock <= 1;
+        end
+    end
+end
+
+always @(posedge AESL_clock)
+begin
+    if(AESL_reset === 0)
+    begin
+        ap_done_lock <= 0;
+    end
+    else begin
+        if (AESL_done == 1) begin
+            ap_done_lock <= 0;
+        end
+        else if (ap_done == 1) begin
+            ap_done_lock <= 1;
+        end
+    end
+end
+
+always @(posedge AESL_clock)
+begin
+    if(AESL_reset === 0)
+    begin
+        slave_start_status <= 1;
+    end
+    else begin
+        if (AESL_start == 1 ) begin
+            start_rise = 1;
+        end
+        if (start_rise == 1 && AESL_done == 1 ) begin
+            slave_start_status <= 1;
+        end
+        if (AESL_slave_write_start_in == 1 && AESL_done == 0) begin 
+            slave_start_status <= 0;
+            start_rise = 0;
+        end
+    end
+end
+
+always @(posedge AESL_clock)
+begin
+    if(AESL_reset === 0)
+    begin
+        AESL_slave_ready <= 0;
+        ready_rise = 0;
+    end
+    else begin
+        if (AESL_ready == 1 ) begin
+            ready_rise = 1;
+        end
+        if (ready_rise == 1 && AESL_done_delay == 1 ) begin
+            AESL_slave_ready <= 1;
+        end
+        if (AESL_slave_ready == 1) begin 
+            AESL_slave_ready <= 0;
+            ready_rise = 0;
+        end
+    end
+end
+
+always @ (posedge AESL_clock)
+begin
+    if (AESL_done == 1) begin
+        slave_done_status <= 0;
+    end
+    else if (AESL_slave_done == 1 ) begin
+        slave_done_status <= 1;
+    end
+end
     always @(posedge AESL_clock) begin
         if (AESL_reset === 0) begin
         end else begin
@@ -146,58 +276,6 @@ assign AESL_continue = tb_continue;
     end
 
 
-
-reg AESL_REG_num_nonzero_symbols_ap_vld = 0;
-// The signal of port num_nonzero_symbols
-reg [31: 0] AESL_REG_num_nonzero_symbols = 0;
-always @(posedge AESL_clock)
-begin
-    if(AESL_reset === 0)
-        AESL_REG_num_nonzero_symbols = 0; 
-    else if(num_nonzero_symbols_ap_vld) begin
-        AESL_REG_num_nonzero_symbols <= num_nonzero_symbols;
-        AESL_REG_num_nonzero_symbols_ap_vld <= 1;
-    end
-end 
-
-initial begin : write_file_process_num_nonzero_symbols
-    integer fp;
-    integer fp_size;
-    integer err;
-    integer ret;
-    integer i;
-    integer hls_stream_size;
-    integer proc_rand;
-    integer num_nonzero_symbols_count;
-    reg [303:0] token;
-    integer transaction_idx;
-    reg [8 * 5:1] str;
-    wait(AESL_reset === 1);
-    fp = $fopen(`AUTOTB_TVOUT_num_nonzero_symbols_out_wrapc,"w");
-    if(fp == 0) begin       // Failed to open file
-        $display("Failed to open file \"%s\"!", `AUTOTB_TVOUT_num_nonzero_symbols_out_wrapc);
-        $display("ERROR: Simulation using HLS TB failed.");
-        $finish;
-    end
-    $fdisplay(fp,"[[[runtime]]]");
-    transaction_idx = 0;
-    while (transaction_idx != AUTOTB_TRANSACTION_NUM) begin
-        @(posedge AESL_clock);
-          while(AESL_done !== 1) begin
-              @(posedge AESL_clock);
-          end
-        # 0.4;
-        $fdisplay(fp,"[[transaction]] %d", transaction_idx);
-        if(AESL_REG_num_nonzero_symbols_ap_vld)  begin
-          $fdisplay(fp,"0x%x", AESL_REG_num_nonzero_symbols);
-        AESL_REG_num_nonzero_symbols_ap_vld = 0;
-        end
-    transaction_idx = transaction_idx + 1;
-      $fdisplay(fp,"[[/transaction]]");
-    end
-    $fdisplay(fp,"[[[/runtime]]]");
-    $fclose(fp);
-end
 
 
 reg [31:0] ap_c_n_tvin_trans_num_symbol_histogram_value_V;
@@ -290,6 +368,34 @@ end
 
 
 assign encoding_V_TREADY = reg_encoding_V_TREADY;
+
+AESL_axi_slave_AXILiteS AESL_AXI_SLAVE_AXILiteS(
+    .clk   (AESL_clock),
+    .reset (AESL_reset),
+    .TRAN_s_axi_AXILiteS_AWADDR (AXILiteS_AWADDR),
+    .TRAN_s_axi_AXILiteS_AWVALID (AXILiteS_AWVALID),
+    .TRAN_s_axi_AXILiteS_AWREADY (AXILiteS_AWREADY),
+    .TRAN_s_axi_AXILiteS_WVALID (AXILiteS_WVALID),
+    .TRAN_s_axi_AXILiteS_WREADY (AXILiteS_WREADY),
+    .TRAN_s_axi_AXILiteS_WDATA (AXILiteS_WDATA),
+    .TRAN_s_axi_AXILiteS_WSTRB (AXILiteS_WSTRB),
+    .TRAN_s_axi_AXILiteS_ARADDR (AXILiteS_ARADDR),
+    .TRAN_s_axi_AXILiteS_ARVALID (AXILiteS_ARVALID),
+    .TRAN_s_axi_AXILiteS_ARREADY (AXILiteS_ARREADY),
+    .TRAN_s_axi_AXILiteS_RVALID (AXILiteS_RVALID),
+    .TRAN_s_axi_AXILiteS_RREADY (AXILiteS_RREADY),
+    .TRAN_s_axi_AXILiteS_RDATA (AXILiteS_RDATA),
+    .TRAN_s_axi_AXILiteS_RRESP (AXILiteS_RRESP),
+    .TRAN_s_axi_AXILiteS_BVALID (AXILiteS_BVALID),
+    .TRAN_s_axi_AXILiteS_BREADY (AXILiteS_BREADY),
+    .TRAN_s_axi_AXILiteS_BRESP (AXILiteS_BRESP),
+    .TRAN_AXILiteS_read_data_finish(AXILiteS_read_data_finish),
+    .TRAN_AXILiteS_ready_in (AESL_slave_ready),
+    .TRAN_AXILiteS_done_in (AESL_slave_output_done),
+    .TRAN_AXILiteS_idle_in (AESL_idle),
+    .TRAN_AXILiteS_transaction_done_in (AESL_done_delay),
+    .TRAN_AXILiteS_start_in  (AESL_slave_start)
+);
 
 initial begin : generate_AESL_ready_cnt_proc
     AESL_ready_cnt = 0;
@@ -655,6 +761,36 @@ initial begin : dump_tvout_runtime_sign_encoding_V
     $fdisplay(fp,"[[[/runtime]]]");
     $fclose(fp);
     dump_tvout_finish_encoding_V = 1;
+end
+
+
+reg dump_tvout_finish_num_nonzero_symbols;
+
+initial begin : dump_tvout_runtime_sign_num_nonzero_symbols
+    integer fp;
+    dump_tvout_finish_num_nonzero_symbols = 0;
+    fp = $fopen(`AUTOTB_TVOUT_num_nonzero_symbols_out_wrapc, "w");
+    if (fp == 0) begin
+        $display("Failed to open file \"%s\"!", `AUTOTB_TVOUT_num_nonzero_symbols_out_wrapc);
+        $display("ERROR: Simulation using HLS TB failed.");
+        $finish;
+    end
+    $fdisplay(fp,"[[[runtime]]]");
+    $fclose(fp);
+    wait (done_cnt == AUTOTB_TRANSACTION_NUM);
+    // last transaction is saved at negedge right after last done
+    @ (posedge AESL_clock);
+    @ (posedge AESL_clock);
+    @ (posedge AESL_clock);
+    fp = $fopen(`AUTOTB_TVOUT_num_nonzero_symbols_out_wrapc, "a");
+    if (fp == 0) begin
+        $display("Failed to open file \"%s\"!", `AUTOTB_TVOUT_num_nonzero_symbols_out_wrapc);
+        $display("ERROR: Simulation using HLS TB failed.");
+        $finish;
+    end
+    $fdisplay(fp,"[[[/runtime]]]");
+    $fclose(fp);
+    dump_tvout_finish_num_nonzero_symbols = 1;
 end
 
 

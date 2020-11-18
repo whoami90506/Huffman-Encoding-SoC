@@ -35,17 +35,36 @@
 #include "start_for_Block_czec.h"
 #include "start_for_create_Aem.h"
 #include "start_for_Block_pBew.h"
+#include "huffman_encoding_AXILiteS_s_axi.h"
 
 namespace ap_rtl {
 
+template<unsigned int C_S_AXI_AXILITES_ADDR_WIDTH = 5,
+         unsigned int C_S_AXI_AXILITES_DATA_WIDTH = 32>
 struct huffman_encoding : public sc_module {
-    // Port declarations 17
+    // Port declarations 32
+    sc_in< sc_logic > s_axi_AXILiteS_AWVALID;
+    sc_out< sc_logic > s_axi_AXILiteS_AWREADY;
+    sc_in< sc_uint<C_S_AXI_AXILITES_ADDR_WIDTH> > s_axi_AXILiteS_AWADDR;
+    sc_in< sc_logic > s_axi_AXILiteS_WVALID;
+    sc_out< sc_logic > s_axi_AXILiteS_WREADY;
+    sc_in< sc_uint<C_S_AXI_AXILITES_DATA_WIDTH> > s_axi_AXILiteS_WDATA;
+    sc_in< sc_uint<C_S_AXI_AXILITES_DATA_WIDTH/8> > s_axi_AXILiteS_WSTRB;
+    sc_in< sc_logic > s_axi_AXILiteS_ARVALID;
+    sc_out< sc_logic > s_axi_AXILiteS_ARREADY;
+    sc_in< sc_uint<C_S_AXI_AXILITES_ADDR_WIDTH> > s_axi_AXILiteS_ARADDR;
+    sc_out< sc_logic > s_axi_AXILiteS_RVALID;
+    sc_in< sc_logic > s_axi_AXILiteS_RREADY;
+    sc_out< sc_uint<C_S_AXI_AXILITES_DATA_WIDTH> > s_axi_AXILiteS_RDATA;
+    sc_out< sc_lv<2> > s_axi_AXILiteS_RRESP;
+    sc_out< sc_logic > s_axi_AXILiteS_BVALID;
+    sc_in< sc_logic > s_axi_AXILiteS_BREADY;
+    sc_out< sc_lv<2> > s_axi_AXILiteS_BRESP;
     sc_in_clk ap_clk;
     sc_in< sc_logic > ap_rst_n;
     sc_in< sc_lv<16> > symbol_histogram_value_V_TDATA;
     sc_in< sc_lv<32> > symbol_histogram_frequency_V_TDATA;
     sc_out< sc_lv<32> > encoding_V_TDATA;
-    sc_out< sc_lv<32> > num_nonzero_symbols;
     sc_in< sc_logic > symbol_histogram_value_V_TVALID;
     sc_out< sc_logic > symbol_histogram_value_V_TREADY;
     sc_in< sc_logic > symbol_histogram_frequency_V_TVALID;
@@ -54,13 +73,12 @@ struct huffman_encoding : public sc_module {
     sc_out< sc_logic > encoding_V_TVALID;
     sc_in< sc_logic > encoding_V_TREADY;
     sc_out< sc_logic > ap_done;
-    sc_out< sc_logic > num_nonzero_symbols_ap_vld;
     sc_out< sc_logic > ap_ready;
     sc_out< sc_logic > ap_idle;
-    sc_signal< sc_logic > ap_var_for_const2;
-    sc_signal< sc_lv<32> > ap_var_for_const3;
     sc_signal< sc_logic > ap_var_for_const0;
-    sc_signal< sc_lv<9> > ap_var_for_const1;
+    sc_signal< sc_lv<32> > ap_var_for_const3;
+    sc_signal< sc_logic > ap_var_for_const1;
+    sc_signal< sc_lv<9> > ap_var_for_const2;
     sc_signal< sc_lv<5> > ap_var_for_const6;
     sc_signal< sc_lv<8> > ap_var_for_const4;
     sc_signal< sc_lv<6> > ap_var_for_const5;
@@ -76,6 +94,7 @@ struct huffman_encoding : public sc_module {
 
     ofstream mHdltvinHandle;
     ofstream mHdltvoutHandle;
+    huffman_encoding_AXILiteS_s_axi<C_S_AXI_AXILITES_ADDR_WIDTH,C_S_AXI_AXILITES_DATA_WIDTH>* huffman_encoding_AXILiteS_s_axi_U;
     huffman_encoding_ncg* filtered_value_V_U;
     huffman_encoding_ocq* filtered_frequency_V_U;
     huffman_encoding_ncg* sorted_0_U;
@@ -442,6 +461,9 @@ struct huffman_encoding : public sc_module {
     sc_signal< sc_logic > create_codeword_U0_start_write;
     sc_signal< sc_logic > Block_proc_U0_start_full_n;
     sc_signal< sc_logic > Block_proc_U0_start_write;
+    static const int C_S_AXI_DATA_WIDTH;
+    static const int C_S_AXI_WSTRB_WIDTH;
+    static const int C_S_AXI_ADDR_WIDTH;
     static const sc_logic ap_const_logic_1;
     static const sc_lv<32> ap_const_lv32_0;
     static const sc_logic ap_const_logic_0;
@@ -454,10 +476,10 @@ struct huffman_encoding : public sc_module {
     static const sc_lv<9> ap_const_lv9_1;
     static const bool ap_const_boolean_1;
     // Thread declarations
-    void thread_ap_var_for_const2();
-    void thread_ap_var_for_const3();
     void thread_ap_var_for_const0();
+    void thread_ap_var_for_const3();
     void thread_ap_var_for_const1();
+    void thread_ap_var_for_const2();
     void thread_ap_var_for_const6();
     void thread_ap_var_for_const4();
     void thread_ap_var_for_const5();
@@ -532,8 +554,6 @@ struct huffman_encoding : public sc_module {
     void thread_filter_U0_out_value_V_full_n();
     void thread_left_V_t_d1();
     void thread_left_V_t_we1();
-    void thread_num_nonzero_symbols();
-    void thread_num_nonzero_symbols_ap_vld();
     void thread_parent_V_t_d1();
     void thread_parent_V_t_we1();
     void thread_right_V_t_d1();
