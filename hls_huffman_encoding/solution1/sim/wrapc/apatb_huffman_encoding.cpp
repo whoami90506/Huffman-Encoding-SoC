@@ -430,7 +430,7 @@ int* num_nonzero_symbols)
 		sprintf(tvin_symbol_histogram_value_V, "[[transaction]] %d\n", AESL_transaction);
 		aesl_fh.write(AUTOTB_TVIN_symbol_histogram_value_V, tvin_symbol_histogram_value_V);
 
-		sc_bv<9>* symbol_histogram_value_V_tvin_wrapc_buffer = new sc_bv<9>[256];
+		sc_bv<16>* symbol_histogram_value_V_tvin_wrapc_buffer = new sc_bv<16>[256];
 
 		// RTL Name: symbol_histogram_value_V
 		{

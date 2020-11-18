@@ -1,5 +1,5 @@
 INFO: [HLS 200-10] Running 'D:/Xilinx/Vivado/2019.2/bin/unwrapped/win64.o/vivado_hls.exe'
-INFO: [HLS 200-10] For user 'user' on host 'chengde-dell' (Windows NT_amd64 version 6.2) on Wed Nov 18 15:47:17 +0800 2020
+INFO: [HLS 200-10] For user 'user' on host 'chengde-dell' (Windows NT_amd64 version 6.2) on Wed Nov 18 16:59:23 +0800 2020
 INFO: [HLS 200-10] In directory 'D:/Workspace/huffman_encoding_fpga'
 Sourcing Tcl script 'D:/Workspace/huffman_encoding_fpga/hls_huffman_encoding/solution1/export.tcl'
 INFO: [HLS 200-10] Opening project 'D:/Workspace/huffman_encoding_fpga/hls_huffman_encoding'.
@@ -32,4 +32,4 @@ source run_ippack.tcl -notrace
 INFO: [IP_Flow 19-234] Refreshing IP repositories
 INFO: [IP_Flow 19-1704] No user IP repositories specified
 INFO: [IP_Flow 19-2313] Loaded Vivado IP repository 'D:/Xilinx/Vivado/2019.2/data/ip'.
-INFO: [Common 17-206] Exiting Vivado at Wed Nov 18 15:48:00 2020...
+INFO: [Common 17-206] Exiting Vivado at Wed Nov 18 16:59:43 2020...

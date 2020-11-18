@@ -51,6 +51,8 @@
                                 								
                                 <option id="gnu.cpp.compiler.option.include.paths.1779438127" name="Include paths (-I)" superClass="gnu.cpp.compiler.option.include.paths" useByScannerDiscovery="false" valueType="includePath">
                                     									
+                                    <listOptionValue builtIn="false" value="D:/Workspace/huffman_encoding_fpga"/>
+                                    									
                                     <listOptionValue builtIn="false" value="D:/Xilinx/Vivado/2019.2/include/etc"/>
                                     									
                                     <listOptionValue builtIn="false" value="D:/Xilinx/Vivado/2019.2/win64/tools/auto_cc/include"/>
@@ -84,6 +86,8 @@
                                 <option id="gnu.c.compiler.exe.debug.option.debugging.level.642969032" name="Debug Level" superClass="gnu.c.compiler.exe.debug.option.debugging.level" useByScannerDiscovery="false" value="gnu.c.debugging.level.max" valueType="enumerated"/>
                                 								
                                 <option id="gnu.c.compiler.option.include.paths.807915910" name="Include paths (-I)" superClass="gnu.c.compiler.option.include.paths" useByScannerDiscovery="false" valueType="includePath">
+                                    									
+                                    <listOptionValue builtIn="false" value="D:/Workspace/huffman_encoding_fpga"/>
                                     									
                                     <listOptionValue builtIn="false" value="D:/Xilinx/Vivado/2019.2/include/etc"/>
                                     									
@@ -253,6 +257,8 @@
                                 								
                                 <option id="gnu.cpp.compiler.option.include.paths.910195181" name="Include paths (-I)" superClass="gnu.cpp.compiler.option.include.paths" useByScannerDiscovery="false" valueType="includePath">
                                     									
+                                    <listOptionValue builtIn="false" value="D:/Workspace/huffman_encoding_fpga"/>
+                                    									
                                     <listOptionValue builtIn="false" value="D:/Xilinx/Vivado/2019.2/include/etc"/>
                                     									
                                     <listOptionValue builtIn="false" value="D:/Xilinx/Vivado/2019.2/win64/tools/auto_cc/include"/>
@@ -276,6 +282,8 @@
                                 <option id="gnu.c.compiler.exe.release.option.debugging.level.782921792" name="Debug Level" superClass="gnu.c.compiler.exe.release.option.debugging.level" useByScannerDiscovery="false" value="gnu.c.debugging.level.none" valueType="enumerated"/>
                                 								
                                 <option id="gnu.c.compiler.option.include.paths.1833293428" name="Include paths (-I)" superClass="gnu.c.compiler.option.include.paths" useByScannerDiscovery="false" valueType="includePath">
+                                    									
+                                    <listOptionValue builtIn="false" value="D:/Workspace/huffman_encoding_fpga"/>
                                     									
                                     <listOptionValue builtIn="false" value="D:/Xilinx/Vivado/2019.2/include/etc"/>
                                     									

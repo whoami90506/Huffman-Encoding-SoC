@@ -12,39 +12,18 @@ use IEEE.numeric_std.all;
 entity huffman_encoding is
 port (
     ap_clk : IN STD_LOGIC;
-    ap_rst : IN STD_LOGIC;
-    symbol_histogram_value_V_address0 : OUT STD_LOGIC_VECTOR (7 downto 0);
-    symbol_histogram_value_V_ce0 : OUT STD_LOGIC;
-    symbol_histogram_value_V_d0 : OUT STD_LOGIC_VECTOR (8 downto 0);
-    symbol_histogram_value_V_q0 : IN STD_LOGIC_VECTOR (8 downto 0);
-    symbol_histogram_value_V_we0 : OUT STD_LOGIC;
-    symbol_histogram_value_V_address1 : OUT STD_LOGIC_VECTOR (7 downto 0);
-    symbol_histogram_value_V_ce1 : OUT STD_LOGIC;
-    symbol_histogram_value_V_d1 : OUT STD_LOGIC_VECTOR (8 downto 0);
-    symbol_histogram_value_V_q1 : IN STD_LOGIC_VECTOR (8 downto 0);
-    symbol_histogram_value_V_we1 : OUT STD_LOGIC;
-    symbol_histogram_frequency_V_address0 : OUT STD_LOGIC_VECTOR (7 downto 0);
-    symbol_histogram_frequency_V_ce0 : OUT STD_LOGIC;
-    symbol_histogram_frequency_V_d0 : OUT STD_LOGIC_VECTOR (31 downto 0);
-    symbol_histogram_frequency_V_q0 : IN STD_LOGIC_VECTOR (31 downto 0);
-    symbol_histogram_frequency_V_we0 : OUT STD_LOGIC;
-    symbol_histogram_frequency_V_address1 : OUT STD_LOGIC_VECTOR (7 downto 0);
-    symbol_histogram_frequency_V_ce1 : OUT STD_LOGIC;
-    symbol_histogram_frequency_V_d1 : OUT STD_LOGIC_VECTOR (31 downto 0);
-    symbol_histogram_frequency_V_q1 : IN STD_LOGIC_VECTOR (31 downto 0);
-    symbol_histogram_frequency_V_we1 : OUT STD_LOGIC;
-    encoding_V_address0 : OUT STD_LOGIC_VECTOR (7 downto 0);
-    encoding_V_ce0 : OUT STD_LOGIC;
-    encoding_V_d0 : OUT STD_LOGIC_VECTOR (31 downto 0);
-    encoding_V_q0 : IN STD_LOGIC_VECTOR (31 downto 0);
-    encoding_V_we0 : OUT STD_LOGIC;
-    encoding_V_address1 : OUT STD_LOGIC_VECTOR (7 downto 0);
-    encoding_V_ce1 : OUT STD_LOGIC;
-    encoding_V_d1 : OUT STD_LOGIC_VECTOR (31 downto 0);
-    encoding_V_q1 : IN STD_LOGIC_VECTOR (31 downto 0);
-    encoding_V_we1 : OUT STD_LOGIC;
+    ap_rst_n : IN STD_LOGIC;
+    symbol_histogram_value_V_TDATA : IN STD_LOGIC_VECTOR (15 downto 0);
+    symbol_histogram_frequency_V_TDATA : IN STD_LOGIC_VECTOR (31 downto 0);
+    encoding_V_TDATA : OUT STD_LOGIC_VECTOR (31 downto 0);
     num_nonzero_symbols : OUT STD_LOGIC_VECTOR (31 downto 0);
+    symbol_histogram_value_V_TVALID : IN STD_LOGIC;
+    symbol_histogram_value_V_TREADY : OUT STD_LOGIC;
+    symbol_histogram_frequency_V_TVALID : IN STD_LOGIC;
+    symbol_histogram_frequency_V_TREADY : OUT STD_LOGIC;
     ap_start : IN STD_LOGIC;
+    encoding_V_TVALID : OUT STD_LOGIC;
+    encoding_V_TREADY : IN STD_LOGIC;
     ap_done : OUT STD_LOGIC;
     num_nonzero_symbols_ap_vld : OUT STD_LOGIC;
     ap_ready : OUT STD_LOGIC;
@@ -55,19 +34,20 @@ end;
 architecture behav of huffman_encoding is 
     attribute CORE_GENERATION_INFO : STRING;
     attribute CORE_GENERATION_INFO of behav : architecture is
-    "huffman_encoding,hls_ip_2019_2,{HLS_INPUT_TYPE=cxx,HLS_INPUT_FLOAT=0,HLS_INPUT_FIXED=1,HLS_INPUT_PART=xc7z020-clg484-1,HLS_INPUT_CLOCK=5.000000,HLS_INPUT_ARCH=dataflow,HLS_SYN_CLOCK=4.559500,HLS_SYN_LAT=-1,HLS_SYN_TPT=-1,HLS_SYN_MEM=23,HLS_SYN_DSP=0,HLS_SYN_FF=3813,HLS_SYN_LUT=6958,HLS_VERSION=2019_2}";
+    "huffman_encoding,hls_ip_2019_2,{HLS_INPUT_TYPE=cxx,HLS_INPUT_FLOAT=0,HLS_INPUT_FIXED=1,HLS_INPUT_PART=xc7z020-clg484-1,HLS_INPUT_CLOCK=5.000000,HLS_INPUT_ARCH=dataflow,HLS_SYN_CLOCK=4.559500,HLS_SYN_LAT=-1,HLS_SYN_TPT=-1,HLS_SYN_MEM=23,HLS_SYN_DSP=0,HLS_SYN_FF=3698,HLS_SYN_LUT=6966,HLS_VERSION=2019_2}";
     constant ap_const_logic_1 : STD_LOGIC := '1';
-    constant ap_const_lv8_0 : STD_LOGIC_VECTOR (7 downto 0) := "00000000";
+    constant ap_const_lv32_0 : STD_LOGIC_VECTOR (31 downto 0) := "00000000000000000000000000000000";
     constant ap_const_logic_0 : STD_LOGIC := '0';
     constant ap_const_lv9_0 : STD_LOGIC_VECTOR (8 downto 0) := "000000000";
-    constant ap_const_lv32_0 : STD_LOGIC_VECTOR (31 downto 0) := "00000000000000000000000000000000";
     constant ap_const_lv5_0 : STD_LOGIC_VECTOR (4 downto 0) := "00000";
+    constant ap_const_lv8_0 : STD_LOGIC_VECTOR (7 downto 0) := "00000000";
     constant ap_const_lv8_1 : STD_LOGIC_VECTOR (7 downto 0) := "00000001";
     constant ap_const_lv6_0 : STD_LOGIC_VECTOR (5 downto 0) := "000000";
     constant ap_const_lv6_1 : STD_LOGIC_VECTOR (5 downto 0) := "000001";
     constant ap_const_lv9_1 : STD_LOGIC_VECTOR (8 downto 0) := "000000001";
     constant ap_const_boolean_1 : BOOLEAN := true;
 
+    signal ap_rst_n_inv : STD_LOGIC;
     signal filtered_value_V_i_q0 : STD_LOGIC_VECTOR (8 downto 0);
     signal filtered_value_V_t_q0 : STD_LOGIC_VECTOR (8 downto 0);
     signal filtered_frequency_V_i_q0 : STD_LOGIC_VECTOR (31 downto 0);
@@ -107,10 +87,8 @@ architecture behav of huffman_encoding is
     signal filter_U0_ap_ready : STD_LOGIC;
     signal filter_U0_start_out : STD_LOGIC;
     signal filter_U0_start_write : STD_LOGIC;
-    signal filter_U0_in_value_V_address0 : STD_LOGIC_VECTOR (7 downto 0);
-    signal filter_U0_in_value_V_ce0 : STD_LOGIC;
-    signal filter_U0_in_frequency_V_address0 : STD_LOGIC_VECTOR (7 downto 0);
-    signal filter_U0_in_frequency_V_ce0 : STD_LOGIC;
+    signal filter_U0_in_value_V_TREADY : STD_LOGIC;
+    signal filter_U0_in_frequency_V_TREADY : STD_LOGIC;
     signal filter_U0_out_value_V_address0 : STD_LOGIC_VECTOR (7 downto 0);
     signal filter_U0_out_value_V_ce0 : STD_LOGIC;
     signal filter_U0_out_value_V_we0 : STD_LOGIC;
@@ -304,10 +282,8 @@ architecture behav of huffman_encoding is
     signal create_codeword_U0_symbol_bits_V_ce0 : STD_LOGIC;
     signal create_codeword_U0_codeword_length_histogram_V_address0 : STD_LOGIC_VECTOR (5 downto 0);
     signal create_codeword_U0_codeword_length_histogram_V_ce0 : STD_LOGIC;
-    signal create_codeword_U0_encoding_V_address0 : STD_LOGIC_VECTOR (7 downto 0);
-    signal create_codeword_U0_encoding_V_ce0 : STD_LOGIC;
-    signal create_codeword_U0_encoding_V_we0 : STD_LOGIC;
-    signal create_codeword_U0_encoding_V_d0 : STD_LOGIC_VECTOR (31 downto 0);
+    signal create_codeword_U0_encoding_V_TDATA : STD_LOGIC_VECTOR (31 downto 0);
+    signal create_codeword_U0_encoding_V_TVALID : STD_LOGIC;
     signal ap_sync_continue : STD_LOGIC;
     signal Block_proc_U0_ap_start : STD_LOGIC;
     signal Block_proc_U0_ap_done : STD_LOGIC;
@@ -416,12 +392,12 @@ architecture behav of huffman_encoding is
         ap_ready : OUT STD_LOGIC;
         start_out : OUT STD_LOGIC;
         start_write : OUT STD_LOGIC;
-        in_value_V_address0 : OUT STD_LOGIC_VECTOR (7 downto 0);
-        in_value_V_ce0 : OUT STD_LOGIC;
-        in_value_V_q0 : IN STD_LOGIC_VECTOR (8 downto 0);
-        in_frequency_V_address0 : OUT STD_LOGIC_VECTOR (7 downto 0);
-        in_frequency_V_ce0 : OUT STD_LOGIC;
-        in_frequency_V_q0 : IN STD_LOGIC_VECTOR (31 downto 0);
+        in_value_V_TDATA : IN STD_LOGIC_VECTOR (15 downto 0);
+        in_value_V_TVALID : IN STD_LOGIC;
+        in_value_V_TREADY : OUT STD_LOGIC;
+        in_frequency_V_TDATA : IN STD_LOGIC_VECTOR (31 downto 0);
+        in_frequency_V_TVALID : IN STD_LOGIC;
+        in_frequency_V_TREADY : OUT STD_LOGIC;
         out_value_V_address0 : OUT STD_LOGIC_VECTOR (7 downto 0);
         out_value_V_ce0 : OUT STD_LOGIC;
         out_value_V_we0 : OUT STD_LOGIC;
@@ -667,10 +643,9 @@ architecture behav of huffman_encoding is
         codeword_length_histogram_V_address0 : OUT STD_LOGIC_VECTOR (5 downto 0);
         codeword_length_histogram_V_ce0 : OUT STD_LOGIC;
         codeword_length_histogram_V_q0 : IN STD_LOGIC_VECTOR (8 downto 0);
-        encoding_V_address0 : OUT STD_LOGIC_VECTOR (7 downto 0);
-        encoding_V_ce0 : OUT STD_LOGIC;
-        encoding_V_we0 : OUT STD_LOGIC;
-        encoding_V_d0 : OUT STD_LOGIC_VECTOR (31 downto 0) );
+        encoding_V_TDATA : OUT STD_LOGIC_VECTOR (31 downto 0);
+        encoding_V_TVALID : OUT STD_LOGIC;
+        encoding_V_TREADY : IN STD_LOGIC );
     end component;
 
 
@@ -998,7 +973,7 @@ begin
         AddressWidth => 8)
     port map (
         clk => ap_clk,
-        reset => ap_rst,
+        reset => ap_rst_n_inv,
         i_address0 => filter_U0_out_value_V_address0,
         i_ce0 => filter_U0_out_value_V_ce0,
         i_we0 => filter_U0_out_value_V_we0,
@@ -1023,7 +998,7 @@ begin
         AddressWidth => 8)
     port map (
         clk => ap_clk,
-        reset => ap_rst,
+        reset => ap_rst_n_inv,
         i_address0 => filter_U0_out_frequency_V_address0,
         i_ce0 => filter_U0_out_frequency_V_ce0,
         i_we0 => filter_U0_out_frequency_V_we0,
@@ -1048,7 +1023,7 @@ begin
         AddressWidth => 8)
     port map (
         clk => ap_clk,
-        reset => ap_rst,
+        reset => ap_rst_n_inv,
         i_address0 => sort_U0_out_value_V_address0,
         i_ce0 => sort_U0_out_value_V_ce0,
         i_we0 => sort_U0_out_value_V_we0,
@@ -1073,7 +1048,7 @@ begin
         AddressWidth => 8)
     port map (
         clk => ap_clk,
-        reset => ap_rst,
+        reset => ap_rst_n_inv,
         i_address0 => sort_U0_out_frequency_V_address0,
         i_ce0 => sort_U0_out_frequency_V_ce0,
         i_we0 => sort_U0_out_frequency_V_we0,
@@ -1098,7 +1073,7 @@ begin
         AddressWidth => 8)
     port map (
         clk => ap_clk,
-        reset => ap_rst,
+        reset => ap_rst_n_inv,
         i_address0 => Loop_copy_sorted_pro_U0_sorted_copy2_value_V_address0,
         i_ce0 => Loop_copy_sorted_pro_U0_sorted_copy2_value_V_ce0,
         i_we0 => Loop_copy_sorted_pro_U0_sorted_copy2_value_V_we0,
@@ -1123,7 +1098,7 @@ begin
         AddressWidth => 8)
     port map (
         clk => ap_clk,
-        reset => ap_rst,
+        reset => ap_rst_n_inv,
         i_address0 => create_tree_U0_parent_V_address0,
         i_ce0 => create_tree_U0_parent_V_ce0,
         i_we0 => create_tree_U0_parent_V_we0,
@@ -1154,7 +1129,7 @@ begin
         AddressWidth => 8)
     port map (
         clk => ap_clk,
-        reset => ap_rst,
+        reset => ap_rst_n_inv,
         i_address0 => create_tree_U0_left_V_address0,
         i_ce0 => create_tree_U0_left_V_ce0,
         i_we0 => create_tree_U0_left_V_we0,
@@ -1185,7 +1160,7 @@ begin
         AddressWidth => 8)
     port map (
         clk => ap_clk,
-        reset => ap_rst,
+        reset => ap_rst_n_inv,
         i_address0 => create_tree_U0_right_V_address0,
         i_ce0 => create_tree_U0_right_V_ce0,
         i_we0 => create_tree_U0_right_V_we0,
@@ -1216,7 +1191,7 @@ begin
         AddressWidth => 6)
     port map (
         clk => ap_clk,
-        reset => ap_rst,
+        reset => ap_rst_n_inv,
         i_address0 => compute_bit_length_U0_length_histogram_V_address0,
         i_ce0 => compute_bit_length_U0_length_histogram_V_ce0,
         i_we0 => compute_bit_length_U0_length_histogram_V_we0,
@@ -1241,7 +1216,7 @@ begin
         AddressWidth => 6)
     port map (
         clk => ap_clk,
-        reset => ap_rst,
+        reset => ap_rst_n_inv,
         i_address0 => truncate_tree_U0_output_length_histogram1_V_address0,
         i_ce0 => truncate_tree_U0_output_length_histogram1_V_ce0,
         i_we0 => truncate_tree_U0_output_length_histogram1_V_we0,
@@ -1276,7 +1251,7 @@ begin
         AddressWidth => 6)
     port map (
         clk => ap_clk,
-        reset => ap_rst,
+        reset => ap_rst_n_inv,
         i_address0 => truncate_tree_U0_output_length_histogram2_V_address0,
         i_ce0 => truncate_tree_U0_output_length_histogram2_V_ce0,
         i_we0 => truncate_tree_U0_output_length_histogram2_V_we0,
@@ -1301,7 +1276,7 @@ begin
         AddressWidth => 8)
     port map (
         clk => ap_clk,
-        reset => ap_rst,
+        reset => ap_rst_n_inv,
         i_address0 => canonize_tree_U0_symbol_bits_V_address0,
         i_ce0 => canonize_tree_U0_symbol_bits_V_ce0,
         i_we0 => canonize_tree_U0_symbol_bits_V_we0,
@@ -1322,7 +1297,7 @@ begin
     filter_U0 : component filter
     port map (
         ap_clk => ap_clk,
-        ap_rst => ap_rst,
+        ap_rst => ap_rst_n_inv,
         ap_start => filter_U0_ap_start,
         start_full_n => start_for_Block_codeRepl1012_p_U0_full_n,
         ap_done => filter_U0_ap_done,
@@ -1331,12 +1306,12 @@ begin
         ap_ready => filter_U0_ap_ready,
         start_out => filter_U0_start_out,
         start_write => filter_U0_start_write,
-        in_value_V_address0 => filter_U0_in_value_V_address0,
-        in_value_V_ce0 => filter_U0_in_value_V_ce0,
-        in_value_V_q0 => symbol_histogram_value_V_q0,
-        in_frequency_V_address0 => filter_U0_in_frequency_V_address0,
-        in_frequency_V_ce0 => filter_U0_in_frequency_V_ce0,
-        in_frequency_V_q0 => symbol_histogram_frequency_V_q0,
+        in_value_V_TDATA => symbol_histogram_value_V_TDATA,
+        in_value_V_TVALID => symbol_histogram_value_V_TVALID,
+        in_value_V_TREADY => filter_U0_in_value_V_TREADY,
+        in_frequency_V_TDATA => symbol_histogram_frequency_V_TDATA,
+        in_frequency_V_TVALID => symbol_histogram_frequency_V_TVALID,
+        in_frequency_V_TREADY => filter_U0_in_frequency_V_TREADY,
         out_value_V_address0 => filter_U0_out_value_V_address0,
         out_value_V_ce0 => filter_U0_out_value_V_ce0,
         out_value_V_we0 => filter_U0_out_value_V_we0,
@@ -1352,7 +1327,7 @@ begin
     Block_codeRepl1012_p_U0 : component Block_codeRepl1012_p
     port map (
         ap_clk => ap_clk,
-        ap_rst => ap_rst,
+        ap_rst => ap_rst_n_inv,
         ap_start => Block_codeRepl1012_p_U0_ap_start,
         ap_done => Block_codeRepl1012_p_U0_ap_done,
         ap_continue => Block_codeRepl1012_p_U0_ap_continue,
@@ -1369,7 +1344,7 @@ begin
     sort_U0 : component sort
     port map (
         ap_clk => ap_clk,
-        ap_rst => ap_rst,
+        ap_rst => ap_rst_n_inv,
         ap_start => sort_U0_ap_start,
         ap_done => sort_U0_ap_done,
         ap_continue => sort_U0_ap_continue,
@@ -1394,7 +1369,7 @@ begin
     Loop_copy_sorted_pro_U0 : component Loop_copy_sorted_pro
     port map (
         ap_clk => ap_clk,
-        ap_rst => ap_rst,
+        ap_rst => ap_rst_n_inv,
         ap_start => Loop_copy_sorted_pro_U0_ap_start,
         start_full_n => Loop_copy_sorted_pro_U0_start_full_n,
         ap_done => Loop_copy_sorted_pro_U0_ap_done,
@@ -1435,7 +1410,7 @@ begin
     create_tree_U0 : component create_tree
     port map (
         ap_clk => ap_clk,
-        ap_rst => ap_rst,
+        ap_rst => ap_rst_n_inv,
         ap_start => create_tree_U0_ap_start,
         ap_done => create_tree_U0_ap_done,
         ap_continue => create_tree_U0_ap_continue,
@@ -1469,7 +1444,7 @@ begin
     compute_bit_length_U0 : component compute_bit_length
     port map (
         ap_clk => ap_clk,
-        ap_rst => ap_rst,
+        ap_rst => ap_rst_n_inv,
         ap_start => compute_bit_length_U0_ap_start,
         ap_done => compute_bit_length_U0_ap_done,
         ap_continue => compute_bit_length_U0_ap_continue,
@@ -1504,7 +1479,7 @@ begin
     truncate_tree_U0 : component truncate_tree
     port map (
         ap_clk => ap_clk,
-        ap_rst => ap_rst,
+        ap_rst => ap_rst_n_inv,
         ap_start => truncate_tree_U0_ap_start,
         ap_done => truncate_tree_U0_ap_done,
         ap_continue => truncate_tree_U0_ap_continue,
@@ -1531,7 +1506,7 @@ begin
     canonize_tree_U0 : component canonize_tree
     port map (
         ap_clk => ap_clk,
-        ap_rst => ap_rst,
+        ap_rst => ap_rst_n_inv,
         ap_start => canonize_tree_U0_ap_start,
         ap_done => canonize_tree_U0_ap_done,
         ap_continue => canonize_tree_U0_ap_continue,
@@ -1554,7 +1529,7 @@ begin
     create_codeword_U0 : component create_codeword
     port map (
         ap_clk => ap_clk,
-        ap_rst => ap_rst,
+        ap_rst => ap_rst_n_inv,
         ap_start => create_codeword_U0_ap_start,
         ap_done => create_codeword_U0_ap_done,
         ap_continue => create_codeword_U0_ap_continue,
@@ -1566,15 +1541,14 @@ begin
         codeword_length_histogram_V_address0 => create_codeword_U0_codeword_length_histogram_V_address0,
         codeword_length_histogram_V_ce0 => create_codeword_U0_codeword_length_histogram_V_ce0,
         codeword_length_histogram_V_q0 => truncated_length_his_1_t_q0,
-        encoding_V_address0 => create_codeword_U0_encoding_V_address0,
-        encoding_V_ce0 => create_codeword_U0_encoding_V_ce0,
-        encoding_V_we0 => create_codeword_U0_encoding_V_we0,
-        encoding_V_d0 => create_codeword_U0_encoding_V_d0);
+        encoding_V_TDATA => create_codeword_U0_encoding_V_TDATA,
+        encoding_V_TVALID => create_codeword_U0_encoding_V_TVALID,
+        encoding_V_TREADY => encoding_V_TREADY);
 
     Block_proc_U0 : component Block_proc
     port map (
         ap_clk => ap_clk,
-        ap_rst => ap_rst,
+        ap_rst => ap_rst_n_inv,
         ap_start => Block_proc_U0_ap_start,
         ap_done => Block_proc_U0_ap_done,
         ap_continue => Block_proc_U0_ap_continue,
@@ -1589,7 +1563,7 @@ begin
     n_c_U : component fifo_w9_d2_A
     port map (
         clk => ap_clk,
-        reset => ap_rst,
+        reset => ap_rst_n_inv,
         if_read_ce => ap_const_logic_1,
         if_write_ce => ap_const_logic_1,
         if_din => filter_U0_n_out_din,
@@ -1602,7 +1576,7 @@ begin
     n_c20_U : component fifo_w9_d3_A
     port map (
         clk => ap_clk,
-        reset => ap_rst,
+        reset => ap_rst_n_inv,
         if_read_ce => ap_const_logic_1,
         if_write_ce => ap_const_logic_1,
         if_din => Block_codeRepl1012_p_U0_n_out_din,
@@ -1615,7 +1589,7 @@ begin
     extLd9_loc_channel_U : component fifo_w9_d2_A
     port map (
         clk => ap_clk,
-        reset => ap_rst,
+        reset => ap_rst_n_inv,
         if_read_ce => ap_const_logic_1,
         if_write_ce => ap_const_logic_1,
         if_din => Block_codeRepl1012_p_U0_ap_return,
@@ -1628,7 +1602,7 @@ begin
     sorted_copy1_0_chann_U : component fifo_w9_d256_A
     port map (
         clk => ap_clk,
-        reset => ap_rst,
+        reset => ap_rst_n_inv,
         if_read_ce => ap_const_logic_1,
         if_write_ce => ap_const_logic_1,
         if_din => Loop_copy_sorted_pro_U0_sorted_copy1_0_din,
@@ -1641,7 +1615,7 @@ begin
     sorted_copy1_1_chann_U : component fifo_w32_d256_A
     port map (
         clk => ap_clk,
-        reset => ap_rst,
+        reset => ap_rst_n_inv,
         if_read_ce => ap_const_logic_1,
         if_write_ce => ap_const_logic_1,
         if_din => Loop_copy_sorted_pro_U0_sorted_copy1_1_din,
@@ -1654,7 +1628,7 @@ begin
     val_assign7_loc_c_U : component fifo_w9_d5_A
     port map (
         clk => ap_clk,
-        reset => ap_rst,
+        reset => ap_rst_n_inv,
         if_read_ce => ap_const_logic_1,
         if_write_ce => ap_const_logic_1,
         if_din => Loop_copy_sorted_pro_U0_val_assign7_out_out_din,
@@ -1667,7 +1641,7 @@ begin
     extLd_loc_c_U : component fifo_w9_d2_A
     port map (
         clk => ap_clk,
-        reset => ap_rst,
+        reset => ap_rst_n_inv,
         if_read_ce => ap_const_logic_1,
         if_write_ce => ap_const_logic_1,
         if_din => Loop_copy_sorted_pro_U0_extLd_out_out_din,
@@ -1680,7 +1654,7 @@ begin
     extLd_loc_c21_U : component fifo_w9_d2_A
     port map (
         clk => ap_clk,
-        reset => ap_rst,
+        reset => ap_rst_n_inv,
         if_read_ce => ap_const_logic_1,
         if_write_ce => ap_const_logic_1,
         if_din => Loop_copy_sorted_pro_U0_extLd_out_out1_din,
@@ -1693,7 +1667,7 @@ begin
     extLd_loc_c22_U : component fifo_w9_d2_A
     port map (
         clk => ap_clk,
-        reset => ap_rst,
+        reset => ap_rst_n_inv,
         if_read_ce => ap_const_logic_1,
         if_write_ce => ap_const_logic_1,
         if_din => create_tree_U0_extLd_loc_out_din,
@@ -1706,7 +1680,7 @@ begin
     start_for_Block_czec_U : component start_for_Block_czec
     port map (
         clk => ap_clk,
-        reset => ap_rst,
+        reset => ap_rst_n_inv,
         if_read_ce => ap_const_logic_1,
         if_write_ce => ap_const_logic_1,
         if_din => start_for_Block_codeRepl1012_p_U0_din,
@@ -1719,7 +1693,7 @@ begin
     start_for_create_Aem_U : component start_for_create_Aem
     port map (
         clk => ap_clk,
-        reset => ap_rst,
+        reset => ap_rst_n_inv,
         if_read_ce => ap_const_logic_1,
         if_write_ce => ap_const_logic_1,
         if_din => start_for_create_tree_U0_din,
@@ -1732,7 +1706,7 @@ begin
     start_for_Block_pBew_U : component start_for_Block_pBew
     port map (
         clk => ap_clk,
-        reset => ap_rst,
+        reset => ap_rst_n_inv,
         if_read_ce => ap_const_logic_1,
         if_write_ce => ap_const_logic_1,
         if_din => start_for_Block_proc_U0_din,
@@ -1749,7 +1723,7 @@ begin
     ap_sync_reg_channel_write_filtered_frequency_V_assign_proc : process(ap_clk)
     begin
         if (ap_clk'event and ap_clk =  '1') then
-            if (ap_rst = '1') then
+            if (ap_rst_n_inv = '1') then
                 ap_sync_reg_channel_write_filtered_frequency_V <= ap_const_logic_0;
             else
                 if (((filter_U0_ap_done and filter_U0_ap_continue) = ap_const_logic_1)) then 
@@ -1765,7 +1739,7 @@ begin
     ap_sync_reg_channel_write_filtered_value_V_assign_proc : process(ap_clk)
     begin
         if (ap_clk'event and ap_clk =  '1') then
-            if (ap_rst = '1') then
+            if (ap_rst_n_inv = '1') then
                 ap_sync_reg_channel_write_filtered_value_V <= ap_const_logic_0;
             else
                 if (((filter_U0_ap_done and filter_U0_ap_continue) = ap_const_logic_1)) then 
@@ -1781,7 +1755,7 @@ begin
     ap_sync_reg_channel_write_left_V_assign_proc : process(ap_clk)
     begin
         if (ap_clk'event and ap_clk =  '1') then
-            if (ap_rst = '1') then
+            if (ap_rst_n_inv = '1') then
                 ap_sync_reg_channel_write_left_V <= ap_const_logic_0;
             else
                 if (((create_tree_U0_ap_done and create_tree_U0_ap_continue) = ap_const_logic_1)) then 
@@ -1797,7 +1771,7 @@ begin
     ap_sync_reg_channel_write_parent_V_assign_proc : process(ap_clk)
     begin
         if (ap_clk'event and ap_clk =  '1') then
-            if (ap_rst = '1') then
+            if (ap_rst_n_inv = '1') then
                 ap_sync_reg_channel_write_parent_V <= ap_const_logic_0;
             else
                 if (((create_tree_U0_ap_done and create_tree_U0_ap_continue) = ap_const_logic_1)) then 
@@ -1813,7 +1787,7 @@ begin
     ap_sync_reg_channel_write_right_V_assign_proc : process(ap_clk)
     begin
         if (ap_clk'event and ap_clk =  '1') then
-            if (ap_rst = '1') then
+            if (ap_rst_n_inv = '1') then
                 ap_sync_reg_channel_write_right_V <= ap_const_logic_0;
             else
                 if (((create_tree_U0_ap_done and create_tree_U0_ap_continue) = ap_const_logic_1)) then 
@@ -1829,7 +1803,7 @@ begin
     ap_sync_reg_channel_write_sorted_0_assign_proc : process(ap_clk)
     begin
         if (ap_clk'event and ap_clk =  '1') then
-            if (ap_rst = '1') then
+            if (ap_rst_n_inv = '1') then
                 ap_sync_reg_channel_write_sorted_0 <= ap_const_logic_0;
             else
                 if (((sort_U0_ap_done and sort_U0_ap_continue) = ap_const_logic_1)) then 
@@ -1845,7 +1819,7 @@ begin
     ap_sync_reg_channel_write_sorted_1_assign_proc : process(ap_clk)
     begin
         if (ap_clk'event and ap_clk =  '1') then
-            if (ap_rst = '1') then
+            if (ap_rst_n_inv = '1') then
                 ap_sync_reg_channel_write_sorted_1 <= ap_const_logic_0;
             else
                 if (((sort_U0_ap_done and sort_U0_ap_continue) = ap_const_logic_1)) then 
@@ -1861,7 +1835,7 @@ begin
     ap_sync_reg_channel_write_truncated_length_his_assign_proc : process(ap_clk)
     begin
         if (ap_clk'event and ap_clk =  '1') then
-            if (ap_rst = '1') then
+            if (ap_rst_n_inv = '1') then
                 ap_sync_reg_channel_write_truncated_length_his <= ap_const_logic_0;
             else
                 if (((truncate_tree_U0_ap_done and truncate_tree_U0_ap_continue) = ap_const_logic_1)) then 
@@ -1877,7 +1851,7 @@ begin
     ap_sync_reg_channel_write_truncated_length_his_1_assign_proc : process(ap_clk)
     begin
         if (ap_clk'event and ap_clk =  '1') then
-            if (ap_rst = '1') then
+            if (ap_rst_n_inv = '1') then
                 ap_sync_reg_channel_write_truncated_length_his_1 <= ap_const_logic_0;
             else
                 if (((truncate_tree_U0_ap_done and truncate_tree_U0_ap_continue) = ap_const_logic_1)) then 
@@ -1917,6 +1891,12 @@ begin
     ap_done <= ap_sync_done;
     ap_idle <= (truncate_tree_U0_ap_idle and sort_U0_ap_idle and filter_U0_ap_idle and (extLd9_loc_channel_empty_n xor ap_const_logic_1) and (symbol_bits_V_t_empty_n xor ap_const_logic_1) and (truncated_length_his_1_t_empty_n xor ap_const_logic_1) and (truncated_length_his_t_empty_n xor ap_const_logic_1) and (length_histogram_V_t_empty_n xor ap_const_logic_1) and (right_V_t_empty_n xor ap_const_logic_1) and (left_V_t_empty_n xor ap_const_logic_1) and (parent_V_t_empty_n xor ap_const_logic_1) and (sorted_copy2_value_V_t_empty_n xor ap_const_logic_1) and (sorted_1_t_empty_n xor ap_const_logic_1) and (sorted_0_t_empty_n xor ap_const_logic_1) and (filtered_frequency_V_t_empty_n xor ap_const_logic_1) and (filtered_value_V_t_empty_n xor ap_const_logic_1) and create_tree_U0_ap_idle and create_codeword_U0_ap_idle and compute_bit_length_U0_ap_idle and canonize_tree_U0_ap_idle and Loop_copy_sorted_pro_U0_ap_idle and Block_proc_U0_ap_idle and Block_codeRepl1012_p_U0_ap_idle);
     ap_ready <= filter_U0_ap_ready;
+
+    ap_rst_n_inv_assign_proc : process(ap_rst_n)
+    begin
+                ap_rst_n_inv <= not(ap_rst_n);
+    end process;
+
     ap_sync_channel_write_filtered_frequency_V <= ((filter_U0_out_frequency_V_full_n and ap_channel_done_filtered_frequency_V) or ap_sync_reg_channel_write_filtered_frequency_V);
     ap_sync_channel_write_filtered_value_V <= ((filter_U0_out_value_V_full_n and ap_channel_done_filtered_value_V) or ap_sync_reg_channel_write_filtered_value_V);
     ap_sync_channel_write_left_V <= ((create_tree_U0_left_V_full_n and ap_channel_done_left_V) or ap_sync_reg_channel_write_left_V);
@@ -1950,14 +1930,8 @@ begin
     create_tree_U0_right_V_full_n <= right_V_i_full_n;
     create_tree_U0_start_full_n <= ap_const_logic_1;
     create_tree_U0_start_write <= ap_const_logic_0;
-    encoding_V_address0 <= create_codeword_U0_encoding_V_address0;
-    encoding_V_address1 <= ap_const_lv8_0;
-    encoding_V_ce0 <= create_codeword_U0_encoding_V_ce0;
-    encoding_V_ce1 <= ap_const_logic_0;
-    encoding_V_d0 <= create_codeword_U0_encoding_V_d0;
-    encoding_V_d1 <= ap_const_lv32_0;
-    encoding_V_we0 <= create_codeword_U0_encoding_V_we0;
-    encoding_V_we1 <= ap_const_logic_0;
+    encoding_V_TDATA <= create_codeword_U0_encoding_V_TDATA;
+    encoding_V_TVALID <= create_codeword_U0_encoding_V_TVALID;
     filter_U0_ap_continue <= (ap_sync_channel_write_filtered_value_V and ap_sync_channel_write_filtered_frequency_V);
     filter_U0_ap_start <= ap_start;
     filter_U0_out_frequency_V_full_n <= filtered_frequency_V_i_full_n;
@@ -1979,22 +1953,8 @@ begin
     start_for_Block_codeRepl1012_p_U0_din <= (0=>ap_const_logic_1, others=>'-');
     start_for_Block_proc_U0_din <= (0=>ap_const_logic_1, others=>'-');
     start_for_create_tree_U0_din <= (0=>ap_const_logic_1, others=>'-');
-    symbol_histogram_frequency_V_address0 <= filter_U0_in_frequency_V_address0;
-    symbol_histogram_frequency_V_address1 <= ap_const_lv8_0;
-    symbol_histogram_frequency_V_ce0 <= filter_U0_in_frequency_V_ce0;
-    symbol_histogram_frequency_V_ce1 <= ap_const_logic_0;
-    symbol_histogram_frequency_V_d0 <= ap_const_lv32_0;
-    symbol_histogram_frequency_V_d1 <= ap_const_lv32_0;
-    symbol_histogram_frequency_V_we0 <= ap_const_logic_0;
-    symbol_histogram_frequency_V_we1 <= ap_const_logic_0;
-    symbol_histogram_value_V_address0 <= filter_U0_in_value_V_address0;
-    symbol_histogram_value_V_address1 <= ap_const_lv8_0;
-    symbol_histogram_value_V_ce0 <= filter_U0_in_value_V_ce0;
-    symbol_histogram_value_V_ce1 <= ap_const_logic_0;
-    symbol_histogram_value_V_d0 <= ap_const_lv9_0;
-    symbol_histogram_value_V_d1 <= ap_const_lv9_0;
-    symbol_histogram_value_V_we0 <= ap_const_logic_0;
-    symbol_histogram_value_V_we1 <= ap_const_logic_0;
+    symbol_histogram_frequency_V_TREADY <= filter_U0_in_frequency_V_TREADY;
+    symbol_histogram_value_V_TREADY <= filter_U0_in_value_V_TREADY;
     truncate_tree_U0_ap_continue <= (ap_sync_channel_write_truncated_length_his_1 and ap_sync_channel_write_truncated_length_his);
     truncate_tree_U0_ap_start <= length_histogram_V_t_empty_n;
     truncate_tree_U0_output_length_histogram1_V_full_n <= truncated_length_his_i_full_n;

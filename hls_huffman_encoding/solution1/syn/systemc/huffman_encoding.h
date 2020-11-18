@@ -39,51 +39,30 @@
 namespace ap_rtl {
 
 struct huffman_encoding : public sc_module {
-    // Port declarations 38
+    // Port declarations 17
     sc_in_clk ap_clk;
-    sc_in< sc_logic > ap_rst;
-    sc_out< sc_lv<8> > symbol_histogram_value_V_address0;
-    sc_out< sc_logic > symbol_histogram_value_V_ce0;
-    sc_out< sc_lv<9> > symbol_histogram_value_V_d0;
-    sc_in< sc_lv<9> > symbol_histogram_value_V_q0;
-    sc_out< sc_logic > symbol_histogram_value_V_we0;
-    sc_out< sc_lv<8> > symbol_histogram_value_V_address1;
-    sc_out< sc_logic > symbol_histogram_value_V_ce1;
-    sc_out< sc_lv<9> > symbol_histogram_value_V_d1;
-    sc_in< sc_lv<9> > symbol_histogram_value_V_q1;
-    sc_out< sc_logic > symbol_histogram_value_V_we1;
-    sc_out< sc_lv<8> > symbol_histogram_frequency_V_address0;
-    sc_out< sc_logic > symbol_histogram_frequency_V_ce0;
-    sc_out< sc_lv<32> > symbol_histogram_frequency_V_d0;
-    sc_in< sc_lv<32> > symbol_histogram_frequency_V_q0;
-    sc_out< sc_logic > symbol_histogram_frequency_V_we0;
-    sc_out< sc_lv<8> > symbol_histogram_frequency_V_address1;
-    sc_out< sc_logic > symbol_histogram_frequency_V_ce1;
-    sc_out< sc_lv<32> > symbol_histogram_frequency_V_d1;
-    sc_in< sc_lv<32> > symbol_histogram_frequency_V_q1;
-    sc_out< sc_logic > symbol_histogram_frequency_V_we1;
-    sc_out< sc_lv<8> > encoding_V_address0;
-    sc_out< sc_logic > encoding_V_ce0;
-    sc_out< sc_lv<32> > encoding_V_d0;
-    sc_in< sc_lv<32> > encoding_V_q0;
-    sc_out< sc_logic > encoding_V_we0;
-    sc_out< sc_lv<8> > encoding_V_address1;
-    sc_out< sc_logic > encoding_V_ce1;
-    sc_out< sc_lv<32> > encoding_V_d1;
-    sc_in< sc_lv<32> > encoding_V_q1;
-    sc_out< sc_logic > encoding_V_we1;
+    sc_in< sc_logic > ap_rst_n;
+    sc_in< sc_lv<16> > symbol_histogram_value_V_TDATA;
+    sc_in< sc_lv<32> > symbol_histogram_frequency_V_TDATA;
+    sc_out< sc_lv<32> > encoding_V_TDATA;
     sc_out< sc_lv<32> > num_nonzero_symbols;
+    sc_in< sc_logic > symbol_histogram_value_V_TVALID;
+    sc_out< sc_logic > symbol_histogram_value_V_TREADY;
+    sc_in< sc_logic > symbol_histogram_frequency_V_TVALID;
+    sc_out< sc_logic > symbol_histogram_frequency_V_TREADY;
     sc_in< sc_logic > ap_start;
+    sc_out< sc_logic > encoding_V_TVALID;
+    sc_in< sc_logic > encoding_V_TREADY;
     sc_out< sc_logic > ap_done;
     sc_out< sc_logic > num_nonzero_symbols_ap_vld;
     sc_out< sc_logic > ap_ready;
     sc_out< sc_logic > ap_idle;
     sc_signal< sc_logic > ap_var_for_const2;
-    sc_signal< sc_lv<8> > ap_var_for_const4;
+    sc_signal< sc_lv<32> > ap_var_for_const3;
     sc_signal< sc_logic > ap_var_for_const0;
     sc_signal< sc_lv<9> > ap_var_for_const1;
-    sc_signal< sc_lv<32> > ap_var_for_const3;
     sc_signal< sc_lv<5> > ap_var_for_const6;
+    sc_signal< sc_lv<8> > ap_var_for_const4;
     sc_signal< sc_lv<6> > ap_var_for_const5;
 
 
@@ -131,6 +110,7 @@ struct huffman_encoding : public sc_module {
     start_for_Block_czec* start_for_Block_czec_U;
     start_for_create_Aem* start_for_create_Aem_U;
     start_for_Block_pBew* start_for_Block_pBew_U;
+    sc_signal< sc_logic > ap_rst_n_inv;
     sc_signal< sc_lv<9> > filtered_value_V_i_q0;
     sc_signal< sc_lv<9> > filtered_value_V_t_q0;
     sc_signal< sc_lv<32> > filtered_frequency_V_i_q0;
@@ -170,10 +150,8 @@ struct huffman_encoding : public sc_module {
     sc_signal< sc_logic > filter_U0_ap_ready;
     sc_signal< sc_logic > filter_U0_start_out;
     sc_signal< sc_logic > filter_U0_start_write;
-    sc_signal< sc_lv<8> > filter_U0_in_value_V_address0;
-    sc_signal< sc_logic > filter_U0_in_value_V_ce0;
-    sc_signal< sc_lv<8> > filter_U0_in_frequency_V_address0;
-    sc_signal< sc_logic > filter_U0_in_frequency_V_ce0;
+    sc_signal< sc_logic > filter_U0_in_value_V_TREADY;
+    sc_signal< sc_logic > filter_U0_in_frequency_V_TREADY;
     sc_signal< sc_lv<8> > filter_U0_out_value_V_address0;
     sc_signal< sc_logic > filter_U0_out_value_V_ce0;
     sc_signal< sc_logic > filter_U0_out_value_V_we0;
@@ -367,10 +345,8 @@ struct huffman_encoding : public sc_module {
     sc_signal< sc_logic > create_codeword_U0_symbol_bits_V_ce0;
     sc_signal< sc_lv<6> > create_codeword_U0_codeword_length_histogram_V_address0;
     sc_signal< sc_logic > create_codeword_U0_codeword_length_histogram_V_ce0;
-    sc_signal< sc_lv<8> > create_codeword_U0_encoding_V_address0;
-    sc_signal< sc_logic > create_codeword_U0_encoding_V_ce0;
-    sc_signal< sc_logic > create_codeword_U0_encoding_V_we0;
-    sc_signal< sc_lv<32> > create_codeword_U0_encoding_V_d0;
+    sc_signal< sc_lv<32> > create_codeword_U0_encoding_V_TDATA;
+    sc_signal< sc_logic > create_codeword_U0_encoding_V_TVALID;
     sc_signal< sc_logic > ap_sync_continue;
     sc_signal< sc_logic > Block_proc_U0_ap_start;
     sc_signal< sc_logic > Block_proc_U0_ap_done;
@@ -467,11 +443,11 @@ struct huffman_encoding : public sc_module {
     sc_signal< sc_logic > Block_proc_U0_start_full_n;
     sc_signal< sc_logic > Block_proc_U0_start_write;
     static const sc_logic ap_const_logic_1;
-    static const sc_lv<8> ap_const_lv8_0;
+    static const sc_lv<32> ap_const_lv32_0;
     static const sc_logic ap_const_logic_0;
     static const sc_lv<9> ap_const_lv9_0;
-    static const sc_lv<32> ap_const_lv32_0;
     static const sc_lv<5> ap_const_lv5_0;
+    static const sc_lv<8> ap_const_lv8_0;
     static const sc_lv<8> ap_const_lv8_1;
     static const sc_lv<6> ap_const_lv6_0;
     static const sc_lv<6> ap_const_lv6_1;
@@ -479,11 +455,11 @@ struct huffman_encoding : public sc_module {
     static const bool ap_const_boolean_1;
     // Thread declarations
     void thread_ap_var_for_const2();
-    void thread_ap_var_for_const4();
+    void thread_ap_var_for_const3();
     void thread_ap_var_for_const0();
     void thread_ap_var_for_const1();
-    void thread_ap_var_for_const3();
     void thread_ap_var_for_const6();
+    void thread_ap_var_for_const4();
     void thread_ap_var_for_const5();
     void thread_ap_clk_no_reset_();
     void thread_Block_codeRepl1012_p_U0_ap_continue();
@@ -514,6 +490,7 @@ struct huffman_encoding : public sc_module {
     void thread_ap_done();
     void thread_ap_idle();
     void thread_ap_ready();
+    void thread_ap_rst_n_inv();
     void thread_ap_sync_channel_write_filtered_frequency_V();
     void thread_ap_sync_channel_write_filtered_value_V();
     void thread_ap_sync_channel_write_left_V();
@@ -547,14 +524,8 @@ struct huffman_encoding : public sc_module {
     void thread_create_tree_U0_right_V_full_n();
     void thread_create_tree_U0_start_full_n();
     void thread_create_tree_U0_start_write();
-    void thread_encoding_V_address0();
-    void thread_encoding_V_address1();
-    void thread_encoding_V_ce0();
-    void thread_encoding_V_ce1();
-    void thread_encoding_V_d0();
-    void thread_encoding_V_d1();
-    void thread_encoding_V_we0();
-    void thread_encoding_V_we1();
+    void thread_encoding_V_TDATA();
+    void thread_encoding_V_TVALID();
     void thread_filter_U0_ap_continue();
     void thread_filter_U0_ap_start();
     void thread_filter_U0_out_frequency_V_full_n();
@@ -576,22 +547,8 @@ struct huffman_encoding : public sc_module {
     void thread_start_for_Block_codeRepl1012_p_U0_din();
     void thread_start_for_Block_proc_U0_din();
     void thread_start_for_create_tree_U0_din();
-    void thread_symbol_histogram_frequency_V_address0();
-    void thread_symbol_histogram_frequency_V_address1();
-    void thread_symbol_histogram_frequency_V_ce0();
-    void thread_symbol_histogram_frequency_V_ce1();
-    void thread_symbol_histogram_frequency_V_d0();
-    void thread_symbol_histogram_frequency_V_d1();
-    void thread_symbol_histogram_frequency_V_we0();
-    void thread_symbol_histogram_frequency_V_we1();
-    void thread_symbol_histogram_value_V_address0();
-    void thread_symbol_histogram_value_V_address1();
-    void thread_symbol_histogram_value_V_ce0();
-    void thread_symbol_histogram_value_V_ce1();
-    void thread_symbol_histogram_value_V_d0();
-    void thread_symbol_histogram_value_V_d1();
-    void thread_symbol_histogram_value_V_we0();
-    void thread_symbol_histogram_value_V_we1();
+    void thread_symbol_histogram_frequency_V_TREADY();
+    void thread_symbol_histogram_value_V_TREADY();
     void thread_truncate_tree_U0_ap_continue();
     void thread_truncate_tree_U0_ap_start();
     void thread_truncate_tree_U0_output_length_histogram1_V_full_n();

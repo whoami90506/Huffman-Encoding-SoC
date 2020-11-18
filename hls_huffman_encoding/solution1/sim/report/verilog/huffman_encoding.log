@@ -38,6 +38,25 @@ Start reading file [huffman.random256.txt]
  PASS: The output matches the golden output
 *******************************************
 Ending canonical Huffman encoding testbench
+Starting canonical Huffman encoding testbench
+Start reading file [huffman.random256.txt]
+61 codewords with length 7
+104 codewords with length 8
+43 codewords with length 9
+28 codewords with length 10
+10 codewords with length 11
+2 codewords with length 12
+2 codewords with length 13
+3 codewords with length 14
+1 codewords with length 15
+2 codewords with length 16
+
+***************Comparing against output data*************** 
+
+*******************************************
+ PASS: The output matches the golden output
+*******************************************
+Ending canonical Huffman encoding testbench
 
 D:\Workspace\huffman_encoding_fpga\hls_huffman_encoding\solution1\sim\verilog>set PATH= 
 
@@ -49,18 +68,20 @@ Running: D:/Xilinx/Vivado/2019.2/bin/unwrapped/win64.o/xelab.exe xil_defaultlib.
 Multi-threading is on. Using 2 slave threads.
 INFO: [VRFC 10-2263] Analyzing SystemVerilog file "D:/Workspace/huffman_encoding_fpga/hls_huffman_encoding/solution1/sim/verilog/glbl.v" into library work
 INFO: [VRFC 10-311] analyzing module glbl
-INFO: [VRFC 10-2263] Analyzing SystemVerilog file "D:/Workspace/huffman_encoding_fpga/hls_huffman_encoding/solution1/sim/verilog/AESL_automem_encoding_V.v" into library xil_defaultlib
-INFO: [VRFC 10-311] analyzing module AESL_automem_encoding_V
-INFO: [VRFC 10-2263] Analyzing SystemVerilog file "D:/Workspace/huffman_encoding_fpga/hls_huffman_encoding/solution1/sim/verilog/AESL_automem_symbol_histogram_frequency_V.v" into library xil_defaultlib
-INFO: [VRFC 10-311] analyzing module AESL_automem_symbol_histogram_frequency_V
-INFO: [VRFC 10-2263] Analyzing SystemVerilog file "D:/Workspace/huffman_encoding_fpga/hls_huffman_encoding/solution1/sim/verilog/AESL_automem_symbol_histogram_value_V.v" into library xil_defaultlib
-INFO: [VRFC 10-311] analyzing module AESL_automem_symbol_histogram_value_V
+INFO: [VRFC 10-2263] Analyzing SystemVerilog file "D:/Workspace/huffman_encoding_fpga/hls_huffman_encoding/solution1/sim/verilog/AESL_axi_s_encoding_V.v" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module AESL_axi_s_encoding_V
+INFO: [VRFC 10-2263] Analyzing SystemVerilog file "D:/Workspace/huffman_encoding_fpga/hls_huffman_encoding/solution1/sim/verilog/AESL_axi_s_symbol_histogram_frequency_V.v" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module AESL_axi_s_symbol_histogram_frequency_V
+INFO: [VRFC 10-2263] Analyzing SystemVerilog file "D:/Workspace/huffman_encoding_fpga/hls_huffman_encoding/solution1/sim/verilog/AESL_axi_s_symbol_histogram_value_V.v" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module AESL_axi_s_symbol_histogram_value_V
 INFO: [VRFC 10-2263] Analyzing SystemVerilog file "D:/Workspace/huffman_encoding_fpga/hls_huffman_encoding/solution1/sim/verilog/AESL_deadlock_detection_unit.v" into library xil_defaultlib
 INFO: [VRFC 10-311] analyzing module AESL_deadlock_detect_unit
 INFO: [VRFC 10-2263] Analyzing SystemVerilog file "D:/Workspace/huffman_encoding_fpga/hls_huffman_encoding/solution1/sim/verilog/AESL_deadlock_detector.v" into library xil_defaultlib
 INFO: [VRFC 10-311] analyzing module AESL_deadlock_detector
 INFO: [VRFC 10-2263] Analyzing SystemVerilog file "D:/Workspace/huffman_encoding_fpga/hls_huffman_encoding/solution1/sim/verilog/AESL_deadlock_report_unit.v" into library xil_defaultlib
 INFO: [VRFC 10-311] analyzing module AESL_deadlock_report_unit
+INFO: [VRFC 10-2263] Analyzing SystemVerilog file "D:/Workspace/huffman_encoding_fpga/hls_huffman_encoding/solution1/sim/verilog/AESL_fifo.v" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module fifo
 INFO: [VRFC 10-2263] Analyzing SystemVerilog file "D:/Workspace/huffman_encoding_fpga/hls_huffman_encoding/solution1/sim/verilog/Block_codeRepl1012_p.v" into library xil_defaultlib
 INFO: [VRFC 10-311] analyzing module Block_codeRepl1012_p
 INFO: [VRFC 10-2263] Analyzing SystemVerilog file "D:/Workspace/huffman_encoding_fpga/hls_huffman_encoding/solution1/sim/verilog/Block_proc.v" into library xil_defaultlib
@@ -143,6 +164,15 @@ INFO: [VRFC 10-311] analyzing module huffman_encoding_yd2_memcore_ram
 INFO: [VRFC 10-311] analyzing module huffman_encoding_yd2_memcore
 INFO: [VRFC 10-2263] Analyzing SystemVerilog file "D:/Workspace/huffman_encoding_fpga/hls_huffman_encoding/solution1/sim/verilog/Loop_copy_sorted_pro.v" into library xil_defaultlib
 INFO: [VRFC 10-311] analyzing module Loop_copy_sorted_pro
+INFO: [VRFC 10-2263] Analyzing SystemVerilog file "D:/Workspace/huffman_encoding_fpga/hls_huffman_encoding/solution1/sim/verilog/regslice_core.v" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module regslice_both
+INFO: [VRFC 10-311] analyzing module regslice_forward
+INFO: [VRFC 10-311] analyzing module regslice_reverse
+INFO: [VRFC 10-311] analyzing module regslice_both_w1
+INFO: [VRFC 10-311] analyzing module regslice_forward_w1
+INFO: [VRFC 10-311] analyzing module regslice_reverse_w1
+INFO: [VRFC 10-311] analyzing module ibuf
+INFO: [VRFC 10-311] analyzing module obuf
 INFO: [VRFC 10-2263] Analyzing SystemVerilog file "D:/Workspace/huffman_encoding_fpga/hls_huffman_encoding/solution1/sim/verilog/sort.v" into library xil_defaultlib
 INFO: [VRFC 10-311] analyzing module sort
 INFO: [VRFC 10-2263] Analyzing SystemVerilog file "D:/Workspace/huffman_encoding_fpga/hls_huffman_encoding/solution1/sim/verilog/sort_current_digifYi.v" into library xil_defaultlib
@@ -189,6 +219,12 @@ Compiling module xil_defaultlib.huffman_encoding_wdI(AddressRang...
 Compiling module xil_defaultlib.huffman_encoding_yd2_memcore_ram
 Compiling module xil_defaultlib.huffman_encoding_yd2_memcore
 Compiling module xil_defaultlib.huffman_encoding_yd2(AddressRang...
+Compiling module xil_defaultlib.ibuf(W=17)
+Compiling module xil_defaultlib.obuf(W=17)
+Compiling module xil_defaultlib.regslice_both(DataWidth=16)
+Compiling module xil_defaultlib.ibuf(W=33)
+Compiling module xil_defaultlib.obuf(W=33)
+Compiling module xil_defaultlib.regslice_both_default
 Compiling module xil_defaultlib.filter
 Compiling module xil_defaultlib.Block_codeRepl1012_p
 Compiling module xil_defaultlib.sort_previous_sorbkb_ram
@@ -232,9 +268,11 @@ Compiling module xil_defaultlib.start_for_create_Aem
 Compiling module xil_defaultlib.start_for_Block_pBew_shiftReg
 Compiling module xil_defaultlib.start_for_Block_pBew
 Compiling module xil_defaultlib.huffman_encoding
-Compiling module xil_defaultlib.AESL_automem_symbol_histogram_va...
-Compiling module xil_defaultlib.AESL_automem_symbol_histogram_fr...
-Compiling module xil_defaultlib.AESL_automem_encoding_V
+Compiling module xil_defaultlib.fifo(DEPTH=256,WIDTH=16)
+Compiling module xil_defaultlib.AESL_axi_s_symbol_histogram_valu...
+Compiling module xil_defaultlib.fifo(DEPTH=256,WIDTH=32)
+Compiling module xil_defaultlib.AESL_axi_s_symbol_histogram_freq...
+Compiling module xil_defaultlib.AESL_axi_s_encoding_V
 Compiling module xil_defaultlib.AESL_deadlock_detect_unit(PROC_N...
 Compiling module xil_defaultlib.AESL_deadlock_detect_unit(PROC_N...
 Compiling module xil_defaultlib.AESL_deadlock_detect_unit(PROC_N...
@@ -257,8 +295,8 @@ Built simulation snapshot huffman_encoding
     ** Copyright 1986-2019 Xilinx, Inc. All Rights Reserved.
 
 source D:/Workspace/huffman_encoding_fpga/hls_huffman_encoding/solution1/sim/verilog/xsim.dir/huffman_encoding/webtalk/xsim_webtalk.tcl -notrace
-INFO: [Common 17-186] 'D:/Workspace/huffman_encoding_fpga/hls_huffman_encoding/solution1/sim/verilog/xsim.dir/huffman_encoding/webtalk/usage_statistics_ext_xsim.xml' has been successfully sent to Xilinx on Wed Nov 18 15:32:45 2020. For additional details about this file, please refer to the WebTalk help file at D:/Xilinx/Vivado/2019.2/doc/webtalk_introduction.html.
-INFO: [Common 17-206] Exiting Webtalk at Wed Nov 18 15:32:45 2020...
+INFO: [Common 17-186] 'D:/Workspace/huffman_encoding_fpga/hls_huffman_encoding/solution1/sim/verilog/xsim.dir/huffman_encoding/webtalk/usage_statistics_ext_xsim.xml' has been successfully sent to Xilinx on Wed Nov 18 16:58:50 2020. For additional details about this file, please refer to the WebTalk help file at D:/Xilinx/Vivado/2019.2/doc/webtalk_introduction.html.
+INFO: [Common 17-206] Exiting Webtalk at Wed Nov 18 16:58:50 2020...
 
 ****** xsim v2019.2 (64-bit)
   **** SW Build 2708876 on Wed Nov  6 21:40:23 MST 2019
@@ -278,11 +316,11 @@ source huffman_encoding.tcl
 // RTL Simulation : "Inter-Transaction Progress" ["Intra-Transaction Progress"] @ "Simulation Time"
 ////////////////////////////////////////////////////////////////////////////////////
 // RTL Simulation : 0 / 1 [n/a] @ "113000"
-// RTL Simulation : 1 / 1 [n/a] @ "71128000"
+// RTL Simulation : 1 / 1 [n/a] @ "71113000"
 ////////////////////////////////////////////////////////////////////////////////////
-$finish called at time : 71147500 ps : File "D:/Workspace/huffman_encoding_fpga/hls_huffman_encoding/solution1/sim/verilog/huffman_encoding.autotb.v" Line 417
+$finish called at time : 71132500 ps : File "D:/Workspace/huffman_encoding_fpga/hls_huffman_encoding/solution1/sim/verilog/huffman_encoding.autotb.v" Line 347
 ## quit
-INFO: [Common 17-206] Exiting xsim at Wed Nov 18 15:33:16 2020...
+INFO: [Common 17-206] Exiting xsim at Wed Nov 18 16:59:02 2020...
 Starting canonical Huffman encoding testbench
 Start reading file [huffman.random256.txt]
 

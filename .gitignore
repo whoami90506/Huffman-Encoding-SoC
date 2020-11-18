@@ -4,3 +4,4 @@
 .apc
 ~*
 *.log
+*.cache

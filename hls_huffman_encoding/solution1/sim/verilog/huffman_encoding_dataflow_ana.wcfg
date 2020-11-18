@@ -268,42 +268,6 @@
          <wvobject type="group" fp_name="filter_U0_Input_group">
             <obj_property name="label">Input Channels</obj_property>
             <obj_property name="DisplayName">label</obj_property>
-            <wvobject type="group" fp_name="in_value_V_group">
-               <obj_property name="label">in_value_V(PIPO)</obj_property>
-               <obj_property name="DisplayName">label</obj_property>
-               <wvobject type="logic" fp_name="/apatb_huffman_encoding_top/AESL_inst_huffman_encoding/filter_U0/in_value_V_address0">
-               </wvobject>
-               <wvobject type="logic" fp_name="/apatb_huffman_encoding_top/AESL_inst_huffman_encoding/filter_U0/in_value_V_q0">
-               </wvobject>
-               <wvobject type="logic" fp_name="/apatb_huffman_encoding_top/AESL_inst_huffman_encoding/filter_U0/in_value_V_ce0">
-                  <obj_property name="ElementShortName">in_value_V_ce0</obj_property>
-                  <obj_property name="ObjectShortName">in_value_V_ce0</obj_property>
-               </wvobject>
-               <wvobject type="logic" fp_name="/apatb_huffman_encoding_top/AESL_inst_huffman_encoding/filter_U0/ap_ready">
-                  <obj_property name="ElementShortName">ap_ready</obj_property>
-                  <obj_property name="ObjectShortName">ap_ready</obj_property>
-                  <obj_property name="label">ap_ready(t_read)</obj_property>
-                  <obj_property name="DisplayName">label</obj_property>
-               </wvobject>
-            </wvobject>
-            <wvobject type="group" fp_name="in_frequency_V_group">
-               <obj_property name="label">in_frequency_V(PIPO)</obj_property>
-               <obj_property name="DisplayName">label</obj_property>
-               <wvobject type="logic" fp_name="/apatb_huffman_encoding_top/AESL_inst_huffman_encoding/filter_U0/in_frequency_V_address0">
-               </wvobject>
-               <wvobject type="logic" fp_name="/apatb_huffman_encoding_top/AESL_inst_huffman_encoding/filter_U0/in_frequency_V_q0">
-               </wvobject>
-               <wvobject type="logic" fp_name="/apatb_huffman_encoding_top/AESL_inst_huffman_encoding/filter_U0/in_frequency_V_ce0">
-                  <obj_property name="ElementShortName">in_frequency_V_ce0</obj_property>
-                  <obj_property name="ObjectShortName">in_frequency_V_ce0</obj_property>
-               </wvobject>
-               <wvobject type="logic" fp_name="/apatb_huffman_encoding_top/AESL_inst_huffman_encoding/filter_U0/ap_ready">
-                  <obj_property name="ElementShortName">ap_ready</obj_property>
-                  <obj_property name="ObjectShortName">ap_ready</obj_property>
-                  <obj_property name="label">ap_ready(t_read)</obj_property>
-                  <obj_property name="DisplayName">label</obj_property>
-               </wvobject>
-            </wvobject>
          </wvobject>
          <wvobject type="group" fp_name="filter_U0_Handshake_group">
             <obj_property name="label">Block-level handshake</obj_property>
@@ -1400,34 +1364,6 @@
          <wvobject type="group" fp_name="create_codeword_U0_Output_group">
             <obj_property name="label">Output Channels</obj_property>
             <obj_property name="DisplayName">label</obj_property>
-            <wvobject type="group" fp_name="encoding_V_group">
-               <obj_property name="label">encoding_V(PIPO)</obj_property>
-               <obj_property name="DisplayName">label</obj_property>
-               <wvobject type="logic" fp_name="/apatb_huffman_encoding_top/AESL_inst_huffman_encoding/create_codeword_U0/encoding_V_address0">
-               </wvobject>
-               <wvobject type="logic" fp_name="/apatb_huffman_encoding_top/AESL_inst_huffman_encoding/create_codeword_U0/encoding_V_d0">
-               </wvobject>
-               <wvobject type="logic" fp_name="/apatb_huffman_encoding_top/AESL_inst_huffman_encoding/create_codeword_U0/encoding_V_ce0">
-                  <obj_property name="ElementShortName">encoding_V_ce0</obj_property>
-                  <obj_property name="ObjectShortName">encoding_V_ce0</obj_property>
-               </wvobject>
-               <wvobject type="logic" fp_name="/apatb_huffman_encoding_top/AESL_inst_huffman_encoding/create_codeword_U0/encoding_V_we0">
-                  <obj_property name="ElementShortName">encoding_V_we0</obj_property>
-                  <obj_property name="ObjectShortName">encoding_V_we0</obj_property>
-               </wvobject>
-               <wvobject type="logic" fp_name="/apatb_huffman_encoding_top/AESL_inst_huffman_encoding/create_codeword_U0/ap_done">
-                  <obj_property name="ElementShortName">ap_done</obj_property>
-                  <obj_property name="ObjectShortName">ap_done</obj_property>
-                  <obj_property name="label">ap_done(i_write)</obj_property>
-                  <obj_property name="DisplayName">label</obj_property>
-               </wvobject>
-               <wvobject type="logic" fp_name="/apatb_huffman_encoding_top/AESL_inst_huffman_encoding/create_codeword_U0/ap_continue">
-                  <obj_property name="ElementShortName">ap_continue</obj_property>
-                  <obj_property name="ObjectShortName">ap_continue</obj_property>
-                  <obj_property name="label">ap_continue(i_full_n)</obj_property>
-                  <obj_property name="DisplayName">label</obj_property>
-               </wvobject>
-            </wvobject>
          </wvobject>
       </wvobject>
       <wvobject type="group" fp_name="Block_proc_U0_group">

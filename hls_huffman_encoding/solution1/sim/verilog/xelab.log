@@ -5,18 +5,20 @@ Running: D:/Xilinx/Vivado/2019.2/bin/unwrapped/win64.o/xelab.exe xil_defaultlib.
 Multi-threading is on. Using 2 slave threads.
 INFO: [VRFC 10-2263] Analyzing SystemVerilog file "D:/Workspace/huffman_encoding_fpga/hls_huffman_encoding/solution1/sim/verilog/glbl.v" into library work
 INFO: [VRFC 10-311] analyzing module glbl
-INFO: [VRFC 10-2263] Analyzing SystemVerilog file "D:/Workspace/huffman_encoding_fpga/hls_huffman_encoding/solution1/sim/verilog/AESL_automem_encoding_V.v" into library xil_defaultlib
-INFO: [VRFC 10-311] analyzing module AESL_automem_encoding_V
-INFO: [VRFC 10-2263] Analyzing SystemVerilog file "D:/Workspace/huffman_encoding_fpga/hls_huffman_encoding/solution1/sim/verilog/AESL_automem_symbol_histogram_frequency_V.v" into library xil_defaultlib
-INFO: [VRFC 10-311] analyzing module AESL_automem_symbol_histogram_frequency_V
-INFO: [VRFC 10-2263] Analyzing SystemVerilog file "D:/Workspace/huffman_encoding_fpga/hls_huffman_encoding/solution1/sim/verilog/AESL_automem_symbol_histogram_value_V.v" into library xil_defaultlib
-INFO: [VRFC 10-311] analyzing module AESL_automem_symbol_histogram_value_V
+INFO: [VRFC 10-2263] Analyzing SystemVerilog file "D:/Workspace/huffman_encoding_fpga/hls_huffman_encoding/solution1/sim/verilog/AESL_axi_s_encoding_V.v" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module AESL_axi_s_encoding_V
+INFO: [VRFC 10-2263] Analyzing SystemVerilog file "D:/Workspace/huffman_encoding_fpga/hls_huffman_encoding/solution1/sim/verilog/AESL_axi_s_symbol_histogram_frequency_V.v" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module AESL_axi_s_symbol_histogram_frequency_V
+INFO: [VRFC 10-2263] Analyzing SystemVerilog file "D:/Workspace/huffman_encoding_fpga/hls_huffman_encoding/solution1/sim/verilog/AESL_axi_s_symbol_histogram_value_V.v" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module AESL_axi_s_symbol_histogram_value_V
 INFO: [VRFC 10-2263] Analyzing SystemVerilog file "D:/Workspace/huffman_encoding_fpga/hls_huffman_encoding/solution1/sim/verilog/AESL_deadlock_detection_unit.v" into library xil_defaultlib
 INFO: [VRFC 10-311] analyzing module AESL_deadlock_detect_unit
 INFO: [VRFC 10-2263] Analyzing SystemVerilog file "D:/Workspace/huffman_encoding_fpga/hls_huffman_encoding/solution1/sim/verilog/AESL_deadlock_detector.v" into library xil_defaultlib
 INFO: [VRFC 10-311] analyzing module AESL_deadlock_detector
 INFO: [VRFC 10-2263] Analyzing SystemVerilog file "D:/Workspace/huffman_encoding_fpga/hls_huffman_encoding/solution1/sim/verilog/AESL_deadlock_report_unit.v" into library xil_defaultlib
 INFO: [VRFC 10-311] analyzing module AESL_deadlock_report_unit
+INFO: [VRFC 10-2263] Analyzing SystemVerilog file "D:/Workspace/huffman_encoding_fpga/hls_huffman_encoding/solution1/sim/verilog/AESL_fifo.v" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module fifo
 INFO: [VRFC 10-2263] Analyzing SystemVerilog file "D:/Workspace/huffman_encoding_fpga/hls_huffman_encoding/solution1/sim/verilog/Block_codeRepl1012_p.v" into library xil_defaultlib
 INFO: [VRFC 10-311] analyzing module Block_codeRepl1012_p
 INFO: [VRFC 10-2263] Analyzing SystemVerilog file "D:/Workspace/huffman_encoding_fpga/hls_huffman_encoding/solution1/sim/verilog/Block_proc.v" into library xil_defaultlib
@@ -99,6 +101,15 @@ INFO: [VRFC 10-311] analyzing module huffman_encoding_yd2_memcore_ram
 INFO: [VRFC 10-311] analyzing module huffman_encoding_yd2_memcore
 INFO: [VRFC 10-2263] Analyzing SystemVerilog file "D:/Workspace/huffman_encoding_fpga/hls_huffman_encoding/solution1/sim/verilog/Loop_copy_sorted_pro.v" into library xil_defaultlib
 INFO: [VRFC 10-311] analyzing module Loop_copy_sorted_pro
+INFO: [VRFC 10-2263] Analyzing SystemVerilog file "D:/Workspace/huffman_encoding_fpga/hls_huffman_encoding/solution1/sim/verilog/regslice_core.v" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module regslice_both
+INFO: [VRFC 10-311] analyzing module regslice_forward
+INFO: [VRFC 10-311] analyzing module regslice_reverse
+INFO: [VRFC 10-311] analyzing module regslice_both_w1
+INFO: [VRFC 10-311] analyzing module regslice_forward_w1
+INFO: [VRFC 10-311] analyzing module regslice_reverse_w1
+INFO: [VRFC 10-311] analyzing module ibuf
+INFO: [VRFC 10-311] analyzing module obuf
 INFO: [VRFC 10-2263] Analyzing SystemVerilog file "D:/Workspace/huffman_encoding_fpga/hls_huffman_encoding/solution1/sim/verilog/sort.v" into library xil_defaultlib
 INFO: [VRFC 10-311] analyzing module sort
 INFO: [VRFC 10-2263] Analyzing SystemVerilog file "D:/Workspace/huffman_encoding_fpga/hls_huffman_encoding/solution1/sim/verilog/sort_current_digifYi.v" into library xil_defaultlib
@@ -145,6 +156,12 @@ Compiling module xil_defaultlib.huffman_encoding_wdI(AddressRang...
 Compiling module xil_defaultlib.huffman_encoding_yd2_memcore_ram
 Compiling module xil_defaultlib.huffman_encoding_yd2_memcore
 Compiling module xil_defaultlib.huffman_encoding_yd2(AddressRang...
+Compiling module xil_defaultlib.ibuf(W=17)
+Compiling module xil_defaultlib.obuf(W=17)
+Compiling module xil_defaultlib.regslice_both(DataWidth=16)
+Compiling module xil_defaultlib.ibuf(W=33)
+Compiling module xil_defaultlib.obuf(W=33)
+Compiling module xil_defaultlib.regslice_both_default
 Compiling module xil_defaultlib.filter
 Compiling module xil_defaultlib.Block_codeRepl1012_p
 Compiling module xil_defaultlib.sort_previous_sorbkb_ram
@@ -188,9 +205,11 @@ Compiling module xil_defaultlib.start_for_create_Aem
 Compiling module xil_defaultlib.start_for_Block_pBew_shiftReg
 Compiling module xil_defaultlib.start_for_Block_pBew
 Compiling module xil_defaultlib.huffman_encoding
-Compiling module xil_defaultlib.AESL_automem_symbol_histogram_va...
-Compiling module xil_defaultlib.AESL_automem_symbol_histogram_fr...
-Compiling module xil_defaultlib.AESL_automem_encoding_V
+Compiling module xil_defaultlib.fifo(DEPTH=256,WIDTH=16)
+Compiling module xil_defaultlib.AESL_axi_s_symbol_histogram_valu...
+Compiling module xil_defaultlib.fifo(DEPTH=256,WIDTH=32)
+Compiling module xil_defaultlib.AESL_axi_s_symbol_histogram_freq...
+Compiling module xil_defaultlib.AESL_axi_s_encoding_V
 Compiling module xil_defaultlib.AESL_deadlock_detect_unit(PROC_N...
 Compiling module xil_defaultlib.AESL_deadlock_detect_unit(PROC_N...
 Compiling module xil_defaultlib.AESL_deadlock_detect_unit(PROC_N...

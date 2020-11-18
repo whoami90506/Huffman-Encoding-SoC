@@ -4,6 +4,10 @@ void huffman_encoding(
     /* input */ Symbol symbol_histogram[INPUT_SYMBOL_SIZE],
     /* output */ PackedCodewordAndLength encoding[INPUT_SYMBOL_SIZE],
     /* output */ int *num_nonzero_symbols) {
+    #pragma HLS INTERFACE axis port=symbol_histogram 
+    #pragma HLS INTERFACE axis port=encoding 
+    #pragma HLS INTERFACE ap_vld port=num_nonzero_symbols 
+
     #pragma HLS DATAFLOW
 
     Symbol filtered[INPUT_SYMBOL_SIZE];
