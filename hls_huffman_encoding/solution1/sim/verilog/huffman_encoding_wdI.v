@@ -7,10 +7,11 @@
 
 module huffman_encoding_wdI
 #(parameter
-    DataWidth    = 10,
+    DataWidth    = 9,
     AddressRange = 32,
     AddressWidth = 6,
     BufferCount  = 2,
+    MemLatency   = 1,
     IndexWidth   = 1
 ) (
     // system signals
@@ -25,6 +26,11 @@ module huffman_encoding_wdI
     input  wire [AddressWidth-1:0] i_address0,
     input  wire [DataWidth-1:0]    i_d0,
     output wire [DataWidth-1:0]    i_q0,
+    input  wire                    i_ce1,
+    input  wire                    i_we1,
+    input  wire [AddressWidth-1:0] i_address1,
+    input  wire [DataWidth-1:0]    i_d1,
+    output wire [DataWidth-1:0]    i_q1,
     // target
     input  wire                    t_ce,
     input  wire                    t_read,
@@ -33,40 +39,84 @@ module huffman_encoding_wdI
     input  wire                    t_we0,
     input  wire [AddressWidth-1:0] t_address0,
     input  wire [DataWidth-1:0]    t_d0,
-    output wire [DataWidth-1:0]    t_q0
+    output wire [DataWidth-1:0]    t_q0,
+    input  wire                    t_ce1,
+    input  wire                    t_we1,
+    input  wire [AddressWidth-1:0] t_address1,
+    input  wire [DataWidth-1:0]    t_d1,
+    output wire [DataWidth-1:0]    t_q1
 );
 //------------------------Local signal-------------------
 // control/status
 reg  [IndexWidth-1:0]   iptr    = 1'b0; // initiator index
 reg  [IndexWidth-1:0]   tptr    = 1'b0; // target index
+reg  [IndexWidth-1:0]   prev_iptr    = 1'b0; // previous initiator index
+reg  [IndexWidth-1:0]   prev_tptr    = 1'b0; // previous target index
 reg  [IndexWidth:0]     count   = 1'b0; // count of written buffers
 reg                     full_n  = 1'b1; // whether all buffers are written
 reg                     empty_n = 1'b0; // whether none of the buffers is written
 wire                    push_buf;       // finish writing a buffer
 wire                    pop_buf;        // finish reading a buffer
-wire [AddressWidth+IndexWidth-1:0]   memcore_iaddr;
-wire [AddressWidth+IndexWidth-1:0]   memcore_taddr;
-
+// buffer signals
+wire                    buf_ce0[0:BufferCount-1];
+wire                    buf_we0[0:BufferCount-1];
+wire [AddressWidth-1:0] buf_a0[0:BufferCount-1];
+wire [DataWidth-1:0]    buf_d0[0:BufferCount-1];
+wire [DataWidth-1:0]    buf_q0[0:BufferCount-1];
+wire                    buf_ce1[0:BufferCount-1];
+wire                    buf_we1[0:BufferCount-1];
+wire [AddressWidth-1:0] buf_a1[0:BufferCount-1];
+wire [DataWidth-1:0]    buf_d1[0:BufferCount-1];
+wire [DataWidth-1:0]    buf_q1[0:BufferCount-1];
 //------------------------Instantiation------------------
-assign memcore_iaddr = {i_address0, iptr};
-assign memcore_taddr = {t_address0, tptr};
-huffman_encoding_wdI_memcore huffman_encoding_wdI_memcore_U (
-    .clk      ( clk ),
-    .reset    ( reset ),
-    .ce0      ( i_ce0 ),
-    .we0      ( i_we0),
-    .address0 ( memcore_iaddr ),
-    .d0       ( i_d0 ),
-    .q0       ( i_q0 ),
+genvar i;
+generate
+    for (i = 0; i < BufferCount; i = i + 1) begin : gen_buffer
+        huffman_encoding_wdI_memcore huffman_encoding_wdI_memcore_U (
+            .clk      ( clk ),
+            .reset    ( reset ),
+            .ce0      ( buf_ce0[i] ),
+            .we0      ( buf_we0[i] ),
+            .address0 ( buf_a0[i] ),
+            .d0       ( buf_d0[i] ),
+            .q0       ( buf_q0[i] ),
+            .ce1      ( buf_ce1[i] ),
+            .we1      ( buf_we1[i] ),
+            .address1 ( buf_a1[i] ),
+            .d1       ( buf_d1[i] ),
+            .q1       ( buf_q1[i] )
+        );
+    end
+endgenerate
 
-    .ce1      ( t_ce0 ),
-    .we1      ( t_we0),
-    .address1 ( memcore_taddr ),
-    .d1       ( t_d0 ),
-    .q1       ( t_q0 )
-);
+//++++++++++++++++++++++++buffer signals+++++++++++++++++
+generate
+    for (i = 0; i < BufferCount; i = i + 1) begin : connect_buffer
+        assign buf_ce0[i] = (iptr == i) ? i_ce0 :
+                            (tptr == i && empty_n)? t_ce0 :
+                            1'b0;
+        assign buf_we0[i] = (iptr == i) ? i_we0 :
+                            (tptr == i && empty_n)? t_we0 :
+                            1'b0;
+        assign buf_a0[i]  = (iptr == i) ? i_address0 : t_address0;
+        assign buf_d0[i]  = (iptr == i) ? i_d0       : t_d0;
+        assign buf_ce1[i] = (iptr == i) ? i_ce1 :
+                            (tptr == i && empty_n)? t_ce1 :
+                            1'b0;
+        assign buf_we1[i] = (iptr == i) ? i_we1 :
+                            (tptr == i && empty_n)? t_we1 :
+                            1'b0;
+        assign buf_a1[i]  = (iptr == i) ? i_address1 : t_address1;
+        assign buf_d1[i]  = (iptr == i) ? i_d1       : t_d1;
+    end
+endgenerate
+//+++++++++++++++++++++++++++++++++++++++++++++++++++++++
 
 //------------------------Body---------------------------
+assign i_q0      = buf_q0[prev_iptr];
+assign t_q0      = buf_q0[prev_tptr];
+assign i_q1      = buf_q1[prev_iptr];
+assign t_q1      = buf_q1[prev_tptr];
 
 //++++++++++++++++++++++++output+++++++++++++++++++++++++
 assign i_full_n  = full_n;
@@ -86,6 +136,24 @@ always @(posedge clk) begin
             iptr <= 1'b0;
         else
             iptr <= iptr + 1'b1;
+    end
+end
+
+// prev_iptr
+always @(posedge clk) begin
+    if (reset == 1'b1)
+        prev_iptr <= 1'b0;
+    else begin
+        prev_iptr <= iptr;
+    end
+end
+
+// prev_tptr
+always @(posedge clk) begin
+    if (reset == 1'b1)
+        prev_tptr <= 1'b0;
+    else begin
+        prev_tptr <= tptr;
     end
 end
 

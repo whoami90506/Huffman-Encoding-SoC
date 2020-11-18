@@ -7,7 +7,7 @@
 
 `timescale 1 ns / 1 ps 
 
-(* CORE_GENERATION_INFO="huffman_encoding,hls_ip_2019_2,{HLS_INPUT_TYPE=cxx,HLS_INPUT_FLOAT=0,HLS_INPUT_FIXED=1,HLS_INPUT_PART=xc7z020-clg484-1,HLS_INPUT_CLOCK=5.000000,HLS_INPUT_ARCH=dataflow,HLS_SYN_CLOCK=7.683000,HLS_SYN_LAT=-1,HLS_SYN_TPT=-1,HLS_SYN_MEM=19,HLS_SYN_DSP=0,HLS_SYN_FF=3347,HLS_SYN_LUT=5858,HLS_VERSION=2019_2}" *)
+(* CORE_GENERATION_INFO="huffman_encoding,hls_ip_2019_2,{HLS_INPUT_TYPE=cxx,HLS_INPUT_FLOAT=0,HLS_INPUT_FIXED=1,HLS_INPUT_PART=xc7z020-clg484-1,HLS_INPUT_CLOCK=5.000000,HLS_INPUT_ARCH=dataflow,HLS_SYN_CLOCK=4.559500,HLS_SYN_LAT=-1,HLS_SYN_TPT=-1,HLS_SYN_MEM=23,HLS_SYN_DSP=0,HLS_SYN_FF=3813,HLS_SYN_LUT=6958,HLS_VERSION=2019_2}" *)
 
 module huffman_encoding (
         ap_clk,
@@ -55,13 +55,13 @@ input   ap_clk;
 input   ap_rst;
 output  [7:0] symbol_histogram_value_V_address0;
 output   symbol_histogram_value_V_ce0;
-output  [9:0] symbol_histogram_value_V_d0;
-input  [9:0] symbol_histogram_value_V_q0;
+output  [8:0] symbol_histogram_value_V_d0;
+input  [8:0] symbol_histogram_value_V_q0;
 output   symbol_histogram_value_V_we0;
 output  [7:0] symbol_histogram_value_V_address1;
 output   symbol_histogram_value_V_ce1;
-output  [9:0] symbol_histogram_value_V_d1;
-input  [9:0] symbol_histogram_value_V_q1;
+output  [8:0] symbol_histogram_value_V_d1;
+input  [8:0] symbol_histogram_value_V_q1;
 output   symbol_histogram_value_V_we1;
 output  [7:0] symbol_histogram_frequency_V_address0;
 output   symbol_histogram_frequency_V_ce0;
@@ -90,34 +90,36 @@ output   num_nonzero_symbols_ap_vld;
 output   ap_ready;
 output   ap_idle;
 
-wire   [9:0] filtered_value_V_i_q0;
-wire   [9:0] filtered_value_V_t_q0;
+wire   [8:0] filtered_value_V_i_q0;
+wire   [8:0] filtered_value_V_t_q0;
 wire   [31:0] filtered_frequency_V_i_q0;
 wire   [31:0] filtered_frequency_V_t_q0;
-wire   [9:0] sorted_0_i_q0;
-wire   [9:0] sorted_0_t_q0;
+wire   [8:0] sorted_0_i_q0;
+wire   [8:0] sorted_0_t_q0;
 wire   [31:0] sorted_1_i_q0;
 wire   [31:0] sorted_1_t_q0;
-wire   [9:0] sorted_copy1_value_V_i_q0;
-wire   [9:0] sorted_copy1_value_V_t_q0;
-wire   [31:0] sorted_copy1_frequen_i_q0;
-wire   [31:0] sorted_copy1_frequen_t_q0;
-wire   [9:0] sorted_copy2_value_V_i_q0;
-wire   [9:0] sorted_copy2_value_V_t_q0;
-wire   [9:0] parent_V_i_q0;
-wire   [9:0] parent_V_t_q0;
-wire   [9:0] left_V_i_q0;
-wire   [9:0] left_V_t_q0;
-wire   [9:0] right_V_i_q0;
-wire   [9:0] right_V_t_q0;
-wire   [9:0] length_histogram_V_i_q0;
-wire   [9:0] length_histogram_V_t_q0;
-wire   [9:0] truncated_length_his_i_q0;
-wire   [9:0] truncated_length_his_i_q1;
-wire   [9:0] truncated_length_his_t_q0;
-wire   [9:0] truncated_length_his_t_q1;
-wire   [9:0] truncated_length_his_1_i_q0;
-wire   [9:0] truncated_length_his_1_t_q0;
+wire   [8:0] sorted_copy2_value_V_i_q0;
+wire   [8:0] sorted_copy2_value_V_t_q0;
+wire   [8:0] parent_V_i_q0;
+wire   [8:0] parent_V_i_q1;
+wire   [8:0] parent_V_t_q0;
+wire   [8:0] parent_V_t_q1;
+wire   [8:0] left_V_i_q0;
+wire   [8:0] left_V_i_q1;
+wire   [8:0] left_V_t_q0;
+wire   [8:0] left_V_t_q1;
+wire   [8:0] right_V_i_q0;
+wire   [8:0] right_V_i_q1;
+wire   [8:0] right_V_t_q0;
+wire   [8:0] right_V_t_q1;
+wire   [8:0] length_histogram_V_i_q0;
+wire   [8:0] length_histogram_V_t_q0;
+wire   [8:0] truncated_length_his_i_q0;
+wire   [8:0] truncated_length_his_i_q1;
+wire   [8:0] truncated_length_his_t_q0;
+wire   [8:0] truncated_length_his_t_q1;
+wire   [8:0] truncated_length_his_1_i_q0;
+wire   [8:0] truncated_length_his_1_t_q0;
 wire   [4:0] symbol_bits_V_i_q0;
 wire   [4:0] symbol_bits_V_t_q0;
 wire    filter_U0_ap_start;
@@ -134,12 +136,12 @@ wire    filter_U0_in_frequency_V_ce0;
 wire   [7:0] filter_U0_out_value_V_address0;
 wire    filter_U0_out_value_V_ce0;
 wire    filter_U0_out_value_V_we0;
-wire   [9:0] filter_U0_out_value_V_d0;
+wire   [8:0] filter_U0_out_value_V_d0;
 wire   [7:0] filter_U0_out_frequency_V_address0;
 wire    filter_U0_out_frequency_V_ce0;
 wire    filter_U0_out_frequency_V_we0;
 wire   [31:0] filter_U0_out_frequency_V_d0;
-wire   [9:0] filter_U0_n_out_din;
+wire   [8:0] filter_U0_n_out_din;
 wire    filter_U0_n_out_write;
 wire    ap_channel_done_filtered_frequency_V;
 wire    filter_U0_out_frequency_V_full_n;
@@ -155,9 +157,9 @@ wire    Block_codeRepl1012_p_U0_ap_continue;
 wire    Block_codeRepl1012_p_U0_ap_idle;
 wire    Block_codeRepl1012_p_U0_ap_ready;
 wire    Block_codeRepl1012_p_U0_n_read;
-wire   [9:0] Block_codeRepl1012_p_U0_n_out_din;
+wire   [8:0] Block_codeRepl1012_p_U0_n_out_din;
 wire    Block_codeRepl1012_p_U0_n_out_write;
-wire   [9:0] Block_codeRepl1012_p_U0_ap_return;
+wire   [8:0] Block_codeRepl1012_p_U0_ap_return;
 wire    ap_channel_done_extLd9_loc_channel;
 wire    extLd9_loc_channel_full_n;
 wire    sort_U0_ap_start;
@@ -172,7 +174,7 @@ wire    sort_U0_in_frequency_V_ce0;
 wire   [7:0] sort_U0_out_value_V_address0;
 wire    sort_U0_out_value_V_ce0;
 wire    sort_U0_out_value_V_we0;
-wire   [9:0] sort_U0_out_value_V_d0;
+wire   [8:0] sort_U0_out_value_V_d0;
 wire   [7:0] sort_U0_out_frequency_V_address0;
 wire    sort_U0_out_frequency_V_ce0;
 wire    sort_U0_out_frequency_V_we0;
@@ -186,6 +188,7 @@ wire    sort_U0_out_value_V_full_n;
 reg    ap_sync_reg_channel_write_sorted_0;
 wire    ap_sync_channel_write_sorted_0;
 wire    Loop_copy_sorted_pro_U0_ap_start;
+wire    Loop_copy_sorted_pro_U0_start_full_n;
 wire    Loop_copy_sorted_pro_U0_ap_done;
 wire    Loop_copy_sorted_pro_U0_ap_continue;
 wire    Loop_copy_sorted_pro_U0_ap_idle;
@@ -195,61 +198,45 @@ wire    Loop_copy_sorted_pro_U0_start_write;
 wire    Loop_copy_sorted_pro_U0_n_read;
 wire   [7:0] Loop_copy_sorted_pro_U0_sorted_0_address0;
 wire    Loop_copy_sorted_pro_U0_sorted_0_ce0;
-wire   [7:0] Loop_copy_sorted_pro_U0_sorted_copy1_value_V_address0;
-wire    Loop_copy_sorted_pro_U0_sorted_copy1_value_V_ce0;
-wire    Loop_copy_sorted_pro_U0_sorted_copy1_value_V_we0;
-wire   [9:0] Loop_copy_sorted_pro_U0_sorted_copy1_value_V_d0;
+wire   [8:0] Loop_copy_sorted_pro_U0_sorted_copy1_0_din;
+wire    Loop_copy_sorted_pro_U0_sorted_copy1_0_write;
 wire   [7:0] Loop_copy_sorted_pro_U0_sorted_1_address0;
 wire    Loop_copy_sorted_pro_U0_sorted_1_ce0;
-wire   [7:0] Loop_copy_sorted_pro_U0_sorted_copy1_frequency_V_address0;
-wire    Loop_copy_sorted_pro_U0_sorted_copy1_frequency_V_ce0;
-wire    Loop_copy_sorted_pro_U0_sorted_copy1_frequency_V_we0;
-wire   [31:0] Loop_copy_sorted_pro_U0_sorted_copy1_frequency_V_d0;
+wire   [31:0] Loop_copy_sorted_pro_U0_sorted_copy1_1_din;
+wire    Loop_copy_sorted_pro_U0_sorted_copy1_1_write;
 wire   [7:0] Loop_copy_sorted_pro_U0_sorted_copy2_value_V_address0;
 wire    Loop_copy_sorted_pro_U0_sorted_copy2_value_V_ce0;
 wire    Loop_copy_sorted_pro_U0_sorted_copy2_value_V_we0;
-wire   [9:0] Loop_copy_sorted_pro_U0_sorted_copy2_value_V_d0;
-wire   [9:0] Loop_copy_sorted_pro_U0_val_assign7_out_out_din;
+wire   [8:0] Loop_copy_sorted_pro_U0_sorted_copy2_value_V_d0;
+wire   [8:0] Loop_copy_sorted_pro_U0_val_assign7_out_out_din;
 wire    Loop_copy_sorted_pro_U0_val_assign7_out_out_write;
-wire   [9:0] Loop_copy_sorted_pro_U0_extLd_out_out_din;
+wire   [8:0] Loop_copy_sorted_pro_U0_extLd_out_out_din;
 wire    Loop_copy_sorted_pro_U0_extLd_out_out_write;
-wire   [9:0] Loop_copy_sorted_pro_U0_extLd_out_out1_din;
+wire   [8:0] Loop_copy_sorted_pro_U0_extLd_out_out1_din;
 wire    Loop_copy_sorted_pro_U0_extLd_out_out1_write;
 wire    ap_channel_done_sorted_copy2_value_V;
 wire    Loop_copy_sorted_pro_U0_sorted_copy2_value_V_full_n;
-reg    ap_sync_reg_channel_write_sorted_copy2_value_V;
-wire    ap_sync_channel_write_sorted_copy2_value_V;
-wire    ap_channel_done_sorted_copy1_frequen;
-wire    Loop_copy_sorted_pro_U0_sorted_copy1_frequency_V_full_n;
-reg    ap_sync_reg_channel_write_sorted_copy1_frequen;
-wire    ap_sync_channel_write_sorted_copy1_frequen;
-wire    ap_channel_done_sorted_copy1_value_V;
-wire    Loop_copy_sorted_pro_U0_sorted_copy1_value_V_full_n;
-reg    ap_sync_reg_channel_write_sorted_copy1_value_V;
-wire    ap_sync_channel_write_sorted_copy1_value_V;
 wire    create_tree_U0_ap_start;
 wire    create_tree_U0_ap_done;
 wire    create_tree_U0_ap_continue;
 wire    create_tree_U0_ap_idle;
 wire    create_tree_U0_ap_ready;
-wire   [7:0] create_tree_U0_in_value_V_address0;
-wire    create_tree_U0_in_value_V_ce0;
-wire   [7:0] create_tree_U0_in_frequency_V_address0;
-wire    create_tree_U0_in_frequency_V_ce0;
+wire    create_tree_U0_in_value_V_read;
+wire    create_tree_U0_in_frequency_V_read;
 wire    create_tree_U0_extLd_loc_read;
 wire   [7:0] create_tree_U0_parent_V_address0;
 wire    create_tree_U0_parent_V_ce0;
 wire    create_tree_U0_parent_V_we0;
-wire   [9:0] create_tree_U0_parent_V_d0;
+wire   [8:0] create_tree_U0_parent_V_d0;
 wire   [7:0] create_tree_U0_left_V_address0;
 wire    create_tree_U0_left_V_ce0;
 wire    create_tree_U0_left_V_we0;
-wire   [9:0] create_tree_U0_left_V_d0;
+wire   [8:0] create_tree_U0_left_V_d0;
 wire   [7:0] create_tree_U0_right_V_address0;
 wire    create_tree_U0_right_V_ce0;
 wire    create_tree_U0_right_V_we0;
-wire   [9:0] create_tree_U0_right_V_d0;
-wire   [9:0] create_tree_U0_extLd_loc_out_din;
+wire   [8:0] create_tree_U0_right_V_d0;
+wire   [8:0] create_tree_U0_extLd_loc_out_din;
 wire    create_tree_U0_extLd_loc_out_write;
 wire    ap_channel_done_right_V;
 wire    create_tree_U0_right_V_full_n;
@@ -270,15 +257,21 @@ wire    compute_bit_length_U0_ap_idle;
 wire    compute_bit_length_U0_ap_ready;
 wire   [7:0] compute_bit_length_U0_parent_V_address0;
 wire    compute_bit_length_U0_parent_V_ce0;
+wire   [7:0] compute_bit_length_U0_parent_V_address1;
+wire    compute_bit_length_U0_parent_V_ce1;
 wire   [7:0] compute_bit_length_U0_left_V_address0;
 wire    compute_bit_length_U0_left_V_ce0;
+wire   [7:0] compute_bit_length_U0_left_V_address1;
+wire    compute_bit_length_U0_left_V_ce1;
 wire   [7:0] compute_bit_length_U0_right_V_address0;
 wire    compute_bit_length_U0_right_V_ce0;
+wire   [7:0] compute_bit_length_U0_right_V_address1;
+wire    compute_bit_length_U0_right_V_ce1;
 wire    compute_bit_length_U0_extLd_loc_read;
 wire   [5:0] compute_bit_length_U0_length_histogram_V_address0;
 wire    compute_bit_length_U0_length_histogram_V_ce0;
 wire    compute_bit_length_U0_length_histogram_V_we0;
-wire   [9:0] compute_bit_length_U0_length_histogram_V_d0;
+wire   [8:0] compute_bit_length_U0_length_histogram_V_d0;
 wire    ap_channel_done_length_histogram_V;
 wire    compute_bit_length_U0_length_histogram_V_full_n;
 wire    truncate_tree_U0_ap_start;
@@ -291,15 +284,15 @@ wire    truncate_tree_U0_input_length_histogram_V_ce0;
 wire   [5:0] truncate_tree_U0_output_length_histogram1_V_address0;
 wire    truncate_tree_U0_output_length_histogram1_V_ce0;
 wire    truncate_tree_U0_output_length_histogram1_V_we0;
-wire   [9:0] truncate_tree_U0_output_length_histogram1_V_d0;
+wire   [8:0] truncate_tree_U0_output_length_histogram1_V_d0;
 wire   [5:0] truncate_tree_U0_output_length_histogram1_V_address1;
 wire    truncate_tree_U0_output_length_histogram1_V_ce1;
 wire    truncate_tree_U0_output_length_histogram1_V_we1;
-wire   [9:0] truncate_tree_U0_output_length_histogram1_V_d1;
+wire   [8:0] truncate_tree_U0_output_length_histogram1_V_d1;
 wire   [5:0] truncate_tree_U0_output_length_histogram2_V_address0;
 wire    truncate_tree_U0_output_length_histogram2_V_ce0;
 wire    truncate_tree_U0_output_length_histogram2_V_we0;
-wire   [9:0] truncate_tree_U0_output_length_histogram2_V_d0;
+wire   [8:0] truncate_tree_U0_output_length_histogram2_V_d0;
 wire    ap_channel_done_truncated_length_his_1;
 wire    truncate_tree_U0_output_length_histogram2_V_full_n;
 reg    ap_sync_reg_channel_write_truncated_length_his_1;
@@ -354,18 +347,20 @@ wire    sorted_0_i_full_n;
 wire    sorted_0_t_empty_n;
 wire    sorted_1_i_full_n;
 wire    sorted_1_t_empty_n;
-wire    sorted_copy1_value_V_i_full_n;
-wire    sorted_copy1_value_V_t_empty_n;
-wire    sorted_copy1_frequen_i_full_n;
-wire    sorted_copy1_frequen_t_empty_n;
 wire    sorted_copy2_value_V_i_full_n;
 wire    sorted_copy2_value_V_t_empty_n;
 wire    parent_V_i_full_n;
 wire    parent_V_t_empty_n;
+wire   [8:0] parent_V_t_d1;
+wire    parent_V_t_we1;
 wire    left_V_i_full_n;
 wire    left_V_t_empty_n;
+wire   [8:0] left_V_t_d1;
+wire    left_V_t_we1;
 wire    right_V_i_full_n;
 wire    right_V_t_empty_n;
+wire   [8:0] right_V_t_d1;
+wire    right_V_t_we1;
 wire    length_histogram_V_i_full_n;
 wire    length_histogram_V_t_empty_n;
 wire    truncated_length_his_i_full_n;
@@ -375,24 +370,30 @@ wire    truncated_length_his_1_t_empty_n;
 wire    symbol_bits_V_i_full_n;
 wire    symbol_bits_V_t_empty_n;
 wire    n_c_full_n;
-wire   [9:0] n_c_dout;
+wire   [8:0] n_c_dout;
 wire    n_c_empty_n;
 wire    n_c20_full_n;
-wire   [9:0] n_c20_dout;
+wire   [8:0] n_c20_dout;
 wire    n_c20_empty_n;
-wire   [9:0] extLd9_loc_channel_dout;
+wire   [8:0] extLd9_loc_channel_dout;
 wire    extLd9_loc_channel_empty_n;
+wire    sorted_copy1_0_chann_full_n;
+wire   [8:0] sorted_copy1_0_chann_dout;
+wire    sorted_copy1_0_chann_empty_n;
+wire    sorted_copy1_1_chann_full_n;
+wire   [31:0] sorted_copy1_1_chann_dout;
+wire    sorted_copy1_1_chann_empty_n;
 wire    val_assign7_loc_c_full_n;
-wire   [9:0] val_assign7_loc_c_dout;
+wire   [8:0] val_assign7_loc_c_dout;
 wire    val_assign7_loc_c_empty_n;
 wire    extLd_loc_c_full_n;
-wire   [9:0] extLd_loc_c_dout;
+wire   [8:0] extLd_loc_c_dout;
 wire    extLd_loc_c_empty_n;
 wire    extLd_loc_c21_full_n;
-wire   [9:0] extLd_loc_c21_dout;
+wire   [8:0] extLd_loc_c21_dout;
 wire    extLd_loc_c21_empty_n;
 wire    extLd_loc_c22_full_n;
-wire   [9:0] extLd_loc_c22_dout;
+wire   [8:0] extLd_loc_c22_dout;
 wire    extLd_loc_c22_empty_n;
 wire    ap_sync_done;
 wire    ap_sync_ready;
@@ -404,6 +405,10 @@ wire    Block_codeRepl1012_p_U0_start_full_n;
 wire    Block_codeRepl1012_p_U0_start_write;
 wire    sort_U0_start_full_n;
 wire    sort_U0_start_write;
+wire   [0:0] start_for_create_tree_U0_din;
+wire    start_for_create_tree_U0_full_n;
+wire   [0:0] start_for_create_tree_U0_dout;
+wire    start_for_create_tree_U0_empty_n;
 wire   [0:0] start_for_Block_proc_U0_din;
 wire    start_for_Block_proc_U0_full_n;
 wire   [0:0] start_for_Block_proc_U0_dout;
@@ -427,9 +432,6 @@ initial begin
 #0 ap_sync_reg_channel_write_filtered_value_V = 1'b0;
 #0 ap_sync_reg_channel_write_sorted_1 = 1'b0;
 #0 ap_sync_reg_channel_write_sorted_0 = 1'b0;
-#0 ap_sync_reg_channel_write_sorted_copy2_value_V = 1'b0;
-#0 ap_sync_reg_channel_write_sorted_copy1_frequen = 1'b0;
-#0 ap_sync_reg_channel_write_sorted_copy1_value_V = 1'b0;
 #0 ap_sync_reg_channel_write_right_V = 1'b0;
 #0 ap_sync_reg_channel_write_left_V = 1'b0;
 #0 ap_sync_reg_channel_write_parent_V = 1'b0;
@@ -437,8 +439,8 @@ initial begin
 #0 ap_sync_reg_channel_write_truncated_length_his = 1'b0;
 end
 
-huffman_encoding_mb6 #(
-    .DataWidth( 10 ),
+huffman_encoding_ncg #(
+    .DataWidth( 9 ),
     .AddressRange( 256 ),
     .AddressWidth( 8 ))
 filtered_value_V_U(
@@ -452,7 +454,7 @@ filtered_value_V_U(
     .t_address0(sort_U0_in_value_V_address0),
     .t_ce0(sort_U0_in_value_V_ce0),
     .t_we0(1'b0),
-    .t_d0(10'd0),
+    .t_d0(9'd0),
     .t_q0(filtered_value_V_t_q0),
     .i_ce(1'b1),
     .t_ce(1'b1),
@@ -462,7 +464,7 @@ filtered_value_V_U(
     .t_read(sort_U0_ap_ready)
 );
 
-huffman_encoding_ncg #(
+huffman_encoding_ocq #(
     .DataWidth( 32 ),
     .AddressRange( 256 ),
     .AddressWidth( 8 ))
@@ -487,8 +489,8 @@ filtered_frequency_V_U(
     .t_read(sort_U0_ap_ready)
 );
 
-huffman_encoding_mb6 #(
-    .DataWidth( 10 ),
+huffman_encoding_ncg #(
+    .DataWidth( 9 ),
     .AddressRange( 256 ),
     .AddressWidth( 8 ))
 sorted_0_U(
@@ -502,7 +504,7 @@ sorted_0_U(
     .t_address0(Loop_copy_sorted_pro_U0_sorted_0_address0),
     .t_ce0(Loop_copy_sorted_pro_U0_sorted_0_ce0),
     .t_we0(1'b0),
-    .t_d0(10'd0),
+    .t_d0(9'd0),
     .t_q0(sorted_0_t_q0),
     .i_ce(1'b1),
     .t_ce(1'b1),
@@ -512,7 +514,7 @@ sorted_0_U(
     .t_read(Loop_copy_sorted_pro_U0_ap_ready)
 );
 
-huffman_encoding_ncg #(
+huffman_encoding_ocq #(
     .DataWidth( 32 ),
     .AddressRange( 256 ),
     .AddressWidth( 8 ))
@@ -537,58 +539,8 @@ sorted_1_U(
     .t_read(Loop_copy_sorted_pro_U0_ap_ready)
 );
 
-huffman_encoding_mb6 #(
-    .DataWidth( 10 ),
-    .AddressRange( 256 ),
-    .AddressWidth( 8 ))
-sorted_copy1_value_V_U(
-    .clk(ap_clk),
-    .reset(ap_rst),
-    .i_address0(Loop_copy_sorted_pro_U0_sorted_copy1_value_V_address0),
-    .i_ce0(Loop_copy_sorted_pro_U0_sorted_copy1_value_V_ce0),
-    .i_we0(Loop_copy_sorted_pro_U0_sorted_copy1_value_V_we0),
-    .i_d0(Loop_copy_sorted_pro_U0_sorted_copy1_value_V_d0),
-    .i_q0(sorted_copy1_value_V_i_q0),
-    .t_address0(create_tree_U0_in_value_V_address0),
-    .t_ce0(create_tree_U0_in_value_V_ce0),
-    .t_we0(1'b0),
-    .t_d0(10'd0),
-    .t_q0(sorted_copy1_value_V_t_q0),
-    .i_ce(1'b1),
-    .t_ce(1'b1),
-    .i_full_n(sorted_copy1_value_V_i_full_n),
-    .i_write(ap_channel_done_sorted_copy1_value_V),
-    .t_empty_n(sorted_copy1_value_V_t_empty_n),
-    .t_read(create_tree_U0_ap_ready)
-);
-
 huffman_encoding_ncg #(
-    .DataWidth( 32 ),
-    .AddressRange( 256 ),
-    .AddressWidth( 8 ))
-sorted_copy1_frequen_U(
-    .clk(ap_clk),
-    .reset(ap_rst),
-    .i_address0(Loop_copy_sorted_pro_U0_sorted_copy1_frequency_V_address0),
-    .i_ce0(Loop_copy_sorted_pro_U0_sorted_copy1_frequency_V_ce0),
-    .i_we0(Loop_copy_sorted_pro_U0_sorted_copy1_frequency_V_we0),
-    .i_d0(Loop_copy_sorted_pro_U0_sorted_copy1_frequency_V_d0),
-    .i_q0(sorted_copy1_frequen_i_q0),
-    .t_address0(create_tree_U0_in_frequency_V_address0),
-    .t_ce0(create_tree_U0_in_frequency_V_ce0),
-    .t_we0(1'b0),
-    .t_d0(32'd0),
-    .t_q0(sorted_copy1_frequen_t_q0),
-    .i_ce(1'b1),
-    .t_ce(1'b1),
-    .i_full_n(sorted_copy1_frequen_i_full_n),
-    .i_write(ap_channel_done_sorted_copy1_frequen),
-    .t_empty_n(sorted_copy1_frequen_t_empty_n),
-    .t_read(create_tree_U0_ap_ready)
-);
-
-huffman_encoding_mb6 #(
-    .DataWidth( 10 ),
+    .DataWidth( 9 ),
     .AddressRange( 256 ),
     .AddressWidth( 8 ))
 sorted_copy2_value_V_U(
@@ -602,18 +554,18 @@ sorted_copy2_value_V_U(
     .t_address0(canonize_tree_U0_sorted_value_V_address0),
     .t_ce0(canonize_tree_U0_sorted_value_V_ce0),
     .t_we0(1'b0),
-    .t_d0(10'd0),
+    .t_d0(9'd0),
     .t_q0(sorted_copy2_value_V_t_q0),
     .i_ce(1'b1),
     .t_ce(1'b1),
     .i_full_n(sorted_copy2_value_V_i_full_n),
-    .i_write(ap_channel_done_sorted_copy2_value_V),
+    .i_write(Loop_copy_sorted_pro_U0_ap_done),
     .t_empty_n(sorted_copy2_value_V_t_empty_n),
     .t_read(canonize_tree_U0_ap_ready)
 );
 
-huffman_encoding_tde #(
-    .DataWidth( 10 ),
+huffman_encoding_sc4 #(
+    .DataWidth( 9 ),
     .AddressRange( 255 ),
     .AddressWidth( 8 ))
 parent_V_U(
@@ -624,11 +576,17 @@ parent_V_U(
     .i_we0(create_tree_U0_parent_V_we0),
     .i_d0(create_tree_U0_parent_V_d0),
     .i_q0(parent_V_i_q0),
+    .i_address1(8'd0),
+    .i_ce1(1'b0),
+    .i_q1(parent_V_i_q1),
     .t_address0(compute_bit_length_U0_parent_V_address0),
     .t_ce0(compute_bit_length_U0_parent_V_ce0),
     .t_we0(1'b0),
-    .t_d0(10'd0),
+    .t_d0(9'd0),
     .t_q0(parent_V_t_q0),
+    .t_address1(compute_bit_length_U0_parent_V_address1),
+    .t_ce1(compute_bit_length_U0_parent_V_ce1),
+    .t_q1(parent_V_t_q1),
     .i_ce(1'b1),
     .t_ce(1'b1),
     .i_full_n(parent_V_i_full_n),
@@ -637,8 +595,8 @@ parent_V_U(
     .t_read(compute_bit_length_U0_ap_ready)
 );
 
-huffman_encoding_tde #(
-    .DataWidth( 10 ),
+huffman_encoding_sc4 #(
+    .DataWidth( 9 ),
     .AddressRange( 255 ),
     .AddressWidth( 8 ))
 left_V_U(
@@ -649,11 +607,17 @@ left_V_U(
     .i_we0(create_tree_U0_left_V_we0),
     .i_d0(create_tree_U0_left_V_d0),
     .i_q0(left_V_i_q0),
+    .i_address1(8'd0),
+    .i_ce1(1'b0),
+    .i_q1(left_V_i_q1),
     .t_address0(compute_bit_length_U0_left_V_address0),
     .t_ce0(compute_bit_length_U0_left_V_ce0),
     .t_we0(1'b0),
-    .t_d0(10'd0),
+    .t_d0(9'd0),
     .t_q0(left_V_t_q0),
+    .t_address1(compute_bit_length_U0_left_V_address1),
+    .t_ce1(compute_bit_length_U0_left_V_ce1),
+    .t_q1(left_V_t_q1),
     .i_ce(1'b1),
     .t_ce(1'b1),
     .i_full_n(left_V_i_full_n),
@@ -662,8 +626,8 @@ left_V_U(
     .t_read(compute_bit_length_U0_ap_ready)
 );
 
-huffman_encoding_tde #(
-    .DataWidth( 10 ),
+huffman_encoding_sc4 #(
+    .DataWidth( 9 ),
     .AddressRange( 255 ),
     .AddressWidth( 8 ))
 right_V_U(
@@ -674,11 +638,17 @@ right_V_U(
     .i_we0(create_tree_U0_right_V_we0),
     .i_d0(create_tree_U0_right_V_d0),
     .i_q0(right_V_i_q0),
+    .i_address1(8'd0),
+    .i_ce1(1'b0),
+    .i_q1(right_V_i_q1),
     .t_address0(compute_bit_length_U0_right_V_address0),
     .t_ce0(compute_bit_length_U0_right_V_ce0),
     .t_we0(1'b0),
-    .t_d0(10'd0),
+    .t_d0(9'd0),
     .t_q0(right_V_t_q0),
+    .t_address1(compute_bit_length_U0_right_V_address1),
+    .t_ce1(compute_bit_length_U0_right_V_ce1),
+    .t_q1(right_V_t_q1),
     .i_ce(1'b1),
     .t_ce(1'b1),
     .i_full_n(right_V_i_full_n),
@@ -687,8 +657,8 @@ right_V_U(
     .t_read(compute_bit_length_U0_ap_ready)
 );
 
-huffman_encoding_wdI #(
-    .DataWidth( 10 ),
+huffman_encoding_vdy #(
+    .DataWidth( 9 ),
     .AddressRange( 64 ),
     .AddressWidth( 6 ))
 length_histogram_V_U(
@@ -702,7 +672,7 @@ length_histogram_V_U(
     .t_address0(truncate_tree_U0_input_length_histogram_V_address0),
     .t_ce0(truncate_tree_U0_input_length_histogram_V_ce0),
     .t_we0(1'b0),
-    .t_d0(10'd0),
+    .t_d0(9'd0),
     .t_q0(length_histogram_V_t_q0),
     .i_ce(1'b1),
     .t_ce(1'b1),
@@ -712,8 +682,8 @@ length_histogram_V_U(
     .t_read(truncate_tree_U0_ap_ready)
 );
 
-huffman_encoding_xdS #(
-    .DataWidth( 10 ),
+huffman_encoding_wdI #(
+    .DataWidth( 9 ),
     .AddressRange( 64 ),
     .AddressWidth( 6 ))
 truncated_length_his_U(
@@ -732,12 +702,12 @@ truncated_length_his_U(
     .t_address0(canonize_tree_U0_codeword_length_histogram_V_address0),
     .t_ce0(canonize_tree_U0_codeword_length_histogram_V_ce0),
     .t_we0(1'b0),
-    .t_d0(10'd0),
+    .t_d0(9'd0),
     .t_q0(truncated_length_his_t_q0),
     .t_address1(6'd0),
     .t_ce1(1'b0),
     .t_we1(1'b0),
-    .t_d1(10'd0),
+    .t_d1(9'd0),
     .t_q1(truncated_length_his_t_q1),
     .i_ce(1'b1),
     .t_ce(1'b1),
@@ -747,8 +717,8 @@ truncated_length_his_U(
     .t_read(canonize_tree_U0_ap_ready)
 );
 
-huffman_encoding_wdI #(
-    .DataWidth( 10 ),
+huffman_encoding_vdy #(
+    .DataWidth( 9 ),
     .AddressRange( 64 ),
     .AddressWidth( 6 ))
 truncated_length_his_1_U(
@@ -762,7 +732,7 @@ truncated_length_his_1_U(
     .t_address0(create_codeword_U0_codeword_length_histogram_V_address0),
     .t_ce0(create_codeword_U0_codeword_length_histogram_V_ce0),
     .t_we0(1'b0),
-    .t_d0(10'd0),
+    .t_d0(9'd0),
     .t_q0(truncated_length_his_1_t_q0),
     .i_ce(1'b1),
     .t_ce(1'b1),
@@ -772,7 +742,7 @@ truncated_length_his_1_U(
     .t_read(create_codeword_U0_ap_ready)
 );
 
-huffman_encoding_zec #(
+huffman_encoding_yd2 #(
     .DataWidth( 5 ),
     .AddressRange( 256 ),
     .AddressWidth( 8 ))
@@ -873,7 +843,7 @@ Loop_copy_sorted_pro Loop_copy_sorted_pro_U0(
     .ap_clk(ap_clk),
     .ap_rst(ap_rst),
     .ap_start(Loop_copy_sorted_pro_U0_ap_start),
-    .start_full_n(start_for_Block_proc_U0_full_n),
+    .start_full_n(Loop_copy_sorted_pro_U0_start_full_n),
     .ap_done(Loop_copy_sorted_pro_U0_ap_done),
     .ap_continue(Loop_copy_sorted_pro_U0_ap_continue),
     .ap_idle(Loop_copy_sorted_pro_U0_ap_idle),
@@ -886,17 +856,15 @@ Loop_copy_sorted_pro Loop_copy_sorted_pro_U0(
     .sorted_0_address0(Loop_copy_sorted_pro_U0_sorted_0_address0),
     .sorted_0_ce0(Loop_copy_sorted_pro_U0_sorted_0_ce0),
     .sorted_0_q0(sorted_0_t_q0),
-    .sorted_copy1_value_V_address0(Loop_copy_sorted_pro_U0_sorted_copy1_value_V_address0),
-    .sorted_copy1_value_V_ce0(Loop_copy_sorted_pro_U0_sorted_copy1_value_V_ce0),
-    .sorted_copy1_value_V_we0(Loop_copy_sorted_pro_U0_sorted_copy1_value_V_we0),
-    .sorted_copy1_value_V_d0(Loop_copy_sorted_pro_U0_sorted_copy1_value_V_d0),
+    .sorted_copy1_0_din(Loop_copy_sorted_pro_U0_sorted_copy1_0_din),
+    .sorted_copy1_0_full_n(sorted_copy1_0_chann_full_n),
+    .sorted_copy1_0_write(Loop_copy_sorted_pro_U0_sorted_copy1_0_write),
     .sorted_1_address0(Loop_copy_sorted_pro_U0_sorted_1_address0),
     .sorted_1_ce0(Loop_copy_sorted_pro_U0_sorted_1_ce0),
     .sorted_1_q0(sorted_1_t_q0),
-    .sorted_copy1_frequency_V_address0(Loop_copy_sorted_pro_U0_sorted_copy1_frequency_V_address0),
-    .sorted_copy1_frequency_V_ce0(Loop_copy_sorted_pro_U0_sorted_copy1_frequency_V_ce0),
-    .sorted_copy1_frequency_V_we0(Loop_copy_sorted_pro_U0_sorted_copy1_frequency_V_we0),
-    .sorted_copy1_frequency_V_d0(Loop_copy_sorted_pro_U0_sorted_copy1_frequency_V_d0),
+    .sorted_copy1_1_din(Loop_copy_sorted_pro_U0_sorted_copy1_1_din),
+    .sorted_copy1_1_full_n(sorted_copy1_1_chann_full_n),
+    .sorted_copy1_1_write(Loop_copy_sorted_pro_U0_sorted_copy1_1_write),
     .sorted_copy2_value_V_address0(Loop_copy_sorted_pro_U0_sorted_copy2_value_V_address0),
     .sorted_copy2_value_V_ce0(Loop_copy_sorted_pro_U0_sorted_copy2_value_V_ce0),
     .sorted_copy2_value_V_we0(Loop_copy_sorted_pro_U0_sorted_copy2_value_V_we0),
@@ -920,12 +888,12 @@ create_tree create_tree_U0(
     .ap_continue(create_tree_U0_ap_continue),
     .ap_idle(create_tree_U0_ap_idle),
     .ap_ready(create_tree_U0_ap_ready),
-    .in_value_V_address0(create_tree_U0_in_value_V_address0),
-    .in_value_V_ce0(create_tree_U0_in_value_V_ce0),
-    .in_value_V_q0(sorted_copy1_value_V_t_q0),
-    .in_frequency_V_address0(create_tree_U0_in_frequency_V_address0),
-    .in_frequency_V_ce0(create_tree_U0_in_frequency_V_ce0),
-    .in_frequency_V_q0(sorted_copy1_frequen_t_q0),
+    .in_value_V_dout(sorted_copy1_0_chann_dout),
+    .in_value_V_empty_n(sorted_copy1_0_chann_empty_n),
+    .in_value_V_read(create_tree_U0_in_value_V_read),
+    .in_frequency_V_dout(sorted_copy1_1_chann_dout),
+    .in_frequency_V_empty_n(sorted_copy1_1_chann_empty_n),
+    .in_frequency_V_read(create_tree_U0_in_frequency_V_read),
     .extLd_loc_dout(extLd_loc_c_dout),
     .extLd_loc_empty_n(extLd_loc_c_empty_n),
     .extLd_loc_read(create_tree_U0_extLd_loc_read),
@@ -957,12 +925,21 @@ compute_bit_length compute_bit_length_U0(
     .parent_V_address0(compute_bit_length_U0_parent_V_address0),
     .parent_V_ce0(compute_bit_length_U0_parent_V_ce0),
     .parent_V_q0(parent_V_t_q0),
+    .parent_V_address1(compute_bit_length_U0_parent_V_address1),
+    .parent_V_ce1(compute_bit_length_U0_parent_V_ce1),
+    .parent_V_q1(parent_V_t_q1),
     .left_V_address0(compute_bit_length_U0_left_V_address0),
     .left_V_ce0(compute_bit_length_U0_left_V_ce0),
     .left_V_q0(left_V_t_q0),
+    .left_V_address1(compute_bit_length_U0_left_V_address1),
+    .left_V_ce1(compute_bit_length_U0_left_V_ce1),
+    .left_V_q1(left_V_t_q1),
     .right_V_address0(compute_bit_length_U0_right_V_address0),
     .right_V_ce0(compute_bit_length_U0_right_V_ce0),
     .right_V_q0(right_V_t_q0),
+    .right_V_address1(compute_bit_length_U0_right_V_address1),
+    .right_V_ce1(compute_bit_length_U0_right_V_ce1),
+    .right_V_q1(right_V_t_q1),
     .extLd_loc_dout(extLd_loc_c22_dout),
     .extLd_loc_empty_n(extLd_loc_c22_empty_n),
     .extLd_loc_read(compute_bit_length_U0_extLd_loc_read),
@@ -1057,7 +1034,7 @@ Block_proc Block_proc_U0(
     .num_nonzero_symbols_ap_vld(Block_proc_U0_num_nonzero_symbols_ap_vld)
 );
 
-fifo_w10_d2_A n_c_U(
+fifo_w9_d2_A n_c_U(
     .clk(ap_clk),
     .reset(ap_rst),
     .if_read_ce(1'b1),
@@ -1070,7 +1047,7 @@ fifo_w10_d2_A n_c_U(
     .if_read(Block_codeRepl1012_p_U0_n_read)
 );
 
-fifo_w10_d3_A n_c20_U(
+fifo_w9_d3_A n_c20_U(
     .clk(ap_clk),
     .reset(ap_rst),
     .if_read_ce(1'b1),
@@ -1083,7 +1060,7 @@ fifo_w10_d3_A n_c20_U(
     .if_read(Loop_copy_sorted_pro_U0_n_read)
 );
 
-fifo_w10_d2_A extLd9_loc_channel_U(
+fifo_w9_d2_A extLd9_loc_channel_U(
     .clk(ap_clk),
     .reset(ap_rst),
     .if_read_ce(1'b1),
@@ -1096,7 +1073,33 @@ fifo_w10_d2_A extLd9_loc_channel_U(
     .if_read(sort_U0_ap_ready)
 );
 
-fifo_w10_d5_A val_assign7_loc_c_U(
+fifo_w9_d256_A sorted_copy1_0_chann_U(
+    .clk(ap_clk),
+    .reset(ap_rst),
+    .if_read_ce(1'b1),
+    .if_write_ce(1'b1),
+    .if_din(Loop_copy_sorted_pro_U0_sorted_copy1_0_din),
+    .if_full_n(sorted_copy1_0_chann_full_n),
+    .if_write(Loop_copy_sorted_pro_U0_sorted_copy1_0_write),
+    .if_dout(sorted_copy1_0_chann_dout),
+    .if_empty_n(sorted_copy1_0_chann_empty_n),
+    .if_read(create_tree_U0_in_value_V_read)
+);
+
+fifo_w32_d256_A sorted_copy1_1_chann_U(
+    .clk(ap_clk),
+    .reset(ap_rst),
+    .if_read_ce(1'b1),
+    .if_write_ce(1'b1),
+    .if_din(Loop_copy_sorted_pro_U0_sorted_copy1_1_din),
+    .if_full_n(sorted_copy1_1_chann_full_n),
+    .if_write(Loop_copy_sorted_pro_U0_sorted_copy1_1_write),
+    .if_dout(sorted_copy1_1_chann_dout),
+    .if_empty_n(sorted_copy1_1_chann_empty_n),
+    .if_read(create_tree_U0_in_frequency_V_read)
+);
+
+fifo_w9_d5_A val_assign7_loc_c_U(
     .clk(ap_clk),
     .reset(ap_rst),
     .if_read_ce(1'b1),
@@ -1109,7 +1112,7 @@ fifo_w10_d5_A val_assign7_loc_c_U(
     .if_read(canonize_tree_U0_val_assign7_loc_read)
 );
 
-fifo_w10_d2_A extLd_loc_c_U(
+fifo_w9_d2_A extLd_loc_c_U(
     .clk(ap_clk),
     .reset(ap_rst),
     .if_read_ce(1'b1),
@@ -1122,7 +1125,7 @@ fifo_w10_d2_A extLd_loc_c_U(
     .if_read(create_tree_U0_extLd_loc_read)
 );
 
-fifo_w10_d2_A extLd_loc_c21_U(
+fifo_w9_d2_A extLd_loc_c21_U(
     .clk(ap_clk),
     .reset(ap_rst),
     .if_read_ce(1'b1),
@@ -1135,7 +1138,7 @@ fifo_w10_d2_A extLd_loc_c21_U(
     .if_read(Block_proc_U0_extLd_loc_read)
 );
 
-fifo_w10_d2_A extLd_loc_c22_U(
+fifo_w9_d2_A extLd_loc_c22_U(
     .clk(ap_clk),
     .reset(ap_rst),
     .if_read_ce(1'b1),
@@ -1148,7 +1151,7 @@ fifo_w10_d2_A extLd_loc_c22_U(
     .if_read(compute_bit_length_U0_extLd_loc_read)
 );
 
-start_for_Block_cAem start_for_Block_cAem_U(
+start_for_Block_czec start_for_Block_czec_U(
     .clk(ap_clk),
     .reset(ap_rst),
     .if_read_ce(1'b1),
@@ -1159,6 +1162,19 @@ start_for_Block_cAem start_for_Block_cAem_U(
     .if_dout(start_for_Block_codeRepl1012_p_U0_dout),
     .if_empty_n(start_for_Block_codeRepl1012_p_U0_empty_n),
     .if_read(Block_codeRepl1012_p_U0_ap_ready)
+);
+
+start_for_create_Aem start_for_create_Aem_U(
+    .clk(ap_clk),
+    .reset(ap_rst),
+    .if_read_ce(1'b1),
+    .if_write_ce(1'b1),
+    .if_din(start_for_create_tree_U0_din),
+    .if_full_n(start_for_create_tree_U0_full_n),
+    .if_write(Loop_copy_sorted_pro_U0_start_write),
+    .if_dout(start_for_create_tree_U0_dout),
+    .if_empty_n(start_for_create_tree_U0_empty_n),
+    .if_read(create_tree_U0_ap_ready)
 );
 
 start_for_Block_pBew start_for_Block_pBew_U(
@@ -1260,42 +1276,6 @@ end
 
 always @ (posedge ap_clk) begin
     if (ap_rst == 1'b1) begin
-        ap_sync_reg_channel_write_sorted_copy1_frequen <= 1'b0;
-    end else begin
-        if (((Loop_copy_sorted_pro_U0_ap_done & Loop_copy_sorted_pro_U0_ap_continue) == 1'b1)) begin
-            ap_sync_reg_channel_write_sorted_copy1_frequen <= 1'b0;
-        end else begin
-            ap_sync_reg_channel_write_sorted_copy1_frequen <= ap_sync_channel_write_sorted_copy1_frequen;
-        end
-    end
-end
-
-always @ (posedge ap_clk) begin
-    if (ap_rst == 1'b1) begin
-        ap_sync_reg_channel_write_sorted_copy1_value_V <= 1'b0;
-    end else begin
-        if (((Loop_copy_sorted_pro_U0_ap_done & Loop_copy_sorted_pro_U0_ap_continue) == 1'b1)) begin
-            ap_sync_reg_channel_write_sorted_copy1_value_V <= 1'b0;
-        end else begin
-            ap_sync_reg_channel_write_sorted_copy1_value_V <= ap_sync_channel_write_sorted_copy1_value_V;
-        end
-    end
-end
-
-always @ (posedge ap_clk) begin
-    if (ap_rst == 1'b1) begin
-        ap_sync_reg_channel_write_sorted_copy2_value_V <= 1'b0;
-    end else begin
-        if (((Loop_copy_sorted_pro_U0_ap_done & Loop_copy_sorted_pro_U0_ap_continue) == 1'b1)) begin
-            ap_sync_reg_channel_write_sorted_copy2_value_V <= 1'b0;
-        end else begin
-            ap_sync_reg_channel_write_sorted_copy2_value_V <= ap_sync_channel_write_sorted_copy2_value_V;
-        end
-    end
-end
-
-always @ (posedge ap_clk) begin
-    if (ap_rst == 1'b1) begin
         ap_sync_reg_channel_write_truncated_length_his <= 1'b0;
     end else begin
         if (((truncate_tree_U0_ap_done & truncate_tree_U0_ap_continue) == 1'b1)) begin
@@ -1334,15 +1314,13 @@ assign Block_proc_U0_start_full_n = 1'b1;
 
 assign Block_proc_U0_start_write = 1'b0;
 
-assign Loop_copy_sorted_pro_U0_ap_continue = (ap_sync_channel_write_sorted_copy2_value_V & ap_sync_channel_write_sorted_copy1_value_V & ap_sync_channel_write_sorted_copy1_frequen);
+assign Loop_copy_sorted_pro_U0_ap_continue = sorted_copy2_value_V_i_full_n;
 
 assign Loop_copy_sorted_pro_U0_ap_start = (sorted_1_t_empty_n & sorted_0_t_empty_n);
 
-assign Loop_copy_sorted_pro_U0_sorted_copy1_frequency_V_full_n = sorted_copy1_frequen_i_full_n;
-
-assign Loop_copy_sorted_pro_U0_sorted_copy1_value_V_full_n = sorted_copy1_value_V_i_full_n;
-
 assign Loop_copy_sorted_pro_U0_sorted_copy2_value_V_full_n = sorted_copy2_value_V_i_full_n;
+
+assign Loop_copy_sorted_pro_U0_start_full_n = (start_for_create_tree_U0_full_n & start_for_Block_proc_U0_full_n);
 
 assign ap_channel_done_extLd9_loc_channel = Block_codeRepl1012_p_U0_ap_done;
 
@@ -1362,11 +1340,7 @@ assign ap_channel_done_sorted_0 = (sort_U0_ap_done & (ap_sync_reg_channel_write_
 
 assign ap_channel_done_sorted_1 = (sort_U0_ap_done & (ap_sync_reg_channel_write_sorted_1 ^ 1'b1));
 
-assign ap_channel_done_sorted_copy1_frequen = ((ap_sync_reg_channel_write_sorted_copy1_frequen ^ 1'b1) & Loop_copy_sorted_pro_U0_ap_done);
-
-assign ap_channel_done_sorted_copy1_value_V = ((ap_sync_reg_channel_write_sorted_copy1_value_V ^ 1'b1) & Loop_copy_sorted_pro_U0_ap_done);
-
-assign ap_channel_done_sorted_copy2_value_V = ((ap_sync_reg_channel_write_sorted_copy2_value_V ^ 1'b1) & Loop_copy_sorted_pro_U0_ap_done);
+assign ap_channel_done_sorted_copy2_value_V = Loop_copy_sorted_pro_U0_ap_done;
 
 assign ap_channel_done_symbol_bits_V = canonize_tree_U0_ap_done;
 
@@ -1376,7 +1350,7 @@ assign ap_channel_done_truncated_length_his_1 = (truncate_tree_U0_ap_done & (ap_
 
 assign ap_done = ap_sync_done;
 
-assign ap_idle = (truncate_tree_U0_ap_idle & sort_U0_ap_idle & filter_U0_ap_idle & (extLd9_loc_channel_empty_n ^ 1'b1) & (symbol_bits_V_t_empty_n ^ 1'b1) & (truncated_length_his_1_t_empty_n ^ 1'b1) & (truncated_length_his_t_empty_n ^ 1'b1) & (length_histogram_V_t_empty_n ^ 1'b1) & (right_V_t_empty_n ^ 1'b1) & (left_V_t_empty_n ^ 1'b1) & (parent_V_t_empty_n ^ 1'b1) & (sorted_copy2_value_V_t_empty_n ^ 1'b1) & (sorted_copy1_frequen_t_empty_n ^ 1'b1) & (sorted_copy1_value_V_t_empty_n ^ 1'b1) & (sorted_1_t_empty_n ^ 1'b1) & (sorted_0_t_empty_n ^ 1'b1) & (filtered_frequency_V_t_empty_n ^ 1'b1) & (filtered_value_V_t_empty_n ^ 1'b1) & create_tree_U0_ap_idle & create_codeword_U0_ap_idle & compute_bit_length_U0_ap_idle & canonize_tree_U0_ap_idle & Loop_copy_sorted_pro_U0_ap_idle & Block_proc_U0_ap_idle & Block_codeRepl1012_p_U0_ap_idle);
+assign ap_idle = (truncate_tree_U0_ap_idle & sort_U0_ap_idle & filter_U0_ap_idle & (extLd9_loc_channel_empty_n ^ 1'b1) & (symbol_bits_V_t_empty_n ^ 1'b1) & (truncated_length_his_1_t_empty_n ^ 1'b1) & (truncated_length_his_t_empty_n ^ 1'b1) & (length_histogram_V_t_empty_n ^ 1'b1) & (right_V_t_empty_n ^ 1'b1) & (left_V_t_empty_n ^ 1'b1) & (parent_V_t_empty_n ^ 1'b1) & (sorted_copy2_value_V_t_empty_n ^ 1'b1) & (sorted_1_t_empty_n ^ 1'b1) & (sorted_0_t_empty_n ^ 1'b1) & (filtered_frequency_V_t_empty_n ^ 1'b1) & (filtered_value_V_t_empty_n ^ 1'b1) & create_tree_U0_ap_idle & create_codeword_U0_ap_idle & compute_bit_length_U0_ap_idle & canonize_tree_U0_ap_idle & Loop_copy_sorted_pro_U0_ap_idle & Block_proc_U0_ap_idle & Block_codeRepl1012_p_U0_ap_idle);
 
 assign ap_ready = filter_U0_ap_ready;
 
@@ -1393,12 +1367,6 @@ assign ap_sync_channel_write_right_V = ((create_tree_U0_right_V_full_n & ap_chan
 assign ap_sync_channel_write_sorted_0 = ((sort_U0_out_value_V_full_n & ap_channel_done_sorted_0) | ap_sync_reg_channel_write_sorted_0);
 
 assign ap_sync_channel_write_sorted_1 = ((sort_U0_out_frequency_V_full_n & ap_channel_done_sorted_1) | ap_sync_reg_channel_write_sorted_1);
-
-assign ap_sync_channel_write_sorted_copy1_frequen = ((ap_channel_done_sorted_copy1_frequen & Loop_copy_sorted_pro_U0_sorted_copy1_frequency_V_full_n) | ap_sync_reg_channel_write_sorted_copy1_frequen);
-
-assign ap_sync_channel_write_sorted_copy1_value_V = ((ap_channel_done_sorted_copy1_value_V & Loop_copy_sorted_pro_U0_sorted_copy1_value_V_full_n) | ap_sync_reg_channel_write_sorted_copy1_value_V);
-
-assign ap_sync_channel_write_sorted_copy2_value_V = ((ap_channel_done_sorted_copy2_value_V & Loop_copy_sorted_pro_U0_sorted_copy2_value_V_full_n) | ap_sync_reg_channel_write_sorted_copy2_value_V);
 
 assign ap_sync_channel_write_truncated_length_his = ((truncate_tree_U0_output_length_histogram1_V_full_n & ap_channel_done_truncated_length_his) | ap_sync_reg_channel_write_truncated_length_his);
 
@@ -1440,7 +1408,7 @@ assign create_codeword_U0_start_write = 1'b0;
 
 assign create_tree_U0_ap_continue = (ap_sync_channel_write_right_V & ap_sync_channel_write_parent_V & ap_sync_channel_write_left_V);
 
-assign create_tree_U0_ap_start = (sorted_copy1_value_V_t_empty_n & sorted_copy1_frequen_t_empty_n);
+assign create_tree_U0_ap_start = start_for_create_tree_U0_empty_n;
 
 assign create_tree_U0_left_V_full_n = left_V_i_full_n;
 
@@ -1476,9 +1444,21 @@ assign filter_U0_out_frequency_V_full_n = filtered_frequency_V_i_full_n;
 
 assign filter_U0_out_value_V_full_n = filtered_value_V_i_full_n;
 
+assign left_V_t_d1 = 9'd0;
+
+assign left_V_t_we1 = 1'b0;
+
 assign num_nonzero_symbols = Block_proc_U0_num_nonzero_symbols;
 
 assign num_nonzero_symbols_ap_vld = Block_proc_U0_num_nonzero_symbols_ap_vld;
+
+assign parent_V_t_d1 = 9'd0;
+
+assign parent_V_t_we1 = 1'b0;
+
+assign right_V_t_d1 = 9'd0;
+
+assign right_V_t_we1 = 1'b0;
 
 assign sort_U0_ap_continue = (ap_sync_channel_write_sorted_1 & ap_sync_channel_write_sorted_0);
 
@@ -1495,6 +1475,8 @@ assign sort_U0_start_write = 1'b0;
 assign start_for_Block_codeRepl1012_p_U0_din = 1'b1;
 
 assign start_for_Block_proc_U0_din = 1'b1;
+
+assign start_for_create_tree_U0_din = 1'b1;
 
 assign symbol_histogram_frequency_V_address0 = filter_U0_in_frequency_V_address0;
 
@@ -1520,9 +1502,9 @@ assign symbol_histogram_value_V_ce0 = filter_U0_in_value_V_ce0;
 
 assign symbol_histogram_value_V_ce1 = 1'b0;
 
-assign symbol_histogram_value_V_d0 = 10'd0;
+assign symbol_histogram_value_V_d0 = 9'd0;
 
-assign symbol_histogram_value_V_d1 = 10'd0;
+assign symbol_histogram_value_V_d1 = 9'd0;
 
 assign symbol_histogram_value_V_we0 = 1'b0;
 

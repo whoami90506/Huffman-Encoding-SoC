@@ -63653,7 +63653,7 @@ const static int TREE_DEPTH = 64;
 const static int MAX_CODEWORD_LENGTH = 27;
 
 
-const static int SYMBOL_BITS = 10;
+const static int SYMBOL_BITS = 9;
 
 
 const static int TREE_DEPTH_BITS = 6;
@@ -63742,74 +63742,99 @@ void sort(
                 Symbol in[INPUT_SYMBOL_SIZE],
                 int num_symbols,
                  Symbol out[INPUT_SYMBOL_SIZE]) {
+
+    
+# 12 "D:/Workspace/huffman_encoding_fpga/huffman_sort.cpp" 3
+   (void) ((!!(
+# 12 "D:/Workspace/huffman_encoding_fpga/huffman_sort.cpp"
+   num_symbols >= 0
+# 12 "D:/Workspace/huffman_encoding_fpga/huffman_sort.cpp" 3
+   )) || (_assert(
+# 12 "D:/Workspace/huffman_encoding_fpga/huffman_sort.cpp"
+   "num_symbols >= 0"
+# 12 "D:/Workspace/huffman_encoding_fpga/huffman_sort.cpp" 3
+   ,"D:/Workspace/huffman_encoding_fpga/huffman_sort.cpp",12),0))
+# 12 "D:/Workspace/huffman_encoding_fpga/huffman_sort.cpp"
+                           ;
+    
+# 13 "D:/Workspace/huffman_encoding_fpga/huffman_sort.cpp" 3
+   (void) ((!!(
+# 13 "D:/Workspace/huffman_encoding_fpga/huffman_sort.cpp"
+   num_symbols <= INPUT_SYMBOL_SIZE
+# 13 "D:/Workspace/huffman_encoding_fpga/huffman_sort.cpp" 3
+   )) || (_assert(
+# 13 "D:/Workspace/huffman_encoding_fpga/huffman_sort.cpp"
+   "num_symbols <= INPUT_SYMBOL_SIZE"
+# 13 "D:/Workspace/huffman_encoding_fpga/huffman_sort.cpp" 3
+   ,"D:/Workspace/huffman_encoding_fpga/huffman_sort.cpp",13),0))
+# 13 "D:/Workspace/huffman_encoding_fpga/huffman_sort.cpp"
+                                           ;
+
     Symbol previous_sorting[INPUT_SYMBOL_SIZE], sorting[INPUT_SYMBOL_SIZE];
     ap_uint<SYMBOL_BITS> digit_histogram[RADIX], digit_location[RADIX];
 #pragma HLS ARRAY_PARTITION variable=digit_location complete dim=1
 #pragma HLS ARRAY_PARTITION variable=digit_histogram complete dim=1
     Digit current_digit[INPUT_SYMBOL_SIZE];
 
-    
-# 17 "D:/Workspace/huffman_encoding_fpga/huffman_sort.cpp" 3
-   (void) ((!!(
-# 17 "D:/Workspace/huffman_encoding_fpga/huffman_sort.cpp"
-   num_symbols >= 0
-# 17 "D:/Workspace/huffman_encoding_fpga/huffman_sort.cpp" 3
-   )) || (_assert(
-# 17 "D:/Workspace/huffman_encoding_fpga/huffman_sort.cpp"
-   "num_symbols >= 0"
-# 17 "D:/Workspace/huffman_encoding_fpga/huffman_sort.cpp" 3
-   ,"D:/Workspace/huffman_encoding_fpga/huffman_sort.cpp",17),0))
-# 17 "D:/Workspace/huffman_encoding_fpga/huffman_sort.cpp"
-                           ;
-    
-# 18 "D:/Workspace/huffman_encoding_fpga/huffman_sort.cpp" 3
-   (void) ((!!(
-# 18 "D:/Workspace/huffman_encoding_fpga/huffman_sort.cpp"
-   num_symbols <= INPUT_SYMBOL_SIZE
-# 18 "D:/Workspace/huffman_encoding_fpga/huffman_sort.cpp" 3
-   )) || (_assert(
-# 18 "D:/Workspace/huffman_encoding_fpga/huffman_sort.cpp"
-   "num_symbols <= INPUT_SYMBOL_SIZE"
-# 18 "D:/Workspace/huffman_encoding_fpga/huffman_sort.cpp" 3
-   ,"D:/Workspace/huffman_encoding_fpga/huffman_sort.cpp",18),0))
-# 18 "D:/Workspace/huffman_encoding_fpga/huffman_sort.cpp"
-                                           ;
- copy_in_to_sorting:
+
+    copy_in_to_sorting:
     for(int j = 0; j < num_symbols; j++) {
 #pragma HLS PIPELINE II=1
         sorting[j] = in[j];
     }
 
- radix_sort:
+    radix_sort:
     for(int shift = 0; shift < 32; shift += BITS_PER_LOOP) {
-    init_histogram:
+        init_histogram:
         for(int i = 0; i < RADIX; i++) {
 #pragma HLS pipeline II=1
             digit_histogram[i] = 0;
         }
 
-    compute_histogram:
+        Digit compute_histogram_digit_last = 0;
+        ap_uint<SYMBOL_BITS> compute_histogram_histogram_last = 0;
+
+        compute_histogram:
         for(int j = 0; j < num_symbols; j++) {
 #pragma HLS PIPELINE II=1
+
             Digit digit = (sorting[j].frequency >> shift) & (RADIX - 1);
             current_digit[j] = digit;
-            digit_histogram[digit]++;
             previous_sorting[j] = sorting[j];
+
+
+            ap_uint<SYMBOL_BITS> histogram_curr = digit == compute_histogram_digit_last ? compute_histogram_histogram_last : digit_histogram[digit];
+            digit_histogram[compute_histogram_digit_last] = compute_histogram_histogram_last;
+            compute_histogram_histogram_last = histogram_curr + 1;
+            compute_histogram_digit_last = digit;
         }
+        digit_histogram[compute_histogram_digit_last] = compute_histogram_histogram_last;
 
         digit_location[0] = 0;
-    find_digit_location:
-        for(int i = 1; i < RADIX; i++)
+
+        find_digit_location:
+        for(int i = 1; i < RADIX; i++){
 #pragma HLS PIPELINE II=1
             digit_location[i] = digit_location[i-1] + digit_histogram[i-1];
+        }
 
-    re_sort:
+        Digit re_sort_digit_last = RADIX-1;
+        ap_uint<SYMBOL_BITS> re_sort_location_last = digit_location[RADIX-1];
+
+        re_sort:
         for(int j = 0; j < num_symbols; j++) {
 #pragma HLS PIPELINE II=1
             Digit digit = current_digit[j];
-            sorting[digit_location[digit]] = previous_sorting[j];
-            out[digit_location[digit]] = previous_sorting[j];
-            digit_location[digit]++;
+            ap_uint<SYMBOL_BITS> location_curr = re_sort_digit_last == digit ? re_sort_location_last : digit_location[digit];
+
+            sorting[location_curr] = previous_sorting[j];
+            out[location_curr] = previous_sorting[j];
+
+
+            digit_location[re_sort_digit_last] = re_sort_location_last;
+            re_sort_location_last = location_curr + 1;
+            re_sort_digit_last = digit;
         }
+        digit_location[re_sort_digit_last] = re_sort_location_last;
     }
 }

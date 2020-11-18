@@ -2,3 +2,5 @@
 .autopilot 
 .debug
 .apc
+~*
+*.log

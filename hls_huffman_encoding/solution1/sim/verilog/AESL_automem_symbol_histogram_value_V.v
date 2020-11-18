@@ -26,7 +26,7 @@ localparam
     TV_IN  = "../tv/cdatafile/c.huffman_encoding.autotvin_symbol_histogram_value_V.dat", 
     TV_OUT = "../tv/rtldatafile/rtl.huffman_encoding.autotvout_symbol_histogram_value_V.dat"; 
 //------------------------Local signal-------------------
-parameter DATA_WIDTH = 32'd 10;
+parameter DATA_WIDTH = 32'd 9;
 parameter ADDR_WIDTH = 32'd 8;
 parameter DEPTH = 32'd 256;
 parameter DLY = 0.1;

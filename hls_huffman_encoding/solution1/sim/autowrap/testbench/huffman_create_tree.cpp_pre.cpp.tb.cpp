@@ -63657,7 +63657,7 @@ const static int TREE_DEPTH = 64;
 const static int MAX_CODEWORD_LENGTH = 27;
 
 
-const static int SYMBOL_BITS = 10;
+const static int SYMBOL_BITS = 9;
 
 
 const static int TREE_DEPTH_BITS = 6;
@@ -63744,37 +63744,42 @@ void create_tree (
                  ap_uint<SYMBOL_BITS> parent[INPUT_SYMBOL_SIZE-1],
                  ap_uint<SYMBOL_BITS> left[INPUT_SYMBOL_SIZE-1],
                  ap_uint<SYMBOL_BITS> right[INPUT_SYMBOL_SIZE-1]) {
+#pragma HLS INTERFACE ap_fifo port=in
+
     Frequency frequency[INPUT_SYMBOL_SIZE-1];
     ap_uint<SYMBOL_BITS> tree_count = 0;
     ap_uint<SYMBOL_BITS> in_count = 0;
+#pragma HLS ARRAY_PARTITION variable=frequency cyclic factor=2
 
     
-# 13 "D:/Workspace/huffman_encoding_fpga/huffman_create_tree.cpp" 3
+# 16 "D:/Workspace/huffman_encoding_fpga/huffman_create_tree.cpp" 3
    (void) ((!!(
-# 13 "D:/Workspace/huffman_encoding_fpga/huffman_create_tree.cpp"
+# 16 "D:/Workspace/huffman_encoding_fpga/huffman_create_tree.cpp"
    num_symbols > 0
-# 13 "D:/Workspace/huffman_encoding_fpga/huffman_create_tree.cpp" 3
+# 16 "D:/Workspace/huffman_encoding_fpga/huffman_create_tree.cpp" 3
    )) || (_assert(
-# 13 "D:/Workspace/huffman_encoding_fpga/huffman_create_tree.cpp"
+# 16 "D:/Workspace/huffman_encoding_fpga/huffman_create_tree.cpp"
    "num_symbols > 0"
-# 13 "D:/Workspace/huffman_encoding_fpga/huffman_create_tree.cpp" 3
-   ,"D:/Workspace/huffman_encoding_fpga/huffman_create_tree.cpp",13),0))
-# 13 "D:/Workspace/huffman_encoding_fpga/huffman_create_tree.cpp"
+# 16 "D:/Workspace/huffman_encoding_fpga/huffman_create_tree.cpp" 3
+   ,"D:/Workspace/huffman_encoding_fpga/huffman_create_tree.cpp",16),0))
+# 16 "D:/Workspace/huffman_encoding_fpga/huffman_create_tree.cpp"
                           ;
     
-# 14 "D:/Workspace/huffman_encoding_fpga/huffman_create_tree.cpp" 3
+# 17 "D:/Workspace/huffman_encoding_fpga/huffman_create_tree.cpp" 3
    (void) ((!!(
-# 14 "D:/Workspace/huffman_encoding_fpga/huffman_create_tree.cpp"
+# 17 "D:/Workspace/huffman_encoding_fpga/huffman_create_tree.cpp"
    num_symbols <= INPUT_SYMBOL_SIZE
-# 14 "D:/Workspace/huffman_encoding_fpga/huffman_create_tree.cpp" 3
+# 17 "D:/Workspace/huffman_encoding_fpga/huffman_create_tree.cpp" 3
    )) || (_assert(
-# 14 "D:/Workspace/huffman_encoding_fpga/huffman_create_tree.cpp"
+# 17 "D:/Workspace/huffman_encoding_fpga/huffman_create_tree.cpp"
    "num_symbols <= INPUT_SYMBOL_SIZE"
-# 14 "D:/Workspace/huffman_encoding_fpga/huffman_create_tree.cpp" 3
-   ,"D:/Workspace/huffman_encoding_fpga/huffman_create_tree.cpp",14),0))
-# 14 "D:/Workspace/huffman_encoding_fpga/huffman_create_tree.cpp"
+# 17 "D:/Workspace/huffman_encoding_fpga/huffman_create_tree.cpp" 3
+   ,"D:/Workspace/huffman_encoding_fpga/huffman_create_tree.cpp",17),0))
+# 17 "D:/Workspace/huffman_encoding_fpga/huffman_create_tree.cpp"
                                            ;
 
+    Symbol s = in[0];
+    Symbol s_next = in[1];
     for(int i = 0; i < (num_symbols-1); i++) {
 #pragma HLS PIPELINE II=5
         Frequency node_freq = 0;
@@ -63784,52 +63789,70 @@ void create_tree (
 
 
         
-# 24 "D:/Workspace/huffman_encoding_fpga/huffman_create_tree.cpp" 3
+# 29 "D:/Workspace/huffman_encoding_fpga/huffman_create_tree.cpp" 3
        (void) ((!!(
-# 24 "D:/Workspace/huffman_encoding_fpga/huffman_create_tree.cpp"
+# 29 "D:/Workspace/huffman_encoding_fpga/huffman_create_tree.cpp"
        in_count < num_symbols || tree_count < i
-# 24 "D:/Workspace/huffman_encoding_fpga/huffman_create_tree.cpp" 3
+# 29 "D:/Workspace/huffman_encoding_fpga/huffman_create_tree.cpp" 3
        )) || (_assert(
-# 24 "D:/Workspace/huffman_encoding_fpga/huffman_create_tree.cpp"
+# 29 "D:/Workspace/huffman_encoding_fpga/huffman_create_tree.cpp"
        "in_count < num_symbols || tree_count < i"
-# 24 "D:/Workspace/huffman_encoding_fpga/huffman_create_tree.cpp" 3
-       ,"D:/Workspace/huffman_encoding_fpga/huffman_create_tree.cpp",24),0))
-# 24 "D:/Workspace/huffman_encoding_fpga/huffman_create_tree.cpp"
+# 29 "D:/Workspace/huffman_encoding_fpga/huffman_create_tree.cpp" 3
+       ,"D:/Workspace/huffman_encoding_fpga/huffman_create_tree.cpp",29),0))
+# 29 "D:/Workspace/huffman_encoding_fpga/huffman_create_tree.cpp"
                                                        ;
+
         Frequency intermediate_freq = frequency[tree_count];
-        Symbol s = in[in_count];
+        Frequency intermediate_freq_next = frequency[tree_count+1];
+
         if((in_count < num_symbols && s.frequency <= intermediate_freq) || tree_count == i) {
 
             left[i] = s.value;
             node_freq = s.frequency;
+            s = s_next;
+            s_next = in[in_count+2];
             in_count++;
+            
+# 41 "D:/Workspace/huffman_encoding_fpga/huffman_create_tree.cpp" 3
+           (void) ((!!(
+# 41 "D:/Workspace/huffman_encoding_fpga/huffman_create_tree.cpp"
+           in_count < num_symbols || tree_count < i
+# 41 "D:/Workspace/huffman_encoding_fpga/huffman_create_tree.cpp" 3
+           )) || (_assert(
+# 41 "D:/Workspace/huffman_encoding_fpga/huffman_create_tree.cpp"
+           "in_count < num_symbols || tree_count < i"
+# 41 "D:/Workspace/huffman_encoding_fpga/huffman_create_tree.cpp" 3
+           ,"D:/Workspace/huffman_encoding_fpga/huffman_create_tree.cpp",41),0))
+# 41 "D:/Workspace/huffman_encoding_fpga/huffman_create_tree.cpp"
+                                                           ;
         } else {
 
             left[i] = INTERNAL_NODE;
             node_freq = frequency[tree_count];
             parent[tree_count] = i;
             tree_count++;
+            
+# 48 "D:/Workspace/huffman_encoding_fpga/huffman_create_tree.cpp" 3
+           (void) ((!!(
+# 48 "D:/Workspace/huffman_encoding_fpga/huffman_create_tree.cpp"
+           in_count < num_symbols || tree_count < i
+# 48 "D:/Workspace/huffman_encoding_fpga/huffman_create_tree.cpp" 3
+           )) || (_assert(
+# 48 "D:/Workspace/huffman_encoding_fpga/huffman_create_tree.cpp"
+           "in_count < num_symbols || tree_count < i"
+# 48 "D:/Workspace/huffman_encoding_fpga/huffman_create_tree.cpp" 3
+           ,"D:/Workspace/huffman_encoding_fpga/huffman_create_tree.cpp",48),0))
+# 48 "D:/Workspace/huffman_encoding_fpga/huffman_create_tree.cpp"
+                                                           ;
+            intermediate_freq = intermediate_freq_next;
         }
 
-        
-# 40 "D:/Workspace/huffman_encoding_fpga/huffman_create_tree.cpp" 3
-       (void) ((!!(
-# 40 "D:/Workspace/huffman_encoding_fpga/huffman_create_tree.cpp"
-       in_count < num_symbols || tree_count < i
-# 40 "D:/Workspace/huffman_encoding_fpga/huffman_create_tree.cpp" 3
-       )) || (_assert(
-# 40 "D:/Workspace/huffman_encoding_fpga/huffman_create_tree.cpp"
-       "in_count < num_symbols || tree_count < i"
-# 40 "D:/Workspace/huffman_encoding_fpga/huffman_create_tree.cpp" 3
-       ,"D:/Workspace/huffman_encoding_fpga/huffman_create_tree.cpp",40),0))
-# 40 "D:/Workspace/huffman_encoding_fpga/huffman_create_tree.cpp"
-                                                       ;
-        intermediate_freq = frequency[tree_count];
-        s = in[in_count];
         if((in_count < num_symbols && s.frequency <= intermediate_freq) || tree_count == i) {
 
             right[i] = s.value;
             frequency[i] = node_freq + s.frequency;
+            s = s_next;
+            s_next = in[in_count+2];
             in_count++;
         } else {
 
@@ -63840,17 +63863,17 @@ void create_tree (
         }
 
         
-# 56 "D:/Workspace/huffman_encoding_fpga/huffman_create_tree.cpp" 3
+# 67 "D:/Workspace/huffman_encoding_fpga/huffman_create_tree.cpp" 3
        (void) ((!!(
-# 56 "D:/Workspace/huffman_encoding_fpga/huffman_create_tree.cpp"
+# 67 "D:/Workspace/huffman_encoding_fpga/huffman_create_tree.cpp"
        i == 0 || frequency[i] >= frequency[i-1]
-# 56 "D:/Workspace/huffman_encoding_fpga/huffman_create_tree.cpp" 3
+# 67 "D:/Workspace/huffman_encoding_fpga/huffman_create_tree.cpp" 3
        )) || (_assert(
-# 56 "D:/Workspace/huffman_encoding_fpga/huffman_create_tree.cpp"
+# 67 "D:/Workspace/huffman_encoding_fpga/huffman_create_tree.cpp"
        "i == 0 || frequency[i] >= frequency[i-1]"
-# 56 "D:/Workspace/huffman_encoding_fpga/huffman_create_tree.cpp" 3
-       ,"D:/Workspace/huffman_encoding_fpga/huffman_create_tree.cpp",56),0))
-# 56 "D:/Workspace/huffman_encoding_fpga/huffman_create_tree.cpp"
+# 67 "D:/Workspace/huffman_encoding_fpga/huffman_create_tree.cpp" 3
+       ,"D:/Workspace/huffman_encoding_fpga/huffman_create_tree.cpp",67),0))
+# 67 "D:/Workspace/huffman_encoding_fpga/huffman_create_tree.cpp"
                                                        ;
     }
 

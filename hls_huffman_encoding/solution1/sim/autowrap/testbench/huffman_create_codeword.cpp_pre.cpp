@@ -63653,7 +63653,7 @@ const static int TREE_DEPTH = 64;
 const static int MAX_CODEWORD_LENGTH = 27;
 
 
-const static int SYMBOL_BITS = 10;
+const static int SYMBOL_BITS = 9;
 
 
 const static int TREE_DEPTH_BITS = 6;
@@ -63740,34 +63740,37 @@ void create_codeword(
               ap_uint<SYMBOL_BITS> codeword_length_histogram[TREE_DEPTH],
                PackedCodewordAndLength encoding[INPUT_SYMBOL_SIZE]
 ) {
+
     Codeword first_codeword[MAX_CODEWORD_LENGTH];
 
 
-    first_codeword[0] = 0;
- first_codewords:
-    for(int i = 1; i < MAX_CODEWORD_LENGTH; i++) {
-#pragma HLS PIPELINE II=1
-        first_codeword[i] = (first_codeword[i-1] + codeword_length_histogram[i-1]) << 1;
-        Codeword c = first_codeword[i];
+    Codeword temp = 0;
 
+    first_codewords:
+    for(int i = 0; i < MAX_CODEWORD_LENGTH; i++) {
+#pragma HLS PIPELINE II=1
+
+        first_codeword[i] = temp;
+        temp = (temp + codeword_length_histogram[i]) << 1;
     }
 
- assign_codewords:
-  for (int i = 0; i < INPUT_SYMBOL_SIZE; ++i) {
+    assign_codewords:
+    for (int i = 0; i < INPUT_SYMBOL_SIZE; ++i) {
 #pragma HLS PIPELINE II=5
-      CodewordLength length = symbol_bits[i];
+        CodewordLength length = symbol_bits[i];
 
-  make_codeword:
-      if(length != 0) {
 
-          Codeword out_reversed = first_codeword[length];
-          out_reversed.reverse();
-          out_reversed = out_reversed >> (MAX_CODEWORD_LENGTH - length);
+        make_codeword:
+        if(length != 0) {
 
-          encoding[i] = (out_reversed << CODEWORD_LENGTH_BITS) + length;
-          first_codeword[length]++;
-      } else {
-          encoding[i] = 0;
+            Codeword out_reversed = first_codeword[length];
+            out_reversed.reverse();
+            out_reversed = out_reversed >> (MAX_CODEWORD_LENGTH - length);
+
+            encoding[i] = (out_reversed << CODEWORD_LENGTH_BITS) + length;
+            first_codeword[length]++;
+        } else {
+            encoding[i] = 0;
       }
   }
 }

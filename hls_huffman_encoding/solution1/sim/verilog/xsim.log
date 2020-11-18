@@ -2,8 +2,8 @@
 # xsim v2019.2 (64-bit)
 # SW Build 2708876 on Wed Nov  6 21:40:23 MST 2019
 # IP Build 2700528 on Thu Nov  7 00:09:20 MST 2019
-# Start of session at: Thu Nov 12 16:06:58 2020
-# Process ID: 25064
+# Start of session at: Wed Nov 18 15:32:47 2020
+# Process ID: 17640
 # Current directory: D:/Workspace/huffman_encoding_fpga/hls_huffman_encoding/solution1/sim/verilog
 # Command line: xsim.exe -mode tcl -source {xsim.dir/huffman_encoding/xsim_script.tcl}
 # Log file: D:/Workspace/huffman_encoding_fpga/hls_huffman_encoding/solution1/sim/verilog/xsim.log
@@ -22,8 +22,8 @@ source huffman_encoding.tcl
 // RTL Simulation : "Inter-Transaction Progress" ["Intra-Transaction Progress"] @ "Simulation Time"
 ////////////////////////////////////////////////////////////////////////////////////
 // RTL Simulation : 0 / 1 [n/a] @ "113000"
-// RTL Simulation : 1 / 1 [n/a] @ "55613000"
+// RTL Simulation : 1 / 1 [n/a] @ "71128000"
 ////////////////////////////////////////////////////////////////////////////////////
-$finish called at time : 55632500 ps : File "D:/Workspace/huffman_encoding_fpga/hls_huffman_encoding/solution1/sim/verilog/huffman_encoding.autotb.v" Line 417
+$finish called at time : 71147500 ps : File "D:/Workspace/huffman_encoding_fpga/hls_huffman_encoding/solution1/sim/verilog/huffman_encoding.autotb.v" Line 417
 ## quit
-INFO: [Common 17-206] Exiting xsim at Thu Nov 12 16:07:28 2020...
+INFO: [Common 17-206] Exiting xsim at Wed Nov 18 15:33:16 2020...

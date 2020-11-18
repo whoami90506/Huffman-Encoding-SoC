@@ -31,7 +31,7 @@ output   ap_done;
 input   ap_continue;
 output   ap_idle;
 output   ap_ready;
-input  [9:0] extLd_loc_dout;
+input  [8:0] extLd_loc_dout;
 input   extLd_loc_empty_n;
 output   extLd_loc_read;
 output  [31:0] num_nonzero_symbols;
@@ -91,10 +91,9 @@ always @ (posedge ap_clk) begin
         num_nonzero_symbols_preg[6] <= 1'b0;
         num_nonzero_symbols_preg[7] <= 1'b0;
         num_nonzero_symbols_preg[8] <= 1'b0;
-        num_nonzero_symbols_preg[9] <= 1'b0;
     end else begin
         if ((~((ap_start == 1'b0) | (extLd_loc_empty_n == 1'b0) | (ap_done_reg == 1'b1)) & (1'b1 == ap_CS_fsm_state1))) begin
-                        num_nonzero_symbols_preg[9 : 0] <= extLd_fu_35_p1[9 : 0];
+                        num_nonzero_symbols_preg[8 : 0] <= extLd_fu_35_p1[8 : 0];
         end
     end
 end
@@ -175,7 +174,7 @@ end
 assign extLd_fu_35_p1 = extLd_loc_dout;
 
 always @ (posedge ap_clk) begin
-    num_nonzero_symbols_preg[31:10] <= 22'b0000000000000000000000;
+    num_nonzero_symbols_preg[31:9] <= 23'b00000000000000000000000;
 end
 
 endmodule //Block_proc

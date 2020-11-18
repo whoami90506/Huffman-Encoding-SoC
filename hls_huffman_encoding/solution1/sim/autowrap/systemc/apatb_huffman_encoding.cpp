@@ -27,7 +27,7 @@ using namespace sc_dt;
 
 // [dump_struct_tree [build_nameSpaceTree] dumpedStructList] ---------->
     typedef struct Symbol {
-        ap_uint<10> value;
+        ap_uint<9> value;
         ap_uint<32> frequency;
        } Symbol;
 
@@ -430,14 +430,14 @@ int* num_nonzero_symbols)
 		sprintf(tvin_symbol_histogram_value_V, "[[transaction]] %d\n", AESL_transaction);
 		aesl_fh.write(AUTOTB_TVIN_symbol_histogram_value_V, tvin_symbol_histogram_value_V);
 
-		sc_bv<10>* symbol_histogram_value_V_tvin_wrapc_buffer = new sc_bv<10>[256];
+		sc_bv<9>* symbol_histogram_value_V_tvin_wrapc_buffer = new sc_bv<9>[256];
 
 		// RTL Name: symbol_histogram_value_V
 		{
-			// bitslice(9, 0)
+			// bitslice(8, 0)
 			{
 				int hls_map_index = 0;
-				// celement: symbol_histogram.value.V(9, 0)
+				// celement: symbol_histogram.value.V(8, 0)
 				{
 					// carray: (0) => (255) @ (1)
 					for (int i_0 = 0; i_0 <= 255; i_0 += 1)
@@ -450,9 +450,9 @@ int* num_nonzero_symbols)
 						// input_type_conversion : (symbol_histogram[i_0].value).to_string(2).c_str()
 						if (&(symbol_histogram[0].value) != NULL) // check the null address if the c port is array or others
 						{
-							sc_lv<10> symbol_histogram_value_V_tmp_mem;
+							sc_lv<9> symbol_histogram_value_V_tmp_mem;
 							symbol_histogram_value_V_tmp_mem = (symbol_histogram[i_0].value).to_string(2).c_str();
-							symbol_histogram_value_V_tvin_wrapc_buffer[hls_map_index].range(9, 0) = symbol_histogram_value_V_tmp_mem.range(9, 0);
+							symbol_histogram_value_V_tvin_wrapc_buffer[hls_map_index].range(8, 0) = symbol_histogram_value_V_tmp_mem.range(8, 0);
                                  	       hls_map_index++;
 						}
 					}

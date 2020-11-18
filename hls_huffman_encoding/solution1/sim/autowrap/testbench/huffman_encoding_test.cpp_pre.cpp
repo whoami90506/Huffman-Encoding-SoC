@@ -63653,7 +63653,7 @@ const static int TREE_DEPTH = 64;
 const static int MAX_CODEWORD_LENGTH = 27;
 
 
-const static int SYMBOL_BITS = 10;
+const static int SYMBOL_BITS = 9;
 
 
 const static int TREE_DEPTH_BITS = 6;
