@@ -7,7 +7,7 @@
 
 `timescale 1 ns / 1 ps 
 
-(* CORE_GENERATION_INFO="huffman_encoding,hls_ip_2019_2,{HLS_INPUT_TYPE=cxx,HLS_INPUT_FLOAT=0,HLS_INPUT_FIXED=1,HLS_INPUT_PART=xc7z020-clg484-1,HLS_INPUT_CLOCK=5.000000,HLS_INPUT_ARCH=dataflow,HLS_SYN_CLOCK=4.559500,HLS_SYN_LAT=-1,HLS_SYN_TPT=-1,HLS_SYN_MEM=23,HLS_SYN_DSP=0,HLS_SYN_FF=3766,HLS_SYN_LUT=7070,HLS_VERSION=2019_2}" *)
+(* CORE_GENERATION_INFO="huffman_encoding,hls_ip_2019_2,{HLS_INPUT_TYPE=cxx,HLS_INPUT_FLOAT=0,HLS_INPUT_FIXED=1,HLS_INPUT_PART=xc7z020-clg484-1,HLS_INPUT_CLOCK=5.000000,HLS_INPUT_ARCH=dataflow,HLS_SYN_CLOCK=4.559500,HLS_SYN_LAT=-1,HLS_SYN_TPT=-1,HLS_SYN_MEM=23,HLS_SYN_DSP=0,HLS_SYN_FF=3772,HLS_SYN_LUT=7070,HLS_VERSION=2019_2}" *)
 
 module huffman_encoding (
         s_axi_AXILiteS_AWVALID,
@@ -29,6 +29,7 @@ module huffman_encoding (
         s_axi_AXILiteS_BRESP,
         ap_clk,
         ap_rst_n,
+        interrupt,
         symbol_histogram_value_V_TDATA,
         symbol_histogram_frequency_V_TDATA,
         encoding_V_TDATA,
@@ -36,12 +37,8 @@ module huffman_encoding (
         symbol_histogram_value_V_TREADY,
         symbol_histogram_frequency_V_TVALID,
         symbol_histogram_frequency_V_TREADY,
-        ap_start,
         encoding_V_TVALID,
-        encoding_V_TREADY,
-        ap_done,
-        ap_ready,
-        ap_idle
+        encoding_V_TREADY
 );
 
 parameter    C_S_AXI_AXILITES_DATA_WIDTH = 32;
@@ -71,6 +68,7 @@ input   s_axi_AXILiteS_BREADY;
 output  [1:0] s_axi_AXILiteS_BRESP;
 input   ap_clk;
 input   ap_rst_n;
+output   interrupt;
 input  [15:0] symbol_histogram_value_V_TDATA;
 input  [31:0] symbol_histogram_frequency_V_TDATA;
 output  [31:0] encoding_V_TDATA;
@@ -78,14 +76,14 @@ input   symbol_histogram_value_V_TVALID;
 output   symbol_histogram_value_V_TREADY;
 input   symbol_histogram_frequency_V_TVALID;
 output   symbol_histogram_frequency_V_TREADY;
-input   ap_start;
 output   encoding_V_TVALID;
 input   encoding_V_TREADY;
-output   ap_done;
-output   ap_ready;
-output   ap_idle;
 
  reg    ap_rst_n_inv;
+wire    ap_start;
+wire    ap_ready;
+wire    ap_done;
+wire    ap_idle;
 wire   [8:0] filtered_value_V_i_q0;
 wire   [8:0] filtered_value_V_t_q0;
 wire   [31:0] filtered_frequency_V_i_q0;
@@ -455,6 +453,11 @@ huffman_encoding_AXILiteS_s_axi_U(
     .ACLK(ap_clk),
     .ARESET(ap_rst_n_inv),
     .ACLK_EN(1'b1),
+    .ap_start(ap_start),
+    .interrupt(interrupt),
+    .ap_ready(ap_ready),
+    .ap_done(ap_done),
+    .ap_idle(ap_idle),
     .num_nonzero_symbols(Block_proc_U0_num_nonzero_symbols),
     .num_nonzero_symbols_ap_vld(Block_proc_U0_num_nonzero_symbols_ap_vld)
 );

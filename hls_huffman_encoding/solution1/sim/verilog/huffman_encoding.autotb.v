@@ -83,6 +83,7 @@ wire [1 : 0] AXILiteS_RRESP;
 wire  AXILiteS_BVALID;
 wire  AXILiteS_BREADY;
 wire [1 : 0] AXILiteS_BRESP;
+wire  AXILiteS_INTERRUPT;
 wire [15 : 0] symbol_histogram_value_V_TDATA;
 wire [31 : 0] symbol_histogram_frequency_V_TDATA;
 wire [31 : 0] encoding_V_TDATA;
@@ -90,12 +91,8 @@ wire  symbol_histogram_value_V_TVALID;
 wire  symbol_histogram_value_V_TREADY;
 wire  symbol_histogram_frequency_V_TVALID;
 wire  symbol_histogram_frequency_V_TREADY;
-wire ap_start;
 wire  encoding_V_TVALID;
 wire  encoding_V_TREADY;
-wire ap_done;
-wire ap_ready;
-wire ap_idle;
 integer done_cnt = 0;
 integer AESL_ready_cnt = 0;
 integer ready_cnt = 0;
@@ -141,6 +138,7 @@ wire ap_rst_n_n;
     .s_axi_AXILiteS_BVALID(AXILiteS_BVALID),
     .s_axi_AXILiteS_BREADY(AXILiteS_BREADY),
     .s_axi_AXILiteS_BRESP(AXILiteS_BRESP),
+    .interrupt(AXILiteS_INTERRUPT),
     .ap_clk(ap_clk),
     .ap_rst_n(ap_rst_n),
     .symbol_histogram_value_V_TDATA(symbol_histogram_value_V_TDATA),
@@ -150,61 +148,20 @@ wire ap_rst_n_n;
     .symbol_histogram_value_V_TREADY(symbol_histogram_value_V_TREADY),
     .symbol_histogram_frequency_V_TVALID(symbol_histogram_frequency_V_TVALID),
     .symbol_histogram_frequency_V_TREADY(symbol_histogram_frequency_V_TREADY),
-    .ap_start(ap_start),
     .encoding_V_TVALID(encoding_V_TVALID),
-    .encoding_V_TREADY(encoding_V_TREADY),
-    .ap_done(ap_done),
-    .ap_ready(ap_ready),
-    .ap_idle(ap_idle));
+    .encoding_V_TREADY(encoding_V_TREADY));
 
 // Assignment for control signal
 assign ap_clk = AESL_clock;
 assign ap_rst_n = AESL_reset;
 assign ap_rst_n_n = ~AESL_reset;
 assign AESL_reset = rst;
-assign ap_start = AESL_slave_start | AESL_slave_start_lock;
 assign AESL_start = start;
-assign AESL_ready = ap_ready;
-assign AESL_idle = ap_idle;
 assign AESL_ce = ce;
 assign AESL_continue = tb_continue;
   assign AESL_slave_write_start_in = slave_start_status ;
-  assign AESL_slave_write_start_finish = AESL_slave_write_start_in;
   assign AESL_slave_start = AESL_slave_write_start_finish;
-  assign AESL_slave_done =  1  & AXILiteS_read_data_finish;
-  assign AESL_done = (ap_done_lock | ap_done) & AESL_slave_done & slave_done_status;
-
-always @(posedge AESL_clock)
-begin
-    if(AESL_reset === 0)
-    begin
-        AESL_slave_start_lock <= 0;
-    end
-    else begin
-        if (AESL_ready == 1) begin
-            AESL_slave_start_lock <= 0;
-        end
-        else if (AESL_slave_start == 1) begin
-            AESL_slave_start_lock <= 1;
-        end
-    end
-end
-
-always @(posedge AESL_clock)
-begin
-    if(AESL_reset === 0)
-    begin
-        ap_done_lock <= 0;
-    end
-    else begin
-        if (AESL_done == 1) begin
-            ap_done_lock <= 0;
-        end
-        else if (ap_done == 1) begin
-            ap_done_lock <= 1;
-        end
-    end
-end
+  assign AESL_done = slave_done_status  & AXILiteS_read_data_finish;
 
 always @(posedge AESL_clock)
 begin
@@ -252,28 +209,10 @@ begin
     if (AESL_done == 1) begin
         slave_done_status <= 0;
     end
-    else if (AESL_slave_done == 1 ) begin
+    else if (AESL_slave_output_done == 1 ) begin
         slave_done_status <= 1;
     end
 end
-    always @(posedge AESL_clock) begin
-        if (AESL_reset === 0) begin
-        end else begin
-            if (AESL_done !== 1 && AESL_done !== 0) begin
-                $display("ERROR: Control signal AESL_done is invalid!");
-                $finish;
-            end
-        end
-    end
-    always @(posedge AESL_clock) begin
-        if (AESL_reset === 0) begin
-        end else begin
-            if (AESL_ready !== 1 && AESL_ready !== 0) begin
-                $display("ERROR: Control signal AESL_ready is invalid!");
-                $finish;
-            end
-        end
-    end
 
 
 
@@ -389,10 +328,14 @@ AESL_axi_slave_AXILiteS AESL_AXI_SLAVE_AXILiteS(
     .TRAN_s_axi_AXILiteS_BVALID (AXILiteS_BVALID),
     .TRAN_s_axi_AXILiteS_BREADY (AXILiteS_BREADY),
     .TRAN_s_axi_AXILiteS_BRESP (AXILiteS_BRESP),
+    .TRAN_AXILiteS_interrupt (AXILiteS_INTERRUPT),
     .TRAN_AXILiteS_read_data_finish(AXILiteS_read_data_finish),
+    .TRAN_AXILiteS_ready_out (AESL_ready),
     .TRAN_AXILiteS_ready_in (AESL_slave_ready),
-    .TRAN_AXILiteS_done_in (AESL_slave_output_done),
-    .TRAN_AXILiteS_idle_in (AESL_idle),
+    .TRAN_AXILiteS_done_out (AESL_slave_output_done),
+    .TRAN_AXILiteS_idle_out (AESL_idle),
+    .TRAN_AXILiteS_write_start_in     (AESL_slave_write_start_in),
+    .TRAN_AXILiteS_write_start_finish (AESL_slave_write_start_finish),
     .TRAN_AXILiteS_transaction_done_in (AESL_done_delay),
     .TRAN_AXILiteS_start_in  (AESL_slave_start)
 );

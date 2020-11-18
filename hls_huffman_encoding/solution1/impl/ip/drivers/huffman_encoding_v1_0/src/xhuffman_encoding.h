@@ -77,9 +77,23 @@ int XHuffman_encoding_Initialize(XHuffman_encoding *InstancePtr, const char* Ins
 int XHuffman_encoding_Release(XHuffman_encoding *InstancePtr);
 #endif
 
+void XHuffman_encoding_Start(XHuffman_encoding *InstancePtr);
+u32 XHuffman_encoding_IsDone(XHuffman_encoding *InstancePtr);
+u32 XHuffman_encoding_IsIdle(XHuffman_encoding *InstancePtr);
+u32 XHuffman_encoding_IsReady(XHuffman_encoding *InstancePtr);
+void XHuffman_encoding_EnableAutoRestart(XHuffman_encoding *InstancePtr);
+void XHuffman_encoding_DisableAutoRestart(XHuffman_encoding *InstancePtr);
 
 u32 XHuffman_encoding_Get_num_nonzero_symbols(XHuffman_encoding *InstancePtr);
 u32 XHuffman_encoding_Get_num_nonzero_symbols_vld(XHuffman_encoding *InstancePtr);
+
+void XHuffman_encoding_InterruptGlobalEnable(XHuffman_encoding *InstancePtr);
+void XHuffman_encoding_InterruptGlobalDisable(XHuffman_encoding *InstancePtr);
+void XHuffman_encoding_InterruptEnable(XHuffman_encoding *InstancePtr, u32 Mask);
+void XHuffman_encoding_InterruptDisable(XHuffman_encoding *InstancePtr, u32 Mask);
+void XHuffman_encoding_InterruptClear(XHuffman_encoding *InstancePtr, u32 Mask);
+u32 XHuffman_encoding_InterruptGetEnabled(XHuffman_encoding *InstancePtr);
+u32 XHuffman_encoding_InterruptGetStatus(XHuffman_encoding *InstancePtr);
 
 #ifdef __cplusplus
 }

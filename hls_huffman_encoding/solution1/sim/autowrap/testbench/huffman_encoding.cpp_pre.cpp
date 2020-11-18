@@ -63741,6 +63741,7 @@ void huffman_encoding(
 #pragma HLS INTERFACE axis port=symbol_histogram
 #pragma HLS INTERFACE axis port=encoding
 #pragma HLS INTERFACE s_axilite port=num_nonzero_symbols
+#pragma HLS INTERFACE s_axilite port=return
 
 #pragma HLS DATAFLOW
 
@@ -63771,17 +63772,17 @@ void huffman_encoding(
         sorted_copy2[i].frequency = sorted[i].frequency;
 
         
-# 39 "D:/Workspace/huffman_encoding_fpga/huffman_encoding.cpp" 3
+# 40 "D:/Workspace/huffman_encoding_fpga/huffman_encoding.cpp" 3
        (void) ((!!(
-# 39 "D:/Workspace/huffman_encoding_fpga/huffman_encoding.cpp"
+# 40 "D:/Workspace/huffman_encoding_fpga/huffman_encoding.cpp"
        previous_frequency <= (int)sorted[i].frequency
-# 39 "D:/Workspace/huffman_encoding_fpga/huffman_encoding.cpp" 3
+# 40 "D:/Workspace/huffman_encoding_fpga/huffman_encoding.cpp" 3
        )) || (_assert(
-# 39 "D:/Workspace/huffman_encoding_fpga/huffman_encoding.cpp"
+# 40 "D:/Workspace/huffman_encoding_fpga/huffman_encoding.cpp"
        "previous_frequency <= (int)sorted[i].frequency"
-# 39 "D:/Workspace/huffman_encoding_fpga/huffman_encoding.cpp" 3
-       ,"D:/Workspace/huffman_encoding_fpga/huffman_encoding.cpp",39),0))
-# 39 "D:/Workspace/huffman_encoding_fpga/huffman_encoding.cpp"
+# 40 "D:/Workspace/huffman_encoding_fpga/huffman_encoding.cpp" 3
+       ,"D:/Workspace/huffman_encoding_fpga/huffman_encoding.cpp",40),0))
+# 40 "D:/Workspace/huffman_encoding_fpga/huffman_encoding.cpp"
                                                              ;
         previous_frequency = sorted[i].frequency;
     }
@@ -63803,17 +63804,17 @@ void huffman_encoding(
 
 
     
-# 59 "D:/Workspace/huffman_encoding_fpga/huffman_encoding.cpp" 3
+# 60 "D:/Workspace/huffman_encoding_fpga/huffman_encoding.cpp" 3
    (void) ((!!(
-# 59 "D:/Workspace/huffman_encoding_fpga/huffman_encoding.cpp"
+# 60 "D:/Workspace/huffman_encoding_fpga/huffman_encoding.cpp"
    codewords_in_tree == n
-# 59 "D:/Workspace/huffman_encoding_fpga/huffman_encoding.cpp" 3
+# 60 "D:/Workspace/huffman_encoding_fpga/huffman_encoding.cpp" 3
    )) || (_assert(
-# 59 "D:/Workspace/huffman_encoding_fpga/huffman_encoding.cpp"
+# 60 "D:/Workspace/huffman_encoding_fpga/huffman_encoding.cpp"
    "codewords_in_tree == n"
-# 59 "D:/Workspace/huffman_encoding_fpga/huffman_encoding.cpp" 3
-   ,"D:/Workspace/huffman_encoding_fpga/huffman_encoding.cpp",59),0))
-# 59 "D:/Workspace/huffman_encoding_fpga/huffman_encoding.cpp"
+# 60 "D:/Workspace/huffman_encoding_fpga/huffman_encoding.cpp" 3
+   ,"D:/Workspace/huffman_encoding_fpga/huffman_encoding.cpp",60),0))
+# 60 "D:/Workspace/huffman_encoding_fpga/huffman_encoding.cpp"
                                  ;
 
 

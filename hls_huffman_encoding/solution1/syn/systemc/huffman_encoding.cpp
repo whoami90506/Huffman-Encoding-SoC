@@ -49,6 +49,11 @@ huffman_encoding::huffman_encoding(sc_module_name name) : sc_module(name), mVcdF
     huffman_encoding_AXILiteS_s_axi_U->ACLK(ap_clk);
     huffman_encoding_AXILiteS_s_axi_U->ARESET(ap_rst_n_inv);
     huffman_encoding_AXILiteS_s_axi_U->ACLK_EN(ap_var_for_const0);
+    huffman_encoding_AXILiteS_s_axi_U->ap_start(ap_start);
+    huffman_encoding_AXILiteS_s_axi_U->interrupt(interrupt);
+    huffman_encoding_AXILiteS_s_axi_U->ap_ready(ap_ready);
+    huffman_encoding_AXILiteS_s_axi_U->ap_done(ap_done);
+    huffman_encoding_AXILiteS_s_axi_U->ap_idle(ap_idle);
     huffman_encoding_AXILiteS_s_axi_U->num_nonzero_symbols(Block_proc_U0_num_nonzero_symbols);
     huffman_encoding_AXILiteS_s_axi_U->num_nonzero_symbols_ap_vld(Block_proc_U0_num_nonzero_symbols_ap_vld);
     filtered_value_V_U = new huffman_encoding_ncg("filtered_value_V_U");
@@ -1054,6 +1059,7 @@ huffman_encoding::huffman_encoding(sc_module_name name) : sc_module(name), mVcdF
     sc_trace(mVcdFile, s_axi_AXILiteS_BRESP, "(port)s_axi_AXILiteS_BRESP");
     sc_trace(mVcdFile, ap_clk, "(port)ap_clk");
     sc_trace(mVcdFile, ap_rst_n, "(port)ap_rst_n");
+    sc_trace(mVcdFile, interrupt, "(port)interrupt");
     sc_trace(mVcdFile, symbol_histogram_value_V_TDATA, "(port)symbol_histogram_value_V_TDATA");
     sc_trace(mVcdFile, symbol_histogram_frequency_V_TDATA, "(port)symbol_histogram_frequency_V_TDATA");
     sc_trace(mVcdFile, encoding_V_TDATA, "(port)encoding_V_TDATA");
@@ -1061,15 +1067,15 @@ huffman_encoding::huffman_encoding(sc_module_name name) : sc_module(name), mVcdF
     sc_trace(mVcdFile, symbol_histogram_value_V_TREADY, "(port)symbol_histogram_value_V_TREADY");
     sc_trace(mVcdFile, symbol_histogram_frequency_V_TVALID, "(port)symbol_histogram_frequency_V_TVALID");
     sc_trace(mVcdFile, symbol_histogram_frequency_V_TREADY, "(port)symbol_histogram_frequency_V_TREADY");
-    sc_trace(mVcdFile, ap_start, "(port)ap_start");
     sc_trace(mVcdFile, encoding_V_TVALID, "(port)encoding_V_TVALID");
     sc_trace(mVcdFile, encoding_V_TREADY, "(port)encoding_V_TREADY");
-    sc_trace(mVcdFile, ap_done, "(port)ap_done");
-    sc_trace(mVcdFile, ap_ready, "(port)ap_ready");
-    sc_trace(mVcdFile, ap_idle, "(port)ap_idle");
 #endif
 #ifdef __HLS_TRACE_LEVEL_INT__
     sc_trace(mVcdFile, ap_rst_n_inv, "ap_rst_n_inv");
+    sc_trace(mVcdFile, ap_start, "ap_start");
+    sc_trace(mVcdFile, ap_ready, "ap_ready");
+    sc_trace(mVcdFile, ap_done, "ap_done");
+    sc_trace(mVcdFile, ap_idle, "ap_idle");
     sc_trace(mVcdFile, filtered_value_V_i_q0, "filtered_value_V_i_q0");
     sc_trace(mVcdFile, filtered_value_V_t_q0, "filtered_value_V_t_q0");
     sc_trace(mVcdFile, filtered_frequency_V_i_q0, "filtered_frequency_V_i_q0");
@@ -1999,6 +2005,7 @@ void huffman_encoding::thread_hdltv_gen() {
         mHdltvinHandle << " , " <<  " \"s_axi_AXILiteS_BREADY\" :  \"" << s_axi_AXILiteS_BREADY.read() << "\" ";
         mHdltvoutHandle << " , " <<  " \"s_axi_AXILiteS_BRESP\" :  \"" << s_axi_AXILiteS_BRESP.read() << "\" ";
         mHdltvinHandle << " , " <<  " \"ap_rst_n\" :  \"" << ap_rst_n.read() << "\" ";
+        mHdltvoutHandle << " , " <<  " \"interrupt\" :  \"" << interrupt.read() << "\" ";
         mHdltvinHandle << " , " <<  " \"symbol_histogram_value_V_TDATA\" :  \"" << symbol_histogram_value_V_TDATA.read() << "\" ";
         mHdltvinHandle << " , " <<  " \"symbol_histogram_frequency_V_TDATA\" :  \"" << symbol_histogram_frequency_V_TDATA.read() << "\" ";
         mHdltvoutHandle << " , " <<  " \"encoding_V_TDATA\" :  \"" << encoding_V_TDATA.read() << "\" ";
@@ -2006,12 +2013,8 @@ void huffman_encoding::thread_hdltv_gen() {
         mHdltvoutHandle << " , " <<  " \"symbol_histogram_value_V_TREADY\" :  \"" << symbol_histogram_value_V_TREADY.read() << "\" ";
         mHdltvinHandle << " , " <<  " \"symbol_histogram_frequency_V_TVALID\" :  \"" << symbol_histogram_frequency_V_TVALID.read() << "\" ";
         mHdltvoutHandle << " , " <<  " \"symbol_histogram_frequency_V_TREADY\" :  \"" << symbol_histogram_frequency_V_TREADY.read() << "\" ";
-        mHdltvinHandle << " , " <<  " \"ap_start\" :  \"" << ap_start.read() << "\" ";
         mHdltvoutHandle << " , " <<  " \"encoding_V_TVALID\" :  \"" << encoding_V_TVALID.read() << "\" ";
         mHdltvinHandle << " , " <<  " \"encoding_V_TREADY\" :  \"" << encoding_V_TREADY.read() << "\" ";
-        mHdltvoutHandle << " , " <<  " \"ap_done\" :  \"" << ap_done.read() << "\" ";
-        mHdltvoutHandle << " , " <<  " \"ap_ready\" :  \"" << ap_ready.read() << "\" ";
-        mHdltvoutHandle << " , " <<  " \"ap_idle\" :  \"" << ap_idle.read() << "\" ";
         mHdltvinHandle << "}" << std::endl;
         mHdltvoutHandle << "}" << std::endl;
         ap_cycleNo++;

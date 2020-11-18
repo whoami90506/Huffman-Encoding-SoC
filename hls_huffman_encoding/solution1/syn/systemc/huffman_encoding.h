@@ -42,7 +42,7 @@ namespace ap_rtl {
 template<unsigned int C_S_AXI_AXILITES_ADDR_WIDTH = 5,
          unsigned int C_S_AXI_AXILITES_DATA_WIDTH = 32>
 struct huffman_encoding : public sc_module {
-    // Port declarations 32
+    // Port declarations 29
     sc_in< sc_logic > s_axi_AXILiteS_AWVALID;
     sc_out< sc_logic > s_axi_AXILiteS_AWREADY;
     sc_in< sc_uint<C_S_AXI_AXILITES_ADDR_WIDTH> > s_axi_AXILiteS_AWADDR;
@@ -62,6 +62,7 @@ struct huffman_encoding : public sc_module {
     sc_out< sc_lv<2> > s_axi_AXILiteS_BRESP;
     sc_in_clk ap_clk;
     sc_in< sc_logic > ap_rst_n;
+    sc_out< sc_logic > interrupt;
     sc_in< sc_lv<16> > symbol_histogram_value_V_TDATA;
     sc_in< sc_lv<32> > symbol_histogram_frequency_V_TDATA;
     sc_out< sc_lv<32> > encoding_V_TDATA;
@@ -69,12 +70,8 @@ struct huffman_encoding : public sc_module {
     sc_out< sc_logic > symbol_histogram_value_V_TREADY;
     sc_in< sc_logic > symbol_histogram_frequency_V_TVALID;
     sc_out< sc_logic > symbol_histogram_frequency_V_TREADY;
-    sc_in< sc_logic > ap_start;
     sc_out< sc_logic > encoding_V_TVALID;
     sc_in< sc_logic > encoding_V_TREADY;
-    sc_out< sc_logic > ap_done;
-    sc_out< sc_logic > ap_ready;
-    sc_out< sc_logic > ap_idle;
     sc_signal< sc_logic > ap_var_for_const0;
     sc_signal< sc_lv<32> > ap_var_for_const3;
     sc_signal< sc_logic > ap_var_for_const1;
@@ -130,6 +127,10 @@ struct huffman_encoding : public sc_module {
     start_for_create_Aem* start_for_create_Aem_U;
     start_for_Block_pBew* start_for_Block_pBew_U;
     sc_signal< sc_logic > ap_rst_n_inv;
+    sc_signal< sc_logic > ap_start;
+    sc_signal< sc_logic > ap_ready;
+    sc_signal< sc_logic > ap_done;
+    sc_signal< sc_logic > ap_idle;
     sc_signal< sc_lv<9> > filtered_value_V_i_q0;
     sc_signal< sc_lv<9> > filtered_value_V_t_q0;
     sc_signal< sc_lv<32> > filtered_frequency_V_i_q0;

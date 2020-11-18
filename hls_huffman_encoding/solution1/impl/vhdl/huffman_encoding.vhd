@@ -33,6 +33,7 @@ port (
     s_axi_AXILiteS_BRESP : OUT STD_LOGIC_VECTOR (1 downto 0);
     ap_clk : IN STD_LOGIC;
     ap_rst_n : IN STD_LOGIC;
+    interrupt : OUT STD_LOGIC;
     symbol_histogram_value_V_TDATA : IN STD_LOGIC_VECTOR (15 downto 0);
     symbol_histogram_frequency_V_TDATA : IN STD_LOGIC_VECTOR (31 downto 0);
     encoding_V_TDATA : OUT STD_LOGIC_VECTOR (31 downto 0);
@@ -40,19 +41,15 @@ port (
     symbol_histogram_value_V_TREADY : OUT STD_LOGIC;
     symbol_histogram_frequency_V_TVALID : IN STD_LOGIC;
     symbol_histogram_frequency_V_TREADY : OUT STD_LOGIC;
-    ap_start : IN STD_LOGIC;
     encoding_V_TVALID : OUT STD_LOGIC;
-    encoding_V_TREADY : IN STD_LOGIC;
-    ap_done : OUT STD_LOGIC;
-    ap_ready : OUT STD_LOGIC;
-    ap_idle : OUT STD_LOGIC );
+    encoding_V_TREADY : IN STD_LOGIC );
 end;
 
 
 architecture behav of huffman_encoding is 
     attribute CORE_GENERATION_INFO : STRING;
     attribute CORE_GENERATION_INFO of behav : architecture is
-    "huffman_encoding,hls_ip_2019_2,{HLS_INPUT_TYPE=cxx,HLS_INPUT_FLOAT=0,HLS_INPUT_FIXED=1,HLS_INPUT_PART=xc7z020-clg484-1,HLS_INPUT_CLOCK=5.000000,HLS_INPUT_ARCH=dataflow,HLS_SYN_CLOCK=4.559500,HLS_SYN_LAT=-1,HLS_SYN_TPT=-1,HLS_SYN_MEM=23,HLS_SYN_DSP=0,HLS_SYN_FF=3766,HLS_SYN_LUT=7070,HLS_VERSION=2019_2}";
+    "huffman_encoding,hls_ip_2019_2,{HLS_INPUT_TYPE=cxx,HLS_INPUT_FLOAT=0,HLS_INPUT_FIXED=1,HLS_INPUT_PART=xc7z020-clg484-1,HLS_INPUT_CLOCK=5.000000,HLS_INPUT_ARCH=dataflow,HLS_SYN_CLOCK=4.559500,HLS_SYN_LAT=-1,HLS_SYN_TPT=-1,HLS_SYN_MEM=23,HLS_SYN_DSP=0,HLS_SYN_FF=3772,HLS_SYN_LUT=7070,HLS_VERSION=2019_2}";
     constant C_S_AXI_DATA_WIDTH : INTEGER range 63 downto 0 := 20;
     constant C_S_AXI_WSTRB_WIDTH : INTEGER range 63 downto 0 := 4;
     constant C_S_AXI_ADDR_WIDTH : INTEGER range 63 downto 0 := 20;
@@ -69,6 +66,10 @@ architecture behav of huffman_encoding is
     constant ap_const_boolean_1 : BOOLEAN := true;
 
     signal ap_rst_n_inv : STD_LOGIC;
+    signal ap_start : STD_LOGIC;
+    signal ap_ready : STD_LOGIC;
+    signal ap_done : STD_LOGIC;
+    signal ap_idle : STD_LOGIC;
     signal filtered_value_V_i_q0 : STD_LOGIC_VECTOR (8 downto 0);
     signal filtered_value_V_t_q0 : STD_LOGIC_VECTOR (8 downto 0);
     signal filtered_frequency_V_i_q0 : STD_LOGIC_VECTOR (31 downto 0);
@@ -1010,6 +1011,11 @@ architecture behav of huffman_encoding is
         ACLK : IN STD_LOGIC;
         ARESET : IN STD_LOGIC;
         ACLK_EN : IN STD_LOGIC;
+        ap_start : OUT STD_LOGIC;
+        interrupt : OUT STD_LOGIC;
+        ap_ready : IN STD_LOGIC;
+        ap_done : IN STD_LOGIC;
+        ap_idle : IN STD_LOGIC;
         num_nonzero_symbols : IN STD_LOGIC_VECTOR (31 downto 0);
         num_nonzero_symbols_ap_vld : IN STD_LOGIC );
     end component;
@@ -1042,6 +1048,11 @@ begin
         ACLK => ap_clk,
         ARESET => ap_rst_n_inv,
         ACLK_EN => ap_const_logic_1,
+        ap_start => ap_start,
+        interrupt => interrupt,
+        ap_ready => ap_ready,
+        ap_done => ap_done,
+        ap_idle => ap_idle,
         num_nonzero_symbols => Block_proc_U0_num_nonzero_symbols,
         num_nonzero_symbols_ap_vld => Block_proc_U0_num_nonzero_symbols_ap_vld);
 

@@ -1,4 +1,4 @@
-Running: xsim.dir/huffman_encoding/xsimk.exe -simmode gui -wdb huffman_encoding.wdb -simrunnum 0 -socket 52317
+Running: xsim.dir/huffman_encoding/xsimk.exe -simmode gui -wdb huffman_encoding.wdb -simrunnum 0 -socket 56894
 Design successfully loaded
-Design Loading Memory Usage: 6564 KB (Peak: 6564 KB)
-Design Loading CPU Usage: 15 ms
+Design Loading Memory Usage: 7032 KB (Peak: 7032 KB)
+Design Loading CPU Usage: 46 ms

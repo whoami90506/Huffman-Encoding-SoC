@@ -98,14 +98,14 @@
   },
   "Files": {
     "CSource": [
-      "..\/..\/huffman_truncate_tree.cpp",
-      "..\/..\/huffman_create_codeword.cpp",
-      "..\/..\/huffman_sort.cpp",
-      "..\/..\/huffman_encoding.cpp",
-      "..\/..\/huffman_compute_bit_length.cpp",
-      "..\/..\/huffman_filter.cpp",
+      "..\/..\/huffman_canonize_tree.cpp",
       "..\/..\/huffman_create_tree.cpp",
-      "..\/..\/huffman_canonize_tree.cpp"
+      "..\/..\/huffman_filter.cpp",
+      "..\/..\/huffman_compute_bit_length.cpp",
+      "..\/..\/huffman_encoding.cpp",
+      "..\/..\/huffman_sort.cpp",
+      "..\/..\/huffman_create_codeword.cpp",
+      "..\/..\/huffman_truncate_tree.cpp"
     ],
     "Vhdl": [
       "impl\/vhdl\/Block_codeRepl1012_p.vhd",
@@ -226,16 +226,6 @@
       "buses": "s_axi_AXILiteS symbol_histogram_value_V symbol_histogram_frequency_V encoding_V",
       "reset": "ap_rst_n"
     },
-    "ap_ctrl": {
-      "type": "ap_ctrl",
-      "ctrl_ports": "ap_start ap_done ap_ready ap_idle",
-      "ctype": {
-        "start": {"Type": "bool"},
-        "done": {"Type": "bool"},
-        "ready": {"Type": "bool"},
-        "idle": {"Type": "bool"}
-      }
-    },
     "ap_rst_n": {
       "type": "reset",
       "polarity": "ACTIVE_LOW",
@@ -258,6 +248,12 @@
       },
       "port_width": {"TDATA": "32"}
     },
+    "interrupt": {
+      "type": "interrupt",
+      "ctype": {"INTERRUPT": {"Type": "bool"}},
+      "bundle_name": "AXILiteS",
+      "bundle_role": "interrupt"
+    },
     "s_axi_AXILiteS": {
       "type": "axi4lite",
       "is_adaptor": "true",
@@ -266,6 +262,162 @@
       "param_prefix": "C_S_AXI_AXILITES",
       "addr_bits": "5",
       "registers": [
+        {
+          "offset": "0x00",
+          "name": "CTRL",
+          "access": "RW",
+          "reset_value": "0x0",
+          "description": "Control signals",
+          "fields": [
+            {
+              "offset": "0",
+              "width": "1",
+              "name": "AP_START",
+              "access": "RW",
+              "reset_value": "0",
+              "description": "Control signal Register for 'ap_start'."
+            },
+            {
+              "offset": "1",
+              "width": "1",
+              "name": "AP_DONE",
+              "access": "R",
+              "reset_value": "0",
+              "description": "Control signal Register for 'ap_done'."
+            },
+            {
+              "offset": "2",
+              "width": "1",
+              "name": "AP_IDLE",
+              "access": "R",
+              "reset_value": "0",
+              "description": "Control signal Register for 'ap_idle'."
+            },
+            {
+              "offset": "3",
+              "width": "1",
+              "name": "AP_READY",
+              "access": "R",
+              "reset_value": "0",
+              "description": "Control signal Register for 'ap_ready'."
+            },
+            {
+              "offset": "4",
+              "width": "3",
+              "name": "RESERVED_1",
+              "access": "R",
+              "reset_value": "0",
+              "description": "Reserved.  0s on read."
+            },
+            {
+              "offset": "7",
+              "width": "1",
+              "name": "AUTO_RESTART",
+              "access": "RW",
+              "reset_value": "0",
+              "description": "Control signal Register for 'auto_restart'."
+            },
+            {
+              "offset": "8",
+              "width": "24",
+              "name": "RESERVED_2",
+              "access": "R",
+              "reset_value": "0",
+              "description": "Reserved.  0s on read."
+            }
+          ]
+        },
+        {
+          "offset": "0x04",
+          "name": "GIER",
+          "access": "RW",
+          "reset_value": "0x0",
+          "description": "Global Interrupt Enable Register",
+          "fields": [
+            {
+              "offset": "0",
+              "width": "1",
+              "name": "Enable",
+              "access": "RW",
+              "reset_value": "0",
+              "description": "Master enable for the device interrupt output to the system interrupt controller: 0 = Disabled, 1 = Enabled"
+            },
+            {
+              "offset": "1",
+              "width": "31",
+              "name": "RESERVED",
+              "access": "R",
+              "reset_value": "0",
+              "description": "Reserved.  0s on read."
+            }
+          ]
+        },
+        {
+          "offset": "0x08",
+          "name": "IP_IER",
+          "access": "RW",
+          "reset_value": "0x0",
+          "description": "IP Interrupt Enable Register",
+          "fields": [
+            {
+              "offset": "0",
+              "width": "1",
+              "name": "CHAN0_INT_EN",
+              "access": "RW",
+              "reset_value": "0",
+              "description": "Enable Channel 0 (ap_done) Interrupt.  0 = Disabled, 1 = Enabled."
+            },
+            {
+              "offset": "1",
+              "width": "1",
+              "name": "CHAN1_INT_EN",
+              "access": "RW",
+              "reset_value": "0",
+              "description": "Enable Channel 1 (ap_ready) Interrupt.  0 = Disabled, 1 = Enabled."
+            },
+            {
+              "offset": "2",
+              "width": "30",
+              "name": "RESERVED",
+              "access": "R",
+              "reset_value": "0",
+              "description": "Reserved.  0s on read."
+            }
+          ]
+        },
+        {
+          "offset": "0x0c",
+          "name": "IP_ISR",
+          "access": "RW",
+          "reset_value": "0x0",
+          "description": "IP Interrupt Status Register",
+          "fields": [
+            {
+              "offset": "0",
+              "width": "1",
+              "name": "CHAN0_INT_ST",
+              "access": "RTOW",
+              "reset_value": "0",
+              "description": "Channel 0 (ap_done) Interrupt Status. 0 = No Channel 0 input interrupt, 1 = Channel 0 input interrup"
+            },
+            {
+              "offset": "1",
+              "width": "1",
+              "name": "CHAN1_INT_ST",
+              "access": "RTOW",
+              "reset_value": "0",
+              "description": "Channel 1 (ap_ready) Interrupt Status. 0 = No Channel 1 input interrupt, 1 = Channel 1 input interrup"
+            },
+            {
+              "offset": "2",
+              "width": "30",
+              "name": "RESERVED",
+              "access": "R",
+              "reset_value": "0",
+              "description": "Reserved.  0s on read."
+            }
+          ]
+        },
         {
           "offset": "0x10",
           "name": "num_nonzero_symbols",
@@ -465,21 +617,10 @@
       "dir": "in",
       "width": "1"
     },
-    "ap_start": {
-      "dir": "in",
-      "width": "1"
-    },
-    "ap_done": {
+    "interrupt": {
       "dir": "out",
-      "width": "1"
-    },
-    "ap_ready": {
-      "dir": "out",
-      "width": "1"
-    },
-    "ap_idle": {
-      "dir": "out",
-      "width": "1"
+      "width": "1",
+      "isVector": "true"
     },
     "symbol_histogram_value_V_TDATA": {
       "dir": "in",
@@ -1077,7 +1218,7 @@
         },
         "Area": {
           "BRAM_18K": "23",
-          "FF": "3766",
+          "FF": "3772",
           "LUT": "7070",
           "URAM": "0",
           "DSP48E": "0"
@@ -1095,7 +1236,7 @@
   },
   "GenData": {
     "DataVersion": "0.2",
-    "Time": "2020-11-18 17:20:24 +0800",
+    "Time": "2020-11-19 02:00:29 +0800",
     "ToolName": "vivado_hls",
     "ToolVersion": "2019.2"
   }

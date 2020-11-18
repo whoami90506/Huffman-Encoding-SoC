@@ -88,19 +88,19 @@ wire    ap_CS_fsm_state1;
 reg    internal_ap_ready;
 reg    in_value_V_TDATA_blk_n;
 wire    ap_CS_fsm_state2;
-wire   [0:0] icmp_ln11_fu_138_p2;
-wire   [0:0] icmp_ln883_fu_150_p2;
+wire   [0:0] icmp_ln11_fu_130_p2;
+wire   [0:0] icmp_ln883_fu_142_p2;
 reg    in_frequency_V_TDATA_blk_n;
 reg    n_out_blk_n;
 wire    ap_CS_fsm_state3;
-wire   [8:0] i_fu_144_p2;
+wire   [8:0] i_fu_136_p2;
 reg    ap_predicate_op24_read_state2;
 reg    ap_block_state2;
-reg   [8:0] i_0_i_reg_118;
+reg   [8:0] i_0_i_reg_110;
 reg    ap_block_state1;
-wire   [63:0] zext_ln544_fu_156_p1;
-reg   [8:0] t_V_fu_68;
-wire   [8:0] j_V_fu_167_p2;
+wire   [63:0] zext_ln544_fu_148_p1;
+reg   [8:0] t_V_fu_60;
+wire   [8:0] j_V_fu_159_p2;
 reg   [2:0] ap_NS_fsm;
 wire    regslice_both_in_value_V_U_apdone_blk;
 wire   [15:0] in_value_V_TDATA_int;
@@ -181,18 +181,18 @@ always @ (posedge ap_clk) begin
 end
 
 always @ (posedge ap_clk) begin
-    if ((~(((in_value_V_TVALID_int == 1'b0) & (ap_predicate_op24_read_state2 == 1'b1)) | ((icmp_ln11_fu_138_p2 == 1'd0) & (in_frequency_V_TVALID_int == 1'b0))) & (icmp_ln11_fu_138_p2 == 1'd0) & (1'b1 == ap_CS_fsm_state2))) begin
-        i_0_i_reg_118 <= i_fu_144_p2;
+    if ((~(((in_value_V_TVALID_int == 1'b0) & (ap_predicate_op24_read_state2 == 1'b1)) | ((icmp_ln11_fu_130_p2 == 1'd0) & (in_frequency_V_TVALID_int == 1'b0))) & (icmp_ln11_fu_130_p2 == 1'd0) & (1'b1 == ap_CS_fsm_state2))) begin
+        i_0_i_reg_110 <= i_fu_136_p2;
     end else if ((~((real_start == 1'b0) | (ap_done_reg == 1'b1)) & (1'b1 == ap_CS_fsm_state1))) begin
-        i_0_i_reg_118 <= 9'd0;
+        i_0_i_reg_110 <= 9'd0;
     end
 end
 
 always @ (posedge ap_clk) begin
-    if ((~(((in_value_V_TVALID_int == 1'b0) & (ap_predicate_op24_read_state2 == 1'b1)) | ((icmp_ln11_fu_138_p2 == 1'd0) & (in_frequency_V_TVALID_int == 1'b0))) & (icmp_ln883_fu_150_p2 == 1'd0) & (icmp_ln11_fu_138_p2 == 1'd0) & (1'b1 == ap_CS_fsm_state2))) begin
-        t_V_fu_68 <= j_V_fu_167_p2;
+    if ((~(((in_value_V_TVALID_int == 1'b0) & (ap_predicate_op24_read_state2 == 1'b1)) | ((icmp_ln11_fu_130_p2 == 1'd0) & (in_frequency_V_TVALID_int == 1'b0))) & (icmp_ln883_fu_142_p2 == 1'd0) & (icmp_ln11_fu_130_p2 == 1'd0) & (1'b1 == ap_CS_fsm_state2))) begin
+        t_V_fu_60 <= j_V_fu_159_p2;
     end else if ((~((real_start == 1'b0) | (ap_done_reg == 1'b1)) & (1'b1 == ap_CS_fsm_state1))) begin
-        t_V_fu_68 <= 9'd0;
+        t_V_fu_60 <= 9'd0;
     end
 end
 
@@ -213,7 +213,7 @@ always @ (*) begin
 end
 
 always @ (*) begin
-    if (((icmp_ln11_fu_138_p2 == 1'd0) & (1'b1 == ap_CS_fsm_state2))) begin
+    if (((icmp_ln11_fu_130_p2 == 1'd0) & (1'b1 == ap_CS_fsm_state2))) begin
         in_frequency_V_TDATA_blk_n = in_frequency_V_TVALID_int;
     end else begin
         in_frequency_V_TDATA_blk_n = 1'b1;
@@ -229,7 +229,7 @@ always @ (*) begin
 end
 
 always @ (*) begin
-    if ((~(((in_value_V_TVALID_int == 1'b0) & (ap_predicate_op24_read_state2 == 1'b1)) | ((icmp_ln11_fu_138_p2 == 1'd0) & (in_frequency_V_TVALID_int == 1'b0))) & (icmp_ln11_fu_138_p2 == 1'd0) & (1'b1 == ap_CS_fsm_state2))) begin
+    if ((~(((in_value_V_TVALID_int == 1'b0) & (ap_predicate_op24_read_state2 == 1'b1)) | ((icmp_ln11_fu_130_p2 == 1'd0) & (in_frequency_V_TVALID_int == 1'b0))) & (icmp_ln11_fu_130_p2 == 1'd0) & (1'b1 == ap_CS_fsm_state2))) begin
         in_frequency_V_TREADY_int = 1'b1;
     end else begin
         in_frequency_V_TREADY_int = 1'b0;
@@ -237,7 +237,7 @@ always @ (*) begin
 end
 
 always @ (*) begin
-    if (((icmp_ln883_fu_150_p2 == 1'd0) & (icmp_ln11_fu_138_p2 == 1'd0) & (1'b1 == ap_CS_fsm_state2))) begin
+    if (((icmp_ln883_fu_142_p2 == 1'd0) & (icmp_ln11_fu_130_p2 == 1'd0) & (1'b1 == ap_CS_fsm_state2))) begin
         in_value_V_TDATA_blk_n = in_value_V_TVALID_int;
     end else begin
         in_value_V_TDATA_blk_n = 1'b1;
@@ -253,7 +253,7 @@ always @ (*) begin
 end
 
 always @ (*) begin
-    if ((~(((in_value_V_TVALID_int == 1'b0) & (ap_predicate_op24_read_state2 == 1'b1)) | ((icmp_ln11_fu_138_p2 == 1'd0) & (in_frequency_V_TVALID_int == 1'b0))) & (1'b1 == ap_CS_fsm_state2) & (ap_predicate_op24_read_state2 == 1'b1))) begin
+    if ((~(((in_value_V_TVALID_int == 1'b0) & (ap_predicate_op24_read_state2 == 1'b1)) | ((icmp_ln11_fu_130_p2 == 1'd0) & (in_frequency_V_TVALID_int == 1'b0))) & (1'b1 == ap_CS_fsm_state2) & (ap_predicate_op24_read_state2 == 1'b1))) begin
         in_value_V_TREADY_int = 1'b1;
     end else begin
         in_value_V_TREADY_int = 1'b0;
@@ -285,7 +285,7 @@ always @ (*) begin
 end
 
 always @ (*) begin
-    if ((~(((in_value_V_TVALID_int == 1'b0) & (ap_predicate_op24_read_state2 == 1'b1)) | ((icmp_ln11_fu_138_p2 == 1'd0) & (in_frequency_V_TVALID_int == 1'b0))) & (1'b1 == ap_CS_fsm_state2))) begin
+    if ((~(((in_value_V_TVALID_int == 1'b0) & (ap_predicate_op24_read_state2 == 1'b1)) | ((icmp_ln11_fu_130_p2 == 1'd0) & (in_frequency_V_TVALID_int == 1'b0))) & (1'b1 == ap_CS_fsm_state2))) begin
         out_frequency_V_ce0 = 1'b1;
     end else begin
         out_frequency_V_ce0 = 1'b0;
@@ -293,7 +293,7 @@ always @ (*) begin
 end
 
 always @ (*) begin
-    if ((~(((in_value_V_TVALID_int == 1'b0) & (ap_predicate_op24_read_state2 == 1'b1)) | ((icmp_ln11_fu_138_p2 == 1'd0) & (in_frequency_V_TVALID_int == 1'b0))) & (icmp_ln883_fu_150_p2 == 1'd0) & (icmp_ln11_fu_138_p2 == 1'd0) & (1'b1 == ap_CS_fsm_state2))) begin
+    if ((~(((in_value_V_TVALID_int == 1'b0) & (ap_predicate_op24_read_state2 == 1'b1)) | ((icmp_ln11_fu_130_p2 == 1'd0) & (in_frequency_V_TVALID_int == 1'b0))) & (icmp_ln883_fu_142_p2 == 1'd0) & (icmp_ln11_fu_130_p2 == 1'd0) & (1'b1 == ap_CS_fsm_state2))) begin
         out_frequency_V_we0 = 1'b1;
     end else begin
         out_frequency_V_we0 = 1'b0;
@@ -301,7 +301,7 @@ always @ (*) begin
 end
 
 always @ (*) begin
-    if ((~(((in_value_V_TVALID_int == 1'b0) & (ap_predicate_op24_read_state2 == 1'b1)) | ((icmp_ln11_fu_138_p2 == 1'd0) & (in_frequency_V_TVALID_int == 1'b0))) & (1'b1 == ap_CS_fsm_state2))) begin
+    if ((~(((in_value_V_TVALID_int == 1'b0) & (ap_predicate_op24_read_state2 == 1'b1)) | ((icmp_ln11_fu_130_p2 == 1'd0) & (in_frequency_V_TVALID_int == 1'b0))) & (1'b1 == ap_CS_fsm_state2))) begin
         out_value_V_ce0 = 1'b1;
     end else begin
         out_value_V_ce0 = 1'b0;
@@ -309,7 +309,7 @@ always @ (*) begin
 end
 
 always @ (*) begin
-    if ((~(((in_value_V_TVALID_int == 1'b0) & (ap_predicate_op24_read_state2 == 1'b1)) | ((icmp_ln11_fu_138_p2 == 1'd0) & (in_frequency_V_TVALID_int == 1'b0))) & (icmp_ln883_fu_150_p2 == 1'd0) & (icmp_ln11_fu_138_p2 == 1'd0) & (1'b1 == ap_CS_fsm_state2))) begin
+    if ((~(((in_value_V_TVALID_int == 1'b0) & (ap_predicate_op24_read_state2 == 1'b1)) | ((icmp_ln11_fu_130_p2 == 1'd0) & (in_frequency_V_TVALID_int == 1'b0))) & (icmp_ln883_fu_142_p2 == 1'd0) & (icmp_ln11_fu_130_p2 == 1'd0) & (1'b1 == ap_CS_fsm_state2))) begin
         out_value_V_we0 = 1'b1;
     end else begin
         out_value_V_we0 = 1'b0;
@@ -342,9 +342,9 @@ always @ (*) begin
             end
         end
         ap_ST_fsm_state2 : begin
-            if ((~(((in_value_V_TVALID_int == 1'b0) & (ap_predicate_op24_read_state2 == 1'b1)) | ((icmp_ln11_fu_138_p2 == 1'd0) & (in_frequency_V_TVALID_int == 1'b0))) & (icmp_ln11_fu_138_p2 == 1'd0) & (1'b1 == ap_CS_fsm_state2))) begin
+            if ((~(((in_value_V_TVALID_int == 1'b0) & (ap_predicate_op24_read_state2 == 1'b1)) | ((icmp_ln11_fu_130_p2 == 1'd0) & (in_frequency_V_TVALID_int == 1'b0))) & (icmp_ln11_fu_130_p2 == 1'd0) & (1'b1 == ap_CS_fsm_state2))) begin
                 ap_NS_fsm = ap_ST_fsm_state2;
-            end else if ((~(((in_value_V_TVALID_int == 1'b0) & (ap_predicate_op24_read_state2 == 1'b1)) | ((icmp_ln11_fu_138_p2 == 1'd0) & (in_frequency_V_TVALID_int == 1'b0))) & (icmp_ln11_fu_138_p2 == 1'd1) & (1'b1 == ap_CS_fsm_state2))) begin
+            end else if ((~(((in_value_V_TVALID_int == 1'b0) & (ap_predicate_op24_read_state2 == 1'b1)) | ((icmp_ln11_fu_130_p2 == 1'd0) & (in_frequency_V_TVALID_int == 1'b0))) & (icmp_ln11_fu_130_p2 == 1'd1) & (1'b1 == ap_CS_fsm_state2))) begin
                 ap_NS_fsm = ap_ST_fsm_state3;
             end else begin
                 ap_NS_fsm = ap_ST_fsm_state2;
@@ -374,35 +374,35 @@ always @ (*) begin
 end
 
 always @ (*) begin
-    ap_block_state2 = (((in_value_V_TVALID_int == 1'b0) & (ap_predicate_op24_read_state2 == 1'b1)) | ((icmp_ln11_fu_138_p2 == 1'd0) & (in_frequency_V_TVALID_int == 1'b0)));
+    ap_block_state2 = (((in_value_V_TVALID_int == 1'b0) & (ap_predicate_op24_read_state2 == 1'b1)) | ((icmp_ln11_fu_130_p2 == 1'd0) & (in_frequency_V_TVALID_int == 1'b0)));
 end
 
 always @ (*) begin
-    ap_predicate_op24_read_state2 = ((icmp_ln883_fu_150_p2 == 1'd0) & (icmp_ln11_fu_138_p2 == 1'd0));
+    ap_predicate_op24_read_state2 = ((icmp_ln883_fu_142_p2 == 1'd0) & (icmp_ln11_fu_130_p2 == 1'd0));
 end
 
 assign ap_ready = internal_ap_ready;
 
-assign i_fu_144_p2 = (i_0_i_reg_118 + 9'd1);
+assign i_fu_136_p2 = (i_0_i_reg_110 + 9'd1);
 
-assign icmp_ln11_fu_138_p2 = ((i_0_i_reg_118 == 9'd256) ? 1'b1 : 1'b0);
+assign icmp_ln11_fu_130_p2 = ((i_0_i_reg_110 == 9'd256) ? 1'b1 : 1'b0);
 
-assign icmp_ln883_fu_150_p2 = ((in_frequency_V_TDATA_int == 32'd0) ? 1'b1 : 1'b0);
+assign icmp_ln883_fu_142_p2 = ((in_frequency_V_TDATA_int == 32'd0) ? 1'b1 : 1'b0);
 
-assign j_V_fu_167_p2 = (9'd1 + t_V_fu_68);
+assign j_V_fu_159_p2 = (9'd1 + t_V_fu_60);
 
-assign n_out_din = t_V_fu_68;
+assign n_out_din = t_V_fu_60;
 
-assign out_frequency_V_address0 = zext_ln544_fu_156_p1;
+assign out_frequency_V_address0 = zext_ln544_fu_148_p1;
 
 assign out_frequency_V_d0 = in_frequency_V_TDATA_int;
 
-assign out_value_V_address0 = zext_ln544_fu_156_p1;
+assign out_value_V_address0 = zext_ln544_fu_148_p1;
 
 assign out_value_V_d0 = in_value_V_TDATA_int[8:0];
 
 assign start_out = real_start;
 
-assign zext_ln544_fu_156_p1 = t_V_fu_68;
+assign zext_ln544_fu_148_p1 = t_V_fu_60;
 
 endmodule //filter
