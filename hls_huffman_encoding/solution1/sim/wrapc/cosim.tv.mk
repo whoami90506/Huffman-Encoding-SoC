@@ -61,34 +61,34 @@ $(ObjDir)/huffman_encoding_test.cpp_pre.cpp.tb.o : huffman_encoding_test.cpp_pre
 	$(Echo) "   Compiling huffman_encoding_test.cpp_pre.cpp.tb.cpp" $(AVE_DIR_DLOG)
 	$(Verb) $(CC) ${CCFLAG} ${TOOLCHAIN}  -fno-builtin-isinf -fno-builtin-isnan -c $(IFLAG) $(DFLAG) $< -o $@; \
 
-$(ObjDir)/huffman_canonize_tree.cpp_pre.cpp.tb.o : huffman_canonize_tree.cpp_pre.cpp.tb.cpp $(ObjDir)/.dir
-	$(Echo) "   Compiling huffman_canonize_tree.cpp_pre.cpp.tb.cpp" $(AVE_DIR_DLOG)
-	$(Verb) $(CC) ${CCFLAG} ${TOOLCHAIN}  -fno-builtin-isinf -fno-builtin-isnan -c $(IFLAG) $(DFLAG) $< -o $@; \
-
-$(ObjDir)/huffman_create_tree.cpp_pre.cpp.tb.o : huffman_create_tree.cpp_pre.cpp.tb.cpp $(ObjDir)/.dir
-	$(Echo) "   Compiling huffman_create_tree.cpp_pre.cpp.tb.cpp" $(AVE_DIR_DLOG)
-	$(Verb) $(CC) ${CCFLAG} ${TOOLCHAIN}  -fno-builtin-isinf -fno-builtin-isnan -c $(IFLAG) $(DFLAG) $< -o $@; \
-
-$(ObjDir)/huffman_filter.cpp_pre.cpp.tb.o : huffman_filter.cpp_pre.cpp.tb.cpp $(ObjDir)/.dir
-	$(Echo) "   Compiling huffman_filter.cpp_pre.cpp.tb.cpp" $(AVE_DIR_DLOG)
-	$(Verb) $(CC) ${CCFLAG} ${TOOLCHAIN}  -fno-builtin-isinf -fno-builtin-isnan -c $(IFLAG) $(DFLAG) $< -o $@; \
-
-$(ObjDir)/huffman_compute_bit_length.cpp_pre.cpp.tb.o : huffman_compute_bit_length.cpp_pre.cpp.tb.cpp $(ObjDir)/.dir
-	$(Echo) "   Compiling huffman_compute_bit_length.cpp_pre.cpp.tb.cpp" $(AVE_DIR_DLOG)
-	$(Verb) $(CC) ${CCFLAG} ${TOOLCHAIN}  -fno-builtin-isinf -fno-builtin-isnan -c $(IFLAG) $(DFLAG) $< -o $@; \
-
-$(ObjDir)/huffman_encoding.cpp_pre.cpp.tb.o : huffman_encoding.cpp_pre.cpp.tb.cpp $(ObjDir)/.dir
-	$(Echo) "   Compiling huffman_encoding.cpp_pre.cpp.tb.cpp" $(AVE_DIR_DLOG)
-	$(Verb) $(CC) ${CCFLAG} ${TOOLCHAIN}  -fno-builtin-isinf -fno-builtin-isnan -c $(IFLAG) $(DFLAG) $< -o $@; \
-
-$(ObjDir)/huffman_sort.cpp_pre.cpp.tb.o : huffman_sort.cpp_pre.cpp.tb.cpp $(ObjDir)/.dir
-	$(Echo) "   Compiling huffman_sort.cpp_pre.cpp.tb.cpp" $(AVE_DIR_DLOG)
+$(ObjDir)/huffman_truncate_tree.cpp_pre.cpp.tb.o : huffman_truncate_tree.cpp_pre.cpp.tb.cpp $(ObjDir)/.dir
+	$(Echo) "   Compiling huffman_truncate_tree.cpp_pre.cpp.tb.cpp" $(AVE_DIR_DLOG)
 	$(Verb) $(CC) ${CCFLAG} ${TOOLCHAIN}  -fno-builtin-isinf -fno-builtin-isnan -c $(IFLAG) $(DFLAG) $< -o $@; \
 
 $(ObjDir)/huffman_create_codeword.cpp_pre.cpp.tb.o : huffman_create_codeword.cpp_pre.cpp.tb.cpp $(ObjDir)/.dir
 	$(Echo) "   Compiling huffman_create_codeword.cpp_pre.cpp.tb.cpp" $(AVE_DIR_DLOG)
 	$(Verb) $(CC) ${CCFLAG} ${TOOLCHAIN}  -fno-builtin-isinf -fno-builtin-isnan -c $(IFLAG) $(DFLAG) $< -o $@; \
 
-$(ObjDir)/huffman_truncate_tree.cpp_pre.cpp.tb.o : huffman_truncate_tree.cpp_pre.cpp.tb.cpp $(ObjDir)/.dir
-	$(Echo) "   Compiling huffman_truncate_tree.cpp_pre.cpp.tb.cpp" $(AVE_DIR_DLOG)
+$(ObjDir)/huffman_sort.cpp_pre.cpp.tb.o : huffman_sort.cpp_pre.cpp.tb.cpp $(ObjDir)/.dir
+	$(Echo) "   Compiling huffman_sort.cpp_pre.cpp.tb.cpp" $(AVE_DIR_DLOG)
+	$(Verb) $(CC) ${CCFLAG} ${TOOLCHAIN}  -fno-builtin-isinf -fno-builtin-isnan -c $(IFLAG) $(DFLAG) $< -o $@; \
+
+$(ObjDir)/huffman_encoding.cpp_pre.cpp.tb.o : huffman_encoding.cpp_pre.cpp.tb.cpp $(ObjDir)/.dir
+	$(Echo) "   Compiling huffman_encoding.cpp_pre.cpp.tb.cpp" $(AVE_DIR_DLOG)
+	$(Verb) $(CC) ${CCFLAG} ${TOOLCHAIN}  -fno-builtin-isinf -fno-builtin-isnan -c $(IFLAG) $(DFLAG) $< -o $@; \
+
+$(ObjDir)/huffman_compute_bit_length.cpp_pre.cpp.tb.o : huffman_compute_bit_length.cpp_pre.cpp.tb.cpp $(ObjDir)/.dir
+	$(Echo) "   Compiling huffman_compute_bit_length.cpp_pre.cpp.tb.cpp" $(AVE_DIR_DLOG)
+	$(Verb) $(CC) ${CCFLAG} ${TOOLCHAIN}  -fno-builtin-isinf -fno-builtin-isnan -c $(IFLAG) $(DFLAG) $< -o $@; \
+
+$(ObjDir)/huffman_filter.cpp_pre.cpp.tb.o : huffman_filter.cpp_pre.cpp.tb.cpp $(ObjDir)/.dir
+	$(Echo) "   Compiling huffman_filter.cpp_pre.cpp.tb.cpp" $(AVE_DIR_DLOG)
+	$(Verb) $(CC) ${CCFLAG} ${TOOLCHAIN}  -fno-builtin-isinf -fno-builtin-isnan -c $(IFLAG) $(DFLAG) $< -o $@; \
+
+$(ObjDir)/huffman_create_tree.cpp_pre.cpp.tb.o : huffman_create_tree.cpp_pre.cpp.tb.cpp $(ObjDir)/.dir
+	$(Echo) "   Compiling huffman_create_tree.cpp_pre.cpp.tb.cpp" $(AVE_DIR_DLOG)
+	$(Verb) $(CC) ${CCFLAG} ${TOOLCHAIN}  -fno-builtin-isinf -fno-builtin-isnan -c $(IFLAG) $(DFLAG) $< -o $@; \
+
+$(ObjDir)/huffman_canonize_tree.cpp_pre.cpp.tb.o : huffman_canonize_tree.cpp_pre.cpp.tb.cpp $(ObjDir)/.dir
+	$(Echo) "   Compiling huffman_canonize_tree.cpp_pre.cpp.tb.cpp" $(AVE_DIR_DLOG)
 	$(Verb) $(CC) ${CCFLAG} ${TOOLCHAIN}  -fno-builtin-isinf -fno-builtin-isnan -c $(IFLAG) $(DFLAG) $< -o $@; \

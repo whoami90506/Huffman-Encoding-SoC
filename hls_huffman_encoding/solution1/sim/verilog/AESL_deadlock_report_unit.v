@@ -144,7 +144,7 @@ module AESL_deadlock_report_unit #( parameter PROC_NUM = 4 ) (
                     proc_path = "huffman_encoding.filter_U0";
                 end
                 1 : begin
-                    proc_path = "huffman_encoding.Block_codeRepl1012_p_U0";
+                    proc_path = "huffman_encoding.Block_codeRepl810_pr_U0";
                 end
                 2 : begin
                     proc_path = "huffman_encoding.sort_U0";
@@ -287,9 +287,9 @@ module AESL_deadlock_report_unit #( parameter PROC_NUM = 4 ) (
                                 $fdisplay(fp, "Dependence_Channel_status NULL");
                             end
                         end
-                        if ((~AESL_inst_huffman_encoding.start_for_Block_czec_U.if_full_n & AESL_inst_huffman_encoding.Block_codeRepl1012_p_U0.ap_done)) begin
+                        if ((~AESL_inst_huffman_encoding.start_for_Block_czec_U.if_full_n & AESL_inst_huffman_encoding.Block_codeRepl810_pr_U0.ap_done)) begin
                             chan_path = "";
-                            if ((~AESL_inst_huffman_encoding.start_for_Block_czec_U.if_full_n & AESL_inst_huffman_encoding.Block_codeRepl1012_p_U0.ap_done)) begin
+                            if ((~AESL_inst_huffman_encoding.start_for_Block_czec_U.if_full_n & AESL_inst_huffman_encoding.Block_codeRepl810_pr_U0.ap_done)) begin
                                 $display("//      Deadlock detected: can be a false alarm due to leftover data,");
                                 $display("//      please try cosim_design -disable_deadlock_detection");
                             end
@@ -300,7 +300,7 @@ module AESL_deadlock_report_unit #( parameter PROC_NUM = 4 ) (
                 1 : begin
                     case(index2)
                     0: begin
-                        if (~AESL_inst_huffman_encoding.Block_codeRepl1012_p_U0.n_blk_n) begin
+                        if (~AESL_inst_huffman_encoding.Block_codeRepl810_pr_U0.n_blk_n) begin
                             chan_path = "huffman_encoding.n_c_U";
                             if (~AESL_inst_huffman_encoding.n_c_U.if_empty_n) begin
                                 $display("//      Channel: %0s, EMPTY", chan_path);
@@ -318,23 +318,23 @@ module AESL_deadlock_report_unit #( parameter PROC_NUM = 4 ) (
                                 $fdisplay(fp, "Dependence_Channel_status NULL");
                             end
                         end
-                        if ((~AESL_inst_huffman_encoding.start_for_Block_czec_U.if_empty_n & (AESL_inst_huffman_encoding.Block_codeRepl1012_p_U0.ap_ready | AESL_inst_huffman_encoding.Block_codeRepl1012_p_U0.ap_idle))) begin
+                        if ((~AESL_inst_huffman_encoding.start_for_Block_czec_U.if_empty_n & (AESL_inst_huffman_encoding.Block_codeRepl810_pr_U0.ap_ready | AESL_inst_huffman_encoding.Block_codeRepl810_pr_U0.ap_idle))) begin
                             chan_path = "";
-                            if ((~AESL_inst_huffman_encoding.start_for_Block_czec_U.if_empty_n & (AESL_inst_huffman_encoding.Block_codeRepl1012_p_U0.ap_ready | AESL_inst_huffman_encoding.Block_codeRepl1012_p_U0.ap_idle))) begin
+                            if ((~AESL_inst_huffman_encoding.start_for_Block_czec_U.if_empty_n & (AESL_inst_huffman_encoding.Block_codeRepl810_pr_U0.ap_ready | AESL_inst_huffman_encoding.Block_codeRepl810_pr_U0.ap_idle))) begin
                                 $display("//      Deadlock detected: can be a false alarm due to leftover data,");
                                 $display("//      please try cosim_design -disable_deadlock_detection");
                             end
                         end
                     end
                     3: begin
-                        if (~AESL_inst_huffman_encoding.Block_codeRepl1012_p_U0.n_out_blk_n) begin
-                            chan_path = "huffman_encoding.n_c20_U";
-                            if (~AESL_inst_huffman_encoding.n_c20_U.if_empty_n) begin
+                        if (~AESL_inst_huffman_encoding.Block_codeRepl810_pr_U0.n_out_blk_n) begin
+                            chan_path = "huffman_encoding.n_c18_U";
+                            if (~AESL_inst_huffman_encoding.n_c18_U.if_empty_n) begin
                                 $display("//      Channel: %0s, EMPTY", chan_path);
                                 $fdisplay(fp, "Dependence_Channel_path %0s", chan_path);
                                 $fdisplay(fp, "Dependence_Channel_status EMPTY");
                             end
-                            else if (~AESL_inst_huffman_encoding.n_c20_U.if_full_n) begin
+                            else if (~AESL_inst_huffman_encoding.n_c18_U.if_full_n) begin
                                 $display("//      Channel: %0s, FULL", chan_path);
                                 $fdisplay(fp, "Dependence_Channel_path %0s", chan_path);
                                 $fdisplay(fp, "Dependence_Channel_status FULL");
@@ -389,14 +389,14 @@ module AESL_deadlock_report_unit #( parameter PROC_NUM = 4 ) (
                         end
                     end
                     1: begin
-                        if (~AESL_inst_huffman_encoding.extLd9_loc_channel_U.if_empty_n & (AESL_inst_huffman_encoding.sort_U0.ap_ready | AESL_inst_huffman_encoding.sort_U0.ap_idle) & ~AESL_inst_huffman_encoding.extLd9_loc_channel_U.if_write) begin
-                            chan_path = "huffman_encoding.extLd9_loc_channel_U";
-                            if (~AESL_inst_huffman_encoding.extLd9_loc_channel_U.if_empty_n) begin
+                        if (~AESL_inst_huffman_encoding.extLd7_loc_channel_U.if_empty_n & (AESL_inst_huffman_encoding.sort_U0.ap_ready | AESL_inst_huffman_encoding.sort_U0.ap_idle) & ~AESL_inst_huffman_encoding.extLd7_loc_channel_U.if_write) begin
+                            chan_path = "huffman_encoding.extLd7_loc_channel_U";
+                            if (~AESL_inst_huffman_encoding.extLd7_loc_channel_U.if_empty_n) begin
                                 $display("//      Channel: %0s, EMPTY", chan_path);
                                 $fdisplay(fp, "Dependence_Channel_path %0s", chan_path);
                                 $fdisplay(fp, "Dependence_Channel_status EMPTY");
                             end
-                            else if (~AESL_inst_huffman_encoding.extLd9_loc_channel_U.if_full_n) begin
+                            else if (~AESL_inst_huffman_encoding.extLd7_loc_channel_U.if_full_n) begin
                                 $display("//      Channel: %0s, FULL", chan_path);
                                 $fdisplay(fp, "Dependence_Channel_path %0s", chan_path);
                                 $fdisplay(fp, "Dependence_Channel_status FULL");
@@ -452,13 +452,13 @@ module AESL_deadlock_report_unit #( parameter PROC_NUM = 4 ) (
                     case(index2)
                     1: begin
                         if (~AESL_inst_huffman_encoding.Loop_copy_sorted_pro_U0.n_blk_n) begin
-                            chan_path = "huffman_encoding.n_c20_U";
-                            if (~AESL_inst_huffman_encoding.n_c20_U.if_empty_n) begin
+                            chan_path = "huffman_encoding.n_c18_U";
+                            if (~AESL_inst_huffman_encoding.n_c18_U.if_empty_n) begin
                                 $display("//      Channel: %0s, EMPTY", chan_path);
                                 $fdisplay(fp, "Dependence_Channel_path %0s", chan_path);
                                 $fdisplay(fp, "Dependence_Channel_status EMPTY");
                             end
-                            else if (~AESL_inst_huffman_encoding.n_c20_U.if_full_n) begin
+                            else if (~AESL_inst_huffman_encoding.n_c18_U.if_full_n) begin
                                 $display("//      Channel: %0s, FULL", chan_path);
                                 $fdisplay(fp, "Dependence_Channel_path %0s", chan_path);
                                 $fdisplay(fp, "Dependence_Channel_status FULL");
@@ -590,14 +590,14 @@ module AESL_deadlock_report_unit #( parameter PROC_NUM = 4 ) (
                                 $fdisplay(fp, "Dependence_Channel_status NULL");
                             end
                         end
-                        if (~AESL_inst_huffman_encoding.Loop_copy_sorted_pro_U0.val_assign7_out_out_blk_n) begin
-                            chan_path = "huffman_encoding.val_assign7_loc_c_U";
-                            if (~AESL_inst_huffman_encoding.val_assign7_loc_c_U.if_empty_n) begin
+                        if (~AESL_inst_huffman_encoding.Loop_copy_sorted_pro_U0.val_assign5_out_out_blk_n) begin
+                            chan_path = "huffman_encoding.val_assign5_loc_c_U";
+                            if (~AESL_inst_huffman_encoding.val_assign5_loc_c_U.if_empty_n) begin
                                 $display("//      Channel: %0s, EMPTY", chan_path);
                                 $fdisplay(fp, "Dependence_Channel_path %0s", chan_path);
                                 $fdisplay(fp, "Dependence_Channel_status EMPTY");
                             end
-                            else if (~AESL_inst_huffman_encoding.val_assign7_loc_c_U.if_full_n) begin
+                            else if (~AESL_inst_huffman_encoding.val_assign5_loc_c_U.if_full_n) begin
                                 $display("//      Channel: %0s, FULL", chan_path);
                                 $fdisplay(fp, "Dependence_Channel_path %0s", chan_path);
                                 $fdisplay(fp, "Dependence_Channel_status FULL");
@@ -611,13 +611,13 @@ module AESL_deadlock_report_unit #( parameter PROC_NUM = 4 ) (
                     end
                     9: begin
                         if (~AESL_inst_huffman_encoding.Loop_copy_sorted_pro_U0.extLd_out_out1_blk_n) begin
-                            chan_path = "huffman_encoding.extLd_loc_c21_U";
-                            if (~AESL_inst_huffman_encoding.extLd_loc_c21_U.if_empty_n) begin
+                            chan_path = "huffman_encoding.extLd_loc_c19_U";
+                            if (~AESL_inst_huffman_encoding.extLd_loc_c19_U.if_empty_n) begin
                                 $display("//      Channel: %0s, EMPTY", chan_path);
                                 $fdisplay(fp, "Dependence_Channel_path %0s", chan_path);
                                 $fdisplay(fp, "Dependence_Channel_status EMPTY");
                             end
-                            else if (~AESL_inst_huffman_encoding.extLd_loc_c21_U.if_full_n) begin
+                            else if (~AESL_inst_huffman_encoding.extLd_loc_c19_U.if_full_n) begin
                                 $display("//      Channel: %0s, FULL", chan_path);
                                 $fdisplay(fp, "Dependence_Channel_path %0s", chan_path);
                                 $fdisplay(fp, "Dependence_Channel_status FULL");
@@ -759,13 +759,13 @@ module AESL_deadlock_report_unit #( parameter PROC_NUM = 4 ) (
                             end
                         end
                         if (~AESL_inst_huffman_encoding.create_tree_U0.extLd_loc_out_blk_n) begin
-                            chan_path = "huffman_encoding.extLd_loc_c22_U";
-                            if (~AESL_inst_huffman_encoding.extLd_loc_c22_U.if_empty_n) begin
+                            chan_path = "huffman_encoding.extLd_loc_c20_U";
+                            if (~AESL_inst_huffman_encoding.extLd_loc_c20_U.if_empty_n) begin
                                 $display("//      Channel: %0s, EMPTY", chan_path);
                                 $fdisplay(fp, "Dependence_Channel_path %0s", chan_path);
                                 $fdisplay(fp, "Dependence_Channel_status EMPTY");
                             end
-                            else if (~AESL_inst_huffman_encoding.extLd_loc_c22_U.if_full_n) begin
+                            else if (~AESL_inst_huffman_encoding.extLd_loc_c20_U.if_full_n) begin
                                 $display("//      Channel: %0s, FULL", chan_path);
                                 $fdisplay(fp, "Dependence_Channel_path %0s", chan_path);
                                 $fdisplay(fp, "Dependence_Channel_status FULL");
@@ -837,13 +837,13 @@ module AESL_deadlock_report_unit #( parameter PROC_NUM = 4 ) (
                             end
                         end
                         if (~AESL_inst_huffman_encoding.compute_bit_length_U0.extLd_loc_blk_n) begin
-                            chan_path = "huffman_encoding.extLd_loc_c22_U";
-                            if (~AESL_inst_huffman_encoding.extLd_loc_c22_U.if_empty_n) begin
+                            chan_path = "huffman_encoding.extLd_loc_c20_U";
+                            if (~AESL_inst_huffman_encoding.extLd_loc_c20_U.if_empty_n) begin
                                 $display("//      Channel: %0s, EMPTY", chan_path);
                                 $fdisplay(fp, "Dependence_Channel_path %0s", chan_path);
                                 $fdisplay(fp, "Dependence_Channel_status EMPTY");
                             end
-                            else if (~AESL_inst_huffman_encoding.extLd_loc_c22_U.if_full_n) begin
+                            else if (~AESL_inst_huffman_encoding.extLd_loc_c20_U.if_full_n) begin
                                 $display("//      Channel: %0s, FULL", chan_path);
                                 $fdisplay(fp, "Dependence_Channel_path %0s", chan_path);
                                 $fdisplay(fp, "Dependence_Channel_status FULL");
@@ -962,14 +962,14 @@ module AESL_deadlock_report_unit #( parameter PROC_NUM = 4 ) (
                                 $fdisplay(fp, "Dependence_Channel_status NULL");
                             end
                         end
-                        if (~AESL_inst_huffman_encoding.canonize_tree_U0.val_assign7_loc_blk_n) begin
-                            chan_path = "huffman_encoding.val_assign7_loc_c_U";
-                            if (~AESL_inst_huffman_encoding.val_assign7_loc_c_U.if_empty_n) begin
+                        if (~AESL_inst_huffman_encoding.canonize_tree_U0.val_assign5_loc_blk_n) begin
+                            chan_path = "huffman_encoding.val_assign5_loc_c_U";
+                            if (~AESL_inst_huffman_encoding.val_assign5_loc_c_U.if_empty_n) begin
                                 $display("//      Channel: %0s, EMPTY", chan_path);
                                 $fdisplay(fp, "Dependence_Channel_path %0s", chan_path);
                                 $fdisplay(fp, "Dependence_Channel_status EMPTY");
                             end
-                            else if (~AESL_inst_huffman_encoding.val_assign7_loc_c_U.if_full_n) begin
+                            else if (~AESL_inst_huffman_encoding.val_assign5_loc_c_U.if_full_n) begin
                                 $display("//      Channel: %0s, FULL", chan_path);
                                 $fdisplay(fp, "Dependence_Channel_path %0s", chan_path);
                                 $fdisplay(fp, "Dependence_Channel_status FULL");
@@ -1071,13 +1071,13 @@ module AESL_deadlock_report_unit #( parameter PROC_NUM = 4 ) (
                     case(index2)
                     3: begin
                         if (~AESL_inst_huffman_encoding.Block_proc_U0.extLd_loc_blk_n) begin
-                            chan_path = "huffman_encoding.extLd_loc_c21_U";
-                            if (~AESL_inst_huffman_encoding.extLd_loc_c21_U.if_empty_n) begin
+                            chan_path = "huffman_encoding.extLd_loc_c19_U";
+                            if (~AESL_inst_huffman_encoding.extLd_loc_c19_U.if_empty_n) begin
                                 $display("//      Channel: %0s, EMPTY", chan_path);
                                 $fdisplay(fp, "Dependence_Channel_path %0s", chan_path);
                                 $fdisplay(fp, "Dependence_Channel_status EMPTY");
                             end
-                            else if (~AESL_inst_huffman_encoding.extLd_loc_c21_U.if_full_n) begin
+                            else if (~AESL_inst_huffman_encoding.extLd_loc_c19_U.if_full_n) begin
                                 $display("//      Channel: %0s, FULL", chan_path);
                                 $fdisplay(fp, "Dependence_Channel_path %0s", chan_path);
                                 $fdisplay(fp, "Dependence_Channel_status FULL");

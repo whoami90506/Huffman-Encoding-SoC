@@ -26,27 +26,39 @@
       "type": {
         "kinds": [
           "struct",
-          "array"
+          "pointer"
         ],
-        "dataType": "Symbol",
-        "arraySizes": ["256"],
-        "structImpl": "flat-interface",
+        "dataType": "ap_axiu<41, 1, 1, 1>",
+        "structImpl": "flat-field",
+        "dataPack": true,
         "fields": {
-          "value": {
+          "data": {
             "order": "0",
-            "dataType": "ap_uint",
-            "dataWidth": "9",
-            "interfaceRef": "symbol_histogram_value_V",
-            "portRef": "TDATA",
-            "structImpl": "interface"
+            "dataType": "ap_uint"
           },
-          "frequency": {
+          "keep": {
             "order": "1",
-            "dataType": "ap_uint",
-            "dataWidth": "32",
-            "interfaceRef": "symbol_histogram_frequency_V",
-            "portRef": "TDATA",
-            "structImpl": "interface"
+            "dataType": "ap_uint"
+          },
+          "strb": {
+            "order": "2",
+            "dataType": "ap_uint"
+          },
+          "user": {
+            "order": "3",
+            "dataType": "ap_uint"
+          },
+          "last": {
+            "order": "4",
+            "dataType": "ap_uint"
+          },
+          "id": {
+            "order": "5",
+            "dataType": "ap_uint"
+          },
+          "dest": {
+            "order": "6",
+            "dataType": "ap_uint"
           }
         }
       }
@@ -54,12 +66,43 @@
     "encoding": {
       "index": "1",
       "type": {
-        "kinds": ["array"],
-        "dataType": "ap_uint",
-        "dataWidth": "32",
-        "arraySizes": ["256"],
-        "interfaceRef": "encoding_V",
-        "portRef": "TDATA"
+        "kinds": [
+          "struct",
+          "pointer"
+        ],
+        "dataType": "ap_axiu<32, 1, 1, 1>",
+        "structImpl": "flat-field",
+        "dataPack": true,
+        "fields": {
+          "data": {
+            "order": "0",
+            "dataType": "ap_uint"
+          },
+          "keep": {
+            "order": "1",
+            "dataType": "ap_uint"
+          },
+          "strb": {
+            "order": "2",
+            "dataType": "ap_uint"
+          },
+          "user": {
+            "order": "3",
+            "dataType": "ap_uint"
+          },
+          "last": {
+            "order": "4",
+            "dataType": "ap_uint"
+          },
+          "id": {
+            "order": "5",
+            "dataType": "ap_uint"
+          },
+          "dest": {
+            "order": "6",
+            "dataType": "ap_uint"
+          }
+        }
       }
     },
     "num_nonzero_symbols": {
@@ -98,17 +141,17 @@
   },
   "Files": {
     "CSource": [
-      "..\/..\/huffman_canonize_tree.cpp",
-      "..\/..\/huffman_create_tree.cpp",
-      "..\/..\/huffman_filter.cpp",
-      "..\/..\/huffman_compute_bit_length.cpp",
-      "..\/..\/huffman_encoding.cpp",
-      "..\/..\/huffman_sort.cpp",
+      "..\/..\/huffman_truncate_tree.cpp",
       "..\/..\/huffman_create_codeword.cpp",
-      "..\/..\/huffman_truncate_tree.cpp"
+      "..\/..\/huffman_sort.cpp",
+      "..\/..\/huffman_encoding.cpp",
+      "..\/..\/huffman_compute_bit_length.cpp",
+      "..\/..\/huffman_filter.cpp",
+      "..\/..\/huffman_create_tree.cpp",
+      "..\/..\/huffman_canonize_tree.cpp"
     ],
     "Vhdl": [
-      "impl\/vhdl\/Block_codeRepl1012_p.vhd",
+      "impl\/vhdl\/Block_codeRepl810_pr.vhd",
       "impl\/vhdl\/Block_proc.vhd",
       "impl\/vhdl\/canonize_tree.vhd",
       "impl\/vhdl\/compute_bit_length.vhd",
@@ -153,7 +196,7 @@
       "impl\/vhdl\/huffman_encoding.vhd"
     ],
     "Verilog": [
-      "impl\/verilog\/Block_codeRepl1012_p.v",
+      "impl\/verilog\/Block_codeRepl810_pr.v",
       "impl\/verilog\/Block_proc.v",
       "impl\/verilog\/canonize_tree.v",
       "impl\/verilog\/compute_bit_length.v",
@@ -223,7 +266,7 @@
       "ctype": {"CLK": {"Type": "bool"}},
       "bundle_name": "ap_clk",
       "bundle_role": "default",
-      "buses": "s_axi_AXILiteS symbol_histogram_value_V symbol_histogram_frequency_V encoding_V",
+      "buses": "s_axi_AXILiteS symbol_histogram encoding",
       "reset": "ap_rst_n"
     },
     "ap_rst_n": {
@@ -233,20 +276,52 @@
       "bundle_name": "ap_rst_n",
       "bundle_role": "default"
     },
-    "encoding_V": {
+    "encoding": {
       "type": "axi4stream",
       "mode": "master",
-      "port_prefix": "encoding_V",
+      "port_prefix": "encoding",
       "has_tready": "1",
       "ctype": {
         "TDATA": {
           "Type": "integer unsigned",
           "Width": "32"
         },
+        "TKEEP": {
+          "Type": "integer unsigned",
+          "Width": "4"
+        },
+        "TSTRB": {
+          "Type": "integer unsigned",
+          "Width": "4"
+        },
+        "TUSER": {
+          "Type": "integer unsigned",
+          "Width": "1"
+        },
+        "TLAST": {
+          "Type": "integer unsigned",
+          "Width": "1"
+        },
+        "TID": {
+          "Type": "integer unsigned",
+          "Width": "1"
+        },
+        "TDEST": {
+          "Type": "integer unsigned",
+          "Width": "1"
+        },
         "TVALID": {"Type": "bool"},
         "TREADY": {"Type": "bool"}
       },
-      "port_width": {"TDATA": "32"}
+      "port_width": {
+        "TDATA": "32",
+        "TDEST": "1",
+        "TID": "1",
+        "TKEEP": "4",
+        "TLAST": "1",
+        "TSTRB": "4",
+        "TUSER": "1"
+      }
     },
     "interrupt": {
       "type": "interrupt",
@@ -508,36 +583,53 @@
         "WSTRB": "4"
       }
     },
-    "symbol_histogram_frequency_V": {
+    "symbol_histogram": {
       "type": "axi4stream",
       "mode": "slave",
-      "port_prefix": "symbol_histogram_frequency_V",
+      "port_prefix": "symbol_histogram",
       "has_tready": "1",
       "ctype": {
         "TDATA": {
           "Type": "integer unsigned",
-          "Width": "32"
+          "Width": "41",
+          "Bits": "48"
         },
-        "TVALID": {"Type": "bool"},
-        "TREADY": {"Type": "bool"}
-      },
-      "port_width": {"TDATA": "32"}
-    },
-    "symbol_histogram_value_V": {
-      "type": "axi4stream",
-      "mode": "slave",
-      "port_prefix": "symbol_histogram_value_V",
-      "has_tready": "1",
-      "ctype": {
-        "TDATA": {
+        "TKEEP": {
           "Type": "integer unsigned",
-          "Width": "9",
-          "Bits": "16"
+          "Width": "6"
+        },
+        "TSTRB": {
+          "Type": "integer unsigned",
+          "Width": "6"
+        },
+        "TUSER": {
+          "Type": "integer unsigned",
+          "Width": "1"
+        },
+        "TLAST": {
+          "Type": "integer unsigned",
+          "Width": "1"
+        },
+        "TID": {
+          "Type": "integer unsigned",
+          "Width": "1"
+        },
+        "TDEST": {
+          "Type": "integer unsigned",
+          "Width": "1"
         },
         "TVALID": {"Type": "bool"},
         "TREADY": {"Type": "bool"}
       },
-      "port_width": {"TDATA": "16"}
+      "port_width": {
+        "TDATA": "48",
+        "TDEST": "1",
+        "TID": "1",
+        "TKEEP": "6",
+        "TLAST": "1",
+        "TSTRB": "6",
+        "TUSER": "1"
+      }
     }
   },
   "RtlPorts": {
@@ -622,39 +714,83 @@
       "width": "1",
       "isVector": "true"
     },
-    "symbol_histogram_value_V_TDATA": {
+    "symbol_histogram_TDATA": {
       "dir": "in",
-      "width": "16"
+      "width": "48"
     },
-    "symbol_histogram_value_V_TVALID": {
+    "symbol_histogram_TKEEP": {
+      "dir": "in",
+      "width": "6"
+    },
+    "symbol_histogram_TSTRB": {
+      "dir": "in",
+      "width": "6"
+    },
+    "symbol_histogram_TUSER": {
+      "dir": "in",
+      "width": "1",
+      "isVector": "true"
+    },
+    "symbol_histogram_TLAST": {
+      "dir": "in",
+      "width": "1",
+      "isVector": "true"
+    },
+    "symbol_histogram_TID": {
+      "dir": "in",
+      "width": "1",
+      "isVector": "true"
+    },
+    "symbol_histogram_TDEST": {
+      "dir": "in",
+      "width": "1",
+      "isVector": "true"
+    },
+    "symbol_histogram_TVALID": {
       "dir": "in",
       "width": "1"
     },
-    "symbol_histogram_value_V_TREADY": {
+    "symbol_histogram_TREADY": {
       "dir": "out",
       "width": "1"
     },
-    "symbol_histogram_frequency_V_TDATA": {
-      "dir": "in",
+    "encoding_TDATA": {
+      "dir": "out",
       "width": "32"
     },
-    "symbol_histogram_frequency_V_TVALID": {
-      "dir": "in",
-      "width": "1"
+    "encoding_TKEEP": {
+      "dir": "out",
+      "width": "4"
     },
-    "symbol_histogram_frequency_V_TREADY": {
+    "encoding_TSTRB": {
+      "dir": "out",
+      "width": "4"
+    },
+    "encoding_TUSER": {
+      "dir": "out",
+      "width": "1",
+      "isVector": "true"
+    },
+    "encoding_TLAST": {
+      "dir": "out",
+      "width": "1",
+      "isVector": "true"
+    },
+    "encoding_TID": {
+      "dir": "out",
+      "width": "1",
+      "isVector": "true"
+    },
+    "encoding_TDEST": {
+      "dir": "out",
+      "width": "1",
+      "isVector": "true"
+    },
+    "encoding_TVALID": {
       "dir": "out",
       "width": "1"
     },
-    "encoding_V_TDATA": {
-      "dir": "out",
-      "width": "32"
-    },
-    "encoding_V_TVALID": {
-      "dir": "out",
-      "width": "1"
-    },
-    "encoding_V_TREADY": {
+    "encoding_TREADY": {
       "dir": "in",
       "width": "1"
     }
@@ -700,8 +836,8 @@
           "InstanceName": "Block_proc_U0"
         },
         {
-          "ModuleName": "Block_codeRepl1012_p",
-          "InstanceName": "Block_codeRepl1012_p_U0"
+          "ModuleName": "Block_codeRepl810_pr",
+          "InstanceName": "Block_codeRepl810_pr_U0"
         }
       ]
     },
@@ -713,7 +849,7 @@
         "isCombinational": "0",
         "isOneStateSeq": "0"
       },
-      "Block_codeRepl1012_p": {
+      "Block_codeRepl810_pr": {
         "FunctionProtocol": "ap_ctrl_hs",
         "isTaskLevelControl": "1",
         "isPipelined": "0",
@@ -808,13 +944,13 @@
           }],
         "Area": {
           "FF": "23",
-          "LUT": "151",
+          "LUT": "140",
           "BRAM_18K": "0",
           "DSP48E": "0",
           "URAM": "0"
         }
       },
-      "Block_codeRepl1012_p": {
+      "Block_codeRepl810_pr": {
         "Latency": {
           "LatencyBest": "0",
           "LatencyAvg": "0",
@@ -1219,7 +1355,7 @@
         "Area": {
           "BRAM_18K": "23",
           "FF": "3772",
-          "LUT": "7070",
+          "LUT": "7059",
           "URAM": "0",
           "DSP48E": "0"
         }
@@ -1236,7 +1372,7 @@
   },
   "GenData": {
     "DataVersion": "0.2",
-    "Time": "2020-11-19 02:00:29 +0800",
+    "Time": "2020-11-24 15:46:43 +0800",
     "ToolName": "vivado_hls",
     "ToolVersion": "2019.2"
   }

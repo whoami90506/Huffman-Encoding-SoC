@@ -34,7 +34,7 @@ struct sort : public sc_module {
     sc_out< sc_lv<8> > in_frequency_V_address0;
     sc_out< sc_logic > in_frequency_V_ce0;
     sc_in< sc_lv<32> > in_frequency_V_q0;
-    sc_in< sc_lv<9> > extLd9_loc_channel;
+    sc_in< sc_lv<9> > extLd7_loc_channel;
     sc_out< sc_lv<8> > out_value_V_address0;
     sc_out< sc_logic > out_value_V_ce0;
     sc_out< sc_logic > out_value_V_we0;
@@ -59,10 +59,10 @@ struct sort : public sc_module {
     sort_previous_sorbkb* sorting_value_V_U;
     sort_previous_sorcud* sorting_frequency_V_U;
     sort_current_digifYi* current_digit_V_U;
-    huffman_encoding_g8j<1,2,1,32,6,32>* huffman_encoding_g8j_U9;
-    huffman_encoding_hbi<1,1,9,9,9,9,9,9,9,9,9,9,9,9,9,9,9,9,4,9>* huffman_encoding_hbi_U10;
-    huffman_encoding_hbi<1,1,9,9,9,9,9,9,9,9,9,9,9,9,9,9,9,9,4,9>* huffman_encoding_hbi_U11;
-    huffman_encoding_hbi<1,1,9,9,9,9,9,9,9,9,9,9,9,9,9,9,9,9,4,9>* huffman_encoding_hbi_U12;
+    huffman_encoding_g8j<1,2,1,32,6,32>* huffman_encoding_g8j_U14;
+    huffman_encoding_hbi<1,1,9,9,9,9,9,9,9,9,9,9,9,9,9,9,9,9,4,9>* huffman_encoding_hbi_U15;
+    huffman_encoding_hbi<1,1,9,9,9,9,9,9,9,9,9,9,9,9,9,9,9,9,4,9>* huffman_encoding_hbi_U16;
+    huffman_encoding_hbi<1,1,9,9,9,9,9,9,9,9,9,9,9,9,9,9,9,9,4,9>* huffman_encoding_hbi_U17;
     sc_signal< sc_logic > ap_done_reg;
     sc_signal< sc_lv<12> > ap_CS_fsm;
     sc_signal< sc_logic > ap_CS_fsm_state1;

@@ -4,8 +4,9 @@
 void create_codeword(
   /* input */ CodewordLength symbol_bits[INPUT_SYMBOL_SIZE],
   /* input */ ap_uint<SYMBOL_BITS> codeword_length_histogram[TREE_DEPTH],
-  /* output */ PackedCodewordAndLength encoding[INPUT_SYMBOL_SIZE]
+  /* output */ PackedCodewordAndLengthStream *encoding
 ) {
+    #pragma HLS INTERFACE axis register both port=encoding 
 
     Codeword first_codeword[MAX_CODEWORD_LENGTH];
 
@@ -33,10 +34,16 @@ void create_codeword(
             out_reversed.reverse();
             out_reversed = out_reversed >> (MAX_CODEWORD_LENGTH - length);
             // std::cout << out_reversed.to_string(2) << "\n";
-            encoding[i] = (out_reversed << CODEWORD_LENGTH_BITS) + length;
+            PackedCodewordAndLength_axiu result;
+            result.data = (out_reversed << CODEWORD_LENGTH_BITS) + length;
+            if(i == INPUT_SYMBOL_SIZE -1)result.last = 1;
+            encoding->write(result);
             first_codeword[length]++;
         } else {
-            encoding[i] = 0;
+            PackedCodewordAndLength_axiu result;
+            result.data = 0;
+            if(i == INPUT_SYMBOL_SIZE -1)result.last = 1;
+            encoding->write(result);
       }
   }
 }

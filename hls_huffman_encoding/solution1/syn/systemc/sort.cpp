@@ -107,70 +107,70 @@ sort::sort(sc_module_name name) : sc_module(name), mVcdFile(0) {
     current_digit_V_U->we0(current_digit_V_we0);
     current_digit_V_U->d0(digit_V_reg_7014);
     current_digit_V_U->q0(current_digit_V_q0);
-    huffman_encoding_g8j_U9 = new huffman_encoding_g8j<1,2,1,32,6,32>("huffman_encoding_g8j_U9");
-    huffman_encoding_g8j_U9->clk(ap_clk);
-    huffman_encoding_g8j_U9->reset(ap_rst);
-    huffman_encoding_g8j_U9->din0(sorting_frequency_V_2_reg_7003);
-    huffman_encoding_g8j_U9->din1(zext_ln29_reg_6961);
-    huffman_encoding_g8j_U9->ce(ap_var_for_const0);
-    huffman_encoding_g8j_U9->dout(grp_fu_6695_p2);
-    huffman_encoding_hbi_U10 = new huffman_encoding_hbi<1,1,9,9,9,9,9,9,9,9,9,9,9,9,9,9,9,9,4,9>("huffman_encoding_hbi_U10");
-    huffman_encoding_hbi_U10->din0(ap_phi_mux_digit_histogram_0_V_4_phi_fu_1934_p4);
-    huffman_encoding_hbi_U10->din1(ap_phi_mux_digit_histogram_1_V_3_phi_fu_1923_p4);
-    huffman_encoding_hbi_U10->din2(ap_phi_mux_digit_histogram_2_V_3_phi_fu_1912_p4);
-    huffman_encoding_hbi_U10->din3(ap_phi_mux_digit_histogram_3_V_3_phi_fu_1901_p4);
-    huffman_encoding_hbi_U10->din4(ap_phi_mux_digit_histogram_4_V_3_phi_fu_1890_p4);
-    huffman_encoding_hbi_U10->din5(ap_phi_mux_digit_histogram_5_V_3_phi_fu_1879_p4);
-    huffman_encoding_hbi_U10->din6(ap_phi_mux_digit_histogram_6_V_3_phi_fu_1868_p4);
-    huffman_encoding_hbi_U10->din7(ap_phi_mux_digit_histogram_7_V_3_phi_fu_1857_p4);
-    huffman_encoding_hbi_U10->din8(ap_phi_mux_digit_histogram_8_V_3_phi_fu_1846_p4);
-    huffman_encoding_hbi_U10->din9(ap_phi_mux_digit_histogram_9_V_3_phi_fu_1835_p4);
-    huffman_encoding_hbi_U10->din10(ap_phi_mux_digit_histogram_10_3_phi_fu_1824_p4);
-    huffman_encoding_hbi_U10->din11(ap_phi_mux_digit_histogram_11_3_phi_fu_1813_p4);
-    huffman_encoding_hbi_U10->din12(ap_phi_mux_digit_histogram_12_3_phi_fu_1802_p4);
-    huffman_encoding_hbi_U10->din13(ap_phi_mux_digit_histogram_13_3_phi_fu_1791_p4);
-    huffman_encoding_hbi_U10->din14(ap_phi_mux_digit_histogram_14_3_phi_fu_1780_p4);
-    huffman_encoding_hbi_U10->din15(ap_phi_mux_digit_histogram_15_3_phi_fu_1769_p4);
-    huffman_encoding_hbi_U10->din16(digit_V_reg_7014);
-    huffman_encoding_hbi_U10->dout(tmp_i_fu_6708_p18);
-    huffman_encoding_hbi_U11 = new huffman_encoding_hbi<1,1,9,9,9,9,9,9,9,9,9,9,9,9,9,9,9,9,4,9>("huffman_encoding_hbi_U11");
-    huffman_encoding_hbi_U11->din0(digit_histogram_14_5_reg_2901);
-    huffman_encoding_hbi_U11->din1(digit_histogram_0_V_6_reg_3671);
-    huffman_encoding_hbi_U11->din2(digit_histogram_1_V_5_reg_3616);
-    huffman_encoding_hbi_U11->din3(digit_histogram_2_V_5_reg_3561);
-    huffman_encoding_hbi_U11->din4(digit_histogram_3_V_5_reg_3506);
-    huffman_encoding_hbi_U11->din5(digit_histogram_4_V_5_reg_3451);
-    huffman_encoding_hbi_U11->din6(digit_histogram_5_V_5_reg_3396);
-    huffman_encoding_hbi_U11->din7(digit_histogram_6_V_5_reg_3341);
-    huffman_encoding_hbi_U11->din8(digit_histogram_7_V_5_reg_3286);
-    huffman_encoding_hbi_U11->din9(digit_histogram_8_V_5_reg_3231);
-    huffman_encoding_hbi_U11->din10(digit_histogram_9_V_5_reg_3176);
-    huffman_encoding_hbi_U11->din11(digit_histogram_10_5_reg_3121);
-    huffman_encoding_hbi_U11->din12(digit_histogram_11_5_reg_3066);
-    huffman_encoding_hbi_U11->din13(digit_histogram_12_5_reg_3011);
-    huffman_encoding_hbi_U11->din14(digit_histogram_13_5_reg_2956);
-    huffman_encoding_hbi_U11->din15(digit_histogram_14_5_reg_2901);
-    huffman_encoding_hbi_U11->din16(phi_ln215_1_i_fu_6767_p17);
-    huffman_encoding_hbi_U11->dout(phi_ln215_1_i_fu_6767_p18);
-    huffman_encoding_hbi_U12 = new huffman_encoding_hbi<1,1,9,9,9,9,9,9,9,9,9,9,9,9,9,9,9,9,4,9>("huffman_encoding_hbi_U12");
-    huffman_encoding_hbi_U12->din0(ap_phi_mux_digit_location_0_V_s_phi_fu_4898_p4);
-    huffman_encoding_hbi_U12->din1(ap_phi_mux_digit_location_1_V_3_phi_fu_4886_p4);
-    huffman_encoding_hbi_U12->din2(ap_phi_mux_digit_location_2_V_3_phi_fu_4875_p4);
-    huffman_encoding_hbi_U12->din3(ap_phi_mux_digit_location_3_V_3_phi_fu_4864_p4);
-    huffman_encoding_hbi_U12->din4(ap_phi_mux_digit_location_4_V_3_phi_fu_4853_p4);
-    huffman_encoding_hbi_U12->din5(ap_phi_mux_digit_location_5_V_3_phi_fu_4842_p4);
-    huffman_encoding_hbi_U12->din6(ap_phi_mux_digit_location_6_V_3_phi_fu_4831_p4);
-    huffman_encoding_hbi_U12->din7(ap_phi_mux_digit_location_7_V_3_phi_fu_4820_p4);
-    huffman_encoding_hbi_U12->din8(ap_phi_mux_digit_location_8_V_3_phi_fu_4809_p4);
-    huffman_encoding_hbi_U12->din9(ap_phi_mux_digit_location_9_V_3_phi_fu_4798_p4);
-    huffman_encoding_hbi_U12->din10(ap_phi_mux_digit_location_10_V_3_phi_fu_4787_p4);
-    huffman_encoding_hbi_U12->din11(ap_phi_mux_digit_location_11_V_3_phi_fu_4776_p4);
-    huffman_encoding_hbi_U12->din12(ap_phi_mux_digit_location_12_V_3_phi_fu_4765_p4);
-    huffman_encoding_hbi_U12->din13(ap_phi_mux_digit_location_13_V_3_phi_fu_4754_p4);
-    huffman_encoding_hbi_U12->din14(ap_phi_mux_digit_location_14_V_4_phi_fu_4743_p4);
-    huffman_encoding_hbi_U12->din15(ap_phi_mux_digit_location_15_V_2_phi_fu_4732_p4);
-    huffman_encoding_hbi_U12->din16(digit_V_1_reg_7075);
-    huffman_encoding_hbi_U12->dout(tmp_1_i_fu_6852_p18);
+    huffman_encoding_g8j_U14 = new huffman_encoding_g8j<1,2,1,32,6,32>("huffman_encoding_g8j_U14");
+    huffman_encoding_g8j_U14->clk(ap_clk);
+    huffman_encoding_g8j_U14->reset(ap_rst);
+    huffman_encoding_g8j_U14->din0(sorting_frequency_V_2_reg_7003);
+    huffman_encoding_g8j_U14->din1(zext_ln29_reg_6961);
+    huffman_encoding_g8j_U14->ce(ap_var_for_const0);
+    huffman_encoding_g8j_U14->dout(grp_fu_6695_p2);
+    huffman_encoding_hbi_U15 = new huffman_encoding_hbi<1,1,9,9,9,9,9,9,9,9,9,9,9,9,9,9,9,9,4,9>("huffman_encoding_hbi_U15");
+    huffman_encoding_hbi_U15->din0(ap_phi_mux_digit_histogram_0_V_4_phi_fu_1934_p4);
+    huffman_encoding_hbi_U15->din1(ap_phi_mux_digit_histogram_1_V_3_phi_fu_1923_p4);
+    huffman_encoding_hbi_U15->din2(ap_phi_mux_digit_histogram_2_V_3_phi_fu_1912_p4);
+    huffman_encoding_hbi_U15->din3(ap_phi_mux_digit_histogram_3_V_3_phi_fu_1901_p4);
+    huffman_encoding_hbi_U15->din4(ap_phi_mux_digit_histogram_4_V_3_phi_fu_1890_p4);
+    huffman_encoding_hbi_U15->din5(ap_phi_mux_digit_histogram_5_V_3_phi_fu_1879_p4);
+    huffman_encoding_hbi_U15->din6(ap_phi_mux_digit_histogram_6_V_3_phi_fu_1868_p4);
+    huffman_encoding_hbi_U15->din7(ap_phi_mux_digit_histogram_7_V_3_phi_fu_1857_p4);
+    huffman_encoding_hbi_U15->din8(ap_phi_mux_digit_histogram_8_V_3_phi_fu_1846_p4);
+    huffman_encoding_hbi_U15->din9(ap_phi_mux_digit_histogram_9_V_3_phi_fu_1835_p4);
+    huffman_encoding_hbi_U15->din10(ap_phi_mux_digit_histogram_10_3_phi_fu_1824_p4);
+    huffman_encoding_hbi_U15->din11(ap_phi_mux_digit_histogram_11_3_phi_fu_1813_p4);
+    huffman_encoding_hbi_U15->din12(ap_phi_mux_digit_histogram_12_3_phi_fu_1802_p4);
+    huffman_encoding_hbi_U15->din13(ap_phi_mux_digit_histogram_13_3_phi_fu_1791_p4);
+    huffman_encoding_hbi_U15->din14(ap_phi_mux_digit_histogram_14_3_phi_fu_1780_p4);
+    huffman_encoding_hbi_U15->din15(ap_phi_mux_digit_histogram_15_3_phi_fu_1769_p4);
+    huffman_encoding_hbi_U15->din16(digit_V_reg_7014);
+    huffman_encoding_hbi_U15->dout(tmp_i_fu_6708_p18);
+    huffman_encoding_hbi_U16 = new huffman_encoding_hbi<1,1,9,9,9,9,9,9,9,9,9,9,9,9,9,9,9,9,4,9>("huffman_encoding_hbi_U16");
+    huffman_encoding_hbi_U16->din0(digit_histogram_14_5_reg_2901);
+    huffman_encoding_hbi_U16->din1(digit_histogram_0_V_6_reg_3671);
+    huffman_encoding_hbi_U16->din2(digit_histogram_1_V_5_reg_3616);
+    huffman_encoding_hbi_U16->din3(digit_histogram_2_V_5_reg_3561);
+    huffman_encoding_hbi_U16->din4(digit_histogram_3_V_5_reg_3506);
+    huffman_encoding_hbi_U16->din5(digit_histogram_4_V_5_reg_3451);
+    huffman_encoding_hbi_U16->din6(digit_histogram_5_V_5_reg_3396);
+    huffman_encoding_hbi_U16->din7(digit_histogram_6_V_5_reg_3341);
+    huffman_encoding_hbi_U16->din8(digit_histogram_7_V_5_reg_3286);
+    huffman_encoding_hbi_U16->din9(digit_histogram_8_V_5_reg_3231);
+    huffman_encoding_hbi_U16->din10(digit_histogram_9_V_5_reg_3176);
+    huffman_encoding_hbi_U16->din11(digit_histogram_10_5_reg_3121);
+    huffman_encoding_hbi_U16->din12(digit_histogram_11_5_reg_3066);
+    huffman_encoding_hbi_U16->din13(digit_histogram_12_5_reg_3011);
+    huffman_encoding_hbi_U16->din14(digit_histogram_13_5_reg_2956);
+    huffman_encoding_hbi_U16->din15(digit_histogram_14_5_reg_2901);
+    huffman_encoding_hbi_U16->din16(phi_ln215_1_i_fu_6767_p17);
+    huffman_encoding_hbi_U16->dout(phi_ln215_1_i_fu_6767_p18);
+    huffman_encoding_hbi_U17 = new huffman_encoding_hbi<1,1,9,9,9,9,9,9,9,9,9,9,9,9,9,9,9,9,4,9>("huffman_encoding_hbi_U17");
+    huffman_encoding_hbi_U17->din0(ap_phi_mux_digit_location_0_V_s_phi_fu_4898_p4);
+    huffman_encoding_hbi_U17->din1(ap_phi_mux_digit_location_1_V_3_phi_fu_4886_p4);
+    huffman_encoding_hbi_U17->din2(ap_phi_mux_digit_location_2_V_3_phi_fu_4875_p4);
+    huffman_encoding_hbi_U17->din3(ap_phi_mux_digit_location_3_V_3_phi_fu_4864_p4);
+    huffman_encoding_hbi_U17->din4(ap_phi_mux_digit_location_4_V_3_phi_fu_4853_p4);
+    huffman_encoding_hbi_U17->din5(ap_phi_mux_digit_location_5_V_3_phi_fu_4842_p4);
+    huffman_encoding_hbi_U17->din6(ap_phi_mux_digit_location_6_V_3_phi_fu_4831_p4);
+    huffman_encoding_hbi_U17->din7(ap_phi_mux_digit_location_7_V_3_phi_fu_4820_p4);
+    huffman_encoding_hbi_U17->din8(ap_phi_mux_digit_location_8_V_3_phi_fu_4809_p4);
+    huffman_encoding_hbi_U17->din9(ap_phi_mux_digit_location_9_V_3_phi_fu_4798_p4);
+    huffman_encoding_hbi_U17->din10(ap_phi_mux_digit_location_10_V_3_phi_fu_4787_p4);
+    huffman_encoding_hbi_U17->din11(ap_phi_mux_digit_location_11_V_3_phi_fu_4776_p4);
+    huffman_encoding_hbi_U17->din12(ap_phi_mux_digit_location_12_V_3_phi_fu_4765_p4);
+    huffman_encoding_hbi_U17->din13(ap_phi_mux_digit_location_13_V_3_phi_fu_4754_p4);
+    huffman_encoding_hbi_U17->din14(ap_phi_mux_digit_location_14_V_4_phi_fu_4743_p4);
+    huffman_encoding_hbi_U17->din15(ap_phi_mux_digit_location_15_V_2_phi_fu_4732_p4);
+    huffman_encoding_hbi_U17->din16(digit_V_1_reg_7075);
+    huffman_encoding_hbi_U17->dout(tmp_1_i_fu_6852_p18);
 
     SC_METHOD(thread_ap_clk_no_reset_);
     dont_initialize();
@@ -1132,7 +1132,7 @@ sort::sort(sc_module_name name) : sc_module(name), mVcdFile(0) {
     sensitive << ( i_0_i_i_reg_864 );
 
     SC_METHOD(thread_icmp_ln23_fu_6633_p2);
-    sensitive << ( extLd9_loc_channel );
+    sensitive << ( extLd7_loc_channel );
     sensitive << ( j_0_i_i_reg_293 );
     sensitive << ( ap_CS_fsm_pp0_stage0 );
     sensitive << ( ap_block_pp0_stage0_11001 );
@@ -1143,7 +1143,7 @@ sort::sort(sc_module_name name) : sc_module(name), mVcdFile(0) {
     sensitive << ( i_0_i_i_reg_864 );
 
     SC_METHOD(thread_icmp_ln40_fu_6678_p2);
-    sensitive << ( extLd9_loc_channel );
+    sensitive << ( extLd7_loc_channel );
     sensitive << ( j5_0_i_i_reg_1755 );
     sensitive << ( ap_CS_fsm_pp2_stage0 );
     sensitive << ( ap_block_pp2_stage0_11001 );
@@ -1156,7 +1156,7 @@ sort::sort(sc_module_name name) : sc_module(name), mVcdFile(0) {
     sensitive << ( ap_enable_reg_pp3_iter0 );
 
     SC_METHOD(thread_icmp_ln67_fu_6831_p2);
-    sensitive << ( extLd9_loc_channel );
+    sensitive << ( extLd7_loc_channel );
     sensitive << ( j7_0_i_i_reg_4718 );
     sensitive << ( ap_CS_fsm_pp4_stage0 );
     sensitive << ( ap_block_pp4_stage0_11001 );
@@ -1467,7 +1467,7 @@ sort::sort(sc_module_name name) : sc_module(name), mVcdFile(0) {
     sc_trace(mVcdFile, in_frequency_V_address0, "(port)in_frequency_V_address0");
     sc_trace(mVcdFile, in_frequency_V_ce0, "(port)in_frequency_V_ce0");
     sc_trace(mVcdFile, in_frequency_V_q0, "(port)in_frequency_V_q0");
-    sc_trace(mVcdFile, extLd9_loc_channel, "(port)extLd9_loc_channel");
+    sc_trace(mVcdFile, extLd7_loc_channel, "(port)extLd7_loc_channel");
     sc_trace(mVcdFile, out_value_V_address0, "(port)out_value_V_address0");
     sc_trace(mVcdFile, out_value_V_ce0, "(port)out_value_V_ce0");
     sc_trace(mVcdFile, out_value_V_we0, "(port)out_value_V_we0");
@@ -1949,10 +1949,10 @@ sort::~sort() {
     delete sorting_value_V_U;
     delete sorting_frequency_V_U;
     delete current_digit_V_U;
-    delete huffman_encoding_g8j_U9;
-    delete huffman_encoding_hbi_U10;
-    delete huffman_encoding_hbi_U11;
-    delete huffman_encoding_hbi_U12;
+    delete huffman_encoding_g8j_U14;
+    delete huffman_encoding_hbi_U15;
+    delete huffman_encoding_hbi_U16;
+    delete huffman_encoding_hbi_U17;
 }
 
 void sort::thread_ap_var_for_const0() {
@@ -8752,7 +8752,7 @@ void sort::thread_i_fu_6668_p2() {
 }
 
 void sort::thread_icmp_ln23_fu_6633_p2() {
-    icmp_ln23_fu_6633_p2 = (!j_0_i_i_reg_293.read().is_01() || !extLd9_loc_channel.read().is_01())? sc_lv<1>(): sc_lv<1>(j_0_i_i_reg_293.read() == extLd9_loc_channel.read());
+    icmp_ln23_fu_6633_p2 = (!j_0_i_i_reg_293.read().is_01() || !extLd7_loc_channel.read().is_01())? sc_lv<1>(): sc_lv<1>(j_0_i_i_reg_293.read() == extLd7_loc_channel.read());
 }
 
 void sort::thread_icmp_ln31_fu_6662_p2() {
@@ -8760,7 +8760,7 @@ void sort::thread_icmp_ln31_fu_6662_p2() {
 }
 
 void sort::thread_icmp_ln40_fu_6678_p2() {
-    icmp_ln40_fu_6678_p2 = (!j5_0_i_i_reg_1755.read().is_01() || !extLd9_loc_channel.read().is_01())? sc_lv<1>(): sc_lv<1>(j5_0_i_i_reg_1755.read() == extLd9_loc_channel.read());
+    icmp_ln40_fu_6678_p2 = (!j5_0_i_i_reg_1755.read().is_01() || !extLd7_loc_channel.read().is_01())? sc_lv<1>(): sc_lv<1>(j5_0_i_i_reg_1755.read() == extLd7_loc_channel.read());
 }
 
 void sort::thread_icmp_ln58_fu_6757_p2() {
@@ -8768,7 +8768,7 @@ void sort::thread_icmp_ln58_fu_6757_p2() {
 }
 
 void sort::thread_icmp_ln67_fu_6831_p2() {
-    icmp_ln67_fu_6831_p2 = (!j7_0_i_i_reg_4718.read().is_01() || !extLd9_loc_channel.read().is_01())? sc_lv<1>(): sc_lv<1>(j7_0_i_i_reg_4718.read() == extLd9_loc_channel.read());
+    icmp_ln67_fu_6831_p2 = (!j7_0_i_i_reg_4718.read().is_01() || !extLd7_loc_channel.read().is_01())? sc_lv<1>(): sc_lv<1>(j7_0_i_i_reg_4718.read() == extLd7_loc_channel.read());
 }
 
 void sort::thread_icmp_ln879_2_fu_6847_p2() {

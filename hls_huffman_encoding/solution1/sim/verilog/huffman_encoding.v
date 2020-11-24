@@ -7,7 +7,7 @@
 
 `timescale 1 ns / 1 ps 
 
-(* CORE_GENERATION_INFO="huffman_encoding,hls_ip_2019_2,{HLS_INPUT_TYPE=cxx,HLS_INPUT_FLOAT=0,HLS_INPUT_FIXED=1,HLS_INPUT_PART=xc7z020-clg484-1,HLS_INPUT_CLOCK=5.000000,HLS_INPUT_ARCH=dataflow,HLS_SYN_CLOCK=4.559500,HLS_SYN_LAT=-1,HLS_SYN_TPT=-1,HLS_SYN_MEM=23,HLS_SYN_DSP=0,HLS_SYN_FF=3772,HLS_SYN_LUT=7070,HLS_VERSION=2019_2}" *)
+(* CORE_GENERATION_INFO="huffman_encoding,hls_ip_2019_2,{HLS_INPUT_TYPE=cxx,HLS_INPUT_FLOAT=0,HLS_INPUT_FIXED=0,HLS_INPUT_PART=xc7z020-clg484-1,HLS_INPUT_CLOCK=5.000000,HLS_INPUT_ARCH=dataflow,HLS_SYN_CLOCK=4.559500,HLS_SYN_LAT=-1,HLS_SYN_TPT=-1,HLS_SYN_MEM=23,HLS_SYN_DSP=0,HLS_SYN_FF=3772,HLS_SYN_LUT=7059,HLS_VERSION=2019_2}" *)
 
 module huffman_encoding (
         s_axi_AXILiteS_AWVALID,
@@ -30,15 +30,24 @@ module huffman_encoding (
         ap_clk,
         ap_rst_n,
         interrupt,
-        symbol_histogram_value_V_TDATA,
-        symbol_histogram_frequency_V_TDATA,
-        encoding_V_TDATA,
-        symbol_histogram_value_V_TVALID,
-        symbol_histogram_value_V_TREADY,
-        symbol_histogram_frequency_V_TVALID,
-        symbol_histogram_frequency_V_TREADY,
-        encoding_V_TVALID,
-        encoding_V_TREADY
+        symbol_histogram_TDATA,
+        symbol_histogram_TKEEP,
+        symbol_histogram_TSTRB,
+        symbol_histogram_TUSER,
+        symbol_histogram_TLAST,
+        symbol_histogram_TID,
+        symbol_histogram_TDEST,
+        encoding_TDATA,
+        encoding_TKEEP,
+        encoding_TSTRB,
+        encoding_TUSER,
+        encoding_TLAST,
+        encoding_TID,
+        encoding_TDEST,
+        symbol_histogram_TVALID,
+        symbol_histogram_TREADY,
+        encoding_TVALID,
+        encoding_TREADY
 );
 
 parameter    C_S_AXI_AXILITES_DATA_WIDTH = 32;
@@ -69,15 +78,24 @@ output  [1:0] s_axi_AXILiteS_BRESP;
 input   ap_clk;
 input   ap_rst_n;
 output   interrupt;
-input  [15:0] symbol_histogram_value_V_TDATA;
-input  [31:0] symbol_histogram_frequency_V_TDATA;
-output  [31:0] encoding_V_TDATA;
-input   symbol_histogram_value_V_TVALID;
-output   symbol_histogram_value_V_TREADY;
-input   symbol_histogram_frequency_V_TVALID;
-output   symbol_histogram_frequency_V_TREADY;
-output   encoding_V_TVALID;
-input   encoding_V_TREADY;
+input  [47:0] symbol_histogram_TDATA;
+input  [5:0] symbol_histogram_TKEEP;
+input  [5:0] symbol_histogram_TSTRB;
+input  [0:0] symbol_histogram_TUSER;
+input  [0:0] symbol_histogram_TLAST;
+input  [0:0] symbol_histogram_TID;
+input  [0:0] symbol_histogram_TDEST;
+output  [31:0] encoding_TDATA;
+output  [3:0] encoding_TKEEP;
+output  [3:0] encoding_TSTRB;
+output  [0:0] encoding_TUSER;
+output  [0:0] encoding_TLAST;
+output  [0:0] encoding_TID;
+output  [0:0] encoding_TDEST;
+input   symbol_histogram_TVALID;
+output   symbol_histogram_TREADY;
+output   encoding_TVALID;
+input   encoding_TREADY;
 
  reg    ap_rst_n_inv;
 wire    ap_start;
@@ -123,8 +141,7 @@ wire    filter_U0_ap_idle;
 wire    filter_U0_ap_ready;
 wire    filter_U0_start_out;
 wire    filter_U0_start_write;
-wire    filter_U0_in_value_V_TREADY;
-wire    filter_U0_in_frequency_V_TREADY;
+wire    filter_U0_symbol_histogram_TREADY;
 wire   [7:0] filter_U0_out_value_V_address0;
 wire    filter_U0_out_value_V_ce0;
 wire    filter_U0_out_value_V_we0;
@@ -143,17 +160,17 @@ wire    ap_channel_done_filtered_value_V;
 wire    filter_U0_out_value_V_full_n;
 reg    ap_sync_reg_channel_write_filtered_value_V;
 wire    ap_sync_channel_write_filtered_value_V;
-wire    Block_codeRepl1012_p_U0_ap_start;
-wire    Block_codeRepl1012_p_U0_ap_done;
-wire    Block_codeRepl1012_p_U0_ap_continue;
-wire    Block_codeRepl1012_p_U0_ap_idle;
-wire    Block_codeRepl1012_p_U0_ap_ready;
-wire    Block_codeRepl1012_p_U0_n_read;
-wire   [8:0] Block_codeRepl1012_p_U0_n_out_din;
-wire    Block_codeRepl1012_p_U0_n_out_write;
-wire   [8:0] Block_codeRepl1012_p_U0_ap_return;
-wire    ap_channel_done_extLd9_loc_channel;
-wire    extLd9_loc_channel_full_n;
+wire    Block_codeRepl810_pr_U0_ap_start;
+wire    Block_codeRepl810_pr_U0_ap_done;
+wire    Block_codeRepl810_pr_U0_ap_continue;
+wire    Block_codeRepl810_pr_U0_ap_idle;
+wire    Block_codeRepl810_pr_U0_ap_ready;
+wire    Block_codeRepl810_pr_U0_n_read;
+wire   [8:0] Block_codeRepl810_pr_U0_n_out_din;
+wire    Block_codeRepl810_pr_U0_n_out_write;
+wire   [8:0] Block_codeRepl810_pr_U0_ap_return;
+wire    ap_channel_done_extLd7_loc_channel;
+wire    extLd7_loc_channel_full_n;
 wire    sort_U0_ap_start;
 wire    sort_U0_ap_done;
 wire    sort_U0_ap_continue;
@@ -200,8 +217,8 @@ wire   [7:0] Loop_copy_sorted_pro_U0_sorted_copy2_value_V_address0;
 wire    Loop_copy_sorted_pro_U0_sorted_copy2_value_V_ce0;
 wire    Loop_copy_sorted_pro_U0_sorted_copy2_value_V_we0;
 wire   [8:0] Loop_copy_sorted_pro_U0_sorted_copy2_value_V_d0;
-wire   [8:0] Loop_copy_sorted_pro_U0_val_assign7_out_out_din;
-wire    Loop_copy_sorted_pro_U0_val_assign7_out_out_write;
+wire   [8:0] Loop_copy_sorted_pro_U0_val_assign5_out_out_din;
+wire    Loop_copy_sorted_pro_U0_val_assign5_out_out_write;
 wire   [8:0] Loop_copy_sorted_pro_U0_extLd_out_out_din;
 wire    Loop_copy_sorted_pro_U0_extLd_out_out_write;
 wire   [8:0] Loop_copy_sorted_pro_U0_extLd_out_out1_din;
@@ -300,7 +317,7 @@ wire    canonize_tree_U0_ap_idle;
 wire    canonize_tree_U0_ap_ready;
 wire   [7:0] canonize_tree_U0_sorted_value_V_address0;
 wire    canonize_tree_U0_sorted_value_V_ce0;
-wire    canonize_tree_U0_val_assign7_loc_read;
+wire    canonize_tree_U0_val_assign5_loc_read;
 wire   [5:0] canonize_tree_U0_codeword_length_histogram_V_address0;
 wire    canonize_tree_U0_codeword_length_histogram_V_ce0;
 wire   [7:0] canonize_tree_U0_symbol_bits_V_address0;
@@ -318,8 +335,14 @@ wire   [7:0] create_codeword_U0_symbol_bits_V_address0;
 wire    create_codeword_U0_symbol_bits_V_ce0;
 wire   [5:0] create_codeword_U0_codeword_length_histogram_V_address0;
 wire    create_codeword_U0_codeword_length_histogram_V_ce0;
-wire   [31:0] create_codeword_U0_encoding_V_TDATA;
-wire    create_codeword_U0_encoding_V_TVALID;
+wire   [31:0] create_codeword_U0_encoding_TDATA;
+wire    create_codeword_U0_encoding_TVALID;
+wire   [3:0] create_codeword_U0_encoding_TKEEP;
+wire   [3:0] create_codeword_U0_encoding_TSTRB;
+wire   [0:0] create_codeword_U0_encoding_TUSER;
+wire   [0:0] create_codeword_U0_encoding_TLAST;
+wire   [0:0] create_codeword_U0_encoding_TID;
+wire   [0:0] create_codeword_U0_encoding_TDEST;
 wire    ap_sync_continue;
 wire    Block_proc_U0_ap_start;
 wire    Block_proc_U0_ap_done;
@@ -362,37 +385,37 @@ wire    symbol_bits_V_t_empty_n;
 wire    n_c_full_n;
 wire   [8:0] n_c_dout;
 wire    n_c_empty_n;
-wire    n_c20_full_n;
-wire   [8:0] n_c20_dout;
-wire    n_c20_empty_n;
-wire   [8:0] extLd9_loc_channel_dout;
-wire    extLd9_loc_channel_empty_n;
+wire    n_c18_full_n;
+wire   [8:0] n_c18_dout;
+wire    n_c18_empty_n;
+wire   [8:0] extLd7_loc_channel_dout;
+wire    extLd7_loc_channel_empty_n;
 wire    sorted_copy1_0_chann_full_n;
 wire   [8:0] sorted_copy1_0_chann_dout;
 wire    sorted_copy1_0_chann_empty_n;
 wire    sorted_copy1_1_chann_full_n;
 wire   [31:0] sorted_copy1_1_chann_dout;
 wire    sorted_copy1_1_chann_empty_n;
-wire    val_assign7_loc_c_full_n;
-wire   [8:0] val_assign7_loc_c_dout;
-wire    val_assign7_loc_c_empty_n;
+wire    val_assign5_loc_c_full_n;
+wire   [8:0] val_assign5_loc_c_dout;
+wire    val_assign5_loc_c_empty_n;
 wire    extLd_loc_c_full_n;
 wire   [8:0] extLd_loc_c_dout;
 wire    extLd_loc_c_empty_n;
-wire    extLd_loc_c21_full_n;
-wire   [8:0] extLd_loc_c21_dout;
-wire    extLd_loc_c21_empty_n;
-wire    extLd_loc_c22_full_n;
-wire   [8:0] extLd_loc_c22_dout;
-wire    extLd_loc_c22_empty_n;
+wire    extLd_loc_c19_full_n;
+wire   [8:0] extLd_loc_c19_dout;
+wire    extLd_loc_c19_empty_n;
+wire    extLd_loc_c20_full_n;
+wire   [8:0] extLd_loc_c20_dout;
+wire    extLd_loc_c20_empty_n;
 wire    ap_sync_done;
 wire    ap_sync_ready;
-wire   [0:0] start_for_Block_codeRepl1012_p_U0_din;
-wire    start_for_Block_codeRepl1012_p_U0_full_n;
-wire   [0:0] start_for_Block_codeRepl1012_p_U0_dout;
-wire    start_for_Block_codeRepl1012_p_U0_empty_n;
-wire    Block_codeRepl1012_p_U0_start_full_n;
-wire    Block_codeRepl1012_p_U0_start_write;
+wire   [0:0] start_for_Block_codeRepl810_pr_U0_din;
+wire    start_for_Block_codeRepl810_pr_U0_full_n;
+wire   [0:0] start_for_Block_codeRepl810_pr_U0_dout;
+wire    start_for_Block_codeRepl810_pr_U0_empty_n;
+wire    Block_codeRepl810_pr_U0_start_full_n;
+wire    Block_codeRepl810_pr_U0_start_write;
 wire    sort_U0_start_full_n;
 wire    sort_U0_start_write;
 wire   [0:0] start_for_create_tree_U0_din;
@@ -794,19 +817,22 @@ filter filter_U0(
     .ap_clk(ap_clk),
     .ap_rst(ap_rst_n_inv),
     .ap_start(filter_U0_ap_start),
-    .start_full_n(start_for_Block_codeRepl1012_p_U0_full_n),
+    .start_full_n(start_for_Block_codeRepl810_pr_U0_full_n),
     .ap_done(filter_U0_ap_done),
     .ap_continue(filter_U0_ap_continue),
     .ap_idle(filter_U0_ap_idle),
     .ap_ready(filter_U0_ap_ready),
     .start_out(filter_U0_start_out),
     .start_write(filter_U0_start_write),
-    .in_value_V_TDATA(symbol_histogram_value_V_TDATA),
-    .in_value_V_TVALID(symbol_histogram_value_V_TVALID),
-    .in_value_V_TREADY(filter_U0_in_value_V_TREADY),
-    .in_frequency_V_TDATA(symbol_histogram_frequency_V_TDATA),
-    .in_frequency_V_TVALID(symbol_histogram_frequency_V_TVALID),
-    .in_frequency_V_TREADY(filter_U0_in_frequency_V_TREADY),
+    .symbol_histogram_TDATA(symbol_histogram_TDATA),
+    .symbol_histogram_TVALID(symbol_histogram_TVALID),
+    .symbol_histogram_TREADY(filter_U0_symbol_histogram_TREADY),
+    .symbol_histogram_TKEEP(symbol_histogram_TKEEP),
+    .symbol_histogram_TSTRB(symbol_histogram_TSTRB),
+    .symbol_histogram_TUSER(symbol_histogram_TUSER),
+    .symbol_histogram_TLAST(symbol_histogram_TLAST),
+    .symbol_histogram_TID(symbol_histogram_TID),
+    .symbol_histogram_TDEST(symbol_histogram_TDEST),
     .out_value_V_address0(filter_U0_out_value_V_address0),
     .out_value_V_ce0(filter_U0_out_value_V_ce0),
     .out_value_V_we0(filter_U0_out_value_V_we0),
@@ -820,21 +846,21 @@ filter filter_U0(
     .n_out_write(filter_U0_n_out_write)
 );
 
-Block_codeRepl1012_p Block_codeRepl1012_p_U0(
+Block_codeRepl810_pr Block_codeRepl810_pr_U0(
     .ap_clk(ap_clk),
     .ap_rst(ap_rst_n_inv),
-    .ap_start(Block_codeRepl1012_p_U0_ap_start),
-    .ap_done(Block_codeRepl1012_p_U0_ap_done),
-    .ap_continue(Block_codeRepl1012_p_U0_ap_continue),
-    .ap_idle(Block_codeRepl1012_p_U0_ap_idle),
-    .ap_ready(Block_codeRepl1012_p_U0_ap_ready),
+    .ap_start(Block_codeRepl810_pr_U0_ap_start),
+    .ap_done(Block_codeRepl810_pr_U0_ap_done),
+    .ap_continue(Block_codeRepl810_pr_U0_ap_continue),
+    .ap_idle(Block_codeRepl810_pr_U0_ap_idle),
+    .ap_ready(Block_codeRepl810_pr_U0_ap_ready),
     .n_dout(n_c_dout),
     .n_empty_n(n_c_empty_n),
-    .n_read(Block_codeRepl1012_p_U0_n_read),
-    .n_out_din(Block_codeRepl1012_p_U0_n_out_din),
-    .n_out_full_n(n_c20_full_n),
-    .n_out_write(Block_codeRepl1012_p_U0_n_out_write),
-    .ap_return(Block_codeRepl1012_p_U0_ap_return)
+    .n_read(Block_codeRepl810_pr_U0_n_read),
+    .n_out_din(Block_codeRepl810_pr_U0_n_out_din),
+    .n_out_full_n(n_c18_full_n),
+    .n_out_write(Block_codeRepl810_pr_U0_n_out_write),
+    .ap_return(Block_codeRepl810_pr_U0_ap_return)
 );
 
 sort sort_U0(
@@ -851,7 +877,7 @@ sort sort_U0(
     .in_frequency_V_address0(sort_U0_in_frequency_V_address0),
     .in_frequency_V_ce0(sort_U0_in_frequency_V_ce0),
     .in_frequency_V_q0(filtered_frequency_V_t_q0),
-    .extLd9_loc_channel(extLd9_loc_channel_dout),
+    .extLd7_loc_channel(extLd7_loc_channel_dout),
     .out_value_V_address0(sort_U0_out_value_V_address0),
     .out_value_V_ce0(sort_U0_out_value_V_ce0),
     .out_value_V_we0(sort_U0_out_value_V_we0),
@@ -873,8 +899,8 @@ Loop_copy_sorted_pro Loop_copy_sorted_pro_U0(
     .ap_ready(Loop_copy_sorted_pro_U0_ap_ready),
     .start_out(Loop_copy_sorted_pro_U0_start_out),
     .start_write(Loop_copy_sorted_pro_U0_start_write),
-    .n_dout(n_c20_dout),
-    .n_empty_n(n_c20_empty_n),
+    .n_dout(n_c18_dout),
+    .n_empty_n(n_c18_empty_n),
     .n_read(Loop_copy_sorted_pro_U0_n_read),
     .sorted_0_address0(Loop_copy_sorted_pro_U0_sorted_0_address0),
     .sorted_0_ce0(Loop_copy_sorted_pro_U0_sorted_0_ce0),
@@ -892,14 +918,14 @@ Loop_copy_sorted_pro Loop_copy_sorted_pro_U0(
     .sorted_copy2_value_V_ce0(Loop_copy_sorted_pro_U0_sorted_copy2_value_V_ce0),
     .sorted_copy2_value_V_we0(Loop_copy_sorted_pro_U0_sorted_copy2_value_V_we0),
     .sorted_copy2_value_V_d0(Loop_copy_sorted_pro_U0_sorted_copy2_value_V_d0),
-    .val_assign7_out_out_din(Loop_copy_sorted_pro_U0_val_assign7_out_out_din),
-    .val_assign7_out_out_full_n(val_assign7_loc_c_full_n),
-    .val_assign7_out_out_write(Loop_copy_sorted_pro_U0_val_assign7_out_out_write),
+    .val_assign5_out_out_din(Loop_copy_sorted_pro_U0_val_assign5_out_out_din),
+    .val_assign5_out_out_full_n(val_assign5_loc_c_full_n),
+    .val_assign5_out_out_write(Loop_copy_sorted_pro_U0_val_assign5_out_out_write),
     .extLd_out_out_din(Loop_copy_sorted_pro_U0_extLd_out_out_din),
     .extLd_out_out_full_n(extLd_loc_c_full_n),
     .extLd_out_out_write(Loop_copy_sorted_pro_U0_extLd_out_out_write),
     .extLd_out_out1_din(Loop_copy_sorted_pro_U0_extLd_out_out1_din),
-    .extLd_out_out1_full_n(extLd_loc_c21_full_n),
+    .extLd_out_out1_full_n(extLd_loc_c19_full_n),
     .extLd_out_out1_write(Loop_copy_sorted_pro_U0_extLd_out_out1_write)
 );
 
@@ -933,7 +959,7 @@ create_tree create_tree_U0(
     .right_V_we0(create_tree_U0_right_V_we0),
     .right_V_d0(create_tree_U0_right_V_d0),
     .extLd_loc_out_din(create_tree_U0_extLd_loc_out_din),
-    .extLd_loc_out_full_n(extLd_loc_c22_full_n),
+    .extLd_loc_out_full_n(extLd_loc_c20_full_n),
     .extLd_loc_out_write(create_tree_U0_extLd_loc_out_write)
 );
 
@@ -963,8 +989,8 @@ compute_bit_length compute_bit_length_U0(
     .right_V_address1(compute_bit_length_U0_right_V_address1),
     .right_V_ce1(compute_bit_length_U0_right_V_ce1),
     .right_V_q1(right_V_t_q1),
-    .extLd_loc_dout(extLd_loc_c22_dout),
-    .extLd_loc_empty_n(extLd_loc_c22_empty_n),
+    .extLd_loc_dout(extLd_loc_c20_dout),
+    .extLd_loc_empty_n(extLd_loc_c20_empty_n),
     .extLd_loc_read(compute_bit_length_U0_extLd_loc_read),
     .length_histogram_V_address0(compute_bit_length_U0_length_histogram_V_address0),
     .length_histogram_V_ce0(compute_bit_length_U0_length_histogram_V_ce0),
@@ -1010,9 +1036,9 @@ canonize_tree canonize_tree_U0(
     .sorted_value_V_address0(canonize_tree_U0_sorted_value_V_address0),
     .sorted_value_V_ce0(canonize_tree_U0_sorted_value_V_ce0),
     .sorted_value_V_q0(sorted_copy2_value_V_t_q0),
-    .val_assign7_loc_dout(val_assign7_loc_c_dout),
-    .val_assign7_loc_empty_n(val_assign7_loc_c_empty_n),
-    .val_assign7_loc_read(canonize_tree_U0_val_assign7_loc_read),
+    .val_assign5_loc_dout(val_assign5_loc_c_dout),
+    .val_assign5_loc_empty_n(val_assign5_loc_c_empty_n),
+    .val_assign5_loc_read(canonize_tree_U0_val_assign5_loc_read),
     .codeword_length_histogram_V_address0(canonize_tree_U0_codeword_length_histogram_V_address0),
     .codeword_length_histogram_V_ce0(canonize_tree_U0_codeword_length_histogram_V_ce0),
     .codeword_length_histogram_V_q0(truncated_length_his_t_q0),
@@ -1036,9 +1062,15 @@ create_codeword create_codeword_U0(
     .codeword_length_histogram_V_address0(create_codeword_U0_codeword_length_histogram_V_address0),
     .codeword_length_histogram_V_ce0(create_codeword_U0_codeword_length_histogram_V_ce0),
     .codeword_length_histogram_V_q0(truncated_length_his_1_t_q0),
-    .encoding_V_TDATA(create_codeword_U0_encoding_V_TDATA),
-    .encoding_V_TVALID(create_codeword_U0_encoding_V_TVALID),
-    .encoding_V_TREADY(encoding_V_TREADY)
+    .encoding_TDATA(create_codeword_U0_encoding_TDATA),
+    .encoding_TVALID(create_codeword_U0_encoding_TVALID),
+    .encoding_TREADY(encoding_TREADY),
+    .encoding_TKEEP(create_codeword_U0_encoding_TKEEP),
+    .encoding_TSTRB(create_codeword_U0_encoding_TSTRB),
+    .encoding_TUSER(create_codeword_U0_encoding_TUSER),
+    .encoding_TLAST(create_codeword_U0_encoding_TLAST),
+    .encoding_TID(create_codeword_U0_encoding_TID),
+    .encoding_TDEST(create_codeword_U0_encoding_TDEST)
 );
 
 Block_proc Block_proc_U0(
@@ -1049,8 +1081,8 @@ Block_proc Block_proc_U0(
     .ap_continue(Block_proc_U0_ap_continue),
     .ap_idle(Block_proc_U0_ap_idle),
     .ap_ready(Block_proc_U0_ap_ready),
-    .extLd_loc_dout(extLd_loc_c21_dout),
-    .extLd_loc_empty_n(extLd_loc_c21_empty_n),
+    .extLd_loc_dout(extLd_loc_c19_dout),
+    .extLd_loc_empty_n(extLd_loc_c19_empty_n),
     .extLd_loc_read(Block_proc_U0_extLd_loc_read),
     .num_nonzero_symbols(Block_proc_U0_num_nonzero_symbols),
     .num_nonzero_symbols_ap_vld(Block_proc_U0_num_nonzero_symbols_ap_vld)
@@ -1066,32 +1098,32 @@ fifo_w9_d2_A n_c_U(
     .if_write(filter_U0_n_out_write),
     .if_dout(n_c_dout),
     .if_empty_n(n_c_empty_n),
-    .if_read(Block_codeRepl1012_p_U0_n_read)
+    .if_read(Block_codeRepl810_pr_U0_n_read)
 );
 
-fifo_w9_d3_A n_c20_U(
+fifo_w9_d3_A n_c18_U(
     .clk(ap_clk),
     .reset(ap_rst_n_inv),
     .if_read_ce(1'b1),
     .if_write_ce(1'b1),
-    .if_din(Block_codeRepl1012_p_U0_n_out_din),
-    .if_full_n(n_c20_full_n),
-    .if_write(Block_codeRepl1012_p_U0_n_out_write),
-    .if_dout(n_c20_dout),
-    .if_empty_n(n_c20_empty_n),
+    .if_din(Block_codeRepl810_pr_U0_n_out_din),
+    .if_full_n(n_c18_full_n),
+    .if_write(Block_codeRepl810_pr_U0_n_out_write),
+    .if_dout(n_c18_dout),
+    .if_empty_n(n_c18_empty_n),
     .if_read(Loop_copy_sorted_pro_U0_n_read)
 );
 
-fifo_w9_d2_A extLd9_loc_channel_U(
+fifo_w9_d2_A extLd7_loc_channel_U(
     .clk(ap_clk),
     .reset(ap_rst_n_inv),
     .if_read_ce(1'b1),
     .if_write_ce(1'b1),
-    .if_din(Block_codeRepl1012_p_U0_ap_return),
-    .if_full_n(extLd9_loc_channel_full_n),
-    .if_write(Block_codeRepl1012_p_U0_ap_done),
-    .if_dout(extLd9_loc_channel_dout),
-    .if_empty_n(extLd9_loc_channel_empty_n),
+    .if_din(Block_codeRepl810_pr_U0_ap_return),
+    .if_full_n(extLd7_loc_channel_full_n),
+    .if_write(Block_codeRepl810_pr_U0_ap_done),
+    .if_dout(extLd7_loc_channel_dout),
+    .if_empty_n(extLd7_loc_channel_empty_n),
     .if_read(sort_U0_ap_ready)
 );
 
@@ -1121,17 +1153,17 @@ fifo_w32_d256_A sorted_copy1_1_chann_U(
     .if_read(create_tree_U0_in_frequency_V_read)
 );
 
-fifo_w9_d5_A val_assign7_loc_c_U(
+fifo_w9_d5_A val_assign5_loc_c_U(
     .clk(ap_clk),
     .reset(ap_rst_n_inv),
     .if_read_ce(1'b1),
     .if_write_ce(1'b1),
-    .if_din(Loop_copy_sorted_pro_U0_val_assign7_out_out_din),
-    .if_full_n(val_assign7_loc_c_full_n),
-    .if_write(Loop_copy_sorted_pro_U0_val_assign7_out_out_write),
-    .if_dout(val_assign7_loc_c_dout),
-    .if_empty_n(val_assign7_loc_c_empty_n),
-    .if_read(canonize_tree_U0_val_assign7_loc_read)
+    .if_din(Loop_copy_sorted_pro_U0_val_assign5_out_out_din),
+    .if_full_n(val_assign5_loc_c_full_n),
+    .if_write(Loop_copy_sorted_pro_U0_val_assign5_out_out_write),
+    .if_dout(val_assign5_loc_c_dout),
+    .if_empty_n(val_assign5_loc_c_empty_n),
+    .if_read(canonize_tree_U0_val_assign5_loc_read)
 );
 
 fifo_w9_d2_A extLd_loc_c_U(
@@ -1147,29 +1179,29 @@ fifo_w9_d2_A extLd_loc_c_U(
     .if_read(create_tree_U0_extLd_loc_read)
 );
 
-fifo_w9_d2_A extLd_loc_c21_U(
+fifo_w9_d2_A extLd_loc_c19_U(
     .clk(ap_clk),
     .reset(ap_rst_n_inv),
     .if_read_ce(1'b1),
     .if_write_ce(1'b1),
     .if_din(Loop_copy_sorted_pro_U0_extLd_out_out1_din),
-    .if_full_n(extLd_loc_c21_full_n),
+    .if_full_n(extLd_loc_c19_full_n),
     .if_write(Loop_copy_sorted_pro_U0_extLd_out_out1_write),
-    .if_dout(extLd_loc_c21_dout),
-    .if_empty_n(extLd_loc_c21_empty_n),
+    .if_dout(extLd_loc_c19_dout),
+    .if_empty_n(extLd_loc_c19_empty_n),
     .if_read(Block_proc_U0_extLd_loc_read)
 );
 
-fifo_w9_d2_A extLd_loc_c22_U(
+fifo_w9_d2_A extLd_loc_c20_U(
     .clk(ap_clk),
     .reset(ap_rst_n_inv),
     .if_read_ce(1'b1),
     .if_write_ce(1'b1),
     .if_din(create_tree_U0_extLd_loc_out_din),
-    .if_full_n(extLd_loc_c22_full_n),
+    .if_full_n(extLd_loc_c20_full_n),
     .if_write(create_tree_U0_extLd_loc_out_write),
-    .if_dout(extLd_loc_c22_dout),
-    .if_empty_n(extLd_loc_c22_empty_n),
+    .if_dout(extLd_loc_c20_dout),
+    .if_empty_n(extLd_loc_c20_empty_n),
     .if_read(compute_bit_length_U0_extLd_loc_read)
 );
 
@@ -1178,12 +1210,12 @@ start_for_Block_czec start_for_Block_czec_U(
     .reset(ap_rst_n_inv),
     .if_read_ce(1'b1),
     .if_write_ce(1'b1),
-    .if_din(start_for_Block_codeRepl1012_p_U0_din),
-    .if_full_n(start_for_Block_codeRepl1012_p_U0_full_n),
+    .if_din(start_for_Block_codeRepl810_pr_U0_din),
+    .if_full_n(start_for_Block_codeRepl810_pr_U0_full_n),
     .if_write(filter_U0_start_write),
-    .if_dout(start_for_Block_codeRepl1012_p_U0_dout),
-    .if_empty_n(start_for_Block_codeRepl1012_p_U0_empty_n),
-    .if_read(Block_codeRepl1012_p_U0_ap_ready)
+    .if_dout(start_for_Block_codeRepl810_pr_U0_dout),
+    .if_empty_n(start_for_Block_codeRepl810_pr_U0_empty_n),
+    .if_read(Block_codeRepl810_pr_U0_ap_ready)
 );
 
 start_for_create_Aem start_for_create_Aem_U(
@@ -1320,13 +1352,13 @@ always @ (posedge ap_clk) begin
     end
 end
 
-assign Block_codeRepl1012_p_U0_ap_continue = extLd9_loc_channel_full_n;
+assign Block_codeRepl810_pr_U0_ap_continue = extLd7_loc_channel_full_n;
 
-assign Block_codeRepl1012_p_U0_ap_start = start_for_Block_codeRepl1012_p_U0_empty_n;
+assign Block_codeRepl810_pr_U0_ap_start = start_for_Block_codeRepl810_pr_U0_empty_n;
 
-assign Block_codeRepl1012_p_U0_start_full_n = 1'b1;
+assign Block_codeRepl810_pr_U0_start_full_n = 1'b1;
 
-assign Block_codeRepl1012_p_U0_start_write = 1'b0;
+assign Block_codeRepl810_pr_U0_start_write = 1'b0;
 
 assign Block_proc_U0_ap_continue = ap_sync_done;
 
@@ -1344,7 +1376,7 @@ assign Loop_copy_sorted_pro_U0_sorted_copy2_value_V_full_n = sorted_copy2_value_
 
 assign Loop_copy_sorted_pro_U0_start_full_n = (start_for_create_tree_U0_full_n & start_for_Block_proc_U0_full_n);
 
-assign ap_channel_done_extLd9_loc_channel = Block_codeRepl1012_p_U0_ap_done;
+assign ap_channel_done_extLd7_loc_channel = Block_codeRepl810_pr_U0_ap_done;
 
 assign ap_channel_done_filtered_frequency_V = (filter_U0_ap_done & (ap_sync_reg_channel_write_filtered_frequency_V ^ 1'b1));
 
@@ -1372,7 +1404,7 @@ assign ap_channel_done_truncated_length_his_1 = (truncate_tree_U0_ap_done & (ap_
 
 assign ap_done = ap_sync_done;
 
-assign ap_idle = (truncate_tree_U0_ap_idle & sort_U0_ap_idle & filter_U0_ap_idle & (extLd9_loc_channel_empty_n ^ 1'b1) & (symbol_bits_V_t_empty_n ^ 1'b1) & (truncated_length_his_1_t_empty_n ^ 1'b1) & (truncated_length_his_t_empty_n ^ 1'b1) & (length_histogram_V_t_empty_n ^ 1'b1) & (right_V_t_empty_n ^ 1'b1) & (left_V_t_empty_n ^ 1'b1) & (parent_V_t_empty_n ^ 1'b1) & (sorted_copy2_value_V_t_empty_n ^ 1'b1) & (sorted_1_t_empty_n ^ 1'b1) & (sorted_0_t_empty_n ^ 1'b1) & (filtered_frequency_V_t_empty_n ^ 1'b1) & (filtered_value_V_t_empty_n ^ 1'b1) & create_tree_U0_ap_idle & create_codeword_U0_ap_idle & compute_bit_length_U0_ap_idle & canonize_tree_U0_ap_idle & Loop_copy_sorted_pro_U0_ap_idle & Block_proc_U0_ap_idle & Block_codeRepl1012_p_U0_ap_idle);
+assign ap_idle = (truncate_tree_U0_ap_idle & sort_U0_ap_idle & filter_U0_ap_idle & (extLd7_loc_channel_empty_n ^ 1'b1) & (symbol_bits_V_t_empty_n ^ 1'b1) & (truncated_length_his_1_t_empty_n ^ 1'b1) & (truncated_length_his_t_empty_n ^ 1'b1) & (length_histogram_V_t_empty_n ^ 1'b1) & (right_V_t_empty_n ^ 1'b1) & (left_V_t_empty_n ^ 1'b1) & (parent_V_t_empty_n ^ 1'b1) & (sorted_copy2_value_V_t_empty_n ^ 1'b1) & (sorted_1_t_empty_n ^ 1'b1) & (sorted_0_t_empty_n ^ 1'b1) & (filtered_frequency_V_t_empty_n ^ 1'b1) & (filtered_value_V_t_empty_n ^ 1'b1) & create_tree_U0_ap_idle & create_codeword_U0_ap_idle & compute_bit_length_U0_ap_idle & canonize_tree_U0_ap_idle & Loop_copy_sorted_pro_U0_ap_idle & Block_proc_U0_ap_idle & Block_codeRepl810_pr_U0_ap_idle);
 
 assign ap_ready = filter_U0_ap_ready;
 
@@ -1446,9 +1478,21 @@ assign create_tree_U0_start_full_n = 1'b1;
 
 assign create_tree_U0_start_write = 1'b0;
 
-assign encoding_V_TDATA = create_codeword_U0_encoding_V_TDATA;
+assign encoding_TDATA = create_codeword_U0_encoding_TDATA;
 
-assign encoding_V_TVALID = create_codeword_U0_encoding_V_TVALID;
+assign encoding_TDEST = create_codeword_U0_encoding_TDEST;
+
+assign encoding_TID = create_codeword_U0_encoding_TID;
+
+assign encoding_TKEEP = create_codeword_U0_encoding_TKEEP;
+
+assign encoding_TLAST = create_codeword_U0_encoding_TLAST;
+
+assign encoding_TSTRB = create_codeword_U0_encoding_TSTRB;
+
+assign encoding_TUSER = create_codeword_U0_encoding_TUSER;
+
+assign encoding_TVALID = create_codeword_U0_encoding_TVALID;
 
 assign filter_U0_ap_continue = (ap_sync_channel_write_filtered_value_V & ap_sync_channel_write_filtered_frequency_V);
 
@@ -1472,7 +1516,7 @@ assign right_V_t_we1 = 1'b0;
 
 assign sort_U0_ap_continue = (ap_sync_channel_write_sorted_1 & ap_sync_channel_write_sorted_0);
 
-assign sort_U0_ap_start = (filtered_value_V_t_empty_n & filtered_frequency_V_t_empty_n & extLd9_loc_channel_empty_n);
+assign sort_U0_ap_start = (filtered_value_V_t_empty_n & filtered_frequency_V_t_empty_n & extLd7_loc_channel_empty_n);
 
 assign sort_U0_out_frequency_V_full_n = sorted_1_i_full_n;
 
@@ -1482,15 +1526,13 @@ assign sort_U0_start_full_n = 1'b1;
 
 assign sort_U0_start_write = 1'b0;
 
-assign start_for_Block_codeRepl1012_p_U0_din = 1'b1;
+assign start_for_Block_codeRepl810_pr_U0_din = 1'b1;
 
 assign start_for_Block_proc_U0_din = 1'b1;
 
 assign start_for_create_tree_U0_din = 1'b1;
 
-assign symbol_histogram_frequency_V_TREADY = filter_U0_in_frequency_V_TREADY;
-
-assign symbol_histogram_value_V_TREADY = filter_U0_in_value_V_TREADY;
+assign symbol_histogram_TREADY = filter_U0_symbol_histogram_TREADY;
 
 assign truncate_tree_U0_ap_continue = (ap_sync_channel_write_truncated_length_his_1 & ap_sync_channel_write_truncated_length_his);
 

@@ -1,6 +1,6 @@
 INFO: [SIM 2] *************** CSIM start ***************
 INFO: [SIM 4] CSIM will launch GCC as the compiler.
-   Compiling ../../../../huffman_sort.cpp in debug mode
+   Compiling ../../../../huffman_create_codeword.cpp in debug mode
    Generating csim.exe
 Starting canonical Huffman encoding testbench
 Start reading file [huffman.random256.txt]

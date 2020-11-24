@@ -5,3 +5,6 @@
 ~*
 *.log
 *.cache
+.Xil
+*.wcfg
+*.wdb

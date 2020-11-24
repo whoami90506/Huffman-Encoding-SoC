@@ -21,12 +21,15 @@ port (
     ap_ready : OUT STD_LOGIC;
     start_out : OUT STD_LOGIC;
     start_write : OUT STD_LOGIC;
-    in_value_V_TDATA : IN STD_LOGIC_VECTOR (15 downto 0);
-    in_value_V_TVALID : IN STD_LOGIC;
-    in_value_V_TREADY : OUT STD_LOGIC;
-    in_frequency_V_TDATA : IN STD_LOGIC_VECTOR (31 downto 0);
-    in_frequency_V_TVALID : IN STD_LOGIC;
-    in_frequency_V_TREADY : OUT STD_LOGIC;
+    symbol_histogram_TDATA : IN STD_LOGIC_VECTOR (47 downto 0);
+    symbol_histogram_TVALID : IN STD_LOGIC;
+    symbol_histogram_TREADY : OUT STD_LOGIC;
+    symbol_histogram_TKEEP : IN STD_LOGIC_VECTOR (5 downto 0);
+    symbol_histogram_TSTRB : IN STD_LOGIC_VECTOR (5 downto 0);
+    symbol_histogram_TUSER : IN STD_LOGIC_VECTOR (0 downto 0);
+    symbol_histogram_TLAST : IN STD_LOGIC_VECTOR (0 downto 0);
+    symbol_histogram_TID : IN STD_LOGIC_VECTOR (0 downto 0);
+    symbol_histogram_TDEST : IN STD_LOGIC_VECTOR (0 downto 0);
     out_value_V_address0 : OUT STD_LOGIC_VECTOR (7 downto 0);
     out_value_V_ce0 : OUT STD_LOGIC;
     out_value_V_we0 : OUT STD_LOGIC;
@@ -47,7 +50,6 @@ architecture behav of filter is
     constant ap_ST_fsm_state1 : STD_LOGIC_VECTOR (2 downto 0) := "001";
     constant ap_ST_fsm_state2 : STD_LOGIC_VECTOR (2 downto 0) := "010";
     constant ap_ST_fsm_state3 : STD_LOGIC_VECTOR (2 downto 0) := "100";
-    constant ap_const_boolean_1 : BOOLEAN := true;
     constant ap_const_lv32_0 : STD_LOGIC_VECTOR (31 downto 0) := "00000000000000000000000000000000";
     constant ap_const_lv32_1 : STD_LOGIC_VECTOR (31 downto 0) := "00000000000000000000000000000001";
     constant ap_const_lv1_0 : STD_LOGIC_VECTOR (0 downto 0) := "0";
@@ -55,7 +57,10 @@ architecture behav of filter is
     constant ap_const_lv9_0 : STD_LOGIC_VECTOR (8 downto 0) := "000000000";
     constant ap_const_lv9_100 : STD_LOGIC_VECTOR (8 downto 0) := "100000000";
     constant ap_const_lv9_1 : STD_LOGIC_VECTOR (8 downto 0) := "000000001";
+    constant ap_const_lv32_20 : STD_LOGIC_VECTOR (31 downto 0) := "00000000000000000000000000100000";
+    constant ap_const_lv32_28 : STD_LOGIC_VECTOR (31 downto 0) := "00000000000000000000000000101000";
     constant ap_const_lv1_1 : STD_LOGIC_VECTOR (0 downto 0) := "1";
+    constant ap_const_boolean_1 : BOOLEAN := true;
 
     signal real_start : STD_LOGIC;
     signal start_once_reg : STD_LOGIC := '0';
@@ -66,34 +71,52 @@ architecture behav of filter is
     signal ap_CS_fsm_state1 : STD_LOGIC;
     attribute fsm_encoding of ap_CS_fsm_state1 : signal is "none";
     signal internal_ap_ready : STD_LOGIC;
-    signal in_value_V_TDATA_blk_n : STD_LOGIC;
+    signal symbol_histogram_TDATA_blk_n : STD_LOGIC;
     signal ap_CS_fsm_state2 : STD_LOGIC;
     attribute fsm_encoding of ap_CS_fsm_state2 : signal is "none";
-    signal icmp_ln11_fu_130_p2 : STD_LOGIC_VECTOR (0 downto 0);
-    signal icmp_ln883_fu_142_p2 : STD_LOGIC_VECTOR (0 downto 0);
-    signal in_frequency_V_TDATA_blk_n : STD_LOGIC;
+    signal icmp_ln13_fu_155_p2 : STD_LOGIC_VECTOR (0 downto 0);
     signal n_out_blk_n : STD_LOGIC;
     signal ap_CS_fsm_state3 : STD_LOGIC;
     attribute fsm_encoding of ap_CS_fsm_state3 : signal is "none";
-    signal i_fu_136_p2 : STD_LOGIC_VECTOR (8 downto 0);
-    signal ap_predicate_op24_read_state2 : BOOLEAN;
+    signal i_fu_161_p2 : STD_LOGIC_VECTOR (8 downto 0);
     signal ap_block_state2 : BOOLEAN;
-    signal i_0_i_reg_110 : STD_LOGIC_VECTOR (8 downto 0);
+    signal i_0_i_reg_135 : STD_LOGIC_VECTOR (8 downto 0);
     signal ap_block_state1 : BOOLEAN;
-    signal zext_ln544_fu_148_p1 : STD_LOGIC_VECTOR (63 downto 0);
-    signal t_V_fu_60 : STD_LOGIC_VECTOR (8 downto 0);
-    signal j_V_fu_159_p2 : STD_LOGIC_VECTOR (8 downto 0);
+    signal zext_ln544_fu_193_p1 : STD_LOGIC_VECTOR (63 downto 0);
+    signal icmp_ln883_fu_187_p2 : STD_LOGIC_VECTOR (0 downto 0);
+    signal t_V_fu_80 : STD_LOGIC_VECTOR (8 downto 0);
+    signal j_V_fu_199_p2 : STD_LOGIC_VECTOR (8 downto 0);
+    signal frequency_V_fu_182_p1 : STD_LOGIC_VECTOR (31 downto 0);
     signal ap_NS_fsm : STD_LOGIC_VECTOR (2 downto 0);
-    signal regslice_both_in_value_V_U_apdone_blk : STD_LOGIC;
-    signal in_value_V_TDATA_int : STD_LOGIC_VECTOR (15 downto 0);
-    signal in_value_V_TVALID_int : STD_LOGIC;
-    signal in_value_V_TREADY_int : STD_LOGIC;
-    signal regslice_both_in_value_V_U_ack_in : STD_LOGIC;
-    signal regslice_both_in_frequency_V_U_apdone_blk : STD_LOGIC;
-    signal in_frequency_V_TDATA_int : STD_LOGIC_VECTOR (31 downto 0);
-    signal in_frequency_V_TVALID_int : STD_LOGIC;
-    signal in_frequency_V_TREADY_int : STD_LOGIC;
-    signal regslice_both_in_frequency_V_U_ack_in : STD_LOGIC;
+    signal regslice_both_in_V_data_V_U_apdone_blk : STD_LOGIC;
+    signal symbol_histogram_TDATA_int : STD_LOGIC_VECTOR (47 downto 0);
+    signal symbol_histogram_TVALID_int : STD_LOGIC;
+    signal symbol_histogram_TREADY_int : STD_LOGIC;
+    signal regslice_both_in_V_data_V_U_ack_in : STD_LOGIC;
+    signal regslice_both_in_V_keep_V_U_apdone_blk : STD_LOGIC;
+    signal symbol_histogram_TKEEP_int : STD_LOGIC_VECTOR (5 downto 0);
+    signal regslice_both_in_V_keep_V_U_vld_out : STD_LOGIC;
+    signal regslice_both_in_V_keep_V_U_ack_in : STD_LOGIC;
+    signal regslice_both_in_V_strb_V_U_apdone_blk : STD_LOGIC;
+    signal symbol_histogram_TSTRB_int : STD_LOGIC_VECTOR (5 downto 0);
+    signal regslice_both_in_V_strb_V_U_vld_out : STD_LOGIC;
+    signal regslice_both_in_V_strb_V_U_ack_in : STD_LOGIC;
+    signal regslice_both_in_V_user_V_U_apdone_blk : STD_LOGIC;
+    signal symbol_histogram_TUSER_int : STD_LOGIC_VECTOR (0 downto 0);
+    signal regslice_both_in_V_user_V_U_vld_out : STD_LOGIC;
+    signal regslice_both_in_V_user_V_U_ack_in : STD_LOGIC;
+    signal regslice_both_in_V_last_V_U_apdone_blk : STD_LOGIC;
+    signal symbol_histogram_TLAST_int : STD_LOGIC_VECTOR (0 downto 0);
+    signal regslice_both_in_V_last_V_U_vld_out : STD_LOGIC;
+    signal regslice_both_in_V_last_V_U_ack_in : STD_LOGIC;
+    signal regslice_both_in_V_id_V_U_apdone_blk : STD_LOGIC;
+    signal symbol_histogram_TID_int : STD_LOGIC_VECTOR (0 downto 0);
+    signal regslice_both_in_V_id_V_U_vld_out : STD_LOGIC;
+    signal regslice_both_in_V_id_V_U_ack_in : STD_LOGIC;
+    signal regslice_both_in_V_dest_V_U_apdone_blk : STD_LOGIC;
+    signal symbol_histogram_TDEST_int : STD_LOGIC_VECTOR (0 downto 0);
+    signal regslice_both_in_V_dest_V_U_vld_out : STD_LOGIC;
+    signal regslice_both_in_V_dest_V_U_ack_in : STD_LOGIC;
 
     component regslice_both IS
     generic (
@@ -113,33 +136,103 @@ architecture behav of filter is
 
 
 begin
-    regslice_both_in_value_V_U : component regslice_both
+    regslice_both_in_V_data_V_U : component regslice_both
     generic map (
-        DataWidth => 16)
+        DataWidth => 48)
     port map (
         ap_clk => ap_clk,
         ap_rst => ap_rst,
-        data_in => in_value_V_TDATA,
-        vld_in => in_value_V_TVALID,
-        ack_in => regslice_both_in_value_V_U_ack_in,
-        data_out => in_value_V_TDATA_int,
-        vld_out => in_value_V_TVALID_int,
-        ack_out => in_value_V_TREADY_int,
-        apdone_blk => regslice_both_in_value_V_U_apdone_blk);
+        data_in => symbol_histogram_TDATA,
+        vld_in => symbol_histogram_TVALID,
+        ack_in => regslice_both_in_V_data_V_U_ack_in,
+        data_out => symbol_histogram_TDATA_int,
+        vld_out => symbol_histogram_TVALID_int,
+        ack_out => symbol_histogram_TREADY_int,
+        apdone_blk => regslice_both_in_V_data_V_U_apdone_blk);
 
-    regslice_both_in_frequency_V_U : component regslice_both
+    regslice_both_in_V_keep_V_U : component regslice_both
     generic map (
-        DataWidth => 32)
+        DataWidth => 6)
     port map (
         ap_clk => ap_clk,
         ap_rst => ap_rst,
-        data_in => in_frequency_V_TDATA,
-        vld_in => in_frequency_V_TVALID,
-        ack_in => regslice_both_in_frequency_V_U_ack_in,
-        data_out => in_frequency_V_TDATA_int,
-        vld_out => in_frequency_V_TVALID_int,
-        ack_out => in_frequency_V_TREADY_int,
-        apdone_blk => regslice_both_in_frequency_V_U_apdone_blk);
+        data_in => symbol_histogram_TKEEP,
+        vld_in => symbol_histogram_TVALID,
+        ack_in => regslice_both_in_V_keep_V_U_ack_in,
+        data_out => symbol_histogram_TKEEP_int,
+        vld_out => regslice_both_in_V_keep_V_U_vld_out,
+        ack_out => symbol_histogram_TREADY_int,
+        apdone_blk => regslice_both_in_V_keep_V_U_apdone_blk);
+
+    regslice_both_in_V_strb_V_U : component regslice_both
+    generic map (
+        DataWidth => 6)
+    port map (
+        ap_clk => ap_clk,
+        ap_rst => ap_rst,
+        data_in => symbol_histogram_TSTRB,
+        vld_in => symbol_histogram_TVALID,
+        ack_in => regslice_both_in_V_strb_V_U_ack_in,
+        data_out => symbol_histogram_TSTRB_int,
+        vld_out => regslice_both_in_V_strb_V_U_vld_out,
+        ack_out => symbol_histogram_TREADY_int,
+        apdone_blk => regslice_both_in_V_strb_V_U_apdone_blk);
+
+    regslice_both_in_V_user_V_U : component regslice_both
+    generic map (
+        DataWidth => 1)
+    port map (
+        ap_clk => ap_clk,
+        ap_rst => ap_rst,
+        data_in => symbol_histogram_TUSER,
+        vld_in => symbol_histogram_TVALID,
+        ack_in => regslice_both_in_V_user_V_U_ack_in,
+        data_out => symbol_histogram_TUSER_int,
+        vld_out => regslice_both_in_V_user_V_U_vld_out,
+        ack_out => symbol_histogram_TREADY_int,
+        apdone_blk => regslice_both_in_V_user_V_U_apdone_blk);
+
+    regslice_both_in_V_last_V_U : component regslice_both
+    generic map (
+        DataWidth => 1)
+    port map (
+        ap_clk => ap_clk,
+        ap_rst => ap_rst,
+        data_in => symbol_histogram_TLAST,
+        vld_in => symbol_histogram_TVALID,
+        ack_in => regslice_both_in_V_last_V_U_ack_in,
+        data_out => symbol_histogram_TLAST_int,
+        vld_out => regslice_both_in_V_last_V_U_vld_out,
+        ack_out => symbol_histogram_TREADY_int,
+        apdone_blk => regslice_both_in_V_last_V_U_apdone_blk);
+
+    regslice_both_in_V_id_V_U : component regslice_both
+    generic map (
+        DataWidth => 1)
+    port map (
+        ap_clk => ap_clk,
+        ap_rst => ap_rst,
+        data_in => symbol_histogram_TID,
+        vld_in => symbol_histogram_TVALID,
+        ack_in => regslice_both_in_V_id_V_U_ack_in,
+        data_out => symbol_histogram_TID_int,
+        vld_out => regslice_both_in_V_id_V_U_vld_out,
+        ack_out => symbol_histogram_TREADY_int,
+        apdone_blk => regslice_both_in_V_id_V_U_apdone_blk);
+
+    regslice_both_in_V_dest_V_U : component regslice_both
+    generic map (
+        DataWidth => 1)
+    port map (
+        ap_clk => ap_clk,
+        ap_rst => ap_rst,
+        data_in => symbol_histogram_TDEST,
+        vld_in => symbol_histogram_TVALID,
+        ack_in => regslice_both_in_V_dest_V_U_ack_in,
+        data_out => symbol_histogram_TDEST_int,
+        vld_out => regslice_both_in_V_dest_V_U_vld_out,
+        ack_out => symbol_histogram_TREADY_int,
+        apdone_blk => regslice_both_in_V_dest_V_U_apdone_blk);
 
 
 
@@ -189,29 +282,29 @@ begin
     end process;
 
 
-    i_0_i_reg_110_assign_proc : process (ap_clk)
+    i_0_i_reg_135_assign_proc : process (ap_clk)
     begin
         if (ap_clk'event and ap_clk = '1') then
-            if ((not((((in_value_V_TVALID_int = ap_const_logic_0) and (ap_predicate_op24_read_state2 = ap_const_boolean_1)) or ((icmp_ln11_fu_130_p2 = ap_const_lv1_0) and (in_frequency_V_TVALID_int = ap_const_logic_0)))) and (icmp_ln11_fu_130_p2 = ap_const_lv1_0) and (ap_const_logic_1 = ap_CS_fsm_state2))) then 
-                i_0_i_reg_110 <= i_fu_136_p2;
+            if ((not(((icmp_ln13_fu_155_p2 = ap_const_lv1_0) and (symbol_histogram_TVALID_int = ap_const_logic_0))) and (icmp_ln13_fu_155_p2 = ap_const_lv1_0) and (ap_const_logic_1 = ap_CS_fsm_state2))) then 
+                i_0_i_reg_135 <= i_fu_161_p2;
             elsif ((not(((real_start = ap_const_logic_0) or (ap_done_reg = ap_const_logic_1))) and (ap_const_logic_1 = ap_CS_fsm_state1))) then 
-                i_0_i_reg_110 <= ap_const_lv9_0;
+                i_0_i_reg_135 <= ap_const_lv9_0;
             end if; 
         end if;
     end process;
 
-    t_V_fu_60_assign_proc : process (ap_clk)
+    t_V_fu_80_assign_proc : process (ap_clk)
     begin
         if (ap_clk'event and ap_clk = '1') then
-            if ((not((((in_value_V_TVALID_int = ap_const_logic_0) and (ap_predicate_op24_read_state2 = ap_const_boolean_1)) or ((icmp_ln11_fu_130_p2 = ap_const_lv1_0) and (in_frequency_V_TVALID_int = ap_const_logic_0)))) and (icmp_ln883_fu_142_p2 = ap_const_lv1_0) and (icmp_ln11_fu_130_p2 = ap_const_lv1_0) and (ap_const_logic_1 = ap_CS_fsm_state2))) then 
-                t_V_fu_60 <= j_V_fu_159_p2;
+            if ((not(((icmp_ln13_fu_155_p2 = ap_const_lv1_0) and (symbol_histogram_TVALID_int = ap_const_logic_0))) and (icmp_ln883_fu_187_p2 = ap_const_lv1_0) and (icmp_ln13_fu_155_p2 = ap_const_lv1_0) and (ap_const_logic_1 = ap_CS_fsm_state2))) then 
+                t_V_fu_80 <= j_V_fu_199_p2;
             elsif ((not(((real_start = ap_const_logic_0) or (ap_done_reg = ap_const_logic_1))) and (ap_const_logic_1 = ap_CS_fsm_state1))) then 
-                t_V_fu_60 <= ap_const_lv9_0;
+                t_V_fu_80 <= ap_const_lv9_0;
             end if; 
         end if;
     end process;
 
-    ap_NS_fsm_assign_proc : process (real_start, ap_done_reg, ap_CS_fsm, ap_CS_fsm_state1, n_out_full_n, ap_CS_fsm_state2, icmp_ln11_fu_130_p2, ap_CS_fsm_state3, ap_predicate_op24_read_state2, in_value_V_TVALID_int, in_frequency_V_TVALID_int)
+    ap_NS_fsm_assign_proc : process (real_start, ap_done_reg, ap_CS_fsm, ap_CS_fsm_state1, n_out_full_n, ap_CS_fsm_state2, icmp_ln13_fu_155_p2, ap_CS_fsm_state3, symbol_histogram_TVALID_int)
     begin
         case ap_CS_fsm is
             when ap_ST_fsm_state1 => 
@@ -221,9 +314,9 @@ begin
                     ap_NS_fsm <= ap_ST_fsm_state1;
                 end if;
             when ap_ST_fsm_state2 => 
-                if ((not((((in_value_V_TVALID_int = ap_const_logic_0) and (ap_predicate_op24_read_state2 = ap_const_boolean_1)) or ((icmp_ln11_fu_130_p2 = ap_const_lv1_0) and (in_frequency_V_TVALID_int = ap_const_logic_0)))) and (icmp_ln11_fu_130_p2 = ap_const_lv1_0) and (ap_const_logic_1 = ap_CS_fsm_state2))) then
+                if ((not(((icmp_ln13_fu_155_p2 = ap_const_lv1_0) and (symbol_histogram_TVALID_int = ap_const_logic_0))) and (icmp_ln13_fu_155_p2 = ap_const_lv1_0) and (ap_const_logic_1 = ap_CS_fsm_state2))) then
                     ap_NS_fsm <= ap_ST_fsm_state2;
-                elsif ((not((((in_value_V_TVALID_int = ap_const_logic_0) and (ap_predicate_op24_read_state2 = ap_const_boolean_1)) or ((icmp_ln11_fu_130_p2 = ap_const_lv1_0) and (in_frequency_V_TVALID_int = ap_const_logic_0)))) and (icmp_ln11_fu_130_p2 = ap_const_lv1_1) and (ap_const_logic_1 = ap_CS_fsm_state2))) then
+                elsif ((not(((icmp_ln13_fu_155_p2 = ap_const_lv1_0) and (symbol_histogram_TVALID_int = ap_const_logic_0))) and (icmp_ln13_fu_155_p2 = ap_const_lv1_1) and (ap_const_logic_1 = ap_CS_fsm_state2))) then
                     ap_NS_fsm <= ap_ST_fsm_state3;
                 else
                     ap_NS_fsm <= ap_ST_fsm_state2;
@@ -248,9 +341,9 @@ begin
     end process;
 
 
-    ap_block_state2_assign_proc : process(icmp_ln11_fu_130_p2, ap_predicate_op24_read_state2, in_value_V_TVALID_int, in_frequency_V_TVALID_int)
+    ap_block_state2_assign_proc : process(icmp_ln13_fu_155_p2, symbol_histogram_TVALID_int)
     begin
-                ap_block_state2 <= (((in_value_V_TVALID_int = ap_const_logic_0) and (ap_predicate_op24_read_state2 = ap_const_boolean_1)) or ((icmp_ln11_fu_130_p2 = ap_const_lv1_0) and (in_frequency_V_TVALID_int = ap_const_logic_0)));
+                ap_block_state2 <= ((icmp_ln13_fu_155_p2 = ap_const_lv1_0) and (symbol_histogram_TVALID_int = ap_const_logic_0));
     end process;
 
 
@@ -273,76 +366,11 @@ begin
         end if; 
     end process;
 
-
-    ap_predicate_op24_read_state2_assign_proc : process(icmp_ln11_fu_130_p2, icmp_ln883_fu_142_p2)
-    begin
-                ap_predicate_op24_read_state2 <= ((icmp_ln883_fu_142_p2 = ap_const_lv1_0) and (icmp_ln11_fu_130_p2 = ap_const_lv1_0));
-    end process;
-
     ap_ready <= internal_ap_ready;
-    i_fu_136_p2 <= std_logic_vector(unsigned(i_0_i_reg_110) + unsigned(ap_const_lv9_1));
-    icmp_ln11_fu_130_p2 <= "1" when (i_0_i_reg_110 = ap_const_lv9_100) else "0";
-    icmp_ln883_fu_142_p2 <= "1" when (in_frequency_V_TDATA_int = ap_const_lv32_0) else "0";
-
-    in_frequency_V_TDATA_blk_n_assign_proc : process(ap_CS_fsm_state2, icmp_ln11_fu_130_p2, in_frequency_V_TVALID_int)
-    begin
-        if (((icmp_ln11_fu_130_p2 = ap_const_lv1_0) and (ap_const_logic_1 = ap_CS_fsm_state2))) then 
-            in_frequency_V_TDATA_blk_n <= in_frequency_V_TVALID_int;
-        else 
-            in_frequency_V_TDATA_blk_n <= ap_const_logic_1;
-        end if; 
-    end process;
-
-
-    in_frequency_V_TREADY_assign_proc : process(in_frequency_V_TVALID, regslice_both_in_frequency_V_U_ack_in)
-    begin
-        if (((in_frequency_V_TVALID = ap_const_logic_1) and (regslice_both_in_frequency_V_U_ack_in = ap_const_logic_1))) then 
-            in_frequency_V_TREADY <= ap_const_logic_1;
-        else 
-            in_frequency_V_TREADY <= ap_const_logic_0;
-        end if; 
-    end process;
-
-
-    in_frequency_V_TREADY_int_assign_proc : process(ap_CS_fsm_state2, icmp_ln11_fu_130_p2, ap_predicate_op24_read_state2, in_value_V_TVALID_int, in_frequency_V_TVALID_int)
-    begin
-        if ((not((((in_value_V_TVALID_int = ap_const_logic_0) and (ap_predicate_op24_read_state2 = ap_const_boolean_1)) or ((icmp_ln11_fu_130_p2 = ap_const_lv1_0) and (in_frequency_V_TVALID_int = ap_const_logic_0)))) and (icmp_ln11_fu_130_p2 = ap_const_lv1_0) and (ap_const_logic_1 = ap_CS_fsm_state2))) then 
-            in_frequency_V_TREADY_int <= ap_const_logic_1;
-        else 
-            in_frequency_V_TREADY_int <= ap_const_logic_0;
-        end if; 
-    end process;
-
-
-    in_value_V_TDATA_blk_n_assign_proc : process(ap_CS_fsm_state2, icmp_ln11_fu_130_p2, icmp_ln883_fu_142_p2, in_value_V_TVALID_int)
-    begin
-        if (((icmp_ln883_fu_142_p2 = ap_const_lv1_0) and (icmp_ln11_fu_130_p2 = ap_const_lv1_0) and (ap_const_logic_1 = ap_CS_fsm_state2))) then 
-            in_value_V_TDATA_blk_n <= in_value_V_TVALID_int;
-        else 
-            in_value_V_TDATA_blk_n <= ap_const_logic_1;
-        end if; 
-    end process;
-
-
-    in_value_V_TREADY_assign_proc : process(in_value_V_TVALID, regslice_both_in_value_V_U_ack_in)
-    begin
-        if (((in_value_V_TVALID = ap_const_logic_1) and (regslice_both_in_value_V_U_ack_in = ap_const_logic_1))) then 
-            in_value_V_TREADY <= ap_const_logic_1;
-        else 
-            in_value_V_TREADY <= ap_const_logic_0;
-        end if; 
-    end process;
-
-
-    in_value_V_TREADY_int_assign_proc : process(ap_CS_fsm_state2, icmp_ln11_fu_130_p2, ap_predicate_op24_read_state2, in_value_V_TVALID_int, in_frequency_V_TVALID_int)
-    begin
-        if ((not((((in_value_V_TVALID_int = ap_const_logic_0) and (ap_predicate_op24_read_state2 = ap_const_boolean_1)) or ((icmp_ln11_fu_130_p2 = ap_const_lv1_0) and (in_frequency_V_TVALID_int = ap_const_logic_0)))) and (ap_const_logic_1 = ap_CS_fsm_state2) and (ap_predicate_op24_read_state2 = ap_const_boolean_1))) then 
-            in_value_V_TREADY_int <= ap_const_logic_1;
-        else 
-            in_value_V_TREADY_int <= ap_const_logic_0;
-        end if; 
-    end process;
-
+    frequency_V_fu_182_p1 <= symbol_histogram_TDATA_int(32 - 1 downto 0);
+    i_fu_161_p2 <= std_logic_vector(unsigned(i_0_i_reg_135) + unsigned(ap_const_lv9_1));
+    icmp_ln13_fu_155_p2 <= "1" when (i_0_i_reg_135 = ap_const_lv9_100) else "0";
+    icmp_ln883_fu_187_p2 <= "1" when (frequency_V_fu_182_p1 = ap_const_lv32_0) else "0";
 
     internal_ap_ready_assign_proc : process(n_out_full_n, ap_CS_fsm_state3)
     begin
@@ -353,7 +381,7 @@ begin
         end if; 
     end process;
 
-    j_V_fu_159_p2 <= std_logic_vector(unsigned(ap_const_lv9_1) + unsigned(t_V_fu_60));
+    j_V_fu_199_p2 <= std_logic_vector(unsigned(t_V_fu_80) + unsigned(ap_const_lv9_1));
 
     n_out_blk_n_assign_proc : process(n_out_full_n, ap_CS_fsm_state3)
     begin
@@ -364,7 +392,7 @@ begin
         end if; 
     end process;
 
-    n_out_din <= t_V_fu_60;
+    n_out_din <= t_V_fu_80;
 
     n_out_write_assign_proc : process(n_out_full_n, ap_CS_fsm_state3)
     begin
@@ -375,44 +403,44 @@ begin
         end if; 
     end process;
 
-    out_frequency_V_address0 <= zext_ln544_fu_148_p1(8 - 1 downto 0);
+    out_frequency_V_address0 <= zext_ln544_fu_193_p1(8 - 1 downto 0);
 
-    out_frequency_V_ce0_assign_proc : process(ap_CS_fsm_state2, icmp_ln11_fu_130_p2, ap_predicate_op24_read_state2, in_value_V_TVALID_int, in_frequency_V_TVALID_int)
+    out_frequency_V_ce0_assign_proc : process(ap_CS_fsm_state2, icmp_ln13_fu_155_p2, symbol_histogram_TVALID_int)
     begin
-        if ((not((((in_value_V_TVALID_int = ap_const_logic_0) and (ap_predicate_op24_read_state2 = ap_const_boolean_1)) or ((icmp_ln11_fu_130_p2 = ap_const_lv1_0) and (in_frequency_V_TVALID_int = ap_const_logic_0)))) and (ap_const_logic_1 = ap_CS_fsm_state2))) then 
+        if ((not(((icmp_ln13_fu_155_p2 = ap_const_lv1_0) and (symbol_histogram_TVALID_int = ap_const_logic_0))) and (ap_const_logic_1 = ap_CS_fsm_state2))) then 
             out_frequency_V_ce0 <= ap_const_logic_1;
         else 
             out_frequency_V_ce0 <= ap_const_logic_0;
         end if; 
     end process;
 
-    out_frequency_V_d0 <= in_frequency_V_TDATA_int;
+    out_frequency_V_d0 <= frequency_V_fu_182_p1;
 
-    out_frequency_V_we0_assign_proc : process(ap_CS_fsm_state2, icmp_ln11_fu_130_p2, icmp_ln883_fu_142_p2, ap_predicate_op24_read_state2, in_value_V_TVALID_int, in_frequency_V_TVALID_int)
+    out_frequency_V_we0_assign_proc : process(ap_CS_fsm_state2, icmp_ln13_fu_155_p2, icmp_ln883_fu_187_p2, symbol_histogram_TVALID_int)
     begin
-        if ((not((((in_value_V_TVALID_int = ap_const_logic_0) and (ap_predicate_op24_read_state2 = ap_const_boolean_1)) or ((icmp_ln11_fu_130_p2 = ap_const_lv1_0) and (in_frequency_V_TVALID_int = ap_const_logic_0)))) and (icmp_ln883_fu_142_p2 = ap_const_lv1_0) and (icmp_ln11_fu_130_p2 = ap_const_lv1_0) and (ap_const_logic_1 = ap_CS_fsm_state2))) then 
+        if ((not(((icmp_ln13_fu_155_p2 = ap_const_lv1_0) and (symbol_histogram_TVALID_int = ap_const_logic_0))) and (icmp_ln883_fu_187_p2 = ap_const_lv1_0) and (icmp_ln13_fu_155_p2 = ap_const_lv1_0) and (ap_const_logic_1 = ap_CS_fsm_state2))) then 
             out_frequency_V_we0 <= ap_const_logic_1;
         else 
             out_frequency_V_we0 <= ap_const_logic_0;
         end if; 
     end process;
 
-    out_value_V_address0 <= zext_ln544_fu_148_p1(8 - 1 downto 0);
+    out_value_V_address0 <= zext_ln544_fu_193_p1(8 - 1 downto 0);
 
-    out_value_V_ce0_assign_proc : process(ap_CS_fsm_state2, icmp_ln11_fu_130_p2, ap_predicate_op24_read_state2, in_value_V_TVALID_int, in_frequency_V_TVALID_int)
+    out_value_V_ce0_assign_proc : process(ap_CS_fsm_state2, icmp_ln13_fu_155_p2, symbol_histogram_TVALID_int)
     begin
-        if ((not((((in_value_V_TVALID_int = ap_const_logic_0) and (ap_predicate_op24_read_state2 = ap_const_boolean_1)) or ((icmp_ln11_fu_130_p2 = ap_const_lv1_0) and (in_frequency_V_TVALID_int = ap_const_logic_0)))) and (ap_const_logic_1 = ap_CS_fsm_state2))) then 
+        if ((not(((icmp_ln13_fu_155_p2 = ap_const_lv1_0) and (symbol_histogram_TVALID_int = ap_const_logic_0))) and (ap_const_logic_1 = ap_CS_fsm_state2))) then 
             out_value_V_ce0 <= ap_const_logic_1;
         else 
             out_value_V_ce0 <= ap_const_logic_0;
         end if; 
     end process;
 
-    out_value_V_d0 <= in_value_V_TDATA_int(9 - 1 downto 0);
+    out_value_V_d0 <= symbol_histogram_TDATA_int(40 downto 32);
 
-    out_value_V_we0_assign_proc : process(ap_CS_fsm_state2, icmp_ln11_fu_130_p2, icmp_ln883_fu_142_p2, ap_predicate_op24_read_state2, in_value_V_TVALID_int, in_frequency_V_TVALID_int)
+    out_value_V_we0_assign_proc : process(ap_CS_fsm_state2, icmp_ln13_fu_155_p2, icmp_ln883_fu_187_p2, symbol_histogram_TVALID_int)
     begin
-        if ((not((((in_value_V_TVALID_int = ap_const_logic_0) and (ap_predicate_op24_read_state2 = ap_const_boolean_1)) or ((icmp_ln11_fu_130_p2 = ap_const_lv1_0) and (in_frequency_V_TVALID_int = ap_const_logic_0)))) and (icmp_ln883_fu_142_p2 = ap_const_lv1_0) and (icmp_ln11_fu_130_p2 = ap_const_lv1_0) and (ap_const_logic_1 = ap_CS_fsm_state2))) then 
+        if ((not(((icmp_ln13_fu_155_p2 = ap_const_lv1_0) and (symbol_histogram_TVALID_int = ap_const_logic_0))) and (icmp_ln883_fu_187_p2 = ap_const_lv1_0) and (icmp_ln13_fu_155_p2 = ap_const_lv1_0) and (ap_const_logic_1 = ap_CS_fsm_state2))) then 
             out_value_V_we0 <= ap_const_logic_1;
         else 
             out_value_V_we0 <= ap_const_logic_0;
@@ -440,5 +468,35 @@ begin
         end if; 
     end process;
 
-    zext_ln544_fu_148_p1 <= std_logic_vector(IEEE.numeric_std.resize(unsigned(t_V_fu_60),64));
+
+    symbol_histogram_TDATA_blk_n_assign_proc : process(ap_CS_fsm_state2, icmp_ln13_fu_155_p2, symbol_histogram_TVALID_int)
+    begin
+        if (((icmp_ln13_fu_155_p2 = ap_const_lv1_0) and (ap_const_logic_1 = ap_CS_fsm_state2))) then 
+            symbol_histogram_TDATA_blk_n <= symbol_histogram_TVALID_int;
+        else 
+            symbol_histogram_TDATA_blk_n <= ap_const_logic_1;
+        end if; 
+    end process;
+
+
+    symbol_histogram_TREADY_assign_proc : process(symbol_histogram_TVALID, regslice_both_in_V_data_V_U_ack_in)
+    begin
+        if (((symbol_histogram_TVALID = ap_const_logic_1) and (regslice_both_in_V_data_V_U_ack_in = ap_const_logic_1))) then 
+            symbol_histogram_TREADY <= ap_const_logic_1;
+        else 
+            symbol_histogram_TREADY <= ap_const_logic_0;
+        end if; 
+    end process;
+
+
+    symbol_histogram_TREADY_int_assign_proc : process(ap_CS_fsm_state2, icmp_ln13_fu_155_p2, symbol_histogram_TVALID_int)
+    begin
+        if ((not(((icmp_ln13_fu_155_p2 = ap_const_lv1_0) and (symbol_histogram_TVALID_int = ap_const_logic_0))) and (icmp_ln13_fu_155_p2 = ap_const_lv1_0) and (ap_const_logic_1 = ap_CS_fsm_state2))) then 
+            symbol_histogram_TREADY_int <= ap_const_logic_1;
+        else 
+            symbol_histogram_TREADY_int <= ap_const_logic_0;
+        end if; 
+    end process;
+
+    zext_ln544_fu_193_p1 <= std_logic_vector(IEEE.numeric_std.resize(unsigned(t_V_fu_80),64));
 end behav;

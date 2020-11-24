@@ -33,19 +33,32 @@ int main() {
     ap_uint<16> *frequencies = NULL;
     file_to_array("huffman.random256.txt", frequencies, INPUT_SYMBOL_SIZE);
 
-    Symbol in[INPUT_SYMBOL_SIZE];
+    SymbolStream inStream;
+    Symbol_axiu in;
+    in.data = 0;
+	in.keep = 0xFF;
+	in.strb = 0;
+	in.user = 0;
+	in.last = 0;
+	in.id = 0;
+	in.dest = 0;
+
     for (int i = 0 ; i <  INPUT_SYMBOL_SIZE; i++) {
-        in[i].frequency = frequencies[i];
-        in[i].value = i;
+        in.data = i;
+        in.data <<= 32;
+        in.data += frequencies[i];
+        in.last = i == INPUT_SYMBOL_SIZE -1 ? 1 : 0;
+        inStream.write(in);
     }
 
+    PackedCodewordAndLengthStream encodingStream;
     int num_nonzero_symbols;
-    PackedCodewordAndLength encoding[INPUT_SYMBOL_SIZE];
-    huffman_encoding(in, encoding, &num_nonzero_symbols);
+    // PackedCodewordAndLength encoding[INPUT_SYMBOL_SIZE];
+    huffman_encoding(&inStream, &encodingStream, &num_nonzero_symbols);
 
     output_file = fopen("huffman.random256.out", "w");
     for(int i = 0; i < INPUT_SYMBOL_SIZE; i++)
-        fprintf(output_file, "%d, %x\n", i, (unsigned int) encoding[i]);
+        fprintf(output_file, "%d, %x\n", i, (unsigned int) encodingStream.read().data);
     fclose(output_file);
 
     printf ("\n***************Comparing against output data*************** \n\n");

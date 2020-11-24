@@ -1,4 +1,6 @@
 #include "ap_int.h"
+#include <ap_axi_sdata.h>
+#include <hls_stream.h>
 
 // input number of symbols
 const static int INPUT_SYMBOL_SIZE = 256;
@@ -24,17 +26,21 @@ const static ap_uint<SYMBOL_BITS> INTERNAL_NODE = -1;
 
 typedef ap_uint<MAX_CODEWORD_LENGTH> Codeword;
 typedef ap_uint<MAX_CODEWORD_LENGTH + CODEWORD_LENGTH_BITS> PackedCodewordAndLength;
+typedef ap_axiu<MAX_CODEWORD_LENGTH + CODEWORD_LENGTH_BITS, 1, 1, 1> PackedCodewordAndLength_axiu;
+typedef hls::stream<PackedCodewordAndLength_axiu> PackedCodewordAndLengthStream;
 typedef ap_uint<CODEWORD_LENGTH_BITS> CodewordLength;
 typedef ap_uint<32> Frequency;
 
 struct Symbol {
-	 ap_uint<SYMBOL_BITS> value;
-	 ap_uint<32> frequency;
+	ap_uint<SYMBOL_BITS> value;
+	ap_uint<32> frequency;
 };
+typedef ap_axiu<SYMBOL_BITS + 32, 1, 1, 1> Symbol_axiu;
+typedef hls::stream<Symbol_axiu> SymbolStream;
 
 void huffman_encoding (
-	Symbol in[INPUT_SYMBOL_SIZE],
-	PackedCodewordAndLength encoding[INPUT_SYMBOL_SIZE],
+	SymbolStream *in,
+	PackedCodewordAndLengthStream *encoding,
 	int *num_nonzero_symbols
 );
 
@@ -43,7 +49,7 @@ void huffman_encoding (
 
 
 
-void filter(Symbol in[INPUT_SYMBOL_SIZE],
+void filter(SymbolStream *in,
             Symbol out[INPUT_SYMBOL_SIZE],
             int *num_symbols);
 void sort(Symbol in[INPUT_SYMBOL_SIZE],
@@ -77,7 +83,7 @@ void canonize_tree(
 void create_codeword(
   CodewordLength symbol_bits[INPUT_SYMBOL_SIZE],
   ap_uint<SYMBOL_BITS> bit_length[TREE_DEPTH],
-  PackedCodewordAndLength encoding[INPUT_SYMBOL_SIZE]);
+  PackedCodewordAndLengthStream *encoding);
 
 
 static unsigned int bit_reverse32(unsigned int input) {

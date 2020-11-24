@@ -21,7 +21,7 @@ module sort (
         in_frequency_V_address0,
         in_frequency_V_ce0,
         in_frequency_V_q0,
-        extLd9_loc_channel,
+        extLd7_loc_channel,
         out_value_V_address0,
         out_value_V_ce0,
         out_value_V_we0,
@@ -58,7 +58,7 @@ input  [8:0] in_value_V_q0;
 output  [7:0] in_frequency_V_address0;
 output   in_frequency_V_ce0;
 input  [31:0] in_frequency_V_q0;
-input  [8:0] extLd9_loc_channel;
+input  [8:0] extLd7_loc_channel;
 output  [7:0] out_value_V_address0;
 output   out_value_V_ce0;
 output   out_value_V_we0;
@@ -634,7 +634,7 @@ huffman_encoding_g8j #(
     .din0_WIDTH( 32 ),
     .din1_WIDTH( 6 ),
     .dout_WIDTH( 32 ))
-huffman_encoding_g8j_U9(
+huffman_encoding_g8j_U14(
     .clk(ap_clk),
     .reset(ap_rst),
     .din0(sorting_frequency_V_2_reg_7003),
@@ -664,7 +664,7 @@ huffman_encoding_hbi #(
     .din15_WIDTH( 9 ),
     .din16_WIDTH( 4 ),
     .dout_WIDTH( 9 ))
-huffman_encoding_hbi_U10(
+huffman_encoding_hbi_U15(
     .din0(ap_phi_mux_digit_histogram_0_V_4_phi_fu_1934_p4),
     .din1(ap_phi_mux_digit_histogram_1_V_3_phi_fu_1923_p4),
     .din2(ap_phi_mux_digit_histogram_2_V_3_phi_fu_1912_p4),
@@ -706,7 +706,7 @@ huffman_encoding_hbi #(
     .din15_WIDTH( 9 ),
     .din16_WIDTH( 4 ),
     .dout_WIDTH( 9 ))
-huffman_encoding_hbi_U11(
+huffman_encoding_hbi_U16(
     .din0(digit_histogram_14_5_reg_2901),
     .din1(digit_histogram_0_V_6_reg_3671),
     .din2(digit_histogram_1_V_5_reg_3616),
@@ -748,7 +748,7 @@ huffman_encoding_hbi #(
     .din15_WIDTH( 9 ),
     .din16_WIDTH( 4 ),
     .dout_WIDTH( 9 ))
-huffman_encoding_hbi_U12(
+huffman_encoding_hbi_U17(
     .din0(ap_phi_mux_digit_location_0_V_s_phi_fu_4898_p4),
     .din1(ap_phi_mux_digit_location_1_V_3_phi_fu_4886_p4),
     .din2(ap_phi_mux_digit_location_2_V_3_phi_fu_4875_p4),
@@ -3626,15 +3626,15 @@ assign i_3_fu_6805_p2 = (i6_0_i_i_reg_3880 + 5'd1);
 
 assign i_fu_6668_p2 = (i_0_i_i_reg_864 + 5'd1);
 
-assign icmp_ln23_fu_6633_p2 = ((j_0_i_i_reg_293 == extLd9_loc_channel) ? 1'b1 : 1'b0);
+assign icmp_ln23_fu_6633_p2 = ((j_0_i_i_reg_293 == extLd7_loc_channel) ? 1'b1 : 1'b0);
 
 assign icmp_ln31_fu_6662_p2 = ((i_0_i_i_reg_864 == 5'd16) ? 1'b1 : 1'b0);
 
-assign icmp_ln40_fu_6678_p2 = ((j5_0_i_i_reg_1755 == extLd9_loc_channel) ? 1'b1 : 1'b0);
+assign icmp_ln40_fu_6678_p2 = ((j5_0_i_i_reg_1755 == extLd7_loc_channel) ? 1'b1 : 1'b0);
 
 assign icmp_ln58_fu_6757_p2 = ((i6_0_i_i_reg_3880 == 5'd16) ? 1'b1 : 1'b0);
 
-assign icmp_ln67_fu_6831_p2 = ((j7_0_i_i_reg_4718 == extLd9_loc_channel) ? 1'b1 : 1'b0);
+assign icmp_ln67_fu_6831_p2 = ((j7_0_i_i_reg_4718 == extLd7_loc_channel) ? 1'b1 : 1'b0);
 
 assign icmp_ln879_2_fu_6847_p2 = ((ap_phi_mux_p_0149_0_i_i_phi_fu_4920_p4 == digit_V_1_reg_7075) ? 1'b1 : 1'b0);
 

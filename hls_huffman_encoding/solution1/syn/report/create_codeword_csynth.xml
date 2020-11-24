@@ -208,8 +208,8 @@
 <Attribute>data</Attribute>
 </RtlPorts>
 <RtlPorts>
-<name>encoding_V_TDATA</name>
-<Object>encoding_V</Object>
+<name>encoding_TDATA</name>
+<Object>encoding_V_data_V</Object>
 <Type>pointer</Type>
 <Scope></Scope>
 <IOProtocol>axis</IOProtocol>
@@ -219,8 +219,8 @@
 <Attribute>data</Attribute>
 </RtlPorts>
 <RtlPorts>
-<name>encoding_V_TVALID</name>
-<Object>encoding_V</Object>
+<name>encoding_TVALID</name>
+<Object>encoding_V_dest_V</Object>
 <Type>pointer</Type>
 <Scope></Scope>
 <IOProtocol>axis</IOProtocol>
@@ -230,8 +230,8 @@
 <Attribute>control</Attribute>
 </RtlPorts>
 <RtlPorts>
-<name>encoding_V_TREADY</name>
-<Object>encoding_V</Object>
+<name>encoding_TREADY</name>
+<Object>encoding_V_dest_V</Object>
 <Type>pointer</Type>
 <Scope></Scope>
 <IOProtocol>axis</IOProtocol>
@@ -239,6 +239,72 @@
 <Dir>in</Dir>
 <Bits>1</Bits>
 <Attribute>control</Attribute>
+</RtlPorts>
+<RtlPorts>
+<name>encoding_TDEST</name>
+<Object>encoding_V_dest_V</Object>
+<Type>pointer</Type>
+<Scope></Scope>
+<IOProtocol>axis</IOProtocol>
+<IOConfig>register, both mode</IOConfig>
+<Dir>out</Dir>
+<Bits>1</Bits>
+<Attribute>data</Attribute>
+</RtlPorts>
+<RtlPorts>
+<name>encoding_TKEEP</name>
+<Object>encoding_V_keep_V</Object>
+<Type>pointer</Type>
+<Scope></Scope>
+<IOProtocol>axis</IOProtocol>
+<IOConfig>register, both mode</IOConfig>
+<Dir>out</Dir>
+<Bits>4</Bits>
+<Attribute>data</Attribute>
+</RtlPorts>
+<RtlPorts>
+<name>encoding_TSTRB</name>
+<Object>encoding_V_strb_V</Object>
+<Type>pointer</Type>
+<Scope></Scope>
+<IOProtocol>axis</IOProtocol>
+<IOConfig>register, both mode</IOConfig>
+<Dir>out</Dir>
+<Bits>4</Bits>
+<Attribute>data</Attribute>
+</RtlPorts>
+<RtlPorts>
+<name>encoding_TUSER</name>
+<Object>encoding_V_user_V</Object>
+<Type>pointer</Type>
+<Scope></Scope>
+<IOProtocol>axis</IOProtocol>
+<IOConfig>register, both mode</IOConfig>
+<Dir>out</Dir>
+<Bits>1</Bits>
+<Attribute>data</Attribute>
+</RtlPorts>
+<RtlPorts>
+<name>encoding_TLAST</name>
+<Object>encoding_V_last_V</Object>
+<Type>pointer</Type>
+<Scope></Scope>
+<IOProtocol>axis</IOProtocol>
+<IOConfig>register, both mode</IOConfig>
+<Dir>out</Dir>
+<Bits>1</Bits>
+<Attribute>data</Attribute>
+</RtlPorts>
+<RtlPorts>
+<name>encoding_TID</name>
+<Object>encoding_V_id_V</Object>
+<Type>pointer</Type>
+<Scope></Scope>
+<IOProtocol>axis</IOProtocol>
+<IOConfig>register, both mode</IOConfig>
+<Dir>out</Dir>
+<Bits>1</Bits>
+<Attribute>data</Attribute>
 </RtlPorts>
 </InterfaceSummary>
 

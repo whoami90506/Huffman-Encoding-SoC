@@ -14,33 +14,89 @@
 `define AUTOTB_MAX_ALLOW_LATENCY  15000000
 `define AUTOTB_CLOCK_PERIOD_DIV2 2.50
 
-`define AESL_DEPTH_symbol_histogram_value_V 1
-`define AESL_DEPTH_symbol_histogram_frequency_V 1
-`define AESL_DEPTH_encoding_V 1
+`define AESL_DEPTH_symbol_histogram_V_data_V 1
+`define AESL_DEPTH_symbol_histogram_V_keep_V 1
+`define AESL_DEPTH_symbol_histogram_V_strb_V 1
+`define AESL_DEPTH_symbol_histogram_V_user_V 1
+`define AESL_DEPTH_symbol_histogram_V_last_V 1
+`define AESL_DEPTH_symbol_histogram_V_id_V 1
+`define AESL_DEPTH_symbol_histogram_V_dest_V 1
+`define AESL_DEPTH_encoding_V_data_V 1
+`define AESL_DEPTH_encoding_V_keep_V 1
+`define AESL_DEPTH_encoding_V_strb_V 1
+`define AESL_DEPTH_encoding_V_user_V 1
+`define AESL_DEPTH_encoding_V_last_V 1
+`define AESL_DEPTH_encoding_V_id_V 1
+`define AESL_DEPTH_encoding_V_dest_V 1
 `define AESL_DEPTH_num_nonzero_symbols 1
-`define AUTOTB_TVIN_symbol_histogram_value_V  "../tv/cdatafile/c.huffman_encoding.autotvin_symbol_histogram_value_V.dat"
-`define AUTOTB_TVIN_symbol_histogram_frequency_V  "../tv/cdatafile/c.huffman_encoding.autotvin_symbol_histogram_frequency_V.dat"
-`define AUTOTB_TVIN_encoding_V  "../tv/cdatafile/c.huffman_encoding.autotvin_encoding_V.dat"
-`define AUTOTB_TVIN_symbol_histogram_value_V_out_wrapc  "../tv/rtldatafile/rtl.huffman_encoding.autotvin_symbol_histogram_value_V.dat"
-`define AUTOTB_TVIN_symbol_histogram_frequency_V_out_wrapc  "../tv/rtldatafile/rtl.huffman_encoding.autotvin_symbol_histogram_frequency_V.dat"
-`define AUTOTB_TVIN_encoding_V_out_wrapc  "../tv/rtldatafile/rtl.huffman_encoding.autotvin_encoding_V.dat"
-`define AUTOTB_TVOUT_encoding_V  "../tv/cdatafile/c.huffman_encoding.autotvout_encoding_V.dat"
+`define AUTOTB_TVIN_symbol_histogram_V_data_V  "../tv/cdatafile/c.huffman_encoding.autotvin_symbol_histogram_V_data_V.dat"
+`define AUTOTB_TVIN_symbol_histogram_V_keep_V  "../tv/cdatafile/c.huffman_encoding.autotvin_symbol_histogram_V_keep_V.dat"
+`define AUTOTB_TVIN_symbol_histogram_V_strb_V  "../tv/cdatafile/c.huffman_encoding.autotvin_symbol_histogram_V_strb_V.dat"
+`define AUTOTB_TVIN_symbol_histogram_V_user_V  "../tv/cdatafile/c.huffman_encoding.autotvin_symbol_histogram_V_user_V.dat"
+`define AUTOTB_TVIN_symbol_histogram_V_last_V  "../tv/cdatafile/c.huffman_encoding.autotvin_symbol_histogram_V_last_V.dat"
+`define AUTOTB_TVIN_symbol_histogram_V_id_V  "../tv/cdatafile/c.huffman_encoding.autotvin_symbol_histogram_V_id_V.dat"
+`define AUTOTB_TVIN_symbol_histogram_V_dest_V  "../tv/cdatafile/c.huffman_encoding.autotvin_symbol_histogram_V_dest_V.dat"
+`define AUTOTB_TVIN_encoding_V_data_V  "../tv/cdatafile/c.huffman_encoding.autotvin_encoding_V_data_V.dat"
+`define AUTOTB_TVIN_encoding_V_keep_V  "../tv/cdatafile/c.huffman_encoding.autotvin_encoding_V_keep_V.dat"
+`define AUTOTB_TVIN_encoding_V_strb_V  "../tv/cdatafile/c.huffman_encoding.autotvin_encoding_V_strb_V.dat"
+`define AUTOTB_TVIN_encoding_V_user_V  "../tv/cdatafile/c.huffman_encoding.autotvin_encoding_V_user_V.dat"
+`define AUTOTB_TVIN_encoding_V_last_V  "../tv/cdatafile/c.huffman_encoding.autotvin_encoding_V_last_V.dat"
+`define AUTOTB_TVIN_encoding_V_id_V  "../tv/cdatafile/c.huffman_encoding.autotvin_encoding_V_id_V.dat"
+`define AUTOTB_TVIN_encoding_V_dest_V  "../tv/cdatafile/c.huffman_encoding.autotvin_encoding_V_dest_V.dat"
+`define AUTOTB_TVIN_symbol_histogram_V_data_V_out_wrapc  "../tv/rtldatafile/rtl.huffman_encoding.autotvin_symbol_histogram_V_data_V.dat"
+`define AUTOTB_TVIN_symbol_histogram_V_keep_V_out_wrapc  "../tv/rtldatafile/rtl.huffman_encoding.autotvin_symbol_histogram_V_keep_V.dat"
+`define AUTOTB_TVIN_symbol_histogram_V_strb_V_out_wrapc  "../tv/rtldatafile/rtl.huffman_encoding.autotvin_symbol_histogram_V_strb_V.dat"
+`define AUTOTB_TVIN_symbol_histogram_V_user_V_out_wrapc  "../tv/rtldatafile/rtl.huffman_encoding.autotvin_symbol_histogram_V_user_V.dat"
+`define AUTOTB_TVIN_symbol_histogram_V_last_V_out_wrapc  "../tv/rtldatafile/rtl.huffman_encoding.autotvin_symbol_histogram_V_last_V.dat"
+`define AUTOTB_TVIN_symbol_histogram_V_id_V_out_wrapc  "../tv/rtldatafile/rtl.huffman_encoding.autotvin_symbol_histogram_V_id_V.dat"
+`define AUTOTB_TVIN_symbol_histogram_V_dest_V_out_wrapc  "../tv/rtldatafile/rtl.huffman_encoding.autotvin_symbol_histogram_V_dest_V.dat"
+`define AUTOTB_TVIN_encoding_V_data_V_out_wrapc  "../tv/rtldatafile/rtl.huffman_encoding.autotvin_encoding_V_data_V.dat"
+`define AUTOTB_TVIN_encoding_V_keep_V_out_wrapc  "../tv/rtldatafile/rtl.huffman_encoding.autotvin_encoding_V_keep_V.dat"
+`define AUTOTB_TVIN_encoding_V_strb_V_out_wrapc  "../tv/rtldatafile/rtl.huffman_encoding.autotvin_encoding_V_strb_V.dat"
+`define AUTOTB_TVIN_encoding_V_user_V_out_wrapc  "../tv/rtldatafile/rtl.huffman_encoding.autotvin_encoding_V_user_V.dat"
+`define AUTOTB_TVIN_encoding_V_last_V_out_wrapc  "../tv/rtldatafile/rtl.huffman_encoding.autotvin_encoding_V_last_V.dat"
+`define AUTOTB_TVIN_encoding_V_id_V_out_wrapc  "../tv/rtldatafile/rtl.huffman_encoding.autotvin_encoding_V_id_V.dat"
+`define AUTOTB_TVIN_encoding_V_dest_V_out_wrapc  "../tv/rtldatafile/rtl.huffman_encoding.autotvin_encoding_V_dest_V.dat"
+`define AUTOTB_TVOUT_encoding_V_data_V  "../tv/cdatafile/c.huffman_encoding.autotvout_encoding_V_data_V.dat"
+`define AUTOTB_TVOUT_encoding_V_keep_V  "../tv/cdatafile/c.huffman_encoding.autotvout_encoding_V_keep_V.dat"
+`define AUTOTB_TVOUT_encoding_V_strb_V  "../tv/cdatafile/c.huffman_encoding.autotvout_encoding_V_strb_V.dat"
+`define AUTOTB_TVOUT_encoding_V_user_V  "../tv/cdatafile/c.huffman_encoding.autotvout_encoding_V_user_V.dat"
+`define AUTOTB_TVOUT_encoding_V_last_V  "../tv/cdatafile/c.huffman_encoding.autotvout_encoding_V_last_V.dat"
+`define AUTOTB_TVOUT_encoding_V_id_V  "../tv/cdatafile/c.huffman_encoding.autotvout_encoding_V_id_V.dat"
+`define AUTOTB_TVOUT_encoding_V_dest_V  "../tv/cdatafile/c.huffman_encoding.autotvout_encoding_V_dest_V.dat"
 `define AUTOTB_TVOUT_num_nonzero_symbols  "../tv/cdatafile/c.huffman_encoding.autotvout_num_nonzero_symbols.dat"
-`define AUTOTB_TVOUT_encoding_V_out_wrapc  "../tv/rtldatafile/rtl.huffman_encoding.autotvout_encoding_V.dat"
+`define AUTOTB_TVOUT_encoding_V_data_V_out_wrapc  "../tv/rtldatafile/rtl.huffman_encoding.autotvout_encoding_V_data_V.dat"
+`define AUTOTB_TVOUT_encoding_V_keep_V_out_wrapc  "../tv/rtldatafile/rtl.huffman_encoding.autotvout_encoding_V_keep_V.dat"
+`define AUTOTB_TVOUT_encoding_V_strb_V_out_wrapc  "../tv/rtldatafile/rtl.huffman_encoding.autotvout_encoding_V_strb_V.dat"
+`define AUTOTB_TVOUT_encoding_V_user_V_out_wrapc  "../tv/rtldatafile/rtl.huffman_encoding.autotvout_encoding_V_user_V.dat"
+`define AUTOTB_TVOUT_encoding_V_last_V_out_wrapc  "../tv/rtldatafile/rtl.huffman_encoding.autotvout_encoding_V_last_V.dat"
+`define AUTOTB_TVOUT_encoding_V_id_V_out_wrapc  "../tv/rtldatafile/rtl.huffman_encoding.autotvout_encoding_V_id_V.dat"
+`define AUTOTB_TVOUT_encoding_V_dest_V_out_wrapc  "../tv/rtldatafile/rtl.huffman_encoding.autotvout_encoding_V_dest_V.dat"
 `define AUTOTB_TVOUT_num_nonzero_symbols_out_wrapc  "../tv/rtldatafile/rtl.huffman_encoding.autotvout_num_nonzero_symbols.dat"
 module `AUTOTB_TOP;
 
 parameter AUTOTB_TRANSACTION_NUM = 1;
 parameter PROGRESS_TIMEOUT = 10000000;
 parameter LATENCY_ESTIMATION = -1;
-parameter LENGTH_symbol_histogram_value_V = 256;
-parameter LENGTH_symbol_histogram_frequency_V = 256;
-parameter LENGTH_encoding_V = 256;
+parameter LENGTH_symbol_histogram_V_data_V = 256;
+parameter LENGTH_symbol_histogram_V_keep_V = 256;
+parameter LENGTH_symbol_histogram_V_strb_V = 256;
+parameter LENGTH_symbol_histogram_V_user_V = 256;
+parameter LENGTH_symbol_histogram_V_last_V = 256;
+parameter LENGTH_symbol_histogram_V_id_V = 256;
+parameter LENGTH_symbol_histogram_V_dest_V = 256;
+parameter LENGTH_encoding_V_data_V = 256;
+parameter LENGTH_encoding_V_keep_V = 256;
+parameter LENGTH_encoding_V_strb_V = 256;
+parameter LENGTH_encoding_V_user_V = 256;
+parameter LENGTH_encoding_V_last_V = 256;
+parameter LENGTH_encoding_V_id_V = 256;
+parameter LENGTH_encoding_V_dest_V = 256;
 parameter LENGTH_num_nonzero_symbols = 1;
 
 task read_token;
     input integer fp;
-    output reg [303 : 0] token;
+    output reg [207 : 0] token;
     integer ret;
     begin
         token = "";
@@ -84,15 +140,24 @@ wire  AXILiteS_BVALID;
 wire  AXILiteS_BREADY;
 wire [1 : 0] AXILiteS_BRESP;
 wire  AXILiteS_INTERRUPT;
-wire [15 : 0] symbol_histogram_value_V_TDATA;
-wire [31 : 0] symbol_histogram_frequency_V_TDATA;
-wire [31 : 0] encoding_V_TDATA;
-wire  symbol_histogram_value_V_TVALID;
-wire  symbol_histogram_value_V_TREADY;
-wire  symbol_histogram_frequency_V_TVALID;
-wire  symbol_histogram_frequency_V_TREADY;
-wire  encoding_V_TVALID;
-wire  encoding_V_TREADY;
+wire [47 : 0] symbol_histogram_TDATA;
+wire [5 : 0] symbol_histogram_TKEEP;
+wire [5 : 0] symbol_histogram_TSTRB;
+wire [0 : 0] symbol_histogram_TUSER;
+wire [0 : 0] symbol_histogram_TLAST;
+wire [0 : 0] symbol_histogram_TID;
+wire [0 : 0] symbol_histogram_TDEST;
+wire [31 : 0] encoding_TDATA;
+wire [3 : 0] encoding_TKEEP;
+wire [3 : 0] encoding_TSTRB;
+wire [0 : 0] encoding_TUSER;
+wire [0 : 0] encoding_TLAST;
+wire [0 : 0] encoding_TID;
+wire [0 : 0] encoding_TDEST;
+wire  symbol_histogram_TVALID;
+wire  symbol_histogram_TREADY;
+wire  encoding_TVALID;
+wire  encoding_TREADY;
 integer done_cnt = 0;
 integer AESL_ready_cnt = 0;
 integer ready_cnt = 0;
@@ -141,15 +206,24 @@ wire ap_rst_n_n;
     .interrupt(AXILiteS_INTERRUPT),
     .ap_clk(ap_clk),
     .ap_rst_n(ap_rst_n),
-    .symbol_histogram_value_V_TDATA(symbol_histogram_value_V_TDATA),
-    .symbol_histogram_frequency_V_TDATA(symbol_histogram_frequency_V_TDATA),
-    .encoding_V_TDATA(encoding_V_TDATA),
-    .symbol_histogram_value_V_TVALID(symbol_histogram_value_V_TVALID),
-    .symbol_histogram_value_V_TREADY(symbol_histogram_value_V_TREADY),
-    .symbol_histogram_frequency_V_TVALID(symbol_histogram_frequency_V_TVALID),
-    .symbol_histogram_frequency_V_TREADY(symbol_histogram_frequency_V_TREADY),
-    .encoding_V_TVALID(encoding_V_TVALID),
-    .encoding_V_TREADY(encoding_V_TREADY));
+    .symbol_histogram_TDATA(symbol_histogram_TDATA),
+    .symbol_histogram_TKEEP(symbol_histogram_TKEEP),
+    .symbol_histogram_TSTRB(symbol_histogram_TSTRB),
+    .symbol_histogram_TUSER(symbol_histogram_TUSER),
+    .symbol_histogram_TLAST(symbol_histogram_TLAST),
+    .symbol_histogram_TID(symbol_histogram_TID),
+    .symbol_histogram_TDEST(symbol_histogram_TDEST),
+    .encoding_TDATA(encoding_TDATA),
+    .encoding_TKEEP(encoding_TKEEP),
+    .encoding_TSTRB(encoding_TSTRB),
+    .encoding_TUSER(encoding_TUSER),
+    .encoding_TLAST(encoding_TLAST),
+    .encoding_TID(encoding_TID),
+    .encoding_TDEST(encoding_TDEST),
+    .symbol_histogram_TVALID(symbol_histogram_TVALID),
+    .symbol_histogram_TREADY(symbol_histogram_TREADY),
+    .encoding_TVALID(encoding_TVALID),
+    .encoding_TREADY(encoding_TREADY));
 
 // Assignment for control signal
 assign ap_clk = AESL_clock;
@@ -217,96 +291,93 @@ end
 
 
 
-reg [31:0] ap_c_n_tvin_trans_num_symbol_histogram_value_V;
 
-reg symbol_histogram_value_V_ready_reg; // for self-sync
 
-wire symbol_histogram_value_V_ready;
-wire symbol_histogram_value_V_done;
-wire [31:0] symbol_histogram_value_V_transaction;
-wire axi_s_symbol_histogram_value_V_TVALID;
-wire axi_s_symbol_histogram_value_V_TREADY;
 
-AESL_axi_s_symbol_histogram_value_V AESL_AXI_S_symbol_histogram_value_V(
+
+
+
+
+
+
+
+
+reg [31:0] ap_c_n_tvin_trans_num_symbol_histogram_V_data_V;
+
+reg symbol_histogram_ready_reg; // for self-sync
+
+wire symbol_histogram_ready;
+wire symbol_histogram_done;
+wire [31:0] symbol_histogram_transaction;
+wire axi_s_symbol_histogram_TVALID;
+wire axi_s_symbol_histogram_TREADY;
+
+AESL_axi_s_symbol_histogram AESL_AXI_S_symbol_histogram(
     .clk(AESL_clock),
     .reset(AESL_reset),
-    .TRAN_symbol_histogram_value_V_TDATA(symbol_histogram_value_V_TDATA),
-    .TRAN_symbol_histogram_value_V_TVALID(axi_s_symbol_histogram_value_V_TVALID),
-    .TRAN_symbol_histogram_value_V_TREADY(axi_s_symbol_histogram_value_V_TREADY),
-    .ready(symbol_histogram_value_V_ready),
-    .done(symbol_histogram_value_V_done),
-    .transaction(symbol_histogram_value_V_transaction));
+    .TRAN_symbol_histogram_TDATA(symbol_histogram_TDATA),
+    .TRAN_symbol_histogram_TKEEP(symbol_histogram_TKEEP),
+    .TRAN_symbol_histogram_TSTRB(symbol_histogram_TSTRB),
+    .TRAN_symbol_histogram_TUSER(symbol_histogram_TUSER),
+    .TRAN_symbol_histogram_TLAST(symbol_histogram_TLAST),
+    .TRAN_symbol_histogram_TID(symbol_histogram_TID),
+    .TRAN_symbol_histogram_TDEST(symbol_histogram_TDEST),
+    .TRAN_symbol_histogram_TVALID(axi_s_symbol_histogram_TVALID),
+    .TRAN_symbol_histogram_TREADY(axi_s_symbol_histogram_TREADY),
+    .ready(symbol_histogram_ready),
+    .done(symbol_histogram_done),
+    .transaction(symbol_histogram_transaction));
 
-assign symbol_histogram_value_V_ready = ready;
-assign symbol_histogram_value_V_done = 0;
+assign symbol_histogram_ready = symbol_histogram_ready_reg | ready_initial;
+assign symbol_histogram_done = 0;
 
-assign symbol_histogram_value_V_TVALID = axi_s_symbol_histogram_value_V_TVALID;
+assign symbol_histogram_TVALID = axi_s_symbol_histogram_TVALID;
 
-assign axi_s_symbol_histogram_value_V_TREADY = symbol_histogram_value_V_TREADY;
-reg [31:0] ap_c_n_tvin_trans_num_symbol_histogram_frequency_V;
+assign axi_s_symbol_histogram_TREADY = symbol_histogram_TREADY;
+reg [31:0] ap_c_n_tvin_trans_num_encoding_V_data_V;
 
-reg symbol_histogram_frequency_V_ready_reg; // for self-sync
+reg encoding_ready_reg; // for self-sync
 
-wire symbol_histogram_frequency_V_ready;
-wire symbol_histogram_frequency_V_done;
-wire [31:0] symbol_histogram_frequency_V_transaction;
-wire axi_s_symbol_histogram_frequency_V_TVALID;
-wire axi_s_symbol_histogram_frequency_V_TREADY;
+wire encoding_ready;
+wire encoding_done;
+wire [31:0] encoding_transaction;
+wire axi_s_encoding_TVALID;
+wire axi_s_encoding_TREADY;
 
-AESL_axi_s_symbol_histogram_frequency_V AESL_AXI_S_symbol_histogram_frequency_V(
+AESL_axi_s_encoding AESL_AXI_S_encoding(
     .clk(AESL_clock),
     .reset(AESL_reset),
-    .TRAN_symbol_histogram_frequency_V_TDATA(symbol_histogram_frequency_V_TDATA),
-    .TRAN_symbol_histogram_frequency_V_TVALID(axi_s_symbol_histogram_frequency_V_TVALID),
-    .TRAN_symbol_histogram_frequency_V_TREADY(axi_s_symbol_histogram_frequency_V_TREADY),
-    .ready(symbol_histogram_frequency_V_ready),
-    .done(symbol_histogram_frequency_V_done),
-    .transaction(symbol_histogram_frequency_V_transaction));
+    .TRAN_encoding_TDATA(encoding_TDATA),
+    .TRAN_encoding_TKEEP(encoding_TKEEP),
+    .TRAN_encoding_TSTRB(encoding_TSTRB),
+    .TRAN_encoding_TUSER(encoding_TUSER),
+    .TRAN_encoding_TLAST(encoding_TLAST),
+    .TRAN_encoding_TID(encoding_TID),
+    .TRAN_encoding_TDEST(encoding_TDEST),
+    .TRAN_encoding_TVALID(axi_s_encoding_TVALID),
+    .TRAN_encoding_TREADY(axi_s_encoding_TREADY),
+    .ready(encoding_ready),
+    .done(encoding_done),
+    .transaction(encoding_transaction));
 
-assign symbol_histogram_frequency_V_ready = ready;
-assign symbol_histogram_frequency_V_done = 0;
+assign encoding_ready = 0;
+assign encoding_done = AESL_done;
 
-assign symbol_histogram_frequency_V_TVALID = axi_s_symbol_histogram_frequency_V_TVALID;
+assign axi_s_encoding_TVALID = encoding_TVALID;
 
-assign axi_s_symbol_histogram_frequency_V_TREADY = symbol_histogram_frequency_V_TREADY;
-reg [31:0] ap_c_n_tvin_trans_num_encoding_V;
-
-reg encoding_V_ready_reg; // for self-sync
-
-wire encoding_V_ready;
-wire encoding_V_done;
-wire [31:0] encoding_V_transaction;
-wire axi_s_encoding_V_TVALID;
-wire axi_s_encoding_V_TREADY;
-
-AESL_axi_s_encoding_V AESL_AXI_S_encoding_V(
-    .clk(AESL_clock),
-    .reset(AESL_reset),
-    .TRAN_encoding_V_TDATA(encoding_V_TDATA),
-    .TRAN_encoding_V_TVALID(axi_s_encoding_V_TVALID),
-    .TRAN_encoding_V_TREADY(axi_s_encoding_V_TREADY),
-    .ready(encoding_V_ready),
-    .done(encoding_V_done),
-    .transaction(encoding_V_transaction));
-
-assign encoding_V_ready = 0;
-assign encoding_V_done = AESL_done;
-
-assign axi_s_encoding_V_TVALID = encoding_V_TVALID;
-
-reg reg_encoding_V_TREADY;
-initial begin : gen_reg_encoding_V_TREADY_process
+reg reg_encoding_TREADY;
+initial begin : gen_reg_encoding_TREADY_process
     integer proc_rand;
-    reg_encoding_V_TREADY = axi_s_encoding_V_TREADY;
+    reg_encoding_TREADY = axi_s_encoding_TREADY;
     while(1)
     begin
-        @(axi_s_encoding_V_TREADY);
-        reg_encoding_V_TREADY = axi_s_encoding_V_TREADY;
+        @(axi_s_encoding_TREADY);
+        reg_encoding_TREADY = axi_s_encoding_TREADY;
     end
 end
 
 
-assign encoding_V_TREADY = reg_encoding_V_TREADY;
+assign encoding_TREADY = reg_encoding_TREADY;
 
 AESL_axi_slave_AXILiteS AESL_AXI_SLAVE_AXILiteS(
     .clk   (AESL_clock),
@@ -402,15 +473,48 @@ initial begin
 end
 
 
-reg end_symbol_histogram_value_V;
-reg [31:0] size_symbol_histogram_value_V;
-reg [31:0] size_symbol_histogram_value_V_backup;
-reg end_symbol_histogram_frequency_V;
-reg [31:0] size_symbol_histogram_frequency_V;
-reg [31:0] size_symbol_histogram_frequency_V_backup;
-reg end_encoding_V;
-reg [31:0] size_encoding_V;
-reg [31:0] size_encoding_V_backup;
+reg end_symbol_histogram_V_data_V;
+reg [31:0] size_symbol_histogram_V_data_V;
+reg [31:0] size_symbol_histogram_V_data_V_backup;
+reg end_symbol_histogram_V_keep_V;
+reg [31:0] size_symbol_histogram_V_keep_V;
+reg [31:0] size_symbol_histogram_V_keep_V_backup;
+reg end_symbol_histogram_V_strb_V;
+reg [31:0] size_symbol_histogram_V_strb_V;
+reg [31:0] size_symbol_histogram_V_strb_V_backup;
+reg end_symbol_histogram_V_user_V;
+reg [31:0] size_symbol_histogram_V_user_V;
+reg [31:0] size_symbol_histogram_V_user_V_backup;
+reg end_symbol_histogram_V_last_V;
+reg [31:0] size_symbol_histogram_V_last_V;
+reg [31:0] size_symbol_histogram_V_last_V_backup;
+reg end_symbol_histogram_V_id_V;
+reg [31:0] size_symbol_histogram_V_id_V;
+reg [31:0] size_symbol_histogram_V_id_V_backup;
+reg end_symbol_histogram_V_dest_V;
+reg [31:0] size_symbol_histogram_V_dest_V;
+reg [31:0] size_symbol_histogram_V_dest_V_backup;
+reg end_encoding_V_data_V;
+reg [31:0] size_encoding_V_data_V;
+reg [31:0] size_encoding_V_data_V_backup;
+reg end_encoding_V_keep_V;
+reg [31:0] size_encoding_V_keep_V;
+reg [31:0] size_encoding_V_keep_V_backup;
+reg end_encoding_V_strb_V;
+reg [31:0] size_encoding_V_strb_V;
+reg [31:0] size_encoding_V_strb_V_backup;
+reg end_encoding_V_user_V;
+reg [31:0] size_encoding_V_user_V;
+reg [31:0] size_encoding_V_user_V_backup;
+reg end_encoding_V_last_V;
+reg [31:0] size_encoding_V_last_V;
+reg [31:0] size_encoding_V_last_V_backup;
+reg end_encoding_V_id_V;
+reg [31:0] size_encoding_V_id_V;
+reg [31:0] size_encoding_V_id_V_backup;
+reg end_encoding_V_dest_V;
+reg [31:0] size_encoding_V_dest_V;
+reg [31:0] size_encoding_V_dest_V_backup;
 reg end_num_nonzero_symbols;
 reg [31:0] size_num_nonzero_symbols;
 reg [31:0] size_num_nonzero_symbols_backup;
@@ -515,176 +619,112 @@ begin
   end
 end
     
-    initial begin : proc_gen_axis_internal_ready_symbol_histogram_value_V
-        symbol_histogram_value_V_ready_reg = 0;
+    initial begin : proc_gen_axis_internal_ready_symbol_histogram
+        symbol_histogram_ready_reg = 0;
         @ (posedge ready_initial);
         forever begin
-            @ (ap_c_n_tvin_trans_num_symbol_histogram_value_V or symbol_histogram_value_V_transaction);
-            if (ap_c_n_tvin_trans_num_symbol_histogram_value_V > symbol_histogram_value_V_transaction) begin
-                symbol_histogram_value_V_ready_reg = 1;
+            @ (ap_c_n_tvin_trans_num_symbol_histogram_V_data_V or symbol_histogram_transaction);
+            if (ap_c_n_tvin_trans_num_symbol_histogram_V_data_V > symbol_histogram_transaction) begin
+                symbol_histogram_ready_reg = 1;
             end else begin
-                symbol_histogram_value_V_ready_reg = 0;
+                symbol_histogram_ready_reg = 0;
             end
         end
     end
     
-    initial begin : proc_gen_axis_internal_ready_symbol_histogram_frequency_V
-        symbol_histogram_frequency_V_ready_reg = 0;
-        @ (posedge ready_initial);
-        forever begin
-            @ (ap_c_n_tvin_trans_num_symbol_histogram_frequency_V or symbol_histogram_frequency_V_transaction);
-            if (ap_c_n_tvin_trans_num_symbol_histogram_frequency_V > symbol_histogram_frequency_V_transaction) begin
-                symbol_histogram_frequency_V_ready_reg = 1;
-            end else begin
-                symbol_histogram_frequency_V_ready_reg = 0;
-            end
-        end
-    end
+    `define STREAM_SIZE_IN_symbol_histogram_V_data_V "../tv/stream_size/stream_size_in_symbol_histogram_V_data_V.dat"
     
-    `define STREAM_SIZE_IN_symbol_histogram_value_V "../tv/stream_size/stream_size_in_symbol_histogram_value_V.dat"
-    
-    initial begin : gen_ap_c_n_tvin_trans_num_symbol_histogram_value_V
-        integer fp_symbol_histogram_value_V;
-        reg [127:0] token_symbol_histogram_value_V;
+    initial begin : gen_ap_c_n_tvin_trans_num_symbol_histogram_V_data_V
+        integer fp_symbol_histogram_V_data_V;
+        reg [127:0] token_symbol_histogram_V_data_V;
         integer ret;
         
-        ap_c_n_tvin_trans_num_symbol_histogram_value_V = 0;
-        end_symbol_histogram_value_V = 0;
+        ap_c_n_tvin_trans_num_symbol_histogram_V_data_V = 0;
+        end_symbol_histogram_V_data_V = 0;
         wait (AESL_reset === 1);
         
-        fp_symbol_histogram_value_V = $fopen(`AUTOTB_TVIN_symbol_histogram_value_V, "r");
-        if(fp_symbol_histogram_value_V == 0) begin
-            $display("Failed to open file \"%s\"!", `AUTOTB_TVIN_symbol_histogram_value_V);
+        fp_symbol_histogram_V_data_V = $fopen(`STREAM_SIZE_IN_symbol_histogram_V_data_V, "r");
+        if(fp_symbol_histogram_V_data_V == 0) begin
+            $display("Failed to open file \"%s\"!", `STREAM_SIZE_IN_symbol_histogram_V_data_V);
             $finish;
         end
-        read_token(fp_symbol_histogram_value_V, token_symbol_histogram_value_V); // should be [[[runtime]]]
-        if (token_symbol_histogram_value_V != "[[[runtime]]]") begin
-            $display("ERROR: token_symbol_histogram_value_V != \"[[[runtime]]]\"");
+        read_token(fp_symbol_histogram_V_data_V, token_symbol_histogram_V_data_V); // should be [[[runtime]]]
+        if (token_symbol_histogram_V_data_V != "[[[runtime]]]") begin
+            $display("ERROR: token_symbol_histogram_V_data_V != \"[[[runtime]]]\"");
             $finish;
         end
-        ap_c_n_tvin_trans_num_symbol_histogram_value_V = ap_c_n_tvin_trans_num_symbol_histogram_value_V + 1;
-        read_token(fp_symbol_histogram_value_V, token_symbol_histogram_value_V); // should be [[transaction]] or [[[/runtime]]]
-        if (token_symbol_histogram_value_V == "[[[/runtime]]]") begin
-            $fclose(fp_symbol_histogram_value_V);
-            end_symbol_histogram_value_V = 1;
-        end else begin
-            end_symbol_histogram_value_V = 0;
-            read_token(fp_symbol_histogram_value_V, token_symbol_histogram_value_V); // should be transaction number
-            read_token(fp_symbol_histogram_value_V, token_symbol_histogram_value_V);
-        end
-        while (token_symbol_histogram_value_V == "[[/transaction]]" && end_symbol_histogram_value_V == 0) begin
-            ap_c_n_tvin_trans_num_symbol_histogram_value_V = ap_c_n_tvin_trans_num_symbol_histogram_value_V + 1;
-            read_token(fp_symbol_histogram_value_V, token_symbol_histogram_value_V); // should be [[transaction]] or [[[/runtime]]]
-            if (token_symbol_histogram_value_V == "[[[/runtime]]]") begin
-                $fclose(fp_symbol_histogram_value_V);
-                end_symbol_histogram_value_V = 1;
+        size_symbol_histogram_V_data_V = 0;
+        size_symbol_histogram_V_data_V_backup = 0;
+        while (size_symbol_histogram_V_data_V == 0 && end_symbol_histogram_V_data_V == 0) begin
+            ap_c_n_tvin_trans_num_symbol_histogram_V_data_V = ap_c_n_tvin_trans_num_symbol_histogram_V_data_V + 1;
+            read_token(fp_symbol_histogram_V_data_V, token_symbol_histogram_V_data_V); // should be [[transaction]] or [[[/runtime]]]
+            if (token_symbol_histogram_V_data_V == "[[transaction]]") begin
+                read_token(fp_symbol_histogram_V_data_V, token_symbol_histogram_V_data_V); // should be transaction number
+                read_token(fp_symbol_histogram_V_data_V, token_symbol_histogram_V_data_V); // should be size for hls::stream
+                ret = $sscanf(token_symbol_histogram_V_data_V, "%d", size_symbol_histogram_V_data_V);
+                if (size_symbol_histogram_V_data_V > 0) begin
+                    size_symbol_histogram_V_data_V_backup = size_symbol_histogram_V_data_V;
+                end
+                read_token(fp_symbol_histogram_V_data_V, token_symbol_histogram_V_data_V); // should be [[/transaction]]
+            end else if (token_symbol_histogram_V_data_V == "[[[/runtime]]]") begin
+                $fclose(fp_symbol_histogram_V_data_V);
+                end_symbol_histogram_V_data_V = 1;
             end else begin
-                end_symbol_histogram_value_V = 0;
-                read_token(fp_symbol_histogram_value_V, token_symbol_histogram_value_V); // should be transaction number
-                read_token(fp_symbol_histogram_value_V, token_symbol_histogram_value_V);
+                $display("ERROR: unknown token_symbol_histogram_V_data_V");
+                $finish;
             end
         end
         forever begin
             @ (posedge AESL_clock);
-            if (end_symbol_histogram_value_V == 0) begin
-                if ((symbol_histogram_value_V_TREADY & symbol_histogram_value_V_TVALID) == 1) begin
-                    read_token(fp_symbol_histogram_value_V, token_symbol_histogram_value_V);
-                    while (token_symbol_histogram_value_V == "[[/transaction]]" && end_symbol_histogram_value_V == 0) begin
-                        ap_c_n_tvin_trans_num_symbol_histogram_value_V = ap_c_n_tvin_trans_num_symbol_histogram_value_V + 1;
-                        read_token(fp_symbol_histogram_value_V, token_symbol_histogram_value_V); // should be [[transaction]] or [[[/runtime]]]
-                        if (token_symbol_histogram_value_V == "[[[/runtime]]]") begin
-                            $fclose(fp_symbol_histogram_value_V);
-                            end_symbol_histogram_value_V = 1;
-                        end else begin
-                            end_symbol_histogram_value_V = 0;
-                            read_token(fp_symbol_histogram_value_V, token_symbol_histogram_value_V); // should be transaction number
-                            read_token(fp_symbol_histogram_value_V, token_symbol_histogram_value_V);
+            if (end_symbol_histogram_V_data_V == 0) begin
+                if ((symbol_histogram_TREADY & symbol_histogram_TVALID) == 1) begin
+                    if (size_symbol_histogram_V_data_V > 0) begin
+                        size_symbol_histogram_V_data_V = size_symbol_histogram_V_data_V - 1;
+                        while (size_symbol_histogram_V_data_V == 0 && end_symbol_histogram_V_data_V == 0) begin
+                            ap_c_n_tvin_trans_num_symbol_histogram_V_data_V = ap_c_n_tvin_trans_num_symbol_histogram_V_data_V + 1;
+                            read_token(fp_symbol_histogram_V_data_V, token_symbol_histogram_V_data_V); // should be [[transaction]] or [[[/runtime]]]
+                            if (token_symbol_histogram_V_data_V == "[[transaction]]") begin
+                                read_token(fp_symbol_histogram_V_data_V, token_symbol_histogram_V_data_V); // should be transaction number
+                                read_token(fp_symbol_histogram_V_data_V, token_symbol_histogram_V_data_V); // should be size for hls::stream
+                                ret = $sscanf(token_symbol_histogram_V_data_V, "%d", size_symbol_histogram_V_data_V);
+                                if (size_symbol_histogram_V_data_V > 0) begin
+                                    size_symbol_histogram_V_data_V_backup = size_symbol_histogram_V_data_V;
+                                end
+                                read_token(fp_symbol_histogram_V_data_V, token_symbol_histogram_V_data_V); // should be [[/transaction]]
+                            end else if (token_symbol_histogram_V_data_V == "[[[/runtime]]]") begin
+                                size_symbol_histogram_V_data_V = size_symbol_histogram_V_data_V_backup;
+                                $fclose(fp_symbol_histogram_V_data_V);
+                                end_symbol_histogram_V_data_V = 1;
+                            end else begin
+                                $display("ERROR: unknown token_symbol_histogram_V_data_V");
+                                $finish;
+                            end
                         end
                     end
                 end
             end else begin
-                ap_c_n_tvin_trans_num_symbol_histogram_value_V = ap_c_n_tvin_trans_num_symbol_histogram_value_V + 1;
-            end
-        end
-    end
-    
-    
-    `define STREAM_SIZE_IN_symbol_histogram_frequency_V "../tv/stream_size/stream_size_in_symbol_histogram_frequency_V.dat"
-    
-    initial begin : gen_ap_c_n_tvin_trans_num_symbol_histogram_frequency_V
-        integer fp_symbol_histogram_frequency_V;
-        reg [127:0] token_symbol_histogram_frequency_V;
-        integer ret;
-        
-        ap_c_n_tvin_trans_num_symbol_histogram_frequency_V = 0;
-        end_symbol_histogram_frequency_V = 0;
-        wait (AESL_reset === 1);
-        
-        fp_symbol_histogram_frequency_V = $fopen(`AUTOTB_TVIN_symbol_histogram_frequency_V, "r");
-        if(fp_symbol_histogram_frequency_V == 0) begin
-            $display("Failed to open file \"%s\"!", `AUTOTB_TVIN_symbol_histogram_frequency_V);
-            $finish;
-        end
-        read_token(fp_symbol_histogram_frequency_V, token_symbol_histogram_frequency_V); // should be [[[runtime]]]
-        if (token_symbol_histogram_frequency_V != "[[[runtime]]]") begin
-            $display("ERROR: token_symbol_histogram_frequency_V != \"[[[runtime]]]\"");
-            $finish;
-        end
-        ap_c_n_tvin_trans_num_symbol_histogram_frequency_V = ap_c_n_tvin_trans_num_symbol_histogram_frequency_V + 1;
-        read_token(fp_symbol_histogram_frequency_V, token_symbol_histogram_frequency_V); // should be [[transaction]] or [[[/runtime]]]
-        if (token_symbol_histogram_frequency_V == "[[[/runtime]]]") begin
-            $fclose(fp_symbol_histogram_frequency_V);
-            end_symbol_histogram_frequency_V = 1;
-        end else begin
-            end_symbol_histogram_frequency_V = 0;
-            read_token(fp_symbol_histogram_frequency_V, token_symbol_histogram_frequency_V); // should be transaction number
-            read_token(fp_symbol_histogram_frequency_V, token_symbol_histogram_frequency_V);
-        end
-        while (token_symbol_histogram_frequency_V == "[[/transaction]]" && end_symbol_histogram_frequency_V == 0) begin
-            ap_c_n_tvin_trans_num_symbol_histogram_frequency_V = ap_c_n_tvin_trans_num_symbol_histogram_frequency_V + 1;
-            read_token(fp_symbol_histogram_frequency_V, token_symbol_histogram_frequency_V); // should be [[transaction]] or [[[/runtime]]]
-            if (token_symbol_histogram_frequency_V == "[[[/runtime]]]") begin
-                $fclose(fp_symbol_histogram_frequency_V);
-                end_symbol_histogram_frequency_V = 1;
-            end else begin
-                end_symbol_histogram_frequency_V = 0;
-                read_token(fp_symbol_histogram_frequency_V, token_symbol_histogram_frequency_V); // should be transaction number
-                read_token(fp_symbol_histogram_frequency_V, token_symbol_histogram_frequency_V);
-            end
-        end
-        forever begin
-            @ (posedge AESL_clock);
-            if (end_symbol_histogram_frequency_V == 0) begin
-                if ((symbol_histogram_frequency_V_TREADY & symbol_histogram_frequency_V_TVALID) == 1) begin
-                    read_token(fp_symbol_histogram_frequency_V, token_symbol_histogram_frequency_V);
-                    while (token_symbol_histogram_frequency_V == "[[/transaction]]" && end_symbol_histogram_frequency_V == 0) begin
-                        ap_c_n_tvin_trans_num_symbol_histogram_frequency_V = ap_c_n_tvin_trans_num_symbol_histogram_frequency_V + 1;
-                        read_token(fp_symbol_histogram_frequency_V, token_symbol_histogram_frequency_V); // should be [[transaction]] or [[[/runtime]]]
-                        if (token_symbol_histogram_frequency_V == "[[[/runtime]]]") begin
-                            $fclose(fp_symbol_histogram_frequency_V);
-                            end_symbol_histogram_frequency_V = 1;
-                        end else begin
-                            end_symbol_histogram_frequency_V = 0;
-                            read_token(fp_symbol_histogram_frequency_V, token_symbol_histogram_frequency_V); // should be transaction number
-                            read_token(fp_symbol_histogram_frequency_V, token_symbol_histogram_frequency_V);
+                if ((symbol_histogram_TREADY & symbol_histogram_TVALID) == 1) begin
+                    if (size_symbol_histogram_V_data_V > 0) begin
+                        size_symbol_histogram_V_data_V = size_symbol_histogram_V_data_V - 1;
+                        if (size_symbol_histogram_V_data_V == 0) begin
+                            ap_c_n_tvin_trans_num_symbol_histogram_V_data_V = ap_c_n_tvin_trans_num_symbol_histogram_V_data_V + 1;
+                            size_symbol_histogram_V_data_V = size_symbol_histogram_V_data_V_backup;
                         end
                     end
                 end
-            end else begin
-                ap_c_n_tvin_trans_num_symbol_histogram_frequency_V = ap_c_n_tvin_trans_num_symbol_histogram_frequency_V + 1;
             end
         end
     end
     
 
-reg dump_tvout_finish_encoding_V;
+reg dump_tvout_finish_encoding_V_data_V;
 
-initial begin : dump_tvout_runtime_sign_encoding_V
+initial begin : dump_tvout_runtime_sign_encoding_V_data_V
     integer fp;
-    dump_tvout_finish_encoding_V = 0;
-    fp = $fopen(`AUTOTB_TVOUT_encoding_V_out_wrapc, "w");
+    dump_tvout_finish_encoding_V_data_V = 0;
+    fp = $fopen(`AUTOTB_TVOUT_encoding_V_data_V_out_wrapc, "w");
     if (fp == 0) begin
-        $display("Failed to open file \"%s\"!", `AUTOTB_TVOUT_encoding_V_out_wrapc);
+        $display("Failed to open file \"%s\"!", `AUTOTB_TVOUT_encoding_V_data_V_out_wrapc);
         $display("ERROR: Simulation using HLS TB failed.");
         $finish;
     end
@@ -695,15 +735,195 @@ initial begin : dump_tvout_runtime_sign_encoding_V
     @ (posedge AESL_clock);
     @ (posedge AESL_clock);
     @ (posedge AESL_clock);
-    fp = $fopen(`AUTOTB_TVOUT_encoding_V_out_wrapc, "a");
+    fp = $fopen(`AUTOTB_TVOUT_encoding_V_data_V_out_wrapc, "a");
     if (fp == 0) begin
-        $display("Failed to open file \"%s\"!", `AUTOTB_TVOUT_encoding_V_out_wrapc);
+        $display("Failed to open file \"%s\"!", `AUTOTB_TVOUT_encoding_V_data_V_out_wrapc);
         $display("ERROR: Simulation using HLS TB failed.");
         $finish;
     end
     $fdisplay(fp,"[[[/runtime]]]");
     $fclose(fp);
-    dump_tvout_finish_encoding_V = 1;
+    dump_tvout_finish_encoding_V_data_V = 1;
+end
+
+
+reg dump_tvout_finish_encoding_V_keep_V;
+
+initial begin : dump_tvout_runtime_sign_encoding_V_keep_V
+    integer fp;
+    dump_tvout_finish_encoding_V_keep_V = 0;
+    fp = $fopen(`AUTOTB_TVOUT_encoding_V_keep_V_out_wrapc, "w");
+    if (fp == 0) begin
+        $display("Failed to open file \"%s\"!", `AUTOTB_TVOUT_encoding_V_keep_V_out_wrapc);
+        $display("ERROR: Simulation using HLS TB failed.");
+        $finish;
+    end
+    $fdisplay(fp,"[[[runtime]]]");
+    $fclose(fp);
+    wait (done_cnt == AUTOTB_TRANSACTION_NUM);
+    // last transaction is saved at negedge right after last done
+    @ (posedge AESL_clock);
+    @ (posedge AESL_clock);
+    @ (posedge AESL_clock);
+    fp = $fopen(`AUTOTB_TVOUT_encoding_V_keep_V_out_wrapc, "a");
+    if (fp == 0) begin
+        $display("Failed to open file \"%s\"!", `AUTOTB_TVOUT_encoding_V_keep_V_out_wrapc);
+        $display("ERROR: Simulation using HLS TB failed.");
+        $finish;
+    end
+    $fdisplay(fp,"[[[/runtime]]]");
+    $fclose(fp);
+    dump_tvout_finish_encoding_V_keep_V = 1;
+end
+
+
+reg dump_tvout_finish_encoding_V_strb_V;
+
+initial begin : dump_tvout_runtime_sign_encoding_V_strb_V
+    integer fp;
+    dump_tvout_finish_encoding_V_strb_V = 0;
+    fp = $fopen(`AUTOTB_TVOUT_encoding_V_strb_V_out_wrapc, "w");
+    if (fp == 0) begin
+        $display("Failed to open file \"%s\"!", `AUTOTB_TVOUT_encoding_V_strb_V_out_wrapc);
+        $display("ERROR: Simulation using HLS TB failed.");
+        $finish;
+    end
+    $fdisplay(fp,"[[[runtime]]]");
+    $fclose(fp);
+    wait (done_cnt == AUTOTB_TRANSACTION_NUM);
+    // last transaction is saved at negedge right after last done
+    @ (posedge AESL_clock);
+    @ (posedge AESL_clock);
+    @ (posedge AESL_clock);
+    fp = $fopen(`AUTOTB_TVOUT_encoding_V_strb_V_out_wrapc, "a");
+    if (fp == 0) begin
+        $display("Failed to open file \"%s\"!", `AUTOTB_TVOUT_encoding_V_strb_V_out_wrapc);
+        $display("ERROR: Simulation using HLS TB failed.");
+        $finish;
+    end
+    $fdisplay(fp,"[[[/runtime]]]");
+    $fclose(fp);
+    dump_tvout_finish_encoding_V_strb_V = 1;
+end
+
+
+reg dump_tvout_finish_encoding_V_user_V;
+
+initial begin : dump_tvout_runtime_sign_encoding_V_user_V
+    integer fp;
+    dump_tvout_finish_encoding_V_user_V = 0;
+    fp = $fopen(`AUTOTB_TVOUT_encoding_V_user_V_out_wrapc, "w");
+    if (fp == 0) begin
+        $display("Failed to open file \"%s\"!", `AUTOTB_TVOUT_encoding_V_user_V_out_wrapc);
+        $display("ERROR: Simulation using HLS TB failed.");
+        $finish;
+    end
+    $fdisplay(fp,"[[[runtime]]]");
+    $fclose(fp);
+    wait (done_cnt == AUTOTB_TRANSACTION_NUM);
+    // last transaction is saved at negedge right after last done
+    @ (posedge AESL_clock);
+    @ (posedge AESL_clock);
+    @ (posedge AESL_clock);
+    fp = $fopen(`AUTOTB_TVOUT_encoding_V_user_V_out_wrapc, "a");
+    if (fp == 0) begin
+        $display("Failed to open file \"%s\"!", `AUTOTB_TVOUT_encoding_V_user_V_out_wrapc);
+        $display("ERROR: Simulation using HLS TB failed.");
+        $finish;
+    end
+    $fdisplay(fp,"[[[/runtime]]]");
+    $fclose(fp);
+    dump_tvout_finish_encoding_V_user_V = 1;
+end
+
+
+reg dump_tvout_finish_encoding_V_last_V;
+
+initial begin : dump_tvout_runtime_sign_encoding_V_last_V
+    integer fp;
+    dump_tvout_finish_encoding_V_last_V = 0;
+    fp = $fopen(`AUTOTB_TVOUT_encoding_V_last_V_out_wrapc, "w");
+    if (fp == 0) begin
+        $display("Failed to open file \"%s\"!", `AUTOTB_TVOUT_encoding_V_last_V_out_wrapc);
+        $display("ERROR: Simulation using HLS TB failed.");
+        $finish;
+    end
+    $fdisplay(fp,"[[[runtime]]]");
+    $fclose(fp);
+    wait (done_cnt == AUTOTB_TRANSACTION_NUM);
+    // last transaction is saved at negedge right after last done
+    @ (posedge AESL_clock);
+    @ (posedge AESL_clock);
+    @ (posedge AESL_clock);
+    fp = $fopen(`AUTOTB_TVOUT_encoding_V_last_V_out_wrapc, "a");
+    if (fp == 0) begin
+        $display("Failed to open file \"%s\"!", `AUTOTB_TVOUT_encoding_V_last_V_out_wrapc);
+        $display("ERROR: Simulation using HLS TB failed.");
+        $finish;
+    end
+    $fdisplay(fp,"[[[/runtime]]]");
+    $fclose(fp);
+    dump_tvout_finish_encoding_V_last_V = 1;
+end
+
+
+reg dump_tvout_finish_encoding_V_id_V;
+
+initial begin : dump_tvout_runtime_sign_encoding_V_id_V
+    integer fp;
+    dump_tvout_finish_encoding_V_id_V = 0;
+    fp = $fopen(`AUTOTB_TVOUT_encoding_V_id_V_out_wrapc, "w");
+    if (fp == 0) begin
+        $display("Failed to open file \"%s\"!", `AUTOTB_TVOUT_encoding_V_id_V_out_wrapc);
+        $display("ERROR: Simulation using HLS TB failed.");
+        $finish;
+    end
+    $fdisplay(fp,"[[[runtime]]]");
+    $fclose(fp);
+    wait (done_cnt == AUTOTB_TRANSACTION_NUM);
+    // last transaction is saved at negedge right after last done
+    @ (posedge AESL_clock);
+    @ (posedge AESL_clock);
+    @ (posedge AESL_clock);
+    fp = $fopen(`AUTOTB_TVOUT_encoding_V_id_V_out_wrapc, "a");
+    if (fp == 0) begin
+        $display("Failed to open file \"%s\"!", `AUTOTB_TVOUT_encoding_V_id_V_out_wrapc);
+        $display("ERROR: Simulation using HLS TB failed.");
+        $finish;
+    end
+    $fdisplay(fp,"[[[/runtime]]]");
+    $fclose(fp);
+    dump_tvout_finish_encoding_V_id_V = 1;
+end
+
+
+reg dump_tvout_finish_encoding_V_dest_V;
+
+initial begin : dump_tvout_runtime_sign_encoding_V_dest_V
+    integer fp;
+    dump_tvout_finish_encoding_V_dest_V = 0;
+    fp = $fopen(`AUTOTB_TVOUT_encoding_V_dest_V_out_wrapc, "w");
+    if (fp == 0) begin
+        $display("Failed to open file \"%s\"!", `AUTOTB_TVOUT_encoding_V_dest_V_out_wrapc);
+        $display("ERROR: Simulation using HLS TB failed.");
+        $finish;
+    end
+    $fdisplay(fp,"[[[runtime]]]");
+    $fclose(fp);
+    wait (done_cnt == AUTOTB_TRANSACTION_NUM);
+    // last transaction is saved at negedge right after last done
+    @ (posedge AESL_clock);
+    @ (posedge AESL_clock);
+    @ (posedge AESL_clock);
+    fp = $fopen(`AUTOTB_TVOUT_encoding_V_dest_V_out_wrapc, "a");
+    if (fp == 0) begin
+        $display("Failed to open file \"%s\"!", `AUTOTB_TVOUT_encoding_V_dest_V_out_wrapc);
+        $display("ERROR: Simulation using HLS TB failed.");
+        $finish;
+    end
+    $fdisplay(fp,"[[[/runtime]]]");
+    $fclose(fp);
+    dump_tvout_finish_encoding_V_dest_V = 1;
 end
 
 

@@ -4,6 +4,6 @@
 // ==============================================================
 
 extern void AESL_WRAP_huffman_encoding (
-struct Symbol symbol_histogram[256],
-ap_uint<32> encoding[256],
+hls::stream<struct ap_axiu<41, 1, 1, 1 > >* symbol_histogram,
+hls::stream<struct ap_axiu<32, 1, 1, 1 > >* encoding,
 int* num_nonzero_symbols);

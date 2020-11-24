@@ -80,10 +80,27 @@ proc check_tvin_file {} {
 		puts stdout "[debug_prompt arg check_sim.tcl] start...";
 	}
     set rtlfilelist {
-         "c.huffman_encoding.autotvin_symbol_histogram_value_V.dat"
-         "c.huffman_encoding.autotvin_symbol_histogram_frequency_V.dat"
-         "c.huffman_encoding.autotvin_encoding_V.dat"
-         "c.huffman_encoding.autotvout_encoding_V.dat"
+         "c.huffman_encoding.autotvin_symbol_histogram_V_data_V.dat"
+         "c.huffman_encoding.autotvin_symbol_histogram_V_keep_V.dat"
+         "c.huffman_encoding.autotvin_symbol_histogram_V_strb_V.dat"
+         "c.huffman_encoding.autotvin_symbol_histogram_V_user_V.dat"
+         "c.huffman_encoding.autotvin_symbol_histogram_V_last_V.dat"
+         "c.huffman_encoding.autotvin_symbol_histogram_V_id_V.dat"
+         "c.huffman_encoding.autotvin_symbol_histogram_V_dest_V.dat"
+         "c.huffman_encoding.autotvin_encoding_V_data_V.dat"
+         "c.huffman_encoding.autotvin_encoding_V_keep_V.dat"
+         "c.huffman_encoding.autotvin_encoding_V_strb_V.dat"
+         "c.huffman_encoding.autotvin_encoding_V_user_V.dat"
+         "c.huffman_encoding.autotvin_encoding_V_last_V.dat"
+         "c.huffman_encoding.autotvin_encoding_V_id_V.dat"
+         "c.huffman_encoding.autotvin_encoding_V_dest_V.dat"
+         "c.huffman_encoding.autotvout_encoding_V_data_V.dat"
+         "c.huffman_encoding.autotvout_encoding_V_keep_V.dat"
+         "c.huffman_encoding.autotvout_encoding_V_strb_V.dat"
+         "c.huffman_encoding.autotvout_encoding_V_user_V.dat"
+         "c.huffman_encoding.autotvout_encoding_V_last_V.dat"
+         "c.huffman_encoding.autotvout_encoding_V_id_V.dat"
+         "c.huffman_encoding.autotvout_encoding_V_dest_V.dat"
          "c.huffman_encoding.autotvout_num_nonzero_symbols.dat"
     }
     foreach rtlfile $rtlfilelist {
@@ -109,7 +126,13 @@ proc check_tvout_file {} {
 		puts stdout "[debug_prompt arg check_sim.tcl] start...";
 	}
     set rtlfilelist {
-         "rtl.huffman_encoding.autotvout_encoding_V.dat"
+         "rtl.huffman_encoding.autotvout_encoding_V_data_V.dat"
+         "rtl.huffman_encoding.autotvout_encoding_V_keep_V.dat"
+         "rtl.huffman_encoding.autotvout_encoding_V_strb_V.dat"
+         "rtl.huffman_encoding.autotvout_encoding_V_user_V.dat"
+         "rtl.huffman_encoding.autotvout_encoding_V_last_V.dat"
+         "rtl.huffman_encoding.autotvout_encoding_V_id_V.dat"
+         "rtl.huffman_encoding.autotvout_encoding_V_dest_V.dat"
          "rtl.huffman_encoding.autotvout_num_nonzero_symbols.dat"
     }
     foreach rtlfile $rtlfilelist {

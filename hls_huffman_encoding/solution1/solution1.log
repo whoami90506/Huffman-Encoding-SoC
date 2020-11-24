@@ -18773,3 +18773,2058 @@ INFO: [HLS 200-740] Implementing PIPO huffman_encoding_sc4_memcore using a separ
 INFO: [HLS 200-741] Implementing PIPO huffman_encoding_vdy_memcore using a single memory for all blocks
 INFO: [HLS 200-740] Implementing PIPO huffman_encoding_wdI_memcore using a separate memory for each block
 INFO: [HLS 200-741] Implementing PIPO huffman_encoding_yd2_memcore using a single memory for all blocks
+==============================================================
+Vivado(TM) HLS - High-Level Synthesis from C, C++ and SystemC v2019.2 (64-bit)
+Copyright 1986-2019 Xilinx, Inc. All Rights Reserved.
+==============================================================
+INFO: [SYN 201-201] Setting up clock 'default' with a period of 5ns.
+INFO: [SYN 201-201] Setting up clock 'default' with an uncertainty of 0.625ns.
+INFO: [HLS 200-10] Setting target device to 'xc7z020-clg484-1'
+INFO: [HLS 200-435] Setting 'config_sdx -target' configuration: config_export -vivado_optimization_level=2
+INFO: [HLS 200-435] Setting 'config_sdx -target' configuration: set_clock_uncertainty default
+INFO: [HLS 200-435] Setting 'config_sdx -target' configuration: config_export -vivado_optimization_level=2
+INFO: [HLS 200-435] Setting 'config_sdx -target' configuration: set_clock_uncertainty default
+INFO: [SCHED 204-61] Option 'relax_ii_for_timing' is enabled, will increase II to preserve clock frequency constraints.
+INFO: [HLS 200-10] Analyzing design file 'huffman_truncate_tree.cpp' ... 
+INFO: [HLS 200-10] Analyzing design file 'huffman_create_codeword.cpp' ... 
+INFO: [HLS 200-10] Analyzing design file 'huffman_sort.cpp' ... 
+INFO: [HLS 200-10] Analyzing design file 'huffman_encoding.cpp' ... 
+WARNING: [HLS 214-114] Since the only kind of statements allowed in a canonical dataflow region are variable declarations and function calls, the compiler may not be able to correctly handle the region: huffman_encoding.cpp:33:5
+WARNING: [HLS 214-114] Since the only kind of statements allowed in a canonical dataflow region are variable declarations and function calls, the compiler may not be able to correctly handle the region: huffman_encoding.cpp:67:5
+WARNING: [HLS 200-471] Dataflow form checks found 2 issue(s) in file huffman_encoding.cpp
+INFO: [HLS 200-10] Analyzing design file 'huffman_compute_bit_length.cpp' ... 
+INFO: [HLS 200-10] Analyzing design file 'huffman_filter.cpp' ... 
+INFO: [HLS 200-10] Analyzing design file 'huffman_create_tree.cpp' ... 
+INFO: [HLS 200-10] Analyzing design file 'huffman_canonize_tree.cpp' ... 
+INFO: [HLS 200-111] Finished Linking Time (s): cpu = 00:00:05 ; elapsed = 00:02:43 . Memory (MB): peak = 186.957 ; gain = 96.613
+INFO: [HLS 200-111] Finished Checking Pragmas Time (s): cpu = 00:00:05 ; elapsed = 00:02:43 . Memory (MB): peak = 186.957 ; gain = 96.613
+INFO: [HLS 200-10] Starting code transformations ...
+INFO: [HLS 200-111] Finished Standard Transforms Time (s): cpu = 00:00:05 ; elapsed = 00:02:46 . Memory (MB): peak = 186.957 ; gain = 96.613
+INFO: [HLS 200-10] Checking synthesizability ...
+INFO: [HLS 200-111] Finished Checking Synthesizability Time (s): cpu = 00:00:06 ; elapsed = 00:02:47 . Memory (MB): peak = 203.770 ; gain = 113.426
+INFO: [XFORM 203-101] Partitioning array 'frequency.V' (huffman_create_tree.cpp:11) in dimension 1 with a cyclic factor 2.
+INFO: [XFORM 203-101] Partitioning array 'digit_location.V' (huffman_sort.cpp:16) in dimension 1 completely.
+INFO: [XFORM 203-101] Partitioning array 'digit_histogram.V' (huffman_sort.cpp:16) in dimension 1 completely.
+INFO: [XFORM 203-721] Changing loop 'Loop_copy_sorted_proc' (huffman_encoding.cpp:34) to a process function for dataflow in function 'huffman_encoding'.
+WARNING: [XFORM 203-713] All the elements of global array 'filtered.value.V' should be updated in process function 'filter', otherwise it may not be synthesized correctly.
+WARNING: [XFORM 203-713] All the elements of global array 'filtered.frequency.V' should be updated in process function 'filter', otherwise it may not be synthesized correctly.
+WARNING: [XFORM 203-713] All the elements of global array 'sorted.0'  should be updated in process function 'sort', otherwise it may not be synthesized correctly.
+WARNING: [XFORM 203-713] All the elements of global array 'sorted.1'  should be updated in process function 'sort', otherwise it may not be synthesized correctly.
+WARNING: [XFORM 203-713] All the elements of global array 'sorted_copy1.0'  should be updated in process function 'Loop_copy_sorted_proc', otherwise it may not be synthesized correctly.
+WARNING: [XFORM 203-713] All the elements of global array 'sorted_copy1.1'  should be updated in process function 'Loop_copy_sorted_proc', otherwise it may not be synthesized correctly.
+WARNING: [XFORM 203-713] All the elements of global array 'sorted_copy2.value.V' should be updated in process function 'Loop_copy_sorted_proc', otherwise it may not be synthesized correctly.
+WARNING: [XFORM 203-713] All the elements of global array 'parent.V' should be updated in process function 'create_tree', otherwise it may not be synthesized correctly.
+WARNING: [XFORM 203-713] All the elements of global array 'left.V' should be updated in process function 'create_tree', otherwise it may not be synthesized correctly.
+WARNING: [XFORM 203-713] All the elements of global array 'right.V' should be updated in process function 'create_tree', otherwise it may not be synthesized correctly.
+WARNING: [XFORM 203-713] All the elements of global array 'length_histogram.V' should be updated in process function 'compute_bit_length', otherwise it may not be synthesized correctly.
+WARNING: [XFORM 203-713] All the elements of global array 'truncated_length_histogram1.V' should be updated in process function 'truncate_tree', otherwise it may not be synthesized correctly.
+WARNING: [XFORM 203-713] All the elements of global array 'symbol_bits.V' should be updated in process function 'canonize_tree', otherwise it may not be synthesized correctly.
+INFO: [XFORM 203-712] Applying dataflow to function 'huffman_encoding', detected/extracted 10 process function(s): 
+	 'filter'
+	 'Block_codeRepl1012_proc'
+	 'sort'
+	 'Loop_copy_sorted_proc'
+	 'create_tree'
+	 'compute_bit_length'
+	 'truncate_tree'
+	 'canonize_tree'
+	 'create_codeword'
+	 'Block__proc'.
+WARNING: [XFORM 203-124] Array  'sorted_copy1.1' : may have improper streaming access(es), possible reasons: (1) some entries are accessed more than once; (2) some entries are not used; (3) the entries are not accessed in sequential order.
+WARNING: [XFORM 203-124] Array  'sorted_copy1.0' : may have improper streaming access(es), possible reasons: (1) some entries are accessed more than once; (2) some entries are not used; (3) the entries are not accessed in sequential order.
+WARNING: [XFORM 203-124] Array  'encoding.V': may have improper streaming access(es), possible reasons: (1) some entries are accessed more than once; (2) some entries are not used; (3) the entries are not accessed in sequential order.
+INFO: [XFORM 203-401] Performing if-conversion on hyperblock from (huffman_sort.cpp:40:47) to (huffman_sort.cpp:49:29) in function 'sort'... converting 3 basic blocks.
+INFO: [XFORM 203-401] Performing if-conversion on hyperblock from (huffman_sort.cpp:67:47) to (huffman_sort.cpp:76:28) in function 'sort'... converting 3 basic blocks.
+INFO: [XFORM 203-401] Performing if-conversion on hyperblock from (huffman_create_tree.cpp:21:47) to (huffman_create_tree.cpp:34:13) in function 'create_tree'... converting 7 basic blocks.
+INFO: [XFORM 203-401] Performing if-conversion on hyperblock from (huffman_create_codeword.cpp:32:52) to (huffman_create_codeword.cpp:38:9) in function 'create_codeword'... converting 4 basic blocks.
+INFO: [HLS 200-111] Finished Pre-synthesis Time (s): cpu = 00:00:08 ; elapsed = 00:02:51 . Memory (MB): peak = 250.867 ; gain = 160.523
+WARNING: [XFORM 203-542] Cannot flatten a loop nest 'radix_sort' (huffman_sort.cpp:29:61) in function 'sort' : 
+
+more than one sub loop.
+WARNING: [XFORM 203-631] Renaming function 'Loop_copy_sorted_proc' to 'Loop_copy_sorted_pro' (huffman_encoding.cpp:34:27)
+WARNING: [XFORM 203-631] Renaming function 'Block_codeRepl1012_proc' to 'Block_codeRepl1012_p' (huffman_encoding.cpp:24:5)
+INFO: [HLS 200-472] Inferring partial write operation for 'output_length_histogram1.V' (huffman_truncate_tree.cpp:11:9)
+INFO: [HLS 200-472] Inferring partial write operation for 'output_length_histogram1.V' (huffman_truncate_tree.cpp:30:38)
+INFO: [HLS 200-472] Inferring partial write operation for 'output_length_histogram1.V' (huffman_truncate_tree.cpp:31:38)
+INFO: [HLS 200-472] Inferring partial write operation for 'output_length_histogram1.V' (huffman_truncate_tree.cpp:32:13)
+INFO: [HLS 200-472] Inferring partial write operation for 'output_length_histogram1.V' (huffman_truncate_tree.cpp:33:13)
+INFO: [HLS 200-472] Inferring partial write operation for 'output_length_histogram2.V' (huffman_truncate_tree.cpp:45:9)
+INFO: [HLS 200-472] Inferring partial write operation for 'out.frequency.V' (huffman_filter.cpp:14:17)
+INFO: [HLS 200-472] Inferring partial write operation for 'out.value.V' (huffman_filter.cpp:15:17)
+INFO: [HLS 200-472] Inferring partial write operation for 'left.V' (huffman_create_tree.cpp:36:13)
+INFO: [HLS 200-472] Inferring partial write operation for 'left.V' (huffman_create_tree.cpp:44:13)
+INFO: [HLS 200-472] Inferring partial write operation for 'parent.V' (huffman_create_tree.cpp:46:20)
+INFO: [HLS 200-472] Inferring partial write operation for 'right.V' (huffman_create_tree.cpp:54:13)
+INFO: [HLS 200-472] Inferring partial write operation for 'right.V' (huffman_create_tree.cpp:61:13)
+INFO: [HLS 200-472] Inferring partial write operation for 'parent.V' (huffman_create_tree.cpp:63:20)
+INFO: [HLS 200-472] Inferring partial write operation for 'frequency[0].V' (huffman_create_tree.cpp:62:28)
+INFO: [HLS 200-472] Inferring partial write operation for 'frequency[0].V' (huffman_create_tree.cpp:55:28)
+INFO: [HLS 200-472] Inferring partial write operation for 'parent.V' (huffman_create_tree.cpp:70:12)
+INFO: [HLS 200-472] Inferring partial write operation for 'first_codeword.V' (huffman_create_codeword.cpp:19:2)
+INFO: [HLS 200-472] Inferring partial write operation for 'first_codeword.V' (huffman_create_codeword.cpp:37:28)
+INFO: [HLS 200-472] Inferring partial write operation for 'internal_length_hist' (huffman_compute_bit_length.cpp:19:2)
+INFO: [HLS 200-472] Inferring partial write operation for 'length_histogram.V' (huffman_compute_bit_length.cpp:20:9)
+INFO: [HLS 200-472] Inferring partial write operation for 'child_depth.V' (huffman_compute_bit_length.cpp:23:5)
+INFO: [HLS 200-472] Inferring partial write operation for 'child_depth.V' (huffman_compute_bit_length.cpp:40:9)
+INFO: [HLS 200-472] Inferring partial write operation for 'internal_length_hist' (huffman_compute_bit_length.cpp:52:39)
+INFO: [HLS 200-472] Inferring partial write operation for 'length_histogram.V' (huffman_compute_bit_length.cpp:53:30)
+INFO: [HLS 200-472] Inferring partial write operation for 'symbol_bits.V' (huffman_canonize_tree.cpp:12:9)
+INFO: [HLS 200-472] Inferring partial write operation for 'symbol_bits.V' (huffman_canonize_tree.cpp:32:21)
+INFO: [HLS 200-472] Inferring partial write operation for 'sorted_copy2.value.V' (huffman_encoding.cpp:37:9)
+INFO: [HLS 200-472] Inferring partial write operation for 'sorting.value.V.i' (./huffman.h:31:8)
+INFO: [HLS 200-472] Inferring partial write operation for 'sorting.frequency.V.i' (./huffman.h:31:8)
+INFO: [HLS 200-472] Inferring partial write operation for 'current_digit.V.i' (huffman_sort.cpp:44:13)
+INFO: [HLS 200-472] Inferring partial write operation for 'previous_sorting.val.i' (./huffman.h:31:8)
+INFO: [HLS 200-472] Inferring partial write operation for 'previous_sorting.fre.i' (./huffman.h:31:8)
+INFO: [HLS 200-472] Inferring partial write operation for 'sorting.value.V.i' (./huffman.h:31:8)
+INFO: [HLS 200-472] Inferring partial write operation for 'sorting.frequency.V.i' (./huffman.h:31:8)
+INFO: [HLS 200-472] Inferring partial write operation for 'sorted.0' (./huffman.h:31:8)
+INFO: [HLS 200-472] Inferring partial write operation for 'sorted.1' (./huffman.h:31:8)
+INFO: [HLS 200-111] Finished Architecture Synthesis Time (s): cpu = 00:00:10 ; elapsed = 00:02:56 . Memory (MB): peak = 352.055 ; gain = 261.711
+INFO: [HLS 200-10] Starting hardware synthesis ...
+INFO: [HLS 200-10] Synthesizing 'huffman_encoding' ...
+WARNING: [SYN 201-103] Legalizing function name 'Block__proc' to 'Block_proc'.
+INFO: [HLS 200-10] ----------------------------------------------------------------
+INFO: [HLS 200-42] -- Implementing module 'filter' 
+INFO: [HLS 200-10] ----------------------------------------------------------------
+INFO: [SCHED 204-11] Starting scheduling ...
+INFO: [SCHED 204-61] Pipelining loop 'Loop 1'.
+INFO: [SCHED 204-61] Pipelining result : Target II = 1, Final II = 1, Depth = 1.
+INFO: [SCHED 204-11] Finished scheduling.
+INFO: [HLS 200-111]  Elapsed time: 176.563 seconds; current allocated memory: 293.576 MB.
+INFO: [BIND 205-100] Starting micro-architecture generation ...
+INFO: [BIND 205-101] Performing variable lifetime analysis.
+INFO: [BIND 205-101] Exploring resource sharing.
+INFO: [BIND 205-101] Binding ...
+INFO: [BIND 205-100] Finished micro-architecture generation.
+INFO: [HLS 200-111]  Elapsed time: 0.241 seconds; current allocated memory: 293.717 MB.
+INFO: [HLS 200-10] ----------------------------------------------------------------
+INFO: [HLS 200-42] -- Implementing module 'Block_codeRepl1012_p' 
+INFO: [HLS 200-10] ----------------------------------------------------------------
+INFO: [SCHED 204-11] Starting scheduling ...
+INFO: [SCHED 204-11] Finished scheduling.
+INFO: [HLS 200-111]  Elapsed time: 0.265 seconds; current allocated memory: 293.761 MB.
+INFO: [BIND 205-100] Starting micro-architecture generation ...
+INFO: [BIND 205-101] Performing variable lifetime analysis.
+INFO: [BIND 205-101] Exploring resource sharing.
+INFO: [BIND 205-101] Binding ...
+INFO: [BIND 205-100] Finished micro-architecture generation.
+INFO: [HLS 200-111]  Elapsed time: 0.187 seconds; current allocated memory: 293.815 MB.
+INFO: [HLS 200-10] ----------------------------------------------------------------
+INFO: [HLS 200-42] -- Implementing module 'sort' 
+INFO: [HLS 200-10] ----------------------------------------------------------------
+INFO: [SCHED 204-11] Starting scheduling ...
+INFO: [SCHED 204-61] Pipelining loop 'copy_in_to_sorting'.
+INFO: [SCHED 204-61] Pipelining result : Target II = 1, Final II = 1, Depth = 3.
+INFO: [SCHED 204-61] Pipelining loop 'init_histogram'.
+INFO: [SCHED 204-61] Pipelining result : Target II = 1, Final II = 1, Depth = 1.
+INFO: [SCHED 204-61] Pipelining loop 'compute_histogram'.
+INFO: [SCHED 204-61] Pipelining result : Target II = 1, Final II = 1, Depth = 6.
+INFO: [SCHED 204-61] Pipelining loop 'find_digit_location'.
+INFO: [SCHED 204-61] Pipelining result : Target II = 1, Final II = 1, Depth = 2.
+INFO: [SCHED 204-61] Pipelining loop 're_sort'.
+INFO: [SCHED 204-61] Pipelining result : Target II = 1, Final II = 1, Depth = 4.
+WARNING: [SCHED 204-21] Estimated clock period (4.5595ns) exceeds the target (target clock period: 5ns, clock uncertainty: 0.625ns, effective delay budget: 4.375ns).
+WARNING: [SCHED 204-21] The critical path in module 'sort' consists of the following:
+	'select' operation ('histogram_curr.V', huffman_sort.cpp:48->huffman_encoding.cpp:24->huffman_encoding.cpp:24) [199]  (0.968 ns)
+	'add' operation ('compute_histogram_histogram_last.V', huffman_sort.cpp:50->huffman_encoding.cpp:24->huffman_encoding.cpp:24) [248]  (1.82 ns)
+	'phi' operation ('compute_histogram_histogram_last.V') with incoming values : ('compute_histogram_histogram_last.V', huffman_sort.cpp:50->huffman_encoding.cpp:24->huffman_encoding.cpp:24) [173]  (0 ns)
+	multiplexor before 'phi' operation ('digit_histogram[15].V') with incoming values : ('compute_histogram_histogram_last.V', huffman_sort.cpp:50->huffman_encoding.cpp:24->huffman_encoding.cpp:24) [232]  (1.77 ns)
+	'phi' operation ('digit_histogram[15].V') with incoming values : ('compute_histogram_histogram_last.V', huffman_sort.cpp:50->huffman_encoding.cpp:24->huffman_encoding.cpp:24) [232]  (0 ns)
+INFO: [SCHED 204-11] Finished scheduling.
+INFO: [HLS 200-111]  Elapsed time: 4.343 seconds; current allocated memory: 295.110 MB.
+INFO: [BIND 205-100] Starting micro-architecture generation ...
+INFO: [BIND 205-101] Performing variable lifetime analysis.
+INFO: [BIND 205-101] Exploring resource sharing.
+INFO: [BIND 205-101] Binding ...
+INFO: [BIND 205-100] Finished micro-architecture generation.
+INFO: [HLS 200-111]  Elapsed time: 1.43 seconds; current allocated memory: 299.617 MB.
+INFO: [HLS 200-10] ----------------------------------------------------------------
+INFO: [HLS 200-42] -- Implementing module 'Loop_copy_sorted_pro' 
+INFO: [HLS 200-10] ----------------------------------------------------------------
+INFO: [SCHED 204-11] Starting scheduling ...
+INFO: [SCHED 204-11] Finished scheduling.
+INFO: [HLS 200-111]  Elapsed time: 1.593 seconds; current allocated memory: 299.761 MB.
+INFO: [BIND 205-100] Starting micro-architecture generation ...
+INFO: [BIND 205-101] Performing variable lifetime analysis.
+INFO: [BIND 205-101] Exploring resource sharing.
+INFO: [BIND 205-101] Binding ...
+INFO: [BIND 205-100] Finished micro-architecture generation.
+INFO: [HLS 200-111]  Elapsed time: 0.672 seconds; current allocated memory: 299.921 MB.
+INFO: [HLS 200-10] ----------------------------------------------------------------
+INFO: [HLS 200-42] -- Implementing module 'create_tree' 
+INFO: [HLS 200-10] ----------------------------------------------------------------
+INFO: [SCHED 204-11] Starting scheduling ...
+INFO: [SCHED 204-61] Pipelining loop 'Loop 1'.
+INFO: [SCHED 204-61] Pipelining result : Target II = 5, Final II = 5, Depth = 6.
+WARNING: [SCHED 204-21] Estimated clock period (4.429ns) exceeds the target (target clock period: 5ns, clock uncertainty: 0.625ns, effective delay budget: 4.375ns).
+WARNING: [SCHED 204-21] The critical path in module 'create_tree' consists of the following:
+	'icmp' operation ('icmp_ln34_1', huffman_create_tree.cpp:34->huffman_encoding.cpp:44) [61]  (2.47 ns)
+	'xor' operation ('xor_ln34', huffman_create_tree.cpp:34->huffman_encoding.cpp:44) [62]  (0 ns)
+	'and' operation ('and_ln34', huffman_create_tree.cpp:34->huffman_encoding.cpp:44) [63]  (0 ns)
+	'or' operation ('or_ln34', huffman_create_tree.cpp:34->huffman_encoding.cpp:44) [65]  (0.978 ns)
+	blocking operation 0.978 ns on control path)
+INFO: [SCHED 204-11] Finished scheduling.
+INFO: [HLS 200-111]  Elapsed time: 1.166 seconds; current allocated memory: 300.258 MB.
+INFO: [BIND 205-100] Starting micro-architecture generation ...
+INFO: [BIND 205-101] Performing variable lifetime analysis.
+INFO: [BIND 205-101] Exploring resource sharing.
+INFO: [BIND 205-101] Binding ...
+INFO: [BIND 205-100] Finished micro-architecture generation.
+INFO: [HLS 200-111]  Elapsed time: 0.612 seconds; current allocated memory: 300.730 MB.
+INFO: [HLS 200-10] ----------------------------------------------------------------
+INFO: [HLS 200-42] -- Implementing module 'compute_bit_length' 
+INFO: [HLS 200-10] ----------------------------------------------------------------
+INFO: [SCHED 204-11] Starting scheduling ...
+INFO: [SCHED 204-61] Pipelining loop 'init_histogram'.
+INFO: [SCHED 204-61] Pipelining result : Target II = 1, Final II = 1, Depth = 1.
+INFO: [SCHED 204-61] Pipelining loop 'traverse_tree'.
+INFO: [SCHED 204-61] Pipelining result : Target II = 3, Final II = 3, Depth = 5.
+INFO: [SCHED 204-11] Finished scheduling.
+INFO: [HLS 200-111]  Elapsed time: 0.966 seconds; current allocated memory: 301.055 MB.
+INFO: [BIND 205-100] Starting micro-architecture generation ...
+INFO: [BIND 205-101] Performing variable lifetime analysis.
+INFO: [BIND 205-101] Exploring resource sharing.
+INFO: [BIND 205-101] Binding ...
+INFO: [BIND 205-100] Finished micro-architecture generation.
+INFO: [HLS 200-111]  Elapsed time: 0.449 seconds; current allocated memory: 301.420 MB.
+INFO: [HLS 200-10] ----------------------------------------------------------------
+INFO: [HLS 200-42] -- Implementing module 'truncate_tree' 
+INFO: [HLS 200-10] ----------------------------------------------------------------
+INFO: [SCHED 204-11] Starting scheduling ...
+INFO: [SCHED 204-11] Finished scheduling.
+INFO: [HLS 200-111]  Elapsed time: 0.522 seconds; current allocated memory: 301.636 MB.
+INFO: [BIND 205-100] Starting micro-architecture generation ...
+INFO: [BIND 205-101] Performing variable lifetime analysis.
+INFO: [BIND 205-101] Exploring resource sharing.
+INFO: [BIND 205-101] Binding ...
+INFO: [BIND 205-100] Finished micro-architecture generation.
+INFO: [HLS 200-111]  Elapsed time: 0.336 seconds; current allocated memory: 301.934 MB.
+INFO: [HLS 200-10] ----------------------------------------------------------------
+INFO: [HLS 200-42] -- Implementing module 'canonize_tree' 
+INFO: [HLS 200-10] ----------------------------------------------------------------
+INFO: [SCHED 204-11] Starting scheduling ...
+INFO: [SCHED 204-11] Finished scheduling.
+INFO: [HLS 200-111]  Elapsed time: 0.467 seconds; current allocated memory: 302.071 MB.
+INFO: [BIND 205-100] Starting micro-architecture generation ...
+INFO: [BIND 205-101] Performing variable lifetime analysis.
+INFO: [BIND 205-101] Exploring resource sharing.
+INFO: [BIND 205-101] Binding ...
+INFO: [BIND 205-100] Finished micro-architecture generation.
+INFO: [HLS 200-111]  Elapsed time: 0.278 seconds; current allocated memory: 302.249 MB.
+INFO: [HLS 200-10] ----------------------------------------------------------------
+INFO: [HLS 200-42] -- Implementing module 'create_codeword' 
+INFO: [HLS 200-10] ----------------------------------------------------------------
+INFO: [SCHED 204-11] Starting scheduling ...
+INFO: [SCHED 204-61] Pipelining loop 'first_codewords'.
+INFO: [SCHED 204-61] Pipelining result : Target II = 1, Final II = 1, Depth = 3.
+INFO: [SCHED 204-61] Pipelining loop 'assign_codewords'.
+INFO: [SCHED 204-61] Pipelining result : Target II = 5, Final II = 5, Depth = 6.
+INFO: [SCHED 204-11] Finished scheduling.
+INFO: [HLS 200-111]  Elapsed time: 0.472 seconds; current allocated memory: 302.427 MB.
+INFO: [BIND 205-100] Starting micro-architecture generation ...
+INFO: [BIND 205-101] Performing variable lifetime analysis.
+INFO: [BIND 205-101] Exploring resource sharing.
+INFO: [BIND 205-101] Binding ...
+INFO: [BIND 205-100] Finished micro-architecture generation.
+INFO: [HLS 200-111]  Elapsed time: 0.373 seconds; current allocated memory: 302.691 MB.
+INFO: [HLS 200-10] ----------------------------------------------------------------
+INFO: [HLS 200-42] -- Implementing module 'Block_proc' 
+INFO: [HLS 200-10] ----------------------------------------------------------------
+INFO: [SCHED 204-11] Starting scheduling ...
+INFO: [SCHED 204-11] Finished scheduling.
+INFO: [HLS 200-111]  Elapsed time: 0.375 seconds; current allocated memory: 302.719 MB.
+INFO: [BIND 205-100] Starting micro-architecture generation ...
+INFO: [BIND 205-101] Performing variable lifetime analysis.
+INFO: [BIND 205-101] Exploring resource sharing.
+INFO: [BIND 205-101] Binding ...
+INFO: [BIND 205-100] Finished micro-architecture generation.
+INFO: [HLS 200-111]  Elapsed time: 0.477 seconds; current allocated memory: 302.766 MB.
+INFO: [HLS 200-10] ----------------------------------------------------------------
+INFO: [HLS 200-42] -- Implementing module 'huffman_encoding' 
+INFO: [HLS 200-10] ----------------------------------------------------------------
+INFO: [SCHED 204-11] Starting scheduling ...
+INFO: [SCHED 204-11] Finished scheduling.
+INFO: [HLS 200-111]  Elapsed time: 0.636 seconds; current allocated memory: 302.890 MB.
+INFO: [BIND 205-100] Starting micro-architecture generation ...
+INFO: [BIND 205-101] Performing variable lifetime analysis.
+INFO: [BIND 205-101] Exploring resource sharing.
+INFO: [BIND 205-101] Binding ...
+INFO: [BIND 205-100] Finished micro-architecture generation.
+INFO: [HLS 200-111]  Elapsed time: 2.399 seconds; current allocated memory: 303.440 MB.
+INFO: [HLS 200-10] ----------------------------------------------------------------
+INFO: [HLS 200-10] -- Generating RTL for module 'filter' 
+INFO: [HLS 200-10] ----------------------------------------------------------------
+INFO: [RTGEN 206-100] Finished creating RTL model for 'filter'.
+INFO: [HLS 200-111]  Elapsed time: 1.057 seconds; current allocated memory: 303.843 MB.
+INFO: [HLS 200-10] ----------------------------------------------------------------
+INFO: [HLS 200-10] -- Generating RTL for module 'Block_codeRepl1012_p' 
+INFO: [HLS 200-10] ----------------------------------------------------------------
+INFO: [RTGEN 206-100] Finished creating RTL model for 'Block_codeRepl1012_p'.
+INFO: [HLS 200-111]  Elapsed time: 0.982 seconds; current allocated memory: 304.011 MB.
+INFO: [HLS 200-10] ----------------------------------------------------------------
+INFO: [HLS 200-10] -- Generating RTL for module 'sort' 
+INFO: [HLS 200-10] ----------------------------------------------------------------
+INFO: [SYN 201-210] Renamed object name 'sort_previous_sorting_val' to 'sort_previous_sorbkb' due to the length limit 20
+INFO: [SYN 201-210] Renamed object name 'sort_previous_sorting_fre' to 'sort_previous_sorcud' due to the length limit 20
+INFO: [SYN 201-210] Renamed object name 'sort_sorting_value_V' to 'sort_sorting_valudEe' due to the length limit 20
+INFO: [SYN 201-210] Renamed object name 'sort_sorting_frequency_V' to 'sort_sorting_freqeOg' due to the length limit 20
+INFO: [SYN 201-210] Renamed object name 'sort_current_digit_V' to 'sort_current_digifYi' due to the length limit 20
+INFO: [SYN 201-210] Renamed object name 'huffman_encoding_lshr_32ns_6ns_32_2_1' to 'huffman_encoding_g8j' due to the length limit 20
+INFO: [SYN 201-210] Renamed object name 'huffman_encoding_mux_164_9_1_1' to 'huffman_encoding_hbi' due to the length limit 20
+INFO: [RTGEN 206-100] Generating core module 'huffman_encoding_g8j': 1 instance(s).
+INFO: [RTGEN 206-100] Generating core module 'huffman_encoding_hbi': 3 instance(s).
+INFO: [RTGEN 206-100] Finished creating RTL model for 'sort'.
+INFO: [HLS 200-111]  Elapsed time: 1.656 seconds; current allocated memory: 308.211 MB.
+INFO: [HLS 200-10] ----------------------------------------------------------------
+INFO: [HLS 200-10] -- Generating RTL for module 'Loop_copy_sorted_pro' 
+INFO: [HLS 200-10] ----------------------------------------------------------------
+INFO: [RTGEN 206-100] Finished creating RTL model for 'Loop_copy_sorted_pro'.
+INFO: [HLS 200-111]  Elapsed time: 4.468 seconds; current allocated memory: 308.847 MB.
+INFO: [HLS 200-10] ----------------------------------------------------------------
+INFO: [HLS 200-10] -- Generating RTL for module 'create_tree' 
+INFO: [HLS 200-10] ----------------------------------------------------------------
+INFO: [SYN 201-210] Renamed object name 'create_tree_frequency_0_V' to 'create_tree_frequibs' due to the length limit 20
+INFO: [SYN 201-210] Renamed object name 'create_tree_frequency_1_V' to 'create_tree_frequjbC' due to the length limit 20
+INFO: [RTGEN 206-100] Finished creating RTL model for 'create_tree'.
+INFO: [HLS 200-111]  Elapsed time: 0.633 seconds; current allocated memory: 309.762 MB.
+INFO: [HLS 200-10] ----------------------------------------------------------------
+INFO: [HLS 200-10] -- Generating RTL for module 'compute_bit_length' 
+INFO: [HLS 200-10] ----------------------------------------------------------------
+INFO: [SYN 201-210] Renamed object name 'compute_bit_length_child_depth_V' to 'compute_bit_lengtkbM' due to the length limit 20
+INFO: [SYN 201-210] Renamed object name 'compute_bit_length_internal_length_hist' to 'compute_bit_lengtlbW' due to the length limit 20
+INFO: [RTGEN 206-100] Finished creating RTL model for 'compute_bit_length'.
+INFO: [HLS 200-111]  Elapsed time: 1.305 seconds; current allocated memory: 310.598 MB.
+INFO: [HLS 200-10] ----------------------------------------------------------------
+INFO: [HLS 200-10] -- Generating RTL for module 'truncate_tree' 
+INFO: [HLS 200-10] ----------------------------------------------------------------
+INFO: [RTGEN 206-100] Finished creating RTL model for 'truncate_tree'.
+INFO: [HLS 200-111]  Elapsed time: 0.832 seconds; current allocated memory: 311.193 MB.
+INFO: [HLS 200-10] ----------------------------------------------------------------
+INFO: [HLS 200-10] -- Generating RTL for module 'canonize_tree' 
+INFO: [HLS 200-10] ----------------------------------------------------------------
+INFO: [RTGEN 206-100] Finished creating RTL model for 'canonize_tree'.
+INFO: [HLS 200-111]  Elapsed time: 0.776 seconds; current allocated memory: 311.560 MB.
+INFO: [HLS 200-10] ----------------------------------------------------------------
+INFO: [HLS 200-10] -- Generating RTL for module 'create_codeword' 
+INFO: [HLS 200-10] ----------------------------------------------------------------
+INFO: [SYN 201-210] Renamed object name 'create_codeword_first_codeword_V' to 'create_codeword_fmb6' due to the length limit 20
+INFO: [RTGEN 206-100] Finished creating RTL model for 'create_codeword'.
+INFO: [HLS 200-111]  Elapsed time: 0.951 seconds; current allocated memory: 312.230 MB.
+INFO: [HLS 200-10] ----------------------------------------------------------------
+INFO: [HLS 200-10] -- Generating RTL for module 'Block_proc' 
+INFO: [HLS 200-10] ----------------------------------------------------------------
+INFO: [RTGEN 206-100] Finished creating RTL model for 'Block_proc'.
+INFO: [HLS 200-111]  Elapsed time: 0.984 seconds; current allocated memory: 312.436 MB.
+INFO: [HLS 200-10] ----------------------------------------------------------------
+INFO: [HLS 200-10] -- Generating RTL for module 'huffman_encoding' 
+INFO: [HLS 200-10] ----------------------------------------------------------------
+INFO: [RTGEN 206-500] Setting interface mode on port 'huffman_encoding/symbol_histogram_value_V' to 'axis' (register, both mode).
+INFO: [RTGEN 206-500] Setting interface mode on port 'huffman_encoding/symbol_histogram_frequency_V' to 'axis' (register, both mode).
+INFO: [RTGEN 206-500] Setting interface mode on port 'huffman_encoding/encoding_V' to 'axis' (register, both mode).
+INFO: [RTGEN 206-500] Setting interface mode on port 'huffman_encoding/num_nonzero_symbols' to 's_axilite & ap_vld'.
+INFO: [RTGEN 206-500] Setting interface mode on function 'huffman_encoding' to 's_axilite & ap_ctrl_hs'.
+INFO: [RTGEN 206-100] Bundling port 'return' and 'num_nonzero_symbols' to AXI-Lite port AXILiteS.
+INFO: [SYN 201-210] Renamed object name 'huffman_encoding_filtered_value_V' to 'huffman_encoding_ncg' due to the length limit 20
+INFO: [SYN 201-210] Renamed object name 'huffman_encoding_filtered_frequency_V' to 'huffman_encoding_ocq' due to the length limit 20
+INFO: [SYN 201-210] Renamed object name 'huffman_encoding_sorted_0' to 'huffman_encoding_pcA' due to the length limit 20
+INFO: [SYN 201-210] Renamed object name 'huffman_encoding_sorted_1' to 'huffman_encoding_qcK' due to the length limit 20
+INFO: [SYN 201-210] Renamed object name 'huffman_encoding_sorted_copy2_value_V' to 'huffman_encoding_rcU' due to the length limit 20
+INFO: [SYN 201-210] Renamed object name 'huffman_encoding_parent_V' to 'huffman_encoding_sc4' due to the length limit 20
+INFO: [SYN 201-210] Renamed object name 'huffman_encoding_left_V' to 'huffman_encoding_tde' due to the length limit 20
+INFO: [SYN 201-210] Renamed object name 'huffman_encoding_right_V' to 'huffman_encoding_udo' due to the length limit 20
+INFO: [SYN 201-210] Renamed object name 'huffman_encoding_length_histogram_V' to 'huffman_encoding_vdy' due to the length limit 20
+INFO: [SYN 201-210] Renamed object name 'huffman_encoding_truncated_length_his' to 'huffman_encoding_wdI' due to the length limit 20
+INFO: [SYN 201-210] Renamed object name 'huffman_encoding_truncated_length_his_1' to 'huffman_encoding_xdS' due to the length limit 20
+INFO: [SYN 201-210] Renamed object name 'huffman_encoding_symbol_bits_V' to 'huffman_encoding_yd2' due to the length limit 20
+INFO: [SYN 201-210] Renamed object name 'start_for_Block_codeRepl1012_p_U0' to 'start_for_Block_czec' due to the length limit 20
+INFO: [SYN 201-210] Renamed object name 'start_for_create_tree_U0' to 'start_for_create_Aem' due to the length limit 20
+INFO: [SYN 201-210] Renamed object name 'start_for_Block_proc_U0' to 'start_for_Block_pBew' due to the length limit 20
+INFO: [RTGEN 206-100] Finished creating RTL model for 'huffman_encoding'.
+INFO: [HLS 200-111]  Elapsed time: 2.201 seconds; current allocated memory: 314.529 MB.
+INFO: [HLS 200-790] **** Loop Constraint Status: All loop constraints were satisfied.
+INFO: [HLS 200-789] **** Estimated Fmax: 219.32 MHz
+INFO: [RTMG 210-286] Generating pipelined shifter : 'huffman_encoding_g8j'
+INFO: [RTMG 210-278] Implementing memory 'sort_previous_sorbkb_ram (RAM)' using block RAMs.
+INFO: [RTMG 210-278] Implementing memory 'sort_previous_sorcud_ram (RAM)' using block RAMs.
+INFO: [RTMG 210-278] Implementing memory 'sort_current_digifYi_ram (RAM)' using block RAMs.
+INFO: [RTMG 210-278] Implementing memory 'create_tree_frequibs_ram (RAM)' using block RAMs.
+INFO: [RTMG 210-278] Implementing memory 'create_tree_frequjbC_ram (RAM)' using block RAMs.
+INFO: [RTMG 210-278] Implementing memory 'compute_bit_lengtkbM_ram (RAM)' using block RAMs.
+INFO: [RTMG 210-278] Implementing memory 'compute_bit_lengtlbW_ram (RAM)' using distributed RAMs.
+INFO: [RTMG 210-278] Implementing memory 'create_codeword_fmb6_ram (RAM)' using distributed RAMs.
+INFO: [HLS 200-741] Implementing PIPO huffman_encoding_ncg_memcore using a single memory for all blocks
+INFO: [RTMG 210-278] Implementing memory 'huffman_encoding_ncg_memcore_ram (RAM)' using block RAMs.
+INFO: [HLS 200-741] Implementing PIPO huffman_encoding_ocq_memcore using a single memory for all blocks
+INFO: [RTMG 210-278] Implementing memory 'huffman_encoding_ocq_memcore_ram (RAM)' using block RAMs.
+INFO: [HLS 200-740] Implementing PIPO huffman_encoding_sc4_memcore using a separate memory for each block
+INFO: [RTMG 210-278] Implementing memory 'huffman_encoding_sc4_memcore_ram (RAM)' using block RAMs.
+INFO: [HLS 200-741] Implementing PIPO huffman_encoding_vdy_memcore using a single memory for all blocks
+INFO: [RTMG 210-278] Implementing memory 'huffman_encoding_vdy_memcore_ram (RAM)' using block RAMs.
+INFO: [HLS 200-740] Implementing PIPO huffman_encoding_wdI_memcore using a separate memory for each block
+INFO: [RTMG 210-278] Implementing memory 'huffman_encoding_wdI_memcore_ram (RAM)' using block RAMs.
+INFO: [HLS 200-741] Implementing PIPO huffman_encoding_yd2_memcore using a single memory for all blocks
+INFO: [RTMG 210-278] Implementing memory 'huffman_encoding_yd2_memcore_ram (RAM)' using block RAMs.
+INFO: [RTMG 210-285] Implementing FIFO 'n_c_U(fifo_w9_d2_A)' using Shift Registers.
+INFO: [RTMG 210-285] Implementing FIFO 'n_c20_U(fifo_w9_d3_A)' using Shift Registers.
+INFO: [RTMG 210-285] Implementing FIFO 'extLd9_loc_channel_U(fifo_w9_d2_A)' using Shift Registers.
+INFO: [RTMG 210-285] Implementing FIFO 'sorted_copy1_0_chann_U(fifo_w9_d256_A)' using Block RAMs.
+INFO: [RTMG 210-285] Implementing FIFO 'sorted_copy1_1_chann_U(fifo_w32_d256_A)' using Block RAMs.
+INFO: [RTMG 210-285] Implementing FIFO 'val_assign7_loc_c_U(fifo_w9_d5_A)' using Shift Registers.
+INFO: [RTMG 210-285] Implementing FIFO 'extLd_loc_c_U(fifo_w9_d2_A)' using Shift Registers.
+INFO: [RTMG 210-285] Implementing FIFO 'extLd_loc_c21_U(fifo_w9_d2_A)' using Shift Registers.
+INFO: [RTMG 210-285] Implementing FIFO 'extLd_loc_c22_U(fifo_w9_d2_A)' using Shift Registers.
+INFO: [RTMG 210-285] Implementing FIFO 'start_for_Block_czec_U(start_for_Block_czec)' using Shift Registers.
+INFO: [RTMG 210-285] Implementing FIFO 'start_for_create_Aem_U(start_for_create_Aem)' using Shift Registers.
+INFO: [RTMG 210-285] Implementing FIFO 'start_for_Block_pBew_U(start_for_Block_pBew)' using Shift Registers.
+INFO: [HLS 200-741] Implementing PIPO huffman_encoding_ncg_memcore using a single memory for all blocks
+INFO: [HLS 200-741] Implementing PIPO huffman_encoding_ocq_memcore using a single memory for all blocks
+INFO: [HLS 200-740] Implementing PIPO huffman_encoding_sc4_memcore using a separate memory for each block
+INFO: [HLS 200-741] Implementing PIPO huffman_encoding_vdy_memcore using a single memory for all blocks
+INFO: [HLS 200-740] Implementing PIPO huffman_encoding_wdI_memcore using a separate memory for each block
+INFO: [HLS 200-741] Implementing PIPO huffman_encoding_yd2_memcore using a single memory for all blocks
+INFO: [HLS 200-741] Implementing PIPO huffman_encoding_ncg_memcore using a single memory for all blocks
+INFO: [HLS 200-741] Implementing PIPO huffman_encoding_ocq_memcore using a single memory for all blocks
+INFO: [HLS 200-740] Implementing PIPO huffman_encoding_sc4_memcore using a separate memory for each block
+INFO: [HLS 200-741] Implementing PIPO huffman_encoding_vdy_memcore using a single memory for all blocks
+INFO: [HLS 200-740] Implementing PIPO huffman_encoding_wdI_memcore using a separate memory for each block
+INFO: [HLS 200-741] Implementing PIPO huffman_encoding_yd2_memcore using a single memory for all blocks
+INFO: [HLS 200-111] Finished generating all RTL models Time (s): cpu = 00:00:28 ; elapsed = 00:03:53 . Memory (MB): peak = 408.008 ; gain = 317.664
+INFO: [VHDL 208-304] Generating VHDL RTL for huffman_encoding.
+INFO: [VLOG 209-307] Generating Verilog RTL for huffman_encoding.
+INFO: [HLS 200-112] Total elapsed time: 233.112 seconds; peak allocated memory: 314.529 MB.
+==============================================================
+Vivado(TM) HLS - High-Level Synthesis from C, C++ and SystemC v2019.2 (64-bit)
+Copyright 1986-2019 Xilinx, Inc. All Rights Reserved.
+==============================================================
+==============================================================
+Vivado(TM) HLS - High-Level Synthesis from C, C++ and SystemC v2019.2 (64-bit)
+Copyright 1986-2019 Xilinx, Inc. All Rights Reserved.
+==============================================================
+INFO: [SYN 201-201] Setting up clock 'default' with a period of 5ns.
+INFO: [SYN 201-201] Setting up clock 'default' with an uncertainty of 0.625ns.
+INFO: [HLS 200-10] Setting target device to 'xc7z020-clg484-1'
+INFO: [HLS 200-435] Setting 'config_sdx -target' configuration: config_export -vivado_optimization_level=2
+INFO: [HLS 200-435] Setting 'config_sdx -target' configuration: set_clock_uncertainty default
+INFO: [SIM 211-2] *************** CSIM start ***************
+INFO: [SIM 211-4] CSIM will launch GCC as the compiler.
+ERROR: [SIM 211-100] 'csim_design' failed: compilation error(s).
+INFO: [SIM 211-3] *************** CSIM finish ***************
+==============================================================
+Vivado(TM) HLS - High-Level Synthesis from C, C++ and SystemC v2019.2 (64-bit)
+Copyright 1986-2019 Xilinx, Inc. All Rights Reserved.
+==============================================================
+INFO: [SYN 201-201] Setting up clock 'default' with a period of 5ns.
+INFO: [SYN 201-201] Setting up clock 'default' with an uncertainty of 0.625ns.
+INFO: [HLS 200-10] Setting target device to 'xc7z020-clg484-1'
+INFO: [HLS 200-435] Setting 'config_sdx -target' configuration: config_export -vivado_optimization_level=2
+INFO: [HLS 200-435] Setting 'config_sdx -target' configuration: set_clock_uncertainty default
+INFO: [SIM 211-2] *************** CSIM start ***************
+INFO: [SIM 211-4] CSIM will launch GCC as the compiler.
+ERROR: [SIM 211-100] 'csim_design' failed: compilation error(s).
+INFO: [SIM 211-3] *************** CSIM finish ***************
+==============================================================
+Vivado(TM) HLS - High-Level Synthesis from C, C++ and SystemC v2019.2 (64-bit)
+Copyright 1986-2019 Xilinx, Inc. All Rights Reserved.
+==============================================================
+INFO: [SYN 201-201] Setting up clock 'default' with a period of 5ns.
+INFO: [SYN 201-201] Setting up clock 'default' with an uncertainty of 0.625ns.
+INFO: [HLS 200-10] Setting target device to 'xc7z020-clg484-1'
+INFO: [HLS 200-435] Setting 'config_sdx -target' configuration: config_export -vivado_optimization_level=2
+INFO: [HLS 200-435] Setting 'config_sdx -target' configuration: set_clock_uncertainty default
+INFO: [SIM 211-2] *************** CSIM start ***************
+INFO: [SIM 211-4] CSIM will launch GCC as the compiler.
+ERROR: [SIM 211-100] 'csim_design' failed: compilation error(s).
+INFO: [SIM 211-3] *************** CSIM finish ***************
+==============================================================
+Vivado(TM) HLS - High-Level Synthesis from C, C++ and SystemC v2019.2 (64-bit)
+Copyright 1986-2019 Xilinx, Inc. All Rights Reserved.
+==============================================================
+INFO: [SYN 201-201] Setting up clock 'default' with a period of 5ns.
+INFO: [SYN 201-201] Setting up clock 'default' with an uncertainty of 0.625ns.
+INFO: [HLS 200-10] Setting target device to 'xc7z020-clg484-1'
+INFO: [HLS 200-435] Setting 'config_sdx -target' configuration: config_export -vivado_optimization_level=2
+INFO: [HLS 200-435] Setting 'config_sdx -target' configuration: set_clock_uncertainty default
+INFO: [SIM 211-2] *************** CSIM start ***************
+INFO: [SIM 211-4] CSIM will launch GCC as the compiler.
+ERROR: [SIM 211-100] 'csim_design' failed: nonzero return value.
+INFO: [SIM 211-3] *************** CSIM finish ***************
+==============================================================
+Vivado(TM) HLS - High-Level Synthesis from C, C++ and SystemC v2019.2 (64-bit)
+Copyright 1986-2019 Xilinx, Inc. All Rights Reserved.
+==============================================================
+INFO: [SYN 201-201] Setting up clock 'default' with a period of 5ns.
+INFO: [SYN 201-201] Setting up clock 'default' with an uncertainty of 0.625ns.
+INFO: [HLS 200-10] Setting target device to 'xc7z020-clg484-1'
+INFO: [HLS 200-435] Setting 'config_sdx -target' configuration: config_export -vivado_optimization_level=2
+INFO: [HLS 200-435] Setting 'config_sdx -target' configuration: set_clock_uncertainty default
+INFO: [SIM 211-2] *************** CSIM start ***************
+INFO: [SIM 211-4] CSIM will launch GCC as the compiler.
+INFO: [SIM 211-1] CSim done with 0 errors.
+INFO: [SIM 211-3] *************** CSIM finish ***************
+==============================================================
+Vivado(TM) HLS - High-Level Synthesis from C, C++ and SystemC v2019.2 (64-bit)
+Copyright 1986-2019 Xilinx, Inc. All Rights Reserved.
+==============================================================
+INFO: [SYN 201-201] Setting up clock 'default' with a period of 5ns.
+INFO: [SYN 201-201] Setting up clock 'default' with an uncertainty of 0.625ns.
+INFO: [HLS 200-10] Setting target device to 'xc7z020-clg484-1'
+INFO: [HLS 200-435] Setting 'config_sdx -target' configuration: config_export -vivado_optimization_level=2
+INFO: [HLS 200-435] Setting 'config_sdx -target' configuration: set_clock_uncertainty default
+INFO: [HLS 200-435] Setting 'config_sdx -target' configuration: config_export -vivado_optimization_level=2
+INFO: [HLS 200-435] Setting 'config_sdx -target' configuration: set_clock_uncertainty default
+INFO: [SCHED 204-61] Option 'relax_ii_for_timing' is enabled, will increase II to preserve clock frequency constraints.
+INFO: [HLS 200-10] Analyzing design file 'huffman_canonize_tree.cpp' ... 
+INFO: [HLS 200-10] Analyzing design file 'huffman_create_tree.cpp' ... 
+INFO: [HLS 200-10] Analyzing design file 'huffman_filter.cpp' ... 
+INFO: [HLS 200-10] Analyzing design file 'huffman_compute_bit_length.cpp' ... 
+INFO: [HLS 200-10] Analyzing design file 'huffman_encoding.cpp' ... 
+WARNING: [HLS 214-114] Since the only kind of statements allowed in a canonical dataflow region are variable declarations and function calls, the compiler may not be able to correctly handle the region: huffman_encoding.cpp:33:5
+WARNING: [HLS 214-114] Since the only kind of statements allowed in a canonical dataflow region are variable declarations and function calls, the compiler may not be able to correctly handle the region: huffman_encoding.cpp:67:5
+WARNING: [HLS 200-471] Dataflow form checks found 2 issue(s) in file huffman_encoding.cpp
+INFO: [HLS 200-10] Analyzing design file 'huffman_sort.cpp' ... 
+INFO: [HLS 200-10] Analyzing design file 'huffman_create_codeword.cpp' ... 
+INFO: [HLS 200-10] Analyzing design file 'huffman_truncate_tree.cpp' ... 
+INFO: [HLS 200-111] Finished Linking Time (s): cpu = 00:00:04 ; elapsed = 00:02:01 . Memory (MB): peak = 187.023 ; gain = 96.602
+INFO: [HLS 200-111] Finished Checking Pragmas Time (s): cpu = 00:00:04 ; elapsed = 00:02:01 . Memory (MB): peak = 187.023 ; gain = 96.602
+INFO: [HLS 200-10] Starting code transformations ...
+INFO: [HLS 200-111] Finished Standard Transforms Time (s): cpu = 00:00:05 ; elapsed = 00:02:03 . Memory (MB): peak = 187.023 ; gain = 96.602
+INFO: [HLS 200-10] Checking synthesizability ...
+INFO: [HLS 200-111] Finished Checking Synthesizability Time (s): cpu = 00:00:05 ; elapsed = 00:02:03 . Memory (MB): peak = 204.105 ; gain = 113.684
+INFO: [XFORM 203-101] Partitioning array 'frequency.V' (huffman_create_tree.cpp:11) in dimension 1 with a cyclic factor 2.
+INFO: [XFORM 203-101] Partitioning array 'digit_location.V' (huffman_sort.cpp:16) in dimension 1 completely.
+INFO: [XFORM 203-101] Partitioning array 'digit_histogram.V' (huffman_sort.cpp:16) in dimension 1 completely.
+INFO: [XFORM 203-721] Changing loop 'Loop_copy_sorted_proc' (huffman_encoding.cpp:34) to a process function for dataflow in function 'huffman_encoding'.
+WARNING: [XFORM 203-713] All the elements of global array 'filtered.value.V' should be updated in process function 'filter', otherwise it may not be synthesized correctly.
+WARNING: [XFORM 203-713] All the elements of global array 'filtered.frequency.V' should be updated in process function 'filter', otherwise it may not be synthesized correctly.
+WARNING: [XFORM 203-713] All the elements of global array 'sorted.0'  should be updated in process function 'sort', otherwise it may not be synthesized correctly.
+WARNING: [XFORM 203-713] All the elements of global array 'sorted.1'  should be updated in process function 'sort', otherwise it may not be synthesized correctly.
+WARNING: [XFORM 203-713] All the elements of global array 'sorted_copy1.0'  should be updated in process function 'Loop_copy_sorted_proc', otherwise it may not be synthesized correctly.
+WARNING: [XFORM 203-713] All the elements of global array 'sorted_copy1.1'  should be updated in process function 'Loop_copy_sorted_proc', otherwise it may not be synthesized correctly.
+WARNING: [XFORM 203-713] All the elements of global array 'sorted_copy2.value.V' should be updated in process function 'Loop_copy_sorted_proc', otherwise it may not be synthesized correctly.
+WARNING: [XFORM 203-713] All the elements of global array 'parent.V' should be updated in process function 'create_tree', otherwise it may not be synthesized correctly.
+WARNING: [XFORM 203-713] All the elements of global array 'left.V' should be updated in process function 'create_tree', otherwise it may not be synthesized correctly.
+WARNING: [XFORM 203-713] All the elements of global array 'right.V' should be updated in process function 'create_tree', otherwise it may not be synthesized correctly.
+WARNING: [XFORM 203-713] All the elements of global array 'length_histogram.V' should be updated in process function 'compute_bit_length', otherwise it may not be synthesized correctly.
+WARNING: [XFORM 203-713] All the elements of global array 'truncated_length_histogram1.V' should be updated in process function 'truncate_tree', otherwise it may not be synthesized correctly.
+WARNING: [XFORM 203-713] All the elements of global array 'symbol_bits.V' should be updated in process function 'canonize_tree', otherwise it may not be synthesized correctly.
+INFO: [XFORM 203-712] Applying dataflow to function 'huffman_encoding', detected/extracted 10 process function(s): 
+	 'filter'
+	 'Block_codeRepl810_proc'
+	 'sort'
+	 'Loop_copy_sorted_proc'
+	 'create_tree'
+	 'compute_bit_length'
+	 'truncate_tree'
+	 'canonize_tree'
+	 'create_codeword'
+	 'Block__proc'.
+WARNING: [XFORM 203-124] Array  'sorted_copy1.1' : may have improper streaming access(es), possible reasons: (1) some entries are accessed more than once; (2) some entries are not used; (3) the entries are not accessed in sequential order.
+WARNING: [XFORM 203-124] Array  'sorted_copy1.0' : may have improper streaming access(es), possible reasons: (1) some entries are accessed more than once; (2) some entries are not used; (3) the entries are not accessed in sequential order.
+INFO: [XFORM 203-401] Performing if-conversion on hyperblock from (huffman_sort.cpp:40:47) to (huffman_sort.cpp:49:29) in function 'sort'... converting 3 basic blocks.
+INFO: [XFORM 203-401] Performing if-conversion on hyperblock from (huffman_sort.cpp:67:47) to (huffman_sort.cpp:76:28) in function 'sort'... converting 3 basic blocks.
+INFO: [XFORM 203-401] Performing if-conversion on hyperblock from (huffman_create_tree.cpp:21:47) to (huffman_create_tree.cpp:34:13) in function 'create_tree'... converting 7 basic blocks.
+INFO: [XFORM 203-401] Performing if-conversion on hyperblock from (huffman_create_codeword.cpp:33:52) to (huffman_create_codeword.cpp:39:9) in function 'create_codeword'... converting 4 basic blocks.
+INFO: [HLS 200-111] Finished Pre-synthesis Time (s): cpu = 00:00:07 ; elapsed = 00:02:06 . Memory (MB): peak = 252.414 ; gain = 161.992
+WARNING: [XFORM 203-542] Cannot flatten a loop nest 'radix_sort' (huffman_sort.cpp:29:61) in function 'sort' : 
+
+more than one sub loop.
+WARNING: [XFORM 203-631] Renaming function 'Loop_copy_sorted_proc' to 'Loop_copy_sorted_pro' (huffman_encoding.cpp:34:27)
+WARNING: [XFORM 203-631] Renaming function 'Block_codeRepl810_proc' to 'Block_codeRepl810_pr' (huffman_encoding.cpp:24:5)
+INFO: [HLS 200-472] Inferring partial write operation for 'output_length_histogram1.V' (huffman_truncate_tree.cpp:11:9)
+INFO: [HLS 200-472] Inferring partial write operation for 'output_length_histogram1.V' (huffman_truncate_tree.cpp:30:38)
+INFO: [HLS 200-472] Inferring partial write operation for 'output_length_histogram1.V' (huffman_truncate_tree.cpp:31:38)
+INFO: [HLS 200-472] Inferring partial write operation for 'output_length_histogram1.V' (huffman_truncate_tree.cpp:32:13)
+INFO: [HLS 200-472] Inferring partial write operation for 'output_length_histogram1.V' (huffman_truncate_tree.cpp:33:13)
+INFO: [HLS 200-472] Inferring partial write operation for 'output_length_histogram2.V' (huffman_truncate_tree.cpp:45:9)
+INFO: [HLS 200-472] Inferring partial write operation for 'out.frequency.V' (huffman_filter.cpp:17:17)
+INFO: [HLS 200-472] Inferring partial write operation for 'out.value.V' (huffman_filter.cpp:18:17)
+INFO: [HLS 200-472] Inferring partial write operation for 'left.V' (huffman_create_tree.cpp:36:13)
+INFO: [HLS 200-472] Inferring partial write operation for 'left.V' (huffman_create_tree.cpp:44:13)
+INFO: [HLS 200-472] Inferring partial write operation for 'parent.V' (huffman_create_tree.cpp:46:20)
+INFO: [HLS 200-472] Inferring partial write operation for 'right.V' (huffman_create_tree.cpp:54:13)
+INFO: [HLS 200-472] Inferring partial write operation for 'right.V' (huffman_create_tree.cpp:61:13)
+INFO: [HLS 200-472] Inferring partial write operation for 'parent.V' (huffman_create_tree.cpp:63:20)
+INFO: [HLS 200-472] Inferring partial write operation for 'frequency[0].V' (huffman_create_tree.cpp:62:28)
+INFO: [HLS 200-472] Inferring partial write operation for 'frequency[0].V' (huffman_create_tree.cpp:55:28)
+INFO: [HLS 200-472] Inferring partial write operation for 'parent.V' (huffman_create_tree.cpp:70:12)
+INFO: [HLS 200-472] Inferring partial write operation for 'first_codeword.V' (huffman_create_codeword.cpp:20:2)
+INFO: [HLS 200-472] Inferring partial write operation for 'first_codeword.V' (huffman_create_codeword.cpp:38:28)
+INFO: [HLS 200-472] Inferring partial write operation for 'internal_length_hist' (huffman_compute_bit_length.cpp:19:2)
+INFO: [HLS 200-472] Inferring partial write operation for 'length_histogram.V' (huffman_compute_bit_length.cpp:20:9)
+INFO: [HLS 200-472] Inferring partial write operation for 'child_depth.V' (huffman_compute_bit_length.cpp:23:5)
+INFO: [HLS 200-472] Inferring partial write operation for 'child_depth.V' (huffman_compute_bit_length.cpp:40:9)
+INFO: [HLS 200-472] Inferring partial write operation for 'internal_length_hist' (huffman_compute_bit_length.cpp:52:39)
+INFO: [HLS 200-472] Inferring partial write operation for 'length_histogram.V' (huffman_compute_bit_length.cpp:53:30)
+INFO: [HLS 200-472] Inferring partial write operation for 'symbol_bits.V' (huffman_canonize_tree.cpp:12:9)
+INFO: [HLS 200-472] Inferring partial write operation for 'symbol_bits.V' (huffman_canonize_tree.cpp:32:21)
+INFO: [HLS 200-472] Inferring partial write operation for 'sorted_copy2.value.V' (huffman_encoding.cpp:37:9)
+INFO: [HLS 200-472] Inferring partial write operation for 'sorting.value.V.i' (./huffman.h:33:8)
+INFO: [HLS 200-472] Inferring partial write operation for 'sorting.frequency.V.i' (./huffman.h:33:8)
+INFO: [HLS 200-472] Inferring partial write operation for 'current_digit.V.i' (huffman_sort.cpp:44:13)
+INFO: [HLS 200-472] Inferring partial write operation for 'previous_sorting.val.i' (./huffman.h:33:8)
+INFO: [HLS 200-472] Inferring partial write operation for 'previous_sorting.fre.i' (./huffman.h:33:8)
+INFO: [HLS 200-472] Inferring partial write operation for 'sorting.value.V.i' (./huffman.h:33:8)
+INFO: [HLS 200-472] Inferring partial write operation for 'sorting.frequency.V.i' (./huffman.h:33:8)
+INFO: [HLS 200-472] Inferring partial write operation for 'sorted.0' (./huffman.h:33:8)
+INFO: [HLS 200-472] Inferring partial write operation for 'sorted.1' (./huffman.h:33:8)
+INFO: [HLS 200-111] Finished Architecture Synthesis Time (s): cpu = 00:00:09 ; elapsed = 00:02:08 . Memory (MB): peak = 352.430 ; gain = 262.008
+INFO: [HLS 200-10] Starting hardware synthesis ...
+INFO: [HLS 200-10] Synthesizing 'huffman_encoding' ...
+WARNING: [SYN 201-103] Legalizing function name 'Block__proc' to 'Block_proc'.
+INFO: [HLS 200-10] ----------------------------------------------------------------
+INFO: [HLS 200-42] -- Implementing module 'filter' 
+INFO: [HLS 200-10] ----------------------------------------------------------------
+INFO: [SCHED 204-11] Starting scheduling ...
+INFO: [SCHED 204-61] Pipelining loop 'Loop 1'.
+INFO: [SCHED 204-61] Pipelining result : Target II = 1, Final II = 1, Depth = 1.
+INFO: [SCHED 204-11] Finished scheduling.
+INFO: [HLS 200-111]  Elapsed time: 128.428 seconds; current allocated memory: 294.283 MB.
+INFO: [BIND 205-100] Starting micro-architecture generation ...
+INFO: [BIND 205-101] Performing variable lifetime analysis.
+INFO: [BIND 205-101] Exploring resource sharing.
+INFO: [BIND 205-101] Binding ...
+INFO: [BIND 205-100] Finished micro-architecture generation.
+INFO: [HLS 200-111]  Elapsed time: 0.23 seconds; current allocated memory: 294.422 MB.
+INFO: [HLS 200-10] ----------------------------------------------------------------
+INFO: [HLS 200-42] -- Implementing module 'Block_codeRepl810_pr' 
+INFO: [HLS 200-10] ----------------------------------------------------------------
+INFO: [SCHED 204-11] Starting scheduling ...
+INFO: [SCHED 204-11] Finished scheduling.
+INFO: [HLS 200-111]  Elapsed time: 0.199 seconds; current allocated memory: 294.481 MB.
+INFO: [BIND 205-100] Starting micro-architecture generation ...
+INFO: [BIND 205-101] Performing variable lifetime analysis.
+INFO: [BIND 205-101] Exploring resource sharing.
+INFO: [BIND 205-101] Binding ...
+INFO: [BIND 205-100] Finished micro-architecture generation.
+INFO: [HLS 200-111]  Elapsed time: 0.149 seconds; current allocated memory: 294.530 MB.
+INFO: [HLS 200-10] ----------------------------------------------------------------
+INFO: [HLS 200-42] -- Implementing module 'sort' 
+INFO: [HLS 200-10] ----------------------------------------------------------------
+INFO: [SCHED 204-11] Starting scheduling ...
+INFO: [SCHED 204-61] Pipelining loop 'copy_in_to_sorting'.
+INFO: [SCHED 204-61] Pipelining result : Target II = 1, Final II = 1, Depth = 3.
+INFO: [SCHED 204-61] Pipelining loop 'init_histogram'.
+INFO: [SCHED 204-61] Pipelining result : Target II = 1, Final II = 1, Depth = 1.
+INFO: [SCHED 204-61] Pipelining loop 'compute_histogram'.
+INFO: [SCHED 204-61] Pipelining result : Target II = 1, Final II = 1, Depth = 6.
+INFO: [SCHED 204-61] Pipelining loop 'find_digit_location'.
+INFO: [SCHED 204-61] Pipelining result : Target II = 1, Final II = 1, Depth = 2.
+INFO: [SCHED 204-61] Pipelining loop 're_sort'.
+INFO: [SCHED 204-61] Pipelining result : Target II = 1, Final II = 1, Depth = 4.
+WARNING: [SCHED 204-21] Estimated clock period (4.5595ns) exceeds the target (target clock period: 5ns, clock uncertainty: 0.625ns, effective delay budget: 4.375ns).
+WARNING: [SCHED 204-21] The critical path in module 'sort' consists of the following:
+	'select' operation ('histogram_curr.V', huffman_sort.cpp:48->huffman_encoding.cpp:24->huffman_encoding.cpp:24) [199]  (0.968 ns)
+	'add' operation ('compute_histogram_histogram_last.V', huffman_sort.cpp:50->huffman_encoding.cpp:24->huffman_encoding.cpp:24) [248]  (1.82 ns)
+	'phi' operation ('compute_histogram_histogram_last.V') with incoming values : ('compute_histogram_histogram_last.V', huffman_sort.cpp:50->huffman_encoding.cpp:24->huffman_encoding.cpp:24) [173]  (0 ns)
+	multiplexor before 'phi' operation ('digit_histogram[15].V') with incoming values : ('compute_histogram_histogram_last.V', huffman_sort.cpp:50->huffman_encoding.cpp:24->huffman_encoding.cpp:24) [232]  (1.77 ns)
+	'phi' operation ('digit_histogram[15].V') with incoming values : ('compute_histogram_histogram_last.V', huffman_sort.cpp:50->huffman_encoding.cpp:24->huffman_encoding.cpp:24) [232]  (0 ns)
+INFO: [SCHED 204-11] Finished scheduling.
+INFO: [HLS 200-111]  Elapsed time: 2.452 seconds; current allocated memory: 295.824 MB.
+INFO: [BIND 205-100] Starting micro-architecture generation ...
+INFO: [BIND 205-101] Performing variable lifetime analysis.
+INFO: [BIND 205-101] Exploring resource sharing.
+INFO: [BIND 205-101] Binding ...
+INFO: [BIND 205-100] Finished micro-architecture generation.
+INFO: [HLS 200-111]  Elapsed time: 0.615 seconds; current allocated memory: 300.331 MB.
+INFO: [HLS 200-10] ----------------------------------------------------------------
+INFO: [HLS 200-42] -- Implementing module 'Loop_copy_sorted_pro' 
+INFO: [HLS 200-10] ----------------------------------------------------------------
+INFO: [SCHED 204-11] Starting scheduling ...
+INFO: [SCHED 204-11] Finished scheduling.
+INFO: [HLS 200-111]  Elapsed time: 0.738 seconds; current allocated memory: 300.476 MB.
+INFO: [BIND 205-100] Starting micro-architecture generation ...
+INFO: [BIND 205-101] Performing variable lifetime analysis.
+INFO: [BIND 205-101] Exploring resource sharing.
+INFO: [BIND 205-101] Binding ...
+INFO: [BIND 205-100] Finished micro-architecture generation.
+INFO: [HLS 200-111]  Elapsed time: 0.193 seconds; current allocated memory: 300.616 MB.
+INFO: [HLS 200-10] ----------------------------------------------------------------
+INFO: [HLS 200-42] -- Implementing module 'create_tree' 
+INFO: [HLS 200-10] ----------------------------------------------------------------
+INFO: [SCHED 204-11] Starting scheduling ...
+INFO: [SCHED 204-61] Pipelining loop 'Loop 1'.
+INFO: [SCHED 204-61] Pipelining result : Target II = 5, Final II = 5, Depth = 6.
+WARNING: [SCHED 204-21] Estimated clock period (4.429ns) exceeds the target (target clock period: 5ns, clock uncertainty: 0.625ns, effective delay budget: 4.375ns).
+WARNING: [SCHED 204-21] The critical path in module 'create_tree' consists of the following:
+	'icmp' operation ('icmp_ln34_1', huffman_create_tree.cpp:34->huffman_encoding.cpp:44) [61]  (2.47 ns)
+	'xor' operation ('xor_ln34', huffman_create_tree.cpp:34->huffman_encoding.cpp:44) [62]  (0 ns)
+	'and' operation ('and_ln34', huffman_create_tree.cpp:34->huffman_encoding.cpp:44) [63]  (0 ns)
+	'or' operation ('or_ln34', huffman_create_tree.cpp:34->huffman_encoding.cpp:44) [65]  (0.978 ns)
+	blocking operation 0.978 ns on control path)
+INFO: [SCHED 204-11] Finished scheduling.
+INFO: [HLS 200-111]  Elapsed time: 0.525 seconds; current allocated memory: 300.968 MB.
+INFO: [BIND 205-100] Starting micro-architecture generation ...
+INFO: [BIND 205-101] Performing variable lifetime analysis.
+INFO: [BIND 205-101] Exploring resource sharing.
+INFO: [BIND 205-101] Binding ...
+INFO: [BIND 205-100] Finished micro-architecture generation.
+INFO: [HLS 200-111]  Elapsed time: 0.532 seconds; current allocated memory: 301.428 MB.
+INFO: [HLS 200-10] ----------------------------------------------------------------
+INFO: [HLS 200-42] -- Implementing module 'compute_bit_length' 
+INFO: [HLS 200-10] ----------------------------------------------------------------
+INFO: [SCHED 204-11] Starting scheduling ...
+INFO: [SCHED 204-61] Pipelining loop 'init_histogram'.
+INFO: [SCHED 204-61] Pipelining result : Target II = 1, Final II = 1, Depth = 1.
+INFO: [SCHED 204-61] Pipelining loop 'traverse_tree'.
+INFO: [SCHED 204-61] Pipelining result : Target II = 3, Final II = 3, Depth = 5.
+INFO: [SCHED 204-11] Finished scheduling.
+INFO: [HLS 200-111]  Elapsed time: 0.48 seconds; current allocated memory: 301.736 MB.
+INFO: [BIND 205-100] Starting micro-architecture generation ...
+INFO: [BIND 205-101] Performing variable lifetime analysis.
+INFO: [BIND 205-101] Exploring resource sharing.
+INFO: [BIND 205-101] Binding ...
+INFO: [BIND 205-100] Finished micro-architecture generation.
+INFO: [HLS 200-111]  Elapsed time: 0.326 seconds; current allocated memory: 302.099 MB.
+INFO: [HLS 200-10] ----------------------------------------------------------------
+INFO: [HLS 200-42] -- Implementing module 'truncate_tree' 
+INFO: [HLS 200-10] ----------------------------------------------------------------
+INFO: [SCHED 204-11] Starting scheduling ...
+INFO: [SCHED 204-11] Finished scheduling.
+INFO: [HLS 200-111]  Elapsed time: 0.346 seconds; current allocated memory: 302.331 MB.
+INFO: [BIND 205-100] Starting micro-architecture generation ...
+INFO: [BIND 205-101] Performing variable lifetime analysis.
+INFO: [BIND 205-101] Exploring resource sharing.
+INFO: [BIND 205-101] Binding ...
+INFO: [BIND 205-100] Finished micro-architecture generation.
+INFO: [HLS 200-111]  Elapsed time: 0.249 seconds; current allocated memory: 302.629 MB.
+INFO: [HLS 200-10] ----------------------------------------------------------------
+INFO: [HLS 200-42] -- Implementing module 'canonize_tree' 
+INFO: [HLS 200-10] ----------------------------------------------------------------
+INFO: [SCHED 204-11] Starting scheduling ...
+INFO: [SCHED 204-11] Finished scheduling.
+INFO: [HLS 200-111]  Elapsed time: 0.304 seconds; current allocated memory: 302.766 MB.
+INFO: [BIND 205-100] Starting micro-architecture generation ...
+INFO: [BIND 205-101] Performing variable lifetime analysis.
+INFO: [BIND 205-101] Exploring resource sharing.
+INFO: [BIND 205-101] Binding ...
+INFO: [BIND 205-100] Finished micro-architecture generation.
+INFO: [HLS 200-111]  Elapsed time: 0.208 seconds; current allocated memory: 302.941 MB.
+INFO: [HLS 200-10] ----------------------------------------------------------------
+INFO: [HLS 200-42] -- Implementing module 'create_codeword' 
+INFO: [HLS 200-10] ----------------------------------------------------------------
+INFO: [SCHED 204-11] Starting scheduling ...
+INFO: [SCHED 204-61] Pipelining loop 'first_codewords'.
+INFO: [SCHED 204-61] Pipelining result : Target II = 1, Final II = 1, Depth = 3.
+INFO: [SCHED 204-61] Pipelining loop 'assign_codewords'.
+INFO: [SCHED 204-61] Pipelining result : Target II = 5, Final II = 5, Depth = 6.
+INFO: [SCHED 204-11] Finished scheduling.
+INFO: [HLS 200-111]  Elapsed time: 0.339 seconds; current allocated memory: 303.103 MB.
+INFO: [BIND 205-100] Starting micro-architecture generation ...
+INFO: [BIND 205-101] Performing variable lifetime analysis.
+INFO: [BIND 205-101] Exploring resource sharing.
+INFO: [BIND 205-101] Binding ...
+INFO: [BIND 205-100] Finished micro-architecture generation.
+INFO: [HLS 200-111]  Elapsed time: 0.264 seconds; current allocated memory: 303.367 MB.
+INFO: [HLS 200-10] ----------------------------------------------------------------
+INFO: [HLS 200-42] -- Implementing module 'Block_proc' 
+INFO: [HLS 200-10] ----------------------------------------------------------------
+INFO: [SCHED 204-11] Starting scheduling ...
+INFO: [SCHED 204-11] Finished scheduling.
+INFO: [HLS 200-111]  Elapsed time: 0.269 seconds; current allocated memory: 303.395 MB.
+INFO: [BIND 205-100] Starting micro-architecture generation ...
+INFO: [BIND 205-101] Performing variable lifetime analysis.
+INFO: [BIND 205-101] Exploring resource sharing.
+INFO: [BIND 205-101] Binding ...
+INFO: [BIND 205-100] Finished micro-architecture generation.
+INFO: [HLS 200-111]  Elapsed time: 0.172 seconds; current allocated memory: 303.440 MB.
+INFO: [HLS 200-10] ----------------------------------------------------------------
+INFO: [HLS 200-42] -- Implementing module 'huffman_encoding' 
+INFO: [HLS 200-10] ----------------------------------------------------------------
+INFO: [SCHED 204-11] Starting scheduling ...
+INFO: [SCHED 204-11] Finished scheduling.
+INFO: [HLS 200-111]  Elapsed time: 0.194 seconds; current allocated memory: 303.563 MB.
+INFO: [BIND 205-100] Starting micro-architecture generation ...
+INFO: [BIND 205-101] Performing variable lifetime analysis.
+INFO: [BIND 205-101] Exploring resource sharing.
+INFO: [BIND 205-101] Binding ...
+INFO: [BIND 205-100] Finished micro-architecture generation.
+INFO: [HLS 200-111]  Elapsed time: 1.053 seconds; current allocated memory: 304.071 MB.
+INFO: [HLS 200-10] ----------------------------------------------------------------
+INFO: [HLS 200-10] -- Generating RTL for module 'filter' 
+INFO: [HLS 200-10] ----------------------------------------------------------------
+INFO: [RTGEN 206-100] Finished creating RTL model for 'filter'.
+INFO: [HLS 200-111]  Elapsed time: 0.519 seconds; current allocated memory: 304.470 MB.
+INFO: [HLS 200-10] ----------------------------------------------------------------
+INFO: [HLS 200-10] -- Generating RTL for module 'Block_codeRepl810_pr' 
+INFO: [HLS 200-10] ----------------------------------------------------------------
+INFO: [RTGEN 206-100] Finished creating RTL model for 'Block_codeRepl810_pr'.
+INFO: [HLS 200-111]  Elapsed time: 0.342 seconds; current allocated memory: 304.624 MB.
+INFO: [HLS 200-10] ----------------------------------------------------------------
+INFO: [HLS 200-10] -- Generating RTL for module 'sort' 
+INFO: [HLS 200-10] ----------------------------------------------------------------
+INFO: [SYN 201-210] Renamed object name 'sort_previous_sorting_val' to 'sort_previous_sorbkb' due to the length limit 20
+INFO: [SYN 201-210] Renamed object name 'sort_previous_sorting_fre' to 'sort_previous_sorcud' due to the length limit 20
+INFO: [SYN 201-210] Renamed object name 'sort_sorting_value_V' to 'sort_sorting_valudEe' due to the length limit 20
+INFO: [SYN 201-210] Renamed object name 'sort_sorting_frequency_V' to 'sort_sorting_freqeOg' due to the length limit 20
+INFO: [SYN 201-210] Renamed object name 'sort_current_digit_V' to 'sort_current_digifYi' due to the length limit 20
+INFO: [SYN 201-210] Renamed object name 'huffman_encoding_lshr_32ns_6ns_32_2_1' to 'huffman_encoding_g8j' due to the length limit 20
+INFO: [SYN 201-210] Renamed object name 'huffman_encoding_mux_164_9_1_1' to 'huffman_encoding_hbi' due to the length limit 20
+INFO: [RTGEN 206-100] Generating core module 'huffman_encoding_g8j': 1 instance(s).
+INFO: [RTGEN 206-100] Generating core module 'huffman_encoding_hbi': 3 instance(s).
+INFO: [RTGEN 206-100] Finished creating RTL model for 'sort'.
+INFO: [HLS 200-111]  Elapsed time: 0.88 seconds; current allocated memory: 308.825 MB.
+INFO: [HLS 200-10] ----------------------------------------------------------------
+INFO: [HLS 200-10] -- Generating RTL for module 'Loop_copy_sorted_pro' 
+INFO: [HLS 200-10] ----------------------------------------------------------------
+INFO: [RTGEN 206-100] Finished creating RTL model for 'Loop_copy_sorted_pro'.
+INFO: [HLS 200-111]  Elapsed time: 1.643 seconds; current allocated memory: 309.476 MB.
+INFO: [HLS 200-10] ----------------------------------------------------------------
+INFO: [HLS 200-10] -- Generating RTL for module 'create_tree' 
+INFO: [HLS 200-10] ----------------------------------------------------------------
+INFO: [SYN 201-210] Renamed object name 'create_tree_frequency_0_V' to 'create_tree_frequibs' due to the length limit 20
+INFO: [SYN 201-210] Renamed object name 'create_tree_frequency_1_V' to 'create_tree_frequjbC' due to the length limit 20
+INFO: [RTGEN 206-100] Finished creating RTL model for 'create_tree'.
+INFO: [HLS 200-111]  Elapsed time: 0.426 seconds; current allocated memory: 310.391 MB.
+INFO: [HLS 200-10] ----------------------------------------------------------------
+INFO: [HLS 200-10] -- Generating RTL for module 'compute_bit_length' 
+INFO: [HLS 200-10] ----------------------------------------------------------------
+INFO: [SYN 201-210] Renamed object name 'compute_bit_length_child_depth_V' to 'compute_bit_lengtkbM' due to the length limit 20
+INFO: [SYN 201-210] Renamed object name 'compute_bit_length_internal_length_hist' to 'compute_bit_lengtlbW' due to the length limit 20
+INFO: [RTGEN 206-100] Finished creating RTL model for 'compute_bit_length'.
+INFO: [HLS 200-111]  Elapsed time: 0.766 seconds; current allocated memory: 311.227 MB.
+INFO: [HLS 200-10] ----------------------------------------------------------------
+INFO: [HLS 200-10] -- Generating RTL for module 'truncate_tree' 
+INFO: [HLS 200-10] ----------------------------------------------------------------
+INFO: [RTGEN 206-100] Finished creating RTL model for 'truncate_tree'.
+INFO: [HLS 200-111]  Elapsed time: 0.593 seconds; current allocated memory: 311.822 MB.
+INFO: [HLS 200-10] ----------------------------------------------------------------
+INFO: [HLS 200-10] -- Generating RTL for module 'canonize_tree' 
+INFO: [HLS 200-10] ----------------------------------------------------------------
+INFO: [RTGEN 206-100] Finished creating RTL model for 'canonize_tree'.
+INFO: [HLS 200-111]  Elapsed time: 0.512 seconds; current allocated memory: 312.173 MB.
+INFO: [HLS 200-10] ----------------------------------------------------------------
+INFO: [HLS 200-10] -- Generating RTL for module 'create_codeword' 
+INFO: [HLS 200-10] ----------------------------------------------------------------
+INFO: [SYN 201-210] Renamed object name 'create_codeword_first_codeword_V' to 'create_codeword_fmb6' due to the length limit 20
+INFO: [RTGEN 206-100] Finished creating RTL model for 'create_codeword'.
+INFO: [HLS 200-111]  Elapsed time: 0.472 seconds; current allocated memory: 312.860 MB.
+INFO: [HLS 200-10] ----------------------------------------------------------------
+INFO: [HLS 200-10] -- Generating RTL for module 'Block_proc' 
+INFO: [HLS 200-10] ----------------------------------------------------------------
+INFO: [RTGEN 206-100] Finished creating RTL model for 'Block_proc'.
+INFO: [HLS 200-111]  Elapsed time: 0.498 seconds; current allocated memory: 313.065 MB.
+INFO: [HLS 200-10] ----------------------------------------------------------------
+INFO: [HLS 200-10] -- Generating RTL for module 'huffman_encoding' 
+INFO: [HLS 200-10] ----------------------------------------------------------------
+INFO: [RTGEN 206-500] Setting interface mode on port 'huffman_encoding/symbol_histogram_V_value_V' to 'axis' (register, both mode).
+INFO: [RTGEN 206-500] Setting interface mode on port 'huffman_encoding/symbol_histogram_V_frequency_V' to 'axis' (register, both mode).
+INFO: [RTGEN 206-500] Setting interface mode on port 'huffman_encoding/encoding_V_V' to 'axis' (register, both mode).
+INFO: [RTGEN 206-500] Setting interface mode on port 'huffman_encoding/num_nonzero_symbols' to 's_axilite & ap_vld'.
+INFO: [RTGEN 206-500] Setting interface mode on function 'huffman_encoding' to 's_axilite & ap_ctrl_hs'.
+INFO: [RTGEN 206-100] Bundling port 'return' and 'num_nonzero_symbols' to AXI-Lite port AXILiteS.
+INFO: [SYN 201-210] Renamed object name 'huffman_encoding_filtered_value_V' to 'huffman_encoding_ncg' due to the length limit 20
+INFO: [SYN 201-210] Renamed object name 'huffman_encoding_filtered_frequency_V' to 'huffman_encoding_ocq' due to the length limit 20
+INFO: [SYN 201-210] Renamed object name 'huffman_encoding_sorted_0' to 'huffman_encoding_pcA' due to the length limit 20
+INFO: [SYN 201-210] Renamed object name 'huffman_encoding_sorted_1' to 'huffman_encoding_qcK' due to the length limit 20
+INFO: [SYN 201-210] Renamed object name 'huffman_encoding_sorted_copy2_value_V' to 'huffman_encoding_rcU' due to the length limit 20
+INFO: [SYN 201-210] Renamed object name 'huffman_encoding_parent_V' to 'huffman_encoding_sc4' due to the length limit 20
+INFO: [SYN 201-210] Renamed object name 'huffman_encoding_left_V' to 'huffman_encoding_tde' due to the length limit 20
+INFO: [SYN 201-210] Renamed object name 'huffman_encoding_right_V' to 'huffman_encoding_udo' due to the length limit 20
+INFO: [SYN 201-210] Renamed object name 'huffman_encoding_length_histogram_V' to 'huffman_encoding_vdy' due to the length limit 20
+INFO: [SYN 201-210] Renamed object name 'huffman_encoding_truncated_length_his' to 'huffman_encoding_wdI' due to the length limit 20
+INFO: [SYN 201-210] Renamed object name 'huffman_encoding_truncated_length_his_1' to 'huffman_encoding_xdS' due to the length limit 20
+INFO: [SYN 201-210] Renamed object name 'huffman_encoding_symbol_bits_V' to 'huffman_encoding_yd2' due to the length limit 20
+INFO: [SYN 201-210] Renamed object name 'start_for_Block_codeRepl810_pr_U0' to 'start_for_Block_czec' due to the length limit 20
+INFO: [SYN 201-210] Renamed object name 'start_for_create_tree_U0' to 'start_for_create_Aem' due to the length limit 20
+INFO: [SYN 201-210] Renamed object name 'start_for_Block_proc_U0' to 'start_for_Block_pBew' due to the length limit 20
+INFO: [RTGEN 206-100] Finished creating RTL model for 'huffman_encoding'.
+INFO: [HLS 200-111]  Elapsed time: 1.018 seconds; current allocated memory: 315.159 MB.
+INFO: [HLS 200-790] **** Loop Constraint Status: All loop constraints were satisfied.
+INFO: [HLS 200-789] **** Estimated Fmax: 219.32 MHz
+INFO: [RTMG 210-286] Generating pipelined shifter : 'huffman_encoding_g8j'
+INFO: [RTMG 210-278] Implementing memory 'sort_previous_sorbkb_ram (RAM)' using block RAMs.
+INFO: [RTMG 210-278] Implementing memory 'sort_previous_sorcud_ram (RAM)' using block RAMs.
+INFO: [RTMG 210-278] Implementing memory 'sort_current_digifYi_ram (RAM)' using block RAMs.
+INFO: [RTMG 210-278] Implementing memory 'create_tree_frequibs_ram (RAM)' using block RAMs.
+INFO: [RTMG 210-278] Implementing memory 'create_tree_frequjbC_ram (RAM)' using block RAMs.
+INFO: [RTMG 210-278] Implementing memory 'compute_bit_lengtkbM_ram (RAM)' using block RAMs.
+INFO: [RTMG 210-278] Implementing memory 'compute_bit_lengtlbW_ram (RAM)' using distributed RAMs.
+INFO: [RTMG 210-278] Implementing memory 'create_codeword_fmb6_ram (RAM)' using distributed RAMs.
+INFO: [HLS 200-741] Implementing PIPO huffman_encoding_ncg_memcore using a single memory for all blocks
+INFO: [RTMG 210-278] Implementing memory 'huffman_encoding_ncg_memcore_ram (RAM)' using block RAMs.
+INFO: [HLS 200-741] Implementing PIPO huffman_encoding_ocq_memcore using a single memory for all blocks
+INFO: [RTMG 210-278] Implementing memory 'huffman_encoding_ocq_memcore_ram (RAM)' using block RAMs.
+INFO: [HLS 200-740] Implementing PIPO huffman_encoding_sc4_memcore using a separate memory for each block
+INFO: [RTMG 210-278] Implementing memory 'huffman_encoding_sc4_memcore_ram (RAM)' using block RAMs.
+INFO: [HLS 200-741] Implementing PIPO huffman_encoding_vdy_memcore using a single memory for all blocks
+INFO: [RTMG 210-278] Implementing memory 'huffman_encoding_vdy_memcore_ram (RAM)' using block RAMs.
+INFO: [HLS 200-740] Implementing PIPO huffman_encoding_wdI_memcore using a separate memory for each block
+INFO: [RTMG 210-278] Implementing memory 'huffman_encoding_wdI_memcore_ram (RAM)' using block RAMs.
+INFO: [HLS 200-741] Implementing PIPO huffman_encoding_yd2_memcore using a single memory for all blocks
+INFO: [RTMG 210-278] Implementing memory 'huffman_encoding_yd2_memcore_ram (RAM)' using block RAMs.
+INFO: [RTMG 210-285] Implementing FIFO 'n_c_U(fifo_w9_d2_A)' using Shift Registers.
+INFO: [RTMG 210-285] Implementing FIFO 'n_c18_U(fifo_w9_d3_A)' using Shift Registers.
+INFO: [RTMG 210-285] Implementing FIFO 'extLd7_loc_channel_U(fifo_w9_d2_A)' using Shift Registers.
+INFO: [RTMG 210-285] Implementing FIFO 'sorted_copy1_0_chann_U(fifo_w9_d256_A)' using Block RAMs.
+INFO: [RTMG 210-285] Implementing FIFO 'sorted_copy1_1_chann_U(fifo_w32_d256_A)' using Block RAMs.
+INFO: [RTMG 210-285] Implementing FIFO 'val_assign5_loc_c_U(fifo_w9_d5_A)' using Shift Registers.
+INFO: [RTMG 210-285] Implementing FIFO 'extLd_loc_c_U(fifo_w9_d2_A)' using Shift Registers.
+INFO: [RTMG 210-285] Implementing FIFO 'extLd_loc_c19_U(fifo_w9_d2_A)' using Shift Registers.
+INFO: [RTMG 210-285] Implementing FIFO 'extLd_loc_c20_U(fifo_w9_d2_A)' using Shift Registers.
+INFO: [RTMG 210-285] Implementing FIFO 'start_for_Block_czec_U(start_for_Block_czec)' using Shift Registers.
+INFO: [RTMG 210-285] Implementing FIFO 'start_for_create_Aem_U(start_for_create_Aem)' using Shift Registers.
+INFO: [RTMG 210-285] Implementing FIFO 'start_for_Block_pBew_U(start_for_Block_pBew)' using Shift Registers.
+INFO: [HLS 200-741] Implementing PIPO huffman_encoding_ncg_memcore using a single memory for all blocks
+INFO: [HLS 200-741] Implementing PIPO huffman_encoding_ocq_memcore using a single memory for all blocks
+INFO: [HLS 200-740] Implementing PIPO huffman_encoding_sc4_memcore using a separate memory for each block
+INFO: [HLS 200-741] Implementing PIPO huffman_encoding_vdy_memcore using a single memory for all blocks
+INFO: [HLS 200-740] Implementing PIPO huffman_encoding_wdI_memcore using a separate memory for each block
+INFO: [HLS 200-741] Implementing PIPO huffman_encoding_yd2_memcore using a single memory for all blocks
+INFO: [HLS 200-741] Implementing PIPO huffman_encoding_ncg_memcore using a single memory for all blocks
+INFO: [HLS 200-741] Implementing PIPO huffman_encoding_ocq_memcore using a single memory for all blocks
+INFO: [HLS 200-740] Implementing PIPO huffman_encoding_sc4_memcore using a separate memory for each block
+INFO: [HLS 200-741] Implementing PIPO huffman_encoding_vdy_memcore using a single memory for all blocks
+INFO: [HLS 200-740] Implementing PIPO huffman_encoding_wdI_memcore using a separate memory for each block
+INFO: [HLS 200-741] Implementing PIPO huffman_encoding_yd2_memcore using a single memory for all blocks
+INFO: [HLS 200-111] Finished generating all RTL models Time (s): cpu = 00:00:25 ; elapsed = 00:02:38 . Memory (MB): peak = 408.031 ; gain = 317.609
+INFO: [VHDL 208-304] Generating VHDL RTL for huffman_encoding.
+INFO: [VLOG 209-307] Generating Verilog RTL for huffman_encoding.
+INFO: [HLS 200-112] Total elapsed time: 158.156 seconds; peak allocated memory: 315.159 MB.
+==============================================================
+Vivado(TM) HLS - High-Level Synthesis from C, C++ and SystemC v2019.2 (64-bit)
+Copyright 1986-2019 Xilinx, Inc. All Rights Reserved.
+==============================================================
+==============================================================
+Vivado(TM) HLS - High-Level Synthesis from C, C++ and SystemC v2019.2 (64-bit)
+Copyright 1986-2019 Xilinx, Inc. All Rights Reserved.
+==============================================================
+INFO: [SYN 201-201] Setting up clock 'default' with a period of 5ns.
+INFO: [SYN 201-201] Setting up clock 'default' with an uncertainty of 0.625ns.
+INFO: [HLS 200-10] Setting target device to 'xc7z020-clg484-1'
+INFO: [HLS 200-435] Setting 'config_sdx -target' configuration: config_export -vivado_optimization_level=2
+INFO: [HLS 200-435] Setting 'config_sdx -target' configuration: set_clock_uncertainty default
+INFO: [SIM 211-2] *************** CSIM start ***************
+INFO: [SIM 211-4] CSIM will launch GCC as the compiler.
+ERROR: [SIM 211-100] 'csim_design' failed: compilation error(s).
+INFO: [SIM 211-3] *************** CSIM finish ***************
+==============================================================
+Vivado(TM) HLS - High-Level Synthesis from C, C++ and SystemC v2019.2 (64-bit)
+Copyright 1986-2019 Xilinx, Inc. All Rights Reserved.
+==============================================================
+INFO: [SYN 201-201] Setting up clock 'default' with a period of 5ns.
+INFO: [SYN 201-201] Setting up clock 'default' with an uncertainty of 0.625ns.
+INFO: [HLS 200-10] Setting target device to 'xc7z020-clg484-1'
+INFO: [HLS 200-435] Setting 'config_sdx -target' configuration: config_export -vivado_optimization_level=2
+INFO: [HLS 200-435] Setting 'config_sdx -target' configuration: set_clock_uncertainty default
+INFO: [SIM 211-2] *************** CSIM start ***************
+INFO: [SIM 211-4] CSIM will launch GCC as the compiler.
+ERROR: [SIM 211-100] 'csim_design' failed: compilation error(s).
+INFO: [SIM 211-3] *************** CSIM finish ***************
+==============================================================
+Vivado(TM) HLS - High-Level Synthesis from C, C++ and SystemC v2019.2 (64-bit)
+Copyright 1986-2019 Xilinx, Inc. All Rights Reserved.
+==============================================================
+INFO: [SYN 201-201] Setting up clock 'default' with a period of 5ns.
+INFO: [SYN 201-201] Setting up clock 'default' with an uncertainty of 0.625ns.
+INFO: [HLS 200-10] Setting target device to 'xc7z020-clg484-1'
+INFO: [HLS 200-435] Setting 'config_sdx -target' configuration: config_export -vivado_optimization_level=2
+INFO: [HLS 200-435] Setting 'config_sdx -target' configuration: set_clock_uncertainty default
+INFO: [HLS 200-435] Setting 'config_sdx -target' configuration: config_export -vivado_optimization_level=2
+INFO: [HLS 200-435] Setting 'config_sdx -target' configuration: set_clock_uncertainty default
+INFO: [SCHED 204-61] Option 'relax_ii_for_timing' is enabled, will increase II to preserve clock frequency constraints.
+INFO: [HLS 200-10] Analyzing design file 'huffman_canonize_tree.cpp' ... 
+ERROR: [HLS 200-70] Compilation errors found: In file included from huffman_canonize_tree.cpp:1:
+huffman_canonize_tree.cpp:32:20: error: no viable overloaded operator[] for type 'CodewordLength *' (aka 'ap_uint<CODEWORD_LENGTH_BITS> *')
+        symbol_bits[sorted[k].value] = length;
+        ~~~~~~~~~~~^~~~~~~~~~~~~~~~
+1 error generated.
+==============================================================
+Vivado(TM) HLS - High-Level Synthesis from C, C++ and SystemC v2019.2 (64-bit)
+Copyright 1986-2019 Xilinx, Inc. All Rights Reserved.
+==============================================================
+INFO: [SYN 201-201] Setting up clock 'default' with a period of 5ns.
+INFO: [SYN 201-201] Setting up clock 'default' with an uncertainty of 0.625ns.
+INFO: [HLS 200-10] Setting target device to 'xc7z020-clg484-1'
+INFO: [HLS 200-435] Setting 'config_sdx -target' configuration: config_export -vivado_optimization_level=2
+INFO: [HLS 200-435] Setting 'config_sdx -target' configuration: set_clock_uncertainty default
+INFO: [SIM 211-2] *************** CSIM start ***************
+INFO: [SIM 211-4] CSIM will launch GCC as the compiler.
+ERROR: [SIM 211-100] 'csim_design' failed: compilation error(s).
+INFO: [SIM 211-3] *************** CSIM finish ***************
+==============================================================
+Vivado(TM) HLS - High-Level Synthesis from C, C++ and SystemC v2019.2 (64-bit)
+Copyright 1986-2019 Xilinx, Inc. All Rights Reserved.
+==============================================================
+INFO: [SYN 201-201] Setting up clock 'default' with a period of 5ns.
+INFO: [SYN 201-201] Setting up clock 'default' with an uncertainty of 0.625ns.
+INFO: [HLS 200-10] Setting target device to 'xc7z020-clg484-1'
+INFO: [HLS 200-435] Setting 'config_sdx -target' configuration: config_export -vivado_optimization_level=2
+INFO: [HLS 200-435] Setting 'config_sdx -target' configuration: set_clock_uncertainty default
+INFO: [SIM 211-2] *************** CSIM start ***************
+INFO: [SIM 211-4] CSIM will launch GCC as the compiler.
+ERROR: [SIM 211-100] 'csim_design' failed: compilation error(s).
+INFO: [SIM 211-3] *************** CSIM finish ***************
+==============================================================
+Vivado(TM) HLS - High-Level Synthesis from C, C++ and SystemC v2019.2 (64-bit)
+Copyright 1986-2019 Xilinx, Inc. All Rights Reserved.
+==============================================================
+INFO: [SYN 201-201] Setting up clock 'default' with a period of 5ns.
+INFO: [SYN 201-201] Setting up clock 'default' with an uncertainty of 0.625ns.
+INFO: [HLS 200-10] Setting target device to 'xc7z020-clg484-1'
+INFO: [HLS 200-435] Setting 'config_sdx -target' configuration: config_export -vivado_optimization_level=2
+INFO: [HLS 200-435] Setting 'config_sdx -target' configuration: set_clock_uncertainty default
+INFO: [SIM 211-2] *************** CSIM start ***************
+INFO: [SIM 211-4] CSIM will launch GCC as the compiler.
+ERROR: [SIM 211-100] 'csim_design' failed: compilation error(s).
+INFO: [SIM 211-3] *************** CSIM finish ***************
+==============================================================
+Vivado(TM) HLS - High-Level Synthesis from C, C++ and SystemC v2019.2 (64-bit)
+Copyright 1986-2019 Xilinx, Inc. All Rights Reserved.
+==============================================================
+INFO: [SYN 201-201] Setting up clock 'default' with a period of 5ns.
+INFO: [SYN 201-201] Setting up clock 'default' with an uncertainty of 0.625ns.
+INFO: [HLS 200-10] Setting target device to 'xc7z020-clg484-1'
+INFO: [HLS 200-435] Setting 'config_sdx -target' configuration: config_export -vivado_optimization_level=2
+INFO: [HLS 200-435] Setting 'config_sdx -target' configuration: set_clock_uncertainty default
+INFO: [SIM 211-2] *************** CSIM start ***************
+INFO: [SIM 211-4] CSIM will launch GCC as the compiler.
+ERROR: [SIM 211-100] 'csim_design' failed: compilation error(s).
+INFO: [SIM 211-3] *************** CSIM finish ***************
+==============================================================
+Vivado(TM) HLS - High-Level Synthesis from C, C++ and SystemC v2019.2 (64-bit)
+Copyright 1986-2019 Xilinx, Inc. All Rights Reserved.
+==============================================================
+INFO: [SYN 201-201] Setting up clock 'default' with a period of 5ns.
+INFO: [SYN 201-201] Setting up clock 'default' with an uncertainty of 0.625ns.
+INFO: [HLS 200-10] Setting target device to 'xc7z020-clg484-1'
+INFO: [HLS 200-435] Setting 'config_sdx -target' configuration: config_export -vivado_optimization_level=2
+INFO: [HLS 200-435] Setting 'config_sdx -target' configuration: set_clock_uncertainty default
+INFO: [SIM 211-2] *************** CSIM start ***************
+INFO: [SIM 211-4] CSIM will launch GCC as the compiler.
+ERROR: [SIM 211-100] 'csim_design' failed: compilation error(s).
+INFO: [SIM 211-3] *************** CSIM finish ***************
+==============================================================
+Vivado(TM) HLS - High-Level Synthesis from C, C++ and SystemC v2019.2 (64-bit)
+Copyright 1986-2019 Xilinx, Inc. All Rights Reserved.
+==============================================================
+INFO: [SYN 201-201] Setting up clock 'default' with a period of 5ns.
+INFO: [SYN 201-201] Setting up clock 'default' with an uncertainty of 0.625ns.
+INFO: [HLS 200-10] Setting target device to 'xc7z020-clg484-1'
+INFO: [HLS 200-435] Setting 'config_sdx -target' configuration: config_export -vivado_optimization_level=2
+INFO: [HLS 200-435] Setting 'config_sdx -target' configuration: set_clock_uncertainty default
+INFO: [SIM 211-2] *************** CSIM start ***************
+INFO: [SIM 211-4] CSIM will launch GCC as the compiler.
+ERROR: [SIM 211-100] 'csim_design' failed: compilation error(s).
+INFO: [SIM 211-3] *************** CSIM finish ***************
+==============================================================
+Vivado(TM) HLS - High-Level Synthesis from C, C++ and SystemC v2019.2 (64-bit)
+Copyright 1986-2019 Xilinx, Inc. All Rights Reserved.
+==============================================================
+INFO: [SYN 201-201] Setting up clock 'default' with a period of 5ns.
+INFO: [SYN 201-201] Setting up clock 'default' with an uncertainty of 0.625ns.
+INFO: [HLS 200-10] Setting target device to 'xc7z020-clg484-1'
+INFO: [HLS 200-435] Setting 'config_sdx -target' configuration: config_export -vivado_optimization_level=2
+INFO: [HLS 200-435] Setting 'config_sdx -target' configuration: set_clock_uncertainty default
+INFO: [SIM 211-2] *************** CSIM start ***************
+INFO: [SIM 211-4] CSIM will launch GCC as the compiler.
+INFO: [SIM 211-1] CSim done with 0 errors.
+INFO: [SIM 211-3] *************** CSIM finish ***************
+==============================================================
+Vivado(TM) HLS - High-Level Synthesis from C, C++ and SystemC v2019.2 (64-bit)
+Copyright 1986-2019 Xilinx, Inc. All Rights Reserved.
+==============================================================
+INFO: [SYN 201-201] Setting up clock 'default' with a period of 5ns.
+INFO: [SYN 201-201] Setting up clock 'default' with an uncertainty of 0.625ns.
+INFO: [HLS 200-10] Setting target device to 'xc7z020-clg484-1'
+INFO: [HLS 200-435] Setting 'config_sdx -target' configuration: config_export -vivado_optimization_level=2
+INFO: [HLS 200-435] Setting 'config_sdx -target' configuration: set_clock_uncertainty default
+INFO: [HLS 200-435] Setting 'config_sdx -target' configuration: config_export -vivado_optimization_level=2
+INFO: [HLS 200-435] Setting 'config_sdx -target' configuration: set_clock_uncertainty default
+INFO: [SCHED 204-61] Option 'relax_ii_for_timing' is enabled, will increase II to preserve clock frequency constraints.
+INFO: [HLS 200-10] Analyzing design file 'huffman_truncate_tree.cpp' ... 
+INFO: [HLS 200-10] Analyzing design file 'huffman_create_codeword.cpp' ... 
+INFO: [HLS 200-10] Analyzing design file 'huffman_sort.cpp' ... 
+INFO: [HLS 200-10] Analyzing design file 'huffman_encoding.cpp' ... 
+WARNING: [HLS 214-114] Since the only kind of statements allowed in a canonical dataflow region are variable declarations and function calls, the compiler may not be able to correctly handle the region: huffman_encoding.cpp:33:5
+WARNING: [HLS 214-114] Since the only kind of statements allowed in a canonical dataflow region are variable declarations and function calls, the compiler may not be able to correctly handle the region: huffman_encoding.cpp:67:5
+WARNING: [HLS 200-471] Dataflow form checks found 2 issue(s) in file huffman_encoding.cpp
+INFO: [HLS 200-10] Analyzing design file 'huffman_compute_bit_length.cpp' ... 
+INFO: [HLS 200-10] Analyzing design file 'huffman_filter.cpp' ... 
+INFO: [HLS 200-10] Analyzing design file 'huffman_create_tree.cpp' ... 
+INFO: [HLS 200-10] Analyzing design file 'huffman_canonize_tree.cpp' ... 
+INFO: [HLS 200-111] Finished Linking Time (s): cpu = 00:00:04 ; elapsed = 00:02:03 . Memory (MB): peak = 186.707 ; gain = 96.316
+INFO: [HLS 200-111] Finished Checking Pragmas Time (s): cpu = 00:00:04 ; elapsed = 00:02:03 . Memory (MB): peak = 186.707 ; gain = 96.316
+INFO: [HLS 200-10] Starting code transformations ...
+INFO: [HLS 200-111] Finished Standard Transforms Time (s): cpu = 00:00:05 ; elapsed = 00:02:05 . Memory (MB): peak = 186.707 ; gain = 96.316
+INFO: [HLS 200-10] Checking synthesizability ...
+INFO: [HLS 200-111] Finished Checking Synthesizability Time (s): cpu = 00:00:05 ; elapsed = 00:02:05 . Memory (MB): peak = 208.719 ; gain = 118.328
+WARNING: [XFORM 203-1103] Ignored data pack directive on non-struct variable 'symbol_histogram.V.value.data.V' (huffman_encoding.cpp:4).
+WARNING: [XFORM 203-1103] Ignored data pack directive on non-struct variable 'symbol_histogram.V.frequency.data.V' (huffman_encoding.cpp:4).
+INFO: [XFORM 203-101] Partitioning array 'frequency.V' (huffman_create_tree.cpp:11) in dimension 1 with a cyclic factor 2.
+INFO: [XFORM 203-101] Partitioning array 'digit_location.V' (huffman_sort.cpp:16) in dimension 1 completely.
+INFO: [XFORM 203-101] Partitioning array 'digit_histogram.V' (huffman_sort.cpp:16) in dimension 1 completely.
+INFO: [XFORM 203-721] Changing loop 'Loop_copy_sorted_proc' (huffman_encoding.cpp:34) to a process function for dataflow in function 'huffman_encoding'.
+WARNING: [XFORM 203-713] All the elements of global array 'filtered.value.V' should be updated in process function 'filter', otherwise it may not be synthesized correctly.
+WARNING: [XFORM 203-713] All the elements of global array 'filtered.frequency.V' should be updated in process function 'filter', otherwise it may not be synthesized correctly.
+WARNING: [XFORM 203-713] All the elements of global array 'sorted.0'  should be updated in process function 'sort', otherwise it may not be synthesized correctly.
+WARNING: [XFORM 203-713] All the elements of global array 'sorted.1'  should be updated in process function 'sort', otherwise it may not be synthesized correctly.
+WARNING: [XFORM 203-713] All the elements of global array 'sorted_copy1.0'  should be updated in process function 'Loop_copy_sorted_proc', otherwise it may not be synthesized correctly.
+WARNING: [XFORM 203-713] All the elements of global array 'sorted_copy1.1'  should be updated in process function 'Loop_copy_sorted_proc', otherwise it may not be synthesized correctly.
+WARNING: [XFORM 203-713] All the elements of global array 'sorted_copy2.value.V' should be updated in process function 'Loop_copy_sorted_proc', otherwise it may not be synthesized correctly.
+WARNING: [XFORM 203-713] All the elements of global array 'parent.V' should be updated in process function 'create_tree', otherwise it may not be synthesized correctly.
+WARNING: [XFORM 203-713] All the elements of global array 'left.V' should be updated in process function 'create_tree', otherwise it may not be synthesized correctly.
+WARNING: [XFORM 203-713] All the elements of global array 'right.V' should be updated in process function 'create_tree', otherwise it may not be synthesized correctly.
+WARNING: [XFORM 203-713] All the elements of global array 'length_histogram.V' should be updated in process function 'compute_bit_length', otherwise it may not be synthesized correctly.
+WARNING: [XFORM 203-713] All the elements of global array 'truncated_length_histogram1.V' should be updated in process function 'truncate_tree', otherwise it may not be synthesized correctly.
+WARNING: [XFORM 203-713] All the elements of global array 'symbol_bits.V' should be updated in process function 'canonize_tree', otherwise it may not be synthesized correctly.
+INFO: [XFORM 203-712] Applying dataflow to function 'huffman_encoding', detected/extracted 10 process function(s): 
+	 'filter'
+	 'Block_codeRepl810_proc'
+	 'sort'
+	 'Loop_copy_sorted_proc'
+	 'create_tree'
+	 'compute_bit_length'
+	 'truncate_tree'
+	 'canonize_tree'
+	 'create_codeword'
+	 'Block__proc'.
+WARNING: [XFORM 203-124] Array  'sorted_copy1.1' : may have improper streaming access(es), possible reasons: (1) some entries are accessed more than once; (2) some entries are not used; (3) the entries are not accessed in sequential order.
+WARNING: [XFORM 203-124] Array  'sorted_copy1.0' : may have improper streaming access(es), possible reasons: (1) some entries are accessed more than once; (2) some entries are not used; (3) the entries are not accessed in sequential order.
+ERROR: [XFORM 203-801] Only one data field is allowed in AXI-Stream mode, however there are 2 data fields: symbol_histogram.V.value.data.V symbol_histogram.V.frequency.data.V .
+ERROR: [HLS 200-70] Pre-synthesis failed.
+==============================================================
+Vivado(TM) HLS - High-Level Synthesis from C, C++ and SystemC v2019.2 (64-bit)
+Copyright 1986-2019 Xilinx, Inc. All Rights Reserved.
+==============================================================
+INFO: [SYN 201-201] Setting up clock 'default' with a period of 5ns.
+INFO: [SYN 201-201] Setting up clock 'default' with an uncertainty of 0.625ns.
+INFO: [HLS 200-10] Setting target device to 'xc7z020-clg484-1'
+INFO: [HLS 200-435] Setting 'config_sdx -target' configuration: config_export -vivado_optimization_level=2
+INFO: [HLS 200-435] Setting 'config_sdx -target' configuration: set_clock_uncertainty default
+INFO: [SIM 211-2] *************** CSIM start ***************
+INFO: [SIM 211-4] CSIM will launch GCC as the compiler.
+ERROR: [SIM 211-100] 'csim_design' failed: compilation error(s).
+INFO: [SIM 211-3] *************** CSIM finish ***************
+==============================================================
+Vivado(TM) HLS - High-Level Synthesis from C, C++ and SystemC v2019.2 (64-bit)
+Copyright 1986-2019 Xilinx, Inc. All Rights Reserved.
+==============================================================
+INFO: [SYN 201-201] Setting up clock 'default' with a period of 5ns.
+INFO: [SYN 201-201] Setting up clock 'default' with an uncertainty of 0.625ns.
+INFO: [HLS 200-10] Setting target device to 'xc7z020-clg484-1'
+INFO: [HLS 200-435] Setting 'config_sdx -target' configuration: config_export -vivado_optimization_level=2
+INFO: [HLS 200-435] Setting 'config_sdx -target' configuration: set_clock_uncertainty default
+INFO: [SIM 211-2] *************** CSIM start ***************
+INFO: [SIM 211-4] CSIM will launch GCC as the compiler.
+ERROR: [SIM 211-100] 'csim_design' failed: compilation error(s).
+INFO: [SIM 211-3] *************** CSIM finish ***************
+==============================================================
+Vivado(TM) HLS - High-Level Synthesis from C, C++ and SystemC v2019.2 (64-bit)
+Copyright 1986-2019 Xilinx, Inc. All Rights Reserved.
+==============================================================
+INFO: [SYN 201-201] Setting up clock 'default' with a period of 5ns.
+INFO: [SYN 201-201] Setting up clock 'default' with an uncertainty of 0.625ns.
+INFO: [HLS 200-10] Setting target device to 'xc7z020-clg484-1'
+INFO: [HLS 200-435] Setting 'config_sdx -target' configuration: config_export -vivado_optimization_level=2
+INFO: [HLS 200-435] Setting 'config_sdx -target' configuration: set_clock_uncertainty default
+INFO: [SIM 211-2] *************** CSIM start ***************
+INFO: [SIM 211-4] CSIM will launch GCC as the compiler.
+ERROR: [SIM 211-100] 'csim_design' failed: compilation error(s).
+INFO: [SIM 211-3] *************** CSIM finish ***************
+==============================================================
+Vivado(TM) HLS - High-Level Synthesis from C, C++ and SystemC v2019.2 (64-bit)
+Copyright 1986-2019 Xilinx, Inc. All Rights Reserved.
+==============================================================
+INFO: [SYN 201-201] Setting up clock 'default' with a period of 5ns.
+INFO: [SYN 201-201] Setting up clock 'default' with an uncertainty of 0.625ns.
+INFO: [HLS 200-10] Setting target device to 'xc7z020-clg484-1'
+INFO: [HLS 200-435] Setting 'config_sdx -target' configuration: config_export -vivado_optimization_level=2
+INFO: [HLS 200-435] Setting 'config_sdx -target' configuration: set_clock_uncertainty default
+INFO: [SIM 211-2] *************** CSIM start ***************
+INFO: [SIM 211-4] CSIM will launch GCC as the compiler.
+INFO: [SIM 211-1] CSim done with 0 errors.
+INFO: [SIM 211-3] *************** CSIM finish ***************
+==============================================================
+Vivado(TM) HLS - High-Level Synthesis from C, C++ and SystemC v2019.2 (64-bit)
+Copyright 1986-2019 Xilinx, Inc. All Rights Reserved.
+==============================================================
+INFO: [SYN 201-201] Setting up clock 'default' with a period of 5ns.
+INFO: [SYN 201-201] Setting up clock 'default' with an uncertainty of 0.625ns.
+INFO: [HLS 200-10] Setting target device to 'xc7z020-clg484-1'
+INFO: [HLS 200-435] Setting 'config_sdx -target' configuration: config_export -vivado_optimization_level=2
+INFO: [HLS 200-435] Setting 'config_sdx -target' configuration: set_clock_uncertainty default
+INFO: [HLS 200-435] Setting 'config_sdx -target' configuration: config_export -vivado_optimization_level=2
+INFO: [HLS 200-435] Setting 'config_sdx -target' configuration: set_clock_uncertainty default
+INFO: [SCHED 204-61] Option 'relax_ii_for_timing' is enabled, will increase II to preserve clock frequency constraints.
+INFO: [HLS 200-10] Analyzing design file 'huffman_truncate_tree.cpp' ... 
+INFO: [HLS 200-10] Analyzing design file 'huffman_create_codeword.cpp' ... 
+INFO: [HLS 200-10] Analyzing design file 'huffman_sort.cpp' ... 
+INFO: [HLS 200-10] Analyzing design file 'huffman_encoding.cpp' ... 
+WARNING: [HLS 214-114] Since the only kind of statements allowed in a canonical dataflow region are variable declarations and function calls, the compiler may not be able to correctly handle the region: huffman_encoding.cpp:33:5
+WARNING: [HLS 214-114] Since the only kind of statements allowed in a canonical dataflow region are variable declarations and function calls, the compiler may not be able to correctly handle the region: huffman_encoding.cpp:67:5
+WARNING: [HLS 200-471] Dataflow form checks found 2 issue(s) in file huffman_encoding.cpp
+INFO: [HLS 200-10] Analyzing design file 'huffman_compute_bit_length.cpp' ... 
+INFO: [HLS 200-10] Analyzing design file 'huffman_filter.cpp' ... 
+INFO: [HLS 200-10] Analyzing design file 'huffman_create_tree.cpp' ... 
+INFO: [HLS 200-10] Analyzing design file 'huffman_canonize_tree.cpp' ... 
+INFO: [HLS 200-111] Finished Linking Time (s): cpu = 00:00:04 ; elapsed = 00:01:45 . Memory (MB): peak = 186.801 ; gain = 97.371
+INFO: [HLS 200-111] Finished Checking Pragmas Time (s): cpu = 00:00:04 ; elapsed = 00:01:45 . Memory (MB): peak = 186.801 ; gain = 97.371
+INFO: [HLS 200-10] Starting code transformations ...
+INFO: [HLS 200-111] Finished Standard Transforms Time (s): cpu = 00:00:05 ; elapsed = 00:01:46 . Memory (MB): peak = 186.801 ; gain = 97.371
+INFO: [HLS 200-10] Checking synthesizability ...
+INFO: [HLS 200-111] Finished Checking Synthesizability Time (s): cpu = 00:00:05 ; elapsed = 00:01:47 . Memory (MB): peak = 209.074 ; gain = 119.645
+INFO: [XFORM 203-101] Partitioning array 'frequency.V' (huffman_create_tree.cpp:11) in dimension 1 with a cyclic factor 2.
+INFO: [XFORM 203-101] Partitioning array 'digit_location.V' (huffman_sort.cpp:16) in dimension 1 completely.
+INFO: [XFORM 203-101] Partitioning array 'digit_histogram.V' (huffman_sort.cpp:16) in dimension 1 completely.
+INFO: [XFORM 203-721] Changing loop 'Loop_copy_sorted_proc' (huffman_encoding.cpp:34) to a process function for dataflow in function 'huffman_encoding'.
+WARNING: [XFORM 203-713] All the elements of global array 'filtered.value.V' should be updated in process function 'filter', otherwise it may not be synthesized correctly.
+WARNING: [XFORM 203-713] All the elements of global array 'filtered.frequency.V' should be updated in process function 'filter', otherwise it may not be synthesized correctly.
+WARNING: [XFORM 203-713] All the elements of global array 'sorted.0'  should be updated in process function 'sort', otherwise it may not be synthesized correctly.
+WARNING: [XFORM 203-713] All the elements of global array 'sorted.1'  should be updated in process function 'sort', otherwise it may not be synthesized correctly.
+WARNING: [XFORM 203-713] All the elements of global array 'sorted_copy1.0'  should be updated in process function 'Loop_copy_sorted_proc', otherwise it may not be synthesized correctly.
+WARNING: [XFORM 203-713] All the elements of global array 'sorted_copy1.1'  should be updated in process function 'Loop_copy_sorted_proc', otherwise it may not be synthesized correctly.
+WARNING: [XFORM 203-713] All the elements of global array 'sorted_copy2.value.V' should be updated in process function 'Loop_copy_sorted_proc', otherwise it may not be synthesized correctly.
+WARNING: [XFORM 203-713] All the elements of global array 'parent.V' should be updated in process function 'create_tree', otherwise it may not be synthesized correctly.
+WARNING: [XFORM 203-713] All the elements of global array 'left.V' should be updated in process function 'create_tree', otherwise it may not be synthesized correctly.
+WARNING: [XFORM 203-713] All the elements of global array 'right.V' should be updated in process function 'create_tree', otherwise it may not be synthesized correctly.
+WARNING: [XFORM 203-713] All the elements of global array 'length_histogram.V' should be updated in process function 'compute_bit_length', otherwise it may not be synthesized correctly.
+WARNING: [XFORM 203-713] All the elements of global array 'truncated_length_histogram1.V' should be updated in process function 'truncate_tree', otherwise it may not be synthesized correctly.
+WARNING: [XFORM 203-713] All the elements of global array 'symbol_bits.V' should be updated in process function 'canonize_tree', otherwise it may not be synthesized correctly.
+INFO: [XFORM 203-712] Applying dataflow to function 'huffman_encoding', detected/extracted 10 process function(s): 
+	 'filter'
+	 'Block_codeRepl810_proc'
+	 'sort'
+	 'Loop_copy_sorted_proc'
+	 'create_tree'
+	 'compute_bit_length'
+	 'truncate_tree'
+	 'canonize_tree'
+	 'create_codeword'
+	 'Block__proc'.
+WARNING: [XFORM 203-124] Array  'sorted_copy1.1' : may have improper streaming access(es), possible reasons: (1) some entries are accessed more than once; (2) some entries are not used; (3) the entries are not accessed in sequential order.
+WARNING: [XFORM 203-124] Array  'sorted_copy1.0' : may have improper streaming access(es), possible reasons: (1) some entries are accessed more than once; (2) some entries are not used; (3) the entries are not accessed in sequential order.
+INFO: [XFORM 203-401] Performing if-conversion on hyperblock from (huffman_sort.cpp:40:47) to (huffman_sort.cpp:49:29) in function 'sort'... converting 3 basic blocks.
+INFO: [XFORM 203-401] Performing if-conversion on hyperblock from (huffman_sort.cpp:67:47) to (huffman_sort.cpp:76:28) in function 'sort'... converting 3 basic blocks.
+INFO: [XFORM 203-401] Performing if-conversion on hyperblock from (huffman_create_tree.cpp:21:47) to (huffman_create_tree.cpp:34:13) in function 'create_tree'... converting 7 basic blocks.
+INFO: [XFORM 203-401] Performing if-conversion on hyperblock from (huffman_create_codeword.cpp:33:52) to (huffman_create_codeword.cpp:41:9) in function 'create_codeword'... converting 4 basic blocks.
+INFO: [HLS 200-111] Finished Pre-synthesis Time (s): cpu = 00:00:08 ; elapsed = 00:01:50 . Memory (MB): peak = 259.652 ; gain = 170.223
+WARNING: [XFORM 203-542] Cannot flatten a loop nest 'radix_sort' (huffman_sort.cpp:29:61) in function 'sort' : 
+
+more than one sub loop.
+WARNING: [XFORM 203-631] Renaming function 'Loop_copy_sorted_proc' to 'Loop_copy_sorted_pro' (huffman_encoding.cpp:34:27)
+WARNING: [XFORM 203-631] Renaming function 'Block_codeRepl810_proc' to 'Block_codeRepl810_pr' (huffman_encoding.cpp:24:5)
+INFO: [HLS 200-472] Inferring partial write operation for 'output_length_histogram1.V' (huffman_truncate_tree.cpp:11:9)
+INFO: [HLS 200-472] Inferring partial write operation for 'output_length_histogram1.V' (huffman_truncate_tree.cpp:30:38)
+INFO: [HLS 200-472] Inferring partial write operation for 'output_length_histogram1.V' (huffman_truncate_tree.cpp:31:38)
+INFO: [HLS 200-472] Inferring partial write operation for 'output_length_histogram1.V' (huffman_truncate_tree.cpp:32:13)
+INFO: [HLS 200-472] Inferring partial write operation for 'output_length_histogram1.V' (huffman_truncate_tree.cpp:33:13)
+INFO: [HLS 200-472] Inferring partial write operation for 'output_length_histogram2.V' (huffman_truncate_tree.cpp:45:9)
+INFO: [HLS 200-472] Inferring partial write operation for 'out.frequency.V' (huffman_filter.cpp:20:17)
+INFO: [HLS 200-472] Inferring partial write operation for 'out.value.V' (huffman_filter.cpp:21:17)
+INFO: [HLS 200-472] Inferring partial write operation for 'left.V' (huffman_create_tree.cpp:36:13)
+INFO: [HLS 200-472] Inferring partial write operation for 'left.V' (huffman_create_tree.cpp:44:13)
+INFO: [HLS 200-472] Inferring partial write operation for 'parent.V' (huffman_create_tree.cpp:46:20)
+INFO: [HLS 200-472] Inferring partial write operation for 'right.V' (huffman_create_tree.cpp:54:13)
+INFO: [HLS 200-472] Inferring partial write operation for 'right.V' (huffman_create_tree.cpp:61:13)
+INFO: [HLS 200-472] Inferring partial write operation for 'parent.V' (huffman_create_tree.cpp:63:20)
+INFO: [HLS 200-472] Inferring partial write operation for 'frequency[0].V' (huffman_create_tree.cpp:62:28)
+INFO: [HLS 200-472] Inferring partial write operation for 'frequency[0].V' (huffman_create_tree.cpp:55:28)
+INFO: [HLS 200-472] Inferring partial write operation for 'parent.V' (huffman_create_tree.cpp:70:12)
+INFO: [HLS 200-472] Inferring partial write operation for 'first_codeword.V' (huffman_create_codeword.cpp:20:2)
+INFO: [HLS 200-472] Inferring partial write operation for 'first_codeword.V' (huffman_create_codeword.cpp:40:28)
+INFO: [HLS 200-472] Inferring partial write operation for 'internal_length_hist' (huffman_compute_bit_length.cpp:19:2)
+INFO: [HLS 200-472] Inferring partial write operation for 'length_histogram.V' (huffman_compute_bit_length.cpp:20:9)
+INFO: [HLS 200-472] Inferring partial write operation for 'child_depth.V' (huffman_compute_bit_length.cpp:23:5)
+INFO: [HLS 200-472] Inferring partial write operation for 'child_depth.V' (huffman_compute_bit_length.cpp:40:9)
+INFO: [HLS 200-472] Inferring partial write operation for 'internal_length_hist' (huffman_compute_bit_length.cpp:52:39)
+INFO: [HLS 200-472] Inferring partial write operation for 'length_histogram.V' (huffman_compute_bit_length.cpp:53:30)
+INFO: [HLS 200-472] Inferring partial write operation for 'symbol_bits.V' (huffman_canonize_tree.cpp:12:9)
+INFO: [HLS 200-472] Inferring partial write operation for 'symbol_bits.V' (huffman_canonize_tree.cpp:32:21)
+INFO: [HLS 200-472] Inferring partial write operation for 'sorted_copy2.value.V' (huffman_encoding.cpp:37:9)
+INFO: [HLS 200-472] Inferring partial write operation for 'sorting.value.V.i' (./huffman.h:34:8)
+INFO: [HLS 200-472] Inferring partial write operation for 'sorting.frequency.V.i' (./huffman.h:34:8)
+INFO: [HLS 200-472] Inferring partial write operation for 'current_digit.V.i' (huffman_sort.cpp:44:13)
+INFO: [HLS 200-472] Inferring partial write operation for 'previous_sorting.val.i' (./huffman.h:34:8)
+INFO: [HLS 200-472] Inferring partial write operation for 'previous_sorting.fre.i' (./huffman.h:34:8)
+INFO: [HLS 200-472] Inferring partial write operation for 'sorting.value.V.i' (./huffman.h:34:8)
+INFO: [HLS 200-472] Inferring partial write operation for 'sorting.frequency.V.i' (./huffman.h:34:8)
+INFO: [HLS 200-472] Inferring partial write operation for 'sorted.0' (./huffman.h:34:8)
+INFO: [HLS 200-472] Inferring partial write operation for 'sorted.1' (./huffman.h:34:8)
+INFO: [HLS 200-111] Finished Architecture Synthesis Time (s): cpu = 00:00:10 ; elapsed = 00:01:52 . Memory (MB): peak = 365.945 ; gain = 276.516
+INFO: [HLS 200-10] Starting hardware synthesis ...
+INFO: [HLS 200-10] Synthesizing 'huffman_encoding' ...
+WARNING: [SYN 201-103] Legalizing function name 'Block__proc' to 'Block_proc'.
+INFO: [HLS 200-10] ----------------------------------------------------------------
+INFO: [HLS 200-42] -- Implementing module 'filter' 
+INFO: [HLS 200-10] ----------------------------------------------------------------
+INFO: [SCHED 204-11] Starting scheduling ...
+INFO: [SCHED 204-61] Pipelining loop 'Loop 1'.
+INFO: [SCHED 204-61] Pipelining result : Target II = 1, Final II = 1, Depth = 1.
+INFO: [SCHED 204-11] Finished scheduling.
+INFO: [HLS 200-111]  Elapsed time: 112.566 seconds; current allocated memory: 307.327 MB.
+INFO: [BIND 205-100] Starting micro-architecture generation ...
+INFO: [BIND 205-101] Performing variable lifetime analysis.
+INFO: [BIND 205-101] Exploring resource sharing.
+INFO: [BIND 205-101] Binding ...
+INFO: [BIND 205-100] Finished micro-architecture generation.
+INFO: [HLS 200-111]  Elapsed time: 0.186 seconds; current allocated memory: 307.519 MB.
+INFO: [HLS 200-10] ----------------------------------------------------------------
+INFO: [HLS 200-42] -- Implementing module 'Block_codeRepl810_pr' 
+INFO: [HLS 200-10] ----------------------------------------------------------------
+INFO: [SCHED 204-11] Starting scheduling ...
+INFO: [SCHED 204-11] Finished scheduling.
+INFO: [HLS 200-111]  Elapsed time: 0.21 seconds; current allocated memory: 307.563 MB.
+INFO: [BIND 205-100] Starting micro-architecture generation ...
+INFO: [BIND 205-101] Performing variable lifetime analysis.
+INFO: [BIND 205-101] Exploring resource sharing.
+INFO: [BIND 205-101] Binding ...
+INFO: [BIND 205-100] Finished micro-architecture generation.
+INFO: [HLS 200-111]  Elapsed time: 0.136 seconds; current allocated memory: 307.617 MB.
+INFO: [HLS 200-10] ----------------------------------------------------------------
+INFO: [HLS 200-42] -- Implementing module 'sort' 
+INFO: [HLS 200-10] ----------------------------------------------------------------
+INFO: [SCHED 204-11] Starting scheduling ...
+INFO: [SCHED 204-61] Pipelining loop 'copy_in_to_sorting'.
+INFO: [SCHED 204-61] Pipelining result : Target II = 1, Final II = 1, Depth = 3.
+INFO: [SCHED 204-61] Pipelining loop 'init_histogram'.
+INFO: [SCHED 204-61] Pipelining result : Target II = 1, Final II = 1, Depth = 1.
+INFO: [SCHED 204-61] Pipelining loop 'compute_histogram'.
+INFO: [SCHED 204-61] Pipelining result : Target II = 1, Final II = 1, Depth = 6.
+INFO: [SCHED 204-61] Pipelining loop 'find_digit_location'.
+INFO: [SCHED 204-61] Pipelining result : Target II = 1, Final II = 1, Depth = 2.
+INFO: [SCHED 204-61] Pipelining loop 're_sort'.
+INFO: [SCHED 204-61] Pipelining result : Target II = 1, Final II = 1, Depth = 4.
+WARNING: [SCHED 204-21] Estimated clock period (4.5595ns) exceeds the target (target clock period: 5ns, clock uncertainty: 0.625ns, effective delay budget: 4.375ns).
+WARNING: [SCHED 204-21] The critical path in module 'sort' consists of the following:
+	'select' operation ('histogram_curr.V', huffman_sort.cpp:48->huffman_encoding.cpp:24->huffman_encoding.cpp:24) [199]  (0.968 ns)
+	'add' operation ('compute_histogram_histogram_last.V', huffman_sort.cpp:50->huffman_encoding.cpp:24->huffman_encoding.cpp:24) [248]  (1.82 ns)
+	'phi' operation ('compute_histogram_histogram_last.V') with incoming values : ('compute_histogram_histogram_last.V', huffman_sort.cpp:50->huffman_encoding.cpp:24->huffman_encoding.cpp:24) [173]  (0 ns)
+	multiplexor before 'phi' operation ('digit_histogram[15].V') with incoming values : ('compute_histogram_histogram_last.V', huffman_sort.cpp:50->huffman_encoding.cpp:24->huffman_encoding.cpp:24) [232]  (1.77 ns)
+	'phi' operation ('digit_histogram[15].V') with incoming values : ('compute_histogram_histogram_last.V', huffman_sort.cpp:50->huffman_encoding.cpp:24->huffman_encoding.cpp:24) [232]  (0 ns)
+INFO: [SCHED 204-11] Finished scheduling.
+INFO: [HLS 200-111]  Elapsed time: 2.413 seconds; current allocated memory: 308.895 MB.
+INFO: [BIND 205-100] Starting micro-architecture generation ...
+INFO: [BIND 205-101] Performing variable lifetime analysis.
+INFO: [BIND 205-101] Exploring resource sharing.
+INFO: [BIND 205-101] Binding ...
+INFO: [BIND 205-100] Finished micro-architecture generation.
+INFO: [HLS 200-111]  Elapsed time: 0.607 seconds; current allocated memory: 313.402 MB.
+INFO: [HLS 200-10] ----------------------------------------------------------------
+INFO: [HLS 200-42] -- Implementing module 'Loop_copy_sorted_pro' 
+INFO: [HLS 200-10] ----------------------------------------------------------------
+INFO: [SCHED 204-11] Starting scheduling ...
+INFO: [SCHED 204-11] Finished scheduling.
+INFO: [HLS 200-111]  Elapsed time: 0.947 seconds; current allocated memory: 313.563 MB.
+INFO: [BIND 205-100] Starting micro-architecture generation ...
+INFO: [BIND 205-101] Performing variable lifetime analysis.
+INFO: [BIND 205-101] Exploring resource sharing.
+INFO: [BIND 205-101] Binding ...
+INFO: [BIND 205-100] Finished micro-architecture generation.
+INFO: [HLS 200-111]  Elapsed time: 0.17 seconds; current allocated memory: 313.722 MB.
+INFO: [HLS 200-10] ----------------------------------------------------------------
+INFO: [HLS 200-42] -- Implementing module 'create_tree' 
+INFO: [HLS 200-10] ----------------------------------------------------------------
+INFO: [SCHED 204-11] Starting scheduling ...
+INFO: [SCHED 204-61] Pipelining loop 'Loop 1'.
+INFO: [SCHED 204-61] Pipelining result : Target II = 5, Final II = 5, Depth = 6.
+WARNING: [SCHED 204-21] Estimated clock period (4.429ns) exceeds the target (target clock period: 5ns, clock uncertainty: 0.625ns, effective delay budget: 4.375ns).
+WARNING: [SCHED 204-21] The critical path in module 'create_tree' consists of the following:
+	'icmp' operation ('icmp_ln34_1', huffman_create_tree.cpp:34->huffman_encoding.cpp:44) [61]  (2.47 ns)
+	'xor' operation ('xor_ln34', huffman_create_tree.cpp:34->huffman_encoding.cpp:44) [62]  (0 ns)
+	'and' operation ('and_ln34', huffman_create_tree.cpp:34->huffman_encoding.cpp:44) [63]  (0 ns)
+	'or' operation ('or_ln34', huffman_create_tree.cpp:34->huffman_encoding.cpp:44) [65]  (0.978 ns)
+	blocking operation 0.978 ns on control path)
+INFO: [SCHED 204-11] Finished scheduling.
+INFO: [HLS 200-111]  Elapsed time: 0.471 seconds; current allocated memory: 314.075 MB.
+INFO: [BIND 205-100] Starting micro-architecture generation ...
+INFO: [BIND 205-101] Performing variable lifetime analysis.
+INFO: [BIND 205-101] Exploring resource sharing.
+INFO: [BIND 205-101] Binding ...
+INFO: [BIND 205-100] Finished micro-architecture generation.
+INFO: [HLS 200-111]  Elapsed time: 0.319 seconds; current allocated memory: 314.547 MB.
+INFO: [HLS 200-10] ----------------------------------------------------------------
+INFO: [HLS 200-42] -- Implementing module 'compute_bit_length' 
+INFO: [HLS 200-10] ----------------------------------------------------------------
+INFO: [SCHED 204-11] Starting scheduling ...
+INFO: [SCHED 204-61] Pipelining loop 'init_histogram'.
+INFO: [SCHED 204-61] Pipelining result : Target II = 1, Final II = 1, Depth = 1.
+INFO: [SCHED 204-61] Pipelining loop 'traverse_tree'.
+INFO: [SCHED 204-61] Pipelining result : Target II = 3, Final II = 3, Depth = 5.
+INFO: [SCHED 204-11] Finished scheduling.
+INFO: [HLS 200-111]  Elapsed time: 0.436 seconds; current allocated memory: 314.856 MB.
+INFO: [BIND 205-100] Starting micro-architecture generation ...
+INFO: [BIND 205-101] Performing variable lifetime analysis.
+INFO: [BIND 205-101] Exploring resource sharing.
+INFO: [BIND 205-101] Binding ...
+INFO: [BIND 205-100] Finished micro-architecture generation.
+INFO: [HLS 200-111]  Elapsed time: 0.309 seconds; current allocated memory: 315.221 MB.
+INFO: [HLS 200-10] ----------------------------------------------------------------
+INFO: [HLS 200-42] -- Implementing module 'truncate_tree' 
+INFO: [HLS 200-10] ----------------------------------------------------------------
+INFO: [SCHED 204-11] Starting scheduling ...
+INFO: [SCHED 204-11] Finished scheduling.
+INFO: [HLS 200-111]  Elapsed time: 0.332 seconds; current allocated memory: 315.438 MB.
+INFO: [BIND 205-100] Starting micro-architecture generation ...
+INFO: [BIND 205-101] Performing variable lifetime analysis.
+INFO: [BIND 205-101] Exploring resource sharing.
+INFO: [BIND 205-101] Binding ...
+INFO: [BIND 205-100] Finished micro-architecture generation.
+INFO: [HLS 200-111]  Elapsed time: 0.248 seconds; current allocated memory: 315.735 MB.
+INFO: [HLS 200-10] ----------------------------------------------------------------
+INFO: [HLS 200-42] -- Implementing module 'canonize_tree' 
+INFO: [HLS 200-10] ----------------------------------------------------------------
+INFO: [SCHED 204-11] Starting scheduling ...
+INFO: [SCHED 204-11] Finished scheduling.
+INFO: [HLS 200-111]  Elapsed time: 0.295 seconds; current allocated memory: 315.872 MB.
+INFO: [BIND 205-100] Starting micro-architecture generation ...
+INFO: [BIND 205-101] Performing variable lifetime analysis.
+INFO: [BIND 205-101] Exploring resource sharing.
+INFO: [BIND 205-101] Binding ...
+INFO: [BIND 205-100] Finished micro-architecture generation.
+INFO: [HLS 200-111]  Elapsed time: 0.198 seconds; current allocated memory: 316.050 MB.
+INFO: [HLS 200-10] ----------------------------------------------------------------
+INFO: [HLS 200-42] -- Implementing module 'create_codeword' 
+INFO: [HLS 200-10] ----------------------------------------------------------------
+INFO: [SCHED 204-11] Starting scheduling ...
+INFO: [SCHED 204-61] Pipelining loop 'first_codewords'.
+INFO: [SCHED 204-61] Pipelining result : Target II = 1, Final II = 1, Depth = 3.
+INFO: [SCHED 204-61] Pipelining loop 'assign_codewords'.
+INFO: [SCHED 204-61] Pipelining result : Target II = 5, Final II = 5, Depth = 6.
+INFO: [SCHED 204-11] Finished scheduling.
+INFO: [HLS 200-111]  Elapsed time: 0.296 seconds; current allocated memory: 316.233 MB.
+INFO: [BIND 205-100] Starting micro-architecture generation ...
+INFO: [BIND 205-101] Performing variable lifetime analysis.
+INFO: [BIND 205-101] Exploring resource sharing.
+INFO: [BIND 205-101] Binding ...
+INFO: [BIND 205-100] Finished micro-architecture generation.
+INFO: [HLS 200-111]  Elapsed time: 0.224 seconds; current allocated memory: 316.524 MB.
+INFO: [HLS 200-10] ----------------------------------------------------------------
+INFO: [HLS 200-42] -- Implementing module 'Block_proc' 
+INFO: [HLS 200-10] ----------------------------------------------------------------
+INFO: [SCHED 204-11] Starting scheduling ...
+INFO: [SCHED 204-11] Finished scheduling.
+INFO: [HLS 200-111]  Elapsed time: 0.252 seconds; current allocated memory: 316.552 MB.
+INFO: [BIND 205-100] Starting micro-architecture generation ...
+INFO: [BIND 205-101] Performing variable lifetime analysis.
+INFO: [BIND 205-101] Exploring resource sharing.
+INFO: [BIND 205-101] Binding ...
+INFO: [BIND 205-100] Finished micro-architecture generation.
+INFO: [HLS 200-111]  Elapsed time: 0.174 seconds; current allocated memory: 316.599 MB.
+INFO: [HLS 200-10] ----------------------------------------------------------------
+INFO: [HLS 200-42] -- Implementing module 'huffman_encoding' 
+INFO: [HLS 200-10] ----------------------------------------------------------------
+INFO: [SCHED 204-11] Starting scheduling ...
+INFO: [SCHED 204-11] Finished scheduling.
+INFO: [HLS 200-111]  Elapsed time: 0.177 seconds; current allocated memory: 316.755 MB.
+INFO: [BIND 205-100] Starting micro-architecture generation ...
+INFO: [BIND 205-101] Performing variable lifetime analysis.
+INFO: [BIND 205-101] Exploring resource sharing.
+INFO: [BIND 205-101] Binding ...
+INFO: [BIND 205-100] Finished micro-architecture generation.
+INFO: [HLS 200-111]  Elapsed time: 1.05 seconds; current allocated memory: 317.356 MB.
+INFO: [HLS 200-10] ----------------------------------------------------------------
+INFO: [HLS 200-10] -- Generating RTL for module 'filter' 
+INFO: [HLS 200-10] ----------------------------------------------------------------
+INFO: [RTGEN 206-100] Finished creating RTL model for 'filter'.
+INFO: [HLS 200-111]  Elapsed time: 0.502 seconds; current allocated memory: 317.785 MB.
+INFO: [HLS 200-10] ----------------------------------------------------------------
+INFO: [HLS 200-10] -- Generating RTL for module 'Block_codeRepl810_pr' 
+INFO: [HLS 200-10] ----------------------------------------------------------------
+INFO: [RTGEN 206-100] Finished creating RTL model for 'Block_codeRepl810_pr'.
+INFO: [HLS 200-111]  Elapsed time: 0.326 seconds; current allocated memory: 317.966 MB.
+INFO: [HLS 200-10] ----------------------------------------------------------------
+INFO: [HLS 200-10] -- Generating RTL for module 'sort' 
+INFO: [HLS 200-10] ----------------------------------------------------------------
+INFO: [SYN 201-210] Renamed object name 'sort_previous_sorting_val' to 'sort_previous_sorbkb' due to the length limit 20
+INFO: [SYN 201-210] Renamed object name 'sort_previous_sorting_fre' to 'sort_previous_sorcud' due to the length limit 20
+INFO: [SYN 201-210] Renamed object name 'sort_sorting_value_V' to 'sort_sorting_valudEe' due to the length limit 20
+INFO: [SYN 201-210] Renamed object name 'sort_sorting_frequency_V' to 'sort_sorting_freqeOg' due to the length limit 20
+INFO: [SYN 201-210] Renamed object name 'sort_current_digit_V' to 'sort_current_digifYi' due to the length limit 20
+INFO: [SYN 201-210] Renamed object name 'huffman_encoding_lshr_32ns_6ns_32_2_1' to 'huffman_encoding_g8j' due to the length limit 20
+INFO: [SYN 201-210] Renamed object name 'huffman_encoding_mux_164_9_1_1' to 'huffman_encoding_hbi' due to the length limit 20
+INFO: [RTGEN 206-100] Generating core module 'huffman_encoding_g8j': 1 instance(s).
+INFO: [RTGEN 206-100] Generating core module 'huffman_encoding_hbi': 3 instance(s).
+INFO: [RTGEN 206-100] Finished creating RTL model for 'sort'.
+INFO: [HLS 200-111]  Elapsed time: 0.838 seconds; current allocated memory: 322.182 MB.
+INFO: [HLS 200-10] ----------------------------------------------------------------
+INFO: [HLS 200-10] -- Generating RTL for module 'Loop_copy_sorted_pro' 
+INFO: [HLS 200-10] ----------------------------------------------------------------
+INFO: [RTGEN 206-100] Finished creating RTL model for 'Loop_copy_sorted_pro'.
+INFO: [HLS 200-111]  Elapsed time: 1.687 seconds; current allocated memory: 322.749 MB.
+INFO: [HLS 200-10] ----------------------------------------------------------------
+INFO: [HLS 200-10] -- Generating RTL for module 'create_tree' 
+INFO: [HLS 200-10] ----------------------------------------------------------------
+INFO: [SYN 201-210] Renamed object name 'create_tree_frequency_0_V' to 'create_tree_frequibs' due to the length limit 20
+INFO: [SYN 201-210] Renamed object name 'create_tree_frequency_1_V' to 'create_tree_frequjbC' due to the length limit 20
+INFO: [RTGEN 206-100] Finished creating RTL model for 'create_tree'.
+INFO: [HLS 200-111]  Elapsed time: 0.5 seconds; current allocated memory: 323.664 MB.
+INFO: [HLS 200-10] ----------------------------------------------------------------
+INFO: [HLS 200-10] -- Generating RTL for module 'compute_bit_length' 
+INFO: [HLS 200-10] ----------------------------------------------------------------
+INFO: [SYN 201-210] Renamed object name 'compute_bit_length_child_depth_V' to 'compute_bit_lengtkbM' due to the length limit 20
+INFO: [SYN 201-210] Renamed object name 'compute_bit_length_internal_length_hist' to 'compute_bit_lengtlbW' due to the length limit 20
+INFO: [RTGEN 206-100] Finished creating RTL model for 'compute_bit_length'.
+INFO: [HLS 200-111]  Elapsed time: 0.762 seconds; current allocated memory: 324.470 MB.
+INFO: [HLS 200-10] ----------------------------------------------------------------
+INFO: [HLS 200-10] -- Generating RTL for module 'truncate_tree' 
+INFO: [HLS 200-10] ----------------------------------------------------------------
+INFO: [RTGEN 206-100] Finished creating RTL model for 'truncate_tree'.
+INFO: [HLS 200-111]  Elapsed time: 0.617 seconds; current allocated memory: 325.081 MB.
+INFO: [HLS 200-10] ----------------------------------------------------------------
+INFO: [HLS 200-10] -- Generating RTL for module 'canonize_tree' 
+INFO: [HLS 200-10] ----------------------------------------------------------------
+INFO: [RTGEN 206-100] Finished creating RTL model for 'canonize_tree'.
+INFO: [HLS 200-111]  Elapsed time: 0.532 seconds; current allocated memory: 325.447 MB.
+INFO: [HLS 200-10] ----------------------------------------------------------------
+INFO: [HLS 200-10] -- Generating RTL for module 'create_codeword' 
+INFO: [HLS 200-10] ----------------------------------------------------------------
+INFO: [SYN 201-210] Renamed object name 'create_codeword_first_codeword_V' to 'create_codeword_fmb6' due to the length limit 20
+INFO: [RTGEN 206-100] Finished creating RTL model for 'create_codeword'.
+INFO: [HLS 200-111]  Elapsed time: 0.441 seconds; current allocated memory: 326.246 MB.
+INFO: [HLS 200-10] ----------------------------------------------------------------
+INFO: [HLS 200-10] -- Generating RTL for module 'Block_proc' 
+INFO: [HLS 200-10] ----------------------------------------------------------------
+INFO: [RTGEN 206-100] Finished creating RTL model for 'Block_proc'.
+INFO: [HLS 200-111]  Elapsed time: 0.479 seconds; current allocated memory: 326.417 MB.
+INFO: [HLS 200-10] ----------------------------------------------------------------
+INFO: [HLS 200-10] -- Generating RTL for module 'huffman_encoding' 
+INFO: [HLS 200-10] ----------------------------------------------------------------
+INFO: [RTGEN 206-500] Setting interface mode on port 'huffman_encoding/symbol_histogram_V_data_V' to 'axis' (register, both mode).
+INFO: [RTGEN 206-500] Setting interface mode on port 'huffman_encoding/symbol_histogram_V_keep_V' to 'axis' (register, both mode).
+INFO: [RTGEN 206-500] Setting interface mode on port 'huffman_encoding/symbol_histogram_V_strb_V' to 'axis' (register, both mode).
+INFO: [RTGEN 206-500] Setting interface mode on port 'huffman_encoding/symbol_histogram_V_user_V' to 'axis' (register, both mode).
+INFO: [RTGEN 206-500] Setting interface mode on port 'huffman_encoding/symbol_histogram_V_last_V' to 'axis' (register, both mode).
+INFO: [RTGEN 206-500] Setting interface mode on port 'huffman_encoding/symbol_histogram_V_id_V' to 'axis' (register, both mode).
+INFO: [RTGEN 206-500] Setting interface mode on port 'huffman_encoding/symbol_histogram_V_dest_V' to 'axis' (register, both mode).
+INFO: [RTGEN 206-500] Setting interface mode on port 'huffman_encoding/encoding_V_data_V' to 'axis' (register, both mode).
+INFO: [RTGEN 206-500] Setting interface mode on port 'huffman_encoding/encoding_V_keep_V' to 'axis' (register, both mode).
+INFO: [RTGEN 206-500] Setting interface mode on port 'huffman_encoding/encoding_V_strb_V' to 'axis' (register, both mode).
+INFO: [RTGEN 206-500] Setting interface mode on port 'huffman_encoding/encoding_V_user_V' to 'axis' (register, both mode).
+INFO: [RTGEN 206-500] Setting interface mode on port 'huffman_encoding/encoding_V_last_V' to 'axis' (register, both mode).
+INFO: [RTGEN 206-500] Setting interface mode on port 'huffman_encoding/encoding_V_id_V' to 'axis' (register, both mode).
+INFO: [RTGEN 206-500] Setting interface mode on port 'huffman_encoding/encoding_V_dest_V' to 'axis' (register, both mode).
+INFO: [RTGEN 206-500] Setting interface mode on port 'huffman_encoding/num_nonzero_symbols' to 's_axilite & ap_vld'.
+INFO: [RTGEN 206-500] Setting interface mode on function 'huffman_encoding' to 's_axilite & ap_ctrl_hs'.
+INFO: [RTGEN 206-100] Bundling port 'return' and 'num_nonzero_symbols' to AXI-Lite port AXILiteS.
+INFO: [SYN 201-210] Renamed object name 'huffman_encoding_filtered_value_V' to 'huffman_encoding_ncg' due to the length limit 20
+INFO: [SYN 201-210] Renamed object name 'huffman_encoding_filtered_frequency_V' to 'huffman_encoding_ocq' due to the length limit 20
+INFO: [SYN 201-210] Renamed object name 'huffman_encoding_sorted_0' to 'huffman_encoding_pcA' due to the length limit 20
+INFO: [SYN 201-210] Renamed object name 'huffman_encoding_sorted_1' to 'huffman_encoding_qcK' due to the length limit 20
+INFO: [SYN 201-210] Renamed object name 'huffman_encoding_sorted_copy2_value_V' to 'huffman_encoding_rcU' due to the length limit 20
+INFO: [SYN 201-210] Renamed object name 'huffman_encoding_parent_V' to 'huffman_encoding_sc4' due to the length limit 20
+INFO: [SYN 201-210] Renamed object name 'huffman_encoding_left_V' to 'huffman_encoding_tde' due to the length limit 20
+INFO: [SYN 201-210] Renamed object name 'huffman_encoding_right_V' to 'huffman_encoding_udo' due to the length limit 20
+INFO: [SYN 201-210] Renamed object name 'huffman_encoding_length_histogram_V' to 'huffman_encoding_vdy' due to the length limit 20
+INFO: [SYN 201-210] Renamed object name 'huffman_encoding_truncated_length_his' to 'huffman_encoding_wdI' due to the length limit 20
+INFO: [SYN 201-210] Renamed object name 'huffman_encoding_truncated_length_his_1' to 'huffman_encoding_xdS' due to the length limit 20
+INFO: [SYN 201-210] Renamed object name 'huffman_encoding_symbol_bits_V' to 'huffman_encoding_yd2' due to the length limit 20
+INFO: [SYN 201-210] Renamed object name 'start_for_Block_codeRepl810_pr_U0' to 'start_for_Block_czec' due to the length limit 20
+INFO: [SYN 201-210] Renamed object name 'start_for_create_tree_U0' to 'start_for_create_Aem' due to the length limit 20
+INFO: [SYN 201-210] Renamed object name 'start_for_Block_proc_U0' to 'start_for_Block_pBew' due to the length limit 20
+INFO: [RTGEN 206-100] Finished creating RTL model for 'huffman_encoding'.
+INFO: [HLS 200-111]  Elapsed time: 1.119 seconds; current allocated memory: 328.574 MB.
+INFO: [HLS 200-790] **** Loop Constraint Status: All loop constraints were satisfied.
+INFO: [HLS 200-789] **** Estimated Fmax: 219.32 MHz
+INFO: [RTMG 210-286] Generating pipelined shifter : 'huffman_encoding_g8j'
+INFO: [RTMG 210-278] Implementing memory 'sort_previous_sorbkb_ram (RAM)' using block RAMs.
+INFO: [RTMG 210-278] Implementing memory 'sort_previous_sorcud_ram (RAM)' using block RAMs.
+INFO: [RTMG 210-278] Implementing memory 'sort_current_digifYi_ram (RAM)' using block RAMs.
+INFO: [RTMG 210-278] Implementing memory 'create_tree_frequibs_ram (RAM)' using block RAMs.
+INFO: [RTMG 210-278] Implementing memory 'create_tree_frequjbC_ram (RAM)' using block RAMs.
+INFO: [RTMG 210-278] Implementing memory 'compute_bit_lengtkbM_ram (RAM)' using block RAMs.
+INFO: [RTMG 210-278] Implementing memory 'compute_bit_lengtlbW_ram (RAM)' using distributed RAMs.
+INFO: [RTMG 210-278] Implementing memory 'create_codeword_fmb6_ram (RAM)' using distributed RAMs.
+INFO: [HLS 200-741] Implementing PIPO huffman_encoding_ncg_memcore using a single memory for all blocks
+INFO: [RTMG 210-278] Implementing memory 'huffman_encoding_ncg_memcore_ram (RAM)' using block RAMs.
+INFO: [HLS 200-741] Implementing PIPO huffman_encoding_ocq_memcore using a single memory for all blocks
+INFO: [RTMG 210-278] Implementing memory 'huffman_encoding_ocq_memcore_ram (RAM)' using block RAMs.
+INFO: [HLS 200-740] Implementing PIPO huffman_encoding_sc4_memcore using a separate memory for each block
+INFO: [RTMG 210-278] Implementing memory 'huffman_encoding_sc4_memcore_ram (RAM)' using block RAMs.
+INFO: [HLS 200-741] Implementing PIPO huffman_encoding_vdy_memcore using a single memory for all blocks
+INFO: [RTMG 210-278] Implementing memory 'huffman_encoding_vdy_memcore_ram (RAM)' using block RAMs.
+INFO: [HLS 200-740] Implementing PIPO huffman_encoding_wdI_memcore using a separate memory for each block
+INFO: [RTMG 210-278] Implementing memory 'huffman_encoding_wdI_memcore_ram (RAM)' using block RAMs.
+INFO: [HLS 200-741] Implementing PIPO huffman_encoding_yd2_memcore using a single memory for all blocks
+INFO: [RTMG 210-278] Implementing memory 'huffman_encoding_yd2_memcore_ram (RAM)' using block RAMs.
+INFO: [RTMG 210-285] Implementing FIFO 'n_c_U(fifo_w9_d2_A)' using Shift Registers.
+INFO: [RTMG 210-285] Implementing FIFO 'n_c18_U(fifo_w9_d3_A)' using Shift Registers.
+INFO: [RTMG 210-285] Implementing FIFO 'extLd7_loc_channel_U(fifo_w9_d2_A)' using Shift Registers.
+INFO: [RTMG 210-285] Implementing FIFO 'sorted_copy1_0_chann_U(fifo_w9_d256_A)' using Block RAMs.
+INFO: [RTMG 210-285] Implementing FIFO 'sorted_copy1_1_chann_U(fifo_w32_d256_A)' using Block RAMs.
+INFO: [RTMG 210-285] Implementing FIFO 'val_assign5_loc_c_U(fifo_w9_d5_A)' using Shift Registers.
+INFO: [RTMG 210-285] Implementing FIFO 'extLd_loc_c_U(fifo_w9_d2_A)' using Shift Registers.
+INFO: [RTMG 210-285] Implementing FIFO 'extLd_loc_c19_U(fifo_w9_d2_A)' using Shift Registers.
+INFO: [RTMG 210-285] Implementing FIFO 'extLd_loc_c20_U(fifo_w9_d2_A)' using Shift Registers.
+INFO: [RTMG 210-285] Implementing FIFO 'start_for_Block_czec_U(start_for_Block_czec)' using Shift Registers.
+INFO: [RTMG 210-285] Implementing FIFO 'start_for_create_Aem_U(start_for_create_Aem)' using Shift Registers.
+INFO: [RTMG 210-285] Implementing FIFO 'start_for_Block_pBew_U(start_for_Block_pBew)' using Shift Registers.
+INFO: [HLS 200-741] Implementing PIPO huffman_encoding_ncg_memcore using a single memory for all blocks
+INFO: [HLS 200-741] Implementing PIPO huffman_encoding_ocq_memcore using a single memory for all blocks
+INFO: [HLS 200-740] Implementing PIPO huffman_encoding_sc4_memcore using a separate memory for each block
+INFO: [HLS 200-741] Implementing PIPO huffman_encoding_vdy_memcore using a single memory for all blocks
+INFO: [HLS 200-740] Implementing PIPO huffman_encoding_wdI_memcore using a separate memory for each block
+INFO: [HLS 200-741] Implementing PIPO huffman_encoding_yd2_memcore using a single memory for all blocks
+INFO: [HLS 200-741] Implementing PIPO huffman_encoding_ncg_memcore using a single memory for all blocks
+INFO: [HLS 200-741] Implementing PIPO huffman_encoding_ocq_memcore using a single memory for all blocks
+INFO: [HLS 200-740] Implementing PIPO huffman_encoding_sc4_memcore using a separate memory for each block
+INFO: [HLS 200-741] Implementing PIPO huffman_encoding_vdy_memcore using a single memory for all blocks
+INFO: [HLS 200-740] Implementing PIPO huffman_encoding_wdI_memcore using a separate memory for each block
+INFO: [HLS 200-741] Implementing PIPO huffman_encoding_yd2_memcore using a single memory for all blocks
+INFO: [HLS 200-111] Finished generating all RTL models Time (s): cpu = 00:00:25 ; elapsed = 00:02:21 . Memory (MB): peak = 423.133 ; gain = 333.703
+INFO: [VHDL 208-304] Generating VHDL RTL for huffman_encoding.
+INFO: [VLOG 209-307] Generating Verilog RTL for huffman_encoding.
+INFO: [HLS 200-112] Total elapsed time: 141.297 seconds; peak allocated memory: 328.574 MB.
+==============================================================
+Vivado(TM) HLS - High-Level Synthesis from C, C++ and SystemC v2019.2 (64-bit)
+Copyright 1986-2019 Xilinx, Inc. All Rights Reserved.
+==============================================================
+==============================================================
+Vivado(TM) HLS - High-Level Synthesis from C, C++ and SystemC v2019.2 (64-bit)
+Copyright 1986-2019 Xilinx, Inc. All Rights Reserved.
+==============================================================
+INFO: [SYN 201-201] Setting up clock 'default' with a period of 5ns.
+INFO: [SYN 201-201] Setting up clock 'default' with an uncertainty of 0.625ns.
+INFO: [HLS 200-10] Setting target device to 'xc7z020-clg484-1'
+INFO: [HLS 200-435] Setting 'config_sdx -target' configuration: config_export -vivado_optimization_level=2
+INFO: [HLS 200-435] Setting 'config_sdx -target' configuration: set_clock_uncertainty default
+INFO: [SIM 211-2] *************** CSIM start ***************
+INFO: [SIM 211-4] CSIM will launch GCC as the compiler.
+INFO: [SIM 211-1] CSim done with 0 errors.
+INFO: [SIM 211-3] *************** CSIM finish ***************
+==============================================================
+Vivado(TM) HLS - High-Level Synthesis from C, C++ and SystemC v2019.2 (64-bit)
+Copyright 1986-2019 Xilinx, Inc. All Rights Reserved.
+==============================================================
+INFO: [SYN 201-201] Setting up clock 'default' with a period of 5ns.
+INFO: [SYN 201-201] Setting up clock 'default' with an uncertainty of 0.625ns.
+INFO: [HLS 200-10] Setting target device to 'xc7z020-clg484-1'
+INFO: [HLS 200-435] Setting 'config_sdx -target' configuration: config_export -vivado_optimization_level=2
+INFO: [HLS 200-435] Setting 'config_sdx -target' configuration: set_clock_uncertainty default
+INFO: [HLS 200-435] Setting 'config_sdx -target' configuration: config_export -vivado_optimization_level=2
+INFO: [HLS 200-435] Setting 'config_sdx -target' configuration: set_clock_uncertainty default
+INFO: [SCHED 204-61] Option 'relax_ii_for_timing' is enabled, will increase II to preserve clock frequency constraints.
+INFO: [HLS 200-10] Analyzing design file 'huffman_truncate_tree.cpp' ... 
+INFO: [HLS 200-10] Analyzing design file 'huffman_create_codeword.cpp' ... 
+INFO: [HLS 200-10] Analyzing design file 'huffman_sort.cpp' ... 
+INFO: [HLS 200-10] Analyzing design file 'huffman_encoding.cpp' ... 
+WARNING: [HLS 214-114] Since the only kind of statements allowed in a canonical dataflow region are variable declarations and function calls, the compiler may not be able to correctly handle the region: huffman_encoding.cpp:33:5
+WARNING: [HLS 214-114] Since the only kind of statements allowed in a canonical dataflow region are variable declarations and function calls, the compiler may not be able to correctly handle the region: huffman_encoding.cpp:67:5
+WARNING: [HLS 200-471] Dataflow form checks found 2 issue(s) in file huffman_encoding.cpp
+INFO: [HLS 200-10] Analyzing design file 'huffman_compute_bit_length.cpp' ... 
+INFO: [HLS 200-10] Analyzing design file 'huffman_filter.cpp' ... 
+INFO: [HLS 200-10] Analyzing design file 'huffman_create_tree.cpp' ... 
+INFO: [HLS 200-10] Analyzing design file 'huffman_canonize_tree.cpp' ... 
+INFO: [HLS 200-111] Finished Linking Time (s): cpu = 00:00:04 ; elapsed = 00:01:41 . Memory (MB): peak = 186.473 ; gain = 96.441
+INFO: [HLS 200-111] Finished Checking Pragmas Time (s): cpu = 00:00:04 ; elapsed = 00:01:41 . Memory (MB): peak = 186.473 ; gain = 96.441
+INFO: [HLS 200-10] Starting code transformations ...
+INFO: [HLS 200-111] Finished Standard Transforms Time (s): cpu = 00:00:05 ; elapsed = 00:01:43 . Memory (MB): peak = 186.473 ; gain = 96.441
+INFO: [HLS 200-10] Checking synthesizability ...
+INFO: [HLS 200-111] Finished Checking Synthesizability Time (s): cpu = 00:00:06 ; elapsed = 00:01:43 . Memory (MB): peak = 209.023 ; gain = 118.992
+INFO: [XFORM 203-101] Partitioning array 'frequency.V' (huffman_create_tree.cpp:11) in dimension 1 with a cyclic factor 2.
+INFO: [XFORM 203-101] Partitioning array 'digit_location.V' (huffman_sort.cpp:16) in dimension 1 completely.
+INFO: [XFORM 203-101] Partitioning array 'digit_histogram.V' (huffman_sort.cpp:16) in dimension 1 completely.
+INFO: [XFORM 203-721] Changing loop 'Loop_copy_sorted_proc' (huffman_encoding.cpp:34) to a process function for dataflow in function 'huffman_encoding'.
+WARNING: [XFORM 203-713] All the elements of global array 'filtered.value.V' should be updated in process function 'filter', otherwise it may not be synthesized correctly.
+WARNING: [XFORM 203-713] All the elements of global array 'filtered.frequency.V' should be updated in process function 'filter', otherwise it may not be synthesized correctly.
+WARNING: [XFORM 203-713] All the elements of global array 'sorted.0'  should be updated in process function 'sort', otherwise it may not be synthesized correctly.
+WARNING: [XFORM 203-713] All the elements of global array 'sorted.1'  should be updated in process function 'sort', otherwise it may not be synthesized correctly.
+WARNING: [XFORM 203-713] All the elements of global array 'sorted_copy1.0'  should be updated in process function 'Loop_copy_sorted_proc', otherwise it may not be synthesized correctly.
+WARNING: [XFORM 203-713] All the elements of global array 'sorted_copy1.1'  should be updated in process function 'Loop_copy_sorted_proc', otherwise it may not be synthesized correctly.
+WARNING: [XFORM 203-713] All the elements of global array 'sorted_copy2.value.V' should be updated in process function 'Loop_copy_sorted_proc', otherwise it may not be synthesized correctly.
+WARNING: [XFORM 203-713] All the elements of global array 'parent.V' should be updated in process function 'create_tree', otherwise it may not be synthesized correctly.
+WARNING: [XFORM 203-713] All the elements of global array 'left.V' should be updated in process function 'create_tree', otherwise it may not be synthesized correctly.
+WARNING: [XFORM 203-713] All the elements of global array 'right.V' should be updated in process function 'create_tree', otherwise it may not be synthesized correctly.
+WARNING: [XFORM 203-713] All the elements of global array 'length_histogram.V' should be updated in process function 'compute_bit_length', otherwise it may not be synthesized correctly.
+WARNING: [XFORM 203-713] All the elements of global array 'truncated_length_histogram1.V' should be updated in process function 'truncate_tree', otherwise it may not be synthesized correctly.
+WARNING: [XFORM 203-713] All the elements of global array 'symbol_bits.V' should be updated in process function 'canonize_tree', otherwise it may not be synthesized correctly.
+INFO: [XFORM 203-712] Applying dataflow to function 'huffman_encoding', detected/extracted 10 process function(s): 
+	 'filter'
+	 'Block_codeRepl810_proc'
+	 'sort'
+	 'Loop_copy_sorted_proc'
+	 'create_tree'
+	 'compute_bit_length'
+	 'truncate_tree'
+	 'canonize_tree'
+	 'create_codeword'
+	 'Block__proc'.
+WARNING: [XFORM 203-124] Array  'sorted_copy1.1' : may have improper streaming access(es), possible reasons: (1) some entries are accessed more than once; (2) some entries are not used; (3) the entries are not accessed in sequential order.
+WARNING: [XFORM 203-124] Array  'sorted_copy1.0' : may have improper streaming access(es), possible reasons: (1) some entries are accessed more than once; (2) some entries are not used; (3) the entries are not accessed in sequential order.
+INFO: [XFORM 203-401] Performing if-conversion on hyperblock from (huffman_sort.cpp:40:47) to (huffman_sort.cpp:49:29) in function 'sort'... converting 3 basic blocks.
+INFO: [XFORM 203-401] Performing if-conversion on hyperblock from (huffman_sort.cpp:67:47) to (huffman_sort.cpp:76:28) in function 'sort'... converting 3 basic blocks.
+INFO: [XFORM 203-401] Performing if-conversion on hyperblock from (huffman_create_tree.cpp:21:47) to (huffman_create_tree.cpp:34:13) in function 'create_tree'... converting 7 basic blocks.
+INFO: [XFORM 203-401] Performing if-conversion on hyperblock from (huffman_create_codeword.cpp:33:52) to (huffman_create_codeword.cpp:42:9) in function 'create_codeword'... converting 4 basic blocks.
+INFO: [HLS 200-111] Finished Pre-synthesis Time (s): cpu = 00:00:08 ; elapsed = 00:01:46 . Memory (MB): peak = 259.090 ; gain = 169.059
+WARNING: [XFORM 203-542] Cannot flatten a loop nest 'radix_sort' (huffman_sort.cpp:29:61) in function 'sort' : 
+
+more than one sub loop.
+WARNING: [XFORM 203-631] Renaming function 'Loop_copy_sorted_proc' to 'Loop_copy_sorted_pro' (huffman_encoding.cpp:34:27)
+WARNING: [XFORM 203-631] Renaming function 'Block_codeRepl810_proc' to 'Block_codeRepl810_pr' (huffman_encoding.cpp:24:5)
+INFO: [HLS 200-472] Inferring partial write operation for 'output_length_histogram1.V' (huffman_truncate_tree.cpp:11:9)
+INFO: [HLS 200-472] Inferring partial write operation for 'output_length_histogram1.V' (huffman_truncate_tree.cpp:30:38)
+INFO: [HLS 200-472] Inferring partial write operation for 'output_length_histogram1.V' (huffman_truncate_tree.cpp:31:38)
+INFO: [HLS 200-472] Inferring partial write operation for 'output_length_histogram1.V' (huffman_truncate_tree.cpp:32:13)
+INFO: [HLS 200-472] Inferring partial write operation for 'output_length_histogram1.V' (huffman_truncate_tree.cpp:33:13)
+INFO: [HLS 200-472] Inferring partial write operation for 'output_length_histogram2.V' (huffman_truncate_tree.cpp:45:9)
+INFO: [HLS 200-472] Inferring partial write operation for 'out.frequency.V' (huffman_filter.cpp:20:17)
+INFO: [HLS 200-472] Inferring partial write operation for 'out.value.V' (huffman_filter.cpp:21:17)
+INFO: [HLS 200-472] Inferring partial write operation for 'left.V' (huffman_create_tree.cpp:36:13)
+INFO: [HLS 200-472] Inferring partial write operation for 'left.V' (huffman_create_tree.cpp:44:13)
+INFO: [HLS 200-472] Inferring partial write operation for 'parent.V' (huffman_create_tree.cpp:46:20)
+INFO: [HLS 200-472] Inferring partial write operation for 'right.V' (huffman_create_tree.cpp:54:13)
+INFO: [HLS 200-472] Inferring partial write operation for 'right.V' (huffman_create_tree.cpp:61:13)
+INFO: [HLS 200-472] Inferring partial write operation for 'parent.V' (huffman_create_tree.cpp:63:20)
+INFO: [HLS 200-472] Inferring partial write operation for 'frequency[0].V' (huffman_create_tree.cpp:62:28)
+INFO: [HLS 200-472] Inferring partial write operation for 'frequency[0].V' (huffman_create_tree.cpp:55:28)
+INFO: [HLS 200-472] Inferring partial write operation for 'parent.V' (huffman_create_tree.cpp:70:12)
+INFO: [HLS 200-472] Inferring partial write operation for 'first_codeword.V' (huffman_create_codeword.cpp:20:2)
+INFO: [HLS 200-472] Inferring partial write operation for 'first_codeword.V' (huffman_create_codeword.cpp:41:28)
+INFO: [HLS 200-472] Inferring partial write operation for 'internal_length_hist' (huffman_compute_bit_length.cpp:19:2)
+INFO: [HLS 200-472] Inferring partial write operation for 'length_histogram.V' (huffman_compute_bit_length.cpp:20:9)
+INFO: [HLS 200-472] Inferring partial write operation for 'child_depth.V' (huffman_compute_bit_length.cpp:23:5)
+INFO: [HLS 200-472] Inferring partial write operation for 'child_depth.V' (huffman_compute_bit_length.cpp:40:9)
+INFO: [HLS 200-472] Inferring partial write operation for 'internal_length_hist' (huffman_compute_bit_length.cpp:52:39)
+INFO: [HLS 200-472] Inferring partial write operation for 'length_histogram.V' (huffman_compute_bit_length.cpp:53:30)
+INFO: [HLS 200-472] Inferring partial write operation for 'symbol_bits.V' (huffman_canonize_tree.cpp:12:9)
+INFO: [HLS 200-472] Inferring partial write operation for 'symbol_bits.V' (huffman_canonize_tree.cpp:32:21)
+INFO: [HLS 200-472] Inferring partial write operation for 'sorted_copy2.value.V' (huffman_encoding.cpp:37:9)
+INFO: [HLS 200-472] Inferring partial write operation for 'sorting.value.V.i' (./huffman.h:34:8)
+INFO: [HLS 200-472] Inferring partial write operation for 'sorting.frequency.V.i' (./huffman.h:34:8)
+INFO: [HLS 200-472] Inferring partial write operation for 'current_digit.V.i' (huffman_sort.cpp:44:13)
+INFO: [HLS 200-472] Inferring partial write operation for 'previous_sorting.val.i' (./huffman.h:34:8)
+INFO: [HLS 200-472] Inferring partial write operation for 'previous_sorting.fre.i' (./huffman.h:34:8)
+INFO: [HLS 200-472] Inferring partial write operation for 'sorting.value.V.i' (./huffman.h:34:8)
+INFO: [HLS 200-472] Inferring partial write operation for 'sorting.frequency.V.i' (./huffman.h:34:8)
+INFO: [HLS 200-472] Inferring partial write operation for 'sorted.0' (./huffman.h:34:8)
+INFO: [HLS 200-472] Inferring partial write operation for 'sorted.1' (./huffman.h:34:8)
+INFO: [HLS 200-111] Finished Architecture Synthesis Time (s): cpu = 00:00:10 ; elapsed = 00:01:49 . Memory (MB): peak = 365.684 ; gain = 275.652
+INFO: [HLS 200-10] Starting hardware synthesis ...
+INFO: [HLS 200-10] Synthesizing 'huffman_encoding' ...
+WARNING: [SYN 201-103] Legalizing function name 'Block__proc' to 'Block_proc'.
+INFO: [HLS 200-10] ----------------------------------------------------------------
+INFO: [HLS 200-42] -- Implementing module 'filter' 
+INFO: [HLS 200-10] ----------------------------------------------------------------
+INFO: [SCHED 204-11] Starting scheduling ...
+INFO: [SCHED 204-61] Pipelining loop 'Loop 1'.
+INFO: [SCHED 204-61] Pipelining result : Target II = 1, Final II = 1, Depth = 1.
+INFO: [SCHED 204-11] Finished scheduling.
+INFO: [HLS 200-111]  Elapsed time: 109.254 seconds; current allocated memory: 307.364 MB.
+INFO: [BIND 205-100] Starting micro-architecture generation ...
+INFO: [BIND 205-101] Performing variable lifetime analysis.
+INFO: [BIND 205-101] Exploring resource sharing.
+INFO: [BIND 205-101] Binding ...
+INFO: [BIND 205-100] Finished micro-architecture generation.
+INFO: [HLS 200-111]  Elapsed time: 0.199 seconds; current allocated memory: 307.556 MB.
+INFO: [HLS 200-10] ----------------------------------------------------------------
+INFO: [HLS 200-42] -- Implementing module 'Block_codeRepl810_pr' 
+INFO: [HLS 200-10] ----------------------------------------------------------------
+INFO: [SCHED 204-11] Starting scheduling ...
+INFO: [SCHED 204-11] Finished scheduling.
+INFO: [HLS 200-111]  Elapsed time: 0.216 seconds; current allocated memory: 307.600 MB.
+INFO: [BIND 205-100] Starting micro-architecture generation ...
+INFO: [BIND 205-101] Performing variable lifetime analysis.
+INFO: [BIND 205-101] Exploring resource sharing.
+INFO: [BIND 205-101] Binding ...
+INFO: [BIND 205-100] Finished micro-architecture generation.
+INFO: [HLS 200-111]  Elapsed time: 0.139 seconds; current allocated memory: 307.654 MB.
+INFO: [HLS 200-10] ----------------------------------------------------------------
+INFO: [HLS 200-42] -- Implementing module 'sort' 
+INFO: [HLS 200-10] ----------------------------------------------------------------
+INFO: [SCHED 204-11] Starting scheduling ...
+INFO: [SCHED 204-61] Pipelining loop 'copy_in_to_sorting'.
+INFO: [SCHED 204-61] Pipelining result : Target II = 1, Final II = 1, Depth = 3.
+INFO: [SCHED 204-61] Pipelining loop 'init_histogram'.
+INFO: [SCHED 204-61] Pipelining result : Target II = 1, Final II = 1, Depth = 1.
+INFO: [SCHED 204-61] Pipelining loop 'compute_histogram'.
+INFO: [SCHED 204-61] Pipelining result : Target II = 1, Final II = 1, Depth = 6.
+INFO: [SCHED 204-61] Pipelining loop 'find_digit_location'.
+INFO: [SCHED 204-61] Pipelining result : Target II = 1, Final II = 1, Depth = 2.
+INFO: [SCHED 204-61] Pipelining loop 're_sort'.
+INFO: [SCHED 204-61] Pipelining result : Target II = 1, Final II = 1, Depth = 4.
+WARNING: [SCHED 204-21] Estimated clock period (4.5595ns) exceeds the target (target clock period: 5ns, clock uncertainty: 0.625ns, effective delay budget: 4.375ns).
+WARNING: [SCHED 204-21] The critical path in module 'sort' consists of the following:
+	'select' operation ('histogram_curr.V', huffman_sort.cpp:48->huffman_encoding.cpp:24->huffman_encoding.cpp:24) [199]  (0.968 ns)
+	'add' operation ('compute_histogram_histogram_last.V', huffman_sort.cpp:50->huffman_encoding.cpp:24->huffman_encoding.cpp:24) [248]  (1.82 ns)
+	'phi' operation ('compute_histogram_histogram_last.V') with incoming values : ('compute_histogram_histogram_last.V', huffman_sort.cpp:50->huffman_encoding.cpp:24->huffman_encoding.cpp:24) [173]  (0 ns)
+	multiplexor before 'phi' operation ('digit_histogram[15].V') with incoming values : ('compute_histogram_histogram_last.V', huffman_sort.cpp:50->huffman_encoding.cpp:24->huffman_encoding.cpp:24) [232]  (1.77 ns)
+	'phi' operation ('digit_histogram[15].V') with incoming values : ('compute_histogram_histogram_last.V', huffman_sort.cpp:50->huffman_encoding.cpp:24->huffman_encoding.cpp:24) [232]  (0 ns)
+INFO: [SCHED 204-11] Finished scheduling.
+INFO: [HLS 200-111]  Elapsed time: 2.497 seconds; current allocated memory: 308.933 MB.
+INFO: [BIND 205-100] Starting micro-architecture generation ...
+INFO: [BIND 205-101] Performing variable lifetime analysis.
+INFO: [BIND 205-101] Exploring resource sharing.
+INFO: [BIND 205-101] Binding ...
+INFO: [BIND 205-100] Finished micro-architecture generation.
+INFO: [HLS 200-111]  Elapsed time: 0.65 seconds; current allocated memory: 313.439 MB.
+INFO: [HLS 200-10] ----------------------------------------------------------------
+INFO: [HLS 200-42] -- Implementing module 'Loop_copy_sorted_pro' 
+INFO: [HLS 200-10] ----------------------------------------------------------------
+INFO: [SCHED 204-11] Starting scheduling ...
+INFO: [SCHED 204-11] Finished scheduling.
+INFO: [HLS 200-111]  Elapsed time: 0.726 seconds; current allocated memory: 313.600 MB.
+INFO: [BIND 205-100] Starting micro-architecture generation ...
+INFO: [BIND 205-101] Performing variable lifetime analysis.
+INFO: [BIND 205-101] Exploring resource sharing.
+INFO: [BIND 205-101] Binding ...
+INFO: [BIND 205-100] Finished micro-architecture generation.
+INFO: [HLS 200-111]  Elapsed time: 0.195 seconds; current allocated memory: 313.759 MB.
+INFO: [HLS 200-10] ----------------------------------------------------------------
+INFO: [HLS 200-42] -- Implementing module 'create_tree' 
+INFO: [HLS 200-10] ----------------------------------------------------------------
+INFO: [SCHED 204-11] Starting scheduling ...
+INFO: [SCHED 204-61] Pipelining loop 'Loop 1'.
+INFO: [SCHED 204-61] Pipelining result : Target II = 5, Final II = 5, Depth = 6.
+WARNING: [SCHED 204-21] Estimated clock period (4.429ns) exceeds the target (target clock period: 5ns, clock uncertainty: 0.625ns, effective delay budget: 4.375ns).
+WARNING: [SCHED 204-21] The critical path in module 'create_tree' consists of the following:
+	'icmp' operation ('icmp_ln34_1', huffman_create_tree.cpp:34->huffman_encoding.cpp:44) [61]  (2.47 ns)
+	'xor' operation ('xor_ln34', huffman_create_tree.cpp:34->huffman_encoding.cpp:44) [62]  (0 ns)
+	'and' operation ('and_ln34', huffman_create_tree.cpp:34->huffman_encoding.cpp:44) [63]  (0 ns)
+	'or' operation ('or_ln34', huffman_create_tree.cpp:34->huffman_encoding.cpp:44) [65]  (0.978 ns)
+	blocking operation 0.978 ns on control path)
+INFO: [SCHED 204-11] Finished scheduling.
+INFO: [HLS 200-111]  Elapsed time: 0.49 seconds; current allocated memory: 314.112 MB.
+INFO: [BIND 205-100] Starting micro-architecture generation ...
+INFO: [BIND 205-101] Performing variable lifetime analysis.
+INFO: [BIND 205-101] Exploring resource sharing.
+INFO: [BIND 205-101] Binding ...
+INFO: [BIND 205-100] Finished micro-architecture generation.
+INFO: [HLS 200-111]  Elapsed time: 0.346 seconds; current allocated memory: 314.584 MB.
+INFO: [HLS 200-10] ----------------------------------------------------------------
+INFO: [HLS 200-42] -- Implementing module 'compute_bit_length' 
+INFO: [HLS 200-10] ----------------------------------------------------------------
+INFO: [SCHED 204-11] Starting scheduling ...
+INFO: [SCHED 204-61] Pipelining loop 'init_histogram'.
+INFO: [SCHED 204-61] Pipelining result : Target II = 1, Final II = 1, Depth = 1.
+INFO: [SCHED 204-61] Pipelining loop 'traverse_tree'.
+INFO: [SCHED 204-61] Pipelining result : Target II = 3, Final II = 3, Depth = 5.
+INFO: [SCHED 204-11] Finished scheduling.
+INFO: [HLS 200-111]  Elapsed time: 0.477 seconds; current allocated memory: 314.893 MB.
+INFO: [BIND 205-100] Starting micro-architecture generation ...
+INFO: [BIND 205-101] Performing variable lifetime analysis.
+INFO: [BIND 205-101] Exploring resource sharing.
+INFO: [BIND 205-101] Binding ...
+INFO: [BIND 205-100] Finished micro-architecture generation.
+INFO: [HLS 200-111]  Elapsed time: 0.311 seconds; current allocated memory: 315.259 MB.
+INFO: [HLS 200-10] ----------------------------------------------------------------
+INFO: [HLS 200-42] -- Implementing module 'truncate_tree' 
+INFO: [HLS 200-10] ----------------------------------------------------------------
+INFO: [SCHED 204-11] Starting scheduling ...
+INFO: [SCHED 204-11] Finished scheduling.
+INFO: [HLS 200-111]  Elapsed time: 0.349 seconds; current allocated memory: 315.475 MB.
+INFO: [BIND 205-100] Starting micro-architecture generation ...
+INFO: [BIND 205-101] Performing variable lifetime analysis.
+INFO: [BIND 205-101] Exploring resource sharing.
+INFO: [BIND 205-101] Binding ...
+INFO: [BIND 205-100] Finished micro-architecture generation.
+INFO: [HLS 200-111]  Elapsed time: 0.27 seconds; current allocated memory: 315.773 MB.
+INFO: [HLS 200-10] ----------------------------------------------------------------
+INFO: [HLS 200-42] -- Implementing module 'canonize_tree' 
+INFO: [HLS 200-10] ----------------------------------------------------------------
+INFO: [SCHED 204-11] Starting scheduling ...
+INFO: [SCHED 204-11] Finished scheduling.
+INFO: [HLS 200-111]  Elapsed time: 0.33 seconds; current allocated memory: 315.909 MB.
+INFO: [BIND 205-100] Starting micro-architecture generation ...
+INFO: [BIND 205-101] Performing variable lifetime analysis.
+INFO: [BIND 205-101] Exploring resource sharing.
+INFO: [BIND 205-101] Binding ...
+INFO: [BIND 205-100] Finished micro-architecture generation.
+INFO: [HLS 200-111]  Elapsed time: 0.222 seconds; current allocated memory: 316.087 MB.
+INFO: [HLS 200-10] ----------------------------------------------------------------
+INFO: [HLS 200-42] -- Implementing module 'create_codeword' 
+INFO: [HLS 200-10] ----------------------------------------------------------------
+INFO: [SCHED 204-11] Starting scheduling ...
+INFO: [SCHED 204-61] Pipelining loop 'first_codewords'.
+INFO: [SCHED 204-61] Pipelining result : Target II = 1, Final II = 1, Depth = 3.
+INFO: [SCHED 204-61] Pipelining loop 'assign_codewords'.
+INFO: [SCHED 204-61] Pipelining result : Target II = 5, Final II = 5, Depth = 6.
+INFO: [SCHED 204-11] Finished scheduling.
+INFO: [HLS 200-111]  Elapsed time: 0.364 seconds; current allocated memory: 316.271 MB.
+INFO: [BIND 205-100] Starting micro-architecture generation ...
+INFO: [BIND 205-101] Performing variable lifetime analysis.
+INFO: [BIND 205-101] Exploring resource sharing.
+INFO: [BIND 205-101] Binding ...
+INFO: [BIND 205-100] Finished micro-architecture generation.
+INFO: [HLS 200-111]  Elapsed time: 0.253 seconds; current allocated memory: 316.562 MB.
+INFO: [HLS 200-10] ----------------------------------------------------------------
+INFO: [HLS 200-42] -- Implementing module 'Block_proc' 
+INFO: [HLS 200-10] ----------------------------------------------------------------
+INFO: [SCHED 204-11] Starting scheduling ...
+INFO: [SCHED 204-11] Finished scheduling.
+INFO: [HLS 200-111]  Elapsed time: 0.291 seconds; current allocated memory: 316.590 MB.
+INFO: [BIND 205-100] Starting micro-architecture generation ...
+INFO: [BIND 205-101] Performing variable lifetime analysis.
+INFO: [BIND 205-101] Exploring resource sharing.
+INFO: [BIND 205-101] Binding ...
+INFO: [BIND 205-100] Finished micro-architecture generation.
+INFO: [HLS 200-111]  Elapsed time: 0.204 seconds; current allocated memory: 316.637 MB.
+INFO: [HLS 200-10] ----------------------------------------------------------------
+INFO: [HLS 200-42] -- Implementing module 'huffman_encoding' 
+INFO: [HLS 200-10] ----------------------------------------------------------------
+INFO: [SCHED 204-11] Starting scheduling ...
+INFO: [SCHED 204-11] Finished scheduling.
+INFO: [HLS 200-111]  Elapsed time: 0.225 seconds; current allocated memory: 316.794 MB.
+INFO: [BIND 205-100] Starting micro-architecture generation ...
+INFO: [BIND 205-101] Performing variable lifetime analysis.
+INFO: [BIND 205-101] Exploring resource sharing.
+INFO: [BIND 205-101] Binding ...
+INFO: [BIND 205-100] Finished micro-architecture generation.
+INFO: [HLS 200-111]  Elapsed time: 1.075 seconds; current allocated memory: 317.394 MB.
+INFO: [HLS 200-10] ----------------------------------------------------------------
+INFO: [HLS 200-10] -- Generating RTL for module 'filter' 
+INFO: [HLS 200-10] ----------------------------------------------------------------
+INFO: [RTGEN 206-100] Finished creating RTL model for 'filter'.
+INFO: [HLS 200-111]  Elapsed time: 0.534 seconds; current allocated memory: 317.824 MB.
+INFO: [HLS 200-10] ----------------------------------------------------------------
+INFO: [HLS 200-10] -- Generating RTL for module 'Block_codeRepl810_pr' 
+INFO: [HLS 200-10] ----------------------------------------------------------------
+INFO: [RTGEN 206-100] Finished creating RTL model for 'Block_codeRepl810_pr'.
+INFO: [HLS 200-111]  Elapsed time: 0.333 seconds; current allocated memory: 318.004 MB.
+INFO: [HLS 200-10] ----------------------------------------------------------------
+INFO: [HLS 200-10] -- Generating RTL for module 'sort' 
+INFO: [HLS 200-10] ----------------------------------------------------------------
+INFO: [SYN 201-210] Renamed object name 'sort_previous_sorting_val' to 'sort_previous_sorbkb' due to the length limit 20
+INFO: [SYN 201-210] Renamed object name 'sort_previous_sorting_fre' to 'sort_previous_sorcud' due to the length limit 20
+INFO: [SYN 201-210] Renamed object name 'sort_sorting_value_V' to 'sort_sorting_valudEe' due to the length limit 20
+INFO: [SYN 201-210] Renamed object name 'sort_sorting_frequency_V' to 'sort_sorting_freqeOg' due to the length limit 20
+INFO: [SYN 201-210] Renamed object name 'sort_current_digit_V' to 'sort_current_digifYi' due to the length limit 20
+INFO: [SYN 201-210] Renamed object name 'huffman_encoding_lshr_32ns_6ns_32_2_1' to 'huffman_encoding_g8j' due to the length limit 20
+INFO: [SYN 201-210] Renamed object name 'huffman_encoding_mux_164_9_1_1' to 'huffman_encoding_hbi' due to the length limit 20
+INFO: [RTGEN 206-100] Generating core module 'huffman_encoding_g8j': 1 instance(s).
+INFO: [RTGEN 206-100] Generating core module 'huffman_encoding_hbi': 3 instance(s).
+INFO: [RTGEN 206-100] Finished creating RTL model for 'sort'.
+INFO: [HLS 200-111]  Elapsed time: 0.902 seconds; current allocated memory: 322.220 MB.
+INFO: [HLS 200-10] ----------------------------------------------------------------
+INFO: [HLS 200-10] -- Generating RTL for module 'Loop_copy_sorted_pro' 
+INFO: [HLS 200-10] ----------------------------------------------------------------
+INFO: [RTGEN 206-100] Finished creating RTL model for 'Loop_copy_sorted_pro'.
+INFO: [HLS 200-111]  Elapsed time: 1.712 seconds; current allocated memory: 322.787 MB.
+INFO: [HLS 200-10] ----------------------------------------------------------------
+INFO: [HLS 200-10] -- Generating RTL for module 'create_tree' 
+INFO: [HLS 200-10] ----------------------------------------------------------------
+INFO: [SYN 201-210] Renamed object name 'create_tree_frequency_0_V' to 'create_tree_frequibs' due to the length limit 20
+INFO: [SYN 201-210] Renamed object name 'create_tree_frequency_1_V' to 'create_tree_frequjbC' due to the length limit 20
+INFO: [RTGEN 206-100] Finished creating RTL model for 'create_tree'.
+INFO: [HLS 200-111]  Elapsed time: 0.844 seconds; current allocated memory: 323.703 MB.
+INFO: [HLS 200-10] ----------------------------------------------------------------
+INFO: [HLS 200-10] -- Generating RTL for module 'compute_bit_length' 
+INFO: [HLS 200-10] ----------------------------------------------------------------
+INFO: [SYN 201-210] Renamed object name 'compute_bit_length_child_depth_V' to 'compute_bit_lengtkbM' due to the length limit 20
+INFO: [SYN 201-210] Renamed object name 'compute_bit_length_internal_length_hist' to 'compute_bit_lengtlbW' due to the length limit 20
+INFO: [RTGEN 206-100] Finished creating RTL model for 'compute_bit_length'.
+INFO: [HLS 200-111]  Elapsed time: 0.785 seconds; current allocated memory: 324.509 MB.
+INFO: [HLS 200-10] ----------------------------------------------------------------
+INFO: [HLS 200-10] -- Generating RTL for module 'truncate_tree' 
+INFO: [HLS 200-10] ----------------------------------------------------------------
+INFO: [RTGEN 206-100] Finished creating RTL model for 'truncate_tree'.
+INFO: [HLS 200-111]  Elapsed time: 0.661 seconds; current allocated memory: 325.119 MB.
+INFO: [HLS 200-10] ----------------------------------------------------------------
+INFO: [HLS 200-10] -- Generating RTL for module 'canonize_tree' 
+INFO: [HLS 200-10] ----------------------------------------------------------------
+INFO: [RTGEN 206-100] Finished creating RTL model for 'canonize_tree'.
+INFO: [HLS 200-111]  Elapsed time: 0.589 seconds; current allocated memory: 325.485 MB.
+INFO: [HLS 200-10] ----------------------------------------------------------------
+INFO: [HLS 200-10] -- Generating RTL for module 'create_codeword' 
+INFO: [HLS 200-10] ----------------------------------------------------------------
+INFO: [SYN 201-210] Renamed object name 'create_codeword_first_codeword_V' to 'create_codeword_fmb6' due to the length limit 20
+INFO: [RTGEN 206-100] Finished creating RTL model for 'create_codeword'.
+INFO: [HLS 200-111]  Elapsed time: 0.53 seconds; current allocated memory: 326.284 MB.
+INFO: [HLS 200-10] ----------------------------------------------------------------
+INFO: [HLS 200-10] -- Generating RTL for module 'Block_proc' 
+INFO: [HLS 200-10] ----------------------------------------------------------------
+INFO: [RTGEN 206-100] Finished creating RTL model for 'Block_proc'.
+INFO: [HLS 200-111]  Elapsed time: 0.566 seconds; current allocated memory: 326.455 MB.
+INFO: [HLS 200-10] ----------------------------------------------------------------
+INFO: [HLS 200-10] -- Generating RTL for module 'huffman_encoding' 
+INFO: [HLS 200-10] ----------------------------------------------------------------
+INFO: [RTGEN 206-500] Setting interface mode on port 'huffman_encoding/symbol_histogram_V_data_V' to 'axis' (register, both mode).
+INFO: [RTGEN 206-500] Setting interface mode on port 'huffman_encoding/symbol_histogram_V_keep_V' to 'axis' (register, both mode).
+INFO: [RTGEN 206-500] Setting interface mode on port 'huffman_encoding/symbol_histogram_V_strb_V' to 'axis' (register, both mode).
+INFO: [RTGEN 206-500] Setting interface mode on port 'huffman_encoding/symbol_histogram_V_user_V' to 'axis' (register, both mode).
+INFO: [RTGEN 206-500] Setting interface mode on port 'huffman_encoding/symbol_histogram_V_last_V' to 'axis' (register, both mode).
+INFO: [RTGEN 206-500] Setting interface mode on port 'huffman_encoding/symbol_histogram_V_id_V' to 'axis' (register, both mode).
+INFO: [RTGEN 206-500] Setting interface mode on port 'huffman_encoding/symbol_histogram_V_dest_V' to 'axis' (register, both mode).
+INFO: [RTGEN 206-500] Setting interface mode on port 'huffman_encoding/encoding_V_data_V' to 'axis' (register, both mode).
+INFO: [RTGEN 206-500] Setting interface mode on port 'huffman_encoding/encoding_V_keep_V' to 'axis' (register, both mode).
+INFO: [RTGEN 206-500] Setting interface mode on port 'huffman_encoding/encoding_V_strb_V' to 'axis' (register, both mode).
+INFO: [RTGEN 206-500] Setting interface mode on port 'huffman_encoding/encoding_V_user_V' to 'axis' (register, both mode).
+INFO: [RTGEN 206-500] Setting interface mode on port 'huffman_encoding/encoding_V_last_V' to 'axis' (register, both mode).
+INFO: [RTGEN 206-500] Setting interface mode on port 'huffman_encoding/encoding_V_id_V' to 'axis' (register, both mode).
+INFO: [RTGEN 206-500] Setting interface mode on port 'huffman_encoding/encoding_V_dest_V' to 'axis' (register, both mode).
+INFO: [RTGEN 206-500] Setting interface mode on port 'huffman_encoding/num_nonzero_symbols' to 's_axilite & ap_vld'.
+INFO: [RTGEN 206-500] Setting interface mode on function 'huffman_encoding' to 's_axilite & ap_ctrl_hs'.
+INFO: [RTGEN 206-100] Bundling port 'return' and 'num_nonzero_symbols' to AXI-Lite port AXILiteS.
+INFO: [SYN 201-210] Renamed object name 'huffman_encoding_filtered_value_V' to 'huffman_encoding_ncg' due to the length limit 20
+INFO: [SYN 201-210] Renamed object name 'huffman_encoding_filtered_frequency_V' to 'huffman_encoding_ocq' due to the length limit 20
+INFO: [SYN 201-210] Renamed object name 'huffman_encoding_sorted_0' to 'huffman_encoding_pcA' due to the length limit 20
+INFO: [SYN 201-210] Renamed object name 'huffman_encoding_sorted_1' to 'huffman_encoding_qcK' due to the length limit 20
+INFO: [SYN 201-210] Renamed object name 'huffman_encoding_sorted_copy2_value_V' to 'huffman_encoding_rcU' due to the length limit 20
+INFO: [SYN 201-210] Renamed object name 'huffman_encoding_parent_V' to 'huffman_encoding_sc4' due to the length limit 20
+INFO: [SYN 201-210] Renamed object name 'huffman_encoding_left_V' to 'huffman_encoding_tde' due to the length limit 20
+INFO: [SYN 201-210] Renamed object name 'huffman_encoding_right_V' to 'huffman_encoding_udo' due to the length limit 20
+INFO: [SYN 201-210] Renamed object name 'huffman_encoding_length_histogram_V' to 'huffman_encoding_vdy' due to the length limit 20
+INFO: [SYN 201-210] Renamed object name 'huffman_encoding_truncated_length_his' to 'huffman_encoding_wdI' due to the length limit 20
+INFO: [SYN 201-210] Renamed object name 'huffman_encoding_truncated_length_his_1' to 'huffman_encoding_xdS' due to the length limit 20
+INFO: [SYN 201-210] Renamed object name 'huffman_encoding_symbol_bits_V' to 'huffman_encoding_yd2' due to the length limit 20
+INFO: [SYN 201-210] Renamed object name 'start_for_Block_codeRepl810_pr_U0' to 'start_for_Block_czec' due to the length limit 20
+INFO: [SYN 201-210] Renamed object name 'start_for_create_tree_U0' to 'start_for_create_Aem' due to the length limit 20
+INFO: [SYN 201-210] Renamed object name 'start_for_Block_proc_U0' to 'start_for_Block_pBew' due to the length limit 20
+INFO: [RTGEN 206-100] Finished creating RTL model for 'huffman_encoding'.
+INFO: [HLS 200-111]  Elapsed time: 1.179 seconds; current allocated memory: 328.628 MB.
+INFO: [HLS 200-790] **** Loop Constraint Status: All loop constraints were satisfied.
+INFO: [HLS 200-789] **** Estimated Fmax: 219.32 MHz
+INFO: [RTMG 210-286] Generating pipelined shifter : 'huffman_encoding_g8j'
+INFO: [RTMG 210-278] Implementing memory 'sort_previous_sorbkb_ram (RAM)' using block RAMs.
+INFO: [RTMG 210-278] Implementing memory 'sort_previous_sorcud_ram (RAM)' using block RAMs.
+INFO: [RTMG 210-278] Implementing memory 'sort_current_digifYi_ram (RAM)' using block RAMs.
+INFO: [RTMG 210-278] Implementing memory 'create_tree_frequibs_ram (RAM)' using block RAMs.
+INFO: [RTMG 210-278] Implementing memory 'create_tree_frequjbC_ram (RAM)' using block RAMs.
+INFO: [RTMG 210-278] Implementing memory 'compute_bit_lengtkbM_ram (RAM)' using block RAMs.
+INFO: [RTMG 210-278] Implementing memory 'compute_bit_lengtlbW_ram (RAM)' using distributed RAMs.
+INFO: [RTMG 210-278] Implementing memory 'create_codeword_fmb6_ram (RAM)' using distributed RAMs.
+INFO: [HLS 200-741] Implementing PIPO huffman_encoding_ncg_memcore using a single memory for all blocks
+INFO: [RTMG 210-278] Implementing memory 'huffman_encoding_ncg_memcore_ram (RAM)' using block RAMs.
+INFO: [HLS 200-741] Implementing PIPO huffman_encoding_ocq_memcore using a single memory for all blocks
+INFO: [RTMG 210-278] Implementing memory 'huffman_encoding_ocq_memcore_ram (RAM)' using block RAMs.
+INFO: [HLS 200-740] Implementing PIPO huffman_encoding_sc4_memcore using a separate memory for each block
+INFO: [RTMG 210-278] Implementing memory 'huffman_encoding_sc4_memcore_ram (RAM)' using block RAMs.
+INFO: [HLS 200-741] Implementing PIPO huffman_encoding_vdy_memcore using a single memory for all blocks
+INFO: [RTMG 210-278] Implementing memory 'huffman_encoding_vdy_memcore_ram (RAM)' using block RAMs.
+INFO: [HLS 200-740] Implementing PIPO huffman_encoding_wdI_memcore using a separate memory for each block
+INFO: [RTMG 210-278] Implementing memory 'huffman_encoding_wdI_memcore_ram (RAM)' using block RAMs.
+INFO: [HLS 200-741] Implementing PIPO huffman_encoding_yd2_memcore using a single memory for all blocks
+INFO: [RTMG 210-278] Implementing memory 'huffman_encoding_yd2_memcore_ram (RAM)' using block RAMs.
+INFO: [RTMG 210-285] Implementing FIFO 'n_c_U(fifo_w9_d2_A)' using Shift Registers.
+INFO: [RTMG 210-285] Implementing FIFO 'n_c18_U(fifo_w9_d3_A)' using Shift Registers.
+INFO: [RTMG 210-285] Implementing FIFO 'extLd7_loc_channel_U(fifo_w9_d2_A)' using Shift Registers.
+INFO: [RTMG 210-285] Implementing FIFO 'sorted_copy1_0_chann_U(fifo_w9_d256_A)' using Block RAMs.
+INFO: [RTMG 210-285] Implementing FIFO 'sorted_copy1_1_chann_U(fifo_w32_d256_A)' using Block RAMs.
+INFO: [RTMG 210-285] Implementing FIFO 'val_assign5_loc_c_U(fifo_w9_d5_A)' using Shift Registers.
+INFO: [RTMG 210-285] Implementing FIFO 'extLd_loc_c_U(fifo_w9_d2_A)' using Shift Registers.
+INFO: [RTMG 210-285] Implementing FIFO 'extLd_loc_c19_U(fifo_w9_d2_A)' using Shift Registers.
+INFO: [RTMG 210-285] Implementing FIFO 'extLd_loc_c20_U(fifo_w9_d2_A)' using Shift Registers.
+INFO: [RTMG 210-285] Implementing FIFO 'start_for_Block_czec_U(start_for_Block_czec)' using Shift Registers.
+INFO: [RTMG 210-285] Implementing FIFO 'start_for_create_Aem_U(start_for_create_Aem)' using Shift Registers.
+INFO: [RTMG 210-285] Implementing FIFO 'start_for_Block_pBew_U(start_for_Block_pBew)' using Shift Registers.
+INFO: [HLS 200-741] Implementing PIPO huffman_encoding_ncg_memcore using a single memory for all blocks
+INFO: [HLS 200-741] Implementing PIPO huffman_encoding_ocq_memcore using a single memory for all blocks
+INFO: [HLS 200-740] Implementing PIPO huffman_encoding_sc4_memcore using a separate memory for each block
+INFO: [HLS 200-741] Implementing PIPO huffman_encoding_vdy_memcore using a single memory for all blocks
+INFO: [HLS 200-740] Implementing PIPO huffman_encoding_wdI_memcore using a separate memory for each block
+INFO: [HLS 200-741] Implementing PIPO huffman_encoding_yd2_memcore using a single memory for all blocks
+INFO: [HLS 200-741] Implementing PIPO huffman_encoding_ncg_memcore using a single memory for all blocks
+INFO: [HLS 200-741] Implementing PIPO huffman_encoding_ocq_memcore using a single memory for all blocks
+INFO: [HLS 200-740] Implementing PIPO huffman_encoding_sc4_memcore using a separate memory for each block
+INFO: [HLS 200-741] Implementing PIPO huffman_encoding_vdy_memcore using a single memory for all blocks
+INFO: [HLS 200-740] Implementing PIPO huffman_encoding_wdI_memcore using a separate memory for each block
+INFO: [HLS 200-741] Implementing PIPO huffman_encoding_yd2_memcore using a single memory for all blocks
+INFO: [HLS 200-111] Finished generating all RTL models Time (s): cpu = 00:00:27 ; elapsed = 00:02:19 . Memory (MB): peak = 423.172 ; gain = 333.141
+INFO: [VHDL 208-304] Generating VHDL RTL for huffman_encoding.
+INFO: [VLOG 209-307] Generating Verilog RTL for huffman_encoding.
+INFO: [HLS 200-112] Total elapsed time: 138.675 seconds; peak allocated memory: 328.628 MB.
+==============================================================
+Vivado(TM) HLS - High-Level Synthesis from C, C++ and SystemC v2019.2 (64-bit)
+Copyright 1986-2019 Xilinx, Inc. All Rights Reserved.
+==============================================================
+==============================================================
+Vivado(TM) HLS - High-Level Synthesis from C, C++ and SystemC v2019.2 (64-bit)
+Copyright 1986-2019 Xilinx, Inc. All Rights Reserved.
+==============================================================
+==============================================================
+Vivado(TM) HLS - High-Level Synthesis from C, C++ and SystemC v2019.2 (64-bit)
+Copyright 1986-2019 Xilinx, Inc. All Rights Reserved.
+==============================================================
+==============================================================
+Vivado(TM) HLS - High-Level Synthesis from C, C++ and SystemC v2019.2 (64-bit)
+Copyright 1986-2019 Xilinx, Inc. All Rights Reserved.
+==============================================================

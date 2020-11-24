@@ -3,7 +3,7 @@
 ================================================================
 == Vivado HLS Report for 'filter'
 ================================================================
-* Date:           Thu Nov 19 02:00:07 2020
+* Date:           Tue Nov 24 15:46:25 2020
 
 * Version:        2019.2 (Build 2704478 on Wed Nov 06 22:10:23 MST 2019)
 * Project:        hls_huffman_encoding
@@ -54,14 +54,14 @@
 |       Name      | BRAM_18K| DSP48E|   FF   |  LUT  | URAM|
 +-----------------+---------+-------+--------+-------+-----+
 |DSP              |        -|      -|       -|      -|    -|
-|Expression       |        -|      -|       0|     67|    -|
+|Expression       |        -|      -|       0|     65|    -|
 |FIFO             |        -|      -|       -|      -|    -|
 |Instance         |        -|      -|       -|      -|    -|
 |Memory           |        -|      -|       -|      -|    -|
-|Multiplexer      |        -|      -|       -|     84|    -|
+|Multiplexer      |        -|      -|       -|     75|    -|
 |Register         |        -|      -|      23|      -|    -|
 +-----------------+---------+-------+--------+-------+-----+
-|Total            |        0|      0|      23|    151|    0|
+|Total            |        0|      0|      23|    140|    0|
 +-----------------+---------+-------+--------+-------+-----+
 |Available        |      280|    220|  106400|  53200|    0|
 +-----------------+---------+-------+--------+-------+-----+
@@ -82,35 +82,33 @@
     N/A
 
     * Expression: 
-    +-------------------------------+----------+-------+---+----+------------+------------+
-    |         Variable Name         | Operation| DSP48E| FF| LUT| Bitwidth P0| Bitwidth P1|
-    +-------------------------------+----------+-------+---+----+------------+------------+
-    |i_fu_136_p2                    |     +    |      0|  0|  15|           9|           1|
-    |j_V_fu_159_p2                  |     +    |      0|  0|  15|           1|           9|
-    |ap_predicate_op24_read_state2  |    and   |      0|  0|   2|           1|           1|
-    |icmp_ln11_fu_130_p2            |   icmp   |      0|  0|  13|           9|          10|
-    |icmp_ln883_fu_142_p2           |   icmp   |      0|  0|  18|          32|           1|
-    |ap_block_state1                |    or    |      0|  0|   2|           1|           1|
-    |ap_block_state2                |    or    |      0|  0|   2|           1|           1|
-    +-------------------------------+----------+-------+---+----+------------+------------+
-    |Total                          |          |      0|  0|  67|          54|          24|
-    +-------------------------------+----------+-------+---+----+------------+------------+
+    +----------------------+----------+-------+---+----+------------+------------+
+    |     Variable Name    | Operation| DSP48E| FF| LUT| Bitwidth P0| Bitwidth P1|
+    +----------------------+----------+-------+---+----+------------+------------+
+    |i_fu_161_p2           |     +    |      0|  0|  15|           9|           1|
+    |j_V_fu_199_p2         |     +    |      0|  0|  15|           9|           1|
+    |ap_block_state2       |    and   |      0|  0|   2|           1|           1|
+    |icmp_ln13_fu_155_p2   |   icmp   |      0|  0|  13|           9|          10|
+    |icmp_ln883_fu_187_p2  |   icmp   |      0|  0|  18|          32|           1|
+    |ap_block_state1       |    or    |      0|  0|   2|           1|           1|
+    +----------------------+----------+-------+---+----+------------+------------+
+    |Total                 |          |      0|  0|  65|          61|          15|
+    +----------------------+----------+-------+---+----+------------+------------+
 
     * Multiplexer: 
-    +----------------------------+----+-----------+-----+-----------+
-    |            Name            | LUT| Input Size| Bits| Total Bits|
-    +----------------------------+----+-----------+-----+-----------+
-    |ap_NS_fsm                   |  21|          4|    1|          4|
-    |ap_done                     |   9|          2|    1|          2|
-    |i_0_i_reg_110               |   9|          2|    9|         18|
-    |in_frequency_V_TDATA_blk_n  |   9|          2|    1|          2|
-    |in_value_V_TDATA_blk_n      |   9|          2|    1|          2|
-    |n_out_blk_n                 |   9|          2|    1|          2|
-    |real_start                  |   9|          2|    1|          2|
-    |t_V_fu_60                   |   9|          2|    9|         18|
-    +----------------------------+----+-----------+-----+-----------+
-    |Total                       |  84|         18|   24|         50|
-    +----------------------------+----+-----------+-----+-----------+
+    +------------------------------+----+-----------+-----+-----------+
+    |             Name             | LUT| Input Size| Bits| Total Bits|
+    +------------------------------+----+-----------+-----+-----------+
+    |ap_NS_fsm                     |  21|          4|    1|          4|
+    |ap_done                       |   9|          2|    1|          2|
+    |i_0_i_reg_135                 |   9|          2|    9|         18|
+    |n_out_blk_n                   |   9|          2|    1|          2|
+    |real_start                    |   9|          2|    1|          2|
+    |symbol_histogram_TDATA_blk_n  |   9|          2|    1|          2|
+    |t_V_fu_80                     |   9|          2|    9|         18|
+    +------------------------------+----+-----------+-----+-----------+
+    |Total                         |  75|         16|   23|         48|
+    +------------------------------+----+-----------+-----+-----------+
 
     * Register: 
     +----------------+---+----+-----+-----------+
@@ -118,9 +116,9 @@
     +----------------+---+----+-----+-----------+
     |ap_CS_fsm       |  3|   0|    3|          0|
     |ap_done_reg     |  1|   0|    1|          0|
-    |i_0_i_reg_110   |  9|   0|    9|          0|
+    |i_0_i_reg_135   |  9|   0|    9|          0|
     |start_once_reg  |  1|   0|    1|          0|
-    |t_V_fu_60       |  9|   0|    9|          0|
+    |t_V_fu_80       |  9|   0|    9|          0|
     +----------------+---+----+-----+-----------+
     |Total           | 23|   0|   23|          0|
     +----------------+---+----+-----+-----------+
@@ -144,12 +142,15 @@
 |ap_ready                  | out |    1| ap_ctrl_hs |      filter     | return value |
 |start_out                 | out |    1| ap_ctrl_hs |      filter     | return value |
 |start_write               | out |    1| ap_ctrl_hs |      filter     | return value |
-|in_value_V_TDATA          |  in |   16|    axis    |    in_value_V   |    pointer   |
-|in_value_V_TVALID         |  in |    1|    axis    |    in_value_V   |    pointer   |
-|in_value_V_TREADY         | out |    1|    axis    |    in_value_V   |    pointer   |
-|in_frequency_V_TDATA      |  in |   32|    axis    |  in_frequency_V |    pointer   |
-|in_frequency_V_TVALID     |  in |    1|    axis    |  in_frequency_V |    pointer   |
-|in_frequency_V_TREADY     | out |    1|    axis    |  in_frequency_V |    pointer   |
+|symbol_histogram_TDATA    |  in |   48|    axis    |   in_V_data_V   |    pointer   |
+|symbol_histogram_TVALID   |  in |    1|    axis    |   in_V_dest_V   |    pointer   |
+|symbol_histogram_TREADY   | out |    1|    axis    |   in_V_dest_V   |    pointer   |
+|symbol_histogram_TDEST    |  in |    1|    axis    |   in_V_dest_V   |    pointer   |
+|symbol_histogram_TKEEP    |  in |    6|    axis    |   in_V_keep_V   |    pointer   |
+|symbol_histogram_TSTRB    |  in |    6|    axis    |   in_V_strb_V   |    pointer   |
+|symbol_histogram_TUSER    |  in |    1|    axis    |   in_V_user_V   |    pointer   |
+|symbol_histogram_TLAST    |  in |    1|    axis    |   in_V_last_V   |    pointer   |
+|symbol_histogram_TID      |  in |    1|    axis    |    in_V_id_V    |    pointer   |
 |out_value_V_address0      | out |    8|  ap_memory |   out_value_V   |     array    |
 |out_value_V_ce0           | out |    1|  ap_memory |   out_value_V   |     array    |
 |out_value_V_we0           | out |    1|  ap_memory |   out_value_V   |     array    |

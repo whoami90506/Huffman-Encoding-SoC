@@ -24,7 +24,7 @@ port (
     in_frequency_V_address0 : OUT STD_LOGIC_VECTOR (7 downto 0);
     in_frequency_V_ce0 : OUT STD_LOGIC;
     in_frequency_V_q0 : IN STD_LOGIC_VECTOR (31 downto 0);
-    extLd9_loc_channel : IN STD_LOGIC_VECTOR (8 downto 0);
+    extLd7_loc_channel : IN STD_LOGIC_VECTOR (8 downto 0);
     out_value_V_address0 : OUT STD_LOGIC_VECTOR (7 downto 0);
     out_value_V_ce0 : OUT STD_LOGIC;
     out_value_V_we0 : OUT STD_LOGIC;
@@ -745,7 +745,7 @@ begin
         d0 => digit_V_reg_7014,
         q0 => current_digit_V_q0);
 
-    huffman_encoding_g8j_U9 : component huffman_encoding_g8j
+    huffman_encoding_g8j_U14 : component huffman_encoding_g8j
     generic map (
         ID => 1,
         NUM_STAGE => 2,
@@ -761,7 +761,7 @@ begin
         ce => ap_const_logic_1,
         dout => grp_fu_6695_p2);
 
-    huffman_encoding_hbi_U10 : component huffman_encoding_hbi
+    huffman_encoding_hbi_U15 : component huffman_encoding_hbi
     generic map (
         ID => 1,
         NUM_STAGE => 1,
@@ -803,7 +803,7 @@ begin
         din16 => digit_V_reg_7014,
         dout => tmp_i_fu_6708_p18);
 
-    huffman_encoding_hbi_U11 : component huffman_encoding_hbi
+    huffman_encoding_hbi_U16 : component huffman_encoding_hbi
     generic map (
         ID => 1,
         NUM_STAGE => 1,
@@ -845,7 +845,7 @@ begin
         din16 => phi_ln215_1_i_fu_6767_p17,
         dout => phi_ln215_1_i_fu_6767_p18);
 
-    huffman_encoding_hbi_U12 : component huffman_encoding_hbi
+    huffman_encoding_hbi_U17 : component huffman_encoding_hbi
     generic map (
         ID => 1,
         NUM_STAGE => 1,
@@ -4168,11 +4168,11 @@ begin
         tmp_i_reg_7027;
     i_3_fu_6805_p2 <= std_logic_vector(unsigned(i6_0_i_i_reg_3880) + unsigned(ap_const_lv5_1));
     i_fu_6668_p2 <= std_logic_vector(unsigned(i_0_i_i_reg_864) + unsigned(ap_const_lv5_1));
-    icmp_ln23_fu_6633_p2 <= "1" when (j_0_i_i_reg_293 = extLd9_loc_channel) else "0";
+    icmp_ln23_fu_6633_p2 <= "1" when (j_0_i_i_reg_293 = extLd7_loc_channel) else "0";
     icmp_ln31_fu_6662_p2 <= "1" when (i_0_i_i_reg_864 = ap_const_lv5_10) else "0";
-    icmp_ln40_fu_6678_p2 <= "1" when (j5_0_i_i_reg_1755 = extLd9_loc_channel) else "0";
+    icmp_ln40_fu_6678_p2 <= "1" when (j5_0_i_i_reg_1755 = extLd7_loc_channel) else "0";
     icmp_ln58_fu_6757_p2 <= "1" when (i6_0_i_i_reg_3880 = ap_const_lv5_10) else "0";
-    icmp_ln67_fu_6831_p2 <= "1" when (j7_0_i_i_reg_4718 = extLd9_loc_channel) else "0";
+    icmp_ln67_fu_6831_p2 <= "1" when (j7_0_i_i_reg_4718 = extLd7_loc_channel) else "0";
     icmp_ln879_2_fu_6847_p2 <= "1" when (ap_phi_mux_p_0149_0_i_i_phi_fu_4920_p4 = digit_V_1_reg_7075) else "0";
     icmp_ln879_fu_6703_p2 <= "1" when (digit_V_reg_7014 = ap_phi_mux_p_091_0_i_i_phi_fu_1958_p4) else "0";
     in_frequency_V_address0 <= zext_ln25_fu_6644_p1(8 - 1 downto 0);
