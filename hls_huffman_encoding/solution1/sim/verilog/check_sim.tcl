@@ -82,7 +82,6 @@ proc check_tvin_file {} {
     set rtlfilelist {
          "c.huffman_encoding.autotvin_symbol_histogram_value_V.dat"
          "c.huffman_encoding.autotvin_symbol_histogram_frequency_V.dat"
-         "c.huffman_encoding.autotvin_encoding_V.dat"
          "c.huffman_encoding.autotvout_encoding_V.dat"
          "c.huffman_encoding.autotvout_num_nonzero_symbols.dat"
     }

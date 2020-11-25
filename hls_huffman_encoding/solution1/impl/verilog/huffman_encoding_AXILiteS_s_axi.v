@@ -5,7 +5,7 @@
 `timescale 1ns/1ps
 module huffman_encoding_AXILiteS_s_axi
 #(parameter
-    C_S_AXI_ADDR_WIDTH = 5,
+    C_S_AXI_ADDR_WIDTH = 12,
     C_S_AXI_DATA_WIDTH = 32
 )(
     input  wire                          ACLK,
@@ -33,51 +33,78 @@ module huffman_encoding_AXILiteS_s_axi
     input  wire                          ap_done,
     input  wire                          ap_ready,
     input  wire                          ap_idle,
+    input  wire [7:0]                    symbol_histogram_value_V_address0,
+    input  wire                          symbol_histogram_value_V_ce0,
+    output wire [8:0]                    symbol_histogram_value_V_q0,
+    input  wire [7:0]                    symbol_histogram_frequency_V_address0,
+    input  wire                          symbol_histogram_frequency_V_ce0,
+    output wire [31:0]                   symbol_histogram_frequency_V_q0,
+    input  wire [7:0]                    encoding_V_address0,
+    input  wire                          encoding_V_ce0,
+    input  wire                          encoding_V_we0,
+    input  wire [31:0]                   encoding_V_d0,
     input  wire [31:0]                   num_nonzero_symbols,
     input  wire                          num_nonzero_symbols_ap_vld
 );
 //------------------------Address Info-------------------
-// 0x00 : Control signals
-//        bit 0  - ap_start (Read/Write/COH)
-//        bit 1  - ap_done (Read/COR)
-//        bit 2  - ap_idle (Read)
-//        bit 3  - ap_ready (Read)
-//        bit 7  - auto_restart (Read/Write)
-//        others - reserved
-// 0x04 : Global Interrupt Enable Register
-//        bit 0  - Global Interrupt Enable (Read/Write)
-//        others - reserved
-// 0x08 : IP Interrupt Enable Register (Read/Write)
-//        bit 0  - Channel 0 (ap_done)
-//        bit 1  - Channel 1 (ap_ready)
-//        others - reserved
-// 0x0c : IP Interrupt Status Register (Read/TOW)
-//        bit 0  - Channel 0 (ap_done)
-//        bit 1  - Channel 1 (ap_ready)
-//        others - reserved
-// 0x10 : Data signal of num_nonzero_symbols
-//        bit 31~0 - num_nonzero_symbols[31:0] (Read)
-// 0x14 : Control signal of num_nonzero_symbols
-//        bit 0  - num_nonzero_symbols_ap_vld (Read/COR)
-//        others - reserved
+// 0x000 : Control signals
+//         bit 0  - ap_start (Read/Write/COH)
+//         bit 1  - ap_done (Read/COR)
+//         bit 2  - ap_idle (Read)
+//         bit 3  - ap_ready (Read)
+//         bit 7  - auto_restart (Read/Write)
+//         others - reserved
+// 0x004 : Global Interrupt Enable Register
+//         bit 0  - Global Interrupt Enable (Read/Write)
+//         others - reserved
+// 0x008 : IP Interrupt Enable Register (Read/Write)
+//         bit 0  - Channel 0 (ap_done)
+//         bit 1  - Channel 1 (ap_ready)
+//         others - reserved
+// 0x00c : IP Interrupt Status Register (Read/TOW)
+//         bit 0  - Channel 0 (ap_done)
+//         bit 1  - Channel 1 (ap_ready)
+//         others - reserved
+// 0xc00 : Data signal of num_nonzero_symbols
+//         bit 31~0 - num_nonzero_symbols[31:0] (Read)
+// 0xc04 : Control signal of num_nonzero_symbols
+//         bit 0  - num_nonzero_symbols_ap_vld (Read/COR)
+//         others - reserved
+// 0x200 ~
+// 0x3ff : Memory 'symbol_histogram_value_V' (256 * 9b)
+//         Word n : bit [ 8: 0] - symbol_histogram_value_V[2n]
+//                  bit [24:16] - symbol_histogram_value_V[2n+1]
+//                  others      - reserved
+// 0x400 ~
+// 0x7ff : Memory 'symbol_histogram_frequency_V' (256 * 32b)
+//         Word n : bit [31:0] - symbol_histogram_frequency_V[n]
+// 0x800 ~
+// 0xbff : Memory 'encoding_V' (256 * 32b)
+//         Word n : bit [31:0] - encoding_V[n]
 // (SC = Self Clear, COR = Clear on Read, TOW = Toggle on Write, COH = Clear on Handshake)
 
 //------------------------Parameter----------------------
 localparam
-    ADDR_AP_CTRL                    = 5'h00,
-    ADDR_GIE                        = 5'h04,
-    ADDR_IER                        = 5'h08,
-    ADDR_ISR                        = 5'h0c,
-    ADDR_NUM_NONZERO_SYMBOLS_DATA_0 = 5'h10,
-    ADDR_NUM_NONZERO_SYMBOLS_CTRL   = 5'h14,
-    WRIDLE                          = 2'd0,
-    WRDATA                          = 2'd1,
-    WRRESP                          = 2'd2,
-    WRRESET                         = 2'd3,
-    RDIDLE                          = 2'd0,
-    RDDATA                          = 2'd1,
-    RDRESET                         = 2'd2,
-    ADDR_BITS         = 5;
+    ADDR_AP_CTRL                           = 12'h000,
+    ADDR_GIE                               = 12'h004,
+    ADDR_IER                               = 12'h008,
+    ADDR_ISR                               = 12'h00c,
+    ADDR_NUM_NONZERO_SYMBOLS_DATA_0        = 12'hc00,
+    ADDR_NUM_NONZERO_SYMBOLS_CTRL          = 12'hc04,
+    ADDR_SYMBOL_HISTOGRAM_VALUE_V_BASE     = 12'h200,
+    ADDR_SYMBOL_HISTOGRAM_VALUE_V_HIGH     = 12'h3ff,
+    ADDR_SYMBOL_HISTOGRAM_FREQUENCY_V_BASE = 12'h400,
+    ADDR_SYMBOL_HISTOGRAM_FREQUENCY_V_HIGH = 12'h7ff,
+    ADDR_ENCODING_V_BASE                   = 12'h800,
+    ADDR_ENCODING_V_HIGH                   = 12'hbff,
+    WRIDLE                                 = 2'd0,
+    WRDATA                                 = 2'd1,
+    WRRESP                                 = 2'd2,
+    WRRESET                                = 2'd3,
+    RDIDLE                                 = 2'd0,
+    RDDATA                                 = 2'd1,
+    RDRESET                                = 2'd2,
+    ADDR_BITS         = 12;
 
 //------------------------Local signal-------------------
     reg  [1:0]                    wstate = WRRESET;
@@ -102,8 +129,112 @@ localparam
     reg  [1:0]                    int_isr = 2'b0;
     reg  [31:0]                   int_num_nonzero_symbols = 'b0;
     reg                           int_num_nonzero_symbols_ap_vld;
+    // memory signals
+    wire [6:0]                    int_symbol_histogram_value_V_address0;
+    wire                          int_symbol_histogram_value_V_ce0;
+    wire                          int_symbol_histogram_value_V_we0;
+    wire [3:0]                    int_symbol_histogram_value_V_be0;
+    wire [31:0]                   int_symbol_histogram_value_V_d0;
+    wire [31:0]                   int_symbol_histogram_value_V_q0;
+    wire [6:0]                    int_symbol_histogram_value_V_address1;
+    wire                          int_symbol_histogram_value_V_ce1;
+    wire                          int_symbol_histogram_value_V_we1;
+    wire [3:0]                    int_symbol_histogram_value_V_be1;
+    wire [31:0]                   int_symbol_histogram_value_V_d1;
+    wire [31:0]                   int_symbol_histogram_value_V_q1;
+    reg                           int_symbol_histogram_value_V_read;
+    reg                           int_symbol_histogram_value_V_write;
+    reg  [0:0]                    int_symbol_histogram_value_V_shift;
+    wire [7:0]                    int_symbol_histogram_frequency_V_address0;
+    wire                          int_symbol_histogram_frequency_V_ce0;
+    wire                          int_symbol_histogram_frequency_V_we0;
+    wire [3:0]                    int_symbol_histogram_frequency_V_be0;
+    wire [31:0]                   int_symbol_histogram_frequency_V_d0;
+    wire [31:0]                   int_symbol_histogram_frequency_V_q0;
+    wire [7:0]                    int_symbol_histogram_frequency_V_address1;
+    wire                          int_symbol_histogram_frequency_V_ce1;
+    wire                          int_symbol_histogram_frequency_V_we1;
+    wire [3:0]                    int_symbol_histogram_frequency_V_be1;
+    wire [31:0]                   int_symbol_histogram_frequency_V_d1;
+    wire [31:0]                   int_symbol_histogram_frequency_V_q1;
+    reg                           int_symbol_histogram_frequency_V_read;
+    reg                           int_symbol_histogram_frequency_V_write;
+    wire [7:0]                    int_encoding_V_address0;
+    wire                          int_encoding_V_ce0;
+    wire                          int_encoding_V_we0;
+    wire [3:0]                    int_encoding_V_be0;
+    wire [31:0]                   int_encoding_V_d0;
+    wire [31:0]                   int_encoding_V_q0;
+    wire [7:0]                    int_encoding_V_address1;
+    wire                          int_encoding_V_ce1;
+    wire                          int_encoding_V_we1;
+    wire [3:0]                    int_encoding_V_be1;
+    wire [31:0]                   int_encoding_V_d1;
+    wire [31:0]                   int_encoding_V_q1;
+    reg                           int_encoding_V_read;
+    reg                           int_encoding_V_write;
 
 //------------------------Instantiation------------------
+// int_symbol_histogram_value_V
+huffman_encoding_AXILiteS_s_axi_ram #(
+    .BYTES    ( 4 ),
+    .DEPTH    ( 128 )
+) int_symbol_histogram_value_V (
+    .clk0     ( ACLK ),
+    .address0 ( int_symbol_histogram_value_V_address0 ),
+    .ce0      ( int_symbol_histogram_value_V_ce0 ),
+    .we0      ( int_symbol_histogram_value_V_we0 ),
+    .be0      ( int_symbol_histogram_value_V_be0 ),
+    .d0       ( int_symbol_histogram_value_V_d0 ),
+    .q0       ( int_symbol_histogram_value_V_q0 ),
+    .clk1     ( ACLK ),
+    .address1 ( int_symbol_histogram_value_V_address1 ),
+    .ce1      ( int_symbol_histogram_value_V_ce1 ),
+    .we1      ( int_symbol_histogram_value_V_we1 ),
+    .be1      ( int_symbol_histogram_value_V_be1 ),
+    .d1       ( int_symbol_histogram_value_V_d1 ),
+    .q1       ( int_symbol_histogram_value_V_q1 )
+);
+// int_symbol_histogram_frequency_V
+huffman_encoding_AXILiteS_s_axi_ram #(
+    .BYTES    ( 4 ),
+    .DEPTH    ( 256 )
+) int_symbol_histogram_frequency_V (
+    .clk0     ( ACLK ),
+    .address0 ( int_symbol_histogram_frequency_V_address0 ),
+    .ce0      ( int_symbol_histogram_frequency_V_ce0 ),
+    .we0      ( int_symbol_histogram_frequency_V_we0 ),
+    .be0      ( int_symbol_histogram_frequency_V_be0 ),
+    .d0       ( int_symbol_histogram_frequency_V_d0 ),
+    .q0       ( int_symbol_histogram_frequency_V_q0 ),
+    .clk1     ( ACLK ),
+    .address1 ( int_symbol_histogram_frequency_V_address1 ),
+    .ce1      ( int_symbol_histogram_frequency_V_ce1 ),
+    .we1      ( int_symbol_histogram_frequency_V_we1 ),
+    .be1      ( int_symbol_histogram_frequency_V_be1 ),
+    .d1       ( int_symbol_histogram_frequency_V_d1 ),
+    .q1       ( int_symbol_histogram_frequency_V_q1 )
+);
+// int_encoding_V
+huffman_encoding_AXILiteS_s_axi_ram #(
+    .BYTES    ( 4 ),
+    .DEPTH    ( 256 )
+) int_encoding_V (
+    .clk0     ( ACLK ),
+    .address0 ( int_encoding_V_address0 ),
+    .ce0      ( int_encoding_V_ce0 ),
+    .we0      ( int_encoding_V_we0 ),
+    .be0      ( int_encoding_V_be0 ),
+    .d0       ( int_encoding_V_d0 ),
+    .q0       ( int_encoding_V_q0 ),
+    .clk1     ( ACLK ),
+    .address1 ( int_encoding_V_address1 ),
+    .ce1      ( int_encoding_V_ce1 ),
+    .we1      ( int_encoding_V_we1 ),
+    .be1      ( int_encoding_V_be1 ),
+    .d1       ( int_encoding_V_d1 ),
+    .q1       ( int_encoding_V_q1 )
+);
 
 //------------------------AXI write fsm------------------
 assign AWREADY = (wstate == WRIDLE);
@@ -157,7 +288,7 @@ end
 assign ARREADY = (rstate == RDIDLE);
 assign RDATA   = rdata;
 assign RRESP   = 2'b00;  // OKAY
-assign RVALID  = (rstate == RDDATA);
+assign RVALID  = (rstate == RDDATA) & !int_symbol_histogram_value_V_read & !int_symbol_histogram_frequency_V_read & !int_encoding_V_read;
 assign ar_hs   = ARVALID & ARREADY;
 assign raddr   = ARADDR[ADDR_BITS-1:0];
 
@@ -216,6 +347,15 @@ always @(posedge ACLK) begin
                     rdata[0] <= int_num_nonzero_symbols_ap_vld;
                 end
             endcase
+        end
+        else if (int_symbol_histogram_value_V_read) begin
+            rdata <= int_symbol_histogram_value_V_q1;
+        end
+        else if (int_symbol_histogram_frequency_V_read) begin
+            rdata <= int_symbol_histogram_frequency_V_q1;
+        end
+        else if (int_encoding_V_read) begin
+            rdata <= int_encoding_V_q1;
         end
     end
 end
@@ -344,5 +484,192 @@ end
 
 
 //------------------------Memory logic-------------------
+// symbol_histogram_value_V
+assign int_symbol_histogram_value_V_address0     = symbol_histogram_value_V_address0 >> 1;
+assign int_symbol_histogram_value_V_ce0          = symbol_histogram_value_V_ce0;
+assign int_symbol_histogram_value_V_we0          = 1'b0;
+assign int_symbol_histogram_value_V_be0          = 1'b0;
+assign int_symbol_histogram_value_V_d0           = 1'b0;
+assign symbol_histogram_value_V_q0               = int_symbol_histogram_value_V_q0 >> (int_symbol_histogram_value_V_shift * 16);
+assign int_symbol_histogram_value_V_address1     = ar_hs? raddr[8:2] : waddr[8:2];
+assign int_symbol_histogram_value_V_ce1          = ar_hs | (int_symbol_histogram_value_V_write & WVALID);
+assign int_symbol_histogram_value_V_we1          = int_symbol_histogram_value_V_write & WVALID;
+assign int_symbol_histogram_value_V_be1          = WSTRB;
+assign int_symbol_histogram_value_V_d1           = WDATA;
+// symbol_histogram_frequency_V
+assign int_symbol_histogram_frequency_V_address0 = symbol_histogram_frequency_V_address0;
+assign int_symbol_histogram_frequency_V_ce0      = symbol_histogram_frequency_V_ce0;
+assign int_symbol_histogram_frequency_V_we0      = 1'b0;
+assign int_symbol_histogram_frequency_V_be0      = 1'b0;
+assign int_symbol_histogram_frequency_V_d0       = 1'b0;
+assign symbol_histogram_frequency_V_q0           = int_symbol_histogram_frequency_V_q0;
+assign int_symbol_histogram_frequency_V_address1 = ar_hs? raddr[9:2] : waddr[9:2];
+assign int_symbol_histogram_frequency_V_ce1      = ar_hs | (int_symbol_histogram_frequency_V_write & WVALID);
+assign int_symbol_histogram_frequency_V_we1      = int_symbol_histogram_frequency_V_write & WVALID;
+assign int_symbol_histogram_frequency_V_be1      = WSTRB;
+assign int_symbol_histogram_frequency_V_d1       = WDATA;
+// encoding_V
+assign int_encoding_V_address0                   = encoding_V_address0;
+assign int_encoding_V_ce0                        = encoding_V_ce0;
+assign int_encoding_V_we0                        = encoding_V_we0;
+assign int_encoding_V_be0                        = {4{encoding_V_we0}};
+assign int_encoding_V_d0                         = encoding_V_d0;
+assign int_encoding_V_address1                   = ar_hs? raddr[9:2] : waddr[9:2];
+assign int_encoding_V_ce1                        = ar_hs | (int_encoding_V_write & WVALID);
+assign int_encoding_V_we1                        = int_encoding_V_write & WVALID;
+assign int_encoding_V_be1                        = WSTRB;
+assign int_encoding_V_d1                         = WDATA;
+// int_symbol_histogram_value_V_read
+always @(posedge ACLK) begin
+    if (ARESET)
+        int_symbol_histogram_value_V_read <= 1'b0;
+    else if (ACLK_EN) begin
+        if (ar_hs && raddr >= ADDR_SYMBOL_HISTOGRAM_VALUE_V_BASE && raddr <= ADDR_SYMBOL_HISTOGRAM_VALUE_V_HIGH)
+            int_symbol_histogram_value_V_read <= 1'b1;
+        else
+            int_symbol_histogram_value_V_read <= 1'b0;
+    end
+end
+
+// int_symbol_histogram_value_V_write
+always @(posedge ACLK) begin
+    if (ARESET)
+        int_symbol_histogram_value_V_write <= 1'b0;
+    else if (ACLK_EN) begin
+        if (aw_hs && AWADDR[ADDR_BITS-1:0] >= ADDR_SYMBOL_HISTOGRAM_VALUE_V_BASE && AWADDR[ADDR_BITS-1:0] <= ADDR_SYMBOL_HISTOGRAM_VALUE_V_HIGH)
+            int_symbol_histogram_value_V_write <= 1'b1;
+        else if (WVALID)
+            int_symbol_histogram_value_V_write <= 1'b0;
+    end
+end
+
+// int_symbol_histogram_value_V_shift
+always @(posedge ACLK) begin
+    if (ACLK_EN) begin
+        if (symbol_histogram_value_V_ce0)
+            int_symbol_histogram_value_V_shift <= symbol_histogram_value_V_address0[0];
+    end
+end
+
+// int_symbol_histogram_frequency_V_read
+always @(posedge ACLK) begin
+    if (ARESET)
+        int_symbol_histogram_frequency_V_read <= 1'b0;
+    else if (ACLK_EN) begin
+        if (ar_hs && raddr >= ADDR_SYMBOL_HISTOGRAM_FREQUENCY_V_BASE && raddr <= ADDR_SYMBOL_HISTOGRAM_FREQUENCY_V_HIGH)
+            int_symbol_histogram_frequency_V_read <= 1'b1;
+        else
+            int_symbol_histogram_frequency_V_read <= 1'b0;
+    end
+end
+
+// int_symbol_histogram_frequency_V_write
+always @(posedge ACLK) begin
+    if (ARESET)
+        int_symbol_histogram_frequency_V_write <= 1'b0;
+    else if (ACLK_EN) begin
+        if (aw_hs && AWADDR[ADDR_BITS-1:0] >= ADDR_SYMBOL_HISTOGRAM_FREQUENCY_V_BASE && AWADDR[ADDR_BITS-1:0] <= ADDR_SYMBOL_HISTOGRAM_FREQUENCY_V_HIGH)
+            int_symbol_histogram_frequency_V_write <= 1'b1;
+        else if (WVALID)
+            int_symbol_histogram_frequency_V_write <= 1'b0;
+    end
+end
+
+// int_encoding_V_read
+always @(posedge ACLK) begin
+    if (ARESET)
+        int_encoding_V_read <= 1'b0;
+    else if (ACLK_EN) begin
+        if (ar_hs && raddr >= ADDR_ENCODING_V_BASE && raddr <= ADDR_ENCODING_V_HIGH)
+            int_encoding_V_read <= 1'b1;
+        else
+            int_encoding_V_read <= 1'b0;
+    end
+end
+
+// int_encoding_V_write
+always @(posedge ACLK) begin
+    if (ARESET)
+        int_encoding_V_write <= 1'b0;
+    else if (ACLK_EN) begin
+        if (aw_hs && AWADDR[ADDR_BITS-1:0] >= ADDR_ENCODING_V_BASE && AWADDR[ADDR_BITS-1:0] <= ADDR_ENCODING_V_HIGH)
+            int_encoding_V_write <= 1'b1;
+        else if (WVALID)
+            int_encoding_V_write <= 1'b0;
+    end
+end
+
 
 endmodule
+
+
+`timescale 1ns/1ps
+
+module huffman_encoding_AXILiteS_s_axi_ram
+#(parameter
+    BYTES  = 4,
+    DEPTH  = 256,
+    AWIDTH = log2(DEPTH)
+) (
+    input  wire               clk0,
+    input  wire [AWIDTH-1:0]  address0,
+    input  wire               ce0,
+    input  wire               we0,
+    input  wire [BYTES-1:0]   be0,
+    input  wire [BYTES*8-1:0] d0,
+    output reg  [BYTES*8-1:0] q0,
+    input  wire               clk1,
+    input  wire [AWIDTH-1:0]  address1,
+    input  wire               ce1,
+    input  wire               we1,
+    input  wire [BYTES-1:0]   be1,
+    input  wire [BYTES*8-1:0] d1,
+    output reg  [BYTES*8-1:0] q1
+);
+//------------------------Local signal-------------------
+reg  [BYTES*8-1:0] mem[0:DEPTH-1];
+//------------------------Task and function--------------
+function integer log2;
+    input integer x;
+    integer n, m;
+begin
+    n = 1;
+    m = 2;
+    while (m < x) begin
+        n = n + 1;
+        m = m * 2;
+    end
+    log2 = n;
+end
+endfunction
+//------------------------Body---------------------------
+// read port 0
+always @(posedge clk0) begin
+    if (ce0) q0 <= mem[address0];
+end
+
+// read port 1
+always @(posedge clk1) begin
+    if (ce1) q1 <= mem[address1];
+end
+
+genvar i;
+generate
+    for (i = 0; i < BYTES; i = i + 1) begin : gen_write
+        // write port 0
+        always @(posedge clk0) begin
+            if (ce0 & we0 & be0[i]) begin
+                mem[address0][8*i+7:8*i] <= d0[8*i+7:8*i];
+            end
+        end
+        // write port 1
+        always @(posedge clk1) begin
+            if (ce1 & we1 & be1[i]) begin
+                mem[address1][8*i+7:8*i] <= d1[8*i+7:8*i];
+            end
+        end
+    end
+endgenerate
+
+endmodule
+

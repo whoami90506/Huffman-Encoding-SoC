@@ -3,7 +3,7 @@
 ================================================================
 == Vivado HLS Report for 'sort'
 ================================================================
-* Date:           Thu Nov 19 02:00:08 2020
+* Date:           Tue Nov 24 17:22:04 2020
 
 * Version:        2019.2 (Build 2704478 on Wed Nov 06 22:10:23 MST 2019)
 * Project:        hls_huffman_encoding
@@ -78,10 +78,10 @@
     +--------------------------+----------------------+---------+-------+-----+-----+-----+
     |         Instance         |        Module        | BRAM_18K| DSP48E|  FF | LUT | URAM|
     +--------------------------+----------------------+---------+-------+-----+-----+-----+
-    |huffman_encoding_g8j_U9   |huffman_encoding_g8j  |        0|      0|  140|  126|    0|
+    |huffman_encoding_g8j_U8   |huffman_encoding_g8j  |        0|      0|  140|  126|    0|
+    |huffman_encoding_hbi_U9   |huffman_encoding_hbi  |        0|      0|    0|   65|    0|
     |huffman_encoding_hbi_U10  |huffman_encoding_hbi  |        0|      0|    0|   65|    0|
     |huffman_encoding_hbi_U11  |huffman_encoding_hbi  |        0|      0|    0|   65|    0|
-    |huffman_encoding_hbi_U12  |huffman_encoding_hbi  |        0|      0|    0|   65|    0|
     +--------------------------+----------------------+---------+-------+-----+-----+-----+
     |Total                     |                      |        0|      0|  140|  321|    0|
     +--------------------------+----------------------+---------+-------+-----+-----+-----+

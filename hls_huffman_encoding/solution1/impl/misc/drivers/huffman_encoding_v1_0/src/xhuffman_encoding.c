@@ -93,6 +93,291 @@ u32 XHuffman_encoding_Get_num_nonzero_symbols_vld(XHuffman_encoding *InstancePtr
     return Data & 0x1;
 }
 
+u32 XHuffman_encoding_Get_symbol_histogram_value_V_BaseAddress(XHuffman_encoding *InstancePtr) {
+    Xil_AssertNonvoid(InstancePtr != NULL);
+    Xil_AssertNonvoid(InstancePtr->IsReady == XIL_COMPONENT_IS_READY);
+
+    return (InstancePtr->Axilites_BaseAddress + XHUFFMAN_ENCODING_AXILITES_ADDR_SYMBOL_HISTOGRAM_VALUE_V_BASE);
+}
+
+u32 XHuffman_encoding_Get_symbol_histogram_value_V_HighAddress(XHuffman_encoding *InstancePtr) {
+    Xil_AssertNonvoid(InstancePtr != NULL);
+    Xil_AssertNonvoid(InstancePtr->IsReady == XIL_COMPONENT_IS_READY);
+
+    return (InstancePtr->Axilites_BaseAddress + XHUFFMAN_ENCODING_AXILITES_ADDR_SYMBOL_HISTOGRAM_VALUE_V_HIGH);
+}
+
+u32 XHuffman_encoding_Get_symbol_histogram_value_V_TotalBytes(XHuffman_encoding *InstancePtr) {
+    Xil_AssertNonvoid(InstancePtr != NULL);
+    Xil_AssertNonvoid(InstancePtr->IsReady == XIL_COMPONENT_IS_READY);
+
+    return (XHUFFMAN_ENCODING_AXILITES_ADDR_SYMBOL_HISTOGRAM_VALUE_V_HIGH - XHUFFMAN_ENCODING_AXILITES_ADDR_SYMBOL_HISTOGRAM_VALUE_V_BASE + 1);
+}
+
+u32 XHuffman_encoding_Get_symbol_histogram_value_V_BitWidth(XHuffman_encoding *InstancePtr) {
+    Xil_AssertNonvoid(InstancePtr != NULL);
+    Xil_AssertNonvoid(InstancePtr->IsReady == XIL_COMPONENT_IS_READY);
+
+    return XHUFFMAN_ENCODING_AXILITES_WIDTH_SYMBOL_HISTOGRAM_VALUE_V;
+}
+
+u32 XHuffman_encoding_Get_symbol_histogram_value_V_Depth(XHuffman_encoding *InstancePtr) {
+    Xil_AssertNonvoid(InstancePtr != NULL);
+    Xil_AssertNonvoid(InstancePtr->IsReady == XIL_COMPONENT_IS_READY);
+
+    return XHUFFMAN_ENCODING_AXILITES_DEPTH_SYMBOL_HISTOGRAM_VALUE_V;
+}
+
+u32 XHuffman_encoding_Write_symbol_histogram_value_V_Words(XHuffman_encoding *InstancePtr, int offset, int *data, int length) {
+    Xil_AssertNonvoid(InstancePtr != NULL);
+    Xil_AssertNonvoid(InstancePtr -> IsReady == XIL_COMPONENT_IS_READY);
+
+    int i;
+
+    if ((offset + length)*4 > (XHUFFMAN_ENCODING_AXILITES_ADDR_SYMBOL_HISTOGRAM_VALUE_V_HIGH - XHUFFMAN_ENCODING_AXILITES_ADDR_SYMBOL_HISTOGRAM_VALUE_V_BASE + 1))
+        return 0;
+
+    for (i = 0; i < length; i++) {
+        *(int *)(InstancePtr->Axilites_BaseAddress + XHUFFMAN_ENCODING_AXILITES_ADDR_SYMBOL_HISTOGRAM_VALUE_V_BASE + (offset + i)*4) = *(data + i);
+    }
+    return length;
+}
+
+u32 XHuffman_encoding_Read_symbol_histogram_value_V_Words(XHuffman_encoding *InstancePtr, int offset, int *data, int length) {
+    Xil_AssertNonvoid(InstancePtr != NULL);
+    Xil_AssertNonvoid(InstancePtr -> IsReady == XIL_COMPONENT_IS_READY);
+
+    int i;
+
+    if ((offset + length)*4 > (XHUFFMAN_ENCODING_AXILITES_ADDR_SYMBOL_HISTOGRAM_VALUE_V_HIGH - XHUFFMAN_ENCODING_AXILITES_ADDR_SYMBOL_HISTOGRAM_VALUE_V_BASE + 1))
+        return 0;
+
+    for (i = 0; i < length; i++) {
+        *(data + i) = *(int *)(InstancePtr->Axilites_BaseAddress + XHUFFMAN_ENCODING_AXILITES_ADDR_SYMBOL_HISTOGRAM_VALUE_V_BASE + (offset + i)*4);
+    }
+    return length;
+}
+
+u32 XHuffman_encoding_Write_symbol_histogram_value_V_Bytes(XHuffman_encoding *InstancePtr, int offset, char *data, int length) {
+    Xil_AssertNonvoid(InstancePtr != NULL);
+    Xil_AssertNonvoid(InstancePtr -> IsReady == XIL_COMPONENT_IS_READY);
+
+    int i;
+
+    if ((offset + length) > (XHUFFMAN_ENCODING_AXILITES_ADDR_SYMBOL_HISTOGRAM_VALUE_V_HIGH - XHUFFMAN_ENCODING_AXILITES_ADDR_SYMBOL_HISTOGRAM_VALUE_V_BASE + 1))
+        return 0;
+
+    for (i = 0; i < length; i++) {
+        *(char *)(InstancePtr->Axilites_BaseAddress + XHUFFMAN_ENCODING_AXILITES_ADDR_SYMBOL_HISTOGRAM_VALUE_V_BASE + offset + i) = *(data + i);
+    }
+    return length;
+}
+
+u32 XHuffman_encoding_Read_symbol_histogram_value_V_Bytes(XHuffman_encoding *InstancePtr, int offset, char *data, int length) {
+    Xil_AssertNonvoid(InstancePtr != NULL);
+    Xil_AssertNonvoid(InstancePtr -> IsReady == XIL_COMPONENT_IS_READY);
+
+    int i;
+
+    if ((offset + length) > (XHUFFMAN_ENCODING_AXILITES_ADDR_SYMBOL_HISTOGRAM_VALUE_V_HIGH - XHUFFMAN_ENCODING_AXILITES_ADDR_SYMBOL_HISTOGRAM_VALUE_V_BASE + 1))
+        return 0;
+
+    for (i = 0; i < length; i++) {
+        *(data + i) = *(char *)(InstancePtr->Axilites_BaseAddress + XHUFFMAN_ENCODING_AXILITES_ADDR_SYMBOL_HISTOGRAM_VALUE_V_BASE + offset + i);
+    }
+    return length;
+}
+
+u32 XHuffman_encoding_Get_symbol_histogram_frequency_V_BaseAddress(XHuffman_encoding *InstancePtr) {
+    Xil_AssertNonvoid(InstancePtr != NULL);
+    Xil_AssertNonvoid(InstancePtr->IsReady == XIL_COMPONENT_IS_READY);
+
+    return (InstancePtr->Axilites_BaseAddress + XHUFFMAN_ENCODING_AXILITES_ADDR_SYMBOL_HISTOGRAM_FREQUENCY_V_BASE);
+}
+
+u32 XHuffman_encoding_Get_symbol_histogram_frequency_V_HighAddress(XHuffman_encoding *InstancePtr) {
+    Xil_AssertNonvoid(InstancePtr != NULL);
+    Xil_AssertNonvoid(InstancePtr->IsReady == XIL_COMPONENT_IS_READY);
+
+    return (InstancePtr->Axilites_BaseAddress + XHUFFMAN_ENCODING_AXILITES_ADDR_SYMBOL_HISTOGRAM_FREQUENCY_V_HIGH);
+}
+
+u32 XHuffman_encoding_Get_symbol_histogram_frequency_V_TotalBytes(XHuffman_encoding *InstancePtr) {
+    Xil_AssertNonvoid(InstancePtr != NULL);
+    Xil_AssertNonvoid(InstancePtr->IsReady == XIL_COMPONENT_IS_READY);
+
+    return (XHUFFMAN_ENCODING_AXILITES_ADDR_SYMBOL_HISTOGRAM_FREQUENCY_V_HIGH - XHUFFMAN_ENCODING_AXILITES_ADDR_SYMBOL_HISTOGRAM_FREQUENCY_V_BASE + 1);
+}
+
+u32 XHuffman_encoding_Get_symbol_histogram_frequency_V_BitWidth(XHuffman_encoding *InstancePtr) {
+    Xil_AssertNonvoid(InstancePtr != NULL);
+    Xil_AssertNonvoid(InstancePtr->IsReady == XIL_COMPONENT_IS_READY);
+
+    return XHUFFMAN_ENCODING_AXILITES_WIDTH_SYMBOL_HISTOGRAM_FREQUENCY_V;
+}
+
+u32 XHuffman_encoding_Get_symbol_histogram_frequency_V_Depth(XHuffman_encoding *InstancePtr) {
+    Xil_AssertNonvoid(InstancePtr != NULL);
+    Xil_AssertNonvoid(InstancePtr->IsReady == XIL_COMPONENT_IS_READY);
+
+    return XHUFFMAN_ENCODING_AXILITES_DEPTH_SYMBOL_HISTOGRAM_FREQUENCY_V;
+}
+
+u32 XHuffman_encoding_Write_symbol_histogram_frequency_V_Words(XHuffman_encoding *InstancePtr, int offset, int *data, int length) {
+    Xil_AssertNonvoid(InstancePtr != NULL);
+    Xil_AssertNonvoid(InstancePtr -> IsReady == XIL_COMPONENT_IS_READY);
+
+    int i;
+
+    if ((offset + length)*4 > (XHUFFMAN_ENCODING_AXILITES_ADDR_SYMBOL_HISTOGRAM_FREQUENCY_V_HIGH - XHUFFMAN_ENCODING_AXILITES_ADDR_SYMBOL_HISTOGRAM_FREQUENCY_V_BASE + 1))
+        return 0;
+
+    for (i = 0; i < length; i++) {
+        *(int *)(InstancePtr->Axilites_BaseAddress + XHUFFMAN_ENCODING_AXILITES_ADDR_SYMBOL_HISTOGRAM_FREQUENCY_V_BASE + (offset + i)*4) = *(data + i);
+    }
+    return length;
+}
+
+u32 XHuffman_encoding_Read_symbol_histogram_frequency_V_Words(XHuffman_encoding *InstancePtr, int offset, int *data, int length) {
+    Xil_AssertNonvoid(InstancePtr != NULL);
+    Xil_AssertNonvoid(InstancePtr -> IsReady == XIL_COMPONENT_IS_READY);
+
+    int i;
+
+    if ((offset + length)*4 > (XHUFFMAN_ENCODING_AXILITES_ADDR_SYMBOL_HISTOGRAM_FREQUENCY_V_HIGH - XHUFFMAN_ENCODING_AXILITES_ADDR_SYMBOL_HISTOGRAM_FREQUENCY_V_BASE + 1))
+        return 0;
+
+    for (i = 0; i < length; i++) {
+        *(data + i) = *(int *)(InstancePtr->Axilites_BaseAddress + XHUFFMAN_ENCODING_AXILITES_ADDR_SYMBOL_HISTOGRAM_FREQUENCY_V_BASE + (offset + i)*4);
+    }
+    return length;
+}
+
+u32 XHuffman_encoding_Write_symbol_histogram_frequency_V_Bytes(XHuffman_encoding *InstancePtr, int offset, char *data, int length) {
+    Xil_AssertNonvoid(InstancePtr != NULL);
+    Xil_AssertNonvoid(InstancePtr -> IsReady == XIL_COMPONENT_IS_READY);
+
+    int i;
+
+    if ((offset + length) > (XHUFFMAN_ENCODING_AXILITES_ADDR_SYMBOL_HISTOGRAM_FREQUENCY_V_HIGH - XHUFFMAN_ENCODING_AXILITES_ADDR_SYMBOL_HISTOGRAM_FREQUENCY_V_BASE + 1))
+        return 0;
+
+    for (i = 0; i < length; i++) {
+        *(char *)(InstancePtr->Axilites_BaseAddress + XHUFFMAN_ENCODING_AXILITES_ADDR_SYMBOL_HISTOGRAM_FREQUENCY_V_BASE + offset + i) = *(data + i);
+    }
+    return length;
+}
+
+u32 XHuffman_encoding_Read_symbol_histogram_frequency_V_Bytes(XHuffman_encoding *InstancePtr, int offset, char *data, int length) {
+    Xil_AssertNonvoid(InstancePtr != NULL);
+    Xil_AssertNonvoid(InstancePtr -> IsReady == XIL_COMPONENT_IS_READY);
+
+    int i;
+
+    if ((offset + length) > (XHUFFMAN_ENCODING_AXILITES_ADDR_SYMBOL_HISTOGRAM_FREQUENCY_V_HIGH - XHUFFMAN_ENCODING_AXILITES_ADDR_SYMBOL_HISTOGRAM_FREQUENCY_V_BASE + 1))
+        return 0;
+
+    for (i = 0; i < length; i++) {
+        *(data + i) = *(char *)(InstancePtr->Axilites_BaseAddress + XHUFFMAN_ENCODING_AXILITES_ADDR_SYMBOL_HISTOGRAM_FREQUENCY_V_BASE + offset + i);
+    }
+    return length;
+}
+
+u32 XHuffman_encoding_Get_encoding_V_BaseAddress(XHuffman_encoding *InstancePtr) {
+    Xil_AssertNonvoid(InstancePtr != NULL);
+    Xil_AssertNonvoid(InstancePtr->IsReady == XIL_COMPONENT_IS_READY);
+
+    return (InstancePtr->Axilites_BaseAddress + XHUFFMAN_ENCODING_AXILITES_ADDR_ENCODING_V_BASE);
+}
+
+u32 XHuffman_encoding_Get_encoding_V_HighAddress(XHuffman_encoding *InstancePtr) {
+    Xil_AssertNonvoid(InstancePtr != NULL);
+    Xil_AssertNonvoid(InstancePtr->IsReady == XIL_COMPONENT_IS_READY);
+
+    return (InstancePtr->Axilites_BaseAddress + XHUFFMAN_ENCODING_AXILITES_ADDR_ENCODING_V_HIGH);
+}
+
+u32 XHuffman_encoding_Get_encoding_V_TotalBytes(XHuffman_encoding *InstancePtr) {
+    Xil_AssertNonvoid(InstancePtr != NULL);
+    Xil_AssertNonvoid(InstancePtr->IsReady == XIL_COMPONENT_IS_READY);
+
+    return (XHUFFMAN_ENCODING_AXILITES_ADDR_ENCODING_V_HIGH - XHUFFMAN_ENCODING_AXILITES_ADDR_ENCODING_V_BASE + 1);
+}
+
+u32 XHuffman_encoding_Get_encoding_V_BitWidth(XHuffman_encoding *InstancePtr) {
+    Xil_AssertNonvoid(InstancePtr != NULL);
+    Xil_AssertNonvoid(InstancePtr->IsReady == XIL_COMPONENT_IS_READY);
+
+    return XHUFFMAN_ENCODING_AXILITES_WIDTH_ENCODING_V;
+}
+
+u32 XHuffman_encoding_Get_encoding_V_Depth(XHuffman_encoding *InstancePtr) {
+    Xil_AssertNonvoid(InstancePtr != NULL);
+    Xil_AssertNonvoid(InstancePtr->IsReady == XIL_COMPONENT_IS_READY);
+
+    return XHUFFMAN_ENCODING_AXILITES_DEPTH_ENCODING_V;
+}
+
+u32 XHuffman_encoding_Write_encoding_V_Words(XHuffman_encoding *InstancePtr, int offset, int *data, int length) {
+    Xil_AssertNonvoid(InstancePtr != NULL);
+    Xil_AssertNonvoid(InstancePtr -> IsReady == XIL_COMPONENT_IS_READY);
+
+    int i;
+
+    if ((offset + length)*4 > (XHUFFMAN_ENCODING_AXILITES_ADDR_ENCODING_V_HIGH - XHUFFMAN_ENCODING_AXILITES_ADDR_ENCODING_V_BASE + 1))
+        return 0;
+
+    for (i = 0; i < length; i++) {
+        *(int *)(InstancePtr->Axilites_BaseAddress + XHUFFMAN_ENCODING_AXILITES_ADDR_ENCODING_V_BASE + (offset + i)*4) = *(data + i);
+    }
+    return length;
+}
+
+u32 XHuffman_encoding_Read_encoding_V_Words(XHuffman_encoding *InstancePtr, int offset, int *data, int length) {
+    Xil_AssertNonvoid(InstancePtr != NULL);
+    Xil_AssertNonvoid(InstancePtr -> IsReady == XIL_COMPONENT_IS_READY);
+
+    int i;
+
+    if ((offset + length)*4 > (XHUFFMAN_ENCODING_AXILITES_ADDR_ENCODING_V_HIGH - XHUFFMAN_ENCODING_AXILITES_ADDR_ENCODING_V_BASE + 1))
+        return 0;
+
+    for (i = 0; i < length; i++) {
+        *(data + i) = *(int *)(InstancePtr->Axilites_BaseAddress + XHUFFMAN_ENCODING_AXILITES_ADDR_ENCODING_V_BASE + (offset + i)*4);
+    }
+    return length;
+}
+
+u32 XHuffman_encoding_Write_encoding_V_Bytes(XHuffman_encoding *InstancePtr, int offset, char *data, int length) {
+    Xil_AssertNonvoid(InstancePtr != NULL);
+    Xil_AssertNonvoid(InstancePtr -> IsReady == XIL_COMPONENT_IS_READY);
+
+    int i;
+
+    if ((offset + length) > (XHUFFMAN_ENCODING_AXILITES_ADDR_ENCODING_V_HIGH - XHUFFMAN_ENCODING_AXILITES_ADDR_ENCODING_V_BASE + 1))
+        return 0;
+
+    for (i = 0; i < length; i++) {
+        *(char *)(InstancePtr->Axilites_BaseAddress + XHUFFMAN_ENCODING_AXILITES_ADDR_ENCODING_V_BASE + offset + i) = *(data + i);
+    }
+    return length;
+}
+
+u32 XHuffman_encoding_Read_encoding_V_Bytes(XHuffman_encoding *InstancePtr, int offset, char *data, int length) {
+    Xil_AssertNonvoid(InstancePtr != NULL);
+    Xil_AssertNonvoid(InstancePtr -> IsReady == XIL_COMPONENT_IS_READY);
+
+    int i;
+
+    if ((offset + length) > (XHUFFMAN_ENCODING_AXILITES_ADDR_ENCODING_V_HIGH - XHUFFMAN_ENCODING_AXILITES_ADDR_ENCODING_V_BASE + 1))
+        return 0;
+
+    for (i = 0; i < length; i++) {
+        *(data + i) = *(char *)(InstancePtr->Axilites_BaseAddress + XHUFFMAN_ENCODING_AXILITES_ADDR_ENCODING_V_BASE + offset + i);
+    }
+    return length;
+}
+
 void XHuffman_encoding_InterruptGlobalEnable(XHuffman_encoding *InstancePtr) {
     Xil_AssertVoid(InstancePtr != NULL);
     Xil_AssertVoid(InstancePtr->IsReady == XIL_COMPONENT_IS_READY);

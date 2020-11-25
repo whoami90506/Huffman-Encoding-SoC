@@ -25,6 +25,7 @@ module AESL_axi_slave_AXILiteS (
     TRAN_s_axi_AXILiteS_BVALID,
     TRAN_s_axi_AXILiteS_BREADY,
     TRAN_s_axi_AXILiteS_BRESP,
+    TRAN_AXILiteS_write_data_finish,
     TRAN_AXILiteS_read_data_finish,
     TRAN_AXILiteS_start_in,
     TRAN_AXILiteS_idle_out,
@@ -38,17 +39,32 @@ module AESL_axi_slave_AXILiteS (
     );
 
 //------------------------Parameter----------------------
+`define TV_IN_symbol_histogram_value_V "../tv/cdatafile/c.huffman_encoding.autotvin_symbol_histogram_value_V.dat"
+`define TV_IN_symbol_histogram_frequency_V "../tv/cdatafile/c.huffman_encoding.autotvin_symbol_histogram_frequency_V.dat"
+`define TV_OUT_encoding_V "../tv/rtldatafile/rtl.huffman_encoding.autotvout_encoding_V.dat"
 `define TV_OUT_num_nonzero_symbols "../tv/rtldatafile/rtl.huffman_encoding.autotvout_num_nonzero_symbols.dat"
-parameter ADDR_WIDTH = 5;
+parameter ADDR_WIDTH = 12;
 parameter DATA_WIDTH = 32;
+parameter symbol_histogram_value_V_DEPTH = 256;
+reg [31 : 0] symbol_histogram_value_V_OPERATE_DEPTH = 0;
+parameter symbol_histogram_value_V_c_bitwidth = 9;
+parameter symbol_histogram_frequency_V_DEPTH = 256;
+reg [31 : 0] symbol_histogram_frequency_V_OPERATE_DEPTH = 0;
+parameter symbol_histogram_frequency_V_c_bitwidth = 32;
+parameter encoding_V_DEPTH = 256;
+reg [31 : 0] encoding_V_OPERATE_DEPTH = 0;
+parameter encoding_V_c_bitwidth = 32;
 parameter num_nonzero_symbols_DEPTH = 1;
 reg [31 : 0] num_nonzero_symbols_OPERATE_DEPTH = 0;
 parameter num_nonzero_symbols_c_bitwidth = 32;
 parameter START_ADDR = 0;
 parameter huffman_encoding_continue_addr = 0;
 parameter huffman_encoding_auto_start_addr = 0;
-parameter num_nonzero_symbols_data_out_addr = 16;
-parameter num_nonzero_symbols_valid_out_addr = 20;
+parameter symbol_histogram_value_V_data_in_addr = 512;
+parameter symbol_histogram_frequency_V_data_in_addr = 1024;
+parameter encoding_V_data_out_addr = 2048;
+parameter num_nonzero_symbols_data_out_addr = 3072;
+parameter num_nonzero_symbols_valid_out_addr = 3076;
 parameter STATUS_ADDR = 0;
 
 output [ADDR_WIDTH - 1 : 0] TRAN_s_axi_AXILiteS_AWADDR;
@@ -68,6 +84,7 @@ input [2 - 1 : 0] TRAN_s_axi_AXILiteS_RRESP;
 input  TRAN_s_axi_AXILiteS_BVALID;
 output  TRAN_s_axi_AXILiteS_BREADY;
 input [2 - 1 : 0] TRAN_s_axi_AXILiteS_BRESP;
+output TRAN_AXILiteS_write_data_finish;
 output TRAN_AXILiteS_read_data_finish;
 input     clk;
 input     reset;
@@ -91,6 +108,12 @@ reg  ARVALID_reg = 0;
 reg  RREADY_reg = 0;
 reg [DATA_WIDTH - 1 : 0] RDATA_reg = 0;
 reg  BREADY_reg = 0;
+reg [DATA_WIDTH - 1 : 0] mem_symbol_histogram_value_V [symbol_histogram_value_V_DEPTH - 1 : 0];
+reg symbol_histogram_value_V_write_data_finish;
+reg [DATA_WIDTH - 1 : 0] mem_symbol_histogram_frequency_V [symbol_histogram_frequency_V_DEPTH - 1 : 0];
+reg symbol_histogram_frequency_V_write_data_finish;
+reg [DATA_WIDTH - 1 : 0] mem_encoding_V [encoding_V_DEPTH - 1 : 0];
+reg encoding_V_read_data_finish;
 reg [DATA_WIDTH - 1 : 0] mem_num_nonzero_symbols [num_nonzero_symbols_DEPTH - 1 : 0];
 reg num_nonzero_symbols_read_data_finish;
 reg AESL_ready_out_index_reg = 0;
@@ -103,6 +126,21 @@ reg AESL_auto_restart_index_reg;
 reg process_0_finish = 0;
 reg process_1_finish = 0;
 reg process_2_finish = 0;
+reg process_3_finish = 0;
+reg process_4_finish = 0;
+reg process_5_finish = 0;
+//write symbol_histogram_value_V reg
+reg [31 : 0] write_symbol_histogram_value_V_count = 0;
+reg write_symbol_histogram_value_V_run_flag = 0;
+reg write_one_symbol_histogram_value_V_data_done = 0;
+//write symbol_histogram_frequency_V reg
+reg [31 : 0] write_symbol_histogram_frequency_V_count = 0;
+reg write_symbol_histogram_frequency_V_run_flag = 0;
+reg write_one_symbol_histogram_frequency_V_data_done = 0;
+//read encoding_V reg
+reg [31 : 0] read_encoding_V_count = 0;
+reg read_encoding_V_run_flag = 0;
+reg read_one_encoding_V_data_done = 0;
 //read num_nonzero_symbols reg
 reg [31 : 0] read_num_nonzero_symbols_count = 0;
 reg read_num_nonzero_symbols_run_flag = 0;
@@ -129,13 +167,14 @@ assign TRAN_AXILiteS_write_start_finish = AESL_write_start_finish;
 assign TRAN_AXILiteS_done_out = AESL_done_index_reg;
 assign TRAN_AXILiteS_ready_out = AESL_ready_out_index_reg;
 assign TRAN_AXILiteS_idle_out = AESL_idle_index_reg;
-assign TRAN_AXILiteS_read_data_finish = 1 & num_nonzero_symbols_read_data_finish;
+assign TRAN_AXILiteS_read_data_finish = 1 & encoding_V_read_data_finish & num_nonzero_symbols_read_data_finish;
+assign TRAN_AXILiteS_write_data_finish = 1 & symbol_histogram_value_V_write_data_finish & symbol_histogram_frequency_V_write_data_finish;
 always @(TRAN_AXILiteS_ready_in or ready_initial) 
 begin
     AESL_ready_reg <= TRAN_AXILiteS_ready_in | ready_initial;
 end
 
-always @(reset or process_0_finish or process_1_finish or process_2_finish ) begin
+always @(reset or process_0_finish or process_1_finish or process_2_finish or process_3_finish or process_4_finish or process_5_finish ) begin
     if (reset == 0) begin
         ongoing_process_number <= 0;
     end
@@ -146,6 +185,15 @@ always @(reset or process_0_finish or process_1_finish or process_2_finish ) beg
             ongoing_process_number <= ongoing_process_number + 1;
     end
     else if (ongoing_process_number == 2 && process_2_finish == 1) begin
+            ongoing_process_number <= ongoing_process_number + 1;
+    end
+    else if (ongoing_process_number == 3 && process_3_finish == 1) begin
+            ongoing_process_number <= ongoing_process_number + 1;
+    end
+    else if (ongoing_process_number == 4 && process_4_finish == 1) begin
+            ongoing_process_number <= ongoing_process_number + 1;
+    end
+    else if (ongoing_process_number == 5 && process_5_finish == 1) begin
             ongoing_process_number <= 0;
     end
 end
@@ -316,6 +364,153 @@ end
 
 always @(reset or posedge clk) begin
     if (reset == 0) begin
+        symbol_histogram_value_V_write_data_finish <= 0;
+        write_symbol_histogram_value_V_run_flag <= 0; 
+        write_symbol_histogram_value_V_count = 0;
+        count_operate_depth_by_bitwidth_and_depth (symbol_histogram_value_V_c_bitwidth, symbol_histogram_value_V_DEPTH, symbol_histogram_value_V_OPERATE_DEPTH);
+    end
+    else begin
+        if (TRAN_AXILiteS_start_in === 1) begin
+            symbol_histogram_value_V_write_data_finish <= 0;
+        end
+        if (AESL_ready_reg === 1) begin
+            write_symbol_histogram_value_V_run_flag <= 1; 
+            write_symbol_histogram_value_V_count = 0;
+        end
+        if (write_one_symbol_histogram_value_V_data_done === 1) begin
+            write_symbol_histogram_value_V_count = write_symbol_histogram_value_V_count + 1;
+            if (write_symbol_histogram_value_V_count == symbol_histogram_value_V_OPERATE_DEPTH) begin
+                write_symbol_histogram_value_V_run_flag <= 0; 
+                symbol_histogram_value_V_write_data_finish <= 1;
+            end
+        end
+    end
+end
+
+initial begin : write_symbol_histogram_value_V
+    integer write_symbol_histogram_value_V_resp;
+    integer process_num ;
+    integer get_ack;
+    integer four_byte_num;
+    integer c_bitwidth;
+    integer i;
+    integer j;
+    reg [31 : 0] symbol_histogram_value_V_data_tmp_reg;
+    wait(reset === 1);
+    @(posedge clk);
+    c_bitwidth = symbol_histogram_value_V_c_bitwidth;
+    process_num = 1;
+    count_c_data_four_byte_num_by_bitwidth (c_bitwidth , four_byte_num) ;
+    while (1) begin
+        process_1_finish <= 0;
+
+        if (ongoing_process_number === process_num && process_busy === 0 ) begin
+            get_ack = 1;
+            if (write_symbol_histogram_value_V_run_flag === 1 && get_ack === 1) begin
+                process_busy = 1;
+                //write symbol_histogram_value_V data 
+                for (i = 0 ; i < four_byte_num ; i = i+1) begin
+                    if (symbol_histogram_value_V_c_bitwidth < 32) begin
+                        symbol_histogram_value_V_data_tmp_reg = mem_symbol_histogram_value_V[write_symbol_histogram_value_V_count];
+                    end
+                    else begin
+                        for (j=0 ; j<32 ; j = j + 1) begin
+                            if (i*32 + j < symbol_histogram_value_V_c_bitwidth) begin
+                                symbol_histogram_value_V_data_tmp_reg[j] = mem_symbol_histogram_value_V[write_symbol_histogram_value_V_count][i*32 + j];
+                            end
+                            else begin
+                                symbol_histogram_value_V_data_tmp_reg[j] = 0;
+                            end
+                        end
+                    end
+                    write (symbol_histogram_value_V_data_in_addr + write_symbol_histogram_value_V_count * four_byte_num * 4 + i * 4, symbol_histogram_value_V_data_tmp_reg, write_symbol_histogram_value_V_resp);
+                end
+                process_busy = 0;
+                write_one_symbol_histogram_value_V_data_done <= 1;
+                @(posedge clk);
+                write_one_symbol_histogram_value_V_data_done <= 0;
+            end   
+            process_1_finish <= 1;
+        end
+        @(posedge clk);
+    end    
+end
+always @(reset or posedge clk) begin
+    if (reset == 0) begin
+        symbol_histogram_frequency_V_write_data_finish <= 0;
+        write_symbol_histogram_frequency_V_run_flag <= 0; 
+        write_symbol_histogram_frequency_V_count = 0;
+        count_operate_depth_by_bitwidth_and_depth (symbol_histogram_frequency_V_c_bitwidth, symbol_histogram_frequency_V_DEPTH, symbol_histogram_frequency_V_OPERATE_DEPTH);
+    end
+    else begin
+        if (TRAN_AXILiteS_start_in === 1) begin
+            symbol_histogram_frequency_V_write_data_finish <= 0;
+        end
+        if (AESL_ready_reg === 1) begin
+            write_symbol_histogram_frequency_V_run_flag <= 1; 
+            write_symbol_histogram_frequency_V_count = 0;
+        end
+        if (write_one_symbol_histogram_frequency_V_data_done === 1) begin
+            write_symbol_histogram_frequency_V_count = write_symbol_histogram_frequency_V_count + 1;
+            if (write_symbol_histogram_frequency_V_count == symbol_histogram_frequency_V_OPERATE_DEPTH) begin
+                write_symbol_histogram_frequency_V_run_flag <= 0; 
+                symbol_histogram_frequency_V_write_data_finish <= 1;
+            end
+        end
+    end
+end
+
+initial begin : write_symbol_histogram_frequency_V
+    integer write_symbol_histogram_frequency_V_resp;
+    integer process_num ;
+    integer get_ack;
+    integer four_byte_num;
+    integer c_bitwidth;
+    integer i;
+    integer j;
+    reg [31 : 0] symbol_histogram_frequency_V_data_tmp_reg;
+    wait(reset === 1);
+    @(posedge clk);
+    c_bitwidth = symbol_histogram_frequency_V_c_bitwidth;
+    process_num = 2;
+    count_c_data_four_byte_num_by_bitwidth (c_bitwidth , four_byte_num) ;
+    while (1) begin
+        process_2_finish <= 0;
+
+        if (ongoing_process_number === process_num && process_busy === 0 ) begin
+            get_ack = 1;
+            if (write_symbol_histogram_frequency_V_run_flag === 1 && get_ack === 1) begin
+                process_busy = 1;
+                //write symbol_histogram_frequency_V data 
+                for (i = 0 ; i < four_byte_num ; i = i+1) begin
+                    if (symbol_histogram_frequency_V_c_bitwidth < 32) begin
+                        symbol_histogram_frequency_V_data_tmp_reg = mem_symbol_histogram_frequency_V[write_symbol_histogram_frequency_V_count];
+                    end
+                    else begin
+                        for (j=0 ; j<32 ; j = j + 1) begin
+                            if (i*32 + j < symbol_histogram_frequency_V_c_bitwidth) begin
+                                symbol_histogram_frequency_V_data_tmp_reg[j] = mem_symbol_histogram_frequency_V[write_symbol_histogram_frequency_V_count][i*32 + j];
+                            end
+                            else begin
+                                symbol_histogram_frequency_V_data_tmp_reg[j] = 0;
+                            end
+                        end
+                    end
+                    write (symbol_histogram_frequency_V_data_in_addr + write_symbol_histogram_frequency_V_count * four_byte_num * 4 + i * 4, symbol_histogram_frequency_V_data_tmp_reg, write_symbol_histogram_frequency_V_resp);
+                end
+                process_busy = 0;
+                write_one_symbol_histogram_frequency_V_data_done <= 1;
+                @(posedge clk);
+                write_one_symbol_histogram_frequency_V_data_done <= 0;
+            end   
+            process_2_finish <= 1;
+        end
+        @(posedge clk);
+    end    
+end
+
+always @(reset or posedge clk) begin
+    if (reset == 0) begin
         write_start_run_flag <= 0; 
         write_start_count <= 0;
     end
@@ -339,9 +534,9 @@ initial begin : write_start
     integer write_start_resp;
     wait(reset === 1);
     @(posedge clk);
-    process_num = 1;
+    process_num = 3;
     while (1) begin
-        process_1_finish = 0;
+        process_3_finish = 0;
         if (ongoing_process_number === process_num && process_busy === 0 ) begin
             if (write_start_run_flag === 1) begin
                 process_busy = 1;
@@ -353,12 +548,84 @@ initial begin : write_start
                 @(posedge clk);
                 AESL_write_start_finish <= 0;
             end
-            process_1_finish <= 1;
+            process_3_finish <= 1;
         end 
         @(posedge clk);
     end
 end
 
+always @(reset or posedge clk) begin
+    if (reset == 0) begin
+        encoding_V_read_data_finish <= 0;
+        read_encoding_V_run_flag <= 0; 
+        read_encoding_V_count = 0;
+        count_operate_depth_by_bitwidth_and_depth (encoding_V_c_bitwidth, encoding_V_DEPTH, encoding_V_OPERATE_DEPTH);
+    end
+    else begin
+        if (AESL_done_index_reg === 1) begin
+            read_encoding_V_run_flag = 1; 
+        end
+        if (TRAN_AXILiteS_transaction_done_in === 1) begin
+            encoding_V_read_data_finish <= 0;
+            read_encoding_V_count = 0; 
+        end
+        if (read_one_encoding_V_data_done === 1) begin
+            read_encoding_V_count = read_encoding_V_count + 1;
+            if (read_encoding_V_count == encoding_V_OPERATE_DEPTH) begin
+                read_encoding_V_run_flag <= 0; 
+                encoding_V_read_data_finish <= 1;
+            end
+        end
+    end
+end
+
+initial begin : read_encoding_V
+    integer read_encoding_V_resp;
+    integer process_num;
+    integer get_vld;
+    integer four_byte_num;
+    integer c_bitwidth;
+    integer i;
+    integer j;
+
+    wait(reset === 1);
+    @(posedge clk);
+    c_bitwidth = encoding_V_c_bitwidth;
+    process_num = 4;
+    count_c_data_four_byte_num_by_bitwidth (c_bitwidth , four_byte_num) ;
+    while (1) begin
+        process_4_finish <= 0;
+        if (ongoing_process_number === process_num && process_busy === 0 ) begin
+            if (read_encoding_V_run_flag === 1) begin
+                process_busy = 1;
+                get_vld = 1;
+                if (get_vld == 1) begin
+                    //read encoding_V data 
+                    for (i = 0 ; i < four_byte_num ; i = i+1) begin
+                        read (encoding_V_data_out_addr + read_encoding_V_count * four_byte_num * 4 + i * 4, RDATA_reg, read_encoding_V_resp);
+                        if (encoding_V_c_bitwidth < 32) begin
+                            mem_encoding_V[read_encoding_V_count] <= RDATA_reg;
+                        end
+                        else begin
+                            for (j=0 ; j < 32 ; j = j + 1) begin
+                                if (i*32 + j < encoding_V_c_bitwidth) begin
+                                    mem_encoding_V[read_encoding_V_count][i*32 + j] <= RDATA_reg[j];
+                                end
+                            end
+                        end
+                    end
+                    
+                    read_one_encoding_V_data_done <= 1;
+                    @(posedge clk);
+                    read_one_encoding_V_data_done <= 0;
+                end    
+                process_busy = 0;
+            end    
+            process_4_finish <= 1;
+        end
+        @(posedge clk);
+    end    
+end
 always @(reset or posedge clk) begin
     if (reset == 0) begin
         num_nonzero_symbols_read_data_finish <= 0;
@@ -396,10 +663,10 @@ initial begin : read_num_nonzero_symbols
     wait(reset === 1);
     @(posedge clk);
     c_bitwidth = num_nonzero_symbols_c_bitwidth;
-    process_num = 2;
+    process_num = 5;
     count_c_data_four_byte_num_by_bitwidth (c_bitwidth , four_byte_num) ;
     while (1) begin
-        process_2_finish <= 0;
+        process_5_finish <= 0;
         if (ongoing_process_number === process_num && process_busy === 0 ) begin
             if (read_num_nonzero_symbols_run_flag === 1) begin
                 process_busy = 1;
@@ -431,7 +698,7 @@ initial begin : read_num_nonzero_symbols
                 end    
                 process_busy = 0;
             end    
-            process_2_finish <= 1;
+            process_5_finish <= 1;
         end
         @(posedge clk);
     end    
@@ -447,6 +714,276 @@ task read_token;
         ret = $fscanf(fp,"%s",token);
     end 
 endtask 
+ 
+//------------------------Read file------------------------ 
+ 
+// Read data from file 
+initial begin : read_symbol_histogram_value_V_file_process 
+  integer fp; 
+  integer ret; 
+  integer factor; 
+  reg [127 : 0] token; 
+  reg [127 : 0] token_tmp; 
+  //reg [symbol_histogram_value_V_c_bitwidth - 1 : 0] token_tmp; 
+  reg [DATA_WIDTH - 1 : 0] mem_tmp; 
+  reg [ 8*5 : 1] str;
+  integer transaction_idx; 
+  integer i; 
+  transaction_idx = 0; 
+  mem_tmp [DATA_WIDTH - 1 : 0] = 0;
+  count_seperate_factor_by_bitwidth (symbol_histogram_value_V_c_bitwidth , factor);
+  fp = $fopen(`TV_IN_symbol_histogram_value_V ,"r"); 
+  if(fp == 0) begin                               // Failed to open file 
+      $display("Failed to open file \"%s\"!", `TV_IN_symbol_histogram_value_V); 
+      $finish; 
+  end 
+  read_token(fp, token); 
+  if (token != "[[[runtime]]]") begin             // Illegal format 
+      $display("ERROR: Simulation using HLS TB failed.");
+      $finish; 
+  end 
+  read_token(fp, token); 
+  while (token != "[[[/runtime]]]") begin 
+      if (token != "[[transaction]]") begin 
+          $display("ERROR: Simulation using HLS TB failed.");
+          $finish; 
+      end 
+      read_token(fp, token);                        // skip transaction number 
+      @(posedge clk);
+      # 0.2;
+      while(AESL_ready_reg !== 1) begin
+          @(posedge clk); 
+          # 0.2;
+      end
+      for(i = 0; i < symbol_histogram_value_V_DEPTH; i = i + 1) begin 
+          read_token(fp, token); 
+          ret = $sscanf(token, "0x%x", token_tmp); 
+          if (factor == 4) begin
+              if (i%factor == 0) begin
+                  mem_tmp [7 : 0] = token_tmp;
+              end
+              if (i%factor == 1) begin
+                  mem_tmp [15 : 8] = token_tmp;
+              end
+              if (i%factor == 2) begin
+                  mem_tmp [23 : 16] = token_tmp;
+              end
+              if (i%factor == 3) begin
+                  mem_tmp [31 : 24] = token_tmp;
+                  mem_symbol_histogram_value_V [i/factor] = mem_tmp;
+                  mem_tmp [DATA_WIDTH - 1 : 0] = 0;
+              end
+          end
+          if (factor == 2) begin
+              if (i%factor == 0) begin
+                  mem_tmp [15 : 0] = token_tmp;
+              end
+              if (i%factor == 1) begin
+                  mem_tmp [31 : 16] = token_tmp;
+                  mem_symbol_histogram_value_V [i/factor] = mem_tmp;
+                  mem_tmp [DATA_WIDTH - 1: 0] = 0;
+              end
+          end
+          if (factor == 1) begin
+              mem_symbol_histogram_value_V [i] = token_tmp;
+          end
+      end 
+      if (factor == 4) begin
+          if (i%factor != 0) begin
+              mem_symbol_histogram_value_V [i/factor] = mem_tmp;
+          end
+      end
+      if (factor == 2) begin
+          if (i%factor != 0) begin
+              mem_symbol_histogram_value_V [i/factor] = mem_tmp;
+          end
+      end 
+      read_token(fp, token); 
+      if(token != "[[/transaction]]") begin 
+          $display("ERROR: Simulation using HLS TB failed.");
+          $finish; 
+      end 
+      read_token(fp, token); 
+      transaction_idx = transaction_idx + 1; 
+  end 
+  $fclose(fp); 
+end 
+ 
+//------------------------Read file------------------------ 
+ 
+// Read data from file 
+initial begin : read_symbol_histogram_frequency_V_file_process 
+  integer fp; 
+  integer ret; 
+  integer factor; 
+  reg [127 : 0] token; 
+  reg [127 : 0] token_tmp; 
+  //reg [symbol_histogram_frequency_V_c_bitwidth - 1 : 0] token_tmp; 
+  reg [DATA_WIDTH - 1 : 0] mem_tmp; 
+  reg [ 8*5 : 1] str;
+  integer transaction_idx; 
+  integer i; 
+  transaction_idx = 0; 
+  mem_tmp [DATA_WIDTH - 1 : 0] = 0;
+  count_seperate_factor_by_bitwidth (symbol_histogram_frequency_V_c_bitwidth , factor);
+  fp = $fopen(`TV_IN_symbol_histogram_frequency_V ,"r"); 
+  if(fp == 0) begin                               // Failed to open file 
+      $display("Failed to open file \"%s\"!", `TV_IN_symbol_histogram_frequency_V); 
+      $finish; 
+  end 
+  read_token(fp, token); 
+  if (token != "[[[runtime]]]") begin             // Illegal format 
+      $display("ERROR: Simulation using HLS TB failed.");
+      $finish; 
+  end 
+  read_token(fp, token); 
+  while (token != "[[[/runtime]]]") begin 
+      if (token != "[[transaction]]") begin 
+          $display("ERROR: Simulation using HLS TB failed.");
+          $finish; 
+      end 
+      read_token(fp, token);                        // skip transaction number 
+      @(posedge clk);
+      # 0.2;
+      while(AESL_ready_reg !== 1) begin
+          @(posedge clk); 
+          # 0.2;
+      end
+      for(i = 0; i < symbol_histogram_frequency_V_DEPTH; i = i + 1) begin 
+          read_token(fp, token); 
+          ret = $sscanf(token, "0x%x", token_tmp); 
+          if (factor == 4) begin
+              if (i%factor == 0) begin
+                  mem_tmp [7 : 0] = token_tmp;
+              end
+              if (i%factor == 1) begin
+                  mem_tmp [15 : 8] = token_tmp;
+              end
+              if (i%factor == 2) begin
+                  mem_tmp [23 : 16] = token_tmp;
+              end
+              if (i%factor == 3) begin
+                  mem_tmp [31 : 24] = token_tmp;
+                  mem_symbol_histogram_frequency_V [i/factor] = mem_tmp;
+                  mem_tmp [DATA_WIDTH - 1 : 0] = 0;
+              end
+          end
+          if (factor == 2) begin
+              if (i%factor == 0) begin
+                  mem_tmp [15 : 0] = token_tmp;
+              end
+              if (i%factor == 1) begin
+                  mem_tmp [31 : 16] = token_tmp;
+                  mem_symbol_histogram_frequency_V [i/factor] = mem_tmp;
+                  mem_tmp [DATA_WIDTH - 1: 0] = 0;
+              end
+          end
+          if (factor == 1) begin
+              mem_symbol_histogram_frequency_V [i] = token_tmp;
+          end
+      end 
+      if (factor == 4) begin
+          if (i%factor != 0) begin
+              mem_symbol_histogram_frequency_V [i/factor] = mem_tmp;
+          end
+      end
+      if (factor == 2) begin
+          if (i%factor != 0) begin
+              mem_symbol_histogram_frequency_V [i/factor] = mem_tmp;
+          end
+      end 
+      read_token(fp, token); 
+      if(token != "[[/transaction]]") begin 
+          $display("ERROR: Simulation using HLS TB failed.");
+          $finish; 
+      end 
+      read_token(fp, token); 
+      transaction_idx = transaction_idx + 1; 
+  end 
+  $fclose(fp); 
+end 
+ 
+//------------------------Write file----------------------- 
+ 
+// Write data to file 
+ 
+initial begin : write_encoding_V_file_proc 
+  integer fp; 
+  integer factor; 
+  integer transaction_idx; 
+  reg [encoding_V_c_bitwidth - 1 : 0] mem_tmp; 
+  reg [ 100*8 : 1] str;
+  integer i; 
+  transaction_idx = 0; 
+  count_seperate_factor_by_bitwidth (encoding_V_c_bitwidth , factor);
+  while(1) begin 
+      @(posedge clk);
+      while (encoding_V_read_data_finish !== 1) begin
+          @(posedge clk);
+      end
+      # 0.1;
+      fp = $fopen(`TV_OUT_encoding_V, "a"); 
+      if(fp == 0) begin       // Failed to open file 
+          $display("Failed to open file \"%s\"!", `TV_OUT_encoding_V); 
+          $finish; 
+      end 
+      $fdisplay(fp, "[[transaction]] %d", transaction_idx);
+      for (i = 0; i < (encoding_V_DEPTH - encoding_V_DEPTH % factor); i = i + 1) begin
+          if (factor == 4) begin
+              if (i%factor == 0) begin
+                  mem_tmp = mem_encoding_V[i/factor][7:0];
+              end
+              if (i%factor == 1) begin
+                  mem_tmp = mem_encoding_V[i/factor][15:8];
+              end
+              if (i%factor == 2) begin
+                  mem_tmp = mem_encoding_V[i/factor][23:16];
+              end
+              if (i%factor == 3) begin
+                  mem_tmp = mem_encoding_V[i/factor][31:24];
+              end
+              $fdisplay(fp,"0x%x",mem_tmp);
+          end
+          if (factor == 2) begin
+              if (i%factor == 0) begin
+                  mem_tmp = mem_encoding_V[i/factor][15:0];
+              end
+              if (i%factor == 1) begin
+                  mem_tmp = mem_encoding_V[i/factor][31:16];
+              end
+              $fdisplay(fp,"0x%x",mem_tmp);
+          end
+          if (factor == 1) begin
+              $fdisplay(fp,"0x%x",mem_encoding_V[i]);
+          end
+      end 
+      if (factor == 4) begin
+          if ((encoding_V_DEPTH - 1) % factor == 2) begin
+              $fdisplay(fp,"0x%x",mem_encoding_V[encoding_V_DEPTH / factor][7:0]);
+              $fdisplay(fp,"0x%x",mem_encoding_V[encoding_V_DEPTH / factor][15:8]);
+              $fdisplay(fp,"0x%x",mem_encoding_V[encoding_V_DEPTH / factor][23:16]);
+          end
+          if ((encoding_V_DEPTH - 1) % factor == 1) begin
+              $fdisplay(fp,"0x%x",mem_encoding_V[encoding_V_DEPTH / factor][7:0]);
+              $fdisplay(fp,"0x%x",mem_encoding_V[encoding_V_DEPTH / factor][15:8]);
+          end
+          if ((encoding_V_DEPTH - 1) % factor == 0) begin
+              $fdisplay(fp,"0x%x",mem_encoding_V[encoding_V_DEPTH / factor][7:0]);
+          end
+      end
+      if (factor == 2) begin
+          if ((encoding_V_DEPTH - 1) % factor == 0) begin
+              $fdisplay(fp,"0x%x",mem_encoding_V[encoding_V_DEPTH / factor][15:0]);
+          end
+      end
+      $fdisplay(fp, "[[/transaction]]");
+      transaction_idx = transaction_idx + 1;
+      $fclose(fp); 
+      while (TRAN_AXILiteS_start_in !== 1) begin
+          @(posedge clk);
+      end
+  end 
+end 
  
 //------------------------Write file----------------------- 
  

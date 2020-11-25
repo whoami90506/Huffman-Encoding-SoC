@@ -745,7 +745,7 @@ begin
         d0 => digit_V_reg_7014,
         q0 => current_digit_V_q0);
 
-    huffman_encoding_g8j_U9 : component huffman_encoding_g8j
+    huffman_encoding_g8j_U8 : component huffman_encoding_g8j
     generic map (
         ID => 1,
         NUM_STAGE => 2,
@@ -761,7 +761,7 @@ begin
         ce => ap_const_logic_1,
         dout => grp_fu_6695_p2);
 
-    huffman_encoding_hbi_U10 : component huffman_encoding_hbi
+    huffman_encoding_hbi_U9 : component huffman_encoding_hbi
     generic map (
         ID => 1,
         NUM_STAGE => 1,
@@ -803,7 +803,7 @@ begin
         din16 => digit_V_reg_7014,
         dout => tmp_i_fu_6708_p18);
 
-    huffman_encoding_hbi_U11 : component huffman_encoding_hbi
+    huffman_encoding_hbi_U10 : component huffman_encoding_hbi
     generic map (
         ID => 1,
         NUM_STAGE => 1,
@@ -845,7 +845,7 @@ begin
         din16 => phi_ln215_1_i_fu_6767_p17,
         dout => phi_ln215_1_i_fu_6767_p18);
 
-    huffman_encoding_hbi_U12 : component huffman_encoding_hbi
+    huffman_encoding_hbi_U11 : component huffman_encoding_hbi
     generic map (
         ID => 1,
         NUM_STAGE => 1,

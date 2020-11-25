@@ -7,7 +7,7 @@
 
 `timescale 1 ns / 1 ps 
 
-(* CORE_GENERATION_INFO="huffman_encoding,hls_ip_2019_2,{HLS_INPUT_TYPE=cxx,HLS_INPUT_FLOAT=0,HLS_INPUT_FIXED=1,HLS_INPUT_PART=xc7z020-clg484-1,HLS_INPUT_CLOCK=5.000000,HLS_INPUT_ARCH=dataflow,HLS_SYN_CLOCK=4.559500,HLS_SYN_LAT=-1,HLS_SYN_TPT=-1,HLS_SYN_MEM=23,HLS_SYN_DSP=0,HLS_SYN_FF=3772,HLS_SYN_LUT=7070,HLS_VERSION=2019_2}" *)
+(* CORE_GENERATION_INFO="huffman_encoding,hls_ip_2019_2,{HLS_INPUT_TYPE=cxx,HLS_INPUT_FLOAT=0,HLS_INPUT_FIXED=1,HLS_INPUT_PART=xc7z020-clg484-1,HLS_INPUT_CLOCK=5.000000,HLS_INPUT_ARCH=dataflow,HLS_SYN_CLOCK=4.559500,HLS_SYN_LAT=-1,HLS_SYN_TPT=-1,HLS_SYN_MEM=29,HLS_SYN_DSP=0,HLS_SYN_FF=4127,HLS_SYN_LUT=7272,HLS_VERSION=2019_2}" *)
 
 module huffman_encoding (
         s_axi_AXILiteS_AWVALID,
@@ -29,20 +29,11 @@ module huffman_encoding (
         s_axi_AXILiteS_BRESP,
         ap_clk,
         ap_rst_n,
-        interrupt,
-        symbol_histogram_value_V_TDATA,
-        symbol_histogram_frequency_V_TDATA,
-        encoding_V_TDATA,
-        symbol_histogram_value_V_TVALID,
-        symbol_histogram_value_V_TREADY,
-        symbol_histogram_frequency_V_TVALID,
-        symbol_histogram_frequency_V_TREADY,
-        encoding_V_TVALID,
-        encoding_V_TREADY
+        interrupt
 );
 
 parameter    C_S_AXI_AXILITES_DATA_WIDTH = 32;
-parameter    C_S_AXI_AXILITES_ADDR_WIDTH = 5;
+parameter    C_S_AXI_AXILITES_ADDR_WIDTH = 12;
 parameter    C_S_AXI_DATA_WIDTH = 32;
 parameter    C_S_AXI_ADDR_WIDTH = 32;
 
@@ -69,21 +60,14 @@ output  [1:0] s_axi_AXILiteS_BRESP;
 input   ap_clk;
 input   ap_rst_n;
 output   interrupt;
-input  [15:0] symbol_histogram_value_V_TDATA;
-input  [31:0] symbol_histogram_frequency_V_TDATA;
-output  [31:0] encoding_V_TDATA;
-input   symbol_histogram_value_V_TVALID;
-output   symbol_histogram_value_V_TREADY;
-input   symbol_histogram_frequency_V_TVALID;
-output   symbol_histogram_frequency_V_TREADY;
-output   encoding_V_TVALID;
-input   encoding_V_TREADY;
 
  reg    ap_rst_n_inv;
 wire    ap_start;
 wire    ap_ready;
 wire    ap_done;
 wire    ap_idle;
+wire   [8:0] symbol_histogram_value_V_q0;
+wire   [31:0] symbol_histogram_frequency_V_q0;
 wire   [8:0] filtered_value_V_i_q0;
 wire   [8:0] filtered_value_V_t_q0;
 wire   [31:0] filtered_frequency_V_i_q0;
@@ -123,8 +107,10 @@ wire    filter_U0_ap_idle;
 wire    filter_U0_ap_ready;
 wire    filter_U0_start_out;
 wire    filter_U0_start_write;
-wire    filter_U0_in_value_V_TREADY;
-wire    filter_U0_in_frequency_V_TREADY;
+wire   [7:0] filter_U0_in_value_V_address0;
+wire    filter_U0_in_value_V_ce0;
+wire   [7:0] filter_U0_in_frequency_V_address0;
+wire    filter_U0_in_frequency_V_ce0;
 wire   [7:0] filter_U0_out_value_V_address0;
 wire    filter_U0_out_value_V_ce0;
 wire    filter_U0_out_value_V_we0;
@@ -318,8 +304,10 @@ wire   [7:0] create_codeword_U0_symbol_bits_V_address0;
 wire    create_codeword_U0_symbol_bits_V_ce0;
 wire   [5:0] create_codeword_U0_codeword_length_histogram_V_address0;
 wire    create_codeword_U0_codeword_length_histogram_V_ce0;
-wire   [31:0] create_codeword_U0_encoding_V_TDATA;
-wire    create_codeword_U0_encoding_V_TVALID;
+wire   [7:0] create_codeword_U0_encoding_V_address0;
+wire    create_codeword_U0_encoding_V_ce0;
+wire    create_codeword_U0_encoding_V_we0;
+wire   [31:0] create_codeword_U0_encoding_V_d0;
 wire    ap_sync_continue;
 wire    Block_proc_U0_ap_start;
 wire    Block_proc_U0_ap_done;
@@ -458,6 +446,16 @@ huffman_encoding_AXILiteS_s_axi_U(
     .ap_ready(ap_ready),
     .ap_done(ap_done),
     .ap_idle(ap_idle),
+    .symbol_histogram_value_V_address0(filter_U0_in_value_V_address0),
+    .symbol_histogram_value_V_ce0(filter_U0_in_value_V_ce0),
+    .symbol_histogram_value_V_q0(symbol_histogram_value_V_q0),
+    .symbol_histogram_frequency_V_address0(filter_U0_in_frequency_V_address0),
+    .symbol_histogram_frequency_V_ce0(filter_U0_in_frequency_V_ce0),
+    .symbol_histogram_frequency_V_q0(symbol_histogram_frequency_V_q0),
+    .encoding_V_address0(create_codeword_U0_encoding_V_address0),
+    .encoding_V_ce0(create_codeword_U0_encoding_V_ce0),
+    .encoding_V_we0(create_codeword_U0_encoding_V_we0),
+    .encoding_V_d0(create_codeword_U0_encoding_V_d0),
     .num_nonzero_symbols(Block_proc_U0_num_nonzero_symbols),
     .num_nonzero_symbols_ap_vld(Block_proc_U0_num_nonzero_symbols_ap_vld)
 );
@@ -801,12 +799,12 @@ filter filter_U0(
     .ap_ready(filter_U0_ap_ready),
     .start_out(filter_U0_start_out),
     .start_write(filter_U0_start_write),
-    .in_value_V_TDATA(symbol_histogram_value_V_TDATA),
-    .in_value_V_TVALID(symbol_histogram_value_V_TVALID),
-    .in_value_V_TREADY(filter_U0_in_value_V_TREADY),
-    .in_frequency_V_TDATA(symbol_histogram_frequency_V_TDATA),
-    .in_frequency_V_TVALID(symbol_histogram_frequency_V_TVALID),
-    .in_frequency_V_TREADY(filter_U0_in_frequency_V_TREADY),
+    .in_value_V_address0(filter_U0_in_value_V_address0),
+    .in_value_V_ce0(filter_U0_in_value_V_ce0),
+    .in_value_V_q0(symbol_histogram_value_V_q0),
+    .in_frequency_V_address0(filter_U0_in_frequency_V_address0),
+    .in_frequency_V_ce0(filter_U0_in_frequency_V_ce0),
+    .in_frequency_V_q0(symbol_histogram_frequency_V_q0),
     .out_value_V_address0(filter_U0_out_value_V_address0),
     .out_value_V_ce0(filter_U0_out_value_V_ce0),
     .out_value_V_we0(filter_U0_out_value_V_we0),
@@ -1036,9 +1034,10 @@ create_codeword create_codeword_U0(
     .codeword_length_histogram_V_address0(create_codeword_U0_codeword_length_histogram_V_address0),
     .codeword_length_histogram_V_ce0(create_codeword_U0_codeword_length_histogram_V_ce0),
     .codeword_length_histogram_V_q0(truncated_length_his_1_t_q0),
-    .encoding_V_TDATA(create_codeword_U0_encoding_V_TDATA),
-    .encoding_V_TVALID(create_codeword_U0_encoding_V_TVALID),
-    .encoding_V_TREADY(encoding_V_TREADY)
+    .encoding_V_address0(create_codeword_U0_encoding_V_address0),
+    .encoding_V_ce0(create_codeword_U0_encoding_V_ce0),
+    .encoding_V_we0(create_codeword_U0_encoding_V_we0),
+    .encoding_V_d0(create_codeword_U0_encoding_V_d0)
 );
 
 Block_proc Block_proc_U0(
@@ -1446,10 +1445,6 @@ assign create_tree_U0_start_full_n = 1'b1;
 
 assign create_tree_U0_start_write = 1'b0;
 
-assign encoding_V_TDATA = create_codeword_U0_encoding_V_TDATA;
-
-assign encoding_V_TVALID = create_codeword_U0_encoding_V_TVALID;
-
 assign filter_U0_ap_continue = (ap_sync_channel_write_filtered_value_V & ap_sync_channel_write_filtered_frequency_V);
 
 assign filter_U0_ap_start = ap_start;
@@ -1487,10 +1482,6 @@ assign start_for_Block_codeRepl1012_p_U0_din = 1'b1;
 assign start_for_Block_proc_U0_din = 1'b1;
 
 assign start_for_create_tree_U0_din = 1'b1;
-
-assign symbol_histogram_frequency_V_TREADY = filter_U0_in_frequency_V_TREADY;
-
-assign symbol_histogram_value_V_TREADY = filter_U0_in_value_V_TREADY;
 
 assign truncate_tree_U0_ap_continue = (ap_sync_channel_write_truncated_length_his_1 & ap_sync_channel_write_truncated_length_his);
 

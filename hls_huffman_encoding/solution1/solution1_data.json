@@ -4,7 +4,7 @@
   "RtlPrefix": "",
   "SourceLanguage": "cpp",
   "ResetStyle": "control",
-  "GenerateBdFiles": "1",
+  "GenerateBdFiles": "0",
   "HostMachineBits": "64",
   "Target": {
     "Family": "zynq",
@@ -30,23 +30,28 @@
         ],
         "dataType": "Symbol",
         "arraySizes": ["256"],
-        "structImpl": "flat-interface",
+        "structImpl": "flat-field",
+        "dataPack": true,
         "fields": {
           "value": {
             "order": "0",
             "dataType": "ap_uint",
             "dataWidth": "9",
-            "interfaceRef": "symbol_histogram_value_V",
-            "portRef": "TDATA",
-            "structImpl": "interface"
+            "interfaceRef": "s_axi_AXILiteS",
+            "bitMap": "8:0",
+            "memoryRef": "symbol_histogram_value_V",
+            "structImpl": "interface",
+            "dataPack": true
           },
           "frequency": {
             "order": "1",
             "dataType": "ap_uint",
             "dataWidth": "32",
-            "interfaceRef": "symbol_histogram_frequency_V",
-            "portRef": "TDATA",
-            "structImpl": "interface"
+            "interfaceRef": "s_axi_AXILiteS",
+            "bitMap": "31:0",
+            "memoryRef": "symbol_histogram_frequency_V",
+            "structImpl": "interface",
+            "dataPack": true
           }
         }
       }
@@ -58,8 +63,8 @@
         "dataType": "ap_uint",
         "dataWidth": "32",
         "arraySizes": ["256"],
-        "interfaceRef": "encoding_V",
-        "portRef": "TDATA"
+        "interfaceRef": "s_axi_AXILiteS",
+        "memoryRef": "encoding_V"
       }
     },
     "num_nonzero_symbols": {
@@ -98,14 +103,14 @@
   },
   "Files": {
     "CSource": [
-      "..\/..\/huffman_canonize_tree.cpp",
-      "..\/..\/huffman_create_tree.cpp",
-      "..\/..\/huffman_filter.cpp",
-      "..\/..\/huffman_compute_bit_length.cpp",
-      "..\/..\/huffman_encoding.cpp",
-      "..\/..\/huffman_sort.cpp",
+      "..\/..\/huffman_truncate_tree.cpp",
       "..\/..\/huffman_create_codeword.cpp",
-      "..\/..\/huffman_truncate_tree.cpp"
+      "..\/..\/huffman_sort.cpp",
+      "..\/..\/huffman_encoding.cpp",
+      "..\/..\/huffman_compute_bit_length.cpp",
+      "..\/..\/huffman_filter.cpp",
+      "..\/..\/huffman_create_tree.cpp",
+      "..\/..\/huffman_canonize_tree.cpp"
     ],
     "Vhdl": [
       "impl\/vhdl\/Block_codeRepl1012_p.vhd",
@@ -141,7 +146,6 @@
       "impl\/vhdl\/huffman_encoding_yd2.vhd",
       "impl\/vhdl\/huffman_encoding_yd2_memcore.vhd",
       "impl\/vhdl\/Loop_copy_sorted_pro.vhd",
-      "impl\/vhdl\/regslice_core.vhd",
       "impl\/vhdl\/sort.vhd",
       "impl\/vhdl\/sort_current_digifYi.vhd",
       "impl\/vhdl\/sort_previous_sorbkb.vhd",
@@ -186,7 +190,6 @@
       "impl\/verilog\/huffman_encoding_yd2.v",
       "impl\/verilog\/huffman_encoding_yd2_memcore.v",
       "impl\/verilog\/Loop_copy_sorted_pro.v",
-      "impl\/verilog\/regslice_core.v",
       "impl\/verilog\/sort.v",
       "impl\/verilog\/sort_current_digifYi.v",
       "impl\/verilog\/sort_previous_sorbkb.v",
@@ -223,7 +226,7 @@
       "ctype": {"CLK": {"Type": "bool"}},
       "bundle_name": "ap_clk",
       "bundle_role": "default",
-      "buses": "s_axi_AXILiteS symbol_histogram_value_V symbol_histogram_frequency_V encoding_V",
+      "buses": "s_axi_AXILiteS",
       "reset": "ap_rst_n"
     },
     "ap_rst_n": {
@@ -232,21 +235,6 @@
       "ctype": {"RST": {"Type": "bool"}},
       "bundle_name": "ap_rst_n",
       "bundle_role": "default"
-    },
-    "encoding_V": {
-      "type": "axi4stream",
-      "mode": "master",
-      "port_prefix": "encoding_V",
-      "has_tready": "1",
-      "ctype": {
-        "TDATA": {
-          "Type": "integer unsigned",
-          "Width": "32"
-        },
-        "TVALID": {"Type": "bool"},
-        "TREADY": {"Type": "bool"}
-      },
-      "port_width": {"TDATA": "32"}
     },
     "interrupt": {
       "type": "interrupt",
@@ -260,7 +248,7 @@
       "mode": "slave",
       "port_prefix": "s_axi_AXILiteS",
       "param_prefix": "C_S_AXI_AXILITES",
-      "addr_bits": "5",
+      "addr_bits": "12",
       "registers": [
         {
           "offset": "0x00",
@@ -419,7 +407,7 @@
           ]
         },
         {
-          "offset": "0x10",
+          "offset": "0xc00",
           "name": "num_nonzero_symbols",
           "access": "R",
           "reset_value": "0x0",
@@ -434,7 +422,7 @@
             }]
         },
         {
-          "offset": "0x14",
+          "offset": "0xc04",
           "name": "num_nonzero_symbols_ctrl",
           "access": "R",
           "reset_value": "0x0",
@@ -459,6 +447,20 @@
           ]
         }
       ],
+      "memories": {
+        "symbol_histogram_value_V": {
+          "offset": "512",
+          "range": "512"
+        },
+        "symbol_histogram_frequency_V": {
+          "offset": "1024",
+          "range": "1024"
+        },
+        "encoding_V": {
+          "offset": "2048",
+          "range": "1024"
+        }
+      },
       "ctype": {
         "AWVALID": {"Type": "bool"},
         "AWREADY": {"Type": "bool"},
@@ -480,7 +482,7 @@
         },
         "AWADDR": {
           "Type": "integer unsigned",
-          "Width": "5"
+          "Width": "12"
         },
         "WDATA": {
           "Type": "integer signed",
@@ -492,7 +494,7 @@
         },
         "ARADDR": {
           "Type": "integer unsigned",
-          "Width": "5"
+          "Width": "12"
         },
         "RDATA": {
           "Type": "integer signed",
@@ -501,43 +503,12 @@
       },
       "data_width": "32",
       "port_width": {
-        "ARADDR": "5",
-        "AWADDR": "5",
+        "ARADDR": "12",
+        "AWADDR": "12",
         "RDATA": "32",
         "WDATA": "32",
         "WSTRB": "4"
       }
-    },
-    "symbol_histogram_frequency_V": {
-      "type": "axi4stream",
-      "mode": "slave",
-      "port_prefix": "symbol_histogram_frequency_V",
-      "has_tready": "1",
-      "ctype": {
-        "TDATA": {
-          "Type": "integer unsigned",
-          "Width": "32"
-        },
-        "TVALID": {"Type": "bool"},
-        "TREADY": {"Type": "bool"}
-      },
-      "port_width": {"TDATA": "32"}
-    },
-    "symbol_histogram_value_V": {
-      "type": "axi4stream",
-      "mode": "slave",
-      "port_prefix": "symbol_histogram_value_V",
-      "has_tready": "1",
-      "ctype": {
-        "TDATA": {
-          "Type": "integer unsigned",
-          "Width": "9",
-          "Bits": "16"
-        },
-        "TVALID": {"Type": "bool"},
-        "TREADY": {"Type": "bool"}
-      },
-      "port_width": {"TDATA": "16"}
     }
   },
   "RtlPorts": {
@@ -551,7 +522,7 @@
     },
     "s_axi_AXILiteS_AWADDR": {
       "dir": "in",
-      "width": "5"
+      "width": "12"
     },
     "s_axi_AXILiteS_WVALID": {
       "dir": "in",
@@ -579,7 +550,7 @@
     },
     "s_axi_AXILiteS_ARADDR": {
       "dir": "in",
-      "width": "5"
+      "width": "12"
     },
     "s_axi_AXILiteS_RVALID": {
       "dir": "out",
@@ -621,42 +592,6 @@
       "dir": "out",
       "width": "1",
       "isVector": "true"
-    },
-    "symbol_histogram_value_V_TDATA": {
-      "dir": "in",
-      "width": "16"
-    },
-    "symbol_histogram_value_V_TVALID": {
-      "dir": "in",
-      "width": "1"
-    },
-    "symbol_histogram_value_V_TREADY": {
-      "dir": "out",
-      "width": "1"
-    },
-    "symbol_histogram_frequency_V_TDATA": {
-      "dir": "in",
-      "width": "32"
-    },
-    "symbol_histogram_frequency_V_TVALID": {
-      "dir": "in",
-      "width": "1"
-    },
-    "symbol_histogram_frequency_V_TREADY": {
-      "dir": "out",
-      "width": "1"
-    },
-    "encoding_V_TDATA": {
-      "dir": "out",
-      "width": "32"
-    },
-    "encoding_V_TVALID": {
-      "dir": "out",
-      "width": "1"
-    },
-    "encoding_V_TREADY": {
-      "dir": "in",
-      "width": "1"
     }
   },
   "ModuleInfo": {
@@ -688,12 +623,12 @@
           "InstanceName": "canonize_tree_U0"
         },
         {
-          "ModuleName": "Loop_copy_sorted_pro",
-          "InstanceName": "Loop_copy_sorted_pro_U0"
-        },
-        {
           "ModuleName": "filter",
           "InstanceName": "filter_U0"
+        },
+        {
+          "ModuleName": "Loop_copy_sorted_pro",
+          "InstanceName": "Loop_copy_sorted_pro_U0"
         },
         {
           "ModuleName": "Block_proc",
@@ -787,10 +722,10 @@
     "Metrics": {
       "filter": {
         "Latency": {
-          "LatencyBest": "258",
-          "LatencyAvg": "258",
-          "LatencyWorst": "258",
-          "PipelineII": "258",
+          "LatencyBest": "261",
+          "LatencyAvg": "261",
+          "LatencyWorst": "261",
+          "PipelineII": "261",
           "PipelineDepth": "",
           "PipelineType": "none"
         },
@@ -802,12 +737,12 @@
         "Loops": [{
             "Name": "Loop 1",
             "TripCount": "256",
-            "Latency": "256",
+            "Latency": "259",
             "PipelineII": "1",
-            "PipelineDepth": "1"
+            "PipelineDepth": "5"
           }],
         "Area": {
-          "FF": "23",
+          "FF": "107",
           "LUT": "151",
           "BRAM_18K": "0",
           "DSP48E": "0",
@@ -1174,8 +1109,8 @@
         ],
         "Area": {
           "BRAM_18K": "0",
-          "FF": "241",
-          "LUT": "556",
+          "FF": "272",
+          "LUT": "548",
           "URAM": "0",
           "DSP48E": "0"
         }
@@ -1217,9 +1152,9 @@
           "Estimate": "4.559"
         },
         "Area": {
-          "BRAM_18K": "23",
-          "FF": "3772",
-          "LUT": "7070",
+          "BRAM_18K": "29",
+          "FF": "4127",
+          "LUT": "7272",
           "URAM": "0",
           "DSP48E": "0"
         }
@@ -1236,7 +1171,7 @@
   },
   "GenData": {
     "DataVersion": "0.2",
-    "Time": "2020-11-19 02:00:29 +0800",
+    "Time": "2020-11-24 17:22:21 +0800",
     "ToolName": "vivado_hls",
     "ToolVersion": "2019.2"
   }

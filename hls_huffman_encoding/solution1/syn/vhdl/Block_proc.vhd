@@ -41,7 +41,7 @@ architecture behav of Block_proc is
     attribute fsm_encoding of ap_CS_fsm_state1 : signal is "none";
     signal extLd_loc_blk_n : STD_LOGIC;
     signal ap_block_state1 : BOOLEAN;
-    signal extLd_fu_35_p1 : STD_LOGIC_VECTOR (31 downto 0);
+    signal extLd_fu_43_p1 : STD_LOGIC_VECTOR (31 downto 0);
     signal num_nonzero_symbols_preg : STD_LOGIC_VECTOR (31 downto 0) := "00000000000000000000000000000000";
     signal ap_NS_fsm : STD_LOGIC_VECTOR (0 downto 0);
 
@@ -94,7 +94,7 @@ begin
                 num_nonzero_symbols_preg(8) <= '0';
             else
                 if ((not(((ap_start = ap_const_logic_0) or (extLd_loc_empty_n = ap_const_logic_0) or (ap_done_reg = ap_const_logic_1))) and (ap_const_logic_1 = ap_CS_fsm_state1))) then 
-                                        num_nonzero_symbols_preg(8 downto 0) <= extLd_fu_35_p1(8 downto 0);
+                                        num_nonzero_symbols_preg(8 downto 0) <= extLd_fu_43_p1(8 downto 0);
                 end if; 
             end if;
         end if;
@@ -148,7 +148,7 @@ begin
         end if; 
     end process;
 
-    extLd_fu_35_p1 <= std_logic_vector(IEEE.numeric_std.resize(unsigned(extLd_loc_dout),32));
+    extLd_fu_43_p1 <= std_logic_vector(IEEE.numeric_std.resize(unsigned(extLd_loc_dout),32));
 
     extLd_loc_blk_n_assign_proc : process(ap_start, ap_done_reg, ap_CS_fsm_state1, extLd_loc_empty_n)
     begin
@@ -170,10 +170,10 @@ begin
     end process;
 
 
-    num_nonzero_symbols_assign_proc : process(ap_start, ap_done_reg, ap_CS_fsm_state1, extLd_loc_empty_n, extLd_fu_35_p1, num_nonzero_symbols_preg)
+    num_nonzero_symbols_assign_proc : process(ap_start, ap_done_reg, ap_CS_fsm_state1, extLd_loc_empty_n, extLd_fu_43_p1, num_nonzero_symbols_preg)
     begin
         if ((not(((ap_start = ap_const_logic_0) or (extLd_loc_empty_n = ap_const_logic_0) or (ap_done_reg = ap_const_logic_1))) and (ap_const_logic_1 = ap_CS_fsm_state1))) then 
-            num_nonzero_symbols <= extLd_fu_35_p1;
+            num_nonzero_symbols <= extLd_fu_43_p1;
         else 
             num_nonzero_symbols <= num_nonzero_symbols_preg;
         end if; 

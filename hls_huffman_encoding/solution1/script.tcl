@@ -5,17 +5,17 @@
 ############################################################
 open_project hls_huffman_encoding
 set_top huffman_encoding
-add_files huffman_truncate_tree.cpp
-add_files huffman_create_codeword.cpp
-add_files huffman_sort.cpp
-add_files huffman_encoding.cpp
-add_files huffman_compute_bit_length.cpp
-add_files huffman_filter.cpp
-add_files huffman_create_tree.cpp
 add_files huffman_canonize_tree.cpp
-add_files -tb huffman_encoding_test.cpp -cflags "-Wno-unknown-pragmas" -csimflags "-Wno-unknown-pragmas"
-add_files -tb huffman.random256.golden -cflags "-Wno-unknown-pragmas" -csimflags "-Wno-unknown-pragmas"
+add_files huffman_create_tree.cpp
+add_files huffman_filter.cpp
+add_files huffman_compute_bit_length.cpp
+add_files huffman_encoding.cpp
+add_files huffman_sort.cpp
+add_files huffman_create_codeword.cpp
+add_files huffman_truncate_tree.cpp
 add_files -tb huffman.random256.txt -cflags "-Wno-unknown-pragmas" -csimflags "-Wno-unknown-pragmas"
+add_files -tb huffman.random256.golden -cflags "-Wno-unknown-pragmas" -csimflags "-Wno-unknown-pragmas"
+add_files -tb huffman_encoding_test.cpp -cflags "-Wno-unknown-pragmas" -csimflags "-Wno-unknown-pragmas"
 open_solution "solution1"
 set_part {xc7z020-clg484-1}
 create_clock -period 5 -name default

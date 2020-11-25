@@ -3,7 +3,7 @@
 ================================================================
 == Vivado HLS Report for 'huffman_encoding'
 ================================================================
-* Date:           Thu Nov 19 02:00:15 2020
+* Date:           Tue Nov 24 17:22:11 2020
 
 * Version:        2019.2 (Build 2704478 on Wed Nov 06 22:10:23 MST 2019)
 * Project:        hls_huffman_encoding
@@ -44,8 +44,8 @@
         |create_codeword_U0       |create_codeword       |     1312|     1312|  6.560 us |  6.560 us |  1312|  1312|   none  |
         |truncate_tree_U0         |truncate_tree         |     1467|     1575|  7.335 us |  7.875 us |  1467|  1575|   none  |
         |canonize_tree_U0         |canonize_tree         |      258|     2562|  1.290 us | 12.810 us |   258|  2562|   none  |
+        |filter_U0                |filter                |      261|      261|  1.305 us |  1.305 us |   261|   261|   none  |
         |Loop_copy_sorted_pro_U0  |Loop_copy_sorted_pro  |        1|     1534|  5.000 ns |  7.670 us |     1|  1534|   none  |
-        |filter_U0                |filter                |      258|      258|  1.290 us |  1.290 us |   258|   258|   none  |
         |Block_proc_U0            |Block_proc            |        0|        0|    0 ns   |    0 ns   |     0|     0|   none  |
         |Block_codeRepl1012_p_U0  |Block_codeRepl1012_p  |        0|        0|    0 ns   |    0 ns   |     0|     0|   none  |
         +-------------------------+----------------------+---------+---------+-----------+-----------+------+------+---------+
@@ -65,16 +65,16 @@
 |DSP              |        -|      -|       -|      -|    -|
 |Expression       |        -|      -|       0|     60|    -|
 |FIFO             |        3|      -|     132|    270|    -|
-|Instance         |       10|      -|    3595|   6641|    0|
+|Instance         |       16|      -|    3950|   6843|    0|
 |Memory           |       10|      -|      36|     18|    0|
 |Multiplexer      |        -|      -|       -|     81|    -|
 |Register         |        -|      -|       9|      -|    -|
 +-----------------+---------+-------+--------+-------+-----+
-|Total            |       23|      0|    3772|   7070|    0|
+|Total            |       29|      0|    4127|   7272|    0|
 +-----------------+---------+-------+--------+-------+-----+
 |Available        |      280|    220|  106400|  53200|    0|
 +-----------------+---------+-------+--------+-------+-----+
-|Utilization (%)  |        8|      0|       3|     13|    0|
+|Utilization (%)  |       10|      0|       3|     13|    0|
 +-----------------+---------+-------+--------+-------+-----+
 
 + Detail: 
@@ -87,14 +87,14 @@
     |Loop_copy_sorted_pro_U0            |Loop_copy_sorted_pro             |        0|      0|    83|   142|    0|
     |canonize_tree_U0                   |canonize_tree                    |        0|      0|    99|   248|    0|
     |compute_bit_length_U0              |compute_bit_length               |        1|      0|   356|   623|    0|
-    |create_codeword_U0                 |create_codeword                  |        0|      0|   241|   556|    0|
+    |create_codeword_U0                 |create_codeword                  |        0|      0|   272|   548|    0|
     |create_tree_U0                     |create_tree                      |        4|      0|   610|   865|    0|
-    |filter_U0                          |filter                           |        0|      0|    23|   151|    0|
-    |huffman_encoding_AXILiteS_s_axi_U  |huffman_encoding_AXILiteS_s_axi  |        0|      0|    74|   104|    0|
+    |filter_U0                          |filter                           |        0|      0|   107|   151|    0|
+    |huffman_encoding_AXILiteS_s_axi_U  |huffman_encoding_AXILiteS_s_axi  |        6|      0|   314|   314|    0|
     |sort_U0                            |sort                             |        5|      0|  1935|  3408|    0|
     |truncate_tree_U0                   |truncate_tree                    |        0|      0|   152|   477|    0|
     +-----------------------------------+---------------------------------+---------+-------+------+------+-----+
-    |Total                              |                                 |       10|      0|  3595|  6641|    0|
+    |Total                              |                                 |       16|      0|  3950|  6843|    0|
     +-----------------------------------+---------------------------------+---------+-------+------+------+-----+
 
     * DSP48E: 
@@ -215,37 +215,28 @@
 == Interface
 ================================================================
 * Summary: 
-+-------------------------------------+-----+-----+------------+------------------------------+--------------+
-|              RTL Ports              | Dir | Bits|  Protocol  |         Source Object        |    C Type    |
-+-------------------------------------+-----+-----+------------+------------------------------+--------------+
-|s_axi_AXILiteS_AWVALID               |  in |    1|    s_axi   |           AXILiteS           |    pointer   |
-|s_axi_AXILiteS_AWREADY               | out |    1|    s_axi   |           AXILiteS           |    pointer   |
-|s_axi_AXILiteS_AWADDR                |  in |    5|    s_axi   |           AXILiteS           |    pointer   |
-|s_axi_AXILiteS_WVALID                |  in |    1|    s_axi   |           AXILiteS           |    pointer   |
-|s_axi_AXILiteS_WREADY                | out |    1|    s_axi   |           AXILiteS           |    pointer   |
-|s_axi_AXILiteS_WDATA                 |  in |   32|    s_axi   |           AXILiteS           |    pointer   |
-|s_axi_AXILiteS_WSTRB                 |  in |    4|    s_axi   |           AXILiteS           |    pointer   |
-|s_axi_AXILiteS_ARVALID               |  in |    1|    s_axi   |           AXILiteS           |    pointer   |
-|s_axi_AXILiteS_ARREADY               | out |    1|    s_axi   |           AXILiteS           |    pointer   |
-|s_axi_AXILiteS_ARADDR                |  in |    5|    s_axi   |           AXILiteS           |    pointer   |
-|s_axi_AXILiteS_RVALID                | out |    1|    s_axi   |           AXILiteS           |    pointer   |
-|s_axi_AXILiteS_RREADY                |  in |    1|    s_axi   |           AXILiteS           |    pointer   |
-|s_axi_AXILiteS_RDATA                 | out |   32|    s_axi   |           AXILiteS           |    pointer   |
-|s_axi_AXILiteS_RRESP                 | out |    2|    s_axi   |           AXILiteS           |    pointer   |
-|s_axi_AXILiteS_BVALID                | out |    1|    s_axi   |           AXILiteS           |    pointer   |
-|s_axi_AXILiteS_BREADY                |  in |    1|    s_axi   |           AXILiteS           |    pointer   |
-|s_axi_AXILiteS_BRESP                 | out |    2|    s_axi   |           AXILiteS           |    pointer   |
-|ap_clk                               |  in |    1| ap_ctrl_hs |       huffman_encoding       | return value |
-|ap_rst_n                             |  in |    1| ap_ctrl_hs |       huffman_encoding       | return value |
-|interrupt                            | out |    1| ap_ctrl_hs |       huffman_encoding       | return value |
-|symbol_histogram_value_V_TDATA       |  in |   16|    axis    |   symbol_histogram_value_V   |    pointer   |
-|symbol_histogram_value_V_TVALID      |  in |    1|    axis    |   symbol_histogram_value_V   |    pointer   |
-|symbol_histogram_value_V_TREADY      | out |    1|    axis    |   symbol_histogram_value_V   |    pointer   |
-|symbol_histogram_frequency_V_TDATA   |  in |   32|    axis    | symbol_histogram_frequency_V |    pointer   |
-|symbol_histogram_frequency_V_TVALID  |  in |    1|    axis    | symbol_histogram_frequency_V |    pointer   |
-|symbol_histogram_frequency_V_TREADY  | out |    1|    axis    | symbol_histogram_frequency_V |    pointer   |
-|encoding_V_TDATA                     | out |   32|    axis    |          encoding_V          |    pointer   |
-|encoding_V_TVALID                    | out |    1|    axis    |          encoding_V          |    pointer   |
-|encoding_V_TREADY                    |  in |    1|    axis    |          encoding_V          |    pointer   |
-+-------------------------------------+-----+-----+------------+------------------------------+--------------+
++------------------------+-----+-----+------------+------------------+--------------+
+|        RTL Ports       | Dir | Bits|  Protocol  |   Source Object  |    C Type    |
++------------------------+-----+-----+------------+------------------+--------------+
+|s_axi_AXILiteS_AWVALID  |  in |    1|    s_axi   |     AXILiteS     |    pointer   |
+|s_axi_AXILiteS_AWREADY  | out |    1|    s_axi   |     AXILiteS     |    pointer   |
+|s_axi_AXILiteS_AWADDR   |  in |   12|    s_axi   |     AXILiteS     |    pointer   |
+|s_axi_AXILiteS_WVALID   |  in |    1|    s_axi   |     AXILiteS     |    pointer   |
+|s_axi_AXILiteS_WREADY   | out |    1|    s_axi   |     AXILiteS     |    pointer   |
+|s_axi_AXILiteS_WDATA    |  in |   32|    s_axi   |     AXILiteS     |    pointer   |
+|s_axi_AXILiteS_WSTRB    |  in |    4|    s_axi   |     AXILiteS     |    pointer   |
+|s_axi_AXILiteS_ARVALID  |  in |    1|    s_axi   |     AXILiteS     |    pointer   |
+|s_axi_AXILiteS_ARREADY  | out |    1|    s_axi   |     AXILiteS     |    pointer   |
+|s_axi_AXILiteS_ARADDR   |  in |   12|    s_axi   |     AXILiteS     |    pointer   |
+|s_axi_AXILiteS_RVALID   | out |    1|    s_axi   |     AXILiteS     |    pointer   |
+|s_axi_AXILiteS_RREADY   |  in |    1|    s_axi   |     AXILiteS     |    pointer   |
+|s_axi_AXILiteS_RDATA    | out |   32|    s_axi   |     AXILiteS     |    pointer   |
+|s_axi_AXILiteS_RRESP    | out |    2|    s_axi   |     AXILiteS     |    pointer   |
+|s_axi_AXILiteS_BVALID   | out |    1|    s_axi   |     AXILiteS     |    pointer   |
+|s_axi_AXILiteS_BREADY   |  in |    1|    s_axi   |     AXILiteS     |    pointer   |
+|s_axi_AXILiteS_BRESP    | out |    2|    s_axi   |     AXILiteS     |    pointer   |
+|ap_clk                  |  in |    1| ap_ctrl_hs | huffman_encoding | return value |
+|ap_rst_n                |  in |    1| ap_ctrl_hs | huffman_encoding | return value |
+|interrupt               | out |    1| ap_ctrl_hs | huffman_encoding | return value |
++------------------------+-----+-----+------------+------------------+--------------+
 

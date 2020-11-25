@@ -11,7 +11,7 @@ use IEEE.numeric_std.all;
 
 entity huffman_encoding is
 generic (
-    C_S_AXI_AXILITES_ADDR_WIDTH : INTEGER := 5;
+    C_S_AXI_AXILITES_ADDR_WIDTH : INTEGER := 12;
     C_S_AXI_AXILITES_DATA_WIDTH : INTEGER := 32 );
 port (
     s_axi_AXILiteS_AWVALID : IN STD_LOGIC;
@@ -33,23 +33,14 @@ port (
     s_axi_AXILiteS_BRESP : OUT STD_LOGIC_VECTOR (1 downto 0);
     ap_clk : IN STD_LOGIC;
     ap_rst_n : IN STD_LOGIC;
-    interrupt : OUT STD_LOGIC;
-    symbol_histogram_value_V_TDATA : IN STD_LOGIC_VECTOR (15 downto 0);
-    symbol_histogram_frequency_V_TDATA : IN STD_LOGIC_VECTOR (31 downto 0);
-    encoding_V_TDATA : OUT STD_LOGIC_VECTOR (31 downto 0);
-    symbol_histogram_value_V_TVALID : IN STD_LOGIC;
-    symbol_histogram_value_V_TREADY : OUT STD_LOGIC;
-    symbol_histogram_frequency_V_TVALID : IN STD_LOGIC;
-    symbol_histogram_frequency_V_TREADY : OUT STD_LOGIC;
-    encoding_V_TVALID : OUT STD_LOGIC;
-    encoding_V_TREADY : IN STD_LOGIC );
+    interrupt : OUT STD_LOGIC );
 end;
 
 
 architecture behav of huffman_encoding is 
     attribute CORE_GENERATION_INFO : STRING;
     attribute CORE_GENERATION_INFO of behav : architecture is
-    "huffman_encoding,hls_ip_2019_2,{HLS_INPUT_TYPE=cxx,HLS_INPUT_FLOAT=0,HLS_INPUT_FIXED=1,HLS_INPUT_PART=xc7z020-clg484-1,HLS_INPUT_CLOCK=5.000000,HLS_INPUT_ARCH=dataflow,HLS_SYN_CLOCK=4.559500,HLS_SYN_LAT=-1,HLS_SYN_TPT=-1,HLS_SYN_MEM=23,HLS_SYN_DSP=0,HLS_SYN_FF=3772,HLS_SYN_LUT=7070,HLS_VERSION=2019_2}";
+    "huffman_encoding,hls_ip_2019_2,{HLS_INPUT_TYPE=cxx,HLS_INPUT_FLOAT=0,HLS_INPUT_FIXED=1,HLS_INPUT_PART=xc7z020-clg484-1,HLS_INPUT_CLOCK=5.000000,HLS_INPUT_ARCH=dataflow,HLS_SYN_CLOCK=4.559500,HLS_SYN_LAT=-1,HLS_SYN_TPT=-1,HLS_SYN_MEM=29,HLS_SYN_DSP=0,HLS_SYN_FF=4127,HLS_SYN_LUT=7272,HLS_VERSION=2019_2}";
     constant C_S_AXI_DATA_WIDTH : INTEGER range 63 downto 0 := 20;
     constant C_S_AXI_WSTRB_WIDTH : INTEGER range 63 downto 0 := 4;
     constant C_S_AXI_ADDR_WIDTH : INTEGER range 63 downto 0 := 20;
@@ -70,6 +61,8 @@ architecture behav of huffman_encoding is
     signal ap_ready : STD_LOGIC;
     signal ap_done : STD_LOGIC;
     signal ap_idle : STD_LOGIC;
+    signal symbol_histogram_value_V_q0 : STD_LOGIC_VECTOR (8 downto 0);
+    signal symbol_histogram_frequency_V_q0 : STD_LOGIC_VECTOR (31 downto 0);
     signal filtered_value_V_i_q0 : STD_LOGIC_VECTOR (8 downto 0);
     signal filtered_value_V_t_q0 : STD_LOGIC_VECTOR (8 downto 0);
     signal filtered_frequency_V_i_q0 : STD_LOGIC_VECTOR (31 downto 0);
@@ -109,8 +102,10 @@ architecture behav of huffman_encoding is
     signal filter_U0_ap_ready : STD_LOGIC;
     signal filter_U0_start_out : STD_LOGIC;
     signal filter_U0_start_write : STD_LOGIC;
-    signal filter_U0_in_value_V_TREADY : STD_LOGIC;
-    signal filter_U0_in_frequency_V_TREADY : STD_LOGIC;
+    signal filter_U0_in_value_V_address0 : STD_LOGIC_VECTOR (7 downto 0);
+    signal filter_U0_in_value_V_ce0 : STD_LOGIC;
+    signal filter_U0_in_frequency_V_address0 : STD_LOGIC_VECTOR (7 downto 0);
+    signal filter_U0_in_frequency_V_ce0 : STD_LOGIC;
     signal filter_U0_out_value_V_address0 : STD_LOGIC_VECTOR (7 downto 0);
     signal filter_U0_out_value_V_ce0 : STD_LOGIC;
     signal filter_U0_out_value_V_we0 : STD_LOGIC;
@@ -304,8 +299,10 @@ architecture behav of huffman_encoding is
     signal create_codeword_U0_symbol_bits_V_ce0 : STD_LOGIC;
     signal create_codeword_U0_codeword_length_histogram_V_address0 : STD_LOGIC_VECTOR (5 downto 0);
     signal create_codeword_U0_codeword_length_histogram_V_ce0 : STD_LOGIC;
-    signal create_codeword_U0_encoding_V_TDATA : STD_LOGIC_VECTOR (31 downto 0);
-    signal create_codeword_U0_encoding_V_TVALID : STD_LOGIC;
+    signal create_codeword_U0_encoding_V_address0 : STD_LOGIC_VECTOR (7 downto 0);
+    signal create_codeword_U0_encoding_V_ce0 : STD_LOGIC;
+    signal create_codeword_U0_encoding_V_we0 : STD_LOGIC;
+    signal create_codeword_U0_encoding_V_d0 : STD_LOGIC_VECTOR (31 downto 0);
     signal ap_sync_continue : STD_LOGIC;
     signal Block_proc_U0_ap_start : STD_LOGIC;
     signal Block_proc_U0_ap_done : STD_LOGIC;
@@ -414,12 +411,12 @@ architecture behav of huffman_encoding is
         ap_ready : OUT STD_LOGIC;
         start_out : OUT STD_LOGIC;
         start_write : OUT STD_LOGIC;
-        in_value_V_TDATA : IN STD_LOGIC_VECTOR (15 downto 0);
-        in_value_V_TVALID : IN STD_LOGIC;
-        in_value_V_TREADY : OUT STD_LOGIC;
-        in_frequency_V_TDATA : IN STD_LOGIC_VECTOR (31 downto 0);
-        in_frequency_V_TVALID : IN STD_LOGIC;
-        in_frequency_V_TREADY : OUT STD_LOGIC;
+        in_value_V_address0 : OUT STD_LOGIC_VECTOR (7 downto 0);
+        in_value_V_ce0 : OUT STD_LOGIC;
+        in_value_V_q0 : IN STD_LOGIC_VECTOR (8 downto 0);
+        in_frequency_V_address0 : OUT STD_LOGIC_VECTOR (7 downto 0);
+        in_frequency_V_ce0 : OUT STD_LOGIC;
+        in_frequency_V_q0 : IN STD_LOGIC_VECTOR (31 downto 0);
         out_value_V_address0 : OUT STD_LOGIC_VECTOR (7 downto 0);
         out_value_V_ce0 : OUT STD_LOGIC;
         out_value_V_we0 : OUT STD_LOGIC;
@@ -665,9 +662,10 @@ architecture behav of huffman_encoding is
         codeword_length_histogram_V_address0 : OUT STD_LOGIC_VECTOR (5 downto 0);
         codeword_length_histogram_V_ce0 : OUT STD_LOGIC;
         codeword_length_histogram_V_q0 : IN STD_LOGIC_VECTOR (8 downto 0);
-        encoding_V_TDATA : OUT STD_LOGIC_VECTOR (31 downto 0);
-        encoding_V_TVALID : OUT STD_LOGIC;
-        encoding_V_TREADY : IN STD_LOGIC );
+        encoding_V_address0 : OUT STD_LOGIC_VECTOR (7 downto 0);
+        encoding_V_ce0 : OUT STD_LOGIC;
+        encoding_V_we0 : OUT STD_LOGIC;
+        encoding_V_d0 : OUT STD_LOGIC_VECTOR (31 downto 0) );
     end component;
 
 
@@ -1016,6 +1014,16 @@ architecture behav of huffman_encoding is
         ap_ready : IN STD_LOGIC;
         ap_done : IN STD_LOGIC;
         ap_idle : IN STD_LOGIC;
+        symbol_histogram_value_V_address0 : IN STD_LOGIC_VECTOR (7 downto 0);
+        symbol_histogram_value_V_ce0 : IN STD_LOGIC;
+        symbol_histogram_value_V_q0 : OUT STD_LOGIC_VECTOR (8 downto 0);
+        symbol_histogram_frequency_V_address0 : IN STD_LOGIC_VECTOR (7 downto 0);
+        symbol_histogram_frequency_V_ce0 : IN STD_LOGIC;
+        symbol_histogram_frequency_V_q0 : OUT STD_LOGIC_VECTOR (31 downto 0);
+        encoding_V_address0 : IN STD_LOGIC_VECTOR (7 downto 0);
+        encoding_V_ce0 : IN STD_LOGIC;
+        encoding_V_we0 : IN STD_LOGIC;
+        encoding_V_d0 : IN STD_LOGIC_VECTOR (31 downto 0);
         num_nonzero_symbols : IN STD_LOGIC_VECTOR (31 downto 0);
         num_nonzero_symbols_ap_vld : IN STD_LOGIC );
     end component;
@@ -1053,6 +1061,16 @@ begin
         ap_ready => ap_ready,
         ap_done => ap_done,
         ap_idle => ap_idle,
+        symbol_histogram_value_V_address0 => filter_U0_in_value_V_address0,
+        symbol_histogram_value_V_ce0 => filter_U0_in_value_V_ce0,
+        symbol_histogram_value_V_q0 => symbol_histogram_value_V_q0,
+        symbol_histogram_frequency_V_address0 => filter_U0_in_frequency_V_address0,
+        symbol_histogram_frequency_V_ce0 => filter_U0_in_frequency_V_ce0,
+        symbol_histogram_frequency_V_q0 => symbol_histogram_frequency_V_q0,
+        encoding_V_address0 => create_codeword_U0_encoding_V_address0,
+        encoding_V_ce0 => create_codeword_U0_encoding_V_ce0,
+        encoding_V_we0 => create_codeword_U0_encoding_V_we0,
+        encoding_V_d0 => create_codeword_U0_encoding_V_d0,
         num_nonzero_symbols => Block_proc_U0_num_nonzero_symbols,
         num_nonzero_symbols_ap_vld => Block_proc_U0_num_nonzero_symbols_ap_vld);
 
@@ -1396,12 +1414,12 @@ begin
         ap_ready => filter_U0_ap_ready,
         start_out => filter_U0_start_out,
         start_write => filter_U0_start_write,
-        in_value_V_TDATA => symbol_histogram_value_V_TDATA,
-        in_value_V_TVALID => symbol_histogram_value_V_TVALID,
-        in_value_V_TREADY => filter_U0_in_value_V_TREADY,
-        in_frequency_V_TDATA => symbol_histogram_frequency_V_TDATA,
-        in_frequency_V_TVALID => symbol_histogram_frequency_V_TVALID,
-        in_frequency_V_TREADY => filter_U0_in_frequency_V_TREADY,
+        in_value_V_address0 => filter_U0_in_value_V_address0,
+        in_value_V_ce0 => filter_U0_in_value_V_ce0,
+        in_value_V_q0 => symbol_histogram_value_V_q0,
+        in_frequency_V_address0 => filter_U0_in_frequency_V_address0,
+        in_frequency_V_ce0 => filter_U0_in_frequency_V_ce0,
+        in_frequency_V_q0 => symbol_histogram_frequency_V_q0,
         out_value_V_address0 => filter_U0_out_value_V_address0,
         out_value_V_ce0 => filter_U0_out_value_V_ce0,
         out_value_V_we0 => filter_U0_out_value_V_we0,
@@ -1631,9 +1649,10 @@ begin
         codeword_length_histogram_V_address0 => create_codeword_U0_codeword_length_histogram_V_address0,
         codeword_length_histogram_V_ce0 => create_codeword_U0_codeword_length_histogram_V_ce0,
         codeword_length_histogram_V_q0 => truncated_length_his_1_t_q0,
-        encoding_V_TDATA => create_codeword_U0_encoding_V_TDATA,
-        encoding_V_TVALID => create_codeword_U0_encoding_V_TVALID,
-        encoding_V_TREADY => encoding_V_TREADY);
+        encoding_V_address0 => create_codeword_U0_encoding_V_address0,
+        encoding_V_ce0 => create_codeword_U0_encoding_V_ce0,
+        encoding_V_we0 => create_codeword_U0_encoding_V_we0,
+        encoding_V_d0 => create_codeword_U0_encoding_V_d0);
 
     Block_proc_U0 : component Block_proc
     port map (
@@ -2020,8 +2039,6 @@ begin
     create_tree_U0_right_V_full_n <= right_V_i_full_n;
     create_tree_U0_start_full_n <= ap_const_logic_1;
     create_tree_U0_start_write <= ap_const_logic_0;
-    encoding_V_TDATA <= create_codeword_U0_encoding_V_TDATA;
-    encoding_V_TVALID <= create_codeword_U0_encoding_V_TVALID;
     filter_U0_ap_continue <= (ap_sync_channel_write_filtered_value_V and ap_sync_channel_write_filtered_frequency_V);
     filter_U0_ap_start <= ap_start;
     filter_U0_out_frequency_V_full_n <= filtered_frequency_V_i_full_n;
@@ -2041,8 +2058,6 @@ begin
     start_for_Block_codeRepl1012_p_U0_din <= (0=>ap_const_logic_1, others=>'-');
     start_for_Block_proc_U0_din <= (0=>ap_const_logic_1, others=>'-');
     start_for_create_tree_U0_din <= (0=>ap_const_logic_1, others=>'-');
-    symbol_histogram_frequency_V_TREADY <= filter_U0_in_frequency_V_TREADY;
-    symbol_histogram_value_V_TREADY <= filter_U0_in_value_V_TREADY;
     truncate_tree_U0_ap_continue <= (ap_sync_channel_write_truncated_length_his_1 and ap_sync_channel_write_truncated_length_his);
     truncate_tree_U0_ap_start <= length_histogram_V_t_empty_n;
     truncate_tree_U0_output_length_histogram1_V_full_n <= truncated_length_his_i_full_n;

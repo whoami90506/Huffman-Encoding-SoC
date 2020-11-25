@@ -18,12 +18,12 @@ module filter (
         ap_ready,
         start_out,
         start_write,
-        in_value_V_TDATA,
-        in_value_V_TVALID,
-        in_value_V_TREADY,
-        in_frequency_V_TDATA,
-        in_frequency_V_TVALID,
-        in_frequency_V_TREADY,
+        in_value_V_address0,
+        in_value_V_ce0,
+        in_value_V_q0,
+        in_frequency_V_address0,
+        in_frequency_V_ce0,
+        in_frequency_V_q0,
         out_value_V_address0,
         out_value_V_ce0,
         out_value_V_we0,
@@ -38,8 +38,8 @@ module filter (
 );
 
 parameter    ap_ST_fsm_state1 = 3'd1;
-parameter    ap_ST_fsm_state2 = 3'd2;
-parameter    ap_ST_fsm_state3 = 3'd4;
+parameter    ap_ST_fsm_pp0_stage0 = 3'd2;
+parameter    ap_ST_fsm_state7 = 3'd4;
 
 input   ap_clk;
 input   ap_rst;
@@ -51,12 +51,12 @@ output   ap_idle;
 output   ap_ready;
 output   start_out;
 output   start_write;
-input  [15:0] in_value_V_TDATA;
-input   in_value_V_TVALID;
-output   in_value_V_TREADY;
-input  [31:0] in_frequency_V_TDATA;
-input   in_frequency_V_TVALID;
-output   in_frequency_V_TREADY;
+output  [7:0] in_value_V_address0;
+output   in_value_V_ce0;
+input  [8:0] in_value_V_q0;
+output  [7:0] in_frequency_V_address0;
+output   in_frequency_V_ce0;
+input  [31:0] in_frequency_V_q0;
 output  [7:0] out_value_V_address0;
 output   out_value_V_ce0;
 output   out_value_V_we0;
@@ -72,8 +72,8 @@ output   n_out_write;
 reg ap_done;
 reg ap_idle;
 reg start_write;
-reg in_value_V_TREADY;
-reg in_frequency_V_TREADY;
+reg in_value_V_ce0;
+reg in_frequency_V_ce0;
 reg out_value_V_ce0;
 reg out_value_V_we0;
 reg out_frequency_V_ce0;
@@ -86,67 +86,55 @@ reg    ap_done_reg;
 (* fsm_encoding = "none" *) reg   [2:0] ap_CS_fsm;
 wire    ap_CS_fsm_state1;
 reg    internal_ap_ready;
-reg    in_value_V_TDATA_blk_n;
-wire    ap_CS_fsm_state2;
-wire   [0:0] icmp_ln11_fu_130_p2;
-wire   [0:0] icmp_ln883_fu_142_p2;
-reg    in_frequency_V_TDATA_blk_n;
 reg    n_out_blk_n;
-wire    ap_CS_fsm_state3;
-wire   [8:0] i_fu_136_p2;
-reg    ap_predicate_op24_read_state2;
-reg    ap_block_state2;
-reg   [8:0] i_0_i_reg_110;
+wire    ap_CS_fsm_state7;
+reg   [8:0] i_0_i_reg_131;
+wire   [0:0] icmp_ln11_fu_151_p2;
+wire    ap_CS_fsm_pp0_stage0;
+wire    ap_block_state2_pp0_stage0_iter0;
+wire    ap_block_state3_pp0_stage0_iter1;
+wire    ap_block_state4_pp0_stage0_iter2;
+wire    ap_block_state5_pp0_stage0_iter3;
+wire    ap_block_state6_pp0_stage0_iter4;
+wire    ap_block_pp0_stage0_11001;
+wire   [8:0] i_fu_157_p2;
+reg    ap_enable_reg_pp0_iter0;
+wire   [63:0] zext_ln13_fu_163_p1;
+reg   [63:0] zext_ln13_reg_205;
+reg   [63:0] zext_ln13_reg_205_pp0_iter1_reg;
+reg   [31:0] in_frequency_V_load_reg_215;
+wire   [0:0] icmp_ln883_fu_168_p2;
+reg   [0:0] icmp_ln883_reg_221;
+reg   [0:0] icmp_ln883_reg_221_pp0_iter3_reg;
+wire   [63:0] zext_ln544_fu_173_p1;
+reg   [63:0] zext_ln544_reg_225;
+reg   [63:0] zext_ln544_reg_225_pp0_iter3_reg;
+reg   [8:0] in_value_V_load_reg_235;
 reg    ap_block_state1;
-wire   [63:0] zext_ln544_fu_148_p1;
-reg   [8:0] t_V_fu_60;
-wire   [8:0] j_V_fu_159_p2;
+wire    ap_block_pp0_stage0_subdone;
+reg    ap_condition_pp0_exit_iter0_state2;
+reg    ap_enable_reg_pp0_iter1;
+reg    ap_enable_reg_pp0_iter2;
+reg    ap_enable_reg_pp0_iter3;
+reg    ap_enable_reg_pp0_iter4;
+wire    ap_block_pp0_stage0;
+reg   [8:0] t_V_fu_68;
+wire   [8:0] j_V_fu_178_p2;
 reg   [2:0] ap_NS_fsm;
-wire    regslice_both_in_value_V_U_apdone_blk;
-wire   [15:0] in_value_V_TDATA_int;
-wire    in_value_V_TVALID_int;
-reg    in_value_V_TREADY_int;
-wire    regslice_both_in_value_V_U_ack_in;
-wire    regslice_both_in_frequency_V_U_apdone_blk;
-wire   [31:0] in_frequency_V_TDATA_int;
-wire    in_frequency_V_TVALID_int;
-reg    in_frequency_V_TREADY_int;
-wire    regslice_both_in_frequency_V_U_ack_in;
+reg    ap_idle_pp0;
+wire    ap_enable_pp0;
 
 // power-on initialization
 initial begin
 #0 start_once_reg = 1'b0;
 #0 ap_done_reg = 1'b0;
 #0 ap_CS_fsm = 3'd1;
+#0 ap_enable_reg_pp0_iter0 = 1'b0;
+#0 ap_enable_reg_pp0_iter1 = 1'b0;
+#0 ap_enable_reg_pp0_iter2 = 1'b0;
+#0 ap_enable_reg_pp0_iter3 = 1'b0;
+#0 ap_enable_reg_pp0_iter4 = 1'b0;
 end
-
-regslice_both #(
-    .DataWidth( 16 ))
-regslice_both_in_value_V_U(
-    .ap_clk(ap_clk),
-    .ap_rst(ap_rst),
-    .data_in(in_value_V_TDATA),
-    .vld_in(in_value_V_TVALID),
-    .ack_in(regslice_both_in_value_V_U_ack_in),
-    .data_out(in_value_V_TDATA_int),
-    .vld_out(in_value_V_TVALID_int),
-    .ack_out(in_value_V_TREADY_int),
-    .apdone_blk(regslice_both_in_value_V_U_apdone_blk)
-);
-
-regslice_both #(
-    .DataWidth( 32 ))
-regslice_both_in_frequency_V_U(
-    .ap_clk(ap_clk),
-    .ap_rst(ap_rst),
-    .data_in(in_frequency_V_TDATA),
-    .vld_in(in_frequency_V_TVALID),
-    .ack_in(regslice_both_in_frequency_V_U_ack_in),
-    .data_out(in_frequency_V_TDATA_int),
-    .vld_out(in_frequency_V_TVALID_int),
-    .ack_out(in_frequency_V_TREADY_int),
-    .apdone_blk(regslice_both_in_frequency_V_U_apdone_blk)
-);
 
 always @ (posedge ap_clk) begin
     if (ap_rst == 1'b1) begin
@@ -162,8 +150,66 @@ always @ (posedge ap_clk) begin
     end else begin
         if ((ap_continue == 1'b1)) begin
             ap_done_reg <= 1'b0;
-        end else if (((n_out_full_n == 1'b1) & (1'b1 == ap_CS_fsm_state3))) begin
+        end else if (((n_out_full_n == 1'b1) & (1'b1 == ap_CS_fsm_state7))) begin
             ap_done_reg <= 1'b1;
+        end
+    end
+end
+
+always @ (posedge ap_clk) begin
+    if (ap_rst == 1'b1) begin
+        ap_enable_reg_pp0_iter0 <= 1'b0;
+    end else begin
+        if (((1'b1 == ap_CS_fsm_pp0_stage0) & (1'b1 == ap_condition_pp0_exit_iter0_state2) & (1'b0 == ap_block_pp0_stage0_subdone))) begin
+            ap_enable_reg_pp0_iter0 <= 1'b0;
+        end else if ((~((real_start == 1'b0) | (ap_done_reg == 1'b1)) & (1'b1 == ap_CS_fsm_state1))) begin
+            ap_enable_reg_pp0_iter0 <= 1'b1;
+        end
+    end
+end
+
+always @ (posedge ap_clk) begin
+    if (ap_rst == 1'b1) begin
+        ap_enable_reg_pp0_iter1 <= 1'b0;
+    end else begin
+        if ((1'b0 == ap_block_pp0_stage0_subdone)) begin
+            if ((1'b1 == ap_condition_pp0_exit_iter0_state2)) begin
+                ap_enable_reg_pp0_iter1 <= (1'b1 ^ ap_condition_pp0_exit_iter0_state2);
+            end else if ((1'b1 == 1'b1)) begin
+                ap_enable_reg_pp0_iter1 <= ap_enable_reg_pp0_iter0;
+            end
+        end
+    end
+end
+
+always @ (posedge ap_clk) begin
+    if (ap_rst == 1'b1) begin
+        ap_enable_reg_pp0_iter2 <= 1'b0;
+    end else begin
+        if ((1'b0 == ap_block_pp0_stage0_subdone)) begin
+            ap_enable_reg_pp0_iter2 <= ap_enable_reg_pp0_iter1;
+        end
+    end
+end
+
+always @ (posedge ap_clk) begin
+    if (ap_rst == 1'b1) begin
+        ap_enable_reg_pp0_iter3 <= 1'b0;
+    end else begin
+        if ((1'b0 == ap_block_pp0_stage0_subdone)) begin
+            ap_enable_reg_pp0_iter3 <= ap_enable_reg_pp0_iter2;
+        end
+    end
+end
+
+always @ (posedge ap_clk) begin
+    if (ap_rst == 1'b1) begin
+        ap_enable_reg_pp0_iter4 <= 1'b0;
+    end else begin
+        if ((1'b0 == ap_block_pp0_stage0_subdone)) begin
+            ap_enable_reg_pp0_iter4 <= ap_enable_reg_pp0_iter3;
+        end else if ((~((real_start == 1'b0) | (ap_done_reg == 1'b1)) & (1'b1 == ap_CS_fsm_state1))) begin
+            ap_enable_reg_pp0_iter4 <= 1'b0;
         end
     end
 end
@@ -181,23 +227,64 @@ always @ (posedge ap_clk) begin
 end
 
 always @ (posedge ap_clk) begin
-    if ((~(((in_value_V_TVALID_int == 1'b0) & (ap_predicate_op24_read_state2 == 1'b1)) | ((icmp_ln11_fu_130_p2 == 1'd0) & (in_frequency_V_TVALID_int == 1'b0))) & (icmp_ln11_fu_130_p2 == 1'd0) & (1'b1 == ap_CS_fsm_state2))) begin
-        i_0_i_reg_110 <= i_fu_136_p2;
+    if (((1'b0 == ap_block_pp0_stage0_11001) & (icmp_ln11_fu_151_p2 == 1'd0) & (ap_enable_reg_pp0_iter0 == 1'b1) & (1'b1 == ap_CS_fsm_pp0_stage0))) begin
+        i_0_i_reg_131 <= i_fu_157_p2;
     end else if ((~((real_start == 1'b0) | (ap_done_reg == 1'b1)) & (1'b1 == ap_CS_fsm_state1))) begin
-        i_0_i_reg_110 <= 9'd0;
+        i_0_i_reg_131 <= 9'd0;
     end
 end
 
 always @ (posedge ap_clk) begin
-    if ((~(((in_value_V_TVALID_int == 1'b0) & (ap_predicate_op24_read_state2 == 1'b1)) | ((icmp_ln11_fu_130_p2 == 1'd0) & (in_frequency_V_TVALID_int == 1'b0))) & (icmp_ln883_fu_142_p2 == 1'd0) & (icmp_ln11_fu_130_p2 == 1'd0) & (1'b1 == ap_CS_fsm_state2))) begin
-        t_V_fu_60 <= j_V_fu_159_p2;
+    if (((1'b0 == ap_block_pp0_stage0_11001) & (ap_enable_reg_pp0_iter2 == 1'b1) & (icmp_ln883_fu_168_p2 == 1'd0))) begin
+        t_V_fu_68 <= j_V_fu_178_p2;
     end else if ((~((real_start == 1'b0) | (ap_done_reg == 1'b1)) & (1'b1 == ap_CS_fsm_state1))) begin
-        t_V_fu_60 <= 9'd0;
+        t_V_fu_68 <= 9'd0;
+    end
+end
+
+always @ (posedge ap_clk) begin
+    if ((1'b0 == ap_block_pp0_stage0_11001)) begin
+        icmp_ln883_reg_221 <= icmp_ln883_fu_168_p2;
+        icmp_ln883_reg_221_pp0_iter3_reg <= icmp_ln883_reg_221;
+        zext_ln544_reg_225_pp0_iter3_reg[8 : 0] <= zext_ln544_reg_225[8 : 0];
+    end
+end
+
+always @ (posedge ap_clk) begin
+    if (((1'b0 == ap_block_pp0_stage0_11001) & (1'b1 == ap_CS_fsm_pp0_stage0))) begin
+        in_frequency_V_load_reg_215 <= in_frequency_V_q0;
+        zext_ln13_reg_205_pp0_iter1_reg[8 : 0] <= zext_ln13_reg_205[8 : 0];
+    end
+end
+
+always @ (posedge ap_clk) begin
+    if (((1'b0 == ap_block_pp0_stage0_11001) & (icmp_ln883_reg_221 == 1'd0))) begin
+        in_value_V_load_reg_235 <= in_value_V_q0;
+    end
+end
+
+always @ (posedge ap_clk) begin
+    if (((1'b0 == ap_block_pp0_stage0_11001) & (icmp_ln11_fu_151_p2 == 1'd0) & (1'b1 == ap_CS_fsm_pp0_stage0))) begin
+        zext_ln13_reg_205[8 : 0] <= zext_ln13_fu_163_p1[8 : 0];
+    end
+end
+
+always @ (posedge ap_clk) begin
+    if (((1'b0 == ap_block_pp0_stage0_11001) & (icmp_ln883_fu_168_p2 == 1'd0))) begin
+        zext_ln544_reg_225[8 : 0] <= zext_ln544_fu_173_p1[8 : 0];
     end
 end
 
 always @ (*) begin
-    if (((n_out_full_n == 1'b1) & (1'b1 == ap_CS_fsm_state3))) begin
+    if ((icmp_ln11_fu_151_p2 == 1'd1)) begin
+        ap_condition_pp0_exit_iter0_state2 = 1'b1;
+    end else begin
+        ap_condition_pp0_exit_iter0_state2 = 1'b0;
+    end
+end
+
+always @ (*) begin
+    if (((n_out_full_n == 1'b1) & (1'b1 == ap_CS_fsm_state7))) begin
         ap_done = 1'b1;
     end else begin
         ap_done = ap_done_reg;
@@ -213,55 +300,31 @@ always @ (*) begin
 end
 
 always @ (*) begin
-    if (((icmp_ln11_fu_130_p2 == 1'd0) & (1'b1 == ap_CS_fsm_state2))) begin
-        in_frequency_V_TDATA_blk_n = in_frequency_V_TVALID_int;
+    if (((ap_enable_reg_pp0_iter0 == 1'b0) & (ap_enable_reg_pp0_iter4 == 1'b0) & (ap_enable_reg_pp0_iter3 == 1'b0) & (ap_enable_reg_pp0_iter2 == 1'b0) & (ap_enable_reg_pp0_iter1 == 1'b0))) begin
+        ap_idle_pp0 = 1'b1;
     end else begin
-        in_frequency_V_TDATA_blk_n = 1'b1;
+        ap_idle_pp0 = 1'b0;
     end
 end
 
 always @ (*) begin
-    if (((in_frequency_V_TVALID == 1'b1) & (regslice_both_in_frequency_V_U_ack_in == 1'b1))) begin
-        in_frequency_V_TREADY = 1'b1;
+    if (((1'b0 == ap_block_pp0_stage0_11001) & (ap_enable_reg_pp0_iter0 == 1'b1) & (1'b1 == ap_CS_fsm_pp0_stage0))) begin
+        in_frequency_V_ce0 = 1'b1;
     end else begin
-        in_frequency_V_TREADY = 1'b0;
+        in_frequency_V_ce0 = 1'b0;
     end
 end
 
 always @ (*) begin
-    if ((~(((in_value_V_TVALID_int == 1'b0) & (ap_predicate_op24_read_state2 == 1'b1)) | ((icmp_ln11_fu_130_p2 == 1'd0) & (in_frequency_V_TVALID_int == 1'b0))) & (icmp_ln11_fu_130_p2 == 1'd0) & (1'b1 == ap_CS_fsm_state2))) begin
-        in_frequency_V_TREADY_int = 1'b1;
+    if (((1'b0 == ap_block_pp0_stage0_11001) & (ap_enable_reg_pp0_iter2 == 1'b1))) begin
+        in_value_V_ce0 = 1'b1;
     end else begin
-        in_frequency_V_TREADY_int = 1'b0;
+        in_value_V_ce0 = 1'b0;
     end
 end
 
 always @ (*) begin
-    if (((icmp_ln883_fu_142_p2 == 1'd0) & (icmp_ln11_fu_130_p2 == 1'd0) & (1'b1 == ap_CS_fsm_state2))) begin
-        in_value_V_TDATA_blk_n = in_value_V_TVALID_int;
-    end else begin
-        in_value_V_TDATA_blk_n = 1'b1;
-    end
-end
-
-always @ (*) begin
-    if (((in_value_V_TVALID == 1'b1) & (regslice_both_in_value_V_U_ack_in == 1'b1))) begin
-        in_value_V_TREADY = 1'b1;
-    end else begin
-        in_value_V_TREADY = 1'b0;
-    end
-end
-
-always @ (*) begin
-    if ((~(((in_value_V_TVALID_int == 1'b0) & (ap_predicate_op24_read_state2 == 1'b1)) | ((icmp_ln11_fu_130_p2 == 1'd0) & (in_frequency_V_TVALID_int == 1'b0))) & (1'b1 == ap_CS_fsm_state2) & (ap_predicate_op24_read_state2 == 1'b1))) begin
-        in_value_V_TREADY_int = 1'b1;
-    end else begin
-        in_value_V_TREADY_int = 1'b0;
-    end
-end
-
-always @ (*) begin
-    if (((n_out_full_n == 1'b1) & (1'b1 == ap_CS_fsm_state3))) begin
+    if (((n_out_full_n == 1'b1) & (1'b1 == ap_CS_fsm_state7))) begin
         internal_ap_ready = 1'b1;
     end else begin
         internal_ap_ready = 1'b0;
@@ -269,7 +332,7 @@ always @ (*) begin
 end
 
 always @ (*) begin
-    if ((1'b1 == ap_CS_fsm_state3)) begin
+    if ((1'b1 == ap_CS_fsm_state7)) begin
         n_out_blk_n = n_out_full_n;
     end else begin
         n_out_blk_n = 1'b1;
@@ -277,7 +340,7 @@ always @ (*) begin
 end
 
 always @ (*) begin
-    if (((n_out_full_n == 1'b1) & (1'b1 == ap_CS_fsm_state3))) begin
+    if (((n_out_full_n == 1'b1) & (1'b1 == ap_CS_fsm_state7))) begin
         n_out_write = 1'b1;
     end else begin
         n_out_write = 1'b0;
@@ -285,7 +348,7 @@ always @ (*) begin
 end
 
 always @ (*) begin
-    if ((~(((in_value_V_TVALID_int == 1'b0) & (ap_predicate_op24_read_state2 == 1'b1)) | ((icmp_ln11_fu_130_p2 == 1'd0) & (in_frequency_V_TVALID_int == 1'b0))) & (1'b1 == ap_CS_fsm_state2))) begin
+    if (((1'b0 == ap_block_pp0_stage0_11001) & (ap_enable_reg_pp0_iter2 == 1'b1))) begin
         out_frequency_V_ce0 = 1'b1;
     end else begin
         out_frequency_V_ce0 = 1'b0;
@@ -293,7 +356,7 @@ always @ (*) begin
 end
 
 always @ (*) begin
-    if ((~(((in_value_V_TVALID_int == 1'b0) & (ap_predicate_op24_read_state2 == 1'b1)) | ((icmp_ln11_fu_130_p2 == 1'd0) & (in_frequency_V_TVALID_int == 1'b0))) & (icmp_ln883_fu_142_p2 == 1'd0) & (icmp_ln11_fu_130_p2 == 1'd0) & (1'b1 == ap_CS_fsm_state2))) begin
+    if (((1'b0 == ap_block_pp0_stage0_11001) & (ap_enable_reg_pp0_iter2 == 1'b1) & (icmp_ln883_fu_168_p2 == 1'd0))) begin
         out_frequency_V_we0 = 1'b1;
     end else begin
         out_frequency_V_we0 = 1'b0;
@@ -301,7 +364,7 @@ always @ (*) begin
 end
 
 always @ (*) begin
-    if ((~(((in_value_V_TVALID_int == 1'b0) & (ap_predicate_op24_read_state2 == 1'b1)) | ((icmp_ln11_fu_130_p2 == 1'd0) & (in_frequency_V_TVALID_int == 1'b0))) & (1'b1 == ap_CS_fsm_state2))) begin
+    if (((1'b0 == ap_block_pp0_stage0_11001) & (ap_enable_reg_pp0_iter4 == 1'b1))) begin
         out_value_V_ce0 = 1'b1;
     end else begin
         out_value_V_ce0 = 1'b0;
@@ -309,7 +372,7 @@ always @ (*) begin
 end
 
 always @ (*) begin
-    if ((~(((in_value_V_TVALID_int == 1'b0) & (ap_predicate_op24_read_state2 == 1'b1)) | ((icmp_ln11_fu_130_p2 == 1'd0) & (in_frequency_V_TVALID_int == 1'b0))) & (icmp_ln883_fu_142_p2 == 1'd0) & (icmp_ln11_fu_130_p2 == 1'd0) & (1'b1 == ap_CS_fsm_state2))) begin
+    if (((1'b0 == ap_block_pp0_stage0_11001) & (ap_enable_reg_pp0_iter4 == 1'b1) & (icmp_ln883_reg_221_pp0_iter3_reg == 1'd0))) begin
         out_value_V_we0 = 1'b1;
     end else begin
         out_value_V_we0 = 1'b0;
@@ -336,25 +399,25 @@ always @ (*) begin
     case (ap_CS_fsm)
         ap_ST_fsm_state1 : begin
             if ((~((real_start == 1'b0) | (ap_done_reg == 1'b1)) & (1'b1 == ap_CS_fsm_state1))) begin
-                ap_NS_fsm = ap_ST_fsm_state2;
+                ap_NS_fsm = ap_ST_fsm_pp0_stage0;
             end else begin
                 ap_NS_fsm = ap_ST_fsm_state1;
             end
         end
-        ap_ST_fsm_state2 : begin
-            if ((~(((in_value_V_TVALID_int == 1'b0) & (ap_predicate_op24_read_state2 == 1'b1)) | ((icmp_ln11_fu_130_p2 == 1'd0) & (in_frequency_V_TVALID_int == 1'b0))) & (icmp_ln11_fu_130_p2 == 1'd0) & (1'b1 == ap_CS_fsm_state2))) begin
-                ap_NS_fsm = ap_ST_fsm_state2;
-            end else if ((~(((in_value_V_TVALID_int == 1'b0) & (ap_predicate_op24_read_state2 == 1'b1)) | ((icmp_ln11_fu_130_p2 == 1'd0) & (in_frequency_V_TVALID_int == 1'b0))) & (icmp_ln11_fu_130_p2 == 1'd1) & (1'b1 == ap_CS_fsm_state2))) begin
-                ap_NS_fsm = ap_ST_fsm_state3;
+        ap_ST_fsm_pp0_stage0 : begin
+            if ((~((icmp_ln11_fu_151_p2 == 1'd1) & (ap_enable_reg_pp0_iter0 == 1'b1) & (ap_enable_reg_pp0_iter1 == 1'b0) & (1'b0 == ap_block_pp0_stage0_subdone)) & ~((ap_enable_reg_pp0_iter4 == 1'b1) & (ap_enable_reg_pp0_iter3 == 1'b0) & (1'b0 == ap_block_pp0_stage0_subdone)))) begin
+                ap_NS_fsm = ap_ST_fsm_pp0_stage0;
+            end else if ((((icmp_ln11_fu_151_p2 == 1'd1) & (ap_enable_reg_pp0_iter0 == 1'b1) & (ap_enable_reg_pp0_iter1 == 1'b0) & (1'b0 == ap_block_pp0_stage0_subdone)) | ((ap_enable_reg_pp0_iter4 == 1'b1) & (ap_enable_reg_pp0_iter3 == 1'b0) & (1'b0 == ap_block_pp0_stage0_subdone)))) begin
+                ap_NS_fsm = ap_ST_fsm_state7;
             end else begin
-                ap_NS_fsm = ap_ST_fsm_state2;
+                ap_NS_fsm = ap_ST_fsm_pp0_stage0;
             end
         end
-        ap_ST_fsm_state3 : begin
-            if (((n_out_full_n == 1'b1) & (1'b1 == ap_CS_fsm_state3))) begin
+        ap_ST_fsm_state7 : begin
+            if (((n_out_full_n == 1'b1) & (1'b1 == ap_CS_fsm_state7))) begin
                 ap_NS_fsm = ap_ST_fsm_state1;
             end else begin
-                ap_NS_fsm = ap_ST_fsm_state3;
+                ap_NS_fsm = ap_ST_fsm_state7;
             end
         end
         default : begin
@@ -363,46 +426,69 @@ always @ (*) begin
     endcase
 end
 
+assign ap_CS_fsm_pp0_stage0 = ap_CS_fsm[32'd1];
+
 assign ap_CS_fsm_state1 = ap_CS_fsm[32'd0];
 
-assign ap_CS_fsm_state2 = ap_CS_fsm[32'd1];
+assign ap_CS_fsm_state7 = ap_CS_fsm[32'd2];
 
-assign ap_CS_fsm_state3 = ap_CS_fsm[32'd2];
+assign ap_block_pp0_stage0 = ~(1'b1 == 1'b1);
+
+assign ap_block_pp0_stage0_11001 = ~(1'b1 == 1'b1);
+
+assign ap_block_pp0_stage0_subdone = ~(1'b1 == 1'b1);
 
 always @ (*) begin
     ap_block_state1 = ((real_start == 1'b0) | (ap_done_reg == 1'b1));
 end
 
-always @ (*) begin
-    ap_block_state2 = (((in_value_V_TVALID_int == 1'b0) & (ap_predicate_op24_read_state2 == 1'b1)) | ((icmp_ln11_fu_130_p2 == 1'd0) & (in_frequency_V_TVALID_int == 1'b0)));
-end
+assign ap_block_state2_pp0_stage0_iter0 = ~(1'b1 == 1'b1);
 
-always @ (*) begin
-    ap_predicate_op24_read_state2 = ((icmp_ln883_fu_142_p2 == 1'd0) & (icmp_ln11_fu_130_p2 == 1'd0));
-end
+assign ap_block_state3_pp0_stage0_iter1 = ~(1'b1 == 1'b1);
+
+assign ap_block_state4_pp0_stage0_iter2 = ~(1'b1 == 1'b1);
+
+assign ap_block_state5_pp0_stage0_iter3 = ~(1'b1 == 1'b1);
+
+assign ap_block_state6_pp0_stage0_iter4 = ~(1'b1 == 1'b1);
+
+assign ap_enable_pp0 = (ap_idle_pp0 ^ 1'b1);
 
 assign ap_ready = internal_ap_ready;
 
-assign i_fu_136_p2 = (i_0_i_reg_110 + 9'd1);
+assign i_fu_157_p2 = (i_0_i_reg_131 + 9'd1);
 
-assign icmp_ln11_fu_130_p2 = ((i_0_i_reg_110 == 9'd256) ? 1'b1 : 1'b0);
+assign icmp_ln11_fu_151_p2 = ((i_0_i_reg_131 == 9'd256) ? 1'b1 : 1'b0);
 
-assign icmp_ln883_fu_142_p2 = ((in_frequency_V_TDATA_int == 32'd0) ? 1'b1 : 1'b0);
+assign icmp_ln883_fu_168_p2 = ((in_frequency_V_load_reg_215 == 32'd0) ? 1'b1 : 1'b0);
 
-assign j_V_fu_159_p2 = (9'd1 + t_V_fu_60);
+assign in_frequency_V_address0 = zext_ln13_fu_163_p1;
 
-assign n_out_din = t_V_fu_60;
+assign in_value_V_address0 = zext_ln13_reg_205_pp0_iter1_reg;
 
-assign out_frequency_V_address0 = zext_ln544_fu_148_p1;
+assign j_V_fu_178_p2 = (t_V_fu_68 + 9'd1);
 
-assign out_frequency_V_d0 = in_frequency_V_TDATA_int;
+assign n_out_din = t_V_fu_68;
 
-assign out_value_V_address0 = zext_ln544_fu_148_p1;
+assign out_frequency_V_address0 = zext_ln544_fu_173_p1;
 
-assign out_value_V_d0 = in_value_V_TDATA_int[8:0];
+assign out_frequency_V_d0 = in_frequency_V_load_reg_215;
+
+assign out_value_V_address0 = zext_ln544_reg_225_pp0_iter3_reg;
+
+assign out_value_V_d0 = in_value_V_load_reg_235;
 
 assign start_out = real_start;
 
-assign zext_ln544_fu_148_p1 = t_V_fu_60;
+assign zext_ln13_fu_163_p1 = i_0_i_reg_131;
+
+assign zext_ln544_fu_173_p1 = t_V_fu_68;
+
+always @ (posedge ap_clk) begin
+    zext_ln13_reg_205[63:9] <= 55'b0000000000000000000000000000000000000000000000000000000;
+    zext_ln13_reg_205_pp0_iter1_reg[63:9] <= 55'b0000000000000000000000000000000000000000000000000000000;
+    zext_ln544_reg_225[63:9] <= 55'b0000000000000000000000000000000000000000000000000000000;
+    zext_ln544_reg_225_pp0_iter3_reg[63:9] <= 55'b0000000000000000000000000000000000000000000000000000000;
+end
 
 endmodule //filter

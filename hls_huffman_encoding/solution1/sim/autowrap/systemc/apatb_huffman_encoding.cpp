@@ -42,7 +42,6 @@ using namespace sc_dt;
 #define AUTOTB_TVIN_symbol_histogram_frequency_V  "../tv/cdatafile/c.huffman_encoding.autotvin_symbol_histogram_frequency_V.dat"
 // wrapc file define: "encoding_V"
 #define AUTOTB_TVOUT_encoding_V  "../tv/cdatafile/c.huffman_encoding.autotvout_encoding_V.dat"
-#define AUTOTB_TVIN_encoding_V  "../tv/cdatafile/c.huffman_encoding.autotvin_encoding_V.dat"
 // wrapc file define: "num_nonzero_symbols"
 #define AUTOTB_TVOUT_num_nonzero_symbols  "../tv/cdatafile/c.huffman_encoding.autotvout_num_nonzero_symbols.dat"
 
@@ -413,8 +412,6 @@ int* num_nonzero_symbols)
 		aesl_fh.touch(AUTOTB_TVIN_symbol_histogram_frequency_V);
 
 		// "encoding_V"
-		char* tvin_encoding_V = new char[50];
-		aesl_fh.touch(AUTOTB_TVIN_encoding_V);
 		char* tvout_encoding_V = new char[50];
 		aesl_fh.touch(AUTOTB_TVOUT_encoding_V);
 
@@ -430,7 +427,7 @@ int* num_nonzero_symbols)
 		sprintf(tvin_symbol_histogram_value_V, "[[transaction]] %d\n", AESL_transaction);
 		aesl_fh.write(AUTOTB_TVIN_symbol_histogram_value_V, tvin_symbol_histogram_value_V);
 
-		sc_bv<16>* symbol_histogram_value_V_tvin_wrapc_buffer = new sc_bv<16>[256];
+		sc_bv<9>* symbol_histogram_value_V_tvin_wrapc_buffer = new sc_bv<9>[256];
 
 		// RTL Name: symbol_histogram_value_V
 		{
@@ -521,54 +518,6 @@ int* num_nonzero_symbols)
 
 		// release memory allocation
 		delete [] symbol_histogram_frequency_V_tvin_wrapc_buffer;
-
-		// [[transaction]]
-		sprintf(tvin_encoding_V, "[[transaction]] %d\n", AESL_transaction);
-		aesl_fh.write(AUTOTB_TVIN_encoding_V, tvin_encoding_V);
-
-		sc_bv<32>* encoding_V_tvin_wrapc_buffer = new sc_bv<32>[256];
-
-		// RTL Name: encoding_V
-		{
-			// bitslice(31, 0)
-			{
-				int hls_map_index = 0;
-				// celement: encoding.V(31, 0)
-				{
-					// carray: (0) => (255) @ (1)
-					for (int i_0 = 0; i_0 <= 255; i_0 += 1)
-					{
-						// sub                   : i_0
-						// ori_name              : encoding[i_0]
-						// sub_1st_elem          : 0
-						// ori_name_1st_elem     : encoding[0]
-						// regulate_c_name       : encoding_V
-						// input_type_conversion : (encoding[i_0]).to_string(2).c_str()
-						if (&(encoding[0]) != NULL) // check the null address if the c port is array or others
-						{
-							sc_lv<32> encoding_V_tmp_mem;
-							encoding_V_tmp_mem = (encoding[i_0]).to_string(2).c_str();
-							encoding_V_tvin_wrapc_buffer[hls_map_index].range(31, 0) = encoding_V_tmp_mem.range(31, 0);
-                                 	       hls_map_index++;
-						}
-					}
-				}
-			}
-		}
-
-		// dump tv to file
-		for (int i = 0; i < 256; i++)
-		{
-			sprintf(tvin_encoding_V, "%s\n", (encoding_V_tvin_wrapc_buffer[i]).to_string(SC_HEX).c_str());
-			aesl_fh.write(AUTOTB_TVIN_encoding_V, tvin_encoding_V);
-		}
-
-		tcl_file.set_num(256, &tcl_file.encoding_V_depth);
-		sprintf(tvin_encoding_V, "[[/transaction]] \n");
-		aesl_fh.write(AUTOTB_TVIN_encoding_V, tvin_encoding_V);
-
-		// release memory allocation
-		delete [] encoding_V_tvin_wrapc_buffer;
 
 // [call_c_dut] ---------->
 
@@ -680,7 +629,6 @@ int* num_nonzero_symbols)
 		delete [] tvin_symbol_histogram_frequency_V;
 		// release memory allocation: "encoding_V"
 		delete [] tvout_encoding_V;
-		delete [] tvin_encoding_V;
 		// release memory allocation: "num_nonzero_symbols"
 		delete [] tvout_num_nonzero_symbols;
 

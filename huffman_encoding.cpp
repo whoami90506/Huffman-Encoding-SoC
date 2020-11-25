@@ -4,8 +4,8 @@ void huffman_encoding(
     /* input */ Symbol symbol_histogram[INPUT_SYMBOL_SIZE],
     /* output */ PackedCodewordAndLength encoding[INPUT_SYMBOL_SIZE],
     /* output */ int *num_nonzero_symbols) {
-    #pragma HLS INTERFACE axis port=symbol_histogram 
-    #pragma HLS INTERFACE axis port=encoding 
+    #pragma HLS INTERFACE s_axilite port=symbol_histogram 
+    #pragma HLS INTERFACE s_axilite port=encoding 
     #pragma HLS INTERFACE s_axilite port=num_nonzero_symbols 
     #pragma HLS INTERFACE s_axilite port=return 
 

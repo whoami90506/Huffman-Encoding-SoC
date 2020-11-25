@@ -20,10 +20,8 @@
 `define AESL_DEPTH_num_nonzero_symbols 1
 `define AUTOTB_TVIN_symbol_histogram_value_V  "../tv/cdatafile/c.huffman_encoding.autotvin_symbol_histogram_value_V.dat"
 `define AUTOTB_TVIN_symbol_histogram_frequency_V  "../tv/cdatafile/c.huffman_encoding.autotvin_symbol_histogram_frequency_V.dat"
-`define AUTOTB_TVIN_encoding_V  "../tv/cdatafile/c.huffman_encoding.autotvin_encoding_V.dat"
 `define AUTOTB_TVIN_symbol_histogram_value_V_out_wrapc  "../tv/rtldatafile/rtl.huffman_encoding.autotvin_symbol_histogram_value_V.dat"
 `define AUTOTB_TVIN_symbol_histogram_frequency_V_out_wrapc  "../tv/rtldatafile/rtl.huffman_encoding.autotvin_symbol_histogram_frequency_V.dat"
-`define AUTOTB_TVIN_encoding_V_out_wrapc  "../tv/rtldatafile/rtl.huffman_encoding.autotvin_encoding_V.dat"
 `define AUTOTB_TVOUT_encoding_V  "../tv/cdatafile/c.huffman_encoding.autotvout_encoding_V.dat"
 `define AUTOTB_TVOUT_num_nonzero_symbols  "../tv/cdatafile/c.huffman_encoding.autotvout_num_nonzero_symbols.dat"
 `define AUTOTB_TVOUT_encoding_V_out_wrapc  "../tv/rtldatafile/rtl.huffman_encoding.autotvout_encoding_V.dat"
@@ -40,7 +38,7 @@ parameter LENGTH_num_nonzero_symbols = 1;
 
 task read_token;
     input integer fp;
-    output reg [303 : 0] token;
+    output reg [199 : 0] token;
     integer ret;
     begin
         token = "";
@@ -66,14 +64,14 @@ reg AESL_done_delay2 = 0;
 reg AESL_ready_delay = 0;
 wire ready;
 wire ready_wire;
-wire [4 : 0] AXILiteS_AWADDR;
+wire [11 : 0] AXILiteS_AWADDR;
 wire  AXILiteS_AWVALID;
 wire  AXILiteS_AWREADY;
 wire  AXILiteS_WVALID;
 wire  AXILiteS_WREADY;
 wire [31 : 0] AXILiteS_WDATA;
 wire [3 : 0] AXILiteS_WSTRB;
-wire [4 : 0] AXILiteS_ARADDR;
+wire [11 : 0] AXILiteS_ARADDR;
 wire  AXILiteS_ARVALID;
 wire  AXILiteS_ARREADY;
 wire  AXILiteS_RVALID;
@@ -84,15 +82,6 @@ wire  AXILiteS_BVALID;
 wire  AXILiteS_BREADY;
 wire [1 : 0] AXILiteS_BRESP;
 wire  AXILiteS_INTERRUPT;
-wire [15 : 0] symbol_histogram_value_V_TDATA;
-wire [31 : 0] symbol_histogram_frequency_V_TDATA;
-wire [31 : 0] encoding_V_TDATA;
-wire  symbol_histogram_value_V_TVALID;
-wire  symbol_histogram_value_V_TREADY;
-wire  symbol_histogram_frequency_V_TVALID;
-wire  symbol_histogram_frequency_V_TREADY;
-wire  encoding_V_TVALID;
-wire  encoding_V_TREADY;
 integer done_cnt = 0;
 integer AESL_ready_cnt = 0;
 integer ready_cnt = 0;
@@ -103,6 +92,7 @@ reg ready_delay_last_n;
 reg done_delay_last_n;
 reg interface_done = 0;
 wire AXILiteS_read_data_finish;
+wire AXILiteS_write_data_finish;
 wire AESL_slave_start;
 reg AESL_slave_start_lock = 0;
 wire AESL_slave_write_start_in;
@@ -140,16 +130,7 @@ wire ap_rst_n_n;
     .s_axi_AXILiteS_BRESP(AXILiteS_BRESP),
     .interrupt(AXILiteS_INTERRUPT),
     .ap_clk(ap_clk),
-    .ap_rst_n(ap_rst_n),
-    .symbol_histogram_value_V_TDATA(symbol_histogram_value_V_TDATA),
-    .symbol_histogram_frequency_V_TDATA(symbol_histogram_frequency_V_TDATA),
-    .encoding_V_TDATA(encoding_V_TDATA),
-    .symbol_histogram_value_V_TVALID(symbol_histogram_value_V_TVALID),
-    .symbol_histogram_value_V_TREADY(symbol_histogram_value_V_TREADY),
-    .symbol_histogram_frequency_V_TVALID(symbol_histogram_frequency_V_TVALID),
-    .symbol_histogram_frequency_V_TREADY(symbol_histogram_frequency_V_TREADY),
-    .encoding_V_TVALID(encoding_V_TVALID),
-    .encoding_V_TREADY(encoding_V_TREADY));
+    .ap_rst_n(ap_rst_n));
 
 // Assignment for control signal
 assign ap_clk = AESL_clock;
@@ -159,7 +140,7 @@ assign AESL_reset = rst;
 assign AESL_start = start;
 assign AESL_ce = ce;
 assign AESL_continue = tb_continue;
-  assign AESL_slave_write_start_in = slave_start_status ;
+  assign AESL_slave_write_start_in = slave_start_status  & AXILiteS_write_data_finish;
   assign AESL_slave_start = AESL_slave_write_start_finish;
   assign AESL_done = slave_done_status  & AXILiteS_read_data_finish;
 
@@ -217,97 +198,6 @@ end
 
 
 
-reg [31:0] ap_c_n_tvin_trans_num_symbol_histogram_value_V;
-
-reg symbol_histogram_value_V_ready_reg; // for self-sync
-
-wire symbol_histogram_value_V_ready;
-wire symbol_histogram_value_V_done;
-wire [31:0] symbol_histogram_value_V_transaction;
-wire axi_s_symbol_histogram_value_V_TVALID;
-wire axi_s_symbol_histogram_value_V_TREADY;
-
-AESL_axi_s_symbol_histogram_value_V AESL_AXI_S_symbol_histogram_value_V(
-    .clk(AESL_clock),
-    .reset(AESL_reset),
-    .TRAN_symbol_histogram_value_V_TDATA(symbol_histogram_value_V_TDATA),
-    .TRAN_symbol_histogram_value_V_TVALID(axi_s_symbol_histogram_value_V_TVALID),
-    .TRAN_symbol_histogram_value_V_TREADY(axi_s_symbol_histogram_value_V_TREADY),
-    .ready(symbol_histogram_value_V_ready),
-    .done(symbol_histogram_value_V_done),
-    .transaction(symbol_histogram_value_V_transaction));
-
-assign symbol_histogram_value_V_ready = ready;
-assign symbol_histogram_value_V_done = 0;
-
-assign symbol_histogram_value_V_TVALID = axi_s_symbol_histogram_value_V_TVALID;
-
-assign axi_s_symbol_histogram_value_V_TREADY = symbol_histogram_value_V_TREADY;
-reg [31:0] ap_c_n_tvin_trans_num_symbol_histogram_frequency_V;
-
-reg symbol_histogram_frequency_V_ready_reg; // for self-sync
-
-wire symbol_histogram_frequency_V_ready;
-wire symbol_histogram_frequency_V_done;
-wire [31:0] symbol_histogram_frequency_V_transaction;
-wire axi_s_symbol_histogram_frequency_V_TVALID;
-wire axi_s_symbol_histogram_frequency_V_TREADY;
-
-AESL_axi_s_symbol_histogram_frequency_V AESL_AXI_S_symbol_histogram_frequency_V(
-    .clk(AESL_clock),
-    .reset(AESL_reset),
-    .TRAN_symbol_histogram_frequency_V_TDATA(symbol_histogram_frequency_V_TDATA),
-    .TRAN_symbol_histogram_frequency_V_TVALID(axi_s_symbol_histogram_frequency_V_TVALID),
-    .TRAN_symbol_histogram_frequency_V_TREADY(axi_s_symbol_histogram_frequency_V_TREADY),
-    .ready(symbol_histogram_frequency_V_ready),
-    .done(symbol_histogram_frequency_V_done),
-    .transaction(symbol_histogram_frequency_V_transaction));
-
-assign symbol_histogram_frequency_V_ready = ready;
-assign symbol_histogram_frequency_V_done = 0;
-
-assign symbol_histogram_frequency_V_TVALID = axi_s_symbol_histogram_frequency_V_TVALID;
-
-assign axi_s_symbol_histogram_frequency_V_TREADY = symbol_histogram_frequency_V_TREADY;
-reg [31:0] ap_c_n_tvin_trans_num_encoding_V;
-
-reg encoding_V_ready_reg; // for self-sync
-
-wire encoding_V_ready;
-wire encoding_V_done;
-wire [31:0] encoding_V_transaction;
-wire axi_s_encoding_V_TVALID;
-wire axi_s_encoding_V_TREADY;
-
-AESL_axi_s_encoding_V AESL_AXI_S_encoding_V(
-    .clk(AESL_clock),
-    .reset(AESL_reset),
-    .TRAN_encoding_V_TDATA(encoding_V_TDATA),
-    .TRAN_encoding_V_TVALID(axi_s_encoding_V_TVALID),
-    .TRAN_encoding_V_TREADY(axi_s_encoding_V_TREADY),
-    .ready(encoding_V_ready),
-    .done(encoding_V_done),
-    .transaction(encoding_V_transaction));
-
-assign encoding_V_ready = 0;
-assign encoding_V_done = AESL_done;
-
-assign axi_s_encoding_V_TVALID = encoding_V_TVALID;
-
-reg reg_encoding_V_TREADY;
-initial begin : gen_reg_encoding_V_TREADY_process
-    integer proc_rand;
-    reg_encoding_V_TREADY = axi_s_encoding_V_TREADY;
-    while(1)
-    begin
-        @(axi_s_encoding_V_TREADY);
-        reg_encoding_V_TREADY = axi_s_encoding_V_TREADY;
-    end
-end
-
-
-assign encoding_V_TREADY = reg_encoding_V_TREADY;
-
 AESL_axi_slave_AXILiteS AESL_AXI_SLAVE_AXILiteS(
     .clk   (AESL_clock),
     .reset (AESL_reset),
@@ -330,6 +220,7 @@ AESL_axi_slave_AXILiteS AESL_AXI_SLAVE_AXILiteS(
     .TRAN_s_axi_AXILiteS_BRESP (AXILiteS_BRESP),
     .TRAN_AXILiteS_interrupt (AXILiteS_INTERRUPT),
     .TRAN_AXILiteS_read_data_finish(AXILiteS_read_data_finish),
+    .TRAN_AXILiteS_write_data_finish(AXILiteS_write_data_finish),
     .TRAN_AXILiteS_ready_out (AESL_ready),
     .TRAN_AXILiteS_ready_in (AESL_slave_ready),
     .TRAN_AXILiteS_done_out (AESL_slave_output_done),
@@ -514,168 +405,6 @@ begin
           interface_done = 0;
   end
 end
-    
-    initial begin : proc_gen_axis_internal_ready_symbol_histogram_value_V
-        symbol_histogram_value_V_ready_reg = 0;
-        @ (posedge ready_initial);
-        forever begin
-            @ (ap_c_n_tvin_trans_num_symbol_histogram_value_V or symbol_histogram_value_V_transaction);
-            if (ap_c_n_tvin_trans_num_symbol_histogram_value_V > symbol_histogram_value_V_transaction) begin
-                symbol_histogram_value_V_ready_reg = 1;
-            end else begin
-                symbol_histogram_value_V_ready_reg = 0;
-            end
-        end
-    end
-    
-    initial begin : proc_gen_axis_internal_ready_symbol_histogram_frequency_V
-        symbol_histogram_frequency_V_ready_reg = 0;
-        @ (posedge ready_initial);
-        forever begin
-            @ (ap_c_n_tvin_trans_num_symbol_histogram_frequency_V or symbol_histogram_frequency_V_transaction);
-            if (ap_c_n_tvin_trans_num_symbol_histogram_frequency_V > symbol_histogram_frequency_V_transaction) begin
-                symbol_histogram_frequency_V_ready_reg = 1;
-            end else begin
-                symbol_histogram_frequency_V_ready_reg = 0;
-            end
-        end
-    end
-    
-    `define STREAM_SIZE_IN_symbol_histogram_value_V "../tv/stream_size/stream_size_in_symbol_histogram_value_V.dat"
-    
-    initial begin : gen_ap_c_n_tvin_trans_num_symbol_histogram_value_V
-        integer fp_symbol_histogram_value_V;
-        reg [127:0] token_symbol_histogram_value_V;
-        integer ret;
-        
-        ap_c_n_tvin_trans_num_symbol_histogram_value_V = 0;
-        end_symbol_histogram_value_V = 0;
-        wait (AESL_reset === 1);
-        
-        fp_symbol_histogram_value_V = $fopen(`AUTOTB_TVIN_symbol_histogram_value_V, "r");
-        if(fp_symbol_histogram_value_V == 0) begin
-            $display("Failed to open file \"%s\"!", `AUTOTB_TVIN_symbol_histogram_value_V);
-            $finish;
-        end
-        read_token(fp_symbol_histogram_value_V, token_symbol_histogram_value_V); // should be [[[runtime]]]
-        if (token_symbol_histogram_value_V != "[[[runtime]]]") begin
-            $display("ERROR: token_symbol_histogram_value_V != \"[[[runtime]]]\"");
-            $finish;
-        end
-        ap_c_n_tvin_trans_num_symbol_histogram_value_V = ap_c_n_tvin_trans_num_symbol_histogram_value_V + 1;
-        read_token(fp_symbol_histogram_value_V, token_symbol_histogram_value_V); // should be [[transaction]] or [[[/runtime]]]
-        if (token_symbol_histogram_value_V == "[[[/runtime]]]") begin
-            $fclose(fp_symbol_histogram_value_V);
-            end_symbol_histogram_value_V = 1;
-        end else begin
-            end_symbol_histogram_value_V = 0;
-            read_token(fp_symbol_histogram_value_V, token_symbol_histogram_value_V); // should be transaction number
-            read_token(fp_symbol_histogram_value_V, token_symbol_histogram_value_V);
-        end
-        while (token_symbol_histogram_value_V == "[[/transaction]]" && end_symbol_histogram_value_V == 0) begin
-            ap_c_n_tvin_trans_num_symbol_histogram_value_V = ap_c_n_tvin_trans_num_symbol_histogram_value_V + 1;
-            read_token(fp_symbol_histogram_value_V, token_symbol_histogram_value_V); // should be [[transaction]] or [[[/runtime]]]
-            if (token_symbol_histogram_value_V == "[[[/runtime]]]") begin
-                $fclose(fp_symbol_histogram_value_V);
-                end_symbol_histogram_value_V = 1;
-            end else begin
-                end_symbol_histogram_value_V = 0;
-                read_token(fp_symbol_histogram_value_V, token_symbol_histogram_value_V); // should be transaction number
-                read_token(fp_symbol_histogram_value_V, token_symbol_histogram_value_V);
-            end
-        end
-        forever begin
-            @ (posedge AESL_clock);
-            if (end_symbol_histogram_value_V == 0) begin
-                if ((symbol_histogram_value_V_TREADY & symbol_histogram_value_V_TVALID) == 1) begin
-                    read_token(fp_symbol_histogram_value_V, token_symbol_histogram_value_V);
-                    while (token_symbol_histogram_value_V == "[[/transaction]]" && end_symbol_histogram_value_V == 0) begin
-                        ap_c_n_tvin_trans_num_symbol_histogram_value_V = ap_c_n_tvin_trans_num_symbol_histogram_value_V + 1;
-                        read_token(fp_symbol_histogram_value_V, token_symbol_histogram_value_V); // should be [[transaction]] or [[[/runtime]]]
-                        if (token_symbol_histogram_value_V == "[[[/runtime]]]") begin
-                            $fclose(fp_symbol_histogram_value_V);
-                            end_symbol_histogram_value_V = 1;
-                        end else begin
-                            end_symbol_histogram_value_V = 0;
-                            read_token(fp_symbol_histogram_value_V, token_symbol_histogram_value_V); // should be transaction number
-                            read_token(fp_symbol_histogram_value_V, token_symbol_histogram_value_V);
-                        end
-                    end
-                end
-            end else begin
-                ap_c_n_tvin_trans_num_symbol_histogram_value_V = ap_c_n_tvin_trans_num_symbol_histogram_value_V + 1;
-            end
-        end
-    end
-    
-    
-    `define STREAM_SIZE_IN_symbol_histogram_frequency_V "../tv/stream_size/stream_size_in_symbol_histogram_frequency_V.dat"
-    
-    initial begin : gen_ap_c_n_tvin_trans_num_symbol_histogram_frequency_V
-        integer fp_symbol_histogram_frequency_V;
-        reg [127:0] token_symbol_histogram_frequency_V;
-        integer ret;
-        
-        ap_c_n_tvin_trans_num_symbol_histogram_frequency_V = 0;
-        end_symbol_histogram_frequency_V = 0;
-        wait (AESL_reset === 1);
-        
-        fp_symbol_histogram_frequency_V = $fopen(`AUTOTB_TVIN_symbol_histogram_frequency_V, "r");
-        if(fp_symbol_histogram_frequency_V == 0) begin
-            $display("Failed to open file \"%s\"!", `AUTOTB_TVIN_symbol_histogram_frequency_V);
-            $finish;
-        end
-        read_token(fp_symbol_histogram_frequency_V, token_symbol_histogram_frequency_V); // should be [[[runtime]]]
-        if (token_symbol_histogram_frequency_V != "[[[runtime]]]") begin
-            $display("ERROR: token_symbol_histogram_frequency_V != \"[[[runtime]]]\"");
-            $finish;
-        end
-        ap_c_n_tvin_trans_num_symbol_histogram_frequency_V = ap_c_n_tvin_trans_num_symbol_histogram_frequency_V + 1;
-        read_token(fp_symbol_histogram_frequency_V, token_symbol_histogram_frequency_V); // should be [[transaction]] or [[[/runtime]]]
-        if (token_symbol_histogram_frequency_V == "[[[/runtime]]]") begin
-            $fclose(fp_symbol_histogram_frequency_V);
-            end_symbol_histogram_frequency_V = 1;
-        end else begin
-            end_symbol_histogram_frequency_V = 0;
-            read_token(fp_symbol_histogram_frequency_V, token_symbol_histogram_frequency_V); // should be transaction number
-            read_token(fp_symbol_histogram_frequency_V, token_symbol_histogram_frequency_V);
-        end
-        while (token_symbol_histogram_frequency_V == "[[/transaction]]" && end_symbol_histogram_frequency_V == 0) begin
-            ap_c_n_tvin_trans_num_symbol_histogram_frequency_V = ap_c_n_tvin_trans_num_symbol_histogram_frequency_V + 1;
-            read_token(fp_symbol_histogram_frequency_V, token_symbol_histogram_frequency_V); // should be [[transaction]] or [[[/runtime]]]
-            if (token_symbol_histogram_frequency_V == "[[[/runtime]]]") begin
-                $fclose(fp_symbol_histogram_frequency_V);
-                end_symbol_histogram_frequency_V = 1;
-            end else begin
-                end_symbol_histogram_frequency_V = 0;
-                read_token(fp_symbol_histogram_frequency_V, token_symbol_histogram_frequency_V); // should be transaction number
-                read_token(fp_symbol_histogram_frequency_V, token_symbol_histogram_frequency_V);
-            end
-        end
-        forever begin
-            @ (posedge AESL_clock);
-            if (end_symbol_histogram_frequency_V == 0) begin
-                if ((symbol_histogram_frequency_V_TREADY & symbol_histogram_frequency_V_TVALID) == 1) begin
-                    read_token(fp_symbol_histogram_frequency_V, token_symbol_histogram_frequency_V);
-                    while (token_symbol_histogram_frequency_V == "[[/transaction]]" && end_symbol_histogram_frequency_V == 0) begin
-                        ap_c_n_tvin_trans_num_symbol_histogram_frequency_V = ap_c_n_tvin_trans_num_symbol_histogram_frequency_V + 1;
-                        read_token(fp_symbol_histogram_frequency_V, token_symbol_histogram_frequency_V); // should be [[transaction]] or [[[/runtime]]]
-                        if (token_symbol_histogram_frequency_V == "[[[/runtime]]]") begin
-                            $fclose(fp_symbol_histogram_frequency_V);
-                            end_symbol_histogram_frequency_V = 1;
-                        end else begin
-                            end_symbol_histogram_frequency_V = 0;
-                            read_token(fp_symbol_histogram_frequency_V, token_symbol_histogram_frequency_V); // should be transaction number
-                            read_token(fp_symbol_histogram_frequency_V, token_symbol_histogram_frequency_V);
-                        end
-                    end
-                end
-            end else begin
-                ap_c_n_tvin_trans_num_symbol_histogram_frequency_V = ap_c_n_tvin_trans_num_symbol_histogram_frequency_V + 1;
-            end
-        end
-    end
-    
 
 reg dump_tvout_finish_encoding_V;
 

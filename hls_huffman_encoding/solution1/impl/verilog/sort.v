@@ -634,7 +634,7 @@ huffman_encoding_g8j #(
     .din0_WIDTH( 32 ),
     .din1_WIDTH( 6 ),
     .dout_WIDTH( 32 ))
-huffman_encoding_g8j_U9(
+huffman_encoding_g8j_U8(
     .clk(ap_clk),
     .reset(ap_rst),
     .din0(sorting_frequency_V_2_reg_7003),
@@ -664,7 +664,7 @@ huffman_encoding_hbi #(
     .din15_WIDTH( 9 ),
     .din16_WIDTH( 4 ),
     .dout_WIDTH( 9 ))
-huffman_encoding_hbi_U10(
+huffman_encoding_hbi_U9(
     .din0(ap_phi_mux_digit_histogram_0_V_4_phi_fu_1934_p4),
     .din1(ap_phi_mux_digit_histogram_1_V_3_phi_fu_1923_p4),
     .din2(ap_phi_mux_digit_histogram_2_V_3_phi_fu_1912_p4),
@@ -706,7 +706,7 @@ huffman_encoding_hbi #(
     .din15_WIDTH( 9 ),
     .din16_WIDTH( 4 ),
     .dout_WIDTH( 9 ))
-huffman_encoding_hbi_U11(
+huffman_encoding_hbi_U10(
     .din0(digit_histogram_14_5_reg_2901),
     .din1(digit_histogram_0_V_6_reg_3671),
     .din2(digit_histogram_1_V_5_reg_3616),
@@ -748,7 +748,7 @@ huffman_encoding_hbi #(
     .din15_WIDTH( 9 ),
     .din16_WIDTH( 4 ),
     .dout_WIDTH( 9 ))
-huffman_encoding_hbi_U12(
+huffman_encoding_hbi_U11(
     .din0(ap_phi_mux_digit_location_0_V_s_phi_fu_4898_p4),
     .din1(ap_phi_mux_digit_location_1_V_3_phi_fu_4886_p4),
     .din2(ap_phi_mux_digit_location_2_V_3_phi_fu_4875_p4),
