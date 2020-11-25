@@ -8,9 +8,9 @@ use ieee.numeric_std.all;
 
 entity huffman_encoding_vdy  is
     generic (
-        DataWidth    : integer := 9;
+        DataWidth    : integer := 6;
         AddressRange : integer := 32;
-        AddressWidth : integer := 6;
+        AddressWidth : integer := 8;
         BufferCount  : integer := 2;
         IndexWidth   : integer := 1
     );
@@ -47,14 +47,14 @@ port (
     reset    : in  std_logic;
     ce0      : in  std_logic;
     we0      : in  std_logic;
-    address0 : in  std_logic_vector(6 downto 0);
-    d0       : in  std_logic_vector(8 downto 0);
-    q0       : out std_logic_vector(8 downto 0);
+    address0 : in  std_logic_vector(8 downto 0);
+    d0       : in  std_logic_vector(5 downto 0);
+    q0       : out std_logic_vector(5 downto 0);
     ce1      : in  std_logic;
     we1      : in  std_logic;
-    address1 : in  std_logic_vector(6 downto 0);
-    d1       : in  std_logic_vector(8 downto 0);
-    q1       : out std_logic_vector(8 downto 0)
+    address1 : in  std_logic_vector(8 downto 0);
+    d1       : in  std_logic_vector(5 downto 0);
+    q1       : out std_logic_vector(5 downto 0)
 );
 end component;
 

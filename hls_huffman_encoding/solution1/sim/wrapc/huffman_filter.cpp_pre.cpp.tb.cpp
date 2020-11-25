@@ -71068,7 +71068,7 @@ void huffman_encoding (
 
 
 
-void filter(SymbolStream *in,
+void filter(Symbol_axiu in[INPUT_SYMBOL_SIZE],
             Symbol out[INPUT_SYMBOL_SIZE],
             int *num_symbols);
 void sort(Symbol in[INPUT_SYMBOL_SIZE],
@@ -71102,6 +71102,7 @@ void canonize_tree(
 void create_codeword(
   CodewordLength symbol_bits[INPUT_SYMBOL_SIZE],
   ap_uint<SYMBOL_BITS> bit_length[TREE_DEPTH],
+  Symbol_axiu stream_buffer[INPUT_SYMBOL_SIZE],
   PackedCodewordAndLengthStream *encoding);
 
 
@@ -71116,20 +71117,19 @@ static unsigned int bit_reverse32(unsigned int input) {
 # 2 "D:/Workspace/huffman_encoding_fpga/huffman_filter.cpp" 2
 
 void filter(
-                         SymbolStream *in,
+                         Symbol_axiu in[INPUT_SYMBOL_SIZE],
                          Symbol out[INPUT_SYMBOL_SIZE],
                          int *n) {
 #pragma HLS INLINE off
-#pragma HLS INTERFACE axis register both port=in,
+#pragma HLS INTERFACE ap_fifo port=in,
 
 
     ap_uint<SYMBOL_BITS> j = 0;
 
     for(int i = 0; i < INPUT_SYMBOL_SIZE; i++) {
 #pragma HLS pipeline II=1
-        Symbol_axiu input = in->read();
-        ap_uint<SYMBOL_BITS> value = input.data >> 32;
-     ap_uint<32> frequency = input.data;
+        ap_uint<SYMBOL_BITS> value = in[i].data >> 32;
+     ap_uint<32> frequency = in[i].data;
 
         if(frequency != 0) {
             out[j].frequency = frequency;

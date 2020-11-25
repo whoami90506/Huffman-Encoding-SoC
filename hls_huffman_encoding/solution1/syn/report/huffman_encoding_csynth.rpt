@@ -3,7 +3,7 @@
 ================================================================
 == Vivado HLS Report for 'huffman_encoding'
 ================================================================
-* Date:           Wed Nov 25 15:37:11 2020
+* Date:           Wed Nov 25 17:34:24 2020
 
 * Version:        2019.2 (Build 2704478 on Wed Nov 06 22:10:23 MST 2019)
 * Project:        hls_huffman_encoding
@@ -41,13 +41,14 @@
         |sort_U0                  |sort                  |      379|     4732|  1.895 us | 23.660 us |   379|  4732|   none  |
         |create_tree_U0           |create_tree           |        4|     1279| 20.000 ns |  6.395 us |     4|  1279|   none  |
         |compute_bit_length_U0    |compute_bit_length    |        ?|        ?|          ?|          ?|     ?|     ?|   none  |
-        |create_codeword_U0       |create_codeword       |     1312|     1312|  6.560 us |  6.560 us |  1312|  1312|   none  |
+        |create_codeword_U0       |create_codeword       |     1313|     1313|  6.565 us |  6.565 us |  1313|  1313|   none  |
         |truncate_tree_U0         |truncate_tree         |     1467|     1575|  7.335 us |  7.875 us |  1467|  1575|   none  |
         |canonize_tree_U0         |canonize_tree         |      258|     2562|  1.290 us | 12.810 us |   258|  2562|   none  |
         |Loop_copy_sorted_pro_U0  |Loop_copy_sorted_pro  |        1|     1534|  5.000 ns |  7.670 us |     1|  1534|   none  |
-        |filter_U0                |filter                |      258|      258|  1.290 us |  1.290 us |   258|   258|   none  |
+        |filter_U0                |filter                |      259|      259|  1.295 us |  1.295 us |   259|   259|   none  |
+        |Loop_read_stream_pro_U0  |Loop_read_stream_pro  |      258|      258|  1.290 us |  1.290 us |   258|   258|   none  |
         |Block_proc_U0            |Block_proc            |        0|        0|    0 ns   |    0 ns   |     0|     0|   none  |
-        |Block_codeRepl810_pr_U0  |Block_codeRepl810_pr  |        0|        0|    0 ns   |    0 ns   |     0|     0|   none  |
+        |Block_huffman_encodi_U0  |Block_huffman_encodi  |        0|        0|    0 ns   |    0 ns   |     0|     0|   none  |
         +-------------------------+----------------------+---------+---------+-----------+-----------+------+------+---------+
 
         * Loop: 
@@ -63,18 +64,18 @@
 |       Name      | BRAM_18K| DSP48E|   FF   |  LUT  | URAM|
 +-----------------+---------+-------+--------+-------+-----+
 |DSP              |        -|      -|       -|      -|    -|
-|Expression       |        -|      -|       0|     60|    -|
-|FIFO             |        3|      -|     132|    270|    -|
-|Instance         |       10|      -|    3595|   6630|    0|
-|Memory           |       10|      -|      36|     18|    0|
-|Multiplexer      |        -|      -|       -|     81|    -|
-|Register         |        -|      -|       9|      -|    -|
+|Expression       |        -|      -|       0|     86|    -|
+|FIFO             |        6|      -|     201|    342|    -|
+|Instance         |       10|      -|    3737|   6752|    0|
+|Memory           |       12|      -|      44|     34|    0|
+|Multiplexer      |        -|      -|       -|    135|    -|
+|Register         |        -|      -|      15|      -|    -|
 +-----------------+---------+-------+--------+-------+-----+
-|Total            |       23|      0|    3772|   7059|    0|
+|Total            |       28|      0|    3997|   7349|    0|
 +-----------------+---------+-------+--------+-------+-----+
 |Available        |      280|    220|  106400|  53200|    0|
 +-----------------+---------+-------+--------+-------+-----+
-|Utilization (%)  |        8|      0|       3|     13|    0|
+|Utilization (%)  |       10|      0|       3|     13|    0|
 +-----------------+---------+-------+--------+-------+-----+
 
 + Detail: 
@@ -82,19 +83,20 @@
     +-----------------------------------+---------------------------------+---------+-------+------+------+-----+
     |              Instance             |              Module             | BRAM_18K| DSP48E|  FF  |  LUT | URAM|
     +-----------------------------------+---------------------------------+---------+-------+------+------+-----+
-    |Block_codeRepl810_pr_U0            |Block_codeRepl810_pr             |        0|      0|    11|    38|    0|
+    |Block_huffman_encodi_U0            |Block_huffman_encodi             |        0|      0|    11|    38|    0|
     |Block_proc_U0                      |Block_proc                       |        0|      0|    11|    29|    0|
     |Loop_copy_sorted_pro_U0            |Loop_copy_sorted_pro             |        0|      0|    83|   142|    0|
+    |Loop_read_stream_pro_U0            |Loop_read_stream_pro             |        0|      0|    58|   121|    0|
     |canonize_tree_U0                   |canonize_tree                    |        0|      0|    99|   248|    0|
     |compute_bit_length_U0              |compute_bit_length               |        1|      0|   356|   623|    0|
-    |create_codeword_U0                 |create_codeword                  |        0|      0|   241|   556|    0|
+    |create_codeword_U0                 |create_codeword                  |        0|      0|   281|   535|    0|
     |create_tree_U0                     |create_tree                      |        4|      0|   610|   865|    0|
-    |filter_U0                          |filter                           |        0|      0|    23|   140|    0|
+    |filter_U0                          |filter                           |        0|      0|    67|   162|    0|
     |huffman_encoding_AXILiteS_s_axi_U  |huffman_encoding_AXILiteS_s_axi  |        0|      0|    74|   104|    0|
     |sort_U0                            |sort                             |        5|      0|  1935|  3408|    0|
     |truncate_tree_U0                   |truncate_tree                    |        0|      0|   152|   477|    0|
     +-----------------------------------+---------------------------------+---------+-------+------+------+-----+
-    |Total                              |                                 |       10|      0|  3595|  6630|    0|
+    |Total                              |                                 |       10|      0|  3737|  6752|    0|
     +-----------------------------------+---------------------------------+---------+-------+------+------+-----+
 
     * DSP48E: 
@@ -104,6 +106,10 @@
     +--------------------------+----------------------+---------+----+----+-----+------+-----+------+-------------+
     |          Memory          |        Module        | BRAM_18K| FF | LUT| URAM| Words| Bits| Banks| W*Bits*Banks|
     +--------------------------+----------------------+---------+----+----+-----+------+-----+------+-------------+
+    |length_histogram_V_U      |huffman_encoding_Bew  |        0|  18|   9|    0|    64|    9|     2|         1152|
+    |truncated_length_his_1_U  |huffman_encoding_Bew  |        0|  18|   9|    0|    64|    9|     2|         1152|
+    |truncated_length_his_U    |huffman_encoding_CeG  |        1|   0|   0|    0|    64|    9|     2|         1152|
+    |symbol_bits_V_U           |huffman_encoding_Ee0  |        1|   0|   0|    0|   256|    5|     2|         2560|
     |filtered_value_V_U        |huffman_encoding_ncg  |        1|   0|   0|    0|   256|    9|     2|         4608|
     |sorted_0_U                |huffman_encoding_ncg  |        1|   0|   0|    0|   256|    9|     2|         4608|
     |sorted_copy2_value_V_U    |huffman_encoding_ncg  |        1|   0|   0|    0|   256|    9|     2|         4608|
@@ -112,19 +118,21 @@
     |parent_V_U                |huffman_encoding_sc4  |        1|   0|   0|    0|   255|    9|     2|         4590|
     |left_V_U                  |huffman_encoding_sc4  |        1|   0|   0|    0|   255|    9|     2|         4590|
     |right_V_U                 |huffman_encoding_sc4  |        1|   0|   0|    0|   255|    9|     2|         4590|
-    |length_histogram_V_U      |huffman_encoding_vdy  |        0|  18|   9|    0|    64|    9|     2|         1152|
-    |truncated_length_his_1_U  |huffman_encoding_vdy  |        0|  18|   9|    0|    64|    9|     2|         1152|
-    |truncated_length_his_U    |huffman_encoding_wdI  |        1|   0|   0|    0|    64|    9|     2|         1152|
-    |symbol_bits_V_U           |huffman_encoding_yd2  |        1|   0|   0|    0|   256|    5|     2|         2560|
+    |stream_buffer_1_U         |huffman_encoding_vdy  |        1|   0|   0|    0|   256|    6|     2|         3072|
+    |stream_buffer_2_U         |huffman_encoding_vdy  |        1|   0|   0|    0|   256|    6|     2|         3072|
+    |stream_buffer_3_U         |huffman_encoding_xdS  |        0|   2|   4|    0|   256|    1|     2|          512|
+    |stream_buffer_4_U         |huffman_encoding_xdS  |        0|   2|   4|    0|   256|    1|     2|          512|
+    |stream_buffer_5_U         |huffman_encoding_xdS  |        0|   2|   4|    0|   256|    1|     2|          512|
+    |stream_buffer_6_U         |huffman_encoding_xdS  |        0|   2|   4|    0|   256|    1|     2|          512|
     +--------------------------+----------------------+---------+----+----+-----+------+-----+------+-------------+
-    |Total                     |                      |       10|  36|  18|    0|  2493|  150|    24|        66378|
+    |Total                     |                      |       12|  44|  34|    0|  4029|  166|    36|        74570|
     +--------------------------+----------------------+---------+----+----+-----+------+-----+------+-------------+
 
     * FIFO: 
     +------------------------+---------+----+----+-----+------+-----+---------+
     |          Name          | BRAM_18K| FF | LUT| URAM| Depth| Bits| Size:D*B|
     +------------------------+---------+----+----+-----+------+-----+---------+
-    |extLd7_loc_channel_U    |        0|   5|   0|    -|     2|    9|       18|
+    |extLd8_loc_channel_U    |        0|   5|   0|    -|     2|    9|       18|
     |extLd_loc_c19_U         |        0|   5|   0|    -|     2|    9|       18|
     |extLd_loc_c20_U         |        0|   5|   0|    -|     2|    9|       18|
     |extLd_loc_c_U           |        0|   5|   0|    -|     2|    9|       18|
@@ -132,9 +140,10 @@
     |n_c_U                   |        0|   5|   0|    -|     2|    9|       18|
     |sorted_copy1_0_chann_U  |        1|  37|   0|    -|   256|    9|     2304|
     |sorted_copy1_1_chann_U  |        2|  60|   0|    -|   256|   32|     8192|
-    |val_assign5_loc_c_U     |        0|   5|   0|    -|     5|    9|       45|
+    |stream_buffer_0_chan_U  |        3|  69|   0|    -|   256|   41|    10496|
+    |val_assign6_loc_c_U     |        0|   5|   0|    -|     5|    9|       45|
     +------------------------+---------+----+----+-----+------+-----+---------+
-    |Total                   |        3| 132|   0|    0|   530|  104|    10658|
+    |Total                   |        6| 201|   0|    0|   786|  145|    21154|
     +------------------------+---------+----+----+-----+------+-----+---------+
 
     * Expression: 
@@ -143,6 +152,7 @@
     +----------------------------------------------+----------+-------+---+----+------------+------------+
     |Loop_copy_sorted_pro_U0_ap_start              |    and   |      0|  0|   2|           1|           1|
     |Loop_copy_sorted_pro_U0_start_full_n          |    and   |      0|  0|   2|           1|           1|
+    |Loop_read_stream_pro_U0_ap_continue           |    and   |      0|  0|   2|           1|           1|
     |ap_channel_done_filtered_frequency_V          |    and   |      0|  0|   2|           1|           1|
     |ap_channel_done_filtered_value_V              |    and   |      0|  0|   2|           1|           1|
     |ap_channel_done_left_V                        |    and   |      0|  0|   2|           1|           1|
@@ -150,6 +160,12 @@
     |ap_channel_done_right_V                       |    and   |      0|  0|   2|           1|           1|
     |ap_channel_done_sorted_0                      |    and   |      0|  0|   2|           1|           1|
     |ap_channel_done_sorted_1                      |    and   |      0|  0|   2|           1|           1|
+    |ap_channel_done_stream_buffer_1               |    and   |      0|  0|   2|           1|           1|
+    |ap_channel_done_stream_buffer_2               |    and   |      0|  0|   2|           1|           1|
+    |ap_channel_done_stream_buffer_3               |    and   |      0|  0|   2|           1|           1|
+    |ap_channel_done_stream_buffer_4               |    and   |      0|  0|   2|           1|           1|
+    |ap_channel_done_stream_buffer_5               |    and   |      0|  0|   2|           1|           1|
+    |ap_channel_done_stream_buffer_6               |    and   |      0|  0|   2|           1|           1|
     |ap_channel_done_truncated_length_his          |    and   |      0|  0|   2|           1|           1|
     |ap_channel_done_truncated_length_his_1        |    and   |      0|  0|   2|           1|           1|
     |ap_idle                                       |    and   |      0|  0|   2|           1|           1|
@@ -169,10 +185,16 @@
     |ap_sync_channel_write_right_V                 |    or    |      0|  0|   2|           1|           1|
     |ap_sync_channel_write_sorted_0                |    or    |      0|  0|   2|           1|           1|
     |ap_sync_channel_write_sorted_1                |    or    |      0|  0|   2|           1|           1|
+    |ap_sync_channel_write_stream_buffer_1         |    or    |      0|  0|   2|           1|           1|
+    |ap_sync_channel_write_stream_buffer_2         |    or    |      0|  0|   2|           1|           1|
+    |ap_sync_channel_write_stream_buffer_3         |    or    |      0|  0|   2|           1|           1|
+    |ap_sync_channel_write_stream_buffer_4         |    or    |      0|  0|   2|           1|           1|
+    |ap_sync_channel_write_stream_buffer_5         |    or    |      0|  0|   2|           1|           1|
+    |ap_sync_channel_write_stream_buffer_6         |    or    |      0|  0|   2|           1|           1|
     |ap_sync_channel_write_truncated_length_his    |    or    |      0|  0|   2|           1|           1|
     |ap_sync_channel_write_truncated_length_his_1  |    or    |      0|  0|   2|           1|           1|
     +----------------------------------------------+----------+-------+---+----+------------+------------+
-    |Total                                         |          |      0|  0|  60|          30|          30|
+    |Total                                         |          |      0|  0|  86|          43|          43|
     +----------------------------------------------+----------+-------+---+----+------------+------------+
 
     * Multiplexer: 
@@ -186,10 +208,16 @@
     |ap_sync_reg_channel_write_right_V                 |   9|          2|    1|          2|
     |ap_sync_reg_channel_write_sorted_0                |   9|          2|    1|          2|
     |ap_sync_reg_channel_write_sorted_1                |   9|          2|    1|          2|
+    |ap_sync_reg_channel_write_stream_buffer_1         |   9|          2|    1|          2|
+    |ap_sync_reg_channel_write_stream_buffer_2         |   9|          2|    1|          2|
+    |ap_sync_reg_channel_write_stream_buffer_3         |   9|          2|    1|          2|
+    |ap_sync_reg_channel_write_stream_buffer_4         |   9|          2|    1|          2|
+    |ap_sync_reg_channel_write_stream_buffer_5         |   9|          2|    1|          2|
+    |ap_sync_reg_channel_write_stream_buffer_6         |   9|          2|    1|          2|
     |ap_sync_reg_channel_write_truncated_length_his    |   9|          2|    1|          2|
     |ap_sync_reg_channel_write_truncated_length_his_1  |   9|          2|    1|          2|
     +--------------------------------------------------+----+-----------+-----+-----------+
-    |Total                                             |  81|         18|    9|         18|
+    |Total                                             | 135|         30|   15|         30|
     +--------------------------------------------------+----+-----------+-----+-----------+
 
     * Register: 
@@ -203,10 +231,16 @@
     |ap_sync_reg_channel_write_right_V                 |  1|   0|    1|          0|
     |ap_sync_reg_channel_write_sorted_0                |  1|   0|    1|          0|
     |ap_sync_reg_channel_write_sorted_1                |  1|   0|    1|          0|
+    |ap_sync_reg_channel_write_stream_buffer_1         |  1|   0|    1|          0|
+    |ap_sync_reg_channel_write_stream_buffer_2         |  1|   0|    1|          0|
+    |ap_sync_reg_channel_write_stream_buffer_3         |  1|   0|    1|          0|
+    |ap_sync_reg_channel_write_stream_buffer_4         |  1|   0|    1|          0|
+    |ap_sync_reg_channel_write_stream_buffer_5         |  1|   0|    1|          0|
+    |ap_sync_reg_channel_write_stream_buffer_6         |  1|   0|    1|          0|
     |ap_sync_reg_channel_write_truncated_length_his    |  1|   0|    1|          0|
     |ap_sync_reg_channel_write_truncated_length_his_1  |  1|   0|    1|          0|
     +--------------------------------------------------+---+----+-----+-----------+
-    |Total                                             |  9|   0|    9|          0|
+    |Total                                             | 15|   0|   15|          0|
     +--------------------------------------------------+---+----+-----+-----------+
 
 

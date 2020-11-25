@@ -11,8 +11,9 @@
 #include "systemc.h"
 #include "AESL_pkg.h"
 
+#include "Loop_read_stream_pro.h"
 #include "filter.h"
-#include "Block_codeRepl810_pr.h"
+#include "Block_huffman_encodi.h"
 #include "sort.h"
 #include "Loop_copy_sorted_pro.h"
 #include "create_tree.h"
@@ -25,16 +26,20 @@
 #include "huffman_encoding_ocq.h"
 #include "huffman_encoding_sc4.h"
 #include "huffman_encoding_vdy.h"
-#include "huffman_encoding_wdI.h"
-#include "huffman_encoding_yd2.h"
+#include "huffman_encoding_xdS.h"
+#include "huffman_encoding_Bew.h"
+#include "huffman_encoding_CeG.h"
+#include "huffman_encoding_Ee0.h"
+#include "fifo_w41_d256_A.h"
 #include "fifo_w9_d2_A.h"
 #include "fifo_w9_d3_A.h"
 #include "fifo_w9_d256_A.h"
 #include "fifo_w32_d256_A.h"
 #include "fifo_w9_d5_A.h"
-#include "start_for_Block_czec.h"
-#include "start_for_create_Aem.h"
-#include "start_for_Block_pBew.h"
+#include "start_for_filter_U0.h"
+#include "start_for_Block_hFfa.h"
+#include "start_for_create_Gfk.h"
+#include "start_for_Block_pHfu.h"
 #include "huffman_encoding_AXILiteS_s_axi.h"
 
 namespace ap_rtl {
@@ -83,11 +88,12 @@ struct huffman_encoding : public sc_module {
     sc_in< sc_logic > encoding_TREADY;
     sc_signal< sc_logic > ap_var_for_const0;
     sc_signal< sc_lv<32> > ap_var_for_const3;
+    sc_signal< sc_lv<1> > ap_var_for_const6;
     sc_signal< sc_logic > ap_var_for_const1;
-    sc_signal< sc_lv<9> > ap_var_for_const2;
-    sc_signal< sc_lv<5> > ap_var_for_const6;
-    sc_signal< sc_lv<8> > ap_var_for_const4;
     sc_signal< sc_lv<6> > ap_var_for_const5;
+    sc_signal< sc_lv<9> > ap_var_for_const2;
+    sc_signal< sc_lv<5> > ap_var_for_const7;
+    sc_signal< sc_lv<8> > ap_var_for_const4;
 
 
     // Module declarations
@@ -109,12 +115,19 @@ struct huffman_encoding : public sc_module {
     huffman_encoding_sc4* parent_V_U;
     huffman_encoding_sc4* left_V_U;
     huffman_encoding_sc4* right_V_U;
-    huffman_encoding_vdy* length_histogram_V_U;
-    huffman_encoding_wdI* truncated_length_his_U;
-    huffman_encoding_vdy* truncated_length_his_1_U;
-    huffman_encoding_yd2* symbol_bits_V_U;
+    huffman_encoding_vdy* stream_buffer_1_U;
+    huffman_encoding_vdy* stream_buffer_2_U;
+    huffman_encoding_xdS* stream_buffer_3_U;
+    huffman_encoding_xdS* stream_buffer_4_U;
+    huffman_encoding_xdS* stream_buffer_5_U;
+    huffman_encoding_xdS* stream_buffer_6_U;
+    huffman_encoding_Bew* length_histogram_V_U;
+    huffman_encoding_CeG* truncated_length_his_U;
+    huffman_encoding_Bew* truncated_length_his_1_U;
+    huffman_encoding_Ee0* symbol_bits_V_U;
+    Loop_read_stream_pro* Loop_read_stream_pro_U0;
     filter* filter_U0;
-    Block_codeRepl810_pr* Block_codeRepl810_pr_U0;
+    Block_huffman_encodi* Block_huffman_encodi_U0;
     sort* sort_U0;
     Loop_copy_sorted_pro* Loop_copy_sorted_pro_U0;
     create_tree* create_tree_U0;
@@ -123,18 +136,20 @@ struct huffman_encoding : public sc_module {
     canonize_tree* canonize_tree_U0;
     create_codeword* create_codeword_U0;
     Block_proc* Block_proc_U0;
+    fifo_w41_d256_A* stream_buffer_0_chan_U;
     fifo_w9_d2_A* n_c_U;
     fifo_w9_d3_A* n_c18_U;
-    fifo_w9_d2_A* extLd7_loc_channel_U;
+    fifo_w9_d2_A* extLd8_loc_channel_U;
     fifo_w9_d256_A* sorted_copy1_0_chann_U;
     fifo_w32_d256_A* sorted_copy1_1_chann_U;
-    fifo_w9_d5_A* val_assign5_loc_c_U;
+    fifo_w9_d5_A* val_assign6_loc_c_U;
     fifo_w9_d2_A* extLd_loc_c_U;
     fifo_w9_d2_A* extLd_loc_c19_U;
     fifo_w9_d2_A* extLd_loc_c20_U;
-    start_for_Block_czec* start_for_Block_czec_U;
-    start_for_create_Aem* start_for_create_Aem_U;
-    start_for_Block_pBew* start_for_Block_pBew_U;
+    start_for_filter_U0* start_for_filter_U0_U;
+    start_for_Block_hFfa* start_for_Block_hFfa_U;
+    start_for_create_Gfk* start_for_create_Gfk_U;
+    start_for_Block_pHfu* start_for_Block_pHfu_U;
     sc_signal< sc_logic > ap_rst_n_inv;
     sc_signal< sc_logic > ap_start;
     sc_signal< sc_logic > ap_ready;
@@ -162,6 +177,18 @@ struct huffman_encoding : public sc_module {
     sc_signal< sc_lv<9> > right_V_i_q1;
     sc_signal< sc_lv<9> > right_V_t_q0;
     sc_signal< sc_lv<9> > right_V_t_q1;
+    sc_signal< sc_lv<6> > stream_buffer_1_i_q0;
+    sc_signal< sc_lv<6> > stream_buffer_1_t_q0;
+    sc_signal< sc_lv<6> > stream_buffer_2_i_q0;
+    sc_signal< sc_lv<6> > stream_buffer_2_t_q0;
+    sc_signal< sc_lv<1> > stream_buffer_3_i_q0;
+    sc_signal< sc_lv<1> > stream_buffer_3_t_q0;
+    sc_signal< sc_lv<1> > stream_buffer_4_i_q0;
+    sc_signal< sc_lv<1> > stream_buffer_4_t_q0;
+    sc_signal< sc_lv<1> > stream_buffer_5_i_q0;
+    sc_signal< sc_lv<1> > stream_buffer_5_t_q0;
+    sc_signal< sc_lv<1> > stream_buffer_6_i_q0;
+    sc_signal< sc_lv<1> > stream_buffer_6_t_q0;
     sc_signal< sc_lv<9> > length_histogram_V_i_q0;
     sc_signal< sc_lv<9> > length_histogram_V_t_q0;
     sc_signal< sc_lv<9> > truncated_length_his_i_q0;
@@ -172,6 +199,64 @@ struct huffman_encoding : public sc_module {
     sc_signal< sc_lv<9> > truncated_length_his_1_t_q0;
     sc_signal< sc_lv<5> > symbol_bits_V_i_q0;
     sc_signal< sc_lv<5> > symbol_bits_V_t_q0;
+    sc_signal< sc_logic > Loop_read_stream_pro_U0_ap_start;
+    sc_signal< sc_logic > Loop_read_stream_pro_U0_ap_done;
+    sc_signal< sc_logic > Loop_read_stream_pro_U0_ap_continue;
+    sc_signal< sc_logic > Loop_read_stream_pro_U0_ap_idle;
+    sc_signal< sc_logic > Loop_read_stream_pro_U0_ap_ready;
+    sc_signal< sc_logic > Loop_read_stream_pro_U0_start_out;
+    sc_signal< sc_logic > Loop_read_stream_pro_U0_start_write;
+    sc_signal< sc_logic > Loop_read_stream_pro_U0_symbol_histogram_TREADY;
+    sc_signal< sc_lv<41> > Loop_read_stream_pro_U0_stream_buffer_0_din;
+    sc_signal< sc_logic > Loop_read_stream_pro_U0_stream_buffer_0_write;
+    sc_signal< sc_lv<8> > Loop_read_stream_pro_U0_stream_buffer_1_address0;
+    sc_signal< sc_logic > Loop_read_stream_pro_U0_stream_buffer_1_ce0;
+    sc_signal< sc_logic > Loop_read_stream_pro_U0_stream_buffer_1_we0;
+    sc_signal< sc_lv<6> > Loop_read_stream_pro_U0_stream_buffer_1_d0;
+    sc_signal< sc_lv<8> > Loop_read_stream_pro_U0_stream_buffer_2_address0;
+    sc_signal< sc_logic > Loop_read_stream_pro_U0_stream_buffer_2_ce0;
+    sc_signal< sc_logic > Loop_read_stream_pro_U0_stream_buffer_2_we0;
+    sc_signal< sc_lv<6> > Loop_read_stream_pro_U0_stream_buffer_2_d0;
+    sc_signal< sc_lv<8> > Loop_read_stream_pro_U0_stream_buffer_3_address0;
+    sc_signal< sc_logic > Loop_read_stream_pro_U0_stream_buffer_3_ce0;
+    sc_signal< sc_logic > Loop_read_stream_pro_U0_stream_buffer_3_we0;
+    sc_signal< sc_lv<1> > Loop_read_stream_pro_U0_stream_buffer_3_d0;
+    sc_signal< sc_lv<8> > Loop_read_stream_pro_U0_stream_buffer_4_address0;
+    sc_signal< sc_logic > Loop_read_stream_pro_U0_stream_buffer_4_ce0;
+    sc_signal< sc_logic > Loop_read_stream_pro_U0_stream_buffer_4_we0;
+    sc_signal< sc_lv<1> > Loop_read_stream_pro_U0_stream_buffer_4_d0;
+    sc_signal< sc_lv<8> > Loop_read_stream_pro_U0_stream_buffer_5_address0;
+    sc_signal< sc_logic > Loop_read_stream_pro_U0_stream_buffer_5_ce0;
+    sc_signal< sc_logic > Loop_read_stream_pro_U0_stream_buffer_5_we0;
+    sc_signal< sc_lv<1> > Loop_read_stream_pro_U0_stream_buffer_5_d0;
+    sc_signal< sc_lv<8> > Loop_read_stream_pro_U0_stream_buffer_6_address0;
+    sc_signal< sc_logic > Loop_read_stream_pro_U0_stream_buffer_6_ce0;
+    sc_signal< sc_logic > Loop_read_stream_pro_U0_stream_buffer_6_we0;
+    sc_signal< sc_lv<1> > Loop_read_stream_pro_U0_stream_buffer_6_d0;
+    sc_signal< sc_logic > ap_channel_done_stream_buffer_6;
+    sc_signal< sc_logic > Loop_read_stream_pro_U0_stream_buffer_6_full_n;
+    sc_signal< sc_logic > ap_sync_reg_channel_write_stream_buffer_6;
+    sc_signal< sc_logic > ap_sync_channel_write_stream_buffer_6;
+    sc_signal< sc_logic > ap_channel_done_stream_buffer_5;
+    sc_signal< sc_logic > Loop_read_stream_pro_U0_stream_buffer_5_full_n;
+    sc_signal< sc_logic > ap_sync_reg_channel_write_stream_buffer_5;
+    sc_signal< sc_logic > ap_sync_channel_write_stream_buffer_5;
+    sc_signal< sc_logic > ap_channel_done_stream_buffer_4;
+    sc_signal< sc_logic > Loop_read_stream_pro_U0_stream_buffer_4_full_n;
+    sc_signal< sc_logic > ap_sync_reg_channel_write_stream_buffer_4;
+    sc_signal< sc_logic > ap_sync_channel_write_stream_buffer_4;
+    sc_signal< sc_logic > ap_channel_done_stream_buffer_3;
+    sc_signal< sc_logic > Loop_read_stream_pro_U0_stream_buffer_3_full_n;
+    sc_signal< sc_logic > ap_sync_reg_channel_write_stream_buffer_3;
+    sc_signal< sc_logic > ap_sync_channel_write_stream_buffer_3;
+    sc_signal< sc_logic > ap_channel_done_stream_buffer_2;
+    sc_signal< sc_logic > Loop_read_stream_pro_U0_stream_buffer_2_full_n;
+    sc_signal< sc_logic > ap_sync_reg_channel_write_stream_buffer_2;
+    sc_signal< sc_logic > ap_sync_channel_write_stream_buffer_2;
+    sc_signal< sc_logic > ap_channel_done_stream_buffer_1;
+    sc_signal< sc_logic > Loop_read_stream_pro_U0_stream_buffer_1_full_n;
+    sc_signal< sc_logic > ap_sync_reg_channel_write_stream_buffer_1;
+    sc_signal< sc_logic > ap_sync_channel_write_stream_buffer_1;
     sc_signal< sc_logic > filter_U0_ap_start;
     sc_signal< sc_logic > filter_U0_ap_done;
     sc_signal< sc_logic > filter_U0_ap_continue;
@@ -179,7 +264,7 @@ struct huffman_encoding : public sc_module {
     sc_signal< sc_logic > filter_U0_ap_ready;
     sc_signal< sc_logic > filter_U0_start_out;
     sc_signal< sc_logic > filter_U0_start_write;
-    sc_signal< sc_logic > filter_U0_symbol_histogram_TREADY;
+    sc_signal< sc_logic > filter_U0_in_data_V_read;
     sc_signal< sc_lv<8> > filter_U0_out_value_V_address0;
     sc_signal< sc_logic > filter_U0_out_value_V_ce0;
     sc_signal< sc_logic > filter_U0_out_value_V_we0;
@@ -198,17 +283,17 @@ struct huffman_encoding : public sc_module {
     sc_signal< sc_logic > filter_U0_out_value_V_full_n;
     sc_signal< sc_logic > ap_sync_reg_channel_write_filtered_value_V;
     sc_signal< sc_logic > ap_sync_channel_write_filtered_value_V;
-    sc_signal< sc_logic > Block_codeRepl810_pr_U0_ap_start;
-    sc_signal< sc_logic > Block_codeRepl810_pr_U0_ap_done;
-    sc_signal< sc_logic > Block_codeRepl810_pr_U0_ap_continue;
-    sc_signal< sc_logic > Block_codeRepl810_pr_U0_ap_idle;
-    sc_signal< sc_logic > Block_codeRepl810_pr_U0_ap_ready;
-    sc_signal< sc_logic > Block_codeRepl810_pr_U0_n_read;
-    sc_signal< sc_lv<9> > Block_codeRepl810_pr_U0_n_out_din;
-    sc_signal< sc_logic > Block_codeRepl810_pr_U0_n_out_write;
-    sc_signal< sc_lv<9> > Block_codeRepl810_pr_U0_ap_return;
-    sc_signal< sc_logic > ap_channel_done_extLd7_loc_channel;
-    sc_signal< sc_logic > extLd7_loc_channel_full_n;
+    sc_signal< sc_logic > Block_huffman_encodi_U0_ap_start;
+    sc_signal< sc_logic > Block_huffman_encodi_U0_ap_done;
+    sc_signal< sc_logic > Block_huffman_encodi_U0_ap_continue;
+    sc_signal< sc_logic > Block_huffman_encodi_U0_ap_idle;
+    sc_signal< sc_logic > Block_huffman_encodi_U0_ap_ready;
+    sc_signal< sc_logic > Block_huffman_encodi_U0_n_read;
+    sc_signal< sc_lv<9> > Block_huffman_encodi_U0_n_out_din;
+    sc_signal< sc_logic > Block_huffman_encodi_U0_n_out_write;
+    sc_signal< sc_lv<9> > Block_huffman_encodi_U0_ap_return;
+    sc_signal< sc_logic > ap_channel_done_extLd8_loc_channel;
+    sc_signal< sc_logic > extLd8_loc_channel_full_n;
     sc_signal< sc_logic > sort_U0_ap_start;
     sc_signal< sc_logic > sort_U0_ap_done;
     sc_signal< sc_logic > sort_U0_ap_continue;
@@ -255,8 +340,8 @@ struct huffman_encoding : public sc_module {
     sc_signal< sc_logic > Loop_copy_sorted_pro_U0_sorted_copy2_value_V_ce0;
     sc_signal< sc_logic > Loop_copy_sorted_pro_U0_sorted_copy2_value_V_we0;
     sc_signal< sc_lv<9> > Loop_copy_sorted_pro_U0_sorted_copy2_value_V_d0;
-    sc_signal< sc_lv<9> > Loop_copy_sorted_pro_U0_val_assign5_out_out_din;
-    sc_signal< sc_logic > Loop_copy_sorted_pro_U0_val_assign5_out_out_write;
+    sc_signal< sc_lv<9> > Loop_copy_sorted_pro_U0_val_assign6_out_out_din;
+    sc_signal< sc_logic > Loop_copy_sorted_pro_U0_val_assign6_out_out_write;
     sc_signal< sc_lv<9> > Loop_copy_sorted_pro_U0_extLd_out_out_din;
     sc_signal< sc_logic > Loop_copy_sorted_pro_U0_extLd_out_out_write;
     sc_signal< sc_lv<9> > Loop_copy_sorted_pro_U0_extLd_out_out1_din;
@@ -355,7 +440,7 @@ struct huffman_encoding : public sc_module {
     sc_signal< sc_logic > canonize_tree_U0_ap_ready;
     sc_signal< sc_lv<8> > canonize_tree_U0_sorted_value_V_address0;
     sc_signal< sc_logic > canonize_tree_U0_sorted_value_V_ce0;
-    sc_signal< sc_logic > canonize_tree_U0_val_assign5_loc_read;
+    sc_signal< sc_logic > canonize_tree_U0_val_assign6_loc_read;
     sc_signal< sc_lv<6> > canonize_tree_U0_codeword_length_histogram_V_address0;
     sc_signal< sc_logic > canonize_tree_U0_codeword_length_histogram_V_ce0;
     sc_signal< sc_lv<8> > canonize_tree_U0_symbol_bits_V_address0;
@@ -373,6 +458,18 @@ struct huffman_encoding : public sc_module {
     sc_signal< sc_logic > create_codeword_U0_symbol_bits_V_ce0;
     sc_signal< sc_lv<6> > create_codeword_U0_codeword_length_histogram_V_address0;
     sc_signal< sc_logic > create_codeword_U0_codeword_length_histogram_V_ce0;
+    sc_signal< sc_lv<8> > create_codeword_U0_stream_buffer_keep_V_address0;
+    sc_signal< sc_logic > create_codeword_U0_stream_buffer_keep_V_ce0;
+    sc_signal< sc_lv<8> > create_codeword_U0_stream_buffer_strb_V_address0;
+    sc_signal< sc_logic > create_codeword_U0_stream_buffer_strb_V_ce0;
+    sc_signal< sc_lv<8> > create_codeword_U0_stream_buffer_user_V_address0;
+    sc_signal< sc_logic > create_codeword_U0_stream_buffer_user_V_ce0;
+    sc_signal< sc_lv<8> > create_codeword_U0_stream_buffer_last_V_address0;
+    sc_signal< sc_logic > create_codeword_U0_stream_buffer_last_V_ce0;
+    sc_signal< sc_lv<8> > create_codeword_U0_stream_buffer_id_V_address0;
+    sc_signal< sc_logic > create_codeword_U0_stream_buffer_id_V_ce0;
+    sc_signal< sc_lv<8> > create_codeword_U0_stream_buffer_dest_V_address0;
+    sc_signal< sc_logic > create_codeword_U0_stream_buffer_dest_V_ce0;
     sc_signal< sc_lv<32> > create_codeword_U0_encoding_TDATA;
     sc_signal< sc_logic > create_codeword_U0_encoding_TVALID;
     sc_signal< sc_lv<4> > create_codeword_U0_encoding_TKEEP;
@@ -390,6 +487,18 @@ struct huffman_encoding : public sc_module {
     sc_signal< sc_logic > Block_proc_U0_extLd_loc_read;
     sc_signal< sc_lv<32> > Block_proc_U0_num_nonzero_symbols;
     sc_signal< sc_logic > Block_proc_U0_num_nonzero_symbols_ap_vld;
+    sc_signal< sc_logic > stream_buffer_1_i_full_n;
+    sc_signal< sc_logic > stream_buffer_1_t_empty_n;
+    sc_signal< sc_logic > stream_buffer_2_i_full_n;
+    sc_signal< sc_logic > stream_buffer_2_t_empty_n;
+    sc_signal< sc_logic > stream_buffer_3_i_full_n;
+    sc_signal< sc_logic > stream_buffer_3_t_empty_n;
+    sc_signal< sc_logic > stream_buffer_4_i_full_n;
+    sc_signal< sc_logic > stream_buffer_4_t_empty_n;
+    sc_signal< sc_logic > stream_buffer_5_i_full_n;
+    sc_signal< sc_logic > stream_buffer_5_t_empty_n;
+    sc_signal< sc_logic > stream_buffer_6_i_full_n;
+    sc_signal< sc_logic > stream_buffer_6_t_empty_n;
     sc_signal< sc_logic > filtered_value_V_i_full_n;
     sc_signal< sc_logic > filtered_value_V_t_empty_n;
     sc_signal< sc_logic > filtered_frequency_V_i_full_n;
@@ -420,23 +529,26 @@ struct huffman_encoding : public sc_module {
     sc_signal< sc_logic > truncated_length_his_1_t_empty_n;
     sc_signal< sc_logic > symbol_bits_V_i_full_n;
     sc_signal< sc_logic > symbol_bits_V_t_empty_n;
+    sc_signal< sc_logic > stream_buffer_0_chan_full_n;
+    sc_signal< sc_lv<41> > stream_buffer_0_chan_dout;
+    sc_signal< sc_logic > stream_buffer_0_chan_empty_n;
     sc_signal< sc_logic > n_c_full_n;
     sc_signal< sc_lv<9> > n_c_dout;
     sc_signal< sc_logic > n_c_empty_n;
     sc_signal< sc_logic > n_c18_full_n;
     sc_signal< sc_lv<9> > n_c18_dout;
     sc_signal< sc_logic > n_c18_empty_n;
-    sc_signal< sc_lv<9> > extLd7_loc_channel_dout;
-    sc_signal< sc_logic > extLd7_loc_channel_empty_n;
+    sc_signal< sc_lv<9> > extLd8_loc_channel_dout;
+    sc_signal< sc_logic > extLd8_loc_channel_empty_n;
     sc_signal< sc_logic > sorted_copy1_0_chann_full_n;
     sc_signal< sc_lv<9> > sorted_copy1_0_chann_dout;
     sc_signal< sc_logic > sorted_copy1_0_chann_empty_n;
     sc_signal< sc_logic > sorted_copy1_1_chann_full_n;
     sc_signal< sc_lv<32> > sorted_copy1_1_chann_dout;
     sc_signal< sc_logic > sorted_copy1_1_chann_empty_n;
-    sc_signal< sc_logic > val_assign5_loc_c_full_n;
-    sc_signal< sc_lv<9> > val_assign5_loc_c_dout;
-    sc_signal< sc_logic > val_assign5_loc_c_empty_n;
+    sc_signal< sc_logic > val_assign6_loc_c_full_n;
+    sc_signal< sc_lv<9> > val_assign6_loc_c_dout;
+    sc_signal< sc_logic > val_assign6_loc_c_empty_n;
     sc_signal< sc_logic > extLd_loc_c_full_n;
     sc_signal< sc_lv<9> > extLd_loc_c_dout;
     sc_signal< sc_logic > extLd_loc_c_empty_n;
@@ -448,12 +560,16 @@ struct huffman_encoding : public sc_module {
     sc_signal< sc_logic > extLd_loc_c20_empty_n;
     sc_signal< sc_logic > ap_sync_done;
     sc_signal< sc_logic > ap_sync_ready;
-    sc_signal< sc_lv<1> > start_for_Block_codeRepl810_pr_U0_din;
-    sc_signal< sc_logic > start_for_Block_codeRepl810_pr_U0_full_n;
-    sc_signal< sc_lv<1> > start_for_Block_codeRepl810_pr_U0_dout;
-    sc_signal< sc_logic > start_for_Block_codeRepl810_pr_U0_empty_n;
-    sc_signal< sc_logic > Block_codeRepl810_pr_U0_start_full_n;
-    sc_signal< sc_logic > Block_codeRepl810_pr_U0_start_write;
+    sc_signal< sc_lv<1> > start_for_filter_U0_din;
+    sc_signal< sc_logic > start_for_filter_U0_full_n;
+    sc_signal< sc_lv<1> > start_for_filter_U0_dout;
+    sc_signal< sc_logic > start_for_filter_U0_empty_n;
+    sc_signal< sc_lv<1> > start_for_Block_huffman_encodi_U0_din;
+    sc_signal< sc_logic > start_for_Block_huffman_encodi_U0_full_n;
+    sc_signal< sc_lv<1> > start_for_Block_huffman_encodi_U0_dout;
+    sc_signal< sc_logic > start_for_Block_huffman_encodi_U0_empty_n;
+    sc_signal< sc_logic > Block_huffman_encodi_U0_start_full_n;
+    sc_signal< sc_logic > Block_huffman_encodi_U0_start_write;
     sc_signal< sc_logic > sort_U0_start_full_n;
     sc_signal< sc_logic > sort_U0_start_write;
     sc_signal< sc_lv<1> > start_for_create_tree_U0_din;
@@ -484,27 +600,28 @@ struct huffman_encoding : public sc_module {
     static const sc_lv<4> ap_const_lv4_0;
     static const sc_lv<1> ap_const_lv1_0;
     static const sc_logic ap_const_logic_0;
+    static const sc_lv<6> ap_const_lv6_0;
     static const sc_lv<9> ap_const_lv9_0;
     static const sc_lv<5> ap_const_lv5_0;
     static const sc_lv<8> ap_const_lv8_0;
     static const sc_lv<8> ap_const_lv8_1;
-    static const sc_lv<6> ap_const_lv6_0;
     static const sc_lv<6> ap_const_lv6_1;
     static const sc_lv<9> ap_const_lv9_1;
     static const bool ap_const_boolean_1;
     // Thread declarations
     void thread_ap_var_for_const0();
     void thread_ap_var_for_const3();
-    void thread_ap_var_for_const1();
-    void thread_ap_var_for_const2();
     void thread_ap_var_for_const6();
-    void thread_ap_var_for_const4();
+    void thread_ap_var_for_const1();
     void thread_ap_var_for_const5();
+    void thread_ap_var_for_const2();
+    void thread_ap_var_for_const7();
+    void thread_ap_var_for_const4();
     void thread_ap_clk_no_reset_();
-    void thread_Block_codeRepl810_pr_U0_ap_continue();
-    void thread_Block_codeRepl810_pr_U0_ap_start();
-    void thread_Block_codeRepl810_pr_U0_start_full_n();
-    void thread_Block_codeRepl810_pr_U0_start_write();
+    void thread_Block_huffman_encodi_U0_ap_continue();
+    void thread_Block_huffman_encodi_U0_ap_start();
+    void thread_Block_huffman_encodi_U0_start_full_n();
+    void thread_Block_huffman_encodi_U0_start_write();
     void thread_Block_proc_U0_ap_continue();
     void thread_Block_proc_U0_ap_start();
     void thread_Block_proc_U0_start_full_n();
@@ -513,7 +630,15 @@ struct huffman_encoding : public sc_module {
     void thread_Loop_copy_sorted_pro_U0_ap_start();
     void thread_Loop_copy_sorted_pro_U0_sorted_copy2_value_V_full_n();
     void thread_Loop_copy_sorted_pro_U0_start_full_n();
-    void thread_ap_channel_done_extLd7_loc_channel();
+    void thread_Loop_read_stream_pro_U0_ap_continue();
+    void thread_Loop_read_stream_pro_U0_ap_start();
+    void thread_Loop_read_stream_pro_U0_stream_buffer_1_full_n();
+    void thread_Loop_read_stream_pro_U0_stream_buffer_2_full_n();
+    void thread_Loop_read_stream_pro_U0_stream_buffer_3_full_n();
+    void thread_Loop_read_stream_pro_U0_stream_buffer_4_full_n();
+    void thread_Loop_read_stream_pro_U0_stream_buffer_5_full_n();
+    void thread_Loop_read_stream_pro_U0_stream_buffer_6_full_n();
+    void thread_ap_channel_done_extLd8_loc_channel();
     void thread_ap_channel_done_filtered_frequency_V();
     void thread_ap_channel_done_filtered_value_V();
     void thread_ap_channel_done_left_V();
@@ -523,6 +648,12 @@ struct huffman_encoding : public sc_module {
     void thread_ap_channel_done_sorted_0();
     void thread_ap_channel_done_sorted_1();
     void thread_ap_channel_done_sorted_copy2_value_V();
+    void thread_ap_channel_done_stream_buffer_1();
+    void thread_ap_channel_done_stream_buffer_2();
+    void thread_ap_channel_done_stream_buffer_3();
+    void thread_ap_channel_done_stream_buffer_4();
+    void thread_ap_channel_done_stream_buffer_5();
+    void thread_ap_channel_done_stream_buffer_6();
     void thread_ap_channel_done_symbol_bits_V();
     void thread_ap_channel_done_truncated_length_his();
     void thread_ap_channel_done_truncated_length_his_1();
@@ -537,6 +668,12 @@ struct huffman_encoding : public sc_module {
     void thread_ap_sync_channel_write_right_V();
     void thread_ap_sync_channel_write_sorted_0();
     void thread_ap_sync_channel_write_sorted_1();
+    void thread_ap_sync_channel_write_stream_buffer_1();
+    void thread_ap_sync_channel_write_stream_buffer_2();
+    void thread_ap_sync_channel_write_stream_buffer_3();
+    void thread_ap_sync_channel_write_stream_buffer_4();
+    void thread_ap_sync_channel_write_stream_buffer_5();
+    void thread_ap_sync_channel_write_stream_buffer_6();
     void thread_ap_sync_channel_write_truncated_length_his();
     void thread_ap_sync_channel_write_truncated_length_his_1();
     void thread_ap_sync_continue();
@@ -587,9 +724,10 @@ struct huffman_encoding : public sc_module {
     void thread_sort_U0_out_value_V_full_n();
     void thread_sort_U0_start_full_n();
     void thread_sort_U0_start_write();
-    void thread_start_for_Block_codeRepl810_pr_U0_din();
+    void thread_start_for_Block_huffman_encodi_U0_din();
     void thread_start_for_Block_proc_U0_din();
     void thread_start_for_create_tree_U0_din();
+    void thread_start_for_filter_U0_din();
     void thread_symbol_histogram_TREADY();
     void thread_truncate_tree_U0_ap_continue();
     void thread_truncate_tree_U0_ap_start();

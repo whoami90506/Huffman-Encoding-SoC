@@ -13,9 +13,9 @@
 #include "huffman_encoding_vdy_memcore.h"
 
 SC_MODULE(huffman_encoding_vdy) {
-    static const unsigned int DataWidth    = 9;
+    static const unsigned int DataWidth    = 6;
     static const unsigned int AddressRange = 32;
-    static const unsigned int AddressWidth = 6;
+    static const unsigned int AddressWidth = 8;
     static const unsigned int BufferCount  = 2;
     static const unsigned int IndexWidth   = 1;
 

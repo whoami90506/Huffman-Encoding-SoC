@@ -10,9 +10,9 @@ use ieee.std_logic_unsigned.all;
 entity huffman_encoding_vdy_memcore_ram is 
     generic(
             MEM_TYPE    : string := "block"; 
-            DWIDTH     : integer := 9; 
-            AWIDTH     : integer := 7; 
-            MEM_SIZE    : integer := 128
+            DWIDTH     : integer := 6; 
+            AWIDTH     : integer := 9; 
+            MEM_SIZE    : integer := 512
     ); 
     port (
           addr0     : in std_logic_vector(AWIDTH-1 downto 0); 
@@ -101,9 +101,9 @@ use IEEE.std_logic_1164.all;
 
 entity huffman_encoding_vdy_memcore is
     generic (
-        DataWidth : INTEGER := 9;
-        AddressRange : INTEGER := 128;
-        AddressWidth : INTEGER := 7);
+        DataWidth : INTEGER := 6;
+        AddressRange : INTEGER := 512;
+        AddressWidth : INTEGER := 9);
     port (
         reset : IN STD_LOGIC;
         clk : IN STD_LOGIC;

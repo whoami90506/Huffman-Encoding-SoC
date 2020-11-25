@@ -151,7 +151,7 @@
       "..\/..\/huffman_truncate_tree.cpp"
     ],
     "Vhdl": [
-      "impl\/vhdl\/Block_codeRepl810_pr.vhd",
+      "impl\/vhdl\/Block_huffman_encodi.vhd",
       "impl\/vhdl\/Block_proc.vhd",
       "impl\/vhdl\/canonize_tree.vhd",
       "impl\/vhdl\/compute_bit_length.vhd",
@@ -167,8 +167,15 @@
       "impl\/vhdl\/fifo_w9_d5_A.vhd",
       "impl\/vhdl\/fifo_w9_d256_A.vhd",
       "impl\/vhdl\/fifo_w32_d256_A.vhd",
+      "impl\/vhdl\/fifo_w41_d256_A.vhd",
       "impl\/vhdl\/filter.vhd",
       "impl\/vhdl\/huffman_encoding_AXILiteS_s_axi.vhd",
+      "impl\/vhdl\/huffman_encoding_Bew.vhd",
+      "impl\/vhdl\/huffman_encoding_Bew_memcore.vhd",
+      "impl\/vhdl\/huffman_encoding_CeG.vhd",
+      "impl\/vhdl\/huffman_encoding_CeG_memcore.vhd",
+      "impl\/vhdl\/huffman_encoding_Ee0.vhd",
+      "impl\/vhdl\/huffman_encoding_Ee0_memcore.vhd",
       "impl\/vhdl\/huffman_encoding_g8j.vhd",
       "impl\/vhdl\/huffman_encoding_hbi.vhd",
       "impl\/vhdl\/huffman_encoding_ncg.vhd",
@@ -179,24 +186,24 @@
       "impl\/vhdl\/huffman_encoding_sc4_memcore.vhd",
       "impl\/vhdl\/huffman_encoding_vdy.vhd",
       "impl\/vhdl\/huffman_encoding_vdy_memcore.vhd",
-      "impl\/vhdl\/huffman_encoding_wdI.vhd",
-      "impl\/vhdl\/huffman_encoding_wdI_memcore.vhd",
-      "impl\/vhdl\/huffman_encoding_yd2.vhd",
-      "impl\/vhdl\/huffman_encoding_yd2_memcore.vhd",
+      "impl\/vhdl\/huffman_encoding_xdS.vhd",
+      "impl\/vhdl\/huffman_encoding_xdS_memcore.vhd",
       "impl\/vhdl\/Loop_copy_sorted_pro.vhd",
+      "impl\/vhdl\/Loop_read_stream_pro.vhd",
       "impl\/vhdl\/regslice_core.vhd",
       "impl\/vhdl\/sort.vhd",
       "impl\/vhdl\/sort_current_digifYi.vhd",
       "impl\/vhdl\/sort_previous_sorbkb.vhd",
       "impl\/vhdl\/sort_previous_sorcud.vhd",
-      "impl\/vhdl\/start_for_Block_czec.vhd",
-      "impl\/vhdl\/start_for_Block_pBew.vhd",
-      "impl\/vhdl\/start_for_create_Aem.vhd",
+      "impl\/vhdl\/start_for_Block_hFfa.vhd",
+      "impl\/vhdl\/start_for_Block_pHfu.vhd",
+      "impl\/vhdl\/start_for_create_Gfk.vhd",
+      "impl\/vhdl\/start_for_filter_U0.vhd",
       "impl\/vhdl\/truncate_tree.vhd",
       "impl\/vhdl\/huffman_encoding.vhd"
     ],
     "Verilog": [
-      "impl\/verilog\/Block_codeRepl810_pr.v",
+      "impl\/verilog\/Block_huffman_encodi.v",
       "impl\/verilog\/Block_proc.v",
       "impl\/verilog\/canonize_tree.v",
       "impl\/verilog\/compute_bit_length.v",
@@ -212,8 +219,15 @@
       "impl\/verilog\/fifo_w9_d5_A.v",
       "impl\/verilog\/fifo_w9_d256_A.v",
       "impl\/verilog\/fifo_w32_d256_A.v",
+      "impl\/verilog\/fifo_w41_d256_A.v",
       "impl\/verilog\/filter.v",
       "impl\/verilog\/huffman_encoding_AXILiteS_s_axi.v",
+      "impl\/verilog\/huffman_encoding_Bew.v",
+      "impl\/verilog\/huffman_encoding_Bew_memcore.v",
+      "impl\/verilog\/huffman_encoding_CeG.v",
+      "impl\/verilog\/huffman_encoding_CeG_memcore.v",
+      "impl\/verilog\/huffman_encoding_Ee0.v",
+      "impl\/verilog\/huffman_encoding_Ee0_memcore.v",
       "impl\/verilog\/huffman_encoding_g8j.v",
       "impl\/verilog\/huffman_encoding_hbi.v",
       "impl\/verilog\/huffman_encoding_ncg.v",
@@ -224,19 +238,19 @@
       "impl\/verilog\/huffman_encoding_sc4_memcore.v",
       "impl\/verilog\/huffman_encoding_vdy.v",
       "impl\/verilog\/huffman_encoding_vdy_memcore.v",
-      "impl\/verilog\/huffman_encoding_wdI.v",
-      "impl\/verilog\/huffman_encoding_wdI_memcore.v",
-      "impl\/verilog\/huffman_encoding_yd2.v",
-      "impl\/verilog\/huffman_encoding_yd2_memcore.v",
+      "impl\/verilog\/huffman_encoding_xdS.v",
+      "impl\/verilog\/huffman_encoding_xdS_memcore.v",
       "impl\/verilog\/Loop_copy_sorted_pro.v",
+      "impl\/verilog\/Loop_read_stream_pro.v",
       "impl\/verilog\/regslice_core.v",
       "impl\/verilog\/sort.v",
       "impl\/verilog\/sort_current_digifYi.v",
       "impl\/verilog\/sort_previous_sorbkb.v",
       "impl\/verilog\/sort_previous_sorcud.v",
-      "impl\/verilog\/start_for_Block_czec.v",
-      "impl\/verilog\/start_for_Block_pBew.v",
-      "impl\/verilog\/start_for_create_Aem.v",
+      "impl\/verilog\/start_for_Block_hFfa.v",
+      "impl\/verilog\/start_for_Block_pHfu.v",
+      "impl\/verilog\/start_for_create_Gfk.v",
+      "impl\/verilog\/start_for_filter_U0.v",
       "impl\/verilog\/truncate_tree.v",
       "impl\/verilog\/huffman_encoding.v"
     ],
@@ -832,16 +846,27 @@
           "InstanceName": "filter_U0"
         },
         {
+          "ModuleName": "Loop_read_stream_pro",
+          "InstanceName": "Loop_read_stream_pro_U0"
+        },
+        {
           "ModuleName": "Block_proc",
           "InstanceName": "Block_proc_U0"
         },
         {
-          "ModuleName": "Block_codeRepl810_pr",
-          "InstanceName": "Block_codeRepl810_pr_U0"
+          "ModuleName": "Block_huffman_encodi",
+          "InstanceName": "Block_huffman_encodi_U0"
         }
       ]
     },
     "Info": {
+      "Loop_read_stream_pro": {
+        "FunctionProtocol": "ap_ctrl_hs",
+        "isTaskLevelControl": "1",
+        "isPipelined": "0",
+        "isCombinational": "0",
+        "isOneStateSeq": "0"
+      },
       "filter": {
         "FunctionProtocol": "ap_ctrl_hs",
         "isTaskLevelControl": "1",
@@ -849,7 +874,7 @@
         "isCombinational": "0",
         "isOneStateSeq": "0"
       },
-      "Block_codeRepl810_pr": {
+      "Block_huffman_encodi": {
         "FunctionProtocol": "ap_ctrl_hs",
         "isTaskLevelControl": "1",
         "isPipelined": "0",
@@ -921,7 +946,7 @@
       }
     },
     "Metrics": {
-      "filter": {
+      "Loop_read_stream_pro": {
         "Latency": {
           "LatencyBest": "258",
           "LatencyAvg": "258",
@@ -933,24 +958,53 @@
         "Timing": {
           "Target": "5.00",
           "Uncertainty": "0.63",
-          "Estimate": "3.592"
+          "Estimate": "3.254"
         },
         "Loops": [{
-            "Name": "Loop 1",
+            "Name": "read_stream",
             "TripCount": "256",
             "Latency": "256",
             "PipelineII": "1",
-            "PipelineDepth": "1"
+            "PipelineDepth": "2"
           }],
         "Area": {
-          "FF": "23",
-          "LUT": "140",
+          "FF": "58",
+          "LUT": "121",
           "BRAM_18K": "0",
           "DSP48E": "0",
           "URAM": "0"
         }
       },
-      "Block_codeRepl810_pr": {
+      "filter": {
+        "Latency": {
+          "LatencyBest": "259",
+          "LatencyAvg": "259",
+          "LatencyWorst": "259",
+          "PipelineII": "259",
+          "PipelineDepth": "",
+          "PipelineType": "none"
+        },
+        "Timing": {
+          "Target": "5.00",
+          "Uncertainty": "0.63",
+          "Estimate": "3.592"
+        },
+        "Loops": [{
+            "Name": "Loop 1",
+            "TripCount": "256",
+            "Latency": "257",
+            "PipelineII": "1",
+            "PipelineDepth": "3"
+          }],
+        "Area": {
+          "FF": "67",
+          "LUT": "162",
+          "BRAM_18K": "0",
+          "DSP48E": "0",
+          "URAM": "0"
+        }
+      },
+      "Block_huffman_encodi": {
         "Latency": {
           "LatencyBest": "0",
           "LatencyAvg": "0",
@@ -1280,10 +1334,10 @@
       },
       "create_codeword": {
         "Latency": {
-          "LatencyBest": "1312",
-          "LatencyAvg": "1312",
-          "LatencyWorst": "1312",
-          "PipelineII": "1312",
+          "LatencyBest": "1313",
+          "LatencyAvg": "1313",
+          "LatencyWorst": "1313",
+          "PipelineII": "1313",
           "PipelineDepth": "",
           "PipelineType": "none"
         },
@@ -1303,15 +1357,15 @@
           {
             "Name": "assign_codewords",
             "TripCount": "256",
-            "Latency": "1280",
+            "Latency": "1281",
             "PipelineII": "5",
-            "PipelineDepth": "6"
+            "PipelineDepth": "7"
           }
         ],
         "Area": {
           "BRAM_18K": "0",
-          "FF": "241",
-          "LUT": "556",
+          "FF": "281",
+          "LUT": "535",
           "URAM": "0",
           "DSP48E": "0"
         }
@@ -1353,9 +1407,9 @@
           "Estimate": "4.559"
         },
         "Area": {
-          "BRAM_18K": "23",
-          "FF": "3772",
-          "LUT": "7059",
+          "BRAM_18K": "28",
+          "FF": "3997",
+          "LUT": "7349",
           "URAM": "0",
           "DSP48E": "0"
         }
@@ -1372,7 +1426,7 @@
   },
   "GenData": {
     "DataVersion": "0.2",
-    "Time": "2020-11-25 15:37:23 +0800",
+    "Time": "2020-11-25 17:34:36 +0800",
     "ToolName": "vivado_hls",
     "ToolVersion": "2019.2"
   }

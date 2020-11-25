@@ -21,29 +21,29 @@
 </SummaryOfTimingAnalysis>
 <SummaryOfOverallLatency>
 <unit>clock cycles</unit>
-<Best-caseLatency>258</Best-caseLatency>
-<Average-caseLatency>258</Average-caseLatency>
-<Worst-caseLatency>258</Worst-caseLatency>
-<Best-caseRealTimeLatency>1.290 us</Best-caseRealTimeLatency>
-<Average-caseRealTimeLatency>1.290 us</Average-caseRealTimeLatency>
-<Worst-caseRealTimeLatency>1.290 us</Worst-caseRealTimeLatency>
-<Interval-min>258</Interval-min>
-<Interval-max>258</Interval-max>
+<Best-caseLatency>259</Best-caseLatency>
+<Average-caseLatency>259</Average-caseLatency>
+<Worst-caseLatency>259</Worst-caseLatency>
+<Best-caseRealTimeLatency>1.295 us</Best-caseRealTimeLatency>
+<Average-caseRealTimeLatency>1.295 us</Average-caseRealTimeLatency>
+<Worst-caseRealTimeLatency>1.295 us</Worst-caseRealTimeLatency>
+<Interval-min>259</Interval-min>
+<Interval-max>259</Interval-max>
 </SummaryOfOverallLatency>
 <SummaryOfLoopLatency>
 <Loop1>
 <TripCount>256</TripCount>
-<Latency>256</Latency>
+<Latency>257</Latency>
 <PipelineII>1</PipelineII>
-<PipelineDepth>1</PipelineDepth>
+<PipelineDepth>3</PipelineDepth>
 </Loop1>
 </SummaryOfLoopLatency>
 </PerformanceEstimates>
 
 <AreaEstimates>
 <Resources>
-<FF>23</FF>
-<LUT>140</LUT>
+<FF>67</FF>
+<LUT>162</LUT>
 <BRAM_18K>0</BRAM_18K>
 <DSP48E>0</DSP48E>
 <URAM>0</URAM>
@@ -169,103 +169,37 @@
 <Attribute>unknown</Attribute>
 </RtlPorts>
 <RtlPorts>
-<name>symbol_histogram_TDATA</name>
-<Object>in_V_data_V</Object>
+<name>in_data_V_dout</name>
+<Object>in_data_V</Object>
 <Type>pointer</Type>
 <Scope></Scope>
-<IOProtocol>axis</IOProtocol>
-<IOConfig>register, both mode</IOConfig>
+<IOProtocol>ap_fifo</IOProtocol>
+<IOConfig></IOConfig>
 <Dir>in</Dir>
-<Bits>48</Bits>
-<Attribute>data</Attribute>
+<Bits>41</Bits>
+<Attribute>control</Attribute>
 </RtlPorts>
 <RtlPorts>
-<name>symbol_histogram_TVALID</name>
-<Object>in_V_dest_V</Object>
+<name>in_data_V_empty_n</name>
+<Object>in_data_V</Object>
 <Type>pointer</Type>
 <Scope></Scope>
-<IOProtocol>axis</IOProtocol>
-<IOConfig>register, both mode</IOConfig>
+<IOProtocol>ap_fifo</IOProtocol>
+<IOConfig></IOConfig>
 <Dir>in</Dir>
 <Bits>1</Bits>
 <Attribute>control</Attribute>
 </RtlPorts>
 <RtlPorts>
-<name>symbol_histogram_TREADY</name>
-<Object>in_V_dest_V</Object>
+<name>in_data_V_read</name>
+<Object>in_data_V</Object>
 <Type>pointer</Type>
 <Scope></Scope>
-<IOProtocol>axis</IOProtocol>
-<IOConfig>register, both mode</IOConfig>
+<IOProtocol>ap_fifo</IOProtocol>
+<IOConfig></IOConfig>
 <Dir>out</Dir>
 <Bits>1</Bits>
 <Attribute>control</Attribute>
-</RtlPorts>
-<RtlPorts>
-<name>symbol_histogram_TDEST</name>
-<Object>in_V_dest_V</Object>
-<Type>pointer</Type>
-<Scope></Scope>
-<IOProtocol>axis</IOProtocol>
-<IOConfig>register, both mode</IOConfig>
-<Dir>in</Dir>
-<Bits>1</Bits>
-<Attribute>data</Attribute>
-</RtlPorts>
-<RtlPorts>
-<name>symbol_histogram_TKEEP</name>
-<Object>in_V_keep_V</Object>
-<Type>pointer</Type>
-<Scope></Scope>
-<IOProtocol>axis</IOProtocol>
-<IOConfig>register, both mode</IOConfig>
-<Dir>in</Dir>
-<Bits>6</Bits>
-<Attribute>data</Attribute>
-</RtlPorts>
-<RtlPorts>
-<name>symbol_histogram_TSTRB</name>
-<Object>in_V_strb_V</Object>
-<Type>pointer</Type>
-<Scope></Scope>
-<IOProtocol>axis</IOProtocol>
-<IOConfig>register, both mode</IOConfig>
-<Dir>in</Dir>
-<Bits>6</Bits>
-<Attribute>data</Attribute>
-</RtlPorts>
-<RtlPorts>
-<name>symbol_histogram_TUSER</name>
-<Object>in_V_user_V</Object>
-<Type>pointer</Type>
-<Scope></Scope>
-<IOProtocol>axis</IOProtocol>
-<IOConfig>register, both mode</IOConfig>
-<Dir>in</Dir>
-<Bits>1</Bits>
-<Attribute>data</Attribute>
-</RtlPorts>
-<RtlPorts>
-<name>symbol_histogram_TLAST</name>
-<Object>in_V_last_V</Object>
-<Type>pointer</Type>
-<Scope></Scope>
-<IOProtocol>axis</IOProtocol>
-<IOConfig>register, both mode</IOConfig>
-<Dir>in</Dir>
-<Bits>1</Bits>
-<Attribute>data</Attribute>
-</RtlPorts>
-<RtlPorts>
-<name>symbol_histogram_TID</name>
-<Object>in_V_id_V</Object>
-<Type>pointer</Type>
-<Scope></Scope>
-<IOProtocol>axis</IOProtocol>
-<IOConfig>register, both mode</IOConfig>
-<Dir>in</Dir>
-<Bits>1</Bits>
-<Attribute>data</Attribute>
 </RtlPorts>
 <RtlPorts>
 <name>out_value_V_address0</name>

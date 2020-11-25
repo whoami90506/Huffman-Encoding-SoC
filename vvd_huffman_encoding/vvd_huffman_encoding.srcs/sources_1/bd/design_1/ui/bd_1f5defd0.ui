@@ -52,12 +52,12 @@ pagesize -pg 1 -db -bbox -sgen 0 0 2100 370
 #  -string -flagsOSRD
 preplace port DDR -pg 1 -lvl 3 -x 970 -y -280 -defaultsOSRD
 preplace port FIXED_IO -pg 1 -lvl 3 -x 970 -y -310 -defaultsOSRD
-preplace inst huffman_encoding_0 -pg 1 -lvl 2 -x 770 -y -190 -defaultsOSRD
 preplace inst processing_system7_0 -pg 1 -lvl 1 -x 200 -y -170 -defaultsOSRD
 preplace inst axi_dma_0 -pg 1 -lvl 1 -x 200 -y -410 -defaultsOSRD
 preplace inst ps7_0_axi_periph -pg 1 -lvl 2 -x 770 -y -600 -defaultsOSRD
 preplace inst rst_ps7_0_100M -pg 1 -lvl 2 -x 770 -y -740 -defaultsOSRD
 preplace inst axi_mem_intercon -pg 1 -lvl 2 -x 770 -y -450 -defaultsOSRD
+preplace inst huffman_encoding_0 -pg 1 -lvl 2 -x 770 -y -190 -defaultsOSRD
 preplace netloc processing_system7_0_DDR 1 1 2 470J -280 NJ
 preplace netloc processing_system7_0_FIXED_IO 1 1 2 460J -310 NJ
 preplace netloc processing_system7_0_M_AXI_GP0 1 1 1 450 -600n

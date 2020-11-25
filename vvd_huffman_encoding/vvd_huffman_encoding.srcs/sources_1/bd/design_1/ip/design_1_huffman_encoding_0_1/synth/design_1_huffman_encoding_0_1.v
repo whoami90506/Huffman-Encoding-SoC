@@ -48,11 +48,11 @@
 
 
 // IP VLNV: xilinx.com:hls:huffman_encoding:1.0
-// IP Revision: 2011251538
+// IP Revision: 2011251740
 
 (* X_CORE_INFO = "huffman_encoding,Vivado 2019.2" *)
 (* CHECK_LICENSE_TYPE = "design_1_huffman_encoding_0_1,huffman_encoding,{}" *)
-(* CORE_GENERATION_INFO = "design_1_huffman_encoding_0_1,huffman_encoding,{x_ipProduct=Vivado 2019.2,x_ipVendor=xilinx.com,x_ipLibrary=hls,x_ipName=huffman_encoding,x_ipVersion=1.0,x_ipCoreRevision=2011251538,x_ipLanguage=VERILOG,x_ipSimLanguage=MIXED,C_S_AXI_AXILITES_ADDR_WIDTH=5,C_S_AXI_AXILITES_DATA_WIDTH=32}" *)
+(* CORE_GENERATION_INFO = "design_1_huffman_encoding_0_1,huffman_encoding,{x_ipProduct=Vivado 2019.2,x_ipVendor=xilinx.com,x_ipLibrary=hls,x_ipName=huffman_encoding,x_ipVersion=1.0,x_ipCoreRevision=2011251740,x_ipLanguage=VERILOG,x_ipSimLanguage=MIXED,C_S_AXI_AXILITES_ADDR_WIDTH=5,C_S_AXI_AXILITES_DATA_WIDTH=32}" *)
 (* IP_DEFINITION_SOURCE = "HLS" *)
 (* DowngradeIPIdentifiedWarnings = "yes" *)
 module design_1_huffman_encoding_0_1 (

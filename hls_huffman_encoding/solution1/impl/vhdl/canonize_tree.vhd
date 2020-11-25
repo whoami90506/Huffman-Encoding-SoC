@@ -21,9 +21,9 @@ port (
     sorted_value_V_address0 : OUT STD_LOGIC_VECTOR (7 downto 0);
     sorted_value_V_ce0 : OUT STD_LOGIC;
     sorted_value_V_q0 : IN STD_LOGIC_VECTOR (8 downto 0);
-    val_assign5_loc_dout : IN STD_LOGIC_VECTOR (8 downto 0);
-    val_assign5_loc_empty_n : IN STD_LOGIC;
-    val_assign5_loc_read : OUT STD_LOGIC;
+    val_assign6_loc_dout : IN STD_LOGIC_VECTOR (8 downto 0);
+    val_assign6_loc_empty_n : IN STD_LOGIC;
+    val_assign6_loc_read : OUT STD_LOGIC;
     codeword_length_histogram_V_address0 : OUT STD_LOGIC_VECTOR (5 downto 0);
     codeword_length_histogram_V_ce0 : OUT STD_LOGIC;
     codeword_length_histogram_V_q0 : IN STD_LOGIC_VECTOR (8 downto 0);
@@ -67,8 +67,8 @@ architecture behav of canonize_tree is
     attribute fsm_encoding of ap_CS_fsm : signal is "none";
     signal ap_CS_fsm_state1 : STD_LOGIC;
     attribute fsm_encoding of ap_CS_fsm_state1 : signal is "none";
-    signal val_assign5_loc_blk_n : STD_LOGIC;
-    signal val_assign5_loc_read_reg_244 : STD_LOGIC_VECTOR (8 downto 0);
+    signal val_assign6_loc_blk_n : STD_LOGIC;
+    signal val_assign6_loc_read_reg_244 : STD_LOGIC_VECTOR (8 downto 0);
     signal ap_block_state1 : BOOLEAN;
     signal i_fu_174_p2 : STD_LOGIC_VECTOR (8 downto 0);
     signal ap_CS_fsm_state2 : STD_LOGIC;
@@ -144,7 +144,7 @@ begin
     i_0_i_i_reg_116_assign_proc : process (ap_clk)
     begin
         if (ap_clk'event and ap_clk = '1') then
-            if ((not(((val_assign5_loc_empty_n = ap_const_logic_0) or (ap_start = ap_const_logic_0) or (ap_done_reg = ap_const_logic_1))) and (ap_const_logic_1 = ap_CS_fsm_state1))) then 
+            if ((not(((val_assign6_loc_empty_n = ap_const_logic_0) or (ap_start = ap_const_logic_0) or (ap_done_reg = ap_const_logic_1))) and (ap_const_logic_1 = ap_CS_fsm_state1))) then 
                 i_0_i_i_reg_116 <= ap_const_lv9_0;
             elsif (((icmp_ln11_fu_168_p2 = ap_const_lv1_0) and (ap_const_logic_1 = ap_CS_fsm_state2))) then 
                 i_0_i_i_reg_116 <= i_fu_174_p2;
@@ -231,17 +231,17 @@ begin
     process (ap_clk)
     begin
         if (ap_clk'event and ap_clk = '1') then
-            if ((not(((val_assign5_loc_empty_n = ap_const_logic_0) or (ap_start = ap_const_logic_0) or (ap_done_reg = ap_const_logic_1))) and (ap_const_logic_1 = ap_CS_fsm_state1))) then
-                val_assign5_loc_read_reg_244 <= val_assign5_loc_dout;
+            if ((not(((val_assign6_loc_empty_n = ap_const_logic_0) or (ap_start = ap_const_logic_0) or (ap_done_reg = ap_const_logic_1))) and (ap_const_logic_1 = ap_CS_fsm_state1))) then
+                val_assign6_loc_read_reg_244 <= val_assign6_loc_dout;
             end if;
         end if;
     end process;
 
-    ap_NS_fsm_assign_proc : process (ap_start, ap_done_reg, ap_CS_fsm, ap_CS_fsm_state1, val_assign5_loc_empty_n, ap_CS_fsm_state2, ap_CS_fsm_state3, icmp_ln879_fu_201_p2, icmp_ln879_reg_272, icmp_ln21_fu_190_p2, ap_CS_fsm_state5, icmp_ln879_4_fu_218_p2, icmp_ln11_fu_168_p2)
+    ap_NS_fsm_assign_proc : process (ap_start, ap_done_reg, ap_CS_fsm, ap_CS_fsm_state1, val_assign6_loc_empty_n, ap_CS_fsm_state2, ap_CS_fsm_state3, icmp_ln879_fu_201_p2, icmp_ln879_reg_272, icmp_ln21_fu_190_p2, ap_CS_fsm_state5, icmp_ln879_4_fu_218_p2, icmp_ln11_fu_168_p2)
     begin
         case ap_CS_fsm is
             when ap_ST_fsm_state1 => 
-                if ((not(((val_assign5_loc_empty_n = ap_const_logic_0) or (ap_start = ap_const_logic_0) or (ap_done_reg = ap_const_logic_1))) and (ap_const_logic_1 = ap_CS_fsm_state1))) then
+                if ((not(((val_assign6_loc_empty_n = ap_const_logic_0) or (ap_start = ap_const_logic_0) or (ap_done_reg = ap_const_logic_1))) and (ap_const_logic_1 = ap_CS_fsm_state1))) then
                     ap_NS_fsm <= ap_ST_fsm_state2;
                 else
                     ap_NS_fsm <= ap_ST_fsm_state1;
@@ -284,9 +284,9 @@ begin
     ap_CS_fsm_state6 <= ap_CS_fsm(5);
     ap_CS_fsm_state7 <= ap_CS_fsm(6);
 
-    ap_block_state1_assign_proc : process(ap_start, ap_done_reg, val_assign5_loc_empty_n)
+    ap_block_state1_assign_proc : process(ap_start, ap_done_reg, val_assign6_loc_empty_n)
     begin
-                ap_block_state1 <= ((val_assign5_loc_empty_n = ap_const_logic_0) or (ap_start = ap_const_logic_0) or (ap_done_reg = ap_const_logic_1));
+                ap_block_state1 <= ((val_assign6_loc_empty_n = ap_const_logic_0) or (ap_start = ap_const_logic_0) or (ap_done_reg = ap_const_logic_1));
     end process;
 
 
@@ -333,7 +333,7 @@ begin
     count_V_2_fu_229_p2 <= std_logic_vector(signed(ap_const_lv9_1FF) + signed(t_V_5_reg_151));
     i_fu_174_p2 <= std_logic_vector(unsigned(i_0_i_i_reg_116) + unsigned(ap_const_lv9_1));
     icmp_ln11_fu_168_p2 <= "1" when (i_0_i_i_reg_116 = ap_const_lv9_100) else "0";
-    icmp_ln21_fu_190_p2 <= "1" when (i_op_assign_reg_139 = val_assign5_loc_read_reg_244) else "0";
+    icmp_ln21_fu_190_p2 <= "1" when (i_op_assign_reg_139 = val_assign6_loc_read_reg_244) else "0";
     icmp_ln879_4_fu_218_p2 <= "1" when (codeword_length_histogram_V_q0 = ap_const_lv9_0) else "0";
     icmp_ln879_fu_201_p2 <= "1" when (p_066_0_i_i_reg_127 = ap_const_lv9_0) else "0";
     k_fu_195_p2 <= std_logic_vector(unsigned(i_op_assign_reg_139) + unsigned(ap_const_lv9_1));
@@ -395,22 +395,22 @@ begin
 
     trunc_ln209_fu_239_p1 <= length_V_1_fu_58(5 - 1 downto 0);
 
-    val_assign5_loc_blk_n_assign_proc : process(ap_start, ap_done_reg, ap_CS_fsm_state1, val_assign5_loc_empty_n)
+    val_assign6_loc_blk_n_assign_proc : process(ap_start, ap_done_reg, ap_CS_fsm_state1, val_assign6_loc_empty_n)
     begin
         if ((not(((ap_start = ap_const_logic_0) or (ap_done_reg = ap_const_logic_1))) and (ap_const_logic_1 = ap_CS_fsm_state1))) then 
-            val_assign5_loc_blk_n <= val_assign5_loc_empty_n;
+            val_assign6_loc_blk_n <= val_assign6_loc_empty_n;
         else 
-            val_assign5_loc_blk_n <= ap_const_logic_1;
+            val_assign6_loc_blk_n <= ap_const_logic_1;
         end if; 
     end process;
 
 
-    val_assign5_loc_read_assign_proc : process(ap_start, ap_done_reg, ap_CS_fsm_state1, val_assign5_loc_empty_n)
+    val_assign6_loc_read_assign_proc : process(ap_start, ap_done_reg, ap_CS_fsm_state1, val_assign6_loc_empty_n)
     begin
-        if ((not(((val_assign5_loc_empty_n = ap_const_logic_0) or (ap_start = ap_const_logic_0) or (ap_done_reg = ap_const_logic_1))) and (ap_const_logic_1 = ap_CS_fsm_state1))) then 
-            val_assign5_loc_read <= ap_const_logic_1;
+        if ((not(((val_assign6_loc_empty_n = ap_const_logic_0) or (ap_start = ap_const_logic_0) or (ap_done_reg = ap_const_logic_1))) and (ap_const_logic_1 = ap_CS_fsm_state1))) then 
+            val_assign6_loc_read <= ap_const_logic_1;
         else 
-            val_assign5_loc_read <= ap_const_logic_0;
+            val_assign6_loc_read <= ap_const_logic_0;
         end if; 
     end process;
 

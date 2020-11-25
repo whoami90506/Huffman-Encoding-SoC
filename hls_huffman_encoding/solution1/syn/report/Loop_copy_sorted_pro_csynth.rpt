@@ -3,7 +3,7 @@
 ================================================================
 == Vivado HLS Report for 'Loop_copy_sorted_pro'
 ================================================================
-* Date:           Wed Nov 25 15:37:06 2020
+* Date:           Wed Nov 25 17:34:19 2020
 
 * Version:        2019.2 (Build 2704478 on Wed Nov 06 22:10:23 MST 2019)
 * Project:        hls_huffman_encoding
@@ -86,7 +86,7 @@
     |    Variable Name    | Operation| DSP48E| FF| LUT| Bitwidth P0| Bitwidth P1|
     +---------------------+----------+-------+---+----+------------+------------+
     |i_fu_150_p2          |     +    |      0|  0|  15|           9|           1|
-    |icmp_ln34_fu_145_p2  |   icmp   |      0|  0|  13|           9|           9|
+    |icmp_ln40_fu_145_p2  |   icmp   |      0|  0|  13|           9|           9|
     |ap_block_state1      |    or    |      0|  0|   2|           1|           1|
     |ap_block_state2      |    or    |      0|  0|   2|           1|           1|
     |ap_block_state4      |    or    |      0|  0|   2|           1|           1|
@@ -102,12 +102,12 @@
     |ap_done                    |   9|          2|    1|          2|
     |extLd_out_out1_blk_n       |   9|          2|    1|          2|
     |extLd_out_out_blk_n        |   9|          2|    1|          2|
-    |i_0_i_reg_134              |   9|          2|    9|         18|
+    |i12_0_i_reg_134            |   9|          2|    9|         18|
     |n_blk_n                    |   9|          2|    1|          2|
     |real_start                 |   9|          2|    1|          2|
     |sorted_copy1_0_blk_n       |   9|          2|    1|          2|
     |sorted_copy1_1_blk_n       |   9|          2|    1|          2|
-    |val_assign5_out_out_blk_n  |   9|          2|    1|          2|
+    |val_assign6_out_out_blk_n  |   9|          2|    1|          2|
     +---------------------------+----+-----------+-----+-----------+
     |Total                      | 108|         23|   18|         39|
     +---------------------------+----+-----------+-----+-----------+
@@ -118,13 +118,13 @@
     +----------------------------+----+----+-----+-----------+
     |ap_CS_fsm                   |   4|   0|    4|          0|
     |ap_done_reg                 |   1|   0|    1|          0|
-    |i_0_i_reg_134               |   9|   0|    9|          0|
+    |i12_0_i_reg_134             |   9|   0|    9|          0|
     |i_reg_173                   |   9|   0|    9|          0|
     |n_read_reg_162              |   9|   0|    9|          0|
     |previous_frequency_reg_199  |  32|   0|   32|          0|
     |sorted_0_load_reg_193       |   9|   0|    9|          0|
     |start_once_reg              |   1|   0|    1|          0|
-    |zext_ln35_reg_178           |   9|   0|   64|         55|
+    |zext_ln41_reg_178           |   9|   0|   64|         55|
     +----------------------------+----+----+-----+-----------+
     |Total                       |  83|   0|  138|         55|
     +----------------------------+----+----+-----+-----------+
@@ -167,9 +167,9 @@
 |sorted_copy2_value_V_ce0       | out |    1|  ap_memory | sorted_copy2_value_V |     array    |
 |sorted_copy2_value_V_we0       | out |    1|  ap_memory | sorted_copy2_value_V |     array    |
 |sorted_copy2_value_V_d0        | out |    9|  ap_memory | sorted_copy2_value_V |     array    |
-|val_assign5_out_out_din        | out |    9|   ap_fifo  |  val_assign5_out_out |    pointer   |
-|val_assign5_out_out_full_n     |  in |    1|   ap_fifo  |  val_assign5_out_out |    pointer   |
-|val_assign5_out_out_write      | out |    1|   ap_fifo  |  val_assign5_out_out |    pointer   |
+|val_assign6_out_out_din        | out |    9|   ap_fifo  |  val_assign6_out_out |    pointer   |
+|val_assign6_out_out_full_n     |  in |    1|   ap_fifo  |  val_assign6_out_out |    pointer   |
+|val_assign6_out_out_write      | out |    1|   ap_fifo  |  val_assign6_out_out |    pointer   |
 |extLd_out_out_din              | out |    9|   ap_fifo  |     extLd_out_out    |    pointer   |
 |extLd_out_out_full_n           |  in |    1|   ap_fifo  |     extLd_out_out    |    pointer   |
 |extLd_out_out_write            | out |    1|   ap_fifo  |     extLd_out_out    |    pointer   |

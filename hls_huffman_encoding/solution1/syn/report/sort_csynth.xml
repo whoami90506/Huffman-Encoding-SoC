@@ -271,8 +271,8 @@
 <Attribute>data</Attribute>
 </RtlPorts>
 <RtlPorts>
-<name>extLd7_loc_channel</name>
-<Object>extLd7_loc_channel</Object>
+<name>extLd8_loc_channel</name>
+<Object>extLd8_loc_channel</Object>
 <Type>scalar</Type>
 <Scope></Scope>
 <IOProtocol>ap_none</IOProtocol>

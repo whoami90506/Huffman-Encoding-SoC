@@ -18,9 +18,9 @@ module canonize_tree (
         sorted_value_V_address0,
         sorted_value_V_ce0,
         sorted_value_V_q0,
-        val_assign5_loc_dout,
-        val_assign5_loc_empty_n,
-        val_assign5_loc_read,
+        val_assign6_loc_dout,
+        val_assign6_loc_empty_n,
+        val_assign6_loc_read,
         codeword_length_histogram_V_address0,
         codeword_length_histogram_V_ce0,
         codeword_length_histogram_V_q0,
@@ -48,9 +48,9 @@ output   ap_ready;
 output  [7:0] sorted_value_V_address0;
 output   sorted_value_V_ce0;
 input  [8:0] sorted_value_V_q0;
-input  [8:0] val_assign5_loc_dout;
-input   val_assign5_loc_empty_n;
-output   val_assign5_loc_read;
+input  [8:0] val_assign6_loc_dout;
+input   val_assign6_loc_empty_n;
+output   val_assign6_loc_read;
 output  [5:0] codeword_length_histogram_V_address0;
 output   codeword_length_histogram_V_ce0;
 input  [8:0] codeword_length_histogram_V_q0;
@@ -63,7 +63,7 @@ reg ap_done;
 reg ap_idle;
 reg ap_ready;
 reg sorted_value_V_ce0;
-reg val_assign5_loc_read;
+reg val_assign6_loc_read;
 reg codeword_length_histogram_V_ce0;
 reg[7:0] symbol_bits_V_address0;
 reg symbol_bits_V_ce0;
@@ -73,8 +73,8 @@ reg[4:0] symbol_bits_V_d0;
 reg    ap_done_reg;
 (* fsm_encoding = "none" *) reg   [6:0] ap_CS_fsm;
 wire    ap_CS_fsm_state1;
-reg    val_assign5_loc_blk_n;
-reg   [8:0] val_assign5_loc_read_reg_244;
+reg    val_assign6_loc_blk_n;
+reg   [8:0] val_assign6_loc_read_reg_244;
 reg    ap_block_state1;
 wire   [8:0] i_fu_174_p2;
 wire    ap_CS_fsm_state2;
@@ -134,7 +134,7 @@ always @ (posedge ap_clk) begin
 end
 
 always @ (posedge ap_clk) begin
-    if ((~((val_assign5_loc_empty_n == 1'b0) | (ap_start == 1'b0) | (ap_done_reg == 1'b1)) & (1'b1 == ap_CS_fsm_state1))) begin
+    if ((~((val_assign6_loc_empty_n == 1'b0) | (ap_start == 1'b0) | (ap_done_reg == 1'b1)) & (1'b1 == ap_CS_fsm_state1))) begin
         i_0_i_i_reg_116 <= 9'd0;
     end else if (((icmp_ln11_fu_168_p2 == 1'd0) & (1'b1 == ap_CS_fsm_state2))) begin
         i_0_i_i_reg_116 <= i_fu_174_p2;
@@ -199,8 +199,8 @@ always @ (posedge ap_clk) begin
 end
 
 always @ (posedge ap_clk) begin
-    if ((~((val_assign5_loc_empty_n == 1'b0) | (ap_start == 1'b0) | (ap_done_reg == 1'b1)) & (1'b1 == ap_CS_fsm_state1))) begin
-        val_assign5_loc_read_reg_244 <= val_assign5_loc_dout;
+    if ((~((val_assign6_loc_empty_n == 1'b0) | (ap_start == 1'b0) | (ap_done_reg == 1'b1)) & (1'b1 == ap_CS_fsm_state1))) begin
+        val_assign6_loc_read_reg_244 <= val_assign6_loc_dout;
     end
 end
 
@@ -282,24 +282,24 @@ end
 
 always @ (*) begin
     if ((~((ap_start == 1'b0) | (ap_done_reg == 1'b1)) & (1'b1 == ap_CS_fsm_state1))) begin
-        val_assign5_loc_blk_n = val_assign5_loc_empty_n;
+        val_assign6_loc_blk_n = val_assign6_loc_empty_n;
     end else begin
-        val_assign5_loc_blk_n = 1'b1;
+        val_assign6_loc_blk_n = 1'b1;
     end
 end
 
 always @ (*) begin
-    if ((~((val_assign5_loc_empty_n == 1'b0) | (ap_start == 1'b0) | (ap_done_reg == 1'b1)) & (1'b1 == ap_CS_fsm_state1))) begin
-        val_assign5_loc_read = 1'b1;
+    if ((~((val_assign6_loc_empty_n == 1'b0) | (ap_start == 1'b0) | (ap_done_reg == 1'b1)) & (1'b1 == ap_CS_fsm_state1))) begin
+        val_assign6_loc_read = 1'b1;
     end else begin
-        val_assign5_loc_read = 1'b0;
+        val_assign6_loc_read = 1'b0;
     end
 end
 
 always @ (*) begin
     case (ap_CS_fsm)
         ap_ST_fsm_state1 : begin
-            if ((~((val_assign5_loc_empty_n == 1'b0) | (ap_start == 1'b0) | (ap_done_reg == 1'b1)) & (1'b1 == ap_CS_fsm_state1))) begin
+            if ((~((val_assign6_loc_empty_n == 1'b0) | (ap_start == 1'b0) | (ap_done_reg == 1'b1)) & (1'b1 == ap_CS_fsm_state1))) begin
                 ap_NS_fsm = ap_ST_fsm_state2;
             end else begin
                 ap_NS_fsm = ap_ST_fsm_state1;
@@ -358,7 +358,7 @@ assign ap_CS_fsm_state6 = ap_CS_fsm[32'd5];
 assign ap_CS_fsm_state7 = ap_CS_fsm[32'd6];
 
 always @ (*) begin
-    ap_block_state1 = ((val_assign5_loc_empty_n == 1'b0) | (ap_start == 1'b0) | (ap_done_reg == 1'b1));
+    ap_block_state1 = ((val_assign6_loc_empty_n == 1'b0) | (ap_start == 1'b0) | (ap_done_reg == 1'b1));
 end
 
 assign codeword_length_histogram_V_address0 = zext_ln544_fu_213_p1;
@@ -369,7 +369,7 @@ assign i_fu_174_p2 = (i_0_i_i_reg_116 + 9'd1);
 
 assign icmp_ln11_fu_168_p2 = ((i_0_i_i_reg_116 == 9'd256) ? 1'b1 : 1'b0);
 
-assign icmp_ln21_fu_190_p2 = ((i_op_assign_reg_139 == val_assign5_loc_read_reg_244) ? 1'b1 : 1'b0);
+assign icmp_ln21_fu_190_p2 = ((i_op_assign_reg_139 == val_assign6_loc_read_reg_244) ? 1'b1 : 1'b0);
 
 assign icmp_ln879_4_fu_218_p2 = ((codeword_length_histogram_V_q0 == 9'd0) ? 1'b1 : 1'b0);
 

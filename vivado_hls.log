@@ -1,5 +1,5 @@
 INFO: [HLS 200-10] Running 'D:/Xilinx/Vivado/2019.2/bin/unwrapped/win64.o/vivado_hls.exe'
-INFO: [HLS 200-10] For user 'user' on host 'chengde-dell' (Windows NT_amd64 version 6.2) on Wed Nov 25 15:37:59 +0800 2020
+INFO: [HLS 200-10] For user 'user' on host 'chengde-dell' (Windows NT_amd64 version 6.2) on Wed Nov 25 17:40:07 +0800 2020
 INFO: [HLS 200-10] In directory 'D:/Workspace/huffman_encoding_fpga'
 Sourcing Tcl script 'D:/Workspace/huffman_encoding_fpga/hls_huffman_encoding/solution1/export.tcl'
 INFO: [HLS 200-10] Opening project 'D:/Workspace/huffman_encoding_fpga/hls_huffman_encoding'.
@@ -14,14 +14,18 @@ INFO: [HLS 200-741] Implementing PIPO huffman_encoding_ncg_memcore using a singl
 INFO: [HLS 200-741] Implementing PIPO huffman_encoding_ocq_memcore using a single memory for all blocks
 INFO: [HLS 200-740] Implementing PIPO huffman_encoding_sc4_memcore using a separate memory for each block
 INFO: [HLS 200-741] Implementing PIPO huffman_encoding_vdy_memcore using a single memory for all blocks
-INFO: [HLS 200-740] Implementing PIPO huffman_encoding_wdI_memcore using a separate memory for each block
-INFO: [HLS 200-741] Implementing PIPO huffman_encoding_yd2_memcore using a single memory for all blocks
+INFO: [HLS 200-741] Implementing PIPO huffman_encoding_xdS_memcore using a single memory for all blocks
+INFO: [HLS 200-741] Implementing PIPO huffman_encoding_Bew_memcore using a single memory for all blocks
+INFO: [HLS 200-740] Implementing PIPO huffman_encoding_CeG_memcore using a separate memory for each block
+INFO: [HLS 200-741] Implementing PIPO huffman_encoding_Ee0_memcore using a single memory for all blocks
 INFO: [HLS 200-741] Implementing PIPO huffman_encoding_ncg_memcore using a single memory for all blocks
 INFO: [HLS 200-741] Implementing PIPO huffman_encoding_ocq_memcore using a single memory for all blocks
 INFO: [HLS 200-740] Implementing PIPO huffman_encoding_sc4_memcore using a separate memory for each block
 INFO: [HLS 200-741] Implementing PIPO huffman_encoding_vdy_memcore using a single memory for all blocks
-INFO: [HLS 200-740] Implementing PIPO huffman_encoding_wdI_memcore using a separate memory for each block
-INFO: [HLS 200-741] Implementing PIPO huffman_encoding_yd2_memcore using a single memory for all blocks
+INFO: [HLS 200-741] Implementing PIPO huffman_encoding_xdS_memcore using a single memory for all blocks
+INFO: [HLS 200-741] Implementing PIPO huffman_encoding_Bew_memcore using a single memory for all blocks
+INFO: [HLS 200-740] Implementing PIPO huffman_encoding_CeG_memcore using a separate memory for each block
+INFO: [HLS 200-741] Implementing PIPO huffman_encoding_Ee0_memcore using a single memory for all blocks
 
 ****** Vivado v2019.2 (64-bit)
   **** SW Build 2708876 on Wed Nov  6 21:40:23 MST 2019
@@ -32,4 +36,4 @@ source run_ippack.tcl -notrace
 INFO: [IP_Flow 19-234] Refreshing IP repositories
 INFO: [IP_Flow 19-1704] No user IP repositories specified
 INFO: [IP_Flow 19-2313] Loaded Vivado IP repository 'D:/Xilinx/Vivado/2019.2/data/ip'.
-INFO: [Common 17-206] Exiting Vivado at Wed Nov 25 15:38:58 2020...
+INFO: [Common 17-206] Exiting Vivado at Wed Nov 25 17:40:28 2020...

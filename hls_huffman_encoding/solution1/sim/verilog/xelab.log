@@ -19,8 +19,8 @@ INFO: [VRFC 10-2263] Analyzing SystemVerilog file "D:/Workspace/huffman_encoding
 INFO: [VRFC 10-311] analyzing module AESL_deadlock_report_unit
 INFO: [VRFC 10-2263] Analyzing SystemVerilog file "D:/Workspace/huffman_encoding_fpga/hls_huffman_encoding/solution1/sim/verilog/AESL_fifo.v" into library xil_defaultlib
 INFO: [VRFC 10-311] analyzing module fifo
-INFO: [VRFC 10-2263] Analyzing SystemVerilog file "D:/Workspace/huffman_encoding_fpga/hls_huffman_encoding/solution1/sim/verilog/Block_codeRepl810_pr.v" into library xil_defaultlib
-INFO: [VRFC 10-311] analyzing module Block_codeRepl810_pr
+INFO: [VRFC 10-2263] Analyzing SystemVerilog file "D:/Workspace/huffman_encoding_fpga/hls_huffman_encoding/solution1/sim/verilog/Block_huffman_encodi.v" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module Block_huffman_encodi
 INFO: [VRFC 10-2263] Analyzing SystemVerilog file "D:/Workspace/huffman_encoding_fpga/hls_huffman_encoding/solution1/sim/verilog/Block_proc.v" into library xil_defaultlib
 INFO: [VRFC 10-311] analyzing module Block_proc
 INFO: [VRFC 10-2263] Analyzing SystemVerilog file "D:/Workspace/huffman_encoding_fpga/hls_huffman_encoding/solution1/sim/verilog/canonize_tree.v" into library xil_defaultlib
@@ -48,6 +48,8 @@ INFO: [VRFC 10-311] analyzing module create_tree_frequjbC_ram
 INFO: [VRFC 10-311] analyzing module create_tree_frequjbC
 INFO: [VRFC 10-2263] Analyzing SystemVerilog file "D:/Workspace/huffman_encoding_fpga/hls_huffman_encoding/solution1/sim/verilog/fifo_w32_d256_A.v" into library xil_defaultlib
 INFO: [VRFC 10-311] analyzing module fifo_w32_d256_A
+INFO: [VRFC 10-2263] Analyzing SystemVerilog file "D:/Workspace/huffman_encoding_fpga/hls_huffman_encoding/solution1/sim/verilog/fifo_w41_d256_A.v" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module fifo_w41_d256_A
 INFO: [VRFC 10-2263] Analyzing SystemVerilog file "D:/Workspace/huffman_encoding_fpga/hls_huffman_encoding/solution1/sim/verilog/fifo_w9_d256_A.v" into library xil_defaultlib
 INFO: [VRFC 10-311] analyzing module fifo_w9_d256_A
 INFO: [VRFC 10-2263] Analyzing SystemVerilog file "D:/Workspace/huffman_encoding_fpga/hls_huffman_encoding/solution1/sim/verilog/fifo_w9_d2_A.v" into library xil_defaultlib
@@ -67,6 +69,21 @@ INFO: [VRFC 10-2263] Analyzing SystemVerilog file "D:/Workspace/huffman_encoding
 INFO: [VRFC 10-311] analyzing module huffman_encoding
 INFO: [VRFC 10-2263] Analyzing SystemVerilog file "D:/Workspace/huffman_encoding_fpga/hls_huffman_encoding/solution1/sim/verilog/huffman_encoding_AXILiteS_s_axi.v" into library xil_defaultlib
 INFO: [VRFC 10-311] analyzing module huffman_encoding_AXILiteS_s_axi
+INFO: [VRFC 10-2263] Analyzing SystemVerilog file "D:/Workspace/huffman_encoding_fpga/hls_huffman_encoding/solution1/sim/verilog/huffman_encoding_Bew.v" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module huffman_encoding_Bew
+INFO: [VRFC 10-2263] Analyzing SystemVerilog file "D:/Workspace/huffman_encoding_fpga/hls_huffman_encoding/solution1/sim/verilog/huffman_encoding_Bew_memcore.v" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module huffman_encoding_Bew_memcore_ram
+INFO: [VRFC 10-311] analyzing module huffman_encoding_Bew_memcore
+INFO: [VRFC 10-2263] Analyzing SystemVerilog file "D:/Workspace/huffman_encoding_fpga/hls_huffman_encoding/solution1/sim/verilog/huffman_encoding_CeG.v" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module huffman_encoding_CeG
+INFO: [VRFC 10-2263] Analyzing SystemVerilog file "D:/Workspace/huffman_encoding_fpga/hls_huffman_encoding/solution1/sim/verilog/huffman_encoding_CeG_memcore.v" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module huffman_encoding_CeG_memcore_ram
+INFO: [VRFC 10-311] analyzing module huffman_encoding_CeG_memcore
+INFO: [VRFC 10-2263] Analyzing SystemVerilog file "D:/Workspace/huffman_encoding_fpga/hls_huffman_encoding/solution1/sim/verilog/huffman_encoding_Ee0.v" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module huffman_encoding_Ee0
+INFO: [VRFC 10-2263] Analyzing SystemVerilog file "D:/Workspace/huffman_encoding_fpga/hls_huffman_encoding/solution1/sim/verilog/huffman_encoding_Ee0_memcore.v" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module huffman_encoding_Ee0_memcore_ram
+INFO: [VRFC 10-311] analyzing module huffman_encoding_Ee0_memcore
 INFO: [VRFC 10-2263] Analyzing SystemVerilog file "D:/Workspace/huffman_encoding_fpga/hls_huffman_encoding/solution1/sim/verilog/huffman_encoding_g8j.v" into library xil_defaultlib
 INFO: [VRFC 10-311] analyzing module huffman_encoding_g8j
 INFO: [VRFC 10-2263] Analyzing SystemVerilog file "D:/Workspace/huffman_encoding_fpga/hls_huffman_encoding/solution1/sim/verilog/huffman_encoding_hbi.v" into library xil_defaultlib
@@ -91,18 +108,15 @@ INFO: [VRFC 10-311] analyzing module huffman_encoding_vdy
 INFO: [VRFC 10-2263] Analyzing SystemVerilog file "D:/Workspace/huffman_encoding_fpga/hls_huffman_encoding/solution1/sim/verilog/huffman_encoding_vdy_memcore.v" into library xil_defaultlib
 INFO: [VRFC 10-311] analyzing module huffman_encoding_vdy_memcore_ram
 INFO: [VRFC 10-311] analyzing module huffman_encoding_vdy_memcore
-INFO: [VRFC 10-2263] Analyzing SystemVerilog file "D:/Workspace/huffman_encoding_fpga/hls_huffman_encoding/solution1/sim/verilog/huffman_encoding_wdI.v" into library xil_defaultlib
-INFO: [VRFC 10-311] analyzing module huffman_encoding_wdI
-INFO: [VRFC 10-2263] Analyzing SystemVerilog file "D:/Workspace/huffman_encoding_fpga/hls_huffman_encoding/solution1/sim/verilog/huffman_encoding_wdI_memcore.v" into library xil_defaultlib
-INFO: [VRFC 10-311] analyzing module huffman_encoding_wdI_memcore_ram
-INFO: [VRFC 10-311] analyzing module huffman_encoding_wdI_memcore
-INFO: [VRFC 10-2263] Analyzing SystemVerilog file "D:/Workspace/huffman_encoding_fpga/hls_huffman_encoding/solution1/sim/verilog/huffman_encoding_yd2.v" into library xil_defaultlib
-INFO: [VRFC 10-311] analyzing module huffman_encoding_yd2
-INFO: [VRFC 10-2263] Analyzing SystemVerilog file "D:/Workspace/huffman_encoding_fpga/hls_huffman_encoding/solution1/sim/verilog/huffman_encoding_yd2_memcore.v" into library xil_defaultlib
-INFO: [VRFC 10-311] analyzing module huffman_encoding_yd2_memcore_ram
-INFO: [VRFC 10-311] analyzing module huffman_encoding_yd2_memcore
+INFO: [VRFC 10-2263] Analyzing SystemVerilog file "D:/Workspace/huffman_encoding_fpga/hls_huffman_encoding/solution1/sim/verilog/huffman_encoding_xdS.v" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module huffman_encoding_xdS
+INFO: [VRFC 10-2263] Analyzing SystemVerilog file "D:/Workspace/huffman_encoding_fpga/hls_huffman_encoding/solution1/sim/verilog/huffman_encoding_xdS_memcore.v" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module huffman_encoding_xdS_memcore_ram
+INFO: [VRFC 10-311] analyzing module huffman_encoding_xdS_memcore
 INFO: [VRFC 10-2263] Analyzing SystemVerilog file "D:/Workspace/huffman_encoding_fpga/hls_huffman_encoding/solution1/sim/verilog/Loop_copy_sorted_pro.v" into library xil_defaultlib
 INFO: [VRFC 10-311] analyzing module Loop_copy_sorted_pro
+INFO: [VRFC 10-2263] Analyzing SystemVerilog file "D:/Workspace/huffman_encoding_fpga/hls_huffman_encoding/solution1/sim/verilog/Loop_read_stream_pro.v" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module Loop_read_stream_pro
 INFO: [VRFC 10-2263] Analyzing SystemVerilog file "D:/Workspace/huffman_encoding_fpga/hls_huffman_encoding/solution1/sim/verilog/regslice_core.v" into library xil_defaultlib
 INFO: [VRFC 10-311] analyzing module regslice_both
 INFO: [VRFC 10-311] analyzing module regslice_forward
@@ -123,15 +137,18 @@ INFO: [VRFC 10-311] analyzing module sort_previous_sorbkb
 INFO: [VRFC 10-2263] Analyzing SystemVerilog file "D:/Workspace/huffman_encoding_fpga/hls_huffman_encoding/solution1/sim/verilog/sort_previous_sorcud.v" into library xil_defaultlib
 INFO: [VRFC 10-311] analyzing module sort_previous_sorcud_ram
 INFO: [VRFC 10-311] analyzing module sort_previous_sorcud
-INFO: [VRFC 10-2263] Analyzing SystemVerilog file "D:/Workspace/huffman_encoding_fpga/hls_huffman_encoding/solution1/sim/verilog/start_for_Block_czec.v" into library xil_defaultlib
-INFO: [VRFC 10-311] analyzing module start_for_Block_czec_shiftReg
-INFO: [VRFC 10-311] analyzing module start_for_Block_czec
-INFO: [VRFC 10-2263] Analyzing SystemVerilog file "D:/Workspace/huffman_encoding_fpga/hls_huffman_encoding/solution1/sim/verilog/start_for_Block_pBew.v" into library xil_defaultlib
-INFO: [VRFC 10-311] analyzing module start_for_Block_pBew_shiftReg
-INFO: [VRFC 10-311] analyzing module start_for_Block_pBew
-INFO: [VRFC 10-2263] Analyzing SystemVerilog file "D:/Workspace/huffman_encoding_fpga/hls_huffman_encoding/solution1/sim/verilog/start_for_create_Aem.v" into library xil_defaultlib
-INFO: [VRFC 10-311] analyzing module start_for_create_Aem_shiftReg
-INFO: [VRFC 10-311] analyzing module start_for_create_Aem
+INFO: [VRFC 10-2263] Analyzing SystemVerilog file "D:/Workspace/huffman_encoding_fpga/hls_huffman_encoding/solution1/sim/verilog/start_for_Block_hFfa.v" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module start_for_Block_hFfa_shiftReg
+INFO: [VRFC 10-311] analyzing module start_for_Block_hFfa
+INFO: [VRFC 10-2263] Analyzing SystemVerilog file "D:/Workspace/huffman_encoding_fpga/hls_huffman_encoding/solution1/sim/verilog/start_for_Block_pHfu.v" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module start_for_Block_pHfu_shiftReg
+INFO: [VRFC 10-311] analyzing module start_for_Block_pHfu
+INFO: [VRFC 10-2263] Analyzing SystemVerilog file "D:/Workspace/huffman_encoding_fpga/hls_huffman_encoding/solution1/sim/verilog/start_for_create_Gfk.v" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module start_for_create_Gfk_shiftReg
+INFO: [VRFC 10-311] analyzing module start_for_create_Gfk
+INFO: [VRFC 10-2263] Analyzing SystemVerilog file "D:/Workspace/huffman_encoding_fpga/hls_huffman_encoding/solution1/sim/verilog/start_for_filter_U0.v" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module start_for_filter_U0_shiftReg
+INFO: [VRFC 10-311] analyzing module start_for_filter_U0
 INFO: [VRFC 10-2263] Analyzing SystemVerilog file "D:/Workspace/huffman_encoding_fpga/hls_huffman_encoding/solution1/sim/verilog/truncate_tree.v" into library xil_defaultlib
 INFO: [VRFC 10-311] analyzing module truncate_tree
 Starting static elaboration
@@ -153,12 +170,18 @@ Compiling module xil_defaultlib.huffman_encoding_sc4(AddressRang...
 Compiling module xil_defaultlib.huffman_encoding_vdy_memcore_ram
 Compiling module xil_defaultlib.huffman_encoding_vdy_memcore
 Compiling module xil_defaultlib.huffman_encoding_vdy(AddressRang...
-Compiling module xil_defaultlib.huffman_encoding_wdI_memcore_ram
-Compiling module xil_defaultlib.huffman_encoding_wdI_memcore
-Compiling module xil_defaultlib.huffman_encoding_wdI(AddressRang...
-Compiling module xil_defaultlib.huffman_encoding_yd2_memcore_ram
-Compiling module xil_defaultlib.huffman_encoding_yd2_memcore
-Compiling module xil_defaultlib.huffman_encoding_yd2(AddressRang...
+Compiling module xil_defaultlib.huffman_encoding_xdS_memcore_ram
+Compiling module xil_defaultlib.huffman_encoding_xdS_memcore
+Compiling module xil_defaultlib.huffman_encoding_xdS(AddressRang...
+Compiling module xil_defaultlib.huffman_encoding_Bew_memcore_ram
+Compiling module xil_defaultlib.huffman_encoding_Bew_memcore
+Compiling module xil_defaultlib.huffman_encoding_Bew(AddressRang...
+Compiling module xil_defaultlib.huffman_encoding_CeG_memcore_ram
+Compiling module xil_defaultlib.huffman_encoding_CeG_memcore
+Compiling module xil_defaultlib.huffman_encoding_CeG(AddressRang...
+Compiling module xil_defaultlib.huffman_encoding_Ee0_memcore_ram
+Compiling module xil_defaultlib.huffman_encoding_Ee0_memcore
+Compiling module xil_defaultlib.huffman_encoding_Ee0(AddressRang...
 Compiling module xil_defaultlib.ibuf(W=49)
 Compiling module xil_defaultlib.obuf(W=49)
 Compiling module xil_defaultlib.regslice_both(DataWidth=48)
@@ -168,8 +191,9 @@ Compiling module xil_defaultlib.regslice_both(DataWidth=6)
 Compiling module xil_defaultlib.ibuf(W=2)
 Compiling module xil_defaultlib.obuf(W=2)
 Compiling module xil_defaultlib.regslice_both(DataWidth=1)
+Compiling module xil_defaultlib.Loop_read_stream_pro
 Compiling module xil_defaultlib.filter
-Compiling module xil_defaultlib.Block_codeRepl810_pr
+Compiling module xil_defaultlib.Block_huffman_encodi
 Compiling module xil_defaultlib.sort_previous_sorbkb_ram
 Compiling module xil_defaultlib.sort_previous_sorbkb(DataWidth=9...
 Compiling module xil_defaultlib.sort_previous_sorcud_ram
@@ -202,6 +226,7 @@ Compiling module xil_defaultlib.obuf(W=5)
 Compiling module xil_defaultlib.regslice_both(DataWidth=4)
 Compiling module xil_defaultlib.create_codeword
 Compiling module xil_defaultlib.Block_proc
+Compiling module xil_defaultlib.fifo_w41_d256_A
 Compiling module xil_defaultlib.fifo_w9_d2_A_shiftReg
 Compiling module xil_defaultlib.fifo_w9_d2_A
 Compiling module xil_defaultlib.fifo_w9_d3_A_shiftReg
@@ -210,12 +235,14 @@ Compiling module xil_defaultlib.fifo_w9_d256_A
 Compiling module xil_defaultlib.fifo_w32_d256_A
 Compiling module xil_defaultlib.fifo_w9_d5_A_shiftReg
 Compiling module xil_defaultlib.fifo_w9_d5_A
-Compiling module xil_defaultlib.start_for_Block_czec_shiftReg
-Compiling module xil_defaultlib.start_for_Block_czec
-Compiling module xil_defaultlib.start_for_create_Aem_shiftReg
-Compiling module xil_defaultlib.start_for_create_Aem
-Compiling module xil_defaultlib.start_for_Block_pBew_shiftReg
-Compiling module xil_defaultlib.start_for_Block_pBew
+Compiling module xil_defaultlib.start_for_filter_U0_shiftReg
+Compiling module xil_defaultlib.start_for_filter_U0
+Compiling module xil_defaultlib.start_for_Block_hFfa_shiftReg
+Compiling module xil_defaultlib.start_for_Block_hFfa
+Compiling module xil_defaultlib.start_for_create_Gfk_shiftReg
+Compiling module xil_defaultlib.start_for_create_Gfk
+Compiling module xil_defaultlib.start_for_Block_pHfu_shiftReg
+Compiling module xil_defaultlib.start_for_Block_pHfu
 Compiling module xil_defaultlib.huffman_encoding
 Compiling module xil_defaultlib.fifo(DEPTH=256,WIDTH=48)
 Compiling module xil_defaultlib.fifo(DEPTH=256,WIDTH=6)
@@ -225,6 +252,7 @@ Compiling module xil_defaultlib.fifo(DEPTH=256,WIDTH=32)
 Compiling module xil_defaultlib.fifo(DEPTH=256,WIDTH=4)
 Compiling module xil_defaultlib.AESL_axi_s_encoding
 Compiling module xil_defaultlib.AESL_axi_slave_AXILiteS
+Compiling module xil_defaultlib.AESL_deadlock_detect_unit(PROC_N...
 Compiling module xil_defaultlib.AESL_deadlock_detect_unit(PROC_N...
 Compiling module xil_defaultlib.AESL_deadlock_detect_unit(PROC_N...
 Compiling module xil_defaultlib.AESL_deadlock_detect_unit(PROC_N...

@@ -20,7 +20,13 @@ void huffman_encoding(
     ap_uint<SYMBOL_BITS> right[INPUT_SYMBOL_SIZE-1];
     int n;
 
-    filter(symbol_histogram, filtered, &n);
+    Symbol_axiu stream_buffer[INPUT_SYMBOL_SIZE];
+    read_stream:
+    for(int i = 0; i < INPUT_SYMBOL_SIZE; ++i){
+        #pragma HLS PIPELINE II=1
+        stream_buffer[i] = symbol_histogram->read();
+    }
+    filter(stream_buffer, filtered, &n);
     sort(filtered, n, sorted);
 
     ap_uint<SYMBOL_BITS> length_histogram[TREE_DEPTH];
@@ -62,7 +68,7 @@ void huffman_encoding(
 
     truncate_tree(length_histogram, truncated_length_histogram1, truncated_length_histogram2);
     canonize_tree(sorted_copy2, n, truncated_length_histogram1, symbol_bits);
-    create_codeword(symbol_bits, truncated_length_histogram2, encoding);
+    create_codeword(symbol_bits, truncated_length_histogram2, stream_buffer, encoding);
 
     *num_nonzero_symbols = n;
 }

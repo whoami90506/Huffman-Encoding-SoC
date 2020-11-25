@@ -3,7 +3,7 @@
 ================================================================
 == Vivado HLS Report for 'canonize_tree'
 ================================================================
-* Date:           Wed Nov 25 15:37:09 2020
+* Date:           Wed Nov 25 17:34:21 2020
 
 * Version:        2019.2 (Build 2704478 on Wed Nov 06 22:10:23 MST 2019)
 * Project:        hls_huffman_encoding
@@ -113,7 +113,7 @@
     |symbol_bits_V_address0  |  15|          3|    8|         24|
     |symbol_bits_V_d0        |  15|          3|    5|         15|
     |t_V_5_reg_151           |   9|          2|    9|         18|
-    |val_assign5_loc_blk_n   |   9|          2|    1|          2|
+    |val_assign6_loc_blk_n   |   9|          2|    1|          2|
     +------------------------+----+-----------+-----+-----------+
     |Total                   | 134|         28|   61|        141|
     +------------------------+----+-----------+-----+-----------+
@@ -134,7 +134,7 @@
     |p_066_0_i_i_reg_127           |  9|   0|    9|          0|
     |sorted_value_V_load_reg_299   |  9|   0|    9|          0|
     |t_V_5_reg_151                 |  9|   0|    9|          0|
-    |val_assign5_loc_read_reg_244  |  9|   0|    9|          0|
+    |val_assign6_loc_read_reg_244  |  9|   0|    9|          0|
     +------------------------------+---+----+-----+-----------+
     |Total                         | 99|   0|   99|          0|
     +------------------------------+---+----+-----+-----------+
@@ -158,9 +158,9 @@
 |sorted_value_V_address0               | out |    8|  ap_memory |        sorted_value_V       |     array    |
 |sorted_value_V_ce0                    | out |    1|  ap_memory |        sorted_value_V       |     array    |
 |sorted_value_V_q0                     |  in |    9|  ap_memory |        sorted_value_V       |     array    |
-|val_assign5_loc_dout                  |  in |    9|   ap_fifo  |       val_assign5_loc       |    pointer   |
-|val_assign5_loc_empty_n               |  in |    1|   ap_fifo  |       val_assign5_loc       |    pointer   |
-|val_assign5_loc_read                  | out |    1|   ap_fifo  |       val_assign5_loc       |    pointer   |
+|val_assign6_loc_dout                  |  in |    9|   ap_fifo  |       val_assign6_loc       |    pointer   |
+|val_assign6_loc_empty_n               |  in |    1|   ap_fifo  |       val_assign6_loc       |    pointer   |
+|val_assign6_loc_read                  | out |    1|   ap_fifo  |       val_assign6_loc       |    pointer   |
 |codeword_length_histogram_V_address0  | out |    6|  ap_memory | codeword_length_histogram_V |     array    |
 |codeword_length_histogram_V_ce0       | out |    1|  ap_memory | codeword_length_histogram_V |     array    |
 |codeword_length_histogram_V_q0        |  in |    9|  ap_memory | codeword_length_histogram_V |     array    |

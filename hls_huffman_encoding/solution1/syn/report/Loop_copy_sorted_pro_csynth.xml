@@ -387,8 +387,8 @@
 <Attribute>data</Attribute>
 </RtlPorts>
 <RtlPorts>
-<name>val_assign5_out_out_din</name>
-<Object>val_assign5_out_out</Object>
+<name>val_assign6_out_out_din</name>
+<Object>val_assign6_out_out</Object>
 <Type>pointer</Type>
 <Scope></Scope>
 <IOProtocol>ap_fifo</IOProtocol>
@@ -398,8 +398,8 @@
 <Attribute>control</Attribute>
 </RtlPorts>
 <RtlPorts>
-<name>val_assign5_out_out_full_n</name>
-<Object>val_assign5_out_out</Object>
+<name>val_assign6_out_out_full_n</name>
+<Object>val_assign6_out_out</Object>
 <Type>pointer</Type>
 <Scope></Scope>
 <IOProtocol>ap_fifo</IOProtocol>
@@ -409,8 +409,8 @@
 <Attribute>control</Attribute>
 </RtlPorts>
 <RtlPorts>
-<name>val_assign5_out_out_write</name>
-<Object>val_assign5_out_out</Object>
+<name>val_assign6_out_out_write</name>
+<Object>val_assign6_out_out</Object>
 <Type>pointer</Type>
 <Scope></Scope>
 <IOProtocol>ap_fifo</IOProtocol>

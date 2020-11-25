@@ -5,9 +5,9 @@
 `timescale 1 ns / 1 ps
 module huffman_encoding_vdy_memcore_ram (addr0, ce0, d0, we0, q0, addr1, ce1, d1, we1, q1,  clk);
 
-parameter DWIDTH = 9;
-parameter AWIDTH = 7;
-parameter MEM_SIZE = 128;
+parameter DWIDTH = 6;
+parameter AWIDTH = 9;
+parameter MEM_SIZE = 512;
 
 input[AWIDTH-1:0] addr0;
 input ce0;
@@ -63,9 +63,9 @@ module huffman_encoding_vdy_memcore(
     d1,
     q1);
 
-parameter DataWidth = 32'd9;
-parameter AddressRange = 32'd128;
-parameter AddressWidth = 32'd7;
+parameter DataWidth = 32'd6;
+parameter AddressRange = 32'd512;
+parameter AddressWidth = 32'd9;
 input reset;
 input clk;
 input[AddressWidth - 1:0] address0;

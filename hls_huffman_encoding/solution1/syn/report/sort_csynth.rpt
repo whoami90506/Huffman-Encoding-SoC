@@ -3,7 +3,7 @@
 ================================================================
 == Vivado HLS Report for 'sort'
 ================================================================
-* Date:           Wed Nov 25 15:37:05 2020
+* Date:           Wed Nov 25 17:34:17 2020
 
 * Version:        2019.2 (Build 2704478 on Wed Nov 06 22:10:23 MST 2019)
 * Project:        hls_huffman_encoding
@@ -78,10 +78,10 @@
     +--------------------------+----------------------+---------+-------+-----+-----+-----+
     |         Instance         |        Module        | BRAM_18K| DSP48E|  FF | LUT | URAM|
     +--------------------------+----------------------+---------+-------+-----+-----+-----+
-    |huffman_encoding_g8j_U14  |huffman_encoding_g8j  |        0|      0|  140|  126|    0|
-    |huffman_encoding_hbi_U15  |huffman_encoding_hbi  |        0|      0|    0|   65|    0|
-    |huffman_encoding_hbi_U16  |huffman_encoding_hbi  |        0|      0|    0|   65|    0|
-    |huffman_encoding_hbi_U17  |huffman_encoding_hbi  |        0|      0|    0|   65|    0|
+    |huffman_encoding_g8j_U22  |huffman_encoding_g8j  |        0|      0|  140|  126|    0|
+    |huffman_encoding_hbi_U23  |huffman_encoding_hbi  |        0|      0|    0|   65|    0|
+    |huffman_encoding_hbi_U24  |huffman_encoding_hbi  |        0|      0|    0|   65|    0|
+    |huffman_encoding_hbi_U25  |huffman_encoding_hbi  |        0|      0|    0|   65|    0|
     +--------------------------+----------------------+---------+-------+-----+-----+-----+
     |Total                     |                      |        0|      0|  140|  321|    0|
     +--------------------------+----------------------+---------+-------+-----+-----+-----+
@@ -610,7 +610,7 @@
 |in_frequency_V_address0   | out |    8|  ap_memory |   in_frequency_V   |     array    |
 |in_frequency_V_ce0        | out |    1|  ap_memory |   in_frequency_V   |     array    |
 |in_frequency_V_q0         |  in |   32|  ap_memory |   in_frequency_V   |     array    |
-|extLd7_loc_channel        |  in |    9|   ap_none  | extLd7_loc_channel |    scalar    |
+|extLd8_loc_channel        |  in |    9|   ap_none  | extLd8_loc_channel |    scalar    |
 |out_value_V_address0      | out |    8|  ap_memory |     out_value_V    |     array    |
 |out_value_V_ce0           | out |    1|  ap_memory |     out_value_V    |     array    |
 |out_value_V_we0           | out |    1|  ap_memory |     out_value_V    |     array    |

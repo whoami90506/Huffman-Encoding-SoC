@@ -71064,7 +71064,7 @@ void huffman_encoding (
 
 
 
-void filter(SymbolStream *in,
+void filter(Symbol_axiu in[INPUT_SYMBOL_SIZE],
             Symbol out[INPUT_SYMBOL_SIZE],
             int *num_symbols);
 void sort(Symbol in[INPUT_SYMBOL_SIZE],
@@ -71098,6 +71098,7 @@ void canonize_tree(
 void create_codeword(
   CodewordLength symbol_bits[INPUT_SYMBOL_SIZE],
   ap_uint<SYMBOL_BITS> bit_length[TREE_DEPTH],
+  Symbol_axiu stream_buffer[INPUT_SYMBOL_SIZE],
   PackedCodewordAndLengthStream *encoding);
 
 
@@ -71132,7 +71133,13 @@ void huffman_encoding(
     ap_uint<SYMBOL_BITS> right[INPUT_SYMBOL_SIZE-1];
     int n;
 
-    filter(symbol_histogram, filtered, &n);
+    Symbol_axiu stream_buffer[INPUT_SYMBOL_SIZE];
+    read_stream:
+    for(int i = 0; i < INPUT_SYMBOL_SIZE; ++i){
+#pragma HLS PIPELINE II=1
+        stream_buffer[i] = symbol_histogram->read();
+    }
+    filter(stream_buffer, filtered, &n);
     sort(filtered, n, sorted);
 
     ap_uint<SYMBOL_BITS> length_histogram[TREE_DEPTH];
@@ -71150,17 +71157,17 @@ void huffman_encoding(
         sorted_copy2[i].frequency = sorted[i].frequency;
 
         
-# 40 "D:/Workspace/huffman_encoding_fpga/huffman_encoding.cpp" 3
+# 46 "D:/Workspace/huffman_encoding_fpga/huffman_encoding.cpp" 3
        (void) ((!!(
-# 40 "D:/Workspace/huffman_encoding_fpga/huffman_encoding.cpp"
+# 46 "D:/Workspace/huffman_encoding_fpga/huffman_encoding.cpp"
        previous_frequency <= (int)sorted[i].frequency
-# 40 "D:/Workspace/huffman_encoding_fpga/huffman_encoding.cpp" 3
+# 46 "D:/Workspace/huffman_encoding_fpga/huffman_encoding.cpp" 3
        )) || (_assert(
-# 40 "D:/Workspace/huffman_encoding_fpga/huffman_encoding.cpp"
+# 46 "D:/Workspace/huffman_encoding_fpga/huffman_encoding.cpp"
        "previous_frequency <= (int)sorted[i].frequency"
-# 40 "D:/Workspace/huffman_encoding_fpga/huffman_encoding.cpp" 3
-       ,"D:/Workspace/huffman_encoding_fpga/huffman_encoding.cpp",40),0))
-# 40 "D:/Workspace/huffman_encoding_fpga/huffman_encoding.cpp"
+# 46 "D:/Workspace/huffman_encoding_fpga/huffman_encoding.cpp" 3
+       ,"D:/Workspace/huffman_encoding_fpga/huffman_encoding.cpp",46),0))
+# 46 "D:/Workspace/huffman_encoding_fpga/huffman_encoding.cpp"
                                                              ;
         previous_frequency = sorted[i].frequency;
     }
@@ -71182,23 +71189,23 @@ void huffman_encoding(
 
 
     
-# 60 "D:/Workspace/huffman_encoding_fpga/huffman_encoding.cpp" 3
+# 66 "D:/Workspace/huffman_encoding_fpga/huffman_encoding.cpp" 3
    (void) ((!!(
-# 60 "D:/Workspace/huffman_encoding_fpga/huffman_encoding.cpp"
+# 66 "D:/Workspace/huffman_encoding_fpga/huffman_encoding.cpp"
    codewords_in_tree == n
-# 60 "D:/Workspace/huffman_encoding_fpga/huffman_encoding.cpp" 3
+# 66 "D:/Workspace/huffman_encoding_fpga/huffman_encoding.cpp" 3
    )) || (_assert(
-# 60 "D:/Workspace/huffman_encoding_fpga/huffman_encoding.cpp"
+# 66 "D:/Workspace/huffman_encoding_fpga/huffman_encoding.cpp"
    "codewords_in_tree == n"
-# 60 "D:/Workspace/huffman_encoding_fpga/huffman_encoding.cpp" 3
-   ,"D:/Workspace/huffman_encoding_fpga/huffman_encoding.cpp",60),0))
-# 60 "D:/Workspace/huffman_encoding_fpga/huffman_encoding.cpp"
+# 66 "D:/Workspace/huffman_encoding_fpga/huffman_encoding.cpp" 3
+   ,"D:/Workspace/huffman_encoding_fpga/huffman_encoding.cpp",66),0))
+# 66 "D:/Workspace/huffman_encoding_fpga/huffman_encoding.cpp"
                                  ;
 
 
     truncate_tree(length_histogram, truncated_length_histogram1, truncated_length_histogram2);
     canonize_tree(sorted_copy2, n, truncated_length_histogram1, symbol_bits);
-    create_codeword(symbol_bits, truncated_length_histogram2, encoding);
+    create_codeword(symbol_bits, truncated_length_histogram2, stream_buffer, encoding);
 
     *num_nonzero_symbols = n;
 }

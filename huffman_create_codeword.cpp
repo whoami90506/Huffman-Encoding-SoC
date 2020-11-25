@@ -4,6 +4,7 @@
 void create_codeword(
   /* input */ CodewordLength symbol_bits[INPUT_SYMBOL_SIZE],
   /* input */ ap_uint<SYMBOL_BITS> codeword_length_histogram[TREE_DEPTH],
+  /* input */ Symbol_axiu stream_buffer[INPUT_SYMBOL_SIZE],
   /* output */ PackedCodewordAndLengthStream *encoding
 ) {
     #pragma HLS INTERFACE axis register both port=encoding 
@@ -28,22 +29,28 @@ void create_codeword(
         //if symbol has 0 bits, it doesn't need to be encoded
 
         make_codeword:
+        PackedCodewordAndLength_axiu result;
+
         if(length != 0) {
             //          std::cout << first_codeword[length].to_string(2) << "\n";
             Codeword out_reversed = first_codeword[length];
             out_reversed.reverse();
             out_reversed = out_reversed >> (MAX_CODEWORD_LENGTH - length);
             // std::cout << out_reversed.to_string(2) << "\n";
-            PackedCodewordAndLength_axiu result;
+            
             result.data = (out_reversed << CODEWORD_LENGTH_BITS) + length;
-            if(i == INPUT_SYMBOL_SIZE -1)result.last = 1;
-            encoding->write(result);
+            
             first_codeword[length]++;
         } else {
             PackedCodewordAndLength_axiu result;
             result.data = 0;
-            if(i == INPUT_SYMBOL_SIZE -1)result.last = 1;
-            encoding->write(result);
-      }
+        }
+        result.keep = stream_buffer[i].keep;
+        result.strb = stream_buffer[i].strb;
+        result.user = stream_buffer[i].user;
+        result.last = stream_buffer[i].last;
+        result.id = stream_buffer[i].id;
+        result.dest = stream_buffer[i].dest;
+        encoding->write(result);
   }
 }

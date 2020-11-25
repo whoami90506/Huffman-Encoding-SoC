@@ -18,9 +18,9 @@ using namespace sc_dt;
 
 struct huffman_encoding_vdy_memcore_ram : public sc_core::sc_module {
 
-  static const unsigned DataWidth = 9;
-  static const unsigned AddressRange = 128;
-  static const unsigned AddressWidth = 7;
+  static const unsigned DataWidth = 6;
+  static const unsigned AddressRange = 512;
+  static const unsigned AddressWidth = 9;
 
 //latency = 1
 //input_reg = 1
@@ -108,9 +108,9 @@ void prc_write_1()
 SC_MODULE(huffman_encoding_vdy_memcore) {
 
 
-static const unsigned DataWidth = 9;
-static const unsigned AddressRange = 128;
-static const unsigned AddressWidth = 7;
+static const unsigned DataWidth = 6;
+static const unsigned AddressRange = 512;
+static const unsigned AddressWidth = 9;
 
 sc_core::sc_in <sc_lv<AddressWidth> > address0;
 sc_core::sc_in<sc_logic> ce0;

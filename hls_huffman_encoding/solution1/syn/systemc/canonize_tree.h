@@ -26,9 +26,9 @@ struct canonize_tree : public sc_module {
     sc_out< sc_lv<8> > sorted_value_V_address0;
     sc_out< sc_logic > sorted_value_V_ce0;
     sc_in< sc_lv<9> > sorted_value_V_q0;
-    sc_in< sc_lv<9> > val_assign5_loc_dout;
-    sc_in< sc_logic > val_assign5_loc_empty_n;
-    sc_out< sc_logic > val_assign5_loc_read;
+    sc_in< sc_lv<9> > val_assign6_loc_dout;
+    sc_in< sc_logic > val_assign6_loc_empty_n;
+    sc_out< sc_logic > val_assign6_loc_read;
     sc_out< sc_lv<6> > codeword_length_histogram_V_address0;
     sc_out< sc_logic > codeword_length_histogram_V_ce0;
     sc_in< sc_lv<9> > codeword_length_histogram_V_q0;
@@ -49,8 +49,8 @@ struct canonize_tree : public sc_module {
     sc_signal< sc_logic > ap_done_reg;
     sc_signal< sc_lv<7> > ap_CS_fsm;
     sc_signal< sc_logic > ap_CS_fsm_state1;
-    sc_signal< sc_logic > val_assign5_loc_blk_n;
-    sc_signal< sc_lv<9> > val_assign5_loc_read_reg_244;
+    sc_signal< sc_logic > val_assign6_loc_blk_n;
+    sc_signal< sc_lv<9> > val_assign6_loc_read_reg_244;
     sc_signal< bool > ap_block_state1;
     sc_signal< sc_lv<9> > i_fu_174_p2;
     sc_signal< sc_logic > ap_CS_fsm_state2;
@@ -137,8 +137,8 @@ struct canonize_tree : public sc_module {
     void thread_symbol_bits_V_d0();
     void thread_symbol_bits_V_we0();
     void thread_trunc_ln209_fu_239_p1();
-    void thread_val_assign5_loc_blk_n();
-    void thread_val_assign5_loc_read();
+    void thread_val_assign6_loc_blk_n();
+    void thread_val_assign6_loc_read();
     void thread_zext_ln12_fu_180_p1();
     void thread_zext_ln32_fu_224_p1();
     void thread_zext_ln544_9_fu_235_p1();

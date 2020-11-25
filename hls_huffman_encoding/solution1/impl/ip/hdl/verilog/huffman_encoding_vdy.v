@@ -7,9 +7,9 @@
 
 module huffman_encoding_vdy
 #(parameter
-    DataWidth    = 9,
+    DataWidth    = 6,
     AddressRange = 32,
-    AddressWidth = 6,
+    AddressWidth = 8,
     BufferCount  = 2,
     IndexWidth   = 1
 ) (

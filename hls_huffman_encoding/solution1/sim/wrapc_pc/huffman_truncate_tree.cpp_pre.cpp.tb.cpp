@@ -71068,7 +71068,7 @@ void huffman_encoding (
 
 
 
-void filter(SymbolStream *in,
+void filter(Symbol_axiu in[INPUT_SYMBOL_SIZE],
             Symbol out[INPUT_SYMBOL_SIZE],
             int *num_symbols);
 void sort(Symbol in[INPUT_SYMBOL_SIZE],
@@ -71102,6 +71102,7 @@ void canonize_tree(
 void create_codeword(
   CodewordLength symbol_bits[INPUT_SYMBOL_SIZE],
   ap_uint<SYMBOL_BITS> bit_length[TREE_DEPTH],
+  Symbol_axiu stream_buffer[INPUT_SYMBOL_SIZE],
   PackedCodewordAndLengthStream *encoding);
 
 

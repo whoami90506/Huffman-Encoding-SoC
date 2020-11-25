@@ -71064,7 +71064,7 @@ void huffman_encoding (
 
 
 
-void filter(SymbolStream *in,
+void filter(Symbol_axiu in[INPUT_SYMBOL_SIZE],
             Symbol out[INPUT_SYMBOL_SIZE],
             int *num_symbols);
 void sort(Symbol in[INPUT_SYMBOL_SIZE],
@@ -71098,6 +71098,7 @@ void canonize_tree(
 void create_codeword(
   CodewordLength symbol_bits[INPUT_SYMBOL_SIZE],
   ap_uint<SYMBOL_BITS> bit_length[TREE_DEPTH],
+  Symbol_axiu stream_buffer[INPUT_SYMBOL_SIZE],
   PackedCodewordAndLengthStream *encoding);
 
 
@@ -71116,6 +71117,7 @@ static unsigned int bit_reverse32(unsigned int input) {
 void create_codeword(
               CodewordLength symbol_bits[INPUT_SYMBOL_SIZE],
               ap_uint<SYMBOL_BITS> codeword_length_histogram[TREE_DEPTH],
+              Symbol_axiu stream_buffer[INPUT_SYMBOL_SIZE],
                PackedCodewordAndLengthStream *encoding
 ) {
 #pragma HLS INTERFACE axis register both port=encoding
@@ -71140,22 +71142,28 @@ void create_codeword(
 
 
         make_codeword:
+        PackedCodewordAndLength_axiu result;
+
         if(length != 0) {
 
             Codeword out_reversed = first_codeword[length];
             out_reversed.reverse();
             out_reversed = out_reversed >> (MAX_CODEWORD_LENGTH - length);
 
-            PackedCodewordAndLength_axiu result;
+
             result.data = (out_reversed << CODEWORD_LENGTH_BITS) + length;
-            if(i == INPUT_SYMBOL_SIZE -1)result.last = 1;
-            encoding->write(result);
+
             first_codeword[length]++;
         } else {
             PackedCodewordAndLength_axiu result;
             result.data = 0;
-            if(i == INPUT_SYMBOL_SIZE -1)result.last = 1;
-            encoding->write(result);
-      }
+        }
+        result.keep = stream_buffer[i].keep;
+        result.strb = stream_buffer[i].strb;
+        result.user = stream_buffer[i].user;
+        result.last = stream_buffer[i].last;
+        result.id = stream_buffer[i].id;
+        result.dest = stream_buffer[i].dest;
+        encoding->write(result);
   }
 }
