@@ -1169,9 +1169,4 @@ endtask
 
 `endif
 
-AESL_deadlock_detector deadlock_detector(
-    .reset(AESL_reset),
-    .clock(AESL_clock));
-
-
 endmodule

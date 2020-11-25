@@ -71162,10 +71162,10 @@ void create_codeword(
             PackedCodewordAndLength_axiu result;
             result.data = 0;
         }
-        result.keep = stream_buffer[i].keep;
-        result.strb = stream_buffer[i].strb;
+        result.keep = 0xff;
+        result.strb = 0xff;
         result.user = stream_buffer[i].user;
-        result.last = stream_buffer[i].last;
+        result.last = i == INPUT_SYMBOL_SIZE -1 ? 1 : 0;
         result.id = stream_buffer[i].id;
         result.dest = stream_buffer[i].dest;
         encoding->write(result);

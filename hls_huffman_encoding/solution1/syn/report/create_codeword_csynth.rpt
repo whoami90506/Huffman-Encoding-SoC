@@ -3,7 +3,7 @@
 ================================================================
 == Vivado HLS Report for 'create_codeword'
 ================================================================
-* Date:           Wed Nov 25 18:00:58 2020
+* Date:           Wed Nov 25 18:26:59 2020
 
 * Version:        2019.2 (Build 2704478 on Wed Nov 06 22:10:23 MST 2019)
 * Project:        hls_huffman_encoding
@@ -55,14 +55,14 @@
 |       Name      | BRAM_18K| DSP48E|   FF   |  LUT  | URAM|
 +-----------------+---------+-------+--------+-------+-----+
 |DSP              |        -|      -|       -|      -|    -|
-|Expression       |        -|      -|       0|    351|    -|
+|Expression       |        -|      -|       0|    364|    -|
 |FIFO             |        -|      -|       -|      -|    -|
 |Instance         |        -|      -|       -|      -|    -|
 |Memory           |        0|      -|      54|     12|    0|
 |Multiplexer      |        -|      -|       -|    143|    -|
-|Register         |        -|      -|     118|      -|    -|
+|Register         |        -|      -|     110|      -|    -|
 +-----------------+---------+-------+--------+-------+-----+
-|Total            |        0|      0|     172|    506|    0|
+|Total            |        0|      0|     164|    519|    0|
 +-----------------+---------+-------+--------+-------+-----+
 |Available        |      280|    220|  106400|  53200|    0|
 +-----------------+---------+-------+--------+-------+-----+
@@ -92,24 +92,25 @@
     +-------------------------+----------+-------+---+----+------------+------------+
     |      Variable Name      | Operation| DSP48E| FF| LUT| Bitwidth P0| Bitwidth P1|
     +-------------------------+----------+-------+---+----+------------+------------+
-    |add_ln1503_fu_316_p2     |     +    |      0|  0|  33|          26|          26|
-    |add_ln700_fu_456_p2      |     +    |      0|  0|  34|           1|          27|
-    |i_4_fu_336_p2            |     +    |      0|  0|  15|           9|           1|
-    |i_fu_297_p2              |     +    |      0|  0|  15|           5|           1|
-    |ret_V_fu_385_p2          |     -    |      0|  0|  15|           5|           6|
-    |sub_ln556_fu_403_p2      |     -    |      0|  0|  12|           1|           3|
+    |add_ln1503_fu_277_p2     |     +    |      0|  0|  33|          26|          26|
+    |add_ln700_fu_412_p2      |     +    |      0|  0|  34|           1|          27|
+    |i_4_fu_297_p2            |     +    |      0|  0|  15|           9|           1|
+    |i_fu_258_p2              |     +    |      0|  0|  15|           5|           1|
+    |ret_V_fu_341_p2          |     -    |      0|  0|  15|           5|           6|
+    |sub_ln556_fu_359_p2      |     -    |      0|  0|  12|           1|           3|
     |ap_block_state8_io       |    and   |      0|  0|   2|           1|           1|
-    |icmp_ln18_fu_291_p2      |   icmp   |      0|  0|  11|           5|           4|
-    |icmp_ln26_fu_330_p2      |   icmp   |      0|  0|  13|           9|          10|
-    |icmp_ln883_fu_353_p2     |   icmp   |      0|  0|  11|           5|           1|
-    |lshr_ln808_fu_423_p2     |   lshr   |      0|  0|  81|          27|          27|
+    |icmp_ln18_fu_252_p2      |   icmp   |      0|  0|  11|           5|           4|
+    |icmp_ln26_fu_291_p2      |   icmp   |      0|  0|  13|           9|          10|
+    |icmp_ln883_fu_317_p2     |   icmp   |      0|  0|  11|           5|           1|
+    |result_last_V_fu_311_p2  |   icmp   |      0|  0|  13|           9|           8|
+    |lshr_ln808_fu_379_p2     |   lshr   |      0|  0|  81|          27|          27|
     |ap_block_state1          |    or    |      0|  0|   2|           1|           1|
-    |select_ln796_fu_437_p3   |  select  |      0|  0|  22|           1|          22|
-    |r_V_fu_413_p2            |    shl   |      0|  0|  81|          27|          27|
+    |select_ln796_fu_393_p3   |  select  |      0|  0|  22|           1|          22|
+    |r_V_fu_369_p2            |    shl   |      0|  0|  81|          27|          27|
     |ap_enable_pp0            |    xor   |      0|  0|   2|           1|           2|
     |ap_enable_reg_pp0_iter1  |    xor   |      0|  0|   2|           2|           1|
     +-------------------------+----------+-------+---+----+------------+------------+
-    |Total                    |          |      0|  0| 351|         126|         160|
+    |Total                    |          |      0|  0| 364|         135|         168|
     +-------------------------+----------+-------+---+----+------------+------------+
 
     * Multiplexer: 
@@ -122,9 +123,9 @@
     |encoding_TDATA_blk_n       |   9|          2|    1|          2|
     |first_codeword_V_address0  |  21|          4|    5|         20|
     |first_codeword_V_d0        |  15|          3|   27|         81|
-    |i1_0_reg_280               |   9|          2|    9|         18|
-    |i_0_reg_269                |   9|          2|    5|         10|
-    |p_0199_0_reg_256           |   9|          2|   26|         52|
+    |i1_0_reg_241               |   9|          2|    9|         18|
+    |i_0_reg_230                |   9|          2|    5|         10|
+    |p_0199_0_reg_217           |   9|          2|   26|         52|
     +---------------------------+----+-----------+-----+-----------+
     |Total                      | 143|         30|   76|        198|
     +---------------------------+----+-----------+-----+-----------+
@@ -137,25 +138,23 @@
     |ap_done_reg                     |   1|   0|    1|          0|
     |ap_enable_reg_pp0_iter0         |   1|   0|    1|          0|
     |ap_enable_reg_pp0_iter1         |   1|   0|    1|          0|
-    |first_codeword_V_add_1_reg_556  |   5|   0|    5|          0|
-    |i1_0_reg_280                    |   9|   0|    9|          0|
-    |i_0_reg_269                     |   5|   0|    5|          0|
-    |i_4_reg_506                     |   9|   0|    9|          0|
-    |icmp_ln18_reg_472               |   1|   0|    1|          0|
-    |icmp_ln26_reg_502               |   1|   0|    1|          0|
-    |icmp_ln883_reg_552              |   1|   0|    1|          0|
-    |length_V_reg_546                |   5|   0|    5|          0|
-    |p_0199_0_reg_256                |  26|   0|   27|          1|
-    |result_dest_V_reg_586           |   1|   0|    1|          0|
-    |result_id_V_reg_581             |   1|   0|    1|          0|
-    |result_keep_V_reg_561           |   4|   0|    4|          0|
-    |result_last_V_reg_576           |   1|   0|    1|          0|
-    |result_strb_V_reg_566           |   4|   0|    4|          0|
-    |result_user_V_reg_571           |   1|   0|    1|          0|
-    |tmp_data_V_fu_104               |  27|   0|   32|          5|
-    |zext_ln21_reg_481               |   5|   0|   64|         59|
+    |first_codeword_V_add_1_reg_502  |   5|   0|    5|          0|
+    |i1_0_reg_241                    |   9|   0|    9|          0|
+    |i_0_reg_230                     |   5|   0|    5|          0|
+    |i_4_reg_462                     |   9|   0|    9|          0|
+    |icmp_ln18_reg_428               |   1|   0|    1|          0|
+    |icmp_ln26_reg_458               |   1|   0|    1|          0|
+    |icmp_ln883_reg_498              |   1|   0|    1|          0|
+    |length_V_reg_492                |   5|   0|    5|          0|
+    |p_0199_0_reg_217                |  26|   0|   27|          1|
+    |result_dest_V_reg_517           |   1|   0|    1|          0|
+    |result_id_V_reg_512             |   1|   0|    1|          0|
+    |result_last_V_reg_477           |   1|   0|    1|          0|
+    |result_user_V_reg_507           |   1|   0|    1|          0|
+    |tmp_data_V_fu_102               |  27|   0|   32|          5|
+    |zext_ln21_reg_437               |   5|   0|   64|         59|
     +--------------------------------+----+----+-----+-----------+
-    |Total                           | 118|   0|  183|         65|
+    |Total                           | 110|   0|  175|         65|
     +--------------------------------+----+----+-----+-----------+
 
 
@@ -180,18 +179,9 @@
 |codeword_length_histogram_V_address0  | out |    6|  ap_memory | codeword_length_histogram_V |     array    |
 |codeword_length_histogram_V_ce0       | out |    1|  ap_memory | codeword_length_histogram_V |     array    |
 |codeword_length_histogram_V_q0        |  in |    9|  ap_memory | codeword_length_histogram_V |     array    |
-|stream_buffer_keep_V_address0         | out |    8|  ap_memory |     stream_buffer_keep_V    |     array    |
-|stream_buffer_keep_V_ce0              | out |    1|  ap_memory |     stream_buffer_keep_V    |     array    |
-|stream_buffer_keep_V_q0               |  in |    6|  ap_memory |     stream_buffer_keep_V    |     array    |
-|stream_buffer_strb_V_address0         | out |    8|  ap_memory |     stream_buffer_strb_V    |     array    |
-|stream_buffer_strb_V_ce0              | out |    1|  ap_memory |     stream_buffer_strb_V    |     array    |
-|stream_buffer_strb_V_q0               |  in |    6|  ap_memory |     stream_buffer_strb_V    |     array    |
 |stream_buffer_user_V_address0         | out |    8|  ap_memory |     stream_buffer_user_V    |     array    |
 |stream_buffer_user_V_ce0              | out |    1|  ap_memory |     stream_buffer_user_V    |     array    |
 |stream_buffer_user_V_q0               |  in |    1|  ap_memory |     stream_buffer_user_V    |     array    |
-|stream_buffer_last_V_address0         | out |    8|  ap_memory |     stream_buffer_last_V    |     array    |
-|stream_buffer_last_V_ce0              | out |    1|  ap_memory |     stream_buffer_last_V    |     array    |
-|stream_buffer_last_V_q0               |  in |    1|  ap_memory |     stream_buffer_last_V    |     array    |
 |stream_buffer_id_V_address0           | out |    8|  ap_memory |      stream_buffer_id_V     |     array    |
 |stream_buffer_id_V_ce0                | out |    1|  ap_memory |      stream_buffer_id_V     |     array    |
 |stream_buffer_id_V_q0                 |  in |    1|  ap_memory |      stream_buffer_id_V     |     array    |

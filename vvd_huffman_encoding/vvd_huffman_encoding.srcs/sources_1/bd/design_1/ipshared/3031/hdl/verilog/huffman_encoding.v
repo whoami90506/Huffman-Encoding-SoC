@@ -7,7 +7,7 @@
 
 `timescale 1 ns / 1 ps 
 
-(* CORE_GENERATION_INFO="huffman_encoding,hls_ip_2019_2,{HLS_INPUT_TYPE=cxx,HLS_INPUT_FLOAT=0,HLS_INPUT_FIXED=0,HLS_INPUT_PART=xc7z020-clg484-1,HLS_INPUT_CLOCK=10.000000,HLS_INPUT_ARCH=dataflow,HLS_SYN_CLOCK=8.108500,HLS_SYN_LAT=-1,HLS_SYN_TPT=-1,HLS_SYN_MEM=28,HLS_SYN_DSP=0,HLS_SYN_FF=2923,HLS_SYN_LUT=6716,HLS_VERSION=2019_2}" *)
+(* CORE_GENERATION_INFO="huffman_encoding,hls_ip_2019_2,{HLS_INPUT_TYPE=cxx,HLS_INPUT_FLOAT=0,HLS_INPUT_FIXED=0,HLS_INPUT_PART=xc7z020-clg484-1,HLS_INPUT_CLOCK=10.000000,HLS_INPUT_ARCH=dataflow,HLS_SYN_CLOCK=8.108500,HLS_SYN_LAT=-1,HLS_SYN_TPT=-1,HLS_SYN_MEM=28,HLS_SYN_DSP=0,HLS_SYN_FF=2912,HLS_SYN_LUT=6690,HLS_VERSION=2019_2}" *)
 
 module huffman_encoding (
         s_axi_AXILiteS_AWVALID,
@@ -124,14 +124,8 @@ wire   [8:0] right_V_i_q0;
 wire   [8:0] right_V_i_q1;
 wire   [8:0] right_V_t_q0;
 wire   [8:0] right_V_t_q1;
-wire   [5:0] stream_buffer_1_i_q0;
-wire   [5:0] stream_buffer_1_t_q0;
-wire   [5:0] stream_buffer_2_i_q0;
-wire   [5:0] stream_buffer_2_t_q0;
 wire   [0:0] stream_buffer_3_i_q0;
 wire   [0:0] stream_buffer_3_t_q0;
-wire   [0:0] stream_buffer_4_i_q0;
-wire   [0:0] stream_buffer_4_t_q0;
 wire   [0:0] stream_buffer_5_i_q0;
 wire   [0:0] stream_buffer_5_t_q0;
 wire   [0:0] stream_buffer_6_i_q0;
@@ -188,22 +182,10 @@ wire    ap_channel_done_stream_buffer_5;
 wire    Loop_read_stream_pro_U0_stream_buffer_5_full_n;
 reg    ap_sync_reg_channel_write_stream_buffer_5;
 wire    ap_sync_channel_write_stream_buffer_5;
-wire    ap_channel_done_stream_buffer_4;
-wire    Loop_read_stream_pro_U0_stream_buffer_4_full_n;
-reg    ap_sync_reg_channel_write_stream_buffer_4;
-wire    ap_sync_channel_write_stream_buffer_4;
 wire    ap_channel_done_stream_buffer_3;
 wire    Loop_read_stream_pro_U0_stream_buffer_3_full_n;
 reg    ap_sync_reg_channel_write_stream_buffer_3;
 wire    ap_sync_channel_write_stream_buffer_3;
-wire    ap_channel_done_stream_buffer_2;
-wire    Loop_read_stream_pro_U0_stream_buffer_2_full_n;
-reg    ap_sync_reg_channel_write_stream_buffer_2;
-wire    ap_sync_channel_write_stream_buffer_2;
-wire    ap_channel_done_stream_buffer_1;
-wire    Loop_read_stream_pro_U0_stream_buffer_1_full_n;
-reg    ap_sync_reg_channel_write_stream_buffer_1;
-wire    ap_sync_channel_write_stream_buffer_1;
 wire    filter_U0_ap_start;
 wire    filter_U0_ap_done;
 wire    filter_U0_ap_continue;
@@ -405,14 +387,8 @@ wire   [7:0] create_codeword_U0_symbol_bits_V_address0;
 wire    create_codeword_U0_symbol_bits_V_ce0;
 wire   [5:0] create_codeword_U0_codeword_length_histogram_V_address0;
 wire    create_codeword_U0_codeword_length_histogram_V_ce0;
-wire   [7:0] create_codeword_U0_stream_buffer_keep_V_address0;
-wire    create_codeword_U0_stream_buffer_keep_V_ce0;
-wire   [7:0] create_codeword_U0_stream_buffer_strb_V_address0;
-wire    create_codeword_U0_stream_buffer_strb_V_ce0;
 wire   [7:0] create_codeword_U0_stream_buffer_user_V_address0;
 wire    create_codeword_U0_stream_buffer_user_V_ce0;
-wire   [7:0] create_codeword_U0_stream_buffer_last_V_address0;
-wire    create_codeword_U0_stream_buffer_last_V_ce0;
 wire   [7:0] create_codeword_U0_stream_buffer_id_V_address0;
 wire    create_codeword_U0_stream_buffer_id_V_ce0;
 wire   [7:0] create_codeword_U0_stream_buffer_dest_V_address0;
@@ -434,14 +410,8 @@ wire    Block_proc_U0_ap_ready;
 wire    Block_proc_U0_extLd_loc_read;
 wire   [31:0] Block_proc_U0_num_nonzero_symbols;
 wire    Block_proc_U0_num_nonzero_symbols_ap_vld;
-wire    stream_buffer_1_i_full_n;
-wire    stream_buffer_1_t_empty_n;
-wire    stream_buffer_2_i_full_n;
-wire    stream_buffer_2_t_empty_n;
 wire    stream_buffer_3_i_full_n;
 wire    stream_buffer_3_t_empty_n;
-wire    stream_buffer_4_i_full_n;
-wire    stream_buffer_4_t_empty_n;
 wire    stream_buffer_5_i_full_n;
 wire    stream_buffer_5_t_empty_n;
 wire    stream_buffer_6_i_full_n;
@@ -544,10 +514,7 @@ wire    Block_proc_U0_start_write;
 initial begin
 #0 ap_sync_reg_channel_write_stream_buffer_6 = 1'b0;
 #0 ap_sync_reg_channel_write_stream_buffer_5 = 1'b0;
-#0 ap_sync_reg_channel_write_stream_buffer_4 = 1'b0;
 #0 ap_sync_reg_channel_write_stream_buffer_3 = 1'b0;
-#0 ap_sync_reg_channel_write_stream_buffer_2 = 1'b0;
-#0 ap_sync_reg_channel_write_stream_buffer_1 = 1'b0;
 #0 ap_sync_reg_channel_write_filtered_frequency_V = 1'b0;
 #0 ap_sync_reg_channel_write_filtered_value_V = 1'b0;
 #0 ap_sync_reg_channel_write_sorted_1 = 1'b0;
@@ -817,22 +784,10 @@ huffman_encoding_udo #(
 stream_buffer_1_U(
     .clk(ap_clk),
     .reset(ap_rst_n_inv),
-    .i_address0(Loop_read_stream_pro_U0_stream_buffer_1_address0),
-    .i_ce0(Loop_read_stream_pro_U0_stream_buffer_1_ce0),
-    .i_we0(Loop_read_stream_pro_U0_stream_buffer_1_we0),
-    .i_d0(Loop_read_stream_pro_U0_stream_buffer_1_d0),
-    .i_q0(stream_buffer_1_i_q0),
-    .t_address0(create_codeword_U0_stream_buffer_keep_V_address0),
-    .t_ce0(create_codeword_U0_stream_buffer_keep_V_ce0),
-    .t_we0(1'b0),
-    .t_d0(6'd0),
-    .t_q0(stream_buffer_1_t_q0),
-    .i_ce(1'b1),
-    .t_ce(1'b1),
-    .i_full_n(stream_buffer_1_i_full_n),
-    .i_write(ap_channel_done_stream_buffer_1),
-    .t_empty_n(stream_buffer_1_t_empty_n),
-    .t_read(create_codeword_U0_ap_ready)
+    .address0(Loop_read_stream_pro_U0_stream_buffer_1_address0),
+    .ce0(Loop_read_stream_pro_U0_stream_buffer_1_ce0),
+    .we0(Loop_read_stream_pro_U0_stream_buffer_1_we0),
+    .d0(Loop_read_stream_pro_U0_stream_buffer_1_d0)
 );
 
 huffman_encoding_udo #(
@@ -842,22 +797,10 @@ huffman_encoding_udo #(
 stream_buffer_2_U(
     .clk(ap_clk),
     .reset(ap_rst_n_inv),
-    .i_address0(Loop_read_stream_pro_U0_stream_buffer_2_address0),
-    .i_ce0(Loop_read_stream_pro_U0_stream_buffer_2_ce0),
-    .i_we0(Loop_read_stream_pro_U0_stream_buffer_2_we0),
-    .i_d0(Loop_read_stream_pro_U0_stream_buffer_2_d0),
-    .i_q0(stream_buffer_2_i_q0),
-    .t_address0(create_codeword_U0_stream_buffer_strb_V_address0),
-    .t_ce0(create_codeword_U0_stream_buffer_strb_V_ce0),
-    .t_we0(1'b0),
-    .t_d0(6'd0),
-    .t_q0(stream_buffer_2_t_q0),
-    .i_ce(1'b1),
-    .t_ce(1'b1),
-    .i_full_n(stream_buffer_2_i_full_n),
-    .i_write(ap_channel_done_stream_buffer_2),
-    .t_empty_n(stream_buffer_2_t_empty_n),
-    .t_read(create_codeword_U0_ap_ready)
+    .address0(Loop_read_stream_pro_U0_stream_buffer_2_address0),
+    .ce0(Loop_read_stream_pro_U0_stream_buffer_2_ce0),
+    .we0(Loop_read_stream_pro_U0_stream_buffer_2_we0),
+    .d0(Loop_read_stream_pro_U0_stream_buffer_2_d0)
 );
 
 huffman_encoding_wdI #(
@@ -885,29 +828,17 @@ stream_buffer_3_U(
     .t_read(create_codeword_U0_ap_ready)
 );
 
-huffman_encoding_wdI #(
+huffman_encoding_xdS #(
     .DataWidth( 1 ),
     .AddressRange( 256 ),
     .AddressWidth( 8 ))
 stream_buffer_4_U(
     .clk(ap_clk),
     .reset(ap_rst_n_inv),
-    .i_address0(Loop_read_stream_pro_U0_stream_buffer_4_address0),
-    .i_ce0(Loop_read_stream_pro_U0_stream_buffer_4_ce0),
-    .i_we0(Loop_read_stream_pro_U0_stream_buffer_4_we0),
-    .i_d0(Loop_read_stream_pro_U0_stream_buffer_4_d0),
-    .i_q0(stream_buffer_4_i_q0),
-    .t_address0(create_codeword_U0_stream_buffer_last_V_address0),
-    .t_ce0(create_codeword_U0_stream_buffer_last_V_ce0),
-    .t_we0(1'b0),
-    .t_d0(1'd0),
-    .t_q0(stream_buffer_4_t_q0),
-    .i_ce(1'b1),
-    .t_ce(1'b1),
-    .i_full_n(stream_buffer_4_i_full_n),
-    .i_write(ap_channel_done_stream_buffer_4),
-    .t_empty_n(stream_buffer_4_t_empty_n),
-    .t_read(create_codeword_U0_ap_ready)
+    .address0(Loop_read_stream_pro_U0_stream_buffer_4_address0),
+    .ce0(Loop_read_stream_pro_U0_stream_buffer_4_ce0),
+    .we0(Loop_read_stream_pro_U0_stream_buffer_4_we0),
+    .d0(Loop_read_stream_pro_U0_stream_buffer_4_d0)
 );
 
 huffman_encoding_wdI #(
@@ -1362,18 +1293,9 @@ create_codeword create_codeword_U0(
     .codeword_length_histogram_V_address0(create_codeword_U0_codeword_length_histogram_V_address0),
     .codeword_length_histogram_V_ce0(create_codeword_U0_codeword_length_histogram_V_ce0),
     .codeword_length_histogram_V_q0(truncated_length_his_1_t_q0),
-    .stream_buffer_keep_V_address0(create_codeword_U0_stream_buffer_keep_V_address0),
-    .stream_buffer_keep_V_ce0(create_codeword_U0_stream_buffer_keep_V_ce0),
-    .stream_buffer_keep_V_q0(stream_buffer_1_t_q0),
-    .stream_buffer_strb_V_address0(create_codeword_U0_stream_buffer_strb_V_address0),
-    .stream_buffer_strb_V_ce0(create_codeword_U0_stream_buffer_strb_V_ce0),
-    .stream_buffer_strb_V_q0(stream_buffer_2_t_q0),
     .stream_buffer_user_V_address0(create_codeword_U0_stream_buffer_user_V_address0),
     .stream_buffer_user_V_ce0(create_codeword_U0_stream_buffer_user_V_ce0),
     .stream_buffer_user_V_q0(stream_buffer_3_t_q0),
-    .stream_buffer_last_V_address0(create_codeword_U0_stream_buffer_last_V_address0),
-    .stream_buffer_last_V_ce0(create_codeword_U0_stream_buffer_last_V_ce0),
-    .stream_buffer_last_V_q0(stream_buffer_4_t_q0),
     .stream_buffer_id_V_address0(create_codeword_U0_stream_buffer_id_V_address0),
     .stream_buffer_id_V_ce0(create_codeword_U0_stream_buffer_id_V_ce0),
     .stream_buffer_id_V_q0(stream_buffer_5_t_q0),
@@ -1674,48 +1596,12 @@ end
 
 always @ (posedge ap_clk) begin
     if (ap_rst_n_inv == 1'b1) begin
-        ap_sync_reg_channel_write_stream_buffer_1 <= 1'b0;
-    end else begin
-        if (((Loop_read_stream_pro_U0_ap_done & Loop_read_stream_pro_U0_ap_continue) == 1'b1)) begin
-            ap_sync_reg_channel_write_stream_buffer_1 <= 1'b0;
-        end else begin
-            ap_sync_reg_channel_write_stream_buffer_1 <= ap_sync_channel_write_stream_buffer_1;
-        end
-    end
-end
-
-always @ (posedge ap_clk) begin
-    if (ap_rst_n_inv == 1'b1) begin
-        ap_sync_reg_channel_write_stream_buffer_2 <= 1'b0;
-    end else begin
-        if (((Loop_read_stream_pro_U0_ap_done & Loop_read_stream_pro_U0_ap_continue) == 1'b1)) begin
-            ap_sync_reg_channel_write_stream_buffer_2 <= 1'b0;
-        end else begin
-            ap_sync_reg_channel_write_stream_buffer_2 <= ap_sync_channel_write_stream_buffer_2;
-        end
-    end
-end
-
-always @ (posedge ap_clk) begin
-    if (ap_rst_n_inv == 1'b1) begin
         ap_sync_reg_channel_write_stream_buffer_3 <= 1'b0;
     end else begin
         if (((Loop_read_stream_pro_U0_ap_done & Loop_read_stream_pro_U0_ap_continue) == 1'b1)) begin
             ap_sync_reg_channel_write_stream_buffer_3 <= 1'b0;
         end else begin
             ap_sync_reg_channel_write_stream_buffer_3 <= ap_sync_channel_write_stream_buffer_3;
-        end
-    end
-end
-
-always @ (posedge ap_clk) begin
-    if (ap_rst_n_inv == 1'b1) begin
-        ap_sync_reg_channel_write_stream_buffer_4 <= 1'b0;
-    end else begin
-        if (((Loop_read_stream_pro_U0_ap_done & Loop_read_stream_pro_U0_ap_continue) == 1'b1)) begin
-            ap_sync_reg_channel_write_stream_buffer_4 <= 1'b0;
-        end else begin
-            ap_sync_reg_channel_write_stream_buffer_4 <= ap_sync_channel_write_stream_buffer_4;
         end
     end
 end
@@ -1792,17 +1678,11 @@ assign Loop_copy_sorted_pro_U0_sorted_copy2_value_V_full_n = sorted_copy2_value_
 
 assign Loop_copy_sorted_pro_U0_start_full_n = (start_for_create_tree_U0_full_n & start_for_Block_proc_U0_full_n);
 
-assign Loop_read_stream_pro_U0_ap_continue = (ap_sync_channel_write_stream_buffer_6 & ap_sync_channel_write_stream_buffer_5 & ap_sync_channel_write_stream_buffer_4 & ap_sync_channel_write_stream_buffer_3 & ap_sync_channel_write_stream_buffer_2 & ap_sync_channel_write_stream_buffer_1);
+assign Loop_read_stream_pro_U0_ap_continue = (ap_sync_channel_write_stream_buffer_6 & ap_sync_channel_write_stream_buffer_5 & ap_sync_channel_write_stream_buffer_3);
 
 assign Loop_read_stream_pro_U0_ap_start = ap_start;
 
-assign Loop_read_stream_pro_U0_stream_buffer_1_full_n = stream_buffer_1_i_full_n;
-
-assign Loop_read_stream_pro_U0_stream_buffer_2_full_n = stream_buffer_2_i_full_n;
-
 assign Loop_read_stream_pro_U0_stream_buffer_3_full_n = stream_buffer_3_i_full_n;
-
-assign Loop_read_stream_pro_U0_stream_buffer_4_full_n = stream_buffer_4_i_full_n;
 
 assign Loop_read_stream_pro_U0_stream_buffer_5_full_n = stream_buffer_5_i_full_n;
 
@@ -1828,13 +1708,7 @@ assign ap_channel_done_sorted_1 = (sort_U0_ap_done & (ap_sync_reg_channel_write_
 
 assign ap_channel_done_sorted_copy2_value_V = Loop_copy_sorted_pro_U0_ap_done;
 
-assign ap_channel_done_stream_buffer_1 = ((ap_sync_reg_channel_write_stream_buffer_1 ^ 1'b1) & Loop_read_stream_pro_U0_ap_done);
-
-assign ap_channel_done_stream_buffer_2 = ((ap_sync_reg_channel_write_stream_buffer_2 ^ 1'b1) & Loop_read_stream_pro_U0_ap_done);
-
 assign ap_channel_done_stream_buffer_3 = ((ap_sync_reg_channel_write_stream_buffer_3 ^ 1'b1) & Loop_read_stream_pro_U0_ap_done);
-
-assign ap_channel_done_stream_buffer_4 = ((ap_sync_reg_channel_write_stream_buffer_4 ^ 1'b1) & Loop_read_stream_pro_U0_ap_done);
 
 assign ap_channel_done_stream_buffer_5 = ((ap_sync_reg_channel_write_stream_buffer_5 ^ 1'b1) & Loop_read_stream_pro_U0_ap_done);
 
@@ -1848,7 +1722,7 @@ assign ap_channel_done_truncated_length_his_1 = (truncate_tree_U0_ap_done & (ap_
 
 assign ap_done = ap_sync_done;
 
-assign ap_idle = (truncate_tree_U0_ap_idle & sort_U0_ap_idle & filter_U0_ap_idle & (truncated_length_his_1_t_empty_n ^ 1'b1) & (truncated_length_his_t_empty_n ^ 1'b1) & (length_histogram_V_t_empty_n ^ 1'b1) & (right_V_t_empty_n ^ 1'b1) & (left_V_t_empty_n ^ 1'b1) & (parent_V_t_empty_n ^ 1'b1) & (sorted_copy2_value_V_t_empty_n ^ 1'b1) & (sorted_1_t_empty_n ^ 1'b1) & (sorted_0_t_empty_n ^ 1'b1) & (filtered_frequency_V_t_empty_n ^ 1'b1) & (filtered_value_V_t_empty_n ^ 1'b1) & (stream_buffer_6_t_empty_n ^ 1'b1) & (stream_buffer_5_t_empty_n ^ 1'b1) & (stream_buffer_4_t_empty_n ^ 1'b1) & (stream_buffer_3_t_empty_n ^ 1'b1) & (stream_buffer_2_t_empty_n ^ 1'b1) & (stream_buffer_1_t_empty_n ^ 1'b1) & (extLd8_loc_channel_empty_n ^ 1'b1) & (symbol_bits_V_t_empty_n ^ 1'b1) & create_tree_U0_ap_idle & create_codeword_U0_ap_idle & compute_bit_length_U0_ap_idle & canonize_tree_U0_ap_idle & Loop_read_stream_pro_U0_ap_idle & Loop_copy_sorted_pro_U0_ap_idle & Block_proc_U0_ap_idle & Block_huffman_encodi_U0_ap_idle);
+assign ap_idle = (truncate_tree_U0_ap_idle & sort_U0_ap_idle & filter_U0_ap_idle & (extLd8_loc_channel_empty_n ^ 1'b1) & (symbol_bits_V_t_empty_n ^ 1'b1) & (truncated_length_his_1_t_empty_n ^ 1'b1) & (truncated_length_his_t_empty_n ^ 1'b1) & (length_histogram_V_t_empty_n ^ 1'b1) & (right_V_t_empty_n ^ 1'b1) & (left_V_t_empty_n ^ 1'b1) & (parent_V_t_empty_n ^ 1'b1) & (sorted_copy2_value_V_t_empty_n ^ 1'b1) & (sorted_1_t_empty_n ^ 1'b1) & (sorted_0_t_empty_n ^ 1'b1) & (filtered_frequency_V_t_empty_n ^ 1'b1) & (filtered_value_V_t_empty_n ^ 1'b1) & (stream_buffer_6_t_empty_n ^ 1'b1) & (stream_buffer_5_t_empty_n ^ 1'b1) & (stream_buffer_3_t_empty_n ^ 1'b1) & create_tree_U0_ap_idle & create_codeword_U0_ap_idle & compute_bit_length_U0_ap_idle & canonize_tree_U0_ap_idle & Loop_read_stream_pro_U0_ap_idle & Loop_copy_sorted_pro_U0_ap_idle & Block_proc_U0_ap_idle & Block_huffman_encodi_U0_ap_idle);
 
 assign ap_ready = Loop_read_stream_pro_U0_ap_ready;
 
@@ -1870,13 +1744,7 @@ assign ap_sync_channel_write_sorted_0 = ((sort_U0_out_value_V_full_n & ap_channe
 
 assign ap_sync_channel_write_sorted_1 = ((sort_U0_out_frequency_V_full_n & ap_channel_done_sorted_1) | ap_sync_reg_channel_write_sorted_1);
 
-assign ap_sync_channel_write_stream_buffer_1 = ((ap_channel_done_stream_buffer_1 & Loop_read_stream_pro_U0_stream_buffer_1_full_n) | ap_sync_reg_channel_write_stream_buffer_1);
-
-assign ap_sync_channel_write_stream_buffer_2 = ((ap_channel_done_stream_buffer_2 & Loop_read_stream_pro_U0_stream_buffer_2_full_n) | ap_sync_reg_channel_write_stream_buffer_2);
-
 assign ap_sync_channel_write_stream_buffer_3 = ((ap_channel_done_stream_buffer_3 & Loop_read_stream_pro_U0_stream_buffer_3_full_n) | ap_sync_reg_channel_write_stream_buffer_3);
-
-assign ap_sync_channel_write_stream_buffer_4 = ((ap_channel_done_stream_buffer_4 & Loop_read_stream_pro_U0_stream_buffer_4_full_n) | ap_sync_reg_channel_write_stream_buffer_4);
 
 assign ap_sync_channel_write_stream_buffer_5 = ((ap_channel_done_stream_buffer_5 & Loop_read_stream_pro_U0_stream_buffer_5_full_n) | ap_sync_reg_channel_write_stream_buffer_5);
 
@@ -1914,7 +1782,7 @@ assign compute_bit_length_U0_start_write = 1'b0;
 
 assign create_codeword_U0_ap_continue = ap_sync_done;
 
-assign create_codeword_U0_ap_start = (truncated_length_his_1_t_empty_n & symbol_bits_V_t_empty_n & stream_buffer_6_t_empty_n & stream_buffer_5_t_empty_n & stream_buffer_4_t_empty_n & stream_buffer_3_t_empty_n & stream_buffer_2_t_empty_n & stream_buffer_1_t_empty_n);
+assign create_codeword_U0_ap_start = (truncated_length_his_1_t_empty_n & symbol_bits_V_t_empty_n & stream_buffer_6_t_empty_n & stream_buffer_5_t_empty_n & stream_buffer_3_t_empty_n);
 
 assign create_codeword_U0_start_full_n = 1'b1;
 

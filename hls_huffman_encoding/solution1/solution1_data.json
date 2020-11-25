@@ -184,9 +184,9 @@
       "impl\/vhdl\/huffman_encoding_rcU.vhd",
       "impl\/vhdl\/huffman_encoding_rcU_memcore.vhd",
       "impl\/vhdl\/huffman_encoding_udo.vhd",
-      "impl\/vhdl\/huffman_encoding_udo_memcore.vhd",
       "impl\/vhdl\/huffman_encoding_wdI.vhd",
       "impl\/vhdl\/huffman_encoding_wdI_memcore.vhd",
+      "impl\/vhdl\/huffman_encoding_xdS.vhd",
       "impl\/vhdl\/Loop_copy_sorted_pro.vhd",
       "impl\/vhdl\/Loop_read_stream_pro.vhd",
       "impl\/vhdl\/regslice_core.vhd",
@@ -235,9 +235,9 @@
       "impl\/verilog\/huffman_encoding_rcU.v",
       "impl\/verilog\/huffman_encoding_rcU_memcore.v",
       "impl\/verilog\/huffman_encoding_udo.v",
-      "impl\/verilog\/huffman_encoding_udo_memcore.v",
       "impl\/verilog\/huffman_encoding_wdI.v",
       "impl\/verilog\/huffman_encoding_wdI_memcore.v",
+      "impl\/verilog\/huffman_encoding_xdS.v",
       "impl\/verilog\/Loop_copy_sorted_pro.v",
       "impl\/verilog\/Loop_read_stream_pro.v",
       "impl\/verilog\/regslice_core.v",
@@ -1362,8 +1362,8 @@
         ],
         "Area": {
           "BRAM_18K": "0",
-          "FF": "172",
-          "LUT": "506",
+          "FF": "164",
+          "LUT": "519",
           "URAM": "0",
           "DSP48E": "0"
         }
@@ -1406,8 +1406,8 @@
         },
         "Area": {
           "BRAM_18K": "28",
-          "FF": "2923",
-          "LUT": "6716",
+          "FF": "2912",
+          "LUT": "6690",
           "URAM": "0",
           "DSP48E": "0"
         }
@@ -1424,7 +1424,7 @@
   },
   "GenData": {
     "DataVersion": "0.2",
-    "Time": "2020-11-25 18:01:13 +0800",
+    "Time": "2020-11-25 18:27:13 +0800",
     "ToolName": "vivado_hls",
     "ToolVersion": "2019.2"
   }

@@ -58,7 +58,7 @@ end;
 architecture behav of huffman_encoding is 
     attribute CORE_GENERATION_INFO : STRING;
     attribute CORE_GENERATION_INFO of behav : architecture is
-    "huffman_encoding,hls_ip_2019_2,{HLS_INPUT_TYPE=cxx,HLS_INPUT_FLOAT=0,HLS_INPUT_FIXED=0,HLS_INPUT_PART=xc7z020-clg484-1,HLS_INPUT_CLOCK=10.000000,HLS_INPUT_ARCH=dataflow,HLS_SYN_CLOCK=8.108500,HLS_SYN_LAT=-1,HLS_SYN_TPT=-1,HLS_SYN_MEM=28,HLS_SYN_DSP=0,HLS_SYN_FF=2923,HLS_SYN_LUT=6716,HLS_VERSION=2019_2}";
+    "huffman_encoding,hls_ip_2019_2,{HLS_INPUT_TYPE=cxx,HLS_INPUT_FLOAT=0,HLS_INPUT_FIXED=0,HLS_INPUT_PART=xc7z020-clg484-1,HLS_INPUT_CLOCK=10.000000,HLS_INPUT_ARCH=dataflow,HLS_SYN_CLOCK=8.108500,HLS_SYN_LAT=-1,HLS_SYN_TPT=-1,HLS_SYN_MEM=28,HLS_SYN_DSP=0,HLS_SYN_FF=2912,HLS_SYN_LUT=6690,HLS_VERSION=2019_2}";
     constant C_S_AXI_DATA_WIDTH : INTEGER range 63 downto 0 := 20;
     constant C_S_AXI_WSTRB_WIDTH : INTEGER range 63 downto 0 := 4;
     constant C_S_AXI_ADDR_WIDTH : INTEGER range 63 downto 0 := 20;
@@ -67,11 +67,11 @@ architecture behav of huffman_encoding is
     constant ap_const_lv4_0 : STD_LOGIC_VECTOR (3 downto 0) := "0000";
     constant ap_const_lv1_0 : STD_LOGIC_VECTOR (0 downto 0) := "0";
     constant ap_const_logic_0 : STD_LOGIC := '0';
-    constant ap_const_lv6_0 : STD_LOGIC_VECTOR (5 downto 0) := "000000";
     constant ap_const_lv9_0 : STD_LOGIC_VECTOR (8 downto 0) := "000000000";
     constant ap_const_lv5_0 : STD_LOGIC_VECTOR (4 downto 0) := "00000";
     constant ap_const_lv8_0 : STD_LOGIC_VECTOR (7 downto 0) := "00000000";
     constant ap_const_lv8_1 : STD_LOGIC_VECTOR (7 downto 0) := "00000001";
+    constant ap_const_lv6_0 : STD_LOGIC_VECTOR (5 downto 0) := "000000";
     constant ap_const_lv6_1 : STD_LOGIC_VECTOR (5 downto 0) := "000001";
     constant ap_const_lv9_1 : STD_LOGIC_VECTOR (8 downto 0) := "000000001";
     constant ap_const_boolean_1 : BOOLEAN := true;
@@ -103,14 +103,8 @@ architecture behav of huffman_encoding is
     signal right_V_i_q1 : STD_LOGIC_VECTOR (8 downto 0);
     signal right_V_t_q0 : STD_LOGIC_VECTOR (8 downto 0);
     signal right_V_t_q1 : STD_LOGIC_VECTOR (8 downto 0);
-    signal stream_buffer_1_i_q0 : STD_LOGIC_VECTOR (5 downto 0);
-    signal stream_buffer_1_t_q0 : STD_LOGIC_VECTOR (5 downto 0);
-    signal stream_buffer_2_i_q0 : STD_LOGIC_VECTOR (5 downto 0);
-    signal stream_buffer_2_t_q0 : STD_LOGIC_VECTOR (5 downto 0);
     signal stream_buffer_3_i_q0 : STD_LOGIC_VECTOR (0 downto 0);
     signal stream_buffer_3_t_q0 : STD_LOGIC_VECTOR (0 downto 0);
-    signal stream_buffer_4_i_q0 : STD_LOGIC_VECTOR (0 downto 0);
-    signal stream_buffer_4_t_q0 : STD_LOGIC_VECTOR (0 downto 0);
     signal stream_buffer_5_i_q0 : STD_LOGIC_VECTOR (0 downto 0);
     signal stream_buffer_5_t_q0 : STD_LOGIC_VECTOR (0 downto 0);
     signal stream_buffer_6_i_q0 : STD_LOGIC_VECTOR (0 downto 0);
@@ -167,22 +161,10 @@ architecture behav of huffman_encoding is
     signal Loop_read_stream_pro_U0_stream_buffer_5_full_n : STD_LOGIC;
     signal ap_sync_reg_channel_write_stream_buffer_5 : STD_LOGIC := '0';
     signal ap_sync_channel_write_stream_buffer_5 : STD_LOGIC;
-    signal ap_channel_done_stream_buffer_4 : STD_LOGIC;
-    signal Loop_read_stream_pro_U0_stream_buffer_4_full_n : STD_LOGIC;
-    signal ap_sync_reg_channel_write_stream_buffer_4 : STD_LOGIC := '0';
-    signal ap_sync_channel_write_stream_buffer_4 : STD_LOGIC;
     signal ap_channel_done_stream_buffer_3 : STD_LOGIC;
     signal Loop_read_stream_pro_U0_stream_buffer_3_full_n : STD_LOGIC;
     signal ap_sync_reg_channel_write_stream_buffer_3 : STD_LOGIC := '0';
     signal ap_sync_channel_write_stream_buffer_3 : STD_LOGIC;
-    signal ap_channel_done_stream_buffer_2 : STD_LOGIC;
-    signal Loop_read_stream_pro_U0_stream_buffer_2_full_n : STD_LOGIC;
-    signal ap_sync_reg_channel_write_stream_buffer_2 : STD_LOGIC := '0';
-    signal ap_sync_channel_write_stream_buffer_2 : STD_LOGIC;
-    signal ap_channel_done_stream_buffer_1 : STD_LOGIC;
-    signal Loop_read_stream_pro_U0_stream_buffer_1_full_n : STD_LOGIC;
-    signal ap_sync_reg_channel_write_stream_buffer_1 : STD_LOGIC := '0';
-    signal ap_sync_channel_write_stream_buffer_1 : STD_LOGIC;
     signal filter_U0_ap_start : STD_LOGIC;
     signal filter_U0_ap_done : STD_LOGIC;
     signal filter_U0_ap_continue : STD_LOGIC;
@@ -384,14 +366,8 @@ architecture behav of huffman_encoding is
     signal create_codeword_U0_symbol_bits_V_ce0 : STD_LOGIC;
     signal create_codeword_U0_codeword_length_histogram_V_address0 : STD_LOGIC_VECTOR (5 downto 0);
     signal create_codeword_U0_codeword_length_histogram_V_ce0 : STD_LOGIC;
-    signal create_codeword_U0_stream_buffer_keep_V_address0 : STD_LOGIC_VECTOR (7 downto 0);
-    signal create_codeword_U0_stream_buffer_keep_V_ce0 : STD_LOGIC;
-    signal create_codeword_U0_stream_buffer_strb_V_address0 : STD_LOGIC_VECTOR (7 downto 0);
-    signal create_codeword_U0_stream_buffer_strb_V_ce0 : STD_LOGIC;
     signal create_codeword_U0_stream_buffer_user_V_address0 : STD_LOGIC_VECTOR (7 downto 0);
     signal create_codeword_U0_stream_buffer_user_V_ce0 : STD_LOGIC;
-    signal create_codeword_U0_stream_buffer_last_V_address0 : STD_LOGIC_VECTOR (7 downto 0);
-    signal create_codeword_U0_stream_buffer_last_V_ce0 : STD_LOGIC;
     signal create_codeword_U0_stream_buffer_id_V_address0 : STD_LOGIC_VECTOR (7 downto 0);
     signal create_codeword_U0_stream_buffer_id_V_ce0 : STD_LOGIC;
     signal create_codeword_U0_stream_buffer_dest_V_address0 : STD_LOGIC_VECTOR (7 downto 0);
@@ -413,14 +389,8 @@ architecture behav of huffman_encoding is
     signal Block_proc_U0_extLd_loc_read : STD_LOGIC;
     signal Block_proc_U0_num_nonzero_symbols : STD_LOGIC_VECTOR (31 downto 0);
     signal Block_proc_U0_num_nonzero_symbols_ap_vld : STD_LOGIC;
-    signal stream_buffer_1_i_full_n : STD_LOGIC;
-    signal stream_buffer_1_t_empty_n : STD_LOGIC;
-    signal stream_buffer_2_i_full_n : STD_LOGIC;
-    signal stream_buffer_2_t_empty_n : STD_LOGIC;
     signal stream_buffer_3_i_full_n : STD_LOGIC;
     signal stream_buffer_3_t_empty_n : STD_LOGIC;
-    signal stream_buffer_4_i_full_n : STD_LOGIC;
-    signal stream_buffer_4_t_empty_n : STD_LOGIC;
     signal stream_buffer_5_i_full_n : STD_LOGIC;
     signal stream_buffer_5_t_empty_n : STD_LOGIC;
     signal stream_buffer_6_i_full_n : STD_LOGIC;
@@ -830,18 +800,9 @@ architecture behav of huffman_encoding is
         codeword_length_histogram_V_address0 : OUT STD_LOGIC_VECTOR (5 downto 0);
         codeword_length_histogram_V_ce0 : OUT STD_LOGIC;
         codeword_length_histogram_V_q0 : IN STD_LOGIC_VECTOR (8 downto 0);
-        stream_buffer_keep_V_address0 : OUT STD_LOGIC_VECTOR (7 downto 0);
-        stream_buffer_keep_V_ce0 : OUT STD_LOGIC;
-        stream_buffer_keep_V_q0 : IN STD_LOGIC_VECTOR (5 downto 0);
-        stream_buffer_strb_V_address0 : OUT STD_LOGIC_VECTOR (7 downto 0);
-        stream_buffer_strb_V_ce0 : OUT STD_LOGIC;
-        stream_buffer_strb_V_q0 : IN STD_LOGIC_VECTOR (5 downto 0);
         stream_buffer_user_V_address0 : OUT STD_LOGIC_VECTOR (7 downto 0);
         stream_buffer_user_V_ce0 : OUT STD_LOGIC;
         stream_buffer_user_V_q0 : IN STD_LOGIC_VECTOR (0 downto 0);
-        stream_buffer_last_V_address0 : OUT STD_LOGIC_VECTOR (7 downto 0);
-        stream_buffer_last_V_ce0 : OUT STD_LOGIC;
-        stream_buffer_last_V_q0 : IN STD_LOGIC_VECTOR (0 downto 0);
         stream_buffer_id_V_address0 : OUT STD_LOGIC_VECTOR (7 downto 0);
         stream_buffer_id_V_ce0 : OUT STD_LOGIC;
         stream_buffer_id_V_q0 : IN STD_LOGIC_VECTOR (0 downto 0);
@@ -972,22 +933,10 @@ architecture behav of huffman_encoding is
     port (
         clk : IN STD_LOGIC;
         reset : IN STD_LOGIC;
-        i_address0 : IN STD_LOGIC_VECTOR (7 downto 0);
-        i_ce0 : IN STD_LOGIC;
-        i_we0 : IN STD_LOGIC;
-        i_d0 : IN STD_LOGIC_VECTOR (5 downto 0);
-        i_q0 : OUT STD_LOGIC_VECTOR (5 downto 0);
-        t_address0 : IN STD_LOGIC_VECTOR (7 downto 0);
-        t_ce0 : IN STD_LOGIC;
-        t_we0 : IN STD_LOGIC;
-        t_d0 : IN STD_LOGIC_VECTOR (5 downto 0);
-        t_q0 : OUT STD_LOGIC_VECTOR (5 downto 0);
-        i_ce : IN STD_LOGIC;
-        t_ce : IN STD_LOGIC;
-        i_full_n : OUT STD_LOGIC;
-        i_write : IN STD_LOGIC;
-        t_empty_n : OUT STD_LOGIC;
-        t_read : IN STD_LOGIC );
+        address0 : IN STD_LOGIC_VECTOR (7 downto 0);
+        ce0 : IN STD_LOGIC;
+        we0 : IN STD_LOGIC;
+        d0 : IN STD_LOGIC_VECTOR (5 downto 0) );
     end component;
 
 
@@ -1015,6 +964,21 @@ architecture behav of huffman_encoding is
         i_write : IN STD_LOGIC;
         t_empty_n : OUT STD_LOGIC;
         t_read : IN STD_LOGIC );
+    end component;
+
+
+    component huffman_encoding_xdS IS
+    generic (
+        DataWidth : INTEGER;
+        AddressRange : INTEGER;
+        AddressWidth : INTEGER );
+    port (
+        clk : IN STD_LOGIC;
+        reset : IN STD_LOGIC;
+        address0 : IN STD_LOGIC_VECTOR (7 downto 0);
+        ce0 : IN STD_LOGIC;
+        we0 : IN STD_LOGIC;
+        d0 : IN STD_LOGIC_VECTOR (0 downto 0) );
     end component;
 
 
@@ -1555,22 +1519,10 @@ begin
     port map (
         clk => ap_clk,
         reset => ap_rst_n_inv,
-        i_address0 => Loop_read_stream_pro_U0_stream_buffer_1_address0,
-        i_ce0 => Loop_read_stream_pro_U0_stream_buffer_1_ce0,
-        i_we0 => Loop_read_stream_pro_U0_stream_buffer_1_we0,
-        i_d0 => Loop_read_stream_pro_U0_stream_buffer_1_d0,
-        i_q0 => stream_buffer_1_i_q0,
-        t_address0 => create_codeword_U0_stream_buffer_keep_V_address0,
-        t_ce0 => create_codeword_U0_stream_buffer_keep_V_ce0,
-        t_we0 => ap_const_logic_0,
-        t_d0 => ap_const_lv6_0,
-        t_q0 => stream_buffer_1_t_q0,
-        i_ce => ap_const_logic_1,
-        t_ce => ap_const_logic_1,
-        i_full_n => stream_buffer_1_i_full_n,
-        i_write => ap_channel_done_stream_buffer_1,
-        t_empty_n => stream_buffer_1_t_empty_n,
-        t_read => create_codeword_U0_ap_ready);
+        address0 => Loop_read_stream_pro_U0_stream_buffer_1_address0,
+        ce0 => Loop_read_stream_pro_U0_stream_buffer_1_ce0,
+        we0 => Loop_read_stream_pro_U0_stream_buffer_1_we0,
+        d0 => Loop_read_stream_pro_U0_stream_buffer_1_d0);
 
     stream_buffer_2_U : component huffman_encoding_udo
     generic map (
@@ -1580,22 +1532,10 @@ begin
     port map (
         clk => ap_clk,
         reset => ap_rst_n_inv,
-        i_address0 => Loop_read_stream_pro_U0_stream_buffer_2_address0,
-        i_ce0 => Loop_read_stream_pro_U0_stream_buffer_2_ce0,
-        i_we0 => Loop_read_stream_pro_U0_stream_buffer_2_we0,
-        i_d0 => Loop_read_stream_pro_U0_stream_buffer_2_d0,
-        i_q0 => stream_buffer_2_i_q0,
-        t_address0 => create_codeword_U0_stream_buffer_strb_V_address0,
-        t_ce0 => create_codeword_U0_stream_buffer_strb_V_ce0,
-        t_we0 => ap_const_logic_0,
-        t_d0 => ap_const_lv6_0,
-        t_q0 => stream_buffer_2_t_q0,
-        i_ce => ap_const_logic_1,
-        t_ce => ap_const_logic_1,
-        i_full_n => stream_buffer_2_i_full_n,
-        i_write => ap_channel_done_stream_buffer_2,
-        t_empty_n => stream_buffer_2_t_empty_n,
-        t_read => create_codeword_U0_ap_ready);
+        address0 => Loop_read_stream_pro_U0_stream_buffer_2_address0,
+        ce0 => Loop_read_stream_pro_U0_stream_buffer_2_ce0,
+        we0 => Loop_read_stream_pro_U0_stream_buffer_2_we0,
+        d0 => Loop_read_stream_pro_U0_stream_buffer_2_d0);
 
     stream_buffer_3_U : component huffman_encoding_wdI
     generic map (
@@ -1622,7 +1562,7 @@ begin
         t_empty_n => stream_buffer_3_t_empty_n,
         t_read => create_codeword_U0_ap_ready);
 
-    stream_buffer_4_U : component huffman_encoding_wdI
+    stream_buffer_4_U : component huffman_encoding_xdS
     generic map (
         DataWidth => 1,
         AddressRange => 256,
@@ -1630,22 +1570,10 @@ begin
     port map (
         clk => ap_clk,
         reset => ap_rst_n_inv,
-        i_address0 => Loop_read_stream_pro_U0_stream_buffer_4_address0,
-        i_ce0 => Loop_read_stream_pro_U0_stream_buffer_4_ce0,
-        i_we0 => Loop_read_stream_pro_U0_stream_buffer_4_we0,
-        i_d0 => Loop_read_stream_pro_U0_stream_buffer_4_d0,
-        i_q0 => stream_buffer_4_i_q0,
-        t_address0 => create_codeword_U0_stream_buffer_last_V_address0,
-        t_ce0 => create_codeword_U0_stream_buffer_last_V_ce0,
-        t_we0 => ap_const_logic_0,
-        t_d0 => ap_const_lv1_0,
-        t_q0 => stream_buffer_4_t_q0,
-        i_ce => ap_const_logic_1,
-        t_ce => ap_const_logic_1,
-        i_full_n => stream_buffer_4_i_full_n,
-        i_write => ap_channel_done_stream_buffer_4,
-        t_empty_n => stream_buffer_4_t_empty_n,
-        t_read => create_codeword_U0_ap_ready);
+        address0 => Loop_read_stream_pro_U0_stream_buffer_4_address0,
+        ce0 => Loop_read_stream_pro_U0_stream_buffer_4_ce0,
+        we0 => Loop_read_stream_pro_U0_stream_buffer_4_we0,
+        d0 => Loop_read_stream_pro_U0_stream_buffer_4_d0);
 
     stream_buffer_5_U : component huffman_encoding_wdI
     generic map (
@@ -2100,18 +2028,9 @@ begin
         codeword_length_histogram_V_address0 => create_codeword_U0_codeword_length_histogram_V_address0,
         codeword_length_histogram_V_ce0 => create_codeword_U0_codeword_length_histogram_V_ce0,
         codeword_length_histogram_V_q0 => truncated_length_his_1_t_q0,
-        stream_buffer_keep_V_address0 => create_codeword_U0_stream_buffer_keep_V_address0,
-        stream_buffer_keep_V_ce0 => create_codeword_U0_stream_buffer_keep_V_ce0,
-        stream_buffer_keep_V_q0 => stream_buffer_1_t_q0,
-        stream_buffer_strb_V_address0 => create_codeword_U0_stream_buffer_strb_V_address0,
-        stream_buffer_strb_V_ce0 => create_codeword_U0_stream_buffer_strb_V_ce0,
-        stream_buffer_strb_V_q0 => stream_buffer_2_t_q0,
         stream_buffer_user_V_address0 => create_codeword_U0_stream_buffer_user_V_address0,
         stream_buffer_user_V_ce0 => create_codeword_U0_stream_buffer_user_V_ce0,
         stream_buffer_user_V_q0 => stream_buffer_3_t_q0,
-        stream_buffer_last_V_address0 => create_codeword_U0_stream_buffer_last_V_address0,
-        stream_buffer_last_V_ce0 => create_codeword_U0_stream_buffer_last_V_ce0,
-        stream_buffer_last_V_q0 => stream_buffer_4_t_q0,
         stream_buffer_id_V_address0 => create_codeword_U0_stream_buffer_id_V_address0,
         stream_buffer_id_V_ce0 => create_codeword_U0_stream_buffer_id_V_ce0,
         stream_buffer_id_V_q0 => stream_buffer_5_t_q0,
@@ -2441,38 +2360,6 @@ begin
     end process;
 
 
-    ap_sync_reg_channel_write_stream_buffer_1_assign_proc : process(ap_clk)
-    begin
-        if (ap_clk'event and ap_clk =  '1') then
-            if (ap_rst_n_inv = '1') then
-                ap_sync_reg_channel_write_stream_buffer_1 <= ap_const_logic_0;
-            else
-                if (((Loop_read_stream_pro_U0_ap_done and Loop_read_stream_pro_U0_ap_continue) = ap_const_logic_1)) then 
-                    ap_sync_reg_channel_write_stream_buffer_1 <= ap_const_logic_0;
-                else 
-                    ap_sync_reg_channel_write_stream_buffer_1 <= ap_sync_channel_write_stream_buffer_1;
-                end if; 
-            end if;
-        end if;
-    end process;
-
-
-    ap_sync_reg_channel_write_stream_buffer_2_assign_proc : process(ap_clk)
-    begin
-        if (ap_clk'event and ap_clk =  '1') then
-            if (ap_rst_n_inv = '1') then
-                ap_sync_reg_channel_write_stream_buffer_2 <= ap_const_logic_0;
-            else
-                if (((Loop_read_stream_pro_U0_ap_done and Loop_read_stream_pro_U0_ap_continue) = ap_const_logic_1)) then 
-                    ap_sync_reg_channel_write_stream_buffer_2 <= ap_const_logic_0;
-                else 
-                    ap_sync_reg_channel_write_stream_buffer_2 <= ap_sync_channel_write_stream_buffer_2;
-                end if; 
-            end if;
-        end if;
-    end process;
-
-
     ap_sync_reg_channel_write_stream_buffer_3_assign_proc : process(ap_clk)
     begin
         if (ap_clk'event and ap_clk =  '1') then
@@ -2483,22 +2370,6 @@ begin
                     ap_sync_reg_channel_write_stream_buffer_3 <= ap_const_logic_0;
                 else 
                     ap_sync_reg_channel_write_stream_buffer_3 <= ap_sync_channel_write_stream_buffer_3;
-                end if; 
-            end if;
-        end if;
-    end process;
-
-
-    ap_sync_reg_channel_write_stream_buffer_4_assign_proc : process(ap_clk)
-    begin
-        if (ap_clk'event and ap_clk =  '1') then
-            if (ap_rst_n_inv = '1') then
-                ap_sync_reg_channel_write_stream_buffer_4 <= ap_const_logic_0;
-            else
-                if (((Loop_read_stream_pro_U0_ap_done and Loop_read_stream_pro_U0_ap_continue) = ap_const_logic_1)) then 
-                    ap_sync_reg_channel_write_stream_buffer_4 <= ap_const_logic_0;
-                else 
-                    ap_sync_reg_channel_write_stream_buffer_4 <= ap_sync_channel_write_stream_buffer_4;
                 end if; 
             end if;
         end if;
@@ -2580,12 +2451,9 @@ begin
     Loop_copy_sorted_pro_U0_ap_start <= (sorted_1_t_empty_n and sorted_0_t_empty_n);
     Loop_copy_sorted_pro_U0_sorted_copy2_value_V_full_n <= sorted_copy2_value_V_i_full_n;
     Loop_copy_sorted_pro_U0_start_full_n <= (start_for_create_tree_U0_full_n and start_for_Block_proc_U0_full_n);
-    Loop_read_stream_pro_U0_ap_continue <= (ap_sync_channel_write_stream_buffer_6 and ap_sync_channel_write_stream_buffer_5 and ap_sync_channel_write_stream_buffer_4 and ap_sync_channel_write_stream_buffer_3 and ap_sync_channel_write_stream_buffer_2 and ap_sync_channel_write_stream_buffer_1);
+    Loop_read_stream_pro_U0_ap_continue <= (ap_sync_channel_write_stream_buffer_6 and ap_sync_channel_write_stream_buffer_5 and ap_sync_channel_write_stream_buffer_3);
     Loop_read_stream_pro_U0_ap_start <= ap_start;
-    Loop_read_stream_pro_U0_stream_buffer_1_full_n <= stream_buffer_1_i_full_n;
-    Loop_read_stream_pro_U0_stream_buffer_2_full_n <= stream_buffer_2_i_full_n;
     Loop_read_stream_pro_U0_stream_buffer_3_full_n <= stream_buffer_3_i_full_n;
-    Loop_read_stream_pro_U0_stream_buffer_4_full_n <= stream_buffer_4_i_full_n;
     Loop_read_stream_pro_U0_stream_buffer_5_full_n <= stream_buffer_5_i_full_n;
     Loop_read_stream_pro_U0_stream_buffer_6_full_n <= stream_buffer_6_i_full_n;
     ap_channel_done_extLd8_loc_channel <= Block_huffman_encodi_U0_ap_done;
@@ -2598,17 +2466,14 @@ begin
     ap_channel_done_sorted_0 <= (sort_U0_ap_done and (ap_sync_reg_channel_write_sorted_0 xor ap_const_logic_1));
     ap_channel_done_sorted_1 <= (sort_U0_ap_done and (ap_sync_reg_channel_write_sorted_1 xor ap_const_logic_1));
     ap_channel_done_sorted_copy2_value_V <= Loop_copy_sorted_pro_U0_ap_done;
-    ap_channel_done_stream_buffer_1 <= ((ap_sync_reg_channel_write_stream_buffer_1 xor ap_const_logic_1) and Loop_read_stream_pro_U0_ap_done);
-    ap_channel_done_stream_buffer_2 <= ((ap_sync_reg_channel_write_stream_buffer_2 xor ap_const_logic_1) and Loop_read_stream_pro_U0_ap_done);
     ap_channel_done_stream_buffer_3 <= ((ap_sync_reg_channel_write_stream_buffer_3 xor ap_const_logic_1) and Loop_read_stream_pro_U0_ap_done);
-    ap_channel_done_stream_buffer_4 <= ((ap_sync_reg_channel_write_stream_buffer_4 xor ap_const_logic_1) and Loop_read_stream_pro_U0_ap_done);
     ap_channel_done_stream_buffer_5 <= ((ap_sync_reg_channel_write_stream_buffer_5 xor ap_const_logic_1) and Loop_read_stream_pro_U0_ap_done);
     ap_channel_done_stream_buffer_6 <= ((ap_sync_reg_channel_write_stream_buffer_6 xor ap_const_logic_1) and Loop_read_stream_pro_U0_ap_done);
     ap_channel_done_symbol_bits_V <= canonize_tree_U0_ap_done;
     ap_channel_done_truncated_length_his <= (truncate_tree_U0_ap_done and (ap_sync_reg_channel_write_truncated_length_his xor ap_const_logic_1));
     ap_channel_done_truncated_length_his_1 <= (truncate_tree_U0_ap_done and (ap_sync_reg_channel_write_truncated_length_his_1 xor ap_const_logic_1));
     ap_done <= ap_sync_done;
-    ap_idle <= (truncate_tree_U0_ap_idle and sort_U0_ap_idle and filter_U0_ap_idle and (truncated_length_his_1_t_empty_n xor ap_const_logic_1) and (truncated_length_his_t_empty_n xor ap_const_logic_1) and (length_histogram_V_t_empty_n xor ap_const_logic_1) and (right_V_t_empty_n xor ap_const_logic_1) and (left_V_t_empty_n xor ap_const_logic_1) and (parent_V_t_empty_n xor ap_const_logic_1) and (sorted_copy2_value_V_t_empty_n xor ap_const_logic_1) and (sorted_1_t_empty_n xor ap_const_logic_1) and (sorted_0_t_empty_n xor ap_const_logic_1) and (filtered_frequency_V_t_empty_n xor ap_const_logic_1) and (filtered_value_V_t_empty_n xor ap_const_logic_1) and (stream_buffer_6_t_empty_n xor ap_const_logic_1) and (stream_buffer_5_t_empty_n xor ap_const_logic_1) and (stream_buffer_4_t_empty_n xor ap_const_logic_1) and (stream_buffer_3_t_empty_n xor ap_const_logic_1) and (stream_buffer_2_t_empty_n xor ap_const_logic_1) and (stream_buffer_1_t_empty_n xor ap_const_logic_1) and (extLd8_loc_channel_empty_n xor ap_const_logic_1) and (symbol_bits_V_t_empty_n xor ap_const_logic_1) and create_tree_U0_ap_idle and create_codeword_U0_ap_idle and compute_bit_length_U0_ap_idle and canonize_tree_U0_ap_idle and Loop_read_stream_pro_U0_ap_idle and Loop_copy_sorted_pro_U0_ap_idle and Block_proc_U0_ap_idle and Block_huffman_encodi_U0_ap_idle);
+    ap_idle <= (truncate_tree_U0_ap_idle and sort_U0_ap_idle and filter_U0_ap_idle and (extLd8_loc_channel_empty_n xor ap_const_logic_1) and (symbol_bits_V_t_empty_n xor ap_const_logic_1) and (truncated_length_his_1_t_empty_n xor ap_const_logic_1) and (truncated_length_his_t_empty_n xor ap_const_logic_1) and (length_histogram_V_t_empty_n xor ap_const_logic_1) and (right_V_t_empty_n xor ap_const_logic_1) and (left_V_t_empty_n xor ap_const_logic_1) and (parent_V_t_empty_n xor ap_const_logic_1) and (sorted_copy2_value_V_t_empty_n xor ap_const_logic_1) and (sorted_1_t_empty_n xor ap_const_logic_1) and (sorted_0_t_empty_n xor ap_const_logic_1) and (filtered_frequency_V_t_empty_n xor ap_const_logic_1) and (filtered_value_V_t_empty_n xor ap_const_logic_1) and (stream_buffer_6_t_empty_n xor ap_const_logic_1) and (stream_buffer_5_t_empty_n xor ap_const_logic_1) and (stream_buffer_3_t_empty_n xor ap_const_logic_1) and create_tree_U0_ap_idle and create_codeword_U0_ap_idle and compute_bit_length_U0_ap_idle and canonize_tree_U0_ap_idle and Loop_read_stream_pro_U0_ap_idle and Loop_copy_sorted_pro_U0_ap_idle and Block_proc_U0_ap_idle and Block_huffman_encodi_U0_ap_idle);
     ap_ready <= Loop_read_stream_pro_U0_ap_ready;
 
     ap_rst_n_inv_assign_proc : process(ap_rst_n)
@@ -2623,10 +2488,7 @@ begin
     ap_sync_channel_write_right_V <= ((create_tree_U0_right_V_full_n and ap_channel_done_right_V) or ap_sync_reg_channel_write_right_V);
     ap_sync_channel_write_sorted_0 <= ((sort_U0_out_value_V_full_n and ap_channel_done_sorted_0) or ap_sync_reg_channel_write_sorted_0);
     ap_sync_channel_write_sorted_1 <= ((sort_U0_out_frequency_V_full_n and ap_channel_done_sorted_1) or ap_sync_reg_channel_write_sorted_1);
-    ap_sync_channel_write_stream_buffer_1 <= ((ap_channel_done_stream_buffer_1 and Loop_read_stream_pro_U0_stream_buffer_1_full_n) or ap_sync_reg_channel_write_stream_buffer_1);
-    ap_sync_channel_write_stream_buffer_2 <= ((ap_channel_done_stream_buffer_2 and Loop_read_stream_pro_U0_stream_buffer_2_full_n) or ap_sync_reg_channel_write_stream_buffer_2);
     ap_sync_channel_write_stream_buffer_3 <= ((ap_channel_done_stream_buffer_3 and Loop_read_stream_pro_U0_stream_buffer_3_full_n) or ap_sync_reg_channel_write_stream_buffer_3);
-    ap_sync_channel_write_stream_buffer_4 <= ((ap_channel_done_stream_buffer_4 and Loop_read_stream_pro_U0_stream_buffer_4_full_n) or ap_sync_reg_channel_write_stream_buffer_4);
     ap_sync_channel_write_stream_buffer_5 <= ((ap_channel_done_stream_buffer_5 and Loop_read_stream_pro_U0_stream_buffer_5_full_n) or ap_sync_reg_channel_write_stream_buffer_5);
     ap_sync_channel_write_stream_buffer_6 <= ((ap_channel_done_stream_buffer_6 and Loop_read_stream_pro_U0_stream_buffer_6_full_n) or ap_sync_reg_channel_write_stream_buffer_6);
     ap_sync_channel_write_truncated_length_his <= ((truncate_tree_U0_output_length_histogram1_V_full_n and ap_channel_done_truncated_length_his) or ap_sync_reg_channel_write_truncated_length_his);
@@ -2645,7 +2507,7 @@ begin
     compute_bit_length_U0_start_full_n <= ap_const_logic_1;
     compute_bit_length_U0_start_write <= ap_const_logic_0;
     create_codeword_U0_ap_continue <= ap_sync_done;
-    create_codeword_U0_ap_start <= (truncated_length_his_1_t_empty_n and symbol_bits_V_t_empty_n and stream_buffer_6_t_empty_n and stream_buffer_5_t_empty_n and stream_buffer_4_t_empty_n and stream_buffer_3_t_empty_n and stream_buffer_2_t_empty_n and stream_buffer_1_t_empty_n);
+    create_codeword_U0_ap_start <= (truncated_length_his_1_t_empty_n and symbol_bits_V_t_empty_n and stream_buffer_6_t_empty_n and stream_buffer_5_t_empty_n and stream_buffer_3_t_empty_n);
     create_codeword_U0_start_full_n <= ap_const_logic_1;
     create_codeword_U0_start_write <= ap_const_logic_0;
     create_tree_U0_ap_continue <= (ap_sync_channel_write_right_V and ap_sync_channel_write_parent_V and ap_sync_channel_write_left_V);

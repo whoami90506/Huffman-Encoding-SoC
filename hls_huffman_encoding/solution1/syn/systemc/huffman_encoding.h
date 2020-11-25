@@ -27,6 +27,7 @@
 #include "huffman_encoding_rcU.h"
 #include "huffman_encoding_udo.h"
 #include "huffman_encoding_wdI.h"
+#include "huffman_encoding_xdS.h"
 #include "huffman_encoding_Aem.h"
 #include "huffman_encoding_Bew.h"
 #include "huffman_encoding_DeQ.h"
@@ -88,12 +89,12 @@ struct huffman_encoding : public sc_module {
     sc_in< sc_logic > encoding_TREADY;
     sc_signal< sc_logic > ap_var_for_const0;
     sc_signal< sc_lv<32> > ap_var_for_const3;
-    sc_signal< sc_lv<1> > ap_var_for_const6;
+    sc_signal< sc_lv<1> > ap_var_for_const5;
     sc_signal< sc_logic > ap_var_for_const1;
-    sc_signal< sc_lv<6> > ap_var_for_const5;
     sc_signal< sc_lv<9> > ap_var_for_const2;
     sc_signal< sc_lv<5> > ap_var_for_const7;
     sc_signal< sc_lv<8> > ap_var_for_const4;
+    sc_signal< sc_lv<6> > ap_var_for_const6;
 
 
     // Module declarations
@@ -118,7 +119,7 @@ struct huffman_encoding : public sc_module {
     huffman_encoding_udo* stream_buffer_1_U;
     huffman_encoding_udo* stream_buffer_2_U;
     huffman_encoding_wdI* stream_buffer_3_U;
-    huffman_encoding_wdI* stream_buffer_4_U;
+    huffman_encoding_xdS* stream_buffer_4_U;
     huffman_encoding_wdI* stream_buffer_5_U;
     huffman_encoding_wdI* stream_buffer_6_U;
     huffman_encoding_Aem* length_histogram_V_U;
@@ -177,14 +178,8 @@ struct huffman_encoding : public sc_module {
     sc_signal< sc_lv<9> > right_V_i_q1;
     sc_signal< sc_lv<9> > right_V_t_q0;
     sc_signal< sc_lv<9> > right_V_t_q1;
-    sc_signal< sc_lv<6> > stream_buffer_1_i_q0;
-    sc_signal< sc_lv<6> > stream_buffer_1_t_q0;
-    sc_signal< sc_lv<6> > stream_buffer_2_i_q0;
-    sc_signal< sc_lv<6> > stream_buffer_2_t_q0;
     sc_signal< sc_lv<1> > stream_buffer_3_i_q0;
     sc_signal< sc_lv<1> > stream_buffer_3_t_q0;
-    sc_signal< sc_lv<1> > stream_buffer_4_i_q0;
-    sc_signal< sc_lv<1> > stream_buffer_4_t_q0;
     sc_signal< sc_lv<1> > stream_buffer_5_i_q0;
     sc_signal< sc_lv<1> > stream_buffer_5_t_q0;
     sc_signal< sc_lv<1> > stream_buffer_6_i_q0;
@@ -241,22 +236,10 @@ struct huffman_encoding : public sc_module {
     sc_signal< sc_logic > Loop_read_stream_pro_U0_stream_buffer_5_full_n;
     sc_signal< sc_logic > ap_sync_reg_channel_write_stream_buffer_5;
     sc_signal< sc_logic > ap_sync_channel_write_stream_buffer_5;
-    sc_signal< sc_logic > ap_channel_done_stream_buffer_4;
-    sc_signal< sc_logic > Loop_read_stream_pro_U0_stream_buffer_4_full_n;
-    sc_signal< sc_logic > ap_sync_reg_channel_write_stream_buffer_4;
-    sc_signal< sc_logic > ap_sync_channel_write_stream_buffer_4;
     sc_signal< sc_logic > ap_channel_done_stream_buffer_3;
     sc_signal< sc_logic > Loop_read_stream_pro_U0_stream_buffer_3_full_n;
     sc_signal< sc_logic > ap_sync_reg_channel_write_stream_buffer_3;
     sc_signal< sc_logic > ap_sync_channel_write_stream_buffer_3;
-    sc_signal< sc_logic > ap_channel_done_stream_buffer_2;
-    sc_signal< sc_logic > Loop_read_stream_pro_U0_stream_buffer_2_full_n;
-    sc_signal< sc_logic > ap_sync_reg_channel_write_stream_buffer_2;
-    sc_signal< sc_logic > ap_sync_channel_write_stream_buffer_2;
-    sc_signal< sc_logic > ap_channel_done_stream_buffer_1;
-    sc_signal< sc_logic > Loop_read_stream_pro_U0_stream_buffer_1_full_n;
-    sc_signal< sc_logic > ap_sync_reg_channel_write_stream_buffer_1;
-    sc_signal< sc_logic > ap_sync_channel_write_stream_buffer_1;
     sc_signal< sc_logic > filter_U0_ap_start;
     sc_signal< sc_logic > filter_U0_ap_done;
     sc_signal< sc_logic > filter_U0_ap_continue;
@@ -458,14 +441,8 @@ struct huffman_encoding : public sc_module {
     sc_signal< sc_logic > create_codeword_U0_symbol_bits_V_ce0;
     sc_signal< sc_lv<6> > create_codeword_U0_codeword_length_histogram_V_address0;
     sc_signal< sc_logic > create_codeword_U0_codeword_length_histogram_V_ce0;
-    sc_signal< sc_lv<8> > create_codeword_U0_stream_buffer_keep_V_address0;
-    sc_signal< sc_logic > create_codeword_U0_stream_buffer_keep_V_ce0;
-    sc_signal< sc_lv<8> > create_codeword_U0_stream_buffer_strb_V_address0;
-    sc_signal< sc_logic > create_codeword_U0_stream_buffer_strb_V_ce0;
     sc_signal< sc_lv<8> > create_codeword_U0_stream_buffer_user_V_address0;
     sc_signal< sc_logic > create_codeword_U0_stream_buffer_user_V_ce0;
-    sc_signal< sc_lv<8> > create_codeword_U0_stream_buffer_last_V_address0;
-    sc_signal< sc_logic > create_codeword_U0_stream_buffer_last_V_ce0;
     sc_signal< sc_lv<8> > create_codeword_U0_stream_buffer_id_V_address0;
     sc_signal< sc_logic > create_codeword_U0_stream_buffer_id_V_ce0;
     sc_signal< sc_lv<8> > create_codeword_U0_stream_buffer_dest_V_address0;
@@ -487,14 +464,8 @@ struct huffman_encoding : public sc_module {
     sc_signal< sc_logic > Block_proc_U0_extLd_loc_read;
     sc_signal< sc_lv<32> > Block_proc_U0_num_nonzero_symbols;
     sc_signal< sc_logic > Block_proc_U0_num_nonzero_symbols_ap_vld;
-    sc_signal< sc_logic > stream_buffer_1_i_full_n;
-    sc_signal< sc_logic > stream_buffer_1_t_empty_n;
-    sc_signal< sc_logic > stream_buffer_2_i_full_n;
-    sc_signal< sc_logic > stream_buffer_2_t_empty_n;
     sc_signal< sc_logic > stream_buffer_3_i_full_n;
     sc_signal< sc_logic > stream_buffer_3_t_empty_n;
-    sc_signal< sc_logic > stream_buffer_4_i_full_n;
-    sc_signal< sc_logic > stream_buffer_4_t_empty_n;
     sc_signal< sc_logic > stream_buffer_5_i_full_n;
     sc_signal< sc_logic > stream_buffer_5_t_empty_n;
     sc_signal< sc_logic > stream_buffer_6_i_full_n;
@@ -600,23 +571,23 @@ struct huffman_encoding : public sc_module {
     static const sc_lv<4> ap_const_lv4_0;
     static const sc_lv<1> ap_const_lv1_0;
     static const sc_logic ap_const_logic_0;
-    static const sc_lv<6> ap_const_lv6_0;
     static const sc_lv<9> ap_const_lv9_0;
     static const sc_lv<5> ap_const_lv5_0;
     static const sc_lv<8> ap_const_lv8_0;
     static const sc_lv<8> ap_const_lv8_1;
+    static const sc_lv<6> ap_const_lv6_0;
     static const sc_lv<6> ap_const_lv6_1;
     static const sc_lv<9> ap_const_lv9_1;
     static const bool ap_const_boolean_1;
     // Thread declarations
     void thread_ap_var_for_const0();
     void thread_ap_var_for_const3();
-    void thread_ap_var_for_const6();
-    void thread_ap_var_for_const1();
     void thread_ap_var_for_const5();
+    void thread_ap_var_for_const1();
     void thread_ap_var_for_const2();
     void thread_ap_var_for_const7();
     void thread_ap_var_for_const4();
+    void thread_ap_var_for_const6();
     void thread_ap_clk_no_reset_();
     void thread_Block_huffman_encodi_U0_ap_continue();
     void thread_Block_huffman_encodi_U0_ap_start();
@@ -632,10 +603,7 @@ struct huffman_encoding : public sc_module {
     void thread_Loop_copy_sorted_pro_U0_start_full_n();
     void thread_Loop_read_stream_pro_U0_ap_continue();
     void thread_Loop_read_stream_pro_U0_ap_start();
-    void thread_Loop_read_stream_pro_U0_stream_buffer_1_full_n();
-    void thread_Loop_read_stream_pro_U0_stream_buffer_2_full_n();
     void thread_Loop_read_stream_pro_U0_stream_buffer_3_full_n();
-    void thread_Loop_read_stream_pro_U0_stream_buffer_4_full_n();
     void thread_Loop_read_stream_pro_U0_stream_buffer_5_full_n();
     void thread_Loop_read_stream_pro_U0_stream_buffer_6_full_n();
     void thread_ap_channel_done_extLd8_loc_channel();
@@ -648,10 +616,7 @@ struct huffman_encoding : public sc_module {
     void thread_ap_channel_done_sorted_0();
     void thread_ap_channel_done_sorted_1();
     void thread_ap_channel_done_sorted_copy2_value_V();
-    void thread_ap_channel_done_stream_buffer_1();
-    void thread_ap_channel_done_stream_buffer_2();
     void thread_ap_channel_done_stream_buffer_3();
-    void thread_ap_channel_done_stream_buffer_4();
     void thread_ap_channel_done_stream_buffer_5();
     void thread_ap_channel_done_stream_buffer_6();
     void thread_ap_channel_done_symbol_bits_V();
@@ -668,10 +633,7 @@ struct huffman_encoding : public sc_module {
     void thread_ap_sync_channel_write_right_V();
     void thread_ap_sync_channel_write_sorted_0();
     void thread_ap_sync_channel_write_sorted_1();
-    void thread_ap_sync_channel_write_stream_buffer_1();
-    void thread_ap_sync_channel_write_stream_buffer_2();
     void thread_ap_sync_channel_write_stream_buffer_3();
-    void thread_ap_sync_channel_write_stream_buffer_4();
     void thread_ap_sync_channel_write_stream_buffer_5();
     void thread_ap_sync_channel_write_stream_buffer_6();
     void thread_ap_sync_channel_write_truncated_length_his();

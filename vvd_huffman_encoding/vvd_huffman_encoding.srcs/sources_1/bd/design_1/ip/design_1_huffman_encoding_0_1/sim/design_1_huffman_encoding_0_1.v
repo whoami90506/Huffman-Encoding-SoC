@@ -48,7 +48,7 @@
 
 
 // IP VLNV: xilinx.com:hls:huffman_encoding:1.0
-// IP Revision: 2011251807
+// IP Revision: 2011251834
 
 `timescale 1ns/1ps
 

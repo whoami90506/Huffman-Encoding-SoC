@@ -335,7 +335,7 @@
                </wvobject>
             </wvobject>
             <wvobject type="group" fp_name="stream_buffer_1_group">
-               <obj_property name="label">stream_buffer_1(stream_buffer_1_U, PIPO)</obj_property>
+               <obj_property name="label">stream_buffer_1(PIPO)</obj_property>
                <obj_property name="DisplayName">label</obj_property>
                <wvobject type="logic" fp_name="/apatb_huffman_encoding_top/AESL_inst_huffman_encoding/Loop_read_stream_pro_U0/stream_buffer_1_address0">
                </wvobject>
@@ -363,7 +363,7 @@
                </wvobject>
             </wvobject>
             <wvobject type="group" fp_name="stream_buffer_2_group">
-               <obj_property name="label">stream_buffer_2(stream_buffer_2_U, PIPO)</obj_property>
+               <obj_property name="label">stream_buffer_2(PIPO)</obj_property>
                <obj_property name="DisplayName">label</obj_property>
                <wvobject type="logic" fp_name="/apatb_huffman_encoding_top/AESL_inst_huffman_encoding/Loop_read_stream_pro_U0/stream_buffer_2_address0">
                </wvobject>
@@ -419,7 +419,7 @@
                </wvobject>
             </wvobject>
             <wvobject type="group" fp_name="stream_buffer_4_group">
-               <obj_property name="label">stream_buffer_4(stream_buffer_4_U, PIPO)</obj_property>
+               <obj_property name="label">stream_buffer_4(PIPO)</obj_property>
                <obj_property name="DisplayName">label</obj_property>
                <wvobject type="logic" fp_name="/apatb_huffman_encoding_top/AESL_inst_huffman_encoding/Loop_read_stream_pro_U0/stream_buffer_4_address0">
                </wvobject>
@@ -1602,42 +1602,6 @@
                   <obj_property name="DisplayName">label</obj_property>
                </wvobject>
             </wvobject>
-            <wvobject type="group" fp_name="stream_buffer_keep_V_group">
-               <obj_property name="label">stream_buffer_keep_V(stream_buffer_1_U, PIPO)</obj_property>
-               <obj_property name="DisplayName">label</obj_property>
-               <wvobject type="logic" fp_name="/apatb_huffman_encoding_top/AESL_inst_huffman_encoding/create_codeword_U0/stream_buffer_keep_V_address0">
-               </wvobject>
-               <wvobject type="logic" fp_name="/apatb_huffman_encoding_top/AESL_inst_huffman_encoding/create_codeword_U0/stream_buffer_keep_V_q0">
-               </wvobject>
-               <wvobject type="logic" fp_name="/apatb_huffman_encoding_top/AESL_inst_huffman_encoding/create_codeword_U0/stream_buffer_keep_V_ce0">
-                  <obj_property name="ElementShortName">stream_buffer_keep_V_ce0</obj_property>
-                  <obj_property name="ObjectShortName">stream_buffer_keep_V_ce0</obj_property>
-               </wvobject>
-               <wvobject type="logic" fp_name="/apatb_huffman_encoding_top/AESL_inst_huffman_encoding/create_codeword_U0/ap_ready">
-                  <obj_property name="ElementShortName">ap_ready</obj_property>
-                  <obj_property name="ObjectShortName">ap_ready</obj_property>
-                  <obj_property name="label">ap_ready(t_read)</obj_property>
-                  <obj_property name="DisplayName">label</obj_property>
-               </wvobject>
-            </wvobject>
-            <wvobject type="group" fp_name="stream_buffer_strb_V_group">
-               <obj_property name="label">stream_buffer_strb_V(stream_buffer_2_U, PIPO)</obj_property>
-               <obj_property name="DisplayName">label</obj_property>
-               <wvobject type="logic" fp_name="/apatb_huffman_encoding_top/AESL_inst_huffman_encoding/create_codeword_U0/stream_buffer_strb_V_address0">
-               </wvobject>
-               <wvobject type="logic" fp_name="/apatb_huffman_encoding_top/AESL_inst_huffman_encoding/create_codeword_U0/stream_buffer_strb_V_q0">
-               </wvobject>
-               <wvobject type="logic" fp_name="/apatb_huffman_encoding_top/AESL_inst_huffman_encoding/create_codeword_U0/stream_buffer_strb_V_ce0">
-                  <obj_property name="ElementShortName">stream_buffer_strb_V_ce0</obj_property>
-                  <obj_property name="ObjectShortName">stream_buffer_strb_V_ce0</obj_property>
-               </wvobject>
-               <wvobject type="logic" fp_name="/apatb_huffman_encoding_top/AESL_inst_huffman_encoding/create_codeword_U0/ap_ready">
-                  <obj_property name="ElementShortName">ap_ready</obj_property>
-                  <obj_property name="ObjectShortName">ap_ready</obj_property>
-                  <obj_property name="label">ap_ready(t_read)</obj_property>
-                  <obj_property name="DisplayName">label</obj_property>
-               </wvobject>
-            </wvobject>
             <wvobject type="group" fp_name="stream_buffer_user_V_group">
                <obj_property name="label">stream_buffer_user_V(stream_buffer_3_U, PIPO)</obj_property>
                <obj_property name="DisplayName">label</obj_property>
@@ -1648,24 +1612,6 @@
                <wvobject type="logic" fp_name="/apatb_huffman_encoding_top/AESL_inst_huffman_encoding/create_codeword_U0/stream_buffer_user_V_ce0">
                   <obj_property name="ElementShortName">stream_buffer_user_V_ce0</obj_property>
                   <obj_property name="ObjectShortName">stream_buffer_user_V_ce0</obj_property>
-               </wvobject>
-               <wvobject type="logic" fp_name="/apatb_huffman_encoding_top/AESL_inst_huffman_encoding/create_codeword_U0/ap_ready">
-                  <obj_property name="ElementShortName">ap_ready</obj_property>
-                  <obj_property name="ObjectShortName">ap_ready</obj_property>
-                  <obj_property name="label">ap_ready(t_read)</obj_property>
-                  <obj_property name="DisplayName">label</obj_property>
-               </wvobject>
-            </wvobject>
-            <wvobject type="group" fp_name="stream_buffer_last_V_group">
-               <obj_property name="label">stream_buffer_last_V(stream_buffer_4_U, PIPO)</obj_property>
-               <obj_property name="DisplayName">label</obj_property>
-               <wvobject type="logic" fp_name="/apatb_huffman_encoding_top/AESL_inst_huffman_encoding/create_codeword_U0/stream_buffer_last_V_address0">
-               </wvobject>
-               <wvobject type="logic" fp_name="/apatb_huffman_encoding_top/AESL_inst_huffman_encoding/create_codeword_U0/stream_buffer_last_V_q0">
-               </wvobject>
-               <wvobject type="logic" fp_name="/apatb_huffman_encoding_top/AESL_inst_huffman_encoding/create_codeword_U0/stream_buffer_last_V_ce0">
-                  <obj_property name="ElementShortName">stream_buffer_last_V_ce0</obj_property>
-                  <obj_property name="ObjectShortName">stream_buffer_last_V_ce0</obj_property>
                </wvobject>
                <wvobject type="logic" fp_name="/apatb_huffman_encoding_top/AESL_inst_huffman_encoding/create_codeword_U0/ap_ready">
                   <obj_property name="ElementShortName">ap_ready</obj_property>

@@ -20,11 +20,11 @@ const sc_lv<32> huffman_encoding::ap_const_lv32_0 = "000000000000000000000000000
 const sc_lv<4> huffman_encoding::ap_const_lv4_0 = "0000";
 const sc_lv<1> huffman_encoding::ap_const_lv1_0 = "0";
 const sc_logic huffman_encoding::ap_const_logic_0 = sc_dt::Log_0;
-const sc_lv<6> huffman_encoding::ap_const_lv6_0 = "000000";
 const sc_lv<9> huffman_encoding::ap_const_lv9_0 = "000000000";
 const sc_lv<5> huffman_encoding::ap_const_lv5_0 = "00000";
 const sc_lv<8> huffman_encoding::ap_const_lv8_0 = "00000000";
 const sc_lv<8> huffman_encoding::ap_const_lv8_1 = "1";
+const sc_lv<6> huffman_encoding::ap_const_lv6_0 = "000000";
 const sc_lv<6> huffman_encoding::ap_const_lv6_1 = "1";
 const sc_lv<9> huffman_encoding::ap_const_lv9_1 = "1";
 const bool huffman_encoding::ap_const_boolean_1 = true;
@@ -231,41 +231,17 @@ huffman_encoding::huffman_encoding(sc_module_name name) : sc_module(name), mVcdF
     stream_buffer_1_U = new huffman_encoding_udo("stream_buffer_1_U");
     stream_buffer_1_U->clk(ap_clk);
     stream_buffer_1_U->reset(ap_rst_n_inv);
-    stream_buffer_1_U->i_address0(Loop_read_stream_pro_U0_stream_buffer_1_address0);
-    stream_buffer_1_U->i_ce0(Loop_read_stream_pro_U0_stream_buffer_1_ce0);
-    stream_buffer_1_U->i_we0(Loop_read_stream_pro_U0_stream_buffer_1_we0);
-    stream_buffer_1_U->i_d0(Loop_read_stream_pro_U0_stream_buffer_1_d0);
-    stream_buffer_1_U->i_q0(stream_buffer_1_i_q0);
-    stream_buffer_1_U->t_address0(create_codeword_U0_stream_buffer_keep_V_address0);
-    stream_buffer_1_U->t_ce0(create_codeword_U0_stream_buffer_keep_V_ce0);
-    stream_buffer_1_U->t_we0(ap_var_for_const1);
-    stream_buffer_1_U->t_d0(ap_var_for_const5);
-    stream_buffer_1_U->t_q0(stream_buffer_1_t_q0);
-    stream_buffer_1_U->i_ce(ap_var_for_const0);
-    stream_buffer_1_U->t_ce(ap_var_for_const0);
-    stream_buffer_1_U->i_full_n(stream_buffer_1_i_full_n);
-    stream_buffer_1_U->i_write(ap_channel_done_stream_buffer_1);
-    stream_buffer_1_U->t_empty_n(stream_buffer_1_t_empty_n);
-    stream_buffer_1_U->t_read(create_codeword_U0_ap_ready);
+    stream_buffer_1_U->address0(Loop_read_stream_pro_U0_stream_buffer_1_address0);
+    stream_buffer_1_U->ce0(Loop_read_stream_pro_U0_stream_buffer_1_ce0);
+    stream_buffer_1_U->we0(Loop_read_stream_pro_U0_stream_buffer_1_we0);
+    stream_buffer_1_U->d0(Loop_read_stream_pro_U0_stream_buffer_1_d0);
     stream_buffer_2_U = new huffman_encoding_udo("stream_buffer_2_U");
     stream_buffer_2_U->clk(ap_clk);
     stream_buffer_2_U->reset(ap_rst_n_inv);
-    stream_buffer_2_U->i_address0(Loop_read_stream_pro_U0_stream_buffer_2_address0);
-    stream_buffer_2_U->i_ce0(Loop_read_stream_pro_U0_stream_buffer_2_ce0);
-    stream_buffer_2_U->i_we0(Loop_read_stream_pro_U0_stream_buffer_2_we0);
-    stream_buffer_2_U->i_d0(Loop_read_stream_pro_U0_stream_buffer_2_d0);
-    stream_buffer_2_U->i_q0(stream_buffer_2_i_q0);
-    stream_buffer_2_U->t_address0(create_codeword_U0_stream_buffer_strb_V_address0);
-    stream_buffer_2_U->t_ce0(create_codeword_U0_stream_buffer_strb_V_ce0);
-    stream_buffer_2_U->t_we0(ap_var_for_const1);
-    stream_buffer_2_U->t_d0(ap_var_for_const5);
-    stream_buffer_2_U->t_q0(stream_buffer_2_t_q0);
-    stream_buffer_2_U->i_ce(ap_var_for_const0);
-    stream_buffer_2_U->t_ce(ap_var_for_const0);
-    stream_buffer_2_U->i_full_n(stream_buffer_2_i_full_n);
-    stream_buffer_2_U->i_write(ap_channel_done_stream_buffer_2);
-    stream_buffer_2_U->t_empty_n(stream_buffer_2_t_empty_n);
-    stream_buffer_2_U->t_read(create_codeword_U0_ap_ready);
+    stream_buffer_2_U->address0(Loop_read_stream_pro_U0_stream_buffer_2_address0);
+    stream_buffer_2_U->ce0(Loop_read_stream_pro_U0_stream_buffer_2_ce0);
+    stream_buffer_2_U->we0(Loop_read_stream_pro_U0_stream_buffer_2_we0);
+    stream_buffer_2_U->d0(Loop_read_stream_pro_U0_stream_buffer_2_d0);
     stream_buffer_3_U = new huffman_encoding_wdI("stream_buffer_3_U");
     stream_buffer_3_U->clk(ap_clk);
     stream_buffer_3_U->reset(ap_rst_n_inv);
@@ -277,7 +253,7 @@ huffman_encoding::huffman_encoding(sc_module_name name) : sc_module(name), mVcdF
     stream_buffer_3_U->t_address0(create_codeword_U0_stream_buffer_user_V_address0);
     stream_buffer_3_U->t_ce0(create_codeword_U0_stream_buffer_user_V_ce0);
     stream_buffer_3_U->t_we0(ap_var_for_const1);
-    stream_buffer_3_U->t_d0(ap_var_for_const6);
+    stream_buffer_3_U->t_d0(ap_var_for_const5);
     stream_buffer_3_U->t_q0(stream_buffer_3_t_q0);
     stream_buffer_3_U->i_ce(ap_var_for_const0);
     stream_buffer_3_U->t_ce(ap_var_for_const0);
@@ -285,25 +261,13 @@ huffman_encoding::huffman_encoding(sc_module_name name) : sc_module(name), mVcdF
     stream_buffer_3_U->i_write(ap_channel_done_stream_buffer_3);
     stream_buffer_3_U->t_empty_n(stream_buffer_3_t_empty_n);
     stream_buffer_3_U->t_read(create_codeword_U0_ap_ready);
-    stream_buffer_4_U = new huffman_encoding_wdI("stream_buffer_4_U");
+    stream_buffer_4_U = new huffman_encoding_xdS("stream_buffer_4_U");
     stream_buffer_4_U->clk(ap_clk);
     stream_buffer_4_U->reset(ap_rst_n_inv);
-    stream_buffer_4_U->i_address0(Loop_read_stream_pro_U0_stream_buffer_4_address0);
-    stream_buffer_4_U->i_ce0(Loop_read_stream_pro_U0_stream_buffer_4_ce0);
-    stream_buffer_4_U->i_we0(Loop_read_stream_pro_U0_stream_buffer_4_we0);
-    stream_buffer_4_U->i_d0(Loop_read_stream_pro_U0_stream_buffer_4_d0);
-    stream_buffer_4_U->i_q0(stream_buffer_4_i_q0);
-    stream_buffer_4_U->t_address0(create_codeword_U0_stream_buffer_last_V_address0);
-    stream_buffer_4_U->t_ce0(create_codeword_U0_stream_buffer_last_V_ce0);
-    stream_buffer_4_U->t_we0(ap_var_for_const1);
-    stream_buffer_4_U->t_d0(ap_var_for_const6);
-    stream_buffer_4_U->t_q0(stream_buffer_4_t_q0);
-    stream_buffer_4_U->i_ce(ap_var_for_const0);
-    stream_buffer_4_U->t_ce(ap_var_for_const0);
-    stream_buffer_4_U->i_full_n(stream_buffer_4_i_full_n);
-    stream_buffer_4_U->i_write(ap_channel_done_stream_buffer_4);
-    stream_buffer_4_U->t_empty_n(stream_buffer_4_t_empty_n);
-    stream_buffer_4_U->t_read(create_codeword_U0_ap_ready);
+    stream_buffer_4_U->address0(Loop_read_stream_pro_U0_stream_buffer_4_address0);
+    stream_buffer_4_U->ce0(Loop_read_stream_pro_U0_stream_buffer_4_ce0);
+    stream_buffer_4_U->we0(Loop_read_stream_pro_U0_stream_buffer_4_we0);
+    stream_buffer_4_U->d0(Loop_read_stream_pro_U0_stream_buffer_4_d0);
     stream_buffer_5_U = new huffman_encoding_wdI("stream_buffer_5_U");
     stream_buffer_5_U->clk(ap_clk);
     stream_buffer_5_U->reset(ap_rst_n_inv);
@@ -315,7 +279,7 @@ huffman_encoding::huffman_encoding(sc_module_name name) : sc_module(name), mVcdF
     stream_buffer_5_U->t_address0(create_codeword_U0_stream_buffer_id_V_address0);
     stream_buffer_5_U->t_ce0(create_codeword_U0_stream_buffer_id_V_ce0);
     stream_buffer_5_U->t_we0(ap_var_for_const1);
-    stream_buffer_5_U->t_d0(ap_var_for_const6);
+    stream_buffer_5_U->t_d0(ap_var_for_const5);
     stream_buffer_5_U->t_q0(stream_buffer_5_t_q0);
     stream_buffer_5_U->i_ce(ap_var_for_const0);
     stream_buffer_5_U->t_ce(ap_var_for_const0);
@@ -334,7 +298,7 @@ huffman_encoding::huffman_encoding(sc_module_name name) : sc_module(name), mVcdF
     stream_buffer_6_U->t_address0(create_codeword_U0_stream_buffer_dest_V_address0);
     stream_buffer_6_U->t_ce0(create_codeword_U0_stream_buffer_dest_V_ce0);
     stream_buffer_6_U->t_we0(ap_var_for_const1);
-    stream_buffer_6_U->t_d0(ap_var_for_const6);
+    stream_buffer_6_U->t_d0(ap_var_for_const5);
     stream_buffer_6_U->t_q0(stream_buffer_6_t_q0);
     stream_buffer_6_U->i_ce(ap_var_for_const0);
     stream_buffer_6_U->t_ce(ap_var_for_const0);
@@ -379,7 +343,7 @@ huffman_encoding::huffman_encoding(sc_module_name name) : sc_module(name), mVcdF
     truncated_length_his_U->t_we0(ap_var_for_const1);
     truncated_length_his_U->t_d0(ap_var_for_const2);
     truncated_length_his_U->t_q0(truncated_length_his_t_q0);
-    truncated_length_his_U->t_address1(ap_var_for_const5);
+    truncated_length_his_U->t_address1(ap_var_for_const6);
     truncated_length_his_U->t_ce1(ap_var_for_const1);
     truncated_length_his_U->t_we1(ap_var_for_const1);
     truncated_length_his_U->t_d1(ap_var_for_const2);
@@ -702,18 +666,9 @@ huffman_encoding::huffman_encoding(sc_module_name name) : sc_module(name), mVcdF
     create_codeword_U0->codeword_length_histogram_V_address0(create_codeword_U0_codeword_length_histogram_V_address0);
     create_codeword_U0->codeword_length_histogram_V_ce0(create_codeword_U0_codeword_length_histogram_V_ce0);
     create_codeword_U0->codeword_length_histogram_V_q0(truncated_length_his_1_t_q0);
-    create_codeword_U0->stream_buffer_keep_V_address0(create_codeword_U0_stream_buffer_keep_V_address0);
-    create_codeword_U0->stream_buffer_keep_V_ce0(create_codeword_U0_stream_buffer_keep_V_ce0);
-    create_codeword_U0->stream_buffer_keep_V_q0(stream_buffer_1_t_q0);
-    create_codeword_U0->stream_buffer_strb_V_address0(create_codeword_U0_stream_buffer_strb_V_address0);
-    create_codeword_U0->stream_buffer_strb_V_ce0(create_codeword_U0_stream_buffer_strb_V_ce0);
-    create_codeword_U0->stream_buffer_strb_V_q0(stream_buffer_2_t_q0);
     create_codeword_U0->stream_buffer_user_V_address0(create_codeword_U0_stream_buffer_user_V_address0);
     create_codeword_U0->stream_buffer_user_V_ce0(create_codeword_U0_stream_buffer_user_V_ce0);
     create_codeword_U0->stream_buffer_user_V_q0(stream_buffer_3_t_q0);
-    create_codeword_U0->stream_buffer_last_V_address0(create_codeword_U0_stream_buffer_last_V_address0);
-    create_codeword_U0->stream_buffer_last_V_ce0(create_codeword_U0_stream_buffer_last_V_ce0);
-    create_codeword_U0->stream_buffer_last_V_q0(stream_buffer_4_t_q0);
     create_codeword_U0->stream_buffer_id_V_address0(create_codeword_U0_stream_buffer_id_V_address0);
     create_codeword_U0->stream_buffer_id_V_ce0(create_codeword_U0_stream_buffer_id_V_ce0);
     create_codeword_U0->stream_buffer_id_V_q0(stream_buffer_5_t_q0);
@@ -938,25 +893,13 @@ huffman_encoding::huffman_encoding(sc_module_name name) : sc_module(name), mVcdF
     SC_METHOD(thread_Loop_read_stream_pro_U0_ap_continue);
     sensitive << ( ap_sync_channel_write_stream_buffer_6 );
     sensitive << ( ap_sync_channel_write_stream_buffer_5 );
-    sensitive << ( ap_sync_channel_write_stream_buffer_4 );
     sensitive << ( ap_sync_channel_write_stream_buffer_3 );
-    sensitive << ( ap_sync_channel_write_stream_buffer_2 );
-    sensitive << ( ap_sync_channel_write_stream_buffer_1 );
 
     SC_METHOD(thread_Loop_read_stream_pro_U0_ap_start);
     sensitive << ( ap_start );
 
-    SC_METHOD(thread_Loop_read_stream_pro_U0_stream_buffer_1_full_n);
-    sensitive << ( stream_buffer_1_i_full_n );
-
-    SC_METHOD(thread_Loop_read_stream_pro_U0_stream_buffer_2_full_n);
-    sensitive << ( stream_buffer_2_i_full_n );
-
     SC_METHOD(thread_Loop_read_stream_pro_U0_stream_buffer_3_full_n);
     sensitive << ( stream_buffer_3_i_full_n );
-
-    SC_METHOD(thread_Loop_read_stream_pro_U0_stream_buffer_4_full_n);
-    sensitive << ( stream_buffer_4_i_full_n );
 
     SC_METHOD(thread_Loop_read_stream_pro_U0_stream_buffer_5_full_n);
     sensitive << ( stream_buffer_5_i_full_n );
@@ -1001,21 +944,9 @@ huffman_encoding::huffman_encoding(sc_module_name name) : sc_module(name), mVcdF
     SC_METHOD(thread_ap_channel_done_sorted_copy2_value_V);
     sensitive << ( Loop_copy_sorted_pro_U0_ap_done );
 
-    SC_METHOD(thread_ap_channel_done_stream_buffer_1);
-    sensitive << ( Loop_read_stream_pro_U0_ap_done );
-    sensitive << ( ap_sync_reg_channel_write_stream_buffer_1 );
-
-    SC_METHOD(thread_ap_channel_done_stream_buffer_2);
-    sensitive << ( Loop_read_stream_pro_U0_ap_done );
-    sensitive << ( ap_sync_reg_channel_write_stream_buffer_2 );
-
     SC_METHOD(thread_ap_channel_done_stream_buffer_3);
     sensitive << ( Loop_read_stream_pro_U0_ap_done );
     sensitive << ( ap_sync_reg_channel_write_stream_buffer_3 );
-
-    SC_METHOD(thread_ap_channel_done_stream_buffer_4);
-    sensitive << ( Loop_read_stream_pro_U0_ap_done );
-    sensitive << ( ap_sync_reg_channel_write_stream_buffer_4 );
 
     SC_METHOD(thread_ap_channel_done_stream_buffer_5);
     sensitive << ( Loop_read_stream_pro_U0_ap_done );
@@ -1051,10 +982,7 @@ huffman_encoding::huffman_encoding(sc_module_name name) : sc_module(name), mVcdF
     sensitive << ( canonize_tree_U0_ap_idle );
     sensitive << ( create_codeword_U0_ap_idle );
     sensitive << ( Block_proc_U0_ap_idle );
-    sensitive << ( stream_buffer_1_t_empty_n );
-    sensitive << ( stream_buffer_2_t_empty_n );
     sensitive << ( stream_buffer_3_t_empty_n );
-    sensitive << ( stream_buffer_4_t_empty_n );
     sensitive << ( stream_buffer_5_t_empty_n );
     sensitive << ( stream_buffer_6_t_empty_n );
     sensitive << ( filtered_value_V_t_empty_n );
@@ -1112,25 +1040,10 @@ huffman_encoding::huffman_encoding(sc_module_name name) : sc_module(name), mVcdF
     sensitive << ( sort_U0_out_frequency_V_full_n );
     sensitive << ( ap_sync_reg_channel_write_sorted_1 );
 
-    SC_METHOD(thread_ap_sync_channel_write_stream_buffer_1);
-    sensitive << ( ap_channel_done_stream_buffer_1 );
-    sensitive << ( Loop_read_stream_pro_U0_stream_buffer_1_full_n );
-    sensitive << ( ap_sync_reg_channel_write_stream_buffer_1 );
-
-    SC_METHOD(thread_ap_sync_channel_write_stream_buffer_2);
-    sensitive << ( ap_channel_done_stream_buffer_2 );
-    sensitive << ( Loop_read_stream_pro_U0_stream_buffer_2_full_n );
-    sensitive << ( ap_sync_reg_channel_write_stream_buffer_2 );
-
     SC_METHOD(thread_ap_sync_channel_write_stream_buffer_3);
     sensitive << ( ap_channel_done_stream_buffer_3 );
     sensitive << ( Loop_read_stream_pro_U0_stream_buffer_3_full_n );
     sensitive << ( ap_sync_reg_channel_write_stream_buffer_3 );
-
-    SC_METHOD(thread_ap_sync_channel_write_stream_buffer_4);
-    sensitive << ( ap_channel_done_stream_buffer_4 );
-    sensitive << ( Loop_read_stream_pro_U0_stream_buffer_4_full_n );
-    sensitive << ( ap_sync_reg_channel_write_stream_buffer_4 );
 
     SC_METHOD(thread_ap_sync_channel_write_stream_buffer_5);
     sensitive << ( ap_channel_done_stream_buffer_5 );
@@ -1195,10 +1108,7 @@ huffman_encoding::huffman_encoding(sc_module_name name) : sc_module(name), mVcdF
     sensitive << ( ap_sync_done );
 
     SC_METHOD(thread_create_codeword_U0_ap_start);
-    sensitive << ( stream_buffer_1_t_empty_n );
-    sensitive << ( stream_buffer_2_t_empty_n );
     sensitive << ( stream_buffer_3_t_empty_n );
-    sensitive << ( stream_buffer_4_t_empty_n );
     sensitive << ( stream_buffer_5_t_empty_n );
     sensitive << ( stream_buffer_6_t_empty_n );
     sensitive << ( truncated_length_his_1_t_empty_n );
@@ -1332,11 +1242,9 @@ huffman_encoding::huffman_encoding(sc_module_name name) : sc_module(name), mVcdF
 
     SC_THREAD(thread_ap_var_for_const3);
 
-    SC_THREAD(thread_ap_var_for_const6);
+    SC_THREAD(thread_ap_var_for_const5);
 
     SC_THREAD(thread_ap_var_for_const1);
-
-    SC_THREAD(thread_ap_var_for_const5);
 
     SC_THREAD(thread_ap_var_for_const2);
 
@@ -1344,12 +1252,11 @@ huffman_encoding::huffman_encoding(sc_module_name name) : sc_module(name), mVcdF
 
     SC_THREAD(thread_ap_var_for_const4);
 
+    SC_THREAD(thread_ap_var_for_const6);
+
     ap_sync_reg_channel_write_stream_buffer_6 = SC_LOGIC_0;
     ap_sync_reg_channel_write_stream_buffer_5 = SC_LOGIC_0;
-    ap_sync_reg_channel_write_stream_buffer_4 = SC_LOGIC_0;
     ap_sync_reg_channel_write_stream_buffer_3 = SC_LOGIC_0;
-    ap_sync_reg_channel_write_stream_buffer_2 = SC_LOGIC_0;
-    ap_sync_reg_channel_write_stream_buffer_1 = SC_LOGIC_0;
     ap_sync_reg_channel_write_filtered_frequency_V = SC_LOGIC_0;
     ap_sync_reg_channel_write_filtered_value_V = SC_LOGIC_0;
     ap_sync_reg_channel_write_sorted_1 = SC_LOGIC_0;
@@ -1434,14 +1341,8 @@ huffman_encoding::huffman_encoding(sc_module_name name) : sc_module(name), mVcdF
     sc_trace(mVcdFile, right_V_i_q1, "right_V_i_q1");
     sc_trace(mVcdFile, right_V_t_q0, "right_V_t_q0");
     sc_trace(mVcdFile, right_V_t_q1, "right_V_t_q1");
-    sc_trace(mVcdFile, stream_buffer_1_i_q0, "stream_buffer_1_i_q0");
-    sc_trace(mVcdFile, stream_buffer_1_t_q0, "stream_buffer_1_t_q0");
-    sc_trace(mVcdFile, stream_buffer_2_i_q0, "stream_buffer_2_i_q0");
-    sc_trace(mVcdFile, stream_buffer_2_t_q0, "stream_buffer_2_t_q0");
     sc_trace(mVcdFile, stream_buffer_3_i_q0, "stream_buffer_3_i_q0");
     sc_trace(mVcdFile, stream_buffer_3_t_q0, "stream_buffer_3_t_q0");
-    sc_trace(mVcdFile, stream_buffer_4_i_q0, "stream_buffer_4_i_q0");
-    sc_trace(mVcdFile, stream_buffer_4_t_q0, "stream_buffer_4_t_q0");
     sc_trace(mVcdFile, stream_buffer_5_i_q0, "stream_buffer_5_i_q0");
     sc_trace(mVcdFile, stream_buffer_5_t_q0, "stream_buffer_5_t_q0");
     sc_trace(mVcdFile, stream_buffer_6_i_q0, "stream_buffer_6_i_q0");
@@ -1498,22 +1399,10 @@ huffman_encoding::huffman_encoding(sc_module_name name) : sc_module(name), mVcdF
     sc_trace(mVcdFile, Loop_read_stream_pro_U0_stream_buffer_5_full_n, "Loop_read_stream_pro_U0_stream_buffer_5_full_n");
     sc_trace(mVcdFile, ap_sync_reg_channel_write_stream_buffer_5, "ap_sync_reg_channel_write_stream_buffer_5");
     sc_trace(mVcdFile, ap_sync_channel_write_stream_buffer_5, "ap_sync_channel_write_stream_buffer_5");
-    sc_trace(mVcdFile, ap_channel_done_stream_buffer_4, "ap_channel_done_stream_buffer_4");
-    sc_trace(mVcdFile, Loop_read_stream_pro_U0_stream_buffer_4_full_n, "Loop_read_stream_pro_U0_stream_buffer_4_full_n");
-    sc_trace(mVcdFile, ap_sync_reg_channel_write_stream_buffer_4, "ap_sync_reg_channel_write_stream_buffer_4");
-    sc_trace(mVcdFile, ap_sync_channel_write_stream_buffer_4, "ap_sync_channel_write_stream_buffer_4");
     sc_trace(mVcdFile, ap_channel_done_stream_buffer_3, "ap_channel_done_stream_buffer_3");
     sc_trace(mVcdFile, Loop_read_stream_pro_U0_stream_buffer_3_full_n, "Loop_read_stream_pro_U0_stream_buffer_3_full_n");
     sc_trace(mVcdFile, ap_sync_reg_channel_write_stream_buffer_3, "ap_sync_reg_channel_write_stream_buffer_3");
     sc_trace(mVcdFile, ap_sync_channel_write_stream_buffer_3, "ap_sync_channel_write_stream_buffer_3");
-    sc_trace(mVcdFile, ap_channel_done_stream_buffer_2, "ap_channel_done_stream_buffer_2");
-    sc_trace(mVcdFile, Loop_read_stream_pro_U0_stream_buffer_2_full_n, "Loop_read_stream_pro_U0_stream_buffer_2_full_n");
-    sc_trace(mVcdFile, ap_sync_reg_channel_write_stream_buffer_2, "ap_sync_reg_channel_write_stream_buffer_2");
-    sc_trace(mVcdFile, ap_sync_channel_write_stream_buffer_2, "ap_sync_channel_write_stream_buffer_2");
-    sc_trace(mVcdFile, ap_channel_done_stream_buffer_1, "ap_channel_done_stream_buffer_1");
-    sc_trace(mVcdFile, Loop_read_stream_pro_U0_stream_buffer_1_full_n, "Loop_read_stream_pro_U0_stream_buffer_1_full_n");
-    sc_trace(mVcdFile, ap_sync_reg_channel_write_stream_buffer_1, "ap_sync_reg_channel_write_stream_buffer_1");
-    sc_trace(mVcdFile, ap_sync_channel_write_stream_buffer_1, "ap_sync_channel_write_stream_buffer_1");
     sc_trace(mVcdFile, filter_U0_ap_start, "filter_U0_ap_start");
     sc_trace(mVcdFile, filter_U0_ap_done, "filter_U0_ap_done");
     sc_trace(mVcdFile, filter_U0_ap_continue, "filter_U0_ap_continue");
@@ -1715,14 +1604,8 @@ huffman_encoding::huffman_encoding(sc_module_name name) : sc_module(name), mVcdF
     sc_trace(mVcdFile, create_codeword_U0_symbol_bits_V_ce0, "create_codeword_U0_symbol_bits_V_ce0");
     sc_trace(mVcdFile, create_codeword_U0_codeword_length_histogram_V_address0, "create_codeword_U0_codeword_length_histogram_V_address0");
     sc_trace(mVcdFile, create_codeword_U0_codeword_length_histogram_V_ce0, "create_codeword_U0_codeword_length_histogram_V_ce0");
-    sc_trace(mVcdFile, create_codeword_U0_stream_buffer_keep_V_address0, "create_codeword_U0_stream_buffer_keep_V_address0");
-    sc_trace(mVcdFile, create_codeword_U0_stream_buffer_keep_V_ce0, "create_codeword_U0_stream_buffer_keep_V_ce0");
-    sc_trace(mVcdFile, create_codeword_U0_stream_buffer_strb_V_address0, "create_codeword_U0_stream_buffer_strb_V_address0");
-    sc_trace(mVcdFile, create_codeword_U0_stream_buffer_strb_V_ce0, "create_codeword_U0_stream_buffer_strb_V_ce0");
     sc_trace(mVcdFile, create_codeword_U0_stream_buffer_user_V_address0, "create_codeword_U0_stream_buffer_user_V_address0");
     sc_trace(mVcdFile, create_codeword_U0_stream_buffer_user_V_ce0, "create_codeword_U0_stream_buffer_user_V_ce0");
-    sc_trace(mVcdFile, create_codeword_U0_stream_buffer_last_V_address0, "create_codeword_U0_stream_buffer_last_V_address0");
-    sc_trace(mVcdFile, create_codeword_U0_stream_buffer_last_V_ce0, "create_codeword_U0_stream_buffer_last_V_ce0");
     sc_trace(mVcdFile, create_codeword_U0_stream_buffer_id_V_address0, "create_codeword_U0_stream_buffer_id_V_address0");
     sc_trace(mVcdFile, create_codeword_U0_stream_buffer_id_V_ce0, "create_codeword_U0_stream_buffer_id_V_ce0");
     sc_trace(mVcdFile, create_codeword_U0_stream_buffer_dest_V_address0, "create_codeword_U0_stream_buffer_dest_V_address0");
@@ -1744,14 +1627,8 @@ huffman_encoding::huffman_encoding(sc_module_name name) : sc_module(name), mVcdF
     sc_trace(mVcdFile, Block_proc_U0_extLd_loc_read, "Block_proc_U0_extLd_loc_read");
     sc_trace(mVcdFile, Block_proc_U0_num_nonzero_symbols, "Block_proc_U0_num_nonzero_symbols");
     sc_trace(mVcdFile, Block_proc_U0_num_nonzero_symbols_ap_vld, "Block_proc_U0_num_nonzero_symbols_ap_vld");
-    sc_trace(mVcdFile, stream_buffer_1_i_full_n, "stream_buffer_1_i_full_n");
-    sc_trace(mVcdFile, stream_buffer_1_t_empty_n, "stream_buffer_1_t_empty_n");
-    sc_trace(mVcdFile, stream_buffer_2_i_full_n, "stream_buffer_2_i_full_n");
-    sc_trace(mVcdFile, stream_buffer_2_t_empty_n, "stream_buffer_2_t_empty_n");
     sc_trace(mVcdFile, stream_buffer_3_i_full_n, "stream_buffer_3_i_full_n");
     sc_trace(mVcdFile, stream_buffer_3_t_empty_n, "stream_buffer_3_t_empty_n");
-    sc_trace(mVcdFile, stream_buffer_4_i_full_n, "stream_buffer_4_i_full_n");
-    sc_trace(mVcdFile, stream_buffer_4_t_empty_n, "stream_buffer_4_t_empty_n");
     sc_trace(mVcdFile, stream_buffer_5_i_full_n, "stream_buffer_5_i_full_n");
     sc_trace(mVcdFile, stream_buffer_5_t_empty_n, "stream_buffer_5_t_empty_n");
     sc_trace(mVcdFile, stream_buffer_6_i_full_n, "stream_buffer_6_i_full_n");
@@ -1918,16 +1795,12 @@ void huffman_encoding::thread_ap_var_for_const3() {
     ap_var_for_const3 = ap_const_lv32_0;
 }
 
-void huffman_encoding::thread_ap_var_for_const6() {
-    ap_var_for_const6 = ap_const_lv1_0;
+void huffman_encoding::thread_ap_var_for_const5() {
+    ap_var_for_const5 = ap_const_lv1_0;
 }
 
 void huffman_encoding::thread_ap_var_for_const1() {
     ap_var_for_const1 = ap_const_logic_0;
-}
-
-void huffman_encoding::thread_ap_var_for_const5() {
-    ap_var_for_const5 = ap_const_lv6_0;
 }
 
 void huffman_encoding::thread_ap_var_for_const2() {
@@ -1940,6 +1813,10 @@ void huffman_encoding::thread_ap_var_for_const7() {
 
 void huffman_encoding::thread_ap_var_for_const4() {
     ap_var_for_const4 = ap_const_lv8_0;
+}
+
+void huffman_encoding::thread_ap_var_for_const6() {
+    ap_var_for_const6 = ap_const_lv6_0;
 }
 
 void huffman_encoding::thread_ap_clk_no_reset_() {
@@ -2014,26 +1891,6 @@ void huffman_encoding::thread_ap_clk_no_reset_() {
         }
     }
     if ( ap_rst_n_inv.read() == ap_const_logic_1) {
-        ap_sync_reg_channel_write_stream_buffer_1 = ap_const_logic_0;
-    } else {
-        if (esl_seteq<1,1,1>(ap_const_logic_1, (Loop_read_stream_pro_U0_ap_done.read() & 
-             Loop_read_stream_pro_U0_ap_continue.read()))) {
-            ap_sync_reg_channel_write_stream_buffer_1 = ap_const_logic_0;
-        } else {
-            ap_sync_reg_channel_write_stream_buffer_1 = ap_sync_channel_write_stream_buffer_1.read();
-        }
-    }
-    if ( ap_rst_n_inv.read() == ap_const_logic_1) {
-        ap_sync_reg_channel_write_stream_buffer_2 = ap_const_logic_0;
-    } else {
-        if (esl_seteq<1,1,1>(ap_const_logic_1, (Loop_read_stream_pro_U0_ap_done.read() & 
-             Loop_read_stream_pro_U0_ap_continue.read()))) {
-            ap_sync_reg_channel_write_stream_buffer_2 = ap_const_logic_0;
-        } else {
-            ap_sync_reg_channel_write_stream_buffer_2 = ap_sync_channel_write_stream_buffer_2.read();
-        }
-    }
-    if ( ap_rst_n_inv.read() == ap_const_logic_1) {
         ap_sync_reg_channel_write_stream_buffer_3 = ap_const_logic_0;
     } else {
         if (esl_seteq<1,1,1>(ap_const_logic_1, (Loop_read_stream_pro_U0_ap_done.read() & 
@@ -2041,16 +1898,6 @@ void huffman_encoding::thread_ap_clk_no_reset_() {
             ap_sync_reg_channel_write_stream_buffer_3 = ap_const_logic_0;
         } else {
             ap_sync_reg_channel_write_stream_buffer_3 = ap_sync_channel_write_stream_buffer_3.read();
-        }
-    }
-    if ( ap_rst_n_inv.read() == ap_const_logic_1) {
-        ap_sync_reg_channel_write_stream_buffer_4 = ap_const_logic_0;
-    } else {
-        if (esl_seteq<1,1,1>(ap_const_logic_1, (Loop_read_stream_pro_U0_ap_done.read() & 
-             Loop_read_stream_pro_U0_ap_continue.read()))) {
-            ap_sync_reg_channel_write_stream_buffer_4 = ap_const_logic_0;
-        } else {
-            ap_sync_reg_channel_write_stream_buffer_4 = ap_sync_channel_write_stream_buffer_4.read();
         }
     }
     if ( ap_rst_n_inv.read() == ap_const_logic_1) {
@@ -2144,27 +1991,15 @@ void huffman_encoding::thread_Loop_copy_sorted_pro_U0_start_full_n() {
 }
 
 void huffman_encoding::thread_Loop_read_stream_pro_U0_ap_continue() {
-    Loop_read_stream_pro_U0_ap_continue = (ap_sync_channel_write_stream_buffer_6.read() & ap_sync_channel_write_stream_buffer_5.read() & ap_sync_channel_write_stream_buffer_4.read() & ap_sync_channel_write_stream_buffer_3.read() & ap_sync_channel_write_stream_buffer_2.read() & ap_sync_channel_write_stream_buffer_1.read());
+    Loop_read_stream_pro_U0_ap_continue = (ap_sync_channel_write_stream_buffer_6.read() & ap_sync_channel_write_stream_buffer_5.read() & ap_sync_channel_write_stream_buffer_3.read());
 }
 
 void huffman_encoding::thread_Loop_read_stream_pro_U0_ap_start() {
     Loop_read_stream_pro_U0_ap_start = ap_start.read();
 }
 
-void huffman_encoding::thread_Loop_read_stream_pro_U0_stream_buffer_1_full_n() {
-    Loop_read_stream_pro_U0_stream_buffer_1_full_n = stream_buffer_1_i_full_n.read();
-}
-
-void huffman_encoding::thread_Loop_read_stream_pro_U0_stream_buffer_2_full_n() {
-    Loop_read_stream_pro_U0_stream_buffer_2_full_n = stream_buffer_2_i_full_n.read();
-}
-
 void huffman_encoding::thread_Loop_read_stream_pro_U0_stream_buffer_3_full_n() {
     Loop_read_stream_pro_U0_stream_buffer_3_full_n = stream_buffer_3_i_full_n.read();
-}
-
-void huffman_encoding::thread_Loop_read_stream_pro_U0_stream_buffer_4_full_n() {
-    Loop_read_stream_pro_U0_stream_buffer_4_full_n = stream_buffer_4_i_full_n.read();
 }
 
 void huffman_encoding::thread_Loop_read_stream_pro_U0_stream_buffer_5_full_n() {
@@ -2222,23 +2057,8 @@ void huffman_encoding::thread_ap_channel_done_sorted_copy2_value_V() {
     ap_channel_done_sorted_copy2_value_V = Loop_copy_sorted_pro_U0_ap_done.read();
 }
 
-void huffman_encoding::thread_ap_channel_done_stream_buffer_1() {
-    ap_channel_done_stream_buffer_1 = (Loop_read_stream_pro_U0_ap_done.read() & (ap_sync_reg_channel_write_stream_buffer_1.read() ^ 
-  ap_const_logic_1));
-}
-
-void huffman_encoding::thread_ap_channel_done_stream_buffer_2() {
-    ap_channel_done_stream_buffer_2 = (Loop_read_stream_pro_U0_ap_done.read() & (ap_sync_reg_channel_write_stream_buffer_2.read() ^ 
-  ap_const_logic_1));
-}
-
 void huffman_encoding::thread_ap_channel_done_stream_buffer_3() {
     ap_channel_done_stream_buffer_3 = (Loop_read_stream_pro_U0_ap_done.read() & (ap_sync_reg_channel_write_stream_buffer_3.read() ^ 
-  ap_const_logic_1));
-}
-
-void huffman_encoding::thread_ap_channel_done_stream_buffer_4() {
-    ap_channel_done_stream_buffer_4 = (Loop_read_stream_pro_U0_ap_done.read() & (ap_sync_reg_channel_write_stream_buffer_4.read() ^ 
   ap_const_logic_1));
 }
 
@@ -2271,10 +2091,7 @@ void huffman_encoding::thread_ap_done() {
 }
 
 void huffman_encoding::thread_ap_idle() {
-    ap_idle = (Loop_read_stream_pro_U0_ap_idle.read() & filter_U0_ap_idle.read() & Block_huffman_encodi_U0_ap_idle.read() & sort_U0_ap_idle.read() & Loop_copy_sorted_pro_U0_ap_idle.read() & create_tree_U0_ap_idle.read() & compute_bit_length_U0_ap_idle.read() & truncate_tree_U0_ap_idle.read() & canonize_tree_U0_ap_idle.read() & create_codeword_U0_ap_idle.read() & Block_proc_U0_ap_idle.read() & (stream_buffer_1_t_empty_n.read() ^ 
-  ap_const_logic_1) & (stream_buffer_2_t_empty_n.read() ^ 
-  ap_const_logic_1) & (stream_buffer_3_t_empty_n.read() ^ 
-  ap_const_logic_1) & (stream_buffer_4_t_empty_n.read() ^ 
+    ap_idle = (Loop_read_stream_pro_U0_ap_idle.read() & filter_U0_ap_idle.read() & Block_huffman_encodi_U0_ap_idle.read() & sort_U0_ap_idle.read() & Loop_copy_sorted_pro_U0_ap_idle.read() & create_tree_U0_ap_idle.read() & compute_bit_length_U0_ap_idle.read() & truncate_tree_U0_ap_idle.read() & canonize_tree_U0_ap_idle.read() & create_codeword_U0_ap_idle.read() & Block_proc_U0_ap_idle.read() & (stream_buffer_3_t_empty_n.read() ^ 
   ap_const_logic_1) & (stream_buffer_5_t_empty_n.read() ^ 
   ap_const_logic_1) & (stream_buffer_6_t_empty_n.read() ^ 
   ap_const_logic_1) & (filtered_value_V_t_empty_n.read() ^ 
@@ -2336,24 +2153,9 @@ void huffman_encoding::thread_ap_sync_channel_write_sorted_1() {
   sort_U0_out_frequency_V_full_n.read()) | ap_sync_reg_channel_write_sorted_1.read());
 }
 
-void huffman_encoding::thread_ap_sync_channel_write_stream_buffer_1() {
-    ap_sync_channel_write_stream_buffer_1 = ((ap_channel_done_stream_buffer_1.read() & 
-  Loop_read_stream_pro_U0_stream_buffer_1_full_n.read()) | ap_sync_reg_channel_write_stream_buffer_1.read());
-}
-
-void huffman_encoding::thread_ap_sync_channel_write_stream_buffer_2() {
-    ap_sync_channel_write_stream_buffer_2 = ((ap_channel_done_stream_buffer_2.read() & 
-  Loop_read_stream_pro_U0_stream_buffer_2_full_n.read()) | ap_sync_reg_channel_write_stream_buffer_2.read());
-}
-
 void huffman_encoding::thread_ap_sync_channel_write_stream_buffer_3() {
     ap_sync_channel_write_stream_buffer_3 = ((ap_channel_done_stream_buffer_3.read() & 
   Loop_read_stream_pro_U0_stream_buffer_3_full_n.read()) | ap_sync_reg_channel_write_stream_buffer_3.read());
-}
-
-void huffman_encoding::thread_ap_sync_channel_write_stream_buffer_4() {
-    ap_sync_channel_write_stream_buffer_4 = ((ap_channel_done_stream_buffer_4.read() & 
-  Loop_read_stream_pro_U0_stream_buffer_4_full_n.read()) | ap_sync_reg_channel_write_stream_buffer_4.read());
 }
 
 void huffman_encoding::thread_ap_sync_channel_write_stream_buffer_5() {
@@ -2433,7 +2235,7 @@ void huffman_encoding::thread_create_codeword_U0_ap_continue() {
 }
 
 void huffman_encoding::thread_create_codeword_U0_ap_start() {
-    create_codeword_U0_ap_start = (stream_buffer_1_t_empty_n.read() & stream_buffer_2_t_empty_n.read() & stream_buffer_3_t_empty_n.read() & stream_buffer_4_t_empty_n.read() & stream_buffer_5_t_empty_n.read() & stream_buffer_6_t_empty_n.read() & truncated_length_his_1_t_empty_n.read() & symbol_bits_V_t_empty_n.read());
+    create_codeword_U0_ap_start = (stream_buffer_3_t_empty_n.read() & stream_buffer_5_t_empty_n.read() & stream_buffer_6_t_empty_n.read() & truncated_length_his_1_t_empty_n.read() & symbol_bits_V_t_empty_n.read());
 }
 
 void huffman_encoding::thread_create_codeword_U0_start_full_n() {
