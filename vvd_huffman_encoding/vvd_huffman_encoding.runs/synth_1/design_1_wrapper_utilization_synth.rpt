@@ -1,7 +1,7 @@
 Copyright 1986-2019 Xilinx, Inc. All Rights Reserved.
 ---------------------------------------------------------------------------------------------------------------------------
 | Tool Version : Vivado v.2019.2 (win64) Build 2708876 Wed Nov  6 21:40:23 MST 2019
-| Date         : Thu Nov 19 04:13:48 2020
+| Date         : Wed Nov 25 16:11:50 2020
 | Host         : Chengde-DELL running 64-bit major release  (build 9200)
 | Command      : report_utilization -file design_1_wrapper_utilization_synth.rpt -pb design_1_wrapper_utilization_synth.pb
 | Design       : design_1_wrapper
@@ -175,15 +175,12 @@ Table of Contents
 +---------------------------------+------+
 |             Ref Name            | Used |
 +---------------------------------+------+
-| design_1_xbar_1                 |    1 |
-| design_1_xbar_0                 |    1 |
-| design_1_rst_ps7_0_100M_0       |    1 |
-| design_1_processing_system7_0_0 |    1 |
-| design_1_huffman_encoding_0_0   |    1 |
-| design_1_axi_dma_1_0            |    1 |
-| design_1_axi_dma_0_0            |    1 |
-| design_1_auto_us_2              |    1 |
-| design_1_auto_us_1              |    1 |
+| design_1_xbar_3                 |    1 |
+| design_1_xbar_2                 |    1 |
+| design_1_rst_ps7_0_100M_1       |    1 |
+| design_1_processing_system7_0_1 |    1 |
+| design_1_huffman_encoding_0_1   |    1 |
+| design_1_axi_dma_0_1            |    1 |
 | design_1_auto_us_0              |    1 |
 | design_1_auto_pc_1              |    1 |
 | design_1_auto_pc_0              |    1 |
