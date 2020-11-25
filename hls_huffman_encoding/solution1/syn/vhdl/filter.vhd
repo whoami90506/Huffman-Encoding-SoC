@@ -74,19 +74,19 @@ architecture behav of filter is
     signal symbol_histogram_TDATA_blk_n : STD_LOGIC;
     signal ap_CS_fsm_state2 : STD_LOGIC;
     attribute fsm_encoding of ap_CS_fsm_state2 : signal is "none";
-    signal icmp_ln13_fu_155_p2 : STD_LOGIC_VECTOR (0 downto 0);
+    signal icmp_ln13_fu_147_p2 : STD_LOGIC_VECTOR (0 downto 0);
     signal n_out_blk_n : STD_LOGIC;
     signal ap_CS_fsm_state3 : STD_LOGIC;
     attribute fsm_encoding of ap_CS_fsm_state3 : signal is "none";
-    signal i_fu_161_p2 : STD_LOGIC_VECTOR (8 downto 0);
+    signal i_fu_153_p2 : STD_LOGIC_VECTOR (8 downto 0);
     signal ap_block_state2 : BOOLEAN;
-    signal i_0_i_reg_135 : STD_LOGIC_VECTOR (8 downto 0);
+    signal i_0_i_reg_127 : STD_LOGIC_VECTOR (8 downto 0);
     signal ap_block_state1 : BOOLEAN;
-    signal zext_ln544_fu_193_p1 : STD_LOGIC_VECTOR (63 downto 0);
-    signal icmp_ln883_fu_187_p2 : STD_LOGIC_VECTOR (0 downto 0);
-    signal t_V_fu_80 : STD_LOGIC_VECTOR (8 downto 0);
-    signal j_V_fu_199_p2 : STD_LOGIC_VECTOR (8 downto 0);
-    signal frequency_V_fu_182_p1 : STD_LOGIC_VECTOR (31 downto 0);
+    signal zext_ln544_fu_185_p1 : STD_LOGIC_VECTOR (63 downto 0);
+    signal icmp_ln883_fu_179_p2 : STD_LOGIC_VECTOR (0 downto 0);
+    signal t_V_fu_72 : STD_LOGIC_VECTOR (8 downto 0);
+    signal j_V_fu_191_p2 : STD_LOGIC_VECTOR (8 downto 0);
+    signal frequency_V_fu_174_p1 : STD_LOGIC_VECTOR (31 downto 0);
     signal ap_NS_fsm : STD_LOGIC_VECTOR (2 downto 0);
     signal regslice_both_in_V_data_V_U_apdone_blk : STD_LOGIC;
     signal symbol_histogram_TDATA_int : STD_LOGIC_VECTOR (47 downto 0);
@@ -282,29 +282,29 @@ begin
     end process;
 
 
-    i_0_i_reg_135_assign_proc : process (ap_clk)
+    i_0_i_reg_127_assign_proc : process (ap_clk)
     begin
         if (ap_clk'event and ap_clk = '1') then
-            if ((not(((icmp_ln13_fu_155_p2 = ap_const_lv1_0) and (symbol_histogram_TVALID_int = ap_const_logic_0))) and (icmp_ln13_fu_155_p2 = ap_const_lv1_0) and (ap_const_logic_1 = ap_CS_fsm_state2))) then 
-                i_0_i_reg_135 <= i_fu_161_p2;
+            if ((not(((icmp_ln13_fu_147_p2 = ap_const_lv1_0) and (symbol_histogram_TVALID_int = ap_const_logic_0))) and (icmp_ln13_fu_147_p2 = ap_const_lv1_0) and (ap_const_logic_1 = ap_CS_fsm_state2))) then 
+                i_0_i_reg_127 <= i_fu_153_p2;
             elsif ((not(((real_start = ap_const_logic_0) or (ap_done_reg = ap_const_logic_1))) and (ap_const_logic_1 = ap_CS_fsm_state1))) then 
-                i_0_i_reg_135 <= ap_const_lv9_0;
+                i_0_i_reg_127 <= ap_const_lv9_0;
             end if; 
         end if;
     end process;
 
-    t_V_fu_80_assign_proc : process (ap_clk)
+    t_V_fu_72_assign_proc : process (ap_clk)
     begin
         if (ap_clk'event and ap_clk = '1') then
-            if ((not(((icmp_ln13_fu_155_p2 = ap_const_lv1_0) and (symbol_histogram_TVALID_int = ap_const_logic_0))) and (icmp_ln883_fu_187_p2 = ap_const_lv1_0) and (icmp_ln13_fu_155_p2 = ap_const_lv1_0) and (ap_const_logic_1 = ap_CS_fsm_state2))) then 
-                t_V_fu_80 <= j_V_fu_199_p2;
+            if ((not(((icmp_ln13_fu_147_p2 = ap_const_lv1_0) and (symbol_histogram_TVALID_int = ap_const_logic_0))) and (icmp_ln883_fu_179_p2 = ap_const_lv1_0) and (icmp_ln13_fu_147_p2 = ap_const_lv1_0) and (ap_const_logic_1 = ap_CS_fsm_state2))) then 
+                t_V_fu_72 <= j_V_fu_191_p2;
             elsif ((not(((real_start = ap_const_logic_0) or (ap_done_reg = ap_const_logic_1))) and (ap_const_logic_1 = ap_CS_fsm_state1))) then 
-                t_V_fu_80 <= ap_const_lv9_0;
+                t_V_fu_72 <= ap_const_lv9_0;
             end if; 
         end if;
     end process;
 
-    ap_NS_fsm_assign_proc : process (real_start, ap_done_reg, ap_CS_fsm, ap_CS_fsm_state1, n_out_full_n, ap_CS_fsm_state2, icmp_ln13_fu_155_p2, ap_CS_fsm_state3, symbol_histogram_TVALID_int)
+    ap_NS_fsm_assign_proc : process (real_start, ap_done_reg, ap_CS_fsm, ap_CS_fsm_state1, n_out_full_n, ap_CS_fsm_state2, icmp_ln13_fu_147_p2, ap_CS_fsm_state3, symbol_histogram_TVALID_int)
     begin
         case ap_CS_fsm is
             when ap_ST_fsm_state1 => 
@@ -314,9 +314,9 @@ begin
                     ap_NS_fsm <= ap_ST_fsm_state1;
                 end if;
             when ap_ST_fsm_state2 => 
-                if ((not(((icmp_ln13_fu_155_p2 = ap_const_lv1_0) and (symbol_histogram_TVALID_int = ap_const_logic_0))) and (icmp_ln13_fu_155_p2 = ap_const_lv1_0) and (ap_const_logic_1 = ap_CS_fsm_state2))) then
+                if ((not(((icmp_ln13_fu_147_p2 = ap_const_lv1_0) and (symbol_histogram_TVALID_int = ap_const_logic_0))) and (icmp_ln13_fu_147_p2 = ap_const_lv1_0) and (ap_const_logic_1 = ap_CS_fsm_state2))) then
                     ap_NS_fsm <= ap_ST_fsm_state2;
-                elsif ((not(((icmp_ln13_fu_155_p2 = ap_const_lv1_0) and (symbol_histogram_TVALID_int = ap_const_logic_0))) and (icmp_ln13_fu_155_p2 = ap_const_lv1_1) and (ap_const_logic_1 = ap_CS_fsm_state2))) then
+                elsif ((not(((icmp_ln13_fu_147_p2 = ap_const_lv1_0) and (symbol_histogram_TVALID_int = ap_const_logic_0))) and (icmp_ln13_fu_147_p2 = ap_const_lv1_1) and (ap_const_logic_1 = ap_CS_fsm_state2))) then
                     ap_NS_fsm <= ap_ST_fsm_state3;
                 else
                     ap_NS_fsm <= ap_ST_fsm_state2;
@@ -341,9 +341,9 @@ begin
     end process;
 
 
-    ap_block_state2_assign_proc : process(icmp_ln13_fu_155_p2, symbol_histogram_TVALID_int)
+    ap_block_state2_assign_proc : process(icmp_ln13_fu_147_p2, symbol_histogram_TVALID_int)
     begin
-                ap_block_state2 <= ((icmp_ln13_fu_155_p2 = ap_const_lv1_0) and (symbol_histogram_TVALID_int = ap_const_logic_0));
+                ap_block_state2 <= ((icmp_ln13_fu_147_p2 = ap_const_lv1_0) and (symbol_histogram_TVALID_int = ap_const_logic_0));
     end process;
 
 
@@ -367,10 +367,10 @@ begin
     end process;
 
     ap_ready <= internal_ap_ready;
-    frequency_V_fu_182_p1 <= symbol_histogram_TDATA_int(32 - 1 downto 0);
-    i_fu_161_p2 <= std_logic_vector(unsigned(i_0_i_reg_135) + unsigned(ap_const_lv9_1));
-    icmp_ln13_fu_155_p2 <= "1" when (i_0_i_reg_135 = ap_const_lv9_100) else "0";
-    icmp_ln883_fu_187_p2 <= "1" when (frequency_V_fu_182_p1 = ap_const_lv32_0) else "0";
+    frequency_V_fu_174_p1 <= symbol_histogram_TDATA_int(32 - 1 downto 0);
+    i_fu_153_p2 <= std_logic_vector(unsigned(i_0_i_reg_127) + unsigned(ap_const_lv9_1));
+    icmp_ln13_fu_147_p2 <= "1" when (i_0_i_reg_127 = ap_const_lv9_100) else "0";
+    icmp_ln883_fu_179_p2 <= "1" when (frequency_V_fu_174_p1 = ap_const_lv32_0) else "0";
 
     internal_ap_ready_assign_proc : process(n_out_full_n, ap_CS_fsm_state3)
     begin
@@ -381,7 +381,7 @@ begin
         end if; 
     end process;
 
-    j_V_fu_199_p2 <= std_logic_vector(unsigned(t_V_fu_80) + unsigned(ap_const_lv9_1));
+    j_V_fu_191_p2 <= std_logic_vector(unsigned(t_V_fu_72) + unsigned(ap_const_lv9_1));
 
     n_out_blk_n_assign_proc : process(n_out_full_n, ap_CS_fsm_state3)
     begin
@@ -392,7 +392,7 @@ begin
         end if; 
     end process;
 
-    n_out_din <= t_V_fu_80;
+    n_out_din <= t_V_fu_72;
 
     n_out_write_assign_proc : process(n_out_full_n, ap_CS_fsm_state3)
     begin
@@ -403,33 +403,33 @@ begin
         end if; 
     end process;
 
-    out_frequency_V_address0 <= zext_ln544_fu_193_p1(8 - 1 downto 0);
+    out_frequency_V_address0 <= zext_ln544_fu_185_p1(8 - 1 downto 0);
 
-    out_frequency_V_ce0_assign_proc : process(ap_CS_fsm_state2, icmp_ln13_fu_155_p2, symbol_histogram_TVALID_int)
+    out_frequency_V_ce0_assign_proc : process(ap_CS_fsm_state2, icmp_ln13_fu_147_p2, symbol_histogram_TVALID_int)
     begin
-        if ((not(((icmp_ln13_fu_155_p2 = ap_const_lv1_0) and (symbol_histogram_TVALID_int = ap_const_logic_0))) and (ap_const_logic_1 = ap_CS_fsm_state2))) then 
+        if ((not(((icmp_ln13_fu_147_p2 = ap_const_lv1_0) and (symbol_histogram_TVALID_int = ap_const_logic_0))) and (ap_const_logic_1 = ap_CS_fsm_state2))) then 
             out_frequency_V_ce0 <= ap_const_logic_1;
         else 
             out_frequency_V_ce0 <= ap_const_logic_0;
         end if; 
     end process;
 
-    out_frequency_V_d0 <= frequency_V_fu_182_p1;
+    out_frequency_V_d0 <= frequency_V_fu_174_p1;
 
-    out_frequency_V_we0_assign_proc : process(ap_CS_fsm_state2, icmp_ln13_fu_155_p2, icmp_ln883_fu_187_p2, symbol_histogram_TVALID_int)
+    out_frequency_V_we0_assign_proc : process(ap_CS_fsm_state2, icmp_ln13_fu_147_p2, icmp_ln883_fu_179_p2, symbol_histogram_TVALID_int)
     begin
-        if ((not(((icmp_ln13_fu_155_p2 = ap_const_lv1_0) and (symbol_histogram_TVALID_int = ap_const_logic_0))) and (icmp_ln883_fu_187_p2 = ap_const_lv1_0) and (icmp_ln13_fu_155_p2 = ap_const_lv1_0) and (ap_const_logic_1 = ap_CS_fsm_state2))) then 
+        if ((not(((icmp_ln13_fu_147_p2 = ap_const_lv1_0) and (symbol_histogram_TVALID_int = ap_const_logic_0))) and (icmp_ln883_fu_179_p2 = ap_const_lv1_0) and (icmp_ln13_fu_147_p2 = ap_const_lv1_0) and (ap_const_logic_1 = ap_CS_fsm_state2))) then 
             out_frequency_V_we0 <= ap_const_logic_1;
         else 
             out_frequency_V_we0 <= ap_const_logic_0;
         end if; 
     end process;
 
-    out_value_V_address0 <= zext_ln544_fu_193_p1(8 - 1 downto 0);
+    out_value_V_address0 <= zext_ln544_fu_185_p1(8 - 1 downto 0);
 
-    out_value_V_ce0_assign_proc : process(ap_CS_fsm_state2, icmp_ln13_fu_155_p2, symbol_histogram_TVALID_int)
+    out_value_V_ce0_assign_proc : process(ap_CS_fsm_state2, icmp_ln13_fu_147_p2, symbol_histogram_TVALID_int)
     begin
-        if ((not(((icmp_ln13_fu_155_p2 = ap_const_lv1_0) and (symbol_histogram_TVALID_int = ap_const_logic_0))) and (ap_const_logic_1 = ap_CS_fsm_state2))) then 
+        if ((not(((icmp_ln13_fu_147_p2 = ap_const_lv1_0) and (symbol_histogram_TVALID_int = ap_const_logic_0))) and (ap_const_logic_1 = ap_CS_fsm_state2))) then 
             out_value_V_ce0 <= ap_const_logic_1;
         else 
             out_value_V_ce0 <= ap_const_logic_0;
@@ -438,9 +438,9 @@ begin
 
     out_value_V_d0 <= symbol_histogram_TDATA_int(40 downto 32);
 
-    out_value_V_we0_assign_proc : process(ap_CS_fsm_state2, icmp_ln13_fu_155_p2, icmp_ln883_fu_187_p2, symbol_histogram_TVALID_int)
+    out_value_V_we0_assign_proc : process(ap_CS_fsm_state2, icmp_ln13_fu_147_p2, icmp_ln883_fu_179_p2, symbol_histogram_TVALID_int)
     begin
-        if ((not(((icmp_ln13_fu_155_p2 = ap_const_lv1_0) and (symbol_histogram_TVALID_int = ap_const_logic_0))) and (icmp_ln883_fu_187_p2 = ap_const_lv1_0) and (icmp_ln13_fu_155_p2 = ap_const_lv1_0) and (ap_const_logic_1 = ap_CS_fsm_state2))) then 
+        if ((not(((icmp_ln13_fu_147_p2 = ap_const_lv1_0) and (symbol_histogram_TVALID_int = ap_const_logic_0))) and (icmp_ln883_fu_179_p2 = ap_const_lv1_0) and (icmp_ln13_fu_147_p2 = ap_const_lv1_0) and (ap_const_logic_1 = ap_CS_fsm_state2))) then 
             out_value_V_we0 <= ap_const_logic_1;
         else 
             out_value_V_we0 <= ap_const_logic_0;
@@ -469,9 +469,9 @@ begin
     end process;
 
 
-    symbol_histogram_TDATA_blk_n_assign_proc : process(ap_CS_fsm_state2, icmp_ln13_fu_155_p2, symbol_histogram_TVALID_int)
+    symbol_histogram_TDATA_blk_n_assign_proc : process(ap_CS_fsm_state2, icmp_ln13_fu_147_p2, symbol_histogram_TVALID_int)
     begin
-        if (((icmp_ln13_fu_155_p2 = ap_const_lv1_0) and (ap_const_logic_1 = ap_CS_fsm_state2))) then 
+        if (((icmp_ln13_fu_147_p2 = ap_const_lv1_0) and (ap_const_logic_1 = ap_CS_fsm_state2))) then 
             symbol_histogram_TDATA_blk_n <= symbol_histogram_TVALID_int;
         else 
             symbol_histogram_TDATA_blk_n <= ap_const_logic_1;
@@ -489,14 +489,14 @@ begin
     end process;
 
 
-    symbol_histogram_TREADY_int_assign_proc : process(ap_CS_fsm_state2, icmp_ln13_fu_155_p2, symbol_histogram_TVALID_int)
+    symbol_histogram_TREADY_int_assign_proc : process(ap_CS_fsm_state2, icmp_ln13_fu_147_p2, symbol_histogram_TVALID_int)
     begin
-        if ((not(((icmp_ln13_fu_155_p2 = ap_const_lv1_0) and (symbol_histogram_TVALID_int = ap_const_logic_0))) and (icmp_ln13_fu_155_p2 = ap_const_lv1_0) and (ap_const_logic_1 = ap_CS_fsm_state2))) then 
+        if ((not(((icmp_ln13_fu_147_p2 = ap_const_lv1_0) and (symbol_histogram_TVALID_int = ap_const_logic_0))) and (icmp_ln13_fu_147_p2 = ap_const_lv1_0) and (ap_const_logic_1 = ap_CS_fsm_state2))) then 
             symbol_histogram_TREADY_int <= ap_const_logic_1;
         else 
             symbol_histogram_TREADY_int <= ap_const_logic_0;
         end if; 
     end process;
 
-    zext_ln544_fu_193_p1 <= std_logic_vector(IEEE.numeric_std.resize(unsigned(t_V_fu_80),64));
+    zext_ln544_fu_185_p1 <= std_logic_vector(IEEE.numeric_std.resize(unsigned(t_V_fu_72),64));
 end behav;

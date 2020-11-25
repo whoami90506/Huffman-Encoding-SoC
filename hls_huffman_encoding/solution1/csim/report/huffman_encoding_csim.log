@@ -1,6 +1,14 @@
 INFO: [SIM 2] *************** CSIM start ***************
 INFO: [SIM 4] CSIM will launch GCC as the compiler.
+   Compiling ../../../../huffman_encoding_test.cpp in debug mode
+   Compiling ../../../../huffman_truncate_tree.cpp in debug mode
    Compiling ../../../../huffman_create_codeword.cpp in debug mode
+   Compiling ../../../../huffman_sort.cpp in debug mode
+   Compiling ../../../../huffman_encoding.cpp in debug mode
+   Compiling ../../../../huffman_compute_bit_length.cpp in debug mode
+   Compiling ../../../../huffman_filter.cpp in debug mode
+   Compiling ../../../../huffman_create_tree.cpp in debug mode
+   Compiling ../../../../huffman_canonize_tree.cpp in debug mode
    Generating csim.exe
 Starting canonical Huffman encoding testbench
 Start reading file [huffman.random256.txt]

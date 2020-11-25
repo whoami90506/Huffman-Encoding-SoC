@@ -18,7 +18,7 @@ __SIM_DDS__ = 1
 
 ObjDir = obj
 
-HLS_SOURCES = ../../../../huffman_encoding_test.cpp ../../../../huffman_canonize_tree.cpp ../../../../huffman_create_tree.cpp ../../../../huffman_filter.cpp ../../../../huffman_compute_bit_length.cpp ../../../../huffman_encoding.cpp ../../../../huffman_sort.cpp ../../../../huffman_create_codeword.cpp ../../../../huffman_truncate_tree.cpp
+HLS_SOURCES = ../../../../huffman_encoding_test.cpp ../../../../huffman_truncate_tree.cpp ../../../../huffman_create_codeword.cpp ../../../../huffman_sort.cpp ../../../../huffman_encoding.cpp ../../../../huffman_compute_bit_length.cpp ../../../../huffman_filter.cpp ../../../../huffman_create_tree.cpp ../../../../huffman_canonize_tree.cpp
 
 TARGET := csim.exe
 
@@ -77,41 +77,11 @@ $(ObjDir)/huffman_encoding_test.o: ../../../../huffman_encoding_test.cpp $(ObjDi
 
 -include $(ObjDir)/huffman_encoding_test.d
 
-$(ObjDir)/huffman_canonize_tree.o: ../../../../huffman_canonize_tree.cpp $(ObjDir)/.dir
-	$(Echo) "   Compiling ../../../../huffman_canonize_tree.cpp in $(BuildMode) mode" $(AVE_DIR_DLOG)
+$(ObjDir)/huffman_truncate_tree.o: ../../../../huffman_truncate_tree.cpp $(ObjDir)/.dir
+	$(Echo) "   Compiling ../../../../huffman_truncate_tree.cpp in $(BuildMode) mode" $(AVE_DIR_DLOG)
 	$(Verb)  $(CC) ${CCFLAG} -c -MMD  $(IFLAG) $(DFLAG) $< -o $@ ; \
 
--include $(ObjDir)/huffman_canonize_tree.d
-
-$(ObjDir)/huffman_create_tree.o: ../../../../huffman_create_tree.cpp $(ObjDir)/.dir
-	$(Echo) "   Compiling ../../../../huffman_create_tree.cpp in $(BuildMode) mode" $(AVE_DIR_DLOG)
-	$(Verb)  $(CC) ${CCFLAG} -c -MMD  $(IFLAG) $(DFLAG) $< -o $@ ; \
-
--include $(ObjDir)/huffman_create_tree.d
-
-$(ObjDir)/huffman_filter.o: ../../../../huffman_filter.cpp $(ObjDir)/.dir
-	$(Echo) "   Compiling ../../../../huffman_filter.cpp in $(BuildMode) mode" $(AVE_DIR_DLOG)
-	$(Verb)  $(CC) ${CCFLAG} -c -MMD  $(IFLAG) $(DFLAG) $< -o $@ ; \
-
--include $(ObjDir)/huffman_filter.d
-
-$(ObjDir)/huffman_compute_bit_length.o: ../../../../huffman_compute_bit_length.cpp $(ObjDir)/.dir
-	$(Echo) "   Compiling ../../../../huffman_compute_bit_length.cpp in $(BuildMode) mode" $(AVE_DIR_DLOG)
-	$(Verb)  $(CC) ${CCFLAG} -c -MMD  $(IFLAG) $(DFLAG) $< -o $@ ; \
-
--include $(ObjDir)/huffman_compute_bit_length.d
-
-$(ObjDir)/huffman_encoding.o: ../../../../huffman_encoding.cpp $(ObjDir)/.dir
-	$(Echo) "   Compiling ../../../../huffman_encoding.cpp in $(BuildMode) mode" $(AVE_DIR_DLOG)
-	$(Verb)  $(CC) ${CCFLAG} -c -MMD  $(IFLAG) $(DFLAG) $< -o $@ ; \
-
--include $(ObjDir)/huffman_encoding.d
-
-$(ObjDir)/huffman_sort.o: ../../../../huffman_sort.cpp $(ObjDir)/.dir
-	$(Echo) "   Compiling ../../../../huffman_sort.cpp in $(BuildMode) mode" $(AVE_DIR_DLOG)
-	$(Verb)  $(CC) ${CCFLAG} -c -MMD  $(IFLAG) $(DFLAG) $< -o $@ ; \
-
--include $(ObjDir)/huffman_sort.d
+-include $(ObjDir)/huffman_truncate_tree.d
 
 $(ObjDir)/huffman_create_codeword.o: ../../../../huffman_create_codeword.cpp $(ObjDir)/.dir
 	$(Echo) "   Compiling ../../../../huffman_create_codeword.cpp in $(BuildMode) mode" $(AVE_DIR_DLOG)
@@ -119,8 +89,38 @@ $(ObjDir)/huffman_create_codeword.o: ../../../../huffman_create_codeword.cpp $(O
 
 -include $(ObjDir)/huffman_create_codeword.d
 
-$(ObjDir)/huffman_truncate_tree.o: ../../../../huffman_truncate_tree.cpp $(ObjDir)/.dir
-	$(Echo) "   Compiling ../../../../huffman_truncate_tree.cpp in $(BuildMode) mode" $(AVE_DIR_DLOG)
+$(ObjDir)/huffman_sort.o: ../../../../huffman_sort.cpp $(ObjDir)/.dir
+	$(Echo) "   Compiling ../../../../huffman_sort.cpp in $(BuildMode) mode" $(AVE_DIR_DLOG)
 	$(Verb)  $(CC) ${CCFLAG} -c -MMD  $(IFLAG) $(DFLAG) $< -o $@ ; \
 
--include $(ObjDir)/huffman_truncate_tree.d
+-include $(ObjDir)/huffman_sort.d
+
+$(ObjDir)/huffman_encoding.o: ../../../../huffman_encoding.cpp $(ObjDir)/.dir
+	$(Echo) "   Compiling ../../../../huffman_encoding.cpp in $(BuildMode) mode" $(AVE_DIR_DLOG)
+	$(Verb)  $(CC) ${CCFLAG} -c -MMD  $(IFLAG) $(DFLAG) $< -o $@ ; \
+
+-include $(ObjDir)/huffman_encoding.d
+
+$(ObjDir)/huffman_compute_bit_length.o: ../../../../huffman_compute_bit_length.cpp $(ObjDir)/.dir
+	$(Echo) "   Compiling ../../../../huffman_compute_bit_length.cpp in $(BuildMode) mode" $(AVE_DIR_DLOG)
+	$(Verb)  $(CC) ${CCFLAG} -c -MMD  $(IFLAG) $(DFLAG) $< -o $@ ; \
+
+-include $(ObjDir)/huffman_compute_bit_length.d
+
+$(ObjDir)/huffman_filter.o: ../../../../huffman_filter.cpp $(ObjDir)/.dir
+	$(Echo) "   Compiling ../../../../huffman_filter.cpp in $(BuildMode) mode" $(AVE_DIR_DLOG)
+	$(Verb)  $(CC) ${CCFLAG} -c -MMD  $(IFLAG) $(DFLAG) $< -o $@ ; \
+
+-include $(ObjDir)/huffman_filter.d
+
+$(ObjDir)/huffman_create_tree.o: ../../../../huffman_create_tree.cpp $(ObjDir)/.dir
+	$(Echo) "   Compiling ../../../../huffman_create_tree.cpp in $(BuildMode) mode" $(AVE_DIR_DLOG)
+	$(Verb)  $(CC) ${CCFLAG} -c -MMD  $(IFLAG) $(DFLAG) $< -o $@ ; \
+
+-include $(ObjDir)/huffman_create_tree.d
+
+$(ObjDir)/huffman_canonize_tree.o: ../../../../huffman_canonize_tree.cpp $(ObjDir)/.dir
+	$(Echo) "   Compiling ../../../../huffman_canonize_tree.cpp in $(BuildMode) mode" $(AVE_DIR_DLOG)
+	$(Verb)  $(CC) ${CCFLAG} -c -MMD  $(IFLAG) $(DFLAG) $< -o $@ ; \
+
+-include $(ObjDir)/huffman_canonize_tree.d

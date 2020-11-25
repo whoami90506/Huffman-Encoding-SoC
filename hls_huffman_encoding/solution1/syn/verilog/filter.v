@@ -93,18 +93,18 @@ wire    ap_CS_fsm_state1;
 reg    internal_ap_ready;
 reg    symbol_histogram_TDATA_blk_n;
 wire    ap_CS_fsm_state2;
-wire   [0:0] icmp_ln13_fu_155_p2;
+wire   [0:0] icmp_ln13_fu_147_p2;
 reg    n_out_blk_n;
 wire    ap_CS_fsm_state3;
-wire   [8:0] i_fu_161_p2;
+wire   [8:0] i_fu_153_p2;
 reg    ap_block_state2;
-reg   [8:0] i_0_i_reg_135;
+reg   [8:0] i_0_i_reg_127;
 reg    ap_block_state1;
-wire   [63:0] zext_ln544_fu_193_p1;
-wire   [0:0] icmp_ln883_fu_187_p2;
-reg   [8:0] t_V_fu_80;
-wire   [8:0] j_V_fu_199_p2;
-wire   [31:0] frequency_V_fu_182_p1;
+wire   [63:0] zext_ln544_fu_185_p1;
+wire   [0:0] icmp_ln883_fu_179_p2;
+reg   [8:0] t_V_fu_72;
+wire   [8:0] j_V_fu_191_p2;
+wire   [31:0] frequency_V_fu_174_p1;
 reg   [2:0] ap_NS_fsm;
 wire    regslice_both_in_V_data_V_U_apdone_blk;
 wire   [47:0] symbol_histogram_TDATA_int;
@@ -274,18 +274,18 @@ always @ (posedge ap_clk) begin
 end
 
 always @ (posedge ap_clk) begin
-    if ((~((icmp_ln13_fu_155_p2 == 1'd0) & (symbol_histogram_TVALID_int == 1'b0)) & (icmp_ln13_fu_155_p2 == 1'd0) & (1'b1 == ap_CS_fsm_state2))) begin
-        i_0_i_reg_135 <= i_fu_161_p2;
+    if ((~((icmp_ln13_fu_147_p2 == 1'd0) & (symbol_histogram_TVALID_int == 1'b0)) & (icmp_ln13_fu_147_p2 == 1'd0) & (1'b1 == ap_CS_fsm_state2))) begin
+        i_0_i_reg_127 <= i_fu_153_p2;
     end else if ((~((real_start == 1'b0) | (ap_done_reg == 1'b1)) & (1'b1 == ap_CS_fsm_state1))) begin
-        i_0_i_reg_135 <= 9'd0;
+        i_0_i_reg_127 <= 9'd0;
     end
 end
 
 always @ (posedge ap_clk) begin
-    if ((~((icmp_ln13_fu_155_p2 == 1'd0) & (symbol_histogram_TVALID_int == 1'b0)) & (icmp_ln883_fu_187_p2 == 1'd0) & (icmp_ln13_fu_155_p2 == 1'd0) & (1'b1 == ap_CS_fsm_state2))) begin
-        t_V_fu_80 <= j_V_fu_199_p2;
+    if ((~((icmp_ln13_fu_147_p2 == 1'd0) & (symbol_histogram_TVALID_int == 1'b0)) & (icmp_ln883_fu_179_p2 == 1'd0) & (icmp_ln13_fu_147_p2 == 1'd0) & (1'b1 == ap_CS_fsm_state2))) begin
+        t_V_fu_72 <= j_V_fu_191_p2;
     end else if ((~((real_start == 1'b0) | (ap_done_reg == 1'b1)) & (1'b1 == ap_CS_fsm_state1))) begin
-        t_V_fu_80 <= 9'd0;
+        t_V_fu_72 <= 9'd0;
     end
 end
 
@@ -330,7 +330,7 @@ always @ (*) begin
 end
 
 always @ (*) begin
-    if ((~((icmp_ln13_fu_155_p2 == 1'd0) & (symbol_histogram_TVALID_int == 1'b0)) & (1'b1 == ap_CS_fsm_state2))) begin
+    if ((~((icmp_ln13_fu_147_p2 == 1'd0) & (symbol_histogram_TVALID_int == 1'b0)) & (1'b1 == ap_CS_fsm_state2))) begin
         out_frequency_V_ce0 = 1'b1;
     end else begin
         out_frequency_V_ce0 = 1'b0;
@@ -338,7 +338,7 @@ always @ (*) begin
 end
 
 always @ (*) begin
-    if ((~((icmp_ln13_fu_155_p2 == 1'd0) & (symbol_histogram_TVALID_int == 1'b0)) & (icmp_ln883_fu_187_p2 == 1'd0) & (icmp_ln13_fu_155_p2 == 1'd0) & (1'b1 == ap_CS_fsm_state2))) begin
+    if ((~((icmp_ln13_fu_147_p2 == 1'd0) & (symbol_histogram_TVALID_int == 1'b0)) & (icmp_ln883_fu_179_p2 == 1'd0) & (icmp_ln13_fu_147_p2 == 1'd0) & (1'b1 == ap_CS_fsm_state2))) begin
         out_frequency_V_we0 = 1'b1;
     end else begin
         out_frequency_V_we0 = 1'b0;
@@ -346,7 +346,7 @@ always @ (*) begin
 end
 
 always @ (*) begin
-    if ((~((icmp_ln13_fu_155_p2 == 1'd0) & (symbol_histogram_TVALID_int == 1'b0)) & (1'b1 == ap_CS_fsm_state2))) begin
+    if ((~((icmp_ln13_fu_147_p2 == 1'd0) & (symbol_histogram_TVALID_int == 1'b0)) & (1'b1 == ap_CS_fsm_state2))) begin
         out_value_V_ce0 = 1'b1;
     end else begin
         out_value_V_ce0 = 1'b0;
@@ -354,7 +354,7 @@ always @ (*) begin
 end
 
 always @ (*) begin
-    if ((~((icmp_ln13_fu_155_p2 == 1'd0) & (symbol_histogram_TVALID_int == 1'b0)) & (icmp_ln883_fu_187_p2 == 1'd0) & (icmp_ln13_fu_155_p2 == 1'd0) & (1'b1 == ap_CS_fsm_state2))) begin
+    if ((~((icmp_ln13_fu_147_p2 == 1'd0) & (symbol_histogram_TVALID_int == 1'b0)) & (icmp_ln883_fu_179_p2 == 1'd0) & (icmp_ln13_fu_147_p2 == 1'd0) & (1'b1 == ap_CS_fsm_state2))) begin
         out_value_V_we0 = 1'b1;
     end else begin
         out_value_V_we0 = 1'b0;
@@ -378,7 +378,7 @@ always @ (*) begin
 end
 
 always @ (*) begin
-    if (((icmp_ln13_fu_155_p2 == 1'd0) & (1'b1 == ap_CS_fsm_state2))) begin
+    if (((icmp_ln13_fu_147_p2 == 1'd0) & (1'b1 == ap_CS_fsm_state2))) begin
         symbol_histogram_TDATA_blk_n = symbol_histogram_TVALID_int;
     end else begin
         symbol_histogram_TDATA_blk_n = 1'b1;
@@ -394,7 +394,7 @@ always @ (*) begin
 end
 
 always @ (*) begin
-    if ((~((icmp_ln13_fu_155_p2 == 1'd0) & (symbol_histogram_TVALID_int == 1'b0)) & (icmp_ln13_fu_155_p2 == 1'd0) & (1'b1 == ap_CS_fsm_state2))) begin
+    if ((~((icmp_ln13_fu_147_p2 == 1'd0) & (symbol_histogram_TVALID_int == 1'b0)) & (icmp_ln13_fu_147_p2 == 1'd0) & (1'b1 == ap_CS_fsm_state2))) begin
         symbol_histogram_TREADY_int = 1'b1;
     end else begin
         symbol_histogram_TREADY_int = 1'b0;
@@ -411,9 +411,9 @@ always @ (*) begin
             end
         end
         ap_ST_fsm_state2 : begin
-            if ((~((icmp_ln13_fu_155_p2 == 1'd0) & (symbol_histogram_TVALID_int == 1'b0)) & (icmp_ln13_fu_155_p2 == 1'd0) & (1'b1 == ap_CS_fsm_state2))) begin
+            if ((~((icmp_ln13_fu_147_p2 == 1'd0) & (symbol_histogram_TVALID_int == 1'b0)) & (icmp_ln13_fu_147_p2 == 1'd0) & (1'b1 == ap_CS_fsm_state2))) begin
                 ap_NS_fsm = ap_ST_fsm_state2;
-            end else if ((~((icmp_ln13_fu_155_p2 == 1'd0) & (symbol_histogram_TVALID_int == 1'b0)) & (icmp_ln13_fu_155_p2 == 1'd1) & (1'b1 == ap_CS_fsm_state2))) begin
+            end else if ((~((icmp_ln13_fu_147_p2 == 1'd0) & (symbol_histogram_TVALID_int == 1'b0)) & (icmp_ln13_fu_147_p2 == 1'd1) & (1'b1 == ap_CS_fsm_state2))) begin
                 ap_NS_fsm = ap_ST_fsm_state3;
             end else begin
                 ap_NS_fsm = ap_ST_fsm_state2;
@@ -443,33 +443,33 @@ always @ (*) begin
 end
 
 always @ (*) begin
-    ap_block_state2 = ((icmp_ln13_fu_155_p2 == 1'd0) & (symbol_histogram_TVALID_int == 1'b0));
+    ap_block_state2 = ((icmp_ln13_fu_147_p2 == 1'd0) & (symbol_histogram_TVALID_int == 1'b0));
 end
 
 assign ap_ready = internal_ap_ready;
 
-assign frequency_V_fu_182_p1 = symbol_histogram_TDATA_int[31:0];
+assign frequency_V_fu_174_p1 = symbol_histogram_TDATA_int[31:0];
 
-assign i_fu_161_p2 = (i_0_i_reg_135 + 9'd1);
+assign i_fu_153_p2 = (i_0_i_reg_127 + 9'd1);
 
-assign icmp_ln13_fu_155_p2 = ((i_0_i_reg_135 == 9'd256) ? 1'b1 : 1'b0);
+assign icmp_ln13_fu_147_p2 = ((i_0_i_reg_127 == 9'd256) ? 1'b1 : 1'b0);
 
-assign icmp_ln883_fu_187_p2 = ((frequency_V_fu_182_p1 == 32'd0) ? 1'b1 : 1'b0);
+assign icmp_ln883_fu_179_p2 = ((frequency_V_fu_174_p1 == 32'd0) ? 1'b1 : 1'b0);
 
-assign j_V_fu_199_p2 = (t_V_fu_80 + 9'd1);
+assign j_V_fu_191_p2 = (t_V_fu_72 + 9'd1);
 
-assign n_out_din = t_V_fu_80;
+assign n_out_din = t_V_fu_72;
 
-assign out_frequency_V_address0 = zext_ln544_fu_193_p1;
+assign out_frequency_V_address0 = zext_ln544_fu_185_p1;
 
-assign out_frequency_V_d0 = frequency_V_fu_182_p1;
+assign out_frequency_V_d0 = frequency_V_fu_174_p1;
 
-assign out_value_V_address0 = zext_ln544_fu_193_p1;
+assign out_value_V_address0 = zext_ln544_fu_185_p1;
 
 assign out_value_V_d0 = {{symbol_histogram_TDATA_int[40:32]}};
 
 assign start_out = real_start;
 
-assign zext_ln544_fu_193_p1 = t_V_fu_80;
+assign zext_ln544_fu_185_p1 = t_V_fu_72;
 
 endmodule //filter

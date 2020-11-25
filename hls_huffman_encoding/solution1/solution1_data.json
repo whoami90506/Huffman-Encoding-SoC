@@ -141,14 +141,14 @@
   },
   "Files": {
     "CSource": [
-      "..\/..\/huffman_truncate_tree.cpp",
-      "..\/..\/huffman_create_codeword.cpp",
-      "..\/..\/huffman_sort.cpp",
-      "..\/..\/huffman_encoding.cpp",
-      "..\/..\/huffman_compute_bit_length.cpp",
-      "..\/..\/huffman_filter.cpp",
+      "..\/..\/huffman_canonize_tree.cpp",
       "..\/..\/huffman_create_tree.cpp",
-      "..\/..\/huffman_canonize_tree.cpp"
+      "..\/..\/huffman_filter.cpp",
+      "..\/..\/huffman_compute_bit_length.cpp",
+      "..\/..\/huffman_encoding.cpp",
+      "..\/..\/huffman_sort.cpp",
+      "..\/..\/huffman_create_codeword.cpp",
+      "..\/..\/huffman_truncate_tree.cpp"
     ],
     "Vhdl": [
       "impl\/vhdl\/Block_codeRepl810_pr.vhd",
@@ -1372,7 +1372,7 @@
   },
   "GenData": {
     "DataVersion": "0.2",
-    "Time": "2020-11-24 15:46:43 +0800",
+    "Time": "2020-11-25 15:37:23 +0800",
     "ToolName": "vivado_hls",
     "ToolVersion": "2019.2"
   }
