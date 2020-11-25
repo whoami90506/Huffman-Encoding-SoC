@@ -9,15 +9,15 @@
 <ProductFamily>zynq</ProductFamily>
 <Part>xc7z020-clg484-1</Part>
 <TopModelName>huffman_encoding</TopModelName>
-<TargetClockPeriod>5.00</TargetClockPeriod>
-<ClockUncertainty>0.63</ClockUncertainty>
+<TargetClockPeriod>10.00</TargetClockPeriod>
+<ClockUncertainty>1.25</ClockUncertainty>
 </UserAssignments>
 
 <PerformanceEstimates>
 <PipelineType>dataflow</PipelineType>
 <SummaryOfTimingAnalysis>
 <unit>ns</unit>
-<EstimatedClockPeriod>4.559</EstimatedClockPeriod>
+<EstimatedClockPeriod>8.108</EstimatedClockPeriod>
 </SummaryOfTimingAnalysis>
 <SummaryOfOverallLatency>
 <unit>clock cycles</unit>
@@ -36,8 +36,8 @@
 <AreaEstimates>
 <Resources>
 <BRAM_18K>28</BRAM_18K>
-<FF>3997</FF>
-<LUT>7349</LUT>
+<FF>2923</FF>
+<LUT>6716</LUT>
 <URAM>0</URAM>
 <DSP48E>0</DSP48E>
 </Resources>

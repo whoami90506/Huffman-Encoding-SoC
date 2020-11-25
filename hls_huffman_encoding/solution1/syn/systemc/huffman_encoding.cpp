@@ -58,7 +58,7 @@ huffman_encoding::huffman_encoding(sc_module_name name) : sc_module(name), mVcdF
     huffman_encoding_AXILiteS_s_axi_U->ap_idle(ap_idle);
     huffman_encoding_AXILiteS_s_axi_U->num_nonzero_symbols(Block_proc_U0_num_nonzero_symbols);
     huffman_encoding_AXILiteS_s_axi_U->num_nonzero_symbols_ap_vld(Block_proc_U0_num_nonzero_symbols_ap_vld);
-    filtered_value_V_U = new huffman_encoding_ncg("filtered_value_V_U");
+    filtered_value_V_U = new huffman_encoding_mb6("filtered_value_V_U");
     filtered_value_V_U->clk(ap_clk);
     filtered_value_V_U->reset(ap_rst_n_inv);
     filtered_value_V_U->i_address0(filter_U0_out_value_V_address0);
@@ -77,7 +77,7 @@ huffman_encoding::huffman_encoding(sc_module_name name) : sc_module(name), mVcdF
     filtered_value_V_U->i_write(ap_channel_done_filtered_value_V);
     filtered_value_V_U->t_empty_n(filtered_value_V_t_empty_n);
     filtered_value_V_U->t_read(sort_U0_ap_ready);
-    filtered_frequency_V_U = new huffman_encoding_ocq("filtered_frequency_V_U");
+    filtered_frequency_V_U = new huffman_encoding_ncg("filtered_frequency_V_U");
     filtered_frequency_V_U->clk(ap_clk);
     filtered_frequency_V_U->reset(ap_rst_n_inv);
     filtered_frequency_V_U->i_address0(filter_U0_out_frequency_V_address0);
@@ -96,7 +96,7 @@ huffman_encoding::huffman_encoding(sc_module_name name) : sc_module(name), mVcdF
     filtered_frequency_V_U->i_write(ap_channel_done_filtered_frequency_V);
     filtered_frequency_V_U->t_empty_n(filtered_frequency_V_t_empty_n);
     filtered_frequency_V_U->t_read(sort_U0_ap_ready);
-    sorted_0_U = new huffman_encoding_ncg("sorted_0_U");
+    sorted_0_U = new huffman_encoding_mb6("sorted_0_U");
     sorted_0_U->clk(ap_clk);
     sorted_0_U->reset(ap_rst_n_inv);
     sorted_0_U->i_address0(sort_U0_out_value_V_address0);
@@ -115,7 +115,7 @@ huffman_encoding::huffman_encoding(sc_module_name name) : sc_module(name), mVcdF
     sorted_0_U->i_write(ap_channel_done_sorted_0);
     sorted_0_U->t_empty_n(sorted_0_t_empty_n);
     sorted_0_U->t_read(Loop_copy_sorted_pro_U0_ap_ready);
-    sorted_1_U = new huffman_encoding_ocq("sorted_1_U");
+    sorted_1_U = new huffman_encoding_ncg("sorted_1_U");
     sorted_1_U->clk(ap_clk);
     sorted_1_U->reset(ap_rst_n_inv);
     sorted_1_U->i_address0(sort_U0_out_frequency_V_address0);
@@ -134,7 +134,7 @@ huffman_encoding::huffman_encoding(sc_module_name name) : sc_module(name), mVcdF
     sorted_1_U->i_write(ap_channel_done_sorted_1);
     sorted_1_U->t_empty_n(sorted_1_t_empty_n);
     sorted_1_U->t_read(Loop_copy_sorted_pro_U0_ap_ready);
-    sorted_copy2_value_V_U = new huffman_encoding_ncg("sorted_copy2_value_V_U");
+    sorted_copy2_value_V_U = new huffman_encoding_mb6("sorted_copy2_value_V_U");
     sorted_copy2_value_V_U->clk(ap_clk);
     sorted_copy2_value_V_U->reset(ap_rst_n_inv);
     sorted_copy2_value_V_U->i_address0(Loop_copy_sorted_pro_U0_sorted_copy2_value_V_address0);
@@ -153,7 +153,7 @@ huffman_encoding::huffman_encoding(sc_module_name name) : sc_module(name), mVcdF
     sorted_copy2_value_V_U->i_write(Loop_copy_sorted_pro_U0_ap_done);
     sorted_copy2_value_V_U->t_empty_n(sorted_copy2_value_V_t_empty_n);
     sorted_copy2_value_V_U->t_read(canonize_tree_U0_ap_ready);
-    parent_V_U = new huffman_encoding_sc4("parent_V_U");
+    parent_V_U = new huffman_encoding_rcU("parent_V_U");
     parent_V_U->clk(ap_clk);
     parent_V_U->reset(ap_rst_n_inv);
     parent_V_U->i_address0(create_tree_U0_parent_V_address0);
@@ -178,7 +178,7 @@ huffman_encoding::huffman_encoding(sc_module_name name) : sc_module(name), mVcdF
     parent_V_U->i_write(ap_channel_done_parent_V);
     parent_V_U->t_empty_n(parent_V_t_empty_n);
     parent_V_U->t_read(compute_bit_length_U0_ap_ready);
-    left_V_U = new huffman_encoding_sc4("left_V_U");
+    left_V_U = new huffman_encoding_rcU("left_V_U");
     left_V_U->clk(ap_clk);
     left_V_U->reset(ap_rst_n_inv);
     left_V_U->i_address0(create_tree_U0_left_V_address0);
@@ -203,7 +203,7 @@ huffman_encoding::huffman_encoding(sc_module_name name) : sc_module(name), mVcdF
     left_V_U->i_write(ap_channel_done_left_V);
     left_V_U->t_empty_n(left_V_t_empty_n);
     left_V_U->t_read(compute_bit_length_U0_ap_ready);
-    right_V_U = new huffman_encoding_sc4("right_V_U");
+    right_V_U = new huffman_encoding_rcU("right_V_U");
     right_V_U->clk(ap_clk);
     right_V_U->reset(ap_rst_n_inv);
     right_V_U->i_address0(create_tree_U0_right_V_address0);
@@ -228,7 +228,7 @@ huffman_encoding::huffman_encoding(sc_module_name name) : sc_module(name), mVcdF
     right_V_U->i_write(ap_channel_done_right_V);
     right_V_U->t_empty_n(right_V_t_empty_n);
     right_V_U->t_read(compute_bit_length_U0_ap_ready);
-    stream_buffer_1_U = new huffman_encoding_vdy("stream_buffer_1_U");
+    stream_buffer_1_U = new huffman_encoding_udo("stream_buffer_1_U");
     stream_buffer_1_U->clk(ap_clk);
     stream_buffer_1_U->reset(ap_rst_n_inv);
     stream_buffer_1_U->i_address0(Loop_read_stream_pro_U0_stream_buffer_1_address0);
@@ -247,7 +247,7 @@ huffman_encoding::huffman_encoding(sc_module_name name) : sc_module(name), mVcdF
     stream_buffer_1_U->i_write(ap_channel_done_stream_buffer_1);
     stream_buffer_1_U->t_empty_n(stream_buffer_1_t_empty_n);
     stream_buffer_1_U->t_read(create_codeword_U0_ap_ready);
-    stream_buffer_2_U = new huffman_encoding_vdy("stream_buffer_2_U");
+    stream_buffer_2_U = new huffman_encoding_udo("stream_buffer_2_U");
     stream_buffer_2_U->clk(ap_clk);
     stream_buffer_2_U->reset(ap_rst_n_inv);
     stream_buffer_2_U->i_address0(Loop_read_stream_pro_U0_stream_buffer_2_address0);
@@ -266,7 +266,7 @@ huffman_encoding::huffman_encoding(sc_module_name name) : sc_module(name), mVcdF
     stream_buffer_2_U->i_write(ap_channel_done_stream_buffer_2);
     stream_buffer_2_U->t_empty_n(stream_buffer_2_t_empty_n);
     stream_buffer_2_U->t_read(create_codeword_U0_ap_ready);
-    stream_buffer_3_U = new huffman_encoding_xdS("stream_buffer_3_U");
+    stream_buffer_3_U = new huffman_encoding_wdI("stream_buffer_3_U");
     stream_buffer_3_U->clk(ap_clk);
     stream_buffer_3_U->reset(ap_rst_n_inv);
     stream_buffer_3_U->i_address0(Loop_read_stream_pro_U0_stream_buffer_3_address0);
@@ -285,7 +285,7 @@ huffman_encoding::huffman_encoding(sc_module_name name) : sc_module(name), mVcdF
     stream_buffer_3_U->i_write(ap_channel_done_stream_buffer_3);
     stream_buffer_3_U->t_empty_n(stream_buffer_3_t_empty_n);
     stream_buffer_3_U->t_read(create_codeword_U0_ap_ready);
-    stream_buffer_4_U = new huffman_encoding_xdS("stream_buffer_4_U");
+    stream_buffer_4_U = new huffman_encoding_wdI("stream_buffer_4_U");
     stream_buffer_4_U->clk(ap_clk);
     stream_buffer_4_U->reset(ap_rst_n_inv);
     stream_buffer_4_U->i_address0(Loop_read_stream_pro_U0_stream_buffer_4_address0);
@@ -304,7 +304,7 @@ huffman_encoding::huffman_encoding(sc_module_name name) : sc_module(name), mVcdF
     stream_buffer_4_U->i_write(ap_channel_done_stream_buffer_4);
     stream_buffer_4_U->t_empty_n(stream_buffer_4_t_empty_n);
     stream_buffer_4_U->t_read(create_codeword_U0_ap_ready);
-    stream_buffer_5_U = new huffman_encoding_xdS("stream_buffer_5_U");
+    stream_buffer_5_U = new huffman_encoding_wdI("stream_buffer_5_U");
     stream_buffer_5_U->clk(ap_clk);
     stream_buffer_5_U->reset(ap_rst_n_inv);
     stream_buffer_5_U->i_address0(Loop_read_stream_pro_U0_stream_buffer_5_address0);
@@ -323,7 +323,7 @@ huffman_encoding::huffman_encoding(sc_module_name name) : sc_module(name), mVcdF
     stream_buffer_5_U->i_write(ap_channel_done_stream_buffer_5);
     stream_buffer_5_U->t_empty_n(stream_buffer_5_t_empty_n);
     stream_buffer_5_U->t_read(create_codeword_U0_ap_ready);
-    stream_buffer_6_U = new huffman_encoding_xdS("stream_buffer_6_U");
+    stream_buffer_6_U = new huffman_encoding_wdI("stream_buffer_6_U");
     stream_buffer_6_U->clk(ap_clk);
     stream_buffer_6_U->reset(ap_rst_n_inv);
     stream_buffer_6_U->i_address0(Loop_read_stream_pro_U0_stream_buffer_6_address0);
@@ -342,7 +342,7 @@ huffman_encoding::huffman_encoding(sc_module_name name) : sc_module(name), mVcdF
     stream_buffer_6_U->i_write(ap_channel_done_stream_buffer_6);
     stream_buffer_6_U->t_empty_n(stream_buffer_6_t_empty_n);
     stream_buffer_6_U->t_read(create_codeword_U0_ap_ready);
-    length_histogram_V_U = new huffman_encoding_Bew("length_histogram_V_U");
+    length_histogram_V_U = new huffman_encoding_Aem("length_histogram_V_U");
     length_histogram_V_U->clk(ap_clk);
     length_histogram_V_U->reset(ap_rst_n_inv);
     length_histogram_V_U->i_address0(compute_bit_length_U0_length_histogram_V_address0);
@@ -361,7 +361,7 @@ huffman_encoding::huffman_encoding(sc_module_name name) : sc_module(name), mVcdF
     length_histogram_V_U->i_write(compute_bit_length_U0_ap_done);
     length_histogram_V_U->t_empty_n(length_histogram_V_t_empty_n);
     length_histogram_V_U->t_read(truncate_tree_U0_ap_ready);
-    truncated_length_his_U = new huffman_encoding_CeG("truncated_length_his_U");
+    truncated_length_his_U = new huffman_encoding_Bew("truncated_length_his_U");
     truncated_length_his_U->clk(ap_clk);
     truncated_length_his_U->reset(ap_rst_n_inv);
     truncated_length_his_U->i_address0(truncate_tree_U0_output_length_histogram1_V_address0);
@@ -390,7 +390,7 @@ huffman_encoding::huffman_encoding(sc_module_name name) : sc_module(name), mVcdF
     truncated_length_his_U->i_write(ap_channel_done_truncated_length_his);
     truncated_length_his_U->t_empty_n(truncated_length_his_t_empty_n);
     truncated_length_his_U->t_read(canonize_tree_U0_ap_ready);
-    truncated_length_his_1_U = new huffman_encoding_Bew("truncated_length_his_1_U");
+    truncated_length_his_1_U = new huffman_encoding_Aem("truncated_length_his_1_U");
     truncated_length_his_1_U->clk(ap_clk);
     truncated_length_his_1_U->reset(ap_rst_n_inv);
     truncated_length_his_1_U->i_address0(truncate_tree_U0_output_length_histogram2_V_address0);
@@ -409,7 +409,7 @@ huffman_encoding::huffman_encoding(sc_module_name name) : sc_module(name), mVcdF
     truncated_length_his_1_U->i_write(ap_channel_done_truncated_length_his_1);
     truncated_length_his_1_U->t_empty_n(truncated_length_his_1_t_empty_n);
     truncated_length_his_1_U->t_read(create_codeword_U0_ap_ready);
-    symbol_bits_V_U = new huffman_encoding_Ee0("symbol_bits_V_U");
+    symbol_bits_V_U = new huffman_encoding_DeQ("symbol_bits_V_U");
     symbol_bits_V_U->clk(ap_clk);
     symbol_bits_V_U->reset(ap_rst_n_inv);
     symbol_bits_V_U->i_address0(canonize_tree_U0_symbol_bits_V_address0);
@@ -863,39 +863,39 @@ huffman_encoding::huffman_encoding(sc_module_name name) : sc_module(name), mVcdF
     start_for_filter_U0_U->if_dout(start_for_filter_U0_dout);
     start_for_filter_U0_U->if_empty_n(start_for_filter_U0_empty_n);
     start_for_filter_U0_U->if_read(filter_U0_ap_ready);
-    start_for_Block_hFfa_U = new start_for_Block_hFfa("start_for_Block_hFfa_U");
-    start_for_Block_hFfa_U->clk(ap_clk);
-    start_for_Block_hFfa_U->reset(ap_rst_n_inv);
-    start_for_Block_hFfa_U->if_read_ce(ap_var_for_const0);
-    start_for_Block_hFfa_U->if_write_ce(ap_var_for_const0);
-    start_for_Block_hFfa_U->if_din(start_for_Block_huffman_encodi_U0_din);
-    start_for_Block_hFfa_U->if_full_n(start_for_Block_huffman_encodi_U0_full_n);
-    start_for_Block_hFfa_U->if_write(filter_U0_start_write);
-    start_for_Block_hFfa_U->if_dout(start_for_Block_huffman_encodi_U0_dout);
-    start_for_Block_hFfa_U->if_empty_n(start_for_Block_huffman_encodi_U0_empty_n);
-    start_for_Block_hFfa_U->if_read(Block_huffman_encodi_U0_ap_ready);
-    start_for_create_Gfk_U = new start_for_create_Gfk("start_for_create_Gfk_U");
-    start_for_create_Gfk_U->clk(ap_clk);
-    start_for_create_Gfk_U->reset(ap_rst_n_inv);
-    start_for_create_Gfk_U->if_read_ce(ap_var_for_const0);
-    start_for_create_Gfk_U->if_write_ce(ap_var_for_const0);
-    start_for_create_Gfk_U->if_din(start_for_create_tree_U0_din);
-    start_for_create_Gfk_U->if_full_n(start_for_create_tree_U0_full_n);
-    start_for_create_Gfk_U->if_write(Loop_copy_sorted_pro_U0_start_write);
-    start_for_create_Gfk_U->if_dout(start_for_create_tree_U0_dout);
-    start_for_create_Gfk_U->if_empty_n(start_for_create_tree_U0_empty_n);
-    start_for_create_Gfk_U->if_read(create_tree_U0_ap_ready);
-    start_for_Block_pHfu_U = new start_for_Block_pHfu("start_for_Block_pHfu_U");
-    start_for_Block_pHfu_U->clk(ap_clk);
-    start_for_Block_pHfu_U->reset(ap_rst_n_inv);
-    start_for_Block_pHfu_U->if_read_ce(ap_var_for_const0);
-    start_for_Block_pHfu_U->if_write_ce(ap_var_for_const0);
-    start_for_Block_pHfu_U->if_din(start_for_Block_proc_U0_din);
-    start_for_Block_pHfu_U->if_full_n(start_for_Block_proc_U0_full_n);
-    start_for_Block_pHfu_U->if_write(Loop_copy_sorted_pro_U0_start_write);
-    start_for_Block_pHfu_U->if_dout(start_for_Block_proc_U0_dout);
-    start_for_Block_pHfu_U->if_empty_n(start_for_Block_proc_U0_empty_n);
-    start_for_Block_pHfu_U->if_read(Block_proc_U0_ap_ready);
+    start_for_Block_hEe0_U = new start_for_Block_hEe0("start_for_Block_hEe0_U");
+    start_for_Block_hEe0_U->clk(ap_clk);
+    start_for_Block_hEe0_U->reset(ap_rst_n_inv);
+    start_for_Block_hEe0_U->if_read_ce(ap_var_for_const0);
+    start_for_Block_hEe0_U->if_write_ce(ap_var_for_const0);
+    start_for_Block_hEe0_U->if_din(start_for_Block_huffman_encodi_U0_din);
+    start_for_Block_hEe0_U->if_full_n(start_for_Block_huffman_encodi_U0_full_n);
+    start_for_Block_hEe0_U->if_write(filter_U0_start_write);
+    start_for_Block_hEe0_U->if_dout(start_for_Block_huffman_encodi_U0_dout);
+    start_for_Block_hEe0_U->if_empty_n(start_for_Block_huffman_encodi_U0_empty_n);
+    start_for_Block_hEe0_U->if_read(Block_huffman_encodi_U0_ap_ready);
+    start_for_create_Ffa_U = new start_for_create_Ffa("start_for_create_Ffa_U");
+    start_for_create_Ffa_U->clk(ap_clk);
+    start_for_create_Ffa_U->reset(ap_rst_n_inv);
+    start_for_create_Ffa_U->if_read_ce(ap_var_for_const0);
+    start_for_create_Ffa_U->if_write_ce(ap_var_for_const0);
+    start_for_create_Ffa_U->if_din(start_for_create_tree_U0_din);
+    start_for_create_Ffa_U->if_full_n(start_for_create_tree_U0_full_n);
+    start_for_create_Ffa_U->if_write(Loop_copy_sorted_pro_U0_start_write);
+    start_for_create_Ffa_U->if_dout(start_for_create_tree_U0_dout);
+    start_for_create_Ffa_U->if_empty_n(start_for_create_tree_U0_empty_n);
+    start_for_create_Ffa_U->if_read(create_tree_U0_ap_ready);
+    start_for_Block_pGfk_U = new start_for_Block_pGfk("start_for_Block_pGfk_U");
+    start_for_Block_pGfk_U->clk(ap_clk);
+    start_for_Block_pGfk_U->reset(ap_rst_n_inv);
+    start_for_Block_pGfk_U->if_read_ce(ap_var_for_const0);
+    start_for_Block_pGfk_U->if_write_ce(ap_var_for_const0);
+    start_for_Block_pGfk_U->if_din(start_for_Block_proc_U0_din);
+    start_for_Block_pGfk_U->if_full_n(start_for_Block_proc_U0_full_n);
+    start_for_Block_pGfk_U->if_write(Loop_copy_sorted_pro_U0_start_write);
+    start_for_Block_pGfk_U->if_dout(start_for_Block_proc_U0_dout);
+    start_for_Block_pGfk_U->if_empty_n(start_for_Block_proc_U0_empty_n);
+    start_for_Block_pGfk_U->if_read(Block_proc_U0_ap_ready);
 
     SC_METHOD(thread_ap_clk_no_reset_);
     dont_initialize();
@@ -1905,9 +1905,9 @@ huffman_encoding::~huffman_encoding() {
     delete extLd_loc_c19_U;
     delete extLd_loc_c20_U;
     delete start_for_filter_U0_U;
-    delete start_for_Block_hFfa_U;
-    delete start_for_create_Gfk_U;
-    delete start_for_Block_pHfu_U;
+    delete start_for_Block_hEe0_U;
+    delete start_for_create_Ffa_U;
+    delete start_for_Block_pGfk_U;
 }
 
 void huffman_encoding::thread_ap_var_for_const0() {

@@ -9,15 +9,15 @@
 <ProductFamily>zynq</ProductFamily>
 <Part>xc7z020-clg484-1</Part>
 <TopModelName>compute_bit_length</TopModelName>
-<TargetClockPeriod>5.00</TargetClockPeriod>
-<ClockUncertainty>0.63</ClockUncertainty>
+<TargetClockPeriod>10.00</TargetClockPeriod>
+<ClockUncertainty>1.25</ClockUncertainty>
 </UserAssignments>
 
 <PerformanceEstimates>
 <PipelineType>none</PipelineType>
 <SummaryOfTimingAnalysis>
 <unit>ns</unit>
-<EstimatedClockPeriod>4.147</EstimatedClockPeriod>
+<EstimatedClockPeriod>6.508</EstimatedClockPeriod>
 </SummaryOfTimingAnalysis>
 <SummaryOfOverallLatency>
 <unit>clock cycles</unit>
@@ -41,7 +41,7 @@
 <TripCount>undef</TripCount>
 <Latency>undef</Latency>
 <PipelineII>3</PipelineII>
-<PipelineDepth>5</PipelineDepth>
+<PipelineDepth>3</PipelineDepth>
 </traverse_tree>
 </SummaryOfLoopLatency>
 </PerformanceEstimates>
@@ -49,8 +49,8 @@
 <AreaEstimates>
 <Resources>
 <BRAM_18K>1</BRAM_18K>
-<FF>356</FF>
-<LUT>623</LUT>
+<FF>238</FF>
+<LUT>543</LUT>
 <URAM>0</URAM>
 <DSP48E>0</DSP48E>
 </Resources>

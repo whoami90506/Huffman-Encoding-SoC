@@ -1,13 +1,13 @@
 <?xml version="1.0" encoding="UTF-8" ?>
-<webTalkData  fileName='usage_statistics_ext_xsim.xml'  majorVersion='1' minorVersion='0' timeStamp='Wed Nov 25 17:38:39 2020'>
+<webTalkData  fileName='usage_statistics_ext_xsim.xml'  majorVersion='1' minorVersion='0' timeStamp='Wed Nov 25 18:03:49 2020'>
 <section name="__ROOT__" level="0" order="1" description="">
  <section name="software_version_and_target_device" level="1" order="1" description="">
   <keyValuePair key="beta" value="FALSE" description="" />
   <keyValuePair key="build_version" value="2708876" description="" />
-  <keyValuePair key="date_generated" value="Wed Nov 25 17:38:37 2020" description="" />
+  <keyValuePair key="date_generated" value="Wed Nov 25 18:03:48 2020" description="" />
   <keyValuePair key="os_platform" value="WIN64" description="" />
   <keyValuePair key="product_version" value="XSIM v2019.2 (64-bit)" description="" />
-  <keyValuePair key="project_id" value="6349debc-05ba-41ef-8d99-bca612f61c0a" description="" />
+  <keyValuePair key="project_id" value="d15cea64-940d-4c92-95af-c8fdd8af8519" description="" />
   <keyValuePair key="project_iteration" value="1" description="" />
   <keyValuePair key="random_id" value="6c816a5d-3f42-435b-b45a-946f2c344625" description="" />
   <keyValuePair key="registration_id" value="6c816a5d-3f42-435b-b45a-946f2c344625" description="" />
@@ -33,7 +33,7 @@
    <keyValuePair key="command" value="xelab" description="" />
    <keyValuePair key="debug" value="wave_" description="" />
    <keyValuePair key="dpi_used" value="false" description="" />
-   <keyValuePair key="file_counter" value="60" description="" />
+   <keyValuePair key="file_counter" value="59" description="" />
    <keyValuePair key="gendll" value="false" description="" />
    <keyValuePair key="hwcosim" value="false" description="" />
    <keyValuePair key="sdfmodeling" value="false" description="" />
@@ -41,13 +41,13 @@
    <keyValuePair key="vhdl2008" value="false" description="" />
   </section>
   <section name="usage" level="2" order="2" description="">
-   <keyValuePair key="compiler_memory" value="521084_KB" description="" />
-   <keyValuePair key="compiler_time" value="18.61_sec" description="" />
-   <keyValuePair key="simulation_image_code" value="3297 KB" description="" />
-   <keyValuePair key="simulation_image_data" value="156 KB" description="" />
-   <keyValuePair key="total_instances" value="198" description="" />
+   <keyValuePair key="compiler_memory" value="513512_KB" description="" />
+   <keyValuePair key="compiler_time" value="17.09_sec" description="" />
+   <keyValuePair key="simulation_image_code" value="3085 KB" description="" />
+   <keyValuePair key="simulation_image_data" value="146 KB" description="" />
+   <keyValuePair key="total_instances" value="197" description="" />
    <keyValuePair key="total_nets" value="0" description="" />
-   <keyValuePair key="total_processes" value="3159" description="" />
+   <keyValuePair key="total_processes" value="2961" description="" />
    <keyValuePair key="xilinx_hdl_libraries_used" value="unisims_ver " description="" />
   </section>
  </section>

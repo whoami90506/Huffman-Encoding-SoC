@@ -18,7 +18,7 @@ add_files -tb huffman.random256.golden -cflags "-Wno-unknown-pragmas" -csimflags
 add_files -tb huffman.random256.txt -cflags "-Wno-unknown-pragmas" -csimflags "-Wno-unknown-pragmas"
 open_solution "solution1"
 set_part {xc7z020-clg484-1}
-create_clock -period 5 -name default
+create_clock -period 10 -name default
 config_sdx -target none
 config_export -format ip_catalog -rtl verilog -vivado_optimization_level 2 -vivado_phys_opt place -vivado_report_level 0
 set_clock_uncertainty 12.5%

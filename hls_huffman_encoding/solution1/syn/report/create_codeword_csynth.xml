@@ -9,39 +9,39 @@
 <ProductFamily>zynq</ProductFamily>
 <Part>xc7z020-clg484-1</Part>
 <TopModelName>create_codeword</TopModelName>
-<TargetClockPeriod>5.00</TargetClockPeriod>
-<ClockUncertainty>0.63</ClockUncertainty>
+<TargetClockPeriod>10.00</TargetClockPeriod>
+<ClockUncertainty>1.25</ClockUncertainty>
 </UserAssignments>
 
 <PerformanceEstimates>
 <PipelineType>none</PipelineType>
 <SummaryOfTimingAnalysis>
 <unit>ns</unit>
-<EstimatedClockPeriod>4.285</EstimatedClockPeriod>
+<EstimatedClockPeriod>7.760</EstimatedClockPeriod>
 </SummaryOfTimingAnalysis>
 <SummaryOfOverallLatency>
 <unit>clock cycles</unit>
-<Best-caseLatency>1313</Best-caseLatency>
-<Average-caseLatency>1313</Average-caseLatency>
-<Worst-caseLatency>1313</Worst-caseLatency>
-<Best-caseRealTimeLatency>6.565 us</Best-caseRealTimeLatency>
-<Average-caseRealTimeLatency>6.565 us</Average-caseRealTimeLatency>
-<Worst-caseRealTimeLatency>6.565 us</Worst-caseRealTimeLatency>
-<Interval-min>1313</Interval-min>
-<Interval-max>1313</Interval-max>
+<Best-caseLatency>1311</Best-caseLatency>
+<Average-caseLatency>1311</Average-caseLatency>
+<Worst-caseLatency>1311</Worst-caseLatency>
+<Best-caseRealTimeLatency>13.110 us</Best-caseRealTimeLatency>
+<Average-caseRealTimeLatency>13.110 us</Average-caseRealTimeLatency>
+<Worst-caseRealTimeLatency>13.110 us</Worst-caseRealTimeLatency>
+<Interval-min>1311</Interval-min>
+<Interval-max>1311</Interval-max>
 </SummaryOfOverallLatency>
 <SummaryOfLoopLatency>
 <first_codewords>
 <TripCount>27</TripCount>
-<Latency>28</Latency>
+<Latency>27</Latency>
 <PipelineII>1</PipelineII>
-<PipelineDepth>3</PipelineDepth>
+<PipelineDepth>2</PipelineDepth>
 </first_codewords>
 <assign_codewords>
 <TripCount>256</TripCount>
-<Latency>1281</Latency>
+<Latency>1280</Latency>
 <PipelineII>5</PipelineII>
-<PipelineDepth>7</PipelineDepth>
+<PipelineDepth>5</PipelineDepth>
 </assign_codewords>
 </SummaryOfLoopLatency>
 </PerformanceEstimates>
@@ -49,8 +49,8 @@
 <AreaEstimates>
 <Resources>
 <BRAM_18K>0</BRAM_18K>
-<FF>281</FF>
-<LUT>535</LUT>
+<FF>172</FF>
+<LUT>506</LUT>
 <URAM>0</URAM>
 <DSP48E>0</DSP48E>
 </Resources>

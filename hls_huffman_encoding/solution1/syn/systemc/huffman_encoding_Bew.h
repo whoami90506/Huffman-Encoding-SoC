@@ -32,6 +32,11 @@ SC_MODULE(huffman_encoding_Bew) {
     sc_core::sc_in<  sc_dt::sc_lv<AddressWidth> > i_address0;
     sc_core::sc_in<  sc_dt::sc_lv<DataWidth> >    i_d0;
     sc_core::sc_out< sc_dt::sc_lv<DataWidth> >    i_q0;
+    sc_core::sc_in<  sc_dt::sc_logic >            i_ce1;
+    sc_core::sc_in<  sc_dt::sc_logic           >        i_we1;
+    sc_core::sc_in<  sc_dt::sc_lv<AddressWidth> > i_address1;
+    sc_core::sc_in<  sc_dt::sc_lv<DataWidth> >    i_d1;
+    sc_core::sc_out< sc_dt::sc_lv<DataWidth> >    i_q1;
 
     // target
     sc_core::sc_in<  sc_dt::sc_logic >            t_ce;
@@ -42,23 +47,47 @@ SC_MODULE(huffman_encoding_Bew) {
     sc_core::sc_in<  sc_dt::sc_lv<AddressWidth> > t_address0;
     sc_core::sc_in<  sc_dt::sc_lv<DataWidth> >    t_d0;
     sc_core::sc_out< sc_dt::sc_lv<DataWidth> >    t_q0;
+    sc_core::sc_in<  sc_dt::sc_logic >            t_ce1;
+    sc_core::sc_in<  sc_dt::sc_logic           >        t_we1;
+    sc_core::sc_in<  sc_dt::sc_lv<AddressWidth> > t_address1;
+    sc_core::sc_in<  sc_dt::sc_lv<DataWidth> >    t_d1;
+    sc_core::sc_out< sc_dt::sc_lv<DataWidth> >    t_q1;
 
 protected:
     // control/status
     sc_core::sc_signal< sc_dt::sc_uint<IndexWidth> >   iptr;     // initiator index
     sc_core::sc_signal< sc_dt::sc_uint<IndexWidth> >   tptr;     // target index
     sc_core::sc_signal< sc_dt::sc_uint<IndexWidth+1> > count;    // count of written buffers
+    sc_core::sc_signal< sc_dt::sc_uint<IndexWidth> >   prev_iptr;     // previous initiator index
+    sc_core::sc_signal< sc_dt::sc_uint<IndexWidth> >   prev_tptr;     // previous target index
     sc_core::sc_signal< sc_dt::sc_logic >              full_n;   // whether all buffers are written
     sc_core::sc_signal< sc_dt::sc_logic >              empty_n;  // whether none of the buffers is written
     sc_core::sc_signal< sc_dt::sc_logic >              push_buf; // finish writing a buffer
     sc_core::sc_signal< sc_dt::sc_logic >              pop_buf;  // finish reading a buffer
 
-    sc_core::sc_signal< sc_dt::sc_lv<AddressWidth+IndexWidth> > memcore_iaddr;
-    sc_core::sc_signal< sc_dt::sc_lv<AddressWidth+IndexWidth> > memcore_taddr;
+    // buffer instances
+    huffman_encoding_Bew_memcore* buffer[BufferCount];
 
-    huffman_encoding_Bew_memcore* huffman_encoding_Bew_memcore_U;
+    // buffer signals
+    sc_core::sc_signal< sc_dt::sc_logic >              buf_ce0[BufferCount];
+    sc_core::sc_signal< sc_dt::sc_logic           >              buf_we0[BufferCount];
+    sc_core::sc_signal< sc_dt::sc_lv<AddressWidth> >   buf_a0[BufferCount];
+    sc_core::sc_signal< sc_dt::sc_lv<DataWidth> >      buf_d0[BufferCount];
+    sc_core::sc_signal< sc_dt::sc_lv<DataWidth> >      buf_q0[BufferCount];
+    sc_core::sc_signal< sc_dt::sc_logic >              buf_ce1[BufferCount];
+    sc_core::sc_signal< sc_dt::sc_logic           >              buf_we1[BufferCount];
+    sc_core::sc_signal< sc_dt::sc_lv<AddressWidth> >   buf_a1[BufferCount];
+    sc_core::sc_signal< sc_dt::sc_lv<DataWidth> >      buf_d1[BufferCount];
+    sc_core::sc_signal< sc_dt::sc_lv<DataWidth> >      buf_q1[BufferCount];
 
-    void proc_memcore_addr();
+    // buffer signals
+    void proc_buffer_signals();
+
+    // output
+    void proc_i_q0();
+    void proc_t_q0();
+    void proc_i_q1();
+    void proc_t_q1();
 
     void proc_i_full_n();
     void proc_t_empty_n();
@@ -77,23 +106,60 @@ protected:
 public:
     ~huffman_encoding_Bew();
     SC_CTOR(huffman_encoding_Bew) : m_trace_file(0) {
-        SC_METHOD(proc_memcore_addr);
-        sensitive << i_address0 << t_address0 << iptr << tptr;
+        for (unsigned i = 0; i < BufferCount; i++) {
+            char szTmp[128];
+            sprintf(szTmp, "%d", i);
+            std::string name = "huffman_encoding_Bew_memcore_U_";
+            name += szTmp;
 
-        huffman_encoding_Bew_memcore_U = new huffman_encoding_Bew_memcore("huffman_encoding_Bew_memcore_U");
-        huffman_encoding_Bew_memcore_U->clk      ( clk );
-        huffman_encoding_Bew_memcore_U->reset    ( reset );
-        huffman_encoding_Bew_memcore_U->ce0      ( i_ce0 );
-        huffman_encoding_Bew_memcore_U->we0      ( i_we0 );
-        huffman_encoding_Bew_memcore_U->address0 ( memcore_iaddr );
-        huffman_encoding_Bew_memcore_U->d0       ( i_d0 );
-        huffman_encoding_Bew_memcore_U->q0       ( i_q0 );
+            buffer[i] = new huffman_encoding_Bew_memcore(name.c_str());
+            buffer[i]->clk      ( clk );
+            buffer[i]->reset    ( reset );
+            buffer[i]->ce0      ( buf_ce0[i] );
+            buffer[i]->we0      ( buf_we0[i] );
+            buffer[i]->address0 ( buf_a0[i] );
+            buffer[i]->d0       ( buf_d0[i] );
+            buffer[i]->q0       ( buf_q0[i] );
+            buffer[i]->ce1      ( buf_ce1[i] );
+            buffer[i]->we1      ( buf_we1[i] );
+            buffer[i]->address1 ( buf_a1[i] );
+            buffer[i]->d1       ( buf_d1[i] );
+            buffer[i]->q1       ( buf_q1[i] );
 
-        huffman_encoding_Bew_memcore_U->ce1      ( t_ce0 );
-        huffman_encoding_Bew_memcore_U->we1      ( t_we0 );
-        huffman_encoding_Bew_memcore_U->address1 ( memcore_taddr );
-        huffman_encoding_Bew_memcore_U->d1       ( t_d0 );
-        huffman_encoding_Bew_memcore_U->q1       ( t_q0 );
+        }
+
+
+        SC_METHOD(proc_i_q0);
+        sensitive << iptr;
+        for (unsigned i = 0; i < BufferCount; i++) {
+            sensitive << buf_q0[i];
+        }
+
+        SC_METHOD(proc_t_q0);
+        sensitive << tptr;
+        for (unsigned i = 0; i < BufferCount; i++) {
+            sensitive << buf_q0[i];
+        }
+
+        SC_METHOD(proc_i_q1);
+        sensitive << iptr;
+        for (unsigned i = 0; i < BufferCount; i++) {
+            sensitive << buf_q1[i];
+        }
+
+        SC_METHOD(proc_t_q1);
+        sensitive << tptr;
+        for (unsigned i = 0; i < BufferCount; i++) {
+            sensitive << buf_q1[i];
+        }
+
+        // buffer signals
+        SC_METHOD(proc_buffer_signals);
+        sensitive << iptr << tptr << empty_n;
+        sensitive << i_ce0 << i_we0 << i_address0 << i_d0;
+        sensitive << t_ce0 << t_we0 << t_address0 << t_d0;
+        sensitive << i_ce1 << i_we1 << i_address1 << i_d1;
+        sensitive << t_ce1 << t_we1 << t_address1 << t_d1;
 
         // power-on initialization
         iptr    = 0;
@@ -145,6 +211,11 @@ public:
             sc_trace(m_trace_file, i_address0, "(port)i_address0");
             sc_trace(m_trace_file, i_d0,       "(port)i_d0");
             sc_trace(m_trace_file, i_q0,       "(port)i_q0");
+            sc_trace(m_trace_file, i_ce1,      "(port)i_ce1");
+            sc_trace(m_trace_file, i_we1,      "(port)i_we0");
+            sc_trace(m_trace_file, i_address1, "(port)i_address1");
+            sc_trace(m_trace_file, i_d1,       "(port)i_d1");
+            sc_trace(m_trace_file, i_q1,       "(port)i_q1");
             sc_trace(m_trace_file, t_read,     "(port)t_read");
             sc_trace(m_trace_file, t_empty_n,  "(port)t_empty_n");
             sc_trace(m_trace_file, t_ce0,      "(port)t_ce0");
@@ -152,6 +223,11 @@ public:
             sc_trace(m_trace_file, t_address0, "(port)t_address0");
             sc_trace(m_trace_file, t_d0,       "(port)t_d0");
             sc_trace(m_trace_file, t_q0,       "(port)t_q0");
+            sc_trace(m_trace_file, t_ce1,      "(port)t_ce1");
+            sc_trace(m_trace_file, t_we1,      "(port)t_we0");
+            sc_trace(m_trace_file, t_address1, "(port)t_address1");
+            sc_trace(m_trace_file, t_d1,       "(port)t_d1");
+            sc_trace(m_trace_file, t_q1,       "(port)t_q1");
             // control/status
             sc_trace(m_trace_file, iptr,     "iptr");
             sc_trace(m_trace_file, tptr,     "tptr");
@@ -160,8 +236,22 @@ public:
             sc_trace(m_trace_file, empty_n,  "empty_n");
             sc_trace(m_trace_file, push_buf, "push_buf");
             sc_trace(m_trace_file, pop_buf,  "pop_buf");
-            sc_trace(m_trace_file, memcore_iaddr,  "memcore_iaddr");
-            sc_trace(m_trace_file, memcore_taddr,  "memcore_taddr");
+            // buffer signals
+            for (unsigned i = 0; i < BufferCount; i++) {
+                char szTmp[128];
+                char szIndex[16];
+                sprintf(szIndex, "(%d)", i);
+                sc_trace(m_trace_file, buf_ce0[i], strcat(strcpy(szTmp, "buf_ce0"), szIndex));
+                sc_trace(m_trace_file, buf_we0[i], strcat(strcpy(szTmp, "buf_we0"), szIndex));
+                sc_trace(m_trace_file, buf_a0[i],  strcat(strcpy(szTmp, "buf_a0" ), szIndex));
+                sc_trace(m_trace_file, buf_d0[i],  strcat(strcpy(szTmp, "buf_d0" ), szIndex));
+                sc_trace(m_trace_file, buf_q0[i],  strcat(strcpy(szTmp, "buf_q0" ), szIndex));
+                sc_trace(m_trace_file, buf_ce1[i], strcat(strcpy(szTmp, "buf_ce1"), szIndex));
+                sc_trace(m_trace_file, buf_we1[i], strcat(strcpy(szTmp, "buf_we1"), szIndex));
+                sc_trace(m_trace_file, buf_a1[i],  strcat(strcpy(szTmp, "buf_a1" ), szIndex));
+                sc_trace(m_trace_file, buf_d1[i],  strcat(strcpy(szTmp, "buf_d1" ), szIndex));
+                sc_trace(m_trace_file, buf_q1[i],  strcat(strcpy(szTmp, "buf_q1" ), szIndex));
+            }
         } // Trace End.
 
     }

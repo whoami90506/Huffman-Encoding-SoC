@@ -14,16 +14,14 @@ namespace ap_rtl {
 
 const sc_logic Loop_copy_sorted_pro::ap_const_logic_1 = sc_dt::Log_1;
 const sc_logic Loop_copy_sorted_pro::ap_const_logic_0 = sc_dt::Log_0;
-const sc_lv<4> Loop_copy_sorted_pro::ap_ST_fsm_state1 = "1";
-const sc_lv<4> Loop_copy_sorted_pro::ap_ST_fsm_state2 = "10";
-const sc_lv<4> Loop_copy_sorted_pro::ap_ST_fsm_state3 = "100";
-const sc_lv<4> Loop_copy_sorted_pro::ap_ST_fsm_state4 = "1000";
+const sc_lv<3> Loop_copy_sorted_pro::ap_ST_fsm_state1 = "1";
+const sc_lv<3> Loop_copy_sorted_pro::ap_ST_fsm_state2 = "10";
+const sc_lv<3> Loop_copy_sorted_pro::ap_ST_fsm_state3 = "100";
 const sc_lv<32> Loop_copy_sorted_pro::ap_const_lv32_0 = "00000000000000000000000000000000";
-const sc_lv<32> Loop_copy_sorted_pro::ap_const_lv32_3 = "11";
+const sc_lv<32> Loop_copy_sorted_pro::ap_const_lv32_2 = "10";
 const sc_lv<32> Loop_copy_sorted_pro::ap_const_lv32_1 = "1";
 const sc_lv<1> Loop_copy_sorted_pro::ap_const_lv1_1 = "1";
 const sc_lv<1> Loop_copy_sorted_pro::ap_const_lv1_0 = "0";
-const sc_lv<32> Loop_copy_sorted_pro::ap_const_lv32_2 = "10";
 const sc_lv<9> Loop_copy_sorted_pro::ap_const_lv9_0 = "000000000";
 const sc_lv<9> Loop_copy_sorted_pro::ap_const_lv9_1 = "1";
 const bool Loop_copy_sorted_pro::ap_const_boolean_1 = true;
@@ -43,9 +41,6 @@ Loop_copy_sorted_pro::Loop_copy_sorted_pro(sc_module_name name) : sc_module(name
     SC_METHOD(thread_ap_CS_fsm_state3);
     sensitive << ( ap_CS_fsm );
 
-    SC_METHOD(thread_ap_CS_fsm_state4);
-    sensitive << ( ap_CS_fsm );
-
     SC_METHOD(thread_ap_block_state1);
     sensitive << ( real_start );
     sensitive << ( ap_done_reg );
@@ -55,9 +50,9 @@ Loop_copy_sorted_pro::Loop_copy_sorted_pro(sc_module_name name) : sc_module(name
     sensitive << ( val_assign6_out_out_full_n );
     sensitive << ( extLd_out_out_full_n );
     sensitive << ( extLd_out_out1_full_n );
-    sensitive << ( icmp_ln40_fu_145_p2 );
+    sensitive << ( icmp_ln40_fu_148_p2 );
 
-    SC_METHOD(thread_ap_block_state4);
+    SC_METHOD(thread_ap_block_state3);
     sensitive << ( sorted_copy1_0_full_n );
     sensitive << ( sorted_copy1_1_full_n );
 
@@ -67,7 +62,7 @@ Loop_copy_sorted_pro::Loop_copy_sorted_pro(sc_module_name name) : sc_module(name
     sensitive << ( extLd_out_out_full_n );
     sensitive << ( extLd_out_out1_full_n );
     sensitive << ( ap_CS_fsm_state2 );
-    sensitive << ( icmp_ln40_fu_145_p2 );
+    sensitive << ( icmp_ln40_fu_148_p2 );
 
     SC_METHOD(thread_ap_idle);
     sensitive << ( real_start );
@@ -79,61 +74,61 @@ Loop_copy_sorted_pro::Loop_copy_sorted_pro(sc_module_name name) : sc_module(name
     SC_METHOD(thread_extLd_out_out1_blk_n);
     sensitive << ( extLd_out_out1_full_n );
     sensitive << ( ap_CS_fsm_state2 );
-    sensitive << ( icmp_ln40_fu_145_p2 );
+    sensitive << ( icmp_ln40_fu_148_p2 );
 
     SC_METHOD(thread_extLd_out_out1_din);
     sensitive << ( val_assign6_out_out_full_n );
     sensitive << ( extLd_out_out_full_n );
     sensitive << ( extLd_out_out1_full_n );
     sensitive << ( ap_CS_fsm_state2 );
-    sensitive << ( icmp_ln40_fu_145_p2 );
-    sensitive << ( n_read_reg_162 );
+    sensitive << ( icmp_ln40_fu_148_p2 );
+    sensitive << ( n_read_reg_165 );
 
     SC_METHOD(thread_extLd_out_out1_write);
     sensitive << ( val_assign6_out_out_full_n );
     sensitive << ( extLd_out_out_full_n );
     sensitive << ( extLd_out_out1_full_n );
     sensitive << ( ap_CS_fsm_state2 );
-    sensitive << ( icmp_ln40_fu_145_p2 );
+    sensitive << ( icmp_ln40_fu_148_p2 );
 
     SC_METHOD(thread_extLd_out_out_blk_n);
     sensitive << ( extLd_out_out_full_n );
     sensitive << ( ap_CS_fsm_state2 );
-    sensitive << ( icmp_ln40_fu_145_p2 );
+    sensitive << ( icmp_ln40_fu_148_p2 );
 
     SC_METHOD(thread_extLd_out_out_din);
     sensitive << ( val_assign6_out_out_full_n );
     sensitive << ( extLd_out_out_full_n );
     sensitive << ( extLd_out_out1_full_n );
     sensitive << ( ap_CS_fsm_state2 );
-    sensitive << ( icmp_ln40_fu_145_p2 );
-    sensitive << ( n_read_reg_162 );
+    sensitive << ( icmp_ln40_fu_148_p2 );
+    sensitive << ( n_read_reg_165 );
 
     SC_METHOD(thread_extLd_out_out_write);
     sensitive << ( val_assign6_out_out_full_n );
     sensitive << ( extLd_out_out_full_n );
     sensitive << ( extLd_out_out1_full_n );
     sensitive << ( ap_CS_fsm_state2 );
-    sensitive << ( icmp_ln40_fu_145_p2 );
+    sensitive << ( icmp_ln40_fu_148_p2 );
 
-    SC_METHOD(thread_i_fu_150_p2);
-    sensitive << ( i12_0_i_reg_134 );
+    SC_METHOD(thread_i_fu_153_p2);
+    sensitive << ( i12_0_i_reg_137 );
 
-    SC_METHOD(thread_icmp_ln40_fu_145_p2);
+    SC_METHOD(thread_icmp_ln40_fu_148_p2);
     sensitive << ( val_assign6_out_out_full_n );
     sensitive << ( extLd_out_out_full_n );
     sensitive << ( extLd_out_out1_full_n );
     sensitive << ( ap_CS_fsm_state2 );
-    sensitive << ( icmp_ln40_fu_145_p2 );
-    sensitive << ( n_read_reg_162 );
-    sensitive << ( i12_0_i_reg_134 );
+    sensitive << ( icmp_ln40_fu_148_p2 );
+    sensitive << ( n_read_reg_165 );
+    sensitive << ( i12_0_i_reg_137 );
 
     SC_METHOD(thread_internal_ap_ready);
     sensitive << ( val_assign6_out_out_full_n );
     sensitive << ( extLd_out_out_full_n );
     sensitive << ( extLd_out_out1_full_n );
     sensitive << ( ap_CS_fsm_state2 );
-    sensitive << ( icmp_ln40_fu_145_p2 );
+    sensitive << ( icmp_ln40_fu_148_p2 );
 
     SC_METHOD(thread_n_blk_n);
     sensitive << ( real_start );
@@ -154,73 +149,73 @@ Loop_copy_sorted_pro::Loop_copy_sorted_pro(sc_module_name name) : sc_module(name
 
     SC_METHOD(thread_sorted_0_address0);
     sensitive << ( ap_CS_fsm_state2 );
-    sensitive << ( zext_ln41_fu_156_p1 );
+    sensitive << ( zext_ln41_fu_159_p1 );
 
     SC_METHOD(thread_sorted_0_ce0);
     sensitive << ( val_assign6_out_out_full_n );
     sensitive << ( extLd_out_out_full_n );
     sensitive << ( extLd_out_out1_full_n );
     sensitive << ( ap_CS_fsm_state2 );
-    sensitive << ( icmp_ln40_fu_145_p2 );
+    sensitive << ( icmp_ln40_fu_148_p2 );
 
     SC_METHOD(thread_sorted_1_address0);
     sensitive << ( ap_CS_fsm_state2 );
-    sensitive << ( zext_ln41_fu_156_p1 );
+    sensitive << ( zext_ln41_fu_159_p1 );
 
     SC_METHOD(thread_sorted_1_ce0);
     sensitive << ( val_assign6_out_out_full_n );
     sensitive << ( extLd_out_out_full_n );
     sensitive << ( extLd_out_out1_full_n );
     sensitive << ( ap_CS_fsm_state2 );
-    sensitive << ( icmp_ln40_fu_145_p2 );
+    sensitive << ( icmp_ln40_fu_148_p2 );
 
     SC_METHOD(thread_sorted_copy1_0_blk_n);
     sensitive << ( sorted_copy1_0_full_n );
-    sensitive << ( ap_CS_fsm_state4 );
+    sensitive << ( ap_CS_fsm_state3 );
 
     SC_METHOD(thread_sorted_copy1_0_din);
+    sensitive << ( sorted_0_q0 );
     sensitive << ( sorted_copy1_0_full_n );
     sensitive << ( sorted_copy1_1_full_n );
-    sensitive << ( ap_CS_fsm_state4 );
-    sensitive << ( sorted_0_load_reg_193 );
+    sensitive << ( ap_CS_fsm_state3 );
 
     SC_METHOD(thread_sorted_copy1_0_write);
     sensitive << ( sorted_copy1_0_full_n );
     sensitive << ( sorted_copy1_1_full_n );
-    sensitive << ( ap_CS_fsm_state4 );
+    sensitive << ( ap_CS_fsm_state3 );
 
     SC_METHOD(thread_sorted_copy1_1_blk_n);
     sensitive << ( sorted_copy1_1_full_n );
-    sensitive << ( ap_CS_fsm_state4 );
+    sensitive << ( ap_CS_fsm_state3 );
 
     SC_METHOD(thread_sorted_copy1_1_din);
     sensitive << ( sorted_copy1_0_full_n );
+    sensitive << ( sorted_1_q0 );
     sensitive << ( sorted_copy1_1_full_n );
-    sensitive << ( ap_CS_fsm_state4 );
-    sensitive << ( previous_frequency_reg_199 );
+    sensitive << ( ap_CS_fsm_state3 );
 
     SC_METHOD(thread_sorted_copy1_1_write);
     sensitive << ( sorted_copy1_0_full_n );
     sensitive << ( sorted_copy1_1_full_n );
-    sensitive << ( ap_CS_fsm_state4 );
+    sensitive << ( ap_CS_fsm_state3 );
 
     SC_METHOD(thread_sorted_copy2_value_V_address0);
-    sensitive << ( ap_CS_fsm_state4 );
-    sensitive << ( zext_ln41_reg_178 );
+    sensitive << ( ap_CS_fsm_state3 );
+    sensitive << ( zext_ln41_reg_181 );
 
     SC_METHOD(thread_sorted_copy2_value_V_ce0);
     sensitive << ( sorted_copy1_0_full_n );
     sensitive << ( sorted_copy1_1_full_n );
-    sensitive << ( ap_CS_fsm_state4 );
+    sensitive << ( ap_CS_fsm_state3 );
 
     SC_METHOD(thread_sorted_copy2_value_V_d0);
-    sensitive << ( ap_CS_fsm_state4 );
-    sensitive << ( sorted_0_load_reg_193 );
+    sensitive << ( sorted_0_q0 );
+    sensitive << ( ap_CS_fsm_state3 );
 
     SC_METHOD(thread_sorted_copy2_value_V_we0);
     sensitive << ( sorted_copy1_0_full_n );
     sensitive << ( sorted_copy1_1_full_n );
-    sensitive << ( ap_CS_fsm_state4 );
+    sensitive << ( ap_CS_fsm_state3 );
 
     SC_METHOD(thread_start_out);
     sensitive << ( real_start );
@@ -232,25 +227,25 @@ Loop_copy_sorted_pro::Loop_copy_sorted_pro(sc_module_name name) : sc_module(name
     SC_METHOD(thread_val_assign6_out_out_blk_n);
     sensitive << ( val_assign6_out_out_full_n );
     sensitive << ( ap_CS_fsm_state2 );
-    sensitive << ( icmp_ln40_fu_145_p2 );
+    sensitive << ( icmp_ln40_fu_148_p2 );
 
     SC_METHOD(thread_val_assign6_out_out_din);
     sensitive << ( val_assign6_out_out_full_n );
     sensitive << ( extLd_out_out_full_n );
     sensitive << ( extLd_out_out1_full_n );
     sensitive << ( ap_CS_fsm_state2 );
-    sensitive << ( icmp_ln40_fu_145_p2 );
-    sensitive << ( n_read_reg_162 );
+    sensitive << ( icmp_ln40_fu_148_p2 );
+    sensitive << ( n_read_reg_165 );
 
     SC_METHOD(thread_val_assign6_out_out_write);
     sensitive << ( val_assign6_out_out_full_n );
     sensitive << ( extLd_out_out_full_n );
     sensitive << ( extLd_out_out1_full_n );
     sensitive << ( ap_CS_fsm_state2 );
-    sensitive << ( icmp_ln40_fu_145_p2 );
+    sensitive << ( icmp_ln40_fu_148_p2 );
 
-    SC_METHOD(thread_zext_ln41_fu_156_p1);
-    sensitive << ( i12_0_i_reg_134 );
+    SC_METHOD(thread_zext_ln41_fu_159_p1);
+    sensitive << ( i12_0_i_reg_137 );
 
     SC_METHOD(thread_ap_NS_fsm);
     sensitive << ( real_start );
@@ -263,13 +258,13 @@ Loop_copy_sorted_pro::Loop_copy_sorted_pro(sc_module_name name) : sc_module(name
     sensitive << ( val_assign6_out_out_full_n );
     sensitive << ( extLd_out_out_full_n );
     sensitive << ( extLd_out_out1_full_n );
-    sensitive << ( ap_CS_fsm_state4 );
+    sensitive << ( ap_CS_fsm_state3 );
     sensitive << ( ap_CS_fsm_state2 );
-    sensitive << ( icmp_ln40_fu_145_p2 );
+    sensitive << ( icmp_ln40_fu_148_p2 );
 
     start_once_reg = SC_LOGIC_0;
     ap_done_reg = SC_LOGIC_0;
-    ap_CS_fsm = "0001";
+    ap_CS_fsm = "001";
     static int apTFileNum = 0;
     stringstream apTFilenSS;
     apTFilenSS << "Loop_copy_sorted_pro_sc_trace_" << apTFileNum ++;
@@ -326,25 +321,22 @@ Loop_copy_sorted_pro::Loop_copy_sorted_pro(sc_module_name name) : sc_module(name
     sc_trace(mVcdFile, internal_ap_ready, "internal_ap_ready");
     sc_trace(mVcdFile, n_blk_n, "n_blk_n");
     sc_trace(mVcdFile, sorted_copy1_0_blk_n, "sorted_copy1_0_blk_n");
-    sc_trace(mVcdFile, ap_CS_fsm_state4, "ap_CS_fsm_state4");
+    sc_trace(mVcdFile, ap_CS_fsm_state3, "ap_CS_fsm_state3");
     sc_trace(mVcdFile, sorted_copy1_1_blk_n, "sorted_copy1_1_blk_n");
     sc_trace(mVcdFile, val_assign6_out_out_blk_n, "val_assign6_out_out_blk_n");
     sc_trace(mVcdFile, ap_CS_fsm_state2, "ap_CS_fsm_state2");
-    sc_trace(mVcdFile, icmp_ln40_fu_145_p2, "icmp_ln40_fu_145_p2");
+    sc_trace(mVcdFile, icmp_ln40_fu_148_p2, "icmp_ln40_fu_148_p2");
     sc_trace(mVcdFile, extLd_out_out_blk_n, "extLd_out_out_blk_n");
     sc_trace(mVcdFile, extLd_out_out1_blk_n, "extLd_out_out1_blk_n");
-    sc_trace(mVcdFile, n_read_reg_162, "n_read_reg_162");
+    sc_trace(mVcdFile, n_read_reg_165, "n_read_reg_165");
     sc_trace(mVcdFile, ap_block_state1, "ap_block_state1");
-    sc_trace(mVcdFile, i_fu_150_p2, "i_fu_150_p2");
-    sc_trace(mVcdFile, i_reg_173, "i_reg_173");
+    sc_trace(mVcdFile, i_fu_153_p2, "i_fu_153_p2");
+    sc_trace(mVcdFile, i_reg_176, "i_reg_176");
     sc_trace(mVcdFile, ap_block_state2, "ap_block_state2");
-    sc_trace(mVcdFile, zext_ln41_fu_156_p1, "zext_ln41_fu_156_p1");
-    sc_trace(mVcdFile, zext_ln41_reg_178, "zext_ln41_reg_178");
-    sc_trace(mVcdFile, sorted_0_load_reg_193, "sorted_0_load_reg_193");
-    sc_trace(mVcdFile, ap_CS_fsm_state3, "ap_CS_fsm_state3");
-    sc_trace(mVcdFile, previous_frequency_reg_199, "previous_frequency_reg_199");
-    sc_trace(mVcdFile, i12_0_i_reg_134, "i12_0_i_reg_134");
-    sc_trace(mVcdFile, ap_block_state4, "ap_block_state4");
+    sc_trace(mVcdFile, zext_ln41_fu_159_p1, "zext_ln41_fu_159_p1");
+    sc_trace(mVcdFile, zext_ln41_reg_181, "zext_ln41_reg_181");
+    sc_trace(mVcdFile, i12_0_i_reg_137, "i12_0_i_reg_137");
+    sc_trace(mVcdFile, ap_block_state3, "ap_block_state3");
     sc_trace(mVcdFile, ap_NS_fsm, "ap_NS_fsm");
 #endif
 
@@ -369,20 +361,20 @@ void Loop_copy_sorted_pro::thread_ap_clk_no_reset_() {
         if (esl_seteq<1,1,1>(ap_const_logic_1, ap_continue.read())) {
             ap_done_reg = ap_const_logic_0;
         } else if ((esl_seteq<1,1,1>(ap_const_logic_1, ap_CS_fsm_state2.read()) && 
-                    esl_seteq<1,1,1>(icmp_ln40_fu_145_p2.read(), ap_const_lv1_1) && 
-                    !((esl_seteq<1,1,1>(icmp_ln40_fu_145_p2.read(), ap_const_lv1_1) && 
-  esl_seteq<1,1,1>(ap_const_logic_0, val_assign6_out_out_full_n.read())) || (esl_seteq<1,1,1>(icmp_ln40_fu_145_p2.read(), ap_const_lv1_1) && 
-  esl_seteq<1,1,1>(ap_const_logic_0, extLd_out_out_full_n.read())) || (esl_seteq<1,1,1>(icmp_ln40_fu_145_p2.read(), ap_const_lv1_1) && 
+                    esl_seteq<1,1,1>(icmp_ln40_fu_148_p2.read(), ap_const_lv1_1) && 
+                    !((esl_seteq<1,1,1>(icmp_ln40_fu_148_p2.read(), ap_const_lv1_1) && 
+  esl_seteq<1,1,1>(ap_const_logic_0, val_assign6_out_out_full_n.read())) || (esl_seteq<1,1,1>(icmp_ln40_fu_148_p2.read(), ap_const_lv1_1) && 
+  esl_seteq<1,1,1>(ap_const_logic_0, extLd_out_out_full_n.read())) || (esl_seteq<1,1,1>(icmp_ln40_fu_148_p2.read(), ap_const_lv1_1) && 
   esl_seteq<1,1,1>(ap_const_logic_0, extLd_out_out1_full_n.read()))))) {
             ap_done_reg = ap_const_logic_1;
         }
     }
     if ((esl_seteq<1,1,1>(ap_const_logic_1, ap_CS_fsm_state1.read()) && 
          !(esl_seteq<1,1,1>(ap_const_logic_0, real_start.read()) || esl_seteq<1,1,1>(ap_done_reg.read(), ap_const_logic_1) || esl_seteq<1,1,1>(ap_const_logic_0, n_empty_n.read())))) {
-        i12_0_i_reg_134 = ap_const_lv9_0;
-    } else if ((esl_seteq<1,1,1>(ap_const_logic_1, ap_CS_fsm_state4.read()) && 
+        i12_0_i_reg_137 = ap_const_lv9_0;
+    } else if ((esl_seteq<1,1,1>(ap_const_logic_1, ap_CS_fsm_state3.read()) && 
                 !(esl_seteq<1,1,1>(ap_const_logic_0, sorted_copy1_0_full_n.read()) || esl_seteq<1,1,1>(ap_const_logic_0, sorted_copy1_1_full_n.read())))) {
-        i12_0_i_reg_134 = i_reg_173.read();
+        i12_0_i_reg_137 = i_reg_176.read();
     }
     if ( ap_rst.read() == ap_const_logic_1) {
         start_once_reg = ap_const_logic_0;
@@ -394,24 +386,20 @@ void Loop_copy_sorted_pro::thread_ap_clk_no_reset_() {
             start_once_reg = ap_const_logic_0;
         }
     }
-    if ((esl_seteq<1,1,1>(ap_const_logic_1, ap_CS_fsm_state2.read()) && !((esl_seteq<1,1,1>(icmp_ln40_fu_145_p2.read(), ap_const_lv1_1) && 
-  esl_seteq<1,1,1>(ap_const_logic_0, val_assign6_out_out_full_n.read())) || (esl_seteq<1,1,1>(icmp_ln40_fu_145_p2.read(), ap_const_lv1_1) && 
-  esl_seteq<1,1,1>(ap_const_logic_0, extLd_out_out_full_n.read())) || (esl_seteq<1,1,1>(icmp_ln40_fu_145_p2.read(), ap_const_lv1_1) && 
+    if ((esl_seteq<1,1,1>(ap_const_logic_1, ap_CS_fsm_state2.read()) && !((esl_seteq<1,1,1>(icmp_ln40_fu_148_p2.read(), ap_const_lv1_1) && 
+  esl_seteq<1,1,1>(ap_const_logic_0, val_assign6_out_out_full_n.read())) || (esl_seteq<1,1,1>(icmp_ln40_fu_148_p2.read(), ap_const_lv1_1) && 
+  esl_seteq<1,1,1>(ap_const_logic_0, extLd_out_out_full_n.read())) || (esl_seteq<1,1,1>(icmp_ln40_fu_148_p2.read(), ap_const_lv1_1) && 
   esl_seteq<1,1,1>(ap_const_logic_0, extLd_out_out1_full_n.read()))))) {
-        i_reg_173 = i_fu_150_p2.read();
+        i_reg_176 = i_fu_153_p2.read();
     }
     if ((esl_seteq<1,1,1>(ap_const_logic_1, ap_CS_fsm_state1.read()) && !(esl_seteq<1,1,1>(ap_const_logic_0, real_start.read()) || esl_seteq<1,1,1>(ap_done_reg.read(), ap_const_logic_1) || esl_seteq<1,1,1>(ap_const_logic_0, n_empty_n.read())))) {
-        n_read_reg_162 = n_dout.read();
+        n_read_reg_165 = n_dout.read();
     }
-    if (esl_seteq<1,1,1>(ap_const_logic_1, ap_CS_fsm_state3.read())) {
-        previous_frequency_reg_199 = sorted_1_q0.read();
-        sorted_0_load_reg_193 = sorted_0_q0.read();
-    }
-    if ((esl_seteq<1,1,1>(ap_const_logic_1, ap_CS_fsm_state2.read()) && !((esl_seteq<1,1,1>(icmp_ln40_fu_145_p2.read(), ap_const_lv1_1) && 
-  esl_seteq<1,1,1>(ap_const_logic_0, val_assign6_out_out_full_n.read())) || (esl_seteq<1,1,1>(icmp_ln40_fu_145_p2.read(), ap_const_lv1_1) && 
-  esl_seteq<1,1,1>(ap_const_logic_0, extLd_out_out_full_n.read())) || (esl_seteq<1,1,1>(icmp_ln40_fu_145_p2.read(), ap_const_lv1_1) && 
-  esl_seteq<1,1,1>(ap_const_logic_0, extLd_out_out1_full_n.read()))) && esl_seteq<1,1,1>(icmp_ln40_fu_145_p2.read(), ap_const_lv1_0))) {
-        zext_ln41_reg_178 = zext_ln41_fu_156_p1.read();
+    if ((esl_seteq<1,1,1>(ap_const_logic_1, ap_CS_fsm_state2.read()) && !((esl_seteq<1,1,1>(icmp_ln40_fu_148_p2.read(), ap_const_lv1_1) && 
+  esl_seteq<1,1,1>(ap_const_logic_0, val_assign6_out_out_full_n.read())) || (esl_seteq<1,1,1>(icmp_ln40_fu_148_p2.read(), ap_const_lv1_1) && 
+  esl_seteq<1,1,1>(ap_const_logic_0, extLd_out_out_full_n.read())) || (esl_seteq<1,1,1>(icmp_ln40_fu_148_p2.read(), ap_const_lv1_1) && 
+  esl_seteq<1,1,1>(ap_const_logic_0, extLd_out_out1_full_n.read()))) && esl_seteq<1,1,1>(icmp_ln40_fu_148_p2.read(), ap_const_lv1_0))) {
+        zext_ln41_reg_181 = zext_ln41_fu_159_p1.read();
     }
 }
 
@@ -427,31 +415,27 @@ void Loop_copy_sorted_pro::thread_ap_CS_fsm_state3() {
     ap_CS_fsm_state3 = ap_CS_fsm.read()[2];
 }
 
-void Loop_copy_sorted_pro::thread_ap_CS_fsm_state4() {
-    ap_CS_fsm_state4 = ap_CS_fsm.read()[3];
-}
-
 void Loop_copy_sorted_pro::thread_ap_block_state1() {
     ap_block_state1 = (esl_seteq<1,1,1>(ap_const_logic_0, real_start.read()) || esl_seteq<1,1,1>(ap_done_reg.read(), ap_const_logic_1) || esl_seteq<1,1,1>(ap_const_logic_0, n_empty_n.read()));
 }
 
 void Loop_copy_sorted_pro::thread_ap_block_state2() {
-    ap_block_state2 = ((esl_seteq<1,1,1>(icmp_ln40_fu_145_p2.read(), ap_const_lv1_1) && 
-  esl_seteq<1,1,1>(ap_const_logic_0, val_assign6_out_out_full_n.read())) || (esl_seteq<1,1,1>(icmp_ln40_fu_145_p2.read(), ap_const_lv1_1) && 
-  esl_seteq<1,1,1>(ap_const_logic_0, extLd_out_out_full_n.read())) || (esl_seteq<1,1,1>(icmp_ln40_fu_145_p2.read(), ap_const_lv1_1) && 
+    ap_block_state2 = ((esl_seteq<1,1,1>(icmp_ln40_fu_148_p2.read(), ap_const_lv1_1) && 
+  esl_seteq<1,1,1>(ap_const_logic_0, val_assign6_out_out_full_n.read())) || (esl_seteq<1,1,1>(icmp_ln40_fu_148_p2.read(), ap_const_lv1_1) && 
+  esl_seteq<1,1,1>(ap_const_logic_0, extLd_out_out_full_n.read())) || (esl_seteq<1,1,1>(icmp_ln40_fu_148_p2.read(), ap_const_lv1_1) && 
   esl_seteq<1,1,1>(ap_const_logic_0, extLd_out_out1_full_n.read())));
 }
 
-void Loop_copy_sorted_pro::thread_ap_block_state4() {
-    ap_block_state4 = (esl_seteq<1,1,1>(ap_const_logic_0, sorted_copy1_0_full_n.read()) || esl_seteq<1,1,1>(ap_const_logic_0, sorted_copy1_1_full_n.read()));
+void Loop_copy_sorted_pro::thread_ap_block_state3() {
+    ap_block_state3 = (esl_seteq<1,1,1>(ap_const_logic_0, sorted_copy1_0_full_n.read()) || esl_seteq<1,1,1>(ap_const_logic_0, sorted_copy1_1_full_n.read()));
 }
 
 void Loop_copy_sorted_pro::thread_ap_done() {
     if ((esl_seteq<1,1,1>(ap_const_logic_1, ap_CS_fsm_state2.read()) && 
-         esl_seteq<1,1,1>(icmp_ln40_fu_145_p2.read(), ap_const_lv1_1) && 
-         !((esl_seteq<1,1,1>(icmp_ln40_fu_145_p2.read(), ap_const_lv1_1) && 
-  esl_seteq<1,1,1>(ap_const_logic_0, val_assign6_out_out_full_n.read())) || (esl_seteq<1,1,1>(icmp_ln40_fu_145_p2.read(), ap_const_lv1_1) && 
-  esl_seteq<1,1,1>(ap_const_logic_0, extLd_out_out_full_n.read())) || (esl_seteq<1,1,1>(icmp_ln40_fu_145_p2.read(), ap_const_lv1_1) && 
+         esl_seteq<1,1,1>(icmp_ln40_fu_148_p2.read(), ap_const_lv1_1) && 
+         !((esl_seteq<1,1,1>(icmp_ln40_fu_148_p2.read(), ap_const_lv1_1) && 
+  esl_seteq<1,1,1>(ap_const_logic_0, val_assign6_out_out_full_n.read())) || (esl_seteq<1,1,1>(icmp_ln40_fu_148_p2.read(), ap_const_lv1_1) && 
+  esl_seteq<1,1,1>(ap_const_logic_0, extLd_out_out_full_n.read())) || (esl_seteq<1,1,1>(icmp_ln40_fu_148_p2.read(), ap_const_lv1_1) && 
   esl_seteq<1,1,1>(ap_const_logic_0, extLd_out_out1_full_n.read()))))) {
         ap_done = ap_const_logic_1;
     } else {
@@ -474,7 +458,7 @@ void Loop_copy_sorted_pro::thread_ap_ready() {
 
 void Loop_copy_sorted_pro::thread_extLd_out_out1_blk_n() {
     if ((esl_seteq<1,1,1>(ap_const_logic_1, ap_CS_fsm_state2.read()) && 
-         esl_seteq<1,1,1>(icmp_ln40_fu_145_p2.read(), ap_const_lv1_1))) {
+         esl_seteq<1,1,1>(icmp_ln40_fu_148_p2.read(), ap_const_lv1_1))) {
         extLd_out_out1_blk_n = extLd_out_out1_full_n.read();
     } else {
         extLd_out_out1_blk_n = ap_const_logic_1;
@@ -482,15 +466,15 @@ void Loop_copy_sorted_pro::thread_extLd_out_out1_blk_n() {
 }
 
 void Loop_copy_sorted_pro::thread_extLd_out_out1_din() {
-    extLd_out_out1_din = n_read_reg_162.read();
+    extLd_out_out1_din = n_read_reg_165.read();
 }
 
 void Loop_copy_sorted_pro::thread_extLd_out_out1_write() {
     if ((esl_seteq<1,1,1>(ap_const_logic_1, ap_CS_fsm_state2.read()) && 
-         esl_seteq<1,1,1>(icmp_ln40_fu_145_p2.read(), ap_const_lv1_1) && 
-         !((esl_seteq<1,1,1>(icmp_ln40_fu_145_p2.read(), ap_const_lv1_1) && 
-  esl_seteq<1,1,1>(ap_const_logic_0, val_assign6_out_out_full_n.read())) || (esl_seteq<1,1,1>(icmp_ln40_fu_145_p2.read(), ap_const_lv1_1) && 
-  esl_seteq<1,1,1>(ap_const_logic_0, extLd_out_out_full_n.read())) || (esl_seteq<1,1,1>(icmp_ln40_fu_145_p2.read(), ap_const_lv1_1) && 
+         esl_seteq<1,1,1>(icmp_ln40_fu_148_p2.read(), ap_const_lv1_1) && 
+         !((esl_seteq<1,1,1>(icmp_ln40_fu_148_p2.read(), ap_const_lv1_1) && 
+  esl_seteq<1,1,1>(ap_const_logic_0, val_assign6_out_out_full_n.read())) || (esl_seteq<1,1,1>(icmp_ln40_fu_148_p2.read(), ap_const_lv1_1) && 
+  esl_seteq<1,1,1>(ap_const_logic_0, extLd_out_out_full_n.read())) || (esl_seteq<1,1,1>(icmp_ln40_fu_148_p2.read(), ap_const_lv1_1) && 
   esl_seteq<1,1,1>(ap_const_logic_0, extLd_out_out1_full_n.read()))))) {
         extLd_out_out1_write = ap_const_logic_1;
     } else {
@@ -500,7 +484,7 @@ void Loop_copy_sorted_pro::thread_extLd_out_out1_write() {
 
 void Loop_copy_sorted_pro::thread_extLd_out_out_blk_n() {
     if ((esl_seteq<1,1,1>(ap_const_logic_1, ap_CS_fsm_state2.read()) && 
-         esl_seteq<1,1,1>(icmp_ln40_fu_145_p2.read(), ap_const_lv1_1))) {
+         esl_seteq<1,1,1>(icmp_ln40_fu_148_p2.read(), ap_const_lv1_1))) {
         extLd_out_out_blk_n = extLd_out_out_full_n.read();
     } else {
         extLd_out_out_blk_n = ap_const_logic_1;
@@ -508,15 +492,15 @@ void Loop_copy_sorted_pro::thread_extLd_out_out_blk_n() {
 }
 
 void Loop_copy_sorted_pro::thread_extLd_out_out_din() {
-    extLd_out_out_din = n_read_reg_162.read();
+    extLd_out_out_din = n_read_reg_165.read();
 }
 
 void Loop_copy_sorted_pro::thread_extLd_out_out_write() {
     if ((esl_seteq<1,1,1>(ap_const_logic_1, ap_CS_fsm_state2.read()) && 
-         esl_seteq<1,1,1>(icmp_ln40_fu_145_p2.read(), ap_const_lv1_1) && 
-         !((esl_seteq<1,1,1>(icmp_ln40_fu_145_p2.read(), ap_const_lv1_1) && 
-  esl_seteq<1,1,1>(ap_const_logic_0, val_assign6_out_out_full_n.read())) || (esl_seteq<1,1,1>(icmp_ln40_fu_145_p2.read(), ap_const_lv1_1) && 
-  esl_seteq<1,1,1>(ap_const_logic_0, extLd_out_out_full_n.read())) || (esl_seteq<1,1,1>(icmp_ln40_fu_145_p2.read(), ap_const_lv1_1) && 
+         esl_seteq<1,1,1>(icmp_ln40_fu_148_p2.read(), ap_const_lv1_1) && 
+         !((esl_seteq<1,1,1>(icmp_ln40_fu_148_p2.read(), ap_const_lv1_1) && 
+  esl_seteq<1,1,1>(ap_const_logic_0, val_assign6_out_out_full_n.read())) || (esl_seteq<1,1,1>(icmp_ln40_fu_148_p2.read(), ap_const_lv1_1) && 
+  esl_seteq<1,1,1>(ap_const_logic_0, extLd_out_out_full_n.read())) || (esl_seteq<1,1,1>(icmp_ln40_fu_148_p2.read(), ap_const_lv1_1) && 
   esl_seteq<1,1,1>(ap_const_logic_0, extLd_out_out1_full_n.read()))))) {
         extLd_out_out_write = ap_const_logic_1;
     } else {
@@ -524,20 +508,20 @@ void Loop_copy_sorted_pro::thread_extLd_out_out_write() {
     }
 }
 
-void Loop_copy_sorted_pro::thread_i_fu_150_p2() {
-    i_fu_150_p2 = (!i12_0_i_reg_134.read().is_01() || !ap_const_lv9_1.is_01())? sc_lv<9>(): (sc_biguint<9>(i12_0_i_reg_134.read()) + sc_biguint<9>(ap_const_lv9_1));
+void Loop_copy_sorted_pro::thread_i_fu_153_p2() {
+    i_fu_153_p2 = (!i12_0_i_reg_137.read().is_01() || !ap_const_lv9_1.is_01())? sc_lv<9>(): (sc_biguint<9>(i12_0_i_reg_137.read()) + sc_biguint<9>(ap_const_lv9_1));
 }
 
-void Loop_copy_sorted_pro::thread_icmp_ln40_fu_145_p2() {
-    icmp_ln40_fu_145_p2 = (!i12_0_i_reg_134.read().is_01() || !n_read_reg_162.read().is_01())? sc_lv<1>(): sc_lv<1>(i12_0_i_reg_134.read() == n_read_reg_162.read());
+void Loop_copy_sorted_pro::thread_icmp_ln40_fu_148_p2() {
+    icmp_ln40_fu_148_p2 = (!i12_0_i_reg_137.read().is_01() || !n_read_reg_165.read().is_01())? sc_lv<1>(): sc_lv<1>(i12_0_i_reg_137.read() == n_read_reg_165.read());
 }
 
 void Loop_copy_sorted_pro::thread_internal_ap_ready() {
     if ((esl_seteq<1,1,1>(ap_const_logic_1, ap_CS_fsm_state2.read()) && 
-         esl_seteq<1,1,1>(icmp_ln40_fu_145_p2.read(), ap_const_lv1_1) && 
-         !((esl_seteq<1,1,1>(icmp_ln40_fu_145_p2.read(), ap_const_lv1_1) && 
-  esl_seteq<1,1,1>(ap_const_logic_0, val_assign6_out_out_full_n.read())) || (esl_seteq<1,1,1>(icmp_ln40_fu_145_p2.read(), ap_const_lv1_1) && 
-  esl_seteq<1,1,1>(ap_const_logic_0, extLd_out_out_full_n.read())) || (esl_seteq<1,1,1>(icmp_ln40_fu_145_p2.read(), ap_const_lv1_1) && 
+         esl_seteq<1,1,1>(icmp_ln40_fu_148_p2.read(), ap_const_lv1_1) && 
+         !((esl_seteq<1,1,1>(icmp_ln40_fu_148_p2.read(), ap_const_lv1_1) && 
+  esl_seteq<1,1,1>(ap_const_logic_0, val_assign6_out_out_full_n.read())) || (esl_seteq<1,1,1>(icmp_ln40_fu_148_p2.read(), ap_const_lv1_1) && 
+  esl_seteq<1,1,1>(ap_const_logic_0, extLd_out_out_full_n.read())) || (esl_seteq<1,1,1>(icmp_ln40_fu_148_p2.read(), ap_const_lv1_1) && 
   esl_seteq<1,1,1>(ap_const_logic_0, extLd_out_out1_full_n.read()))))) {
         internal_ap_ready = ap_const_logic_1;
     } else {
@@ -573,14 +557,14 @@ void Loop_copy_sorted_pro::thread_real_start() {
 }
 
 void Loop_copy_sorted_pro::thread_sorted_0_address0() {
-    sorted_0_address0 =  (sc_lv<8>) (zext_ln41_fu_156_p1.read());
+    sorted_0_address0 =  (sc_lv<8>) (zext_ln41_fu_159_p1.read());
 }
 
 void Loop_copy_sorted_pro::thread_sorted_0_ce0() {
     if ((esl_seteq<1,1,1>(ap_const_logic_1, ap_CS_fsm_state2.read()) && 
-         !((esl_seteq<1,1,1>(icmp_ln40_fu_145_p2.read(), ap_const_lv1_1) && 
-  esl_seteq<1,1,1>(ap_const_logic_0, val_assign6_out_out_full_n.read())) || (esl_seteq<1,1,1>(icmp_ln40_fu_145_p2.read(), ap_const_lv1_1) && 
-  esl_seteq<1,1,1>(ap_const_logic_0, extLd_out_out_full_n.read())) || (esl_seteq<1,1,1>(icmp_ln40_fu_145_p2.read(), ap_const_lv1_1) && 
+         !((esl_seteq<1,1,1>(icmp_ln40_fu_148_p2.read(), ap_const_lv1_1) && 
+  esl_seteq<1,1,1>(ap_const_logic_0, val_assign6_out_out_full_n.read())) || (esl_seteq<1,1,1>(icmp_ln40_fu_148_p2.read(), ap_const_lv1_1) && 
+  esl_seteq<1,1,1>(ap_const_logic_0, extLd_out_out_full_n.read())) || (esl_seteq<1,1,1>(icmp_ln40_fu_148_p2.read(), ap_const_lv1_1) && 
   esl_seteq<1,1,1>(ap_const_logic_0, extLd_out_out1_full_n.read()))))) {
         sorted_0_ce0 = ap_const_logic_1;
     } else {
@@ -589,14 +573,14 @@ void Loop_copy_sorted_pro::thread_sorted_0_ce0() {
 }
 
 void Loop_copy_sorted_pro::thread_sorted_1_address0() {
-    sorted_1_address0 =  (sc_lv<8>) (zext_ln41_fu_156_p1.read());
+    sorted_1_address0 =  (sc_lv<8>) (zext_ln41_fu_159_p1.read());
 }
 
 void Loop_copy_sorted_pro::thread_sorted_1_ce0() {
     if ((esl_seteq<1,1,1>(ap_const_logic_1, ap_CS_fsm_state2.read()) && 
-         !((esl_seteq<1,1,1>(icmp_ln40_fu_145_p2.read(), ap_const_lv1_1) && 
-  esl_seteq<1,1,1>(ap_const_logic_0, val_assign6_out_out_full_n.read())) || (esl_seteq<1,1,1>(icmp_ln40_fu_145_p2.read(), ap_const_lv1_1) && 
-  esl_seteq<1,1,1>(ap_const_logic_0, extLd_out_out_full_n.read())) || (esl_seteq<1,1,1>(icmp_ln40_fu_145_p2.read(), ap_const_lv1_1) && 
+         !((esl_seteq<1,1,1>(icmp_ln40_fu_148_p2.read(), ap_const_lv1_1) && 
+  esl_seteq<1,1,1>(ap_const_logic_0, val_assign6_out_out_full_n.read())) || (esl_seteq<1,1,1>(icmp_ln40_fu_148_p2.read(), ap_const_lv1_1) && 
+  esl_seteq<1,1,1>(ap_const_logic_0, extLd_out_out_full_n.read())) || (esl_seteq<1,1,1>(icmp_ln40_fu_148_p2.read(), ap_const_lv1_1) && 
   esl_seteq<1,1,1>(ap_const_logic_0, extLd_out_out1_full_n.read()))))) {
         sorted_1_ce0 = ap_const_logic_1;
     } else {
@@ -605,7 +589,7 @@ void Loop_copy_sorted_pro::thread_sorted_1_ce0() {
 }
 
 void Loop_copy_sorted_pro::thread_sorted_copy1_0_blk_n() {
-    if (esl_seteq<1,1,1>(ap_const_logic_1, ap_CS_fsm_state4.read())) {
+    if (esl_seteq<1,1,1>(ap_const_logic_1, ap_CS_fsm_state3.read())) {
         sorted_copy1_0_blk_n = sorted_copy1_0_full_n.read();
     } else {
         sorted_copy1_0_blk_n = ap_const_logic_1;
@@ -613,11 +597,11 @@ void Loop_copy_sorted_pro::thread_sorted_copy1_0_blk_n() {
 }
 
 void Loop_copy_sorted_pro::thread_sorted_copy1_0_din() {
-    sorted_copy1_0_din = sorted_0_load_reg_193.read();
+    sorted_copy1_0_din = sorted_0_q0.read();
 }
 
 void Loop_copy_sorted_pro::thread_sorted_copy1_0_write() {
-    if ((esl_seteq<1,1,1>(ap_const_logic_1, ap_CS_fsm_state4.read()) && 
+    if ((esl_seteq<1,1,1>(ap_const_logic_1, ap_CS_fsm_state3.read()) && 
          !(esl_seteq<1,1,1>(ap_const_logic_0, sorted_copy1_0_full_n.read()) || esl_seteq<1,1,1>(ap_const_logic_0, sorted_copy1_1_full_n.read())))) {
         sorted_copy1_0_write = ap_const_logic_1;
     } else {
@@ -626,7 +610,7 @@ void Loop_copy_sorted_pro::thread_sorted_copy1_0_write() {
 }
 
 void Loop_copy_sorted_pro::thread_sorted_copy1_1_blk_n() {
-    if (esl_seteq<1,1,1>(ap_const_logic_1, ap_CS_fsm_state4.read())) {
+    if (esl_seteq<1,1,1>(ap_const_logic_1, ap_CS_fsm_state3.read())) {
         sorted_copy1_1_blk_n = sorted_copy1_1_full_n.read();
     } else {
         sorted_copy1_1_blk_n = ap_const_logic_1;
@@ -634,11 +618,11 @@ void Loop_copy_sorted_pro::thread_sorted_copy1_1_blk_n() {
 }
 
 void Loop_copy_sorted_pro::thread_sorted_copy1_1_din() {
-    sorted_copy1_1_din = previous_frequency_reg_199.read();
+    sorted_copy1_1_din = sorted_1_q0.read();
 }
 
 void Loop_copy_sorted_pro::thread_sorted_copy1_1_write() {
-    if ((esl_seteq<1,1,1>(ap_const_logic_1, ap_CS_fsm_state4.read()) && 
+    if ((esl_seteq<1,1,1>(ap_const_logic_1, ap_CS_fsm_state3.read()) && 
          !(esl_seteq<1,1,1>(ap_const_logic_0, sorted_copy1_0_full_n.read()) || esl_seteq<1,1,1>(ap_const_logic_0, sorted_copy1_1_full_n.read())))) {
         sorted_copy1_1_write = ap_const_logic_1;
     } else {
@@ -647,11 +631,11 @@ void Loop_copy_sorted_pro::thread_sorted_copy1_1_write() {
 }
 
 void Loop_copy_sorted_pro::thread_sorted_copy2_value_V_address0() {
-    sorted_copy2_value_V_address0 =  (sc_lv<8>) (zext_ln41_reg_178.read());
+    sorted_copy2_value_V_address0 =  (sc_lv<8>) (zext_ln41_reg_181.read());
 }
 
 void Loop_copy_sorted_pro::thread_sorted_copy2_value_V_ce0() {
-    if ((esl_seteq<1,1,1>(ap_const_logic_1, ap_CS_fsm_state4.read()) && 
+    if ((esl_seteq<1,1,1>(ap_const_logic_1, ap_CS_fsm_state3.read()) && 
          !(esl_seteq<1,1,1>(ap_const_logic_0, sorted_copy1_0_full_n.read()) || esl_seteq<1,1,1>(ap_const_logic_0, sorted_copy1_1_full_n.read())))) {
         sorted_copy2_value_V_ce0 = ap_const_logic_1;
     } else {
@@ -660,11 +644,11 @@ void Loop_copy_sorted_pro::thread_sorted_copy2_value_V_ce0() {
 }
 
 void Loop_copy_sorted_pro::thread_sorted_copy2_value_V_d0() {
-    sorted_copy2_value_V_d0 = sorted_0_load_reg_193.read();
+    sorted_copy2_value_V_d0 = sorted_0_q0.read();
 }
 
 void Loop_copy_sorted_pro::thread_sorted_copy2_value_V_we0() {
-    if ((esl_seteq<1,1,1>(ap_const_logic_1, ap_CS_fsm_state4.read()) && 
+    if ((esl_seteq<1,1,1>(ap_const_logic_1, ap_CS_fsm_state3.read()) && 
          !(esl_seteq<1,1,1>(ap_const_logic_0, sorted_copy1_0_full_n.read()) || esl_seteq<1,1,1>(ap_const_logic_0, sorted_copy1_1_full_n.read())))) {
         sorted_copy2_value_V_we0 = ap_const_logic_1;
     } else {
@@ -687,7 +671,7 @@ void Loop_copy_sorted_pro::thread_start_write() {
 
 void Loop_copy_sorted_pro::thread_val_assign6_out_out_blk_n() {
     if ((esl_seteq<1,1,1>(ap_const_logic_1, ap_CS_fsm_state2.read()) && 
-         esl_seteq<1,1,1>(icmp_ln40_fu_145_p2.read(), ap_const_lv1_1))) {
+         esl_seteq<1,1,1>(icmp_ln40_fu_148_p2.read(), ap_const_lv1_1))) {
         val_assign6_out_out_blk_n = val_assign6_out_out_full_n.read();
     } else {
         val_assign6_out_out_blk_n = ap_const_logic_1;
@@ -695,15 +679,15 @@ void Loop_copy_sorted_pro::thread_val_assign6_out_out_blk_n() {
 }
 
 void Loop_copy_sorted_pro::thread_val_assign6_out_out_din() {
-    val_assign6_out_out_din = n_read_reg_162.read();
+    val_assign6_out_out_din = n_read_reg_165.read();
 }
 
 void Loop_copy_sorted_pro::thread_val_assign6_out_out_write() {
     if ((esl_seteq<1,1,1>(ap_const_logic_1, ap_CS_fsm_state2.read()) && 
-         esl_seteq<1,1,1>(icmp_ln40_fu_145_p2.read(), ap_const_lv1_1) && 
-         !((esl_seteq<1,1,1>(icmp_ln40_fu_145_p2.read(), ap_const_lv1_1) && 
-  esl_seteq<1,1,1>(ap_const_logic_0, val_assign6_out_out_full_n.read())) || (esl_seteq<1,1,1>(icmp_ln40_fu_145_p2.read(), ap_const_lv1_1) && 
-  esl_seteq<1,1,1>(ap_const_logic_0, extLd_out_out_full_n.read())) || (esl_seteq<1,1,1>(icmp_ln40_fu_145_p2.read(), ap_const_lv1_1) && 
+         esl_seteq<1,1,1>(icmp_ln40_fu_148_p2.read(), ap_const_lv1_1) && 
+         !((esl_seteq<1,1,1>(icmp_ln40_fu_148_p2.read(), ap_const_lv1_1) && 
+  esl_seteq<1,1,1>(ap_const_logic_0, val_assign6_out_out_full_n.read())) || (esl_seteq<1,1,1>(icmp_ln40_fu_148_p2.read(), ap_const_lv1_1) && 
+  esl_seteq<1,1,1>(ap_const_logic_0, extLd_out_out_full_n.read())) || (esl_seteq<1,1,1>(icmp_ln40_fu_148_p2.read(), ap_const_lv1_1) && 
   esl_seteq<1,1,1>(ap_const_logic_0, extLd_out_out1_full_n.read()))))) {
         val_assign6_out_out_write = ap_const_logic_1;
     } else {
@@ -711,8 +695,8 @@ void Loop_copy_sorted_pro::thread_val_assign6_out_out_write() {
     }
 }
 
-void Loop_copy_sorted_pro::thread_zext_ln41_fu_156_p1() {
-    zext_ln41_fu_156_p1 = esl_zext<64,9>(i12_0_i_reg_134.read());
+void Loop_copy_sorted_pro::thread_zext_ln41_fu_159_p1() {
+    zext_ln41_fu_159_p1 = esl_zext<64,9>(i12_0_i_reg_137.read());
 }
 
 void Loop_copy_sorted_pro::thread_ap_NS_fsm() {
@@ -725,32 +709,29 @@ void Loop_copy_sorted_pro::thread_ap_NS_fsm() {
             }
             break;
         case 2 : 
-            if ((esl_seteq<1,1,1>(ap_const_logic_1, ap_CS_fsm_state2.read()) && esl_seteq<1,1,1>(icmp_ln40_fu_145_p2.read(), ap_const_lv1_1) && !((esl_seteq<1,1,1>(icmp_ln40_fu_145_p2.read(), ap_const_lv1_1) && 
-  esl_seteq<1,1,1>(ap_const_logic_0, val_assign6_out_out_full_n.read())) || (esl_seteq<1,1,1>(icmp_ln40_fu_145_p2.read(), ap_const_lv1_1) && 
-  esl_seteq<1,1,1>(ap_const_logic_0, extLd_out_out_full_n.read())) || (esl_seteq<1,1,1>(icmp_ln40_fu_145_p2.read(), ap_const_lv1_1) && 
+            if ((esl_seteq<1,1,1>(ap_const_logic_1, ap_CS_fsm_state2.read()) && esl_seteq<1,1,1>(icmp_ln40_fu_148_p2.read(), ap_const_lv1_1) && !((esl_seteq<1,1,1>(icmp_ln40_fu_148_p2.read(), ap_const_lv1_1) && 
+  esl_seteq<1,1,1>(ap_const_logic_0, val_assign6_out_out_full_n.read())) || (esl_seteq<1,1,1>(icmp_ln40_fu_148_p2.read(), ap_const_lv1_1) && 
+  esl_seteq<1,1,1>(ap_const_logic_0, extLd_out_out_full_n.read())) || (esl_seteq<1,1,1>(icmp_ln40_fu_148_p2.read(), ap_const_lv1_1) && 
   esl_seteq<1,1,1>(ap_const_logic_0, extLd_out_out1_full_n.read()))))) {
                 ap_NS_fsm = ap_ST_fsm_state1;
-            } else if ((esl_seteq<1,1,1>(ap_const_logic_1, ap_CS_fsm_state2.read()) && !((esl_seteq<1,1,1>(icmp_ln40_fu_145_p2.read(), ap_const_lv1_1) && 
-  esl_seteq<1,1,1>(ap_const_logic_0, val_assign6_out_out_full_n.read())) || (esl_seteq<1,1,1>(icmp_ln40_fu_145_p2.read(), ap_const_lv1_1) && 
-  esl_seteq<1,1,1>(ap_const_logic_0, extLd_out_out_full_n.read())) || (esl_seteq<1,1,1>(icmp_ln40_fu_145_p2.read(), ap_const_lv1_1) && 
-  esl_seteq<1,1,1>(ap_const_logic_0, extLd_out_out1_full_n.read()))) && esl_seteq<1,1,1>(icmp_ln40_fu_145_p2.read(), ap_const_lv1_0))) {
+            } else if ((esl_seteq<1,1,1>(ap_const_logic_1, ap_CS_fsm_state2.read()) && !((esl_seteq<1,1,1>(icmp_ln40_fu_148_p2.read(), ap_const_lv1_1) && 
+  esl_seteq<1,1,1>(ap_const_logic_0, val_assign6_out_out_full_n.read())) || (esl_seteq<1,1,1>(icmp_ln40_fu_148_p2.read(), ap_const_lv1_1) && 
+  esl_seteq<1,1,1>(ap_const_logic_0, extLd_out_out_full_n.read())) || (esl_seteq<1,1,1>(icmp_ln40_fu_148_p2.read(), ap_const_lv1_1) && 
+  esl_seteq<1,1,1>(ap_const_logic_0, extLd_out_out1_full_n.read()))) && esl_seteq<1,1,1>(icmp_ln40_fu_148_p2.read(), ap_const_lv1_0))) {
                 ap_NS_fsm = ap_ST_fsm_state3;
             } else {
                 ap_NS_fsm = ap_ST_fsm_state2;
             }
             break;
         case 4 : 
-            ap_NS_fsm = ap_ST_fsm_state4;
-            break;
-        case 8 : 
-            if ((esl_seteq<1,1,1>(ap_const_logic_1, ap_CS_fsm_state4.read()) && !(esl_seteq<1,1,1>(ap_const_logic_0, sorted_copy1_0_full_n.read()) || esl_seteq<1,1,1>(ap_const_logic_0, sorted_copy1_1_full_n.read())))) {
+            if ((esl_seteq<1,1,1>(ap_const_logic_1, ap_CS_fsm_state3.read()) && !(esl_seteq<1,1,1>(ap_const_logic_0, sorted_copy1_0_full_n.read()) || esl_seteq<1,1,1>(ap_const_logic_0, sorted_copy1_1_full_n.read())))) {
                 ap_NS_fsm = ap_ST_fsm_state2;
             } else {
-                ap_NS_fsm = ap_ST_fsm_state4;
+                ap_NS_fsm = ap_ST_fsm_state3;
             }
             break;
         default : 
-            ap_NS_fsm = "XXXX";
+            ap_NS_fsm = "XXX";
             break;
     }
 }

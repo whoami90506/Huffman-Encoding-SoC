@@ -9,41 +9,41 @@
 <ProductFamily>zynq</ProductFamily>
 <Part>xc7z020-clg484-1</Part>
 <TopModelName>filter</TopModelName>
-<TargetClockPeriod>5.00</TargetClockPeriod>
-<ClockUncertainty>0.63</ClockUncertainty>
+<TargetClockPeriod>10.00</TargetClockPeriod>
+<ClockUncertainty>1.25</ClockUncertainty>
 </UserAssignments>
 
 <PerformanceEstimates>
 <PipelineType>none</PipelineType>
 <SummaryOfTimingAnalysis>
 <unit>ns</unit>
-<EstimatedClockPeriod>3.592</EstimatedClockPeriod>
+<EstimatedClockPeriod>6.888</EstimatedClockPeriod>
 </SummaryOfTimingAnalysis>
 <SummaryOfOverallLatency>
 <unit>clock cycles</unit>
-<Best-caseLatency>259</Best-caseLatency>
-<Average-caseLatency>259</Average-caseLatency>
-<Worst-caseLatency>259</Worst-caseLatency>
-<Best-caseRealTimeLatency>1.295 us</Best-caseRealTimeLatency>
-<Average-caseRealTimeLatency>1.295 us</Average-caseRealTimeLatency>
-<Worst-caseRealTimeLatency>1.295 us</Worst-caseRealTimeLatency>
-<Interval-min>259</Interval-min>
-<Interval-max>259</Interval-max>
+<Best-caseLatency>258</Best-caseLatency>
+<Average-caseLatency>258</Average-caseLatency>
+<Worst-caseLatency>258</Worst-caseLatency>
+<Best-caseRealTimeLatency>2.580 us</Best-caseRealTimeLatency>
+<Average-caseRealTimeLatency>2.580 us</Average-caseRealTimeLatency>
+<Worst-caseRealTimeLatency>2.580 us</Worst-caseRealTimeLatency>
+<Interval-min>258</Interval-min>
+<Interval-max>258</Interval-max>
 </SummaryOfOverallLatency>
 <SummaryOfLoopLatency>
 <Loop1>
 <TripCount>256</TripCount>
-<Latency>257</Latency>
+<Latency>256</Latency>
 <PipelineII>1</PipelineII>
-<PipelineDepth>3</PipelineDepth>
+<PipelineDepth>2</PipelineDepth>
 </Loop1>
 </SummaryOfLoopLatency>
 </PerformanceEstimates>
 
 <AreaEstimates>
 <Resources>
-<FF>67</FF>
-<LUT>162</LUT>
+<FF>25</FF>
+<LUT>159</LUT>
 <BRAM_18K>0</BRAM_18K>
 <DSP48E>0</DSP48E>
 <URAM>0</URAM>

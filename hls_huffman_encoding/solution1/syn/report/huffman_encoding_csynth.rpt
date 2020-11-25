@@ -3,7 +3,7 @@
 ================================================================
 == Vivado HLS Report for 'huffman_encoding'
 ================================================================
-* Date:           Wed Nov 25 17:34:24 2020
+* Date:           Wed Nov 25 18:01:01 2020
 
 * Version:        2019.2 (Build 2704478 on Wed Nov 06 22:10:23 MST 2019)
 * Project:        hls_huffman_encoding
@@ -17,11 +17,11 @@
 ================================================================
 + Timing: 
     * Summary: 
-    +--------+---------+----------+------------+
-    |  Clock |  Target | Estimated| Uncertainty|
-    +--------+---------+----------+------------+
-    |ap_clk  | 5.00 ns | 4.559 ns |   0.63 ns  |
-    +--------+---------+----------+------------+
+    +--------+----------+----------+------------+
+    |  Clock |  Target  | Estimated| Uncertainty|
+    +--------+----------+----------+------------+
+    |ap_clk  | 10.00 ns | 8.108 ns |   1.25 ns  |
+    +--------+----------+----------+------------+
 
 + Latency: 
     * Summary: 
@@ -38,15 +38,15 @@
         |                         |                      |  Latency (cycles) |   Latency (absolute)  |   Interval  | Pipeline|
         |         Instance        |        Module        |   min   |   max   |    min    |    max    |  min |  max |   Type  |
         +-------------------------+----------------------+---------+---------+-----------+-----------+------+------+---------+
-        |sort_U0                  |sort                  |      379|     4732|  1.895 us | 23.660 us |   379|  4732|   none  |
-        |create_tree_U0           |create_tree           |        4|     1279| 20.000 ns |  6.395 us |     4|  1279|   none  |
+        |sort_U0                  |sort                  |      347|     4699|  3.470 us | 46.990 us |   347|  4699|   none  |
+        |create_tree_U0           |create_tree           |        3|     1278| 30.000 ns | 12.780 us |     3|  1278|   none  |
         |compute_bit_length_U0    |compute_bit_length    |        ?|        ?|          ?|          ?|     ?|     ?|   none  |
-        |create_codeword_U0       |create_codeword       |     1313|     1313|  6.565 us |  6.565 us |  1313|  1313|   none  |
-        |truncate_tree_U0         |truncate_tree         |     1467|     1575|  7.335 us |  7.875 us |  1467|  1575|   none  |
-        |canonize_tree_U0         |canonize_tree         |      258|     2562|  1.290 us | 12.810 us |   258|  2562|   none  |
-        |Loop_copy_sorted_pro_U0  |Loop_copy_sorted_pro  |        1|     1534|  5.000 ns |  7.670 us |     1|  1534|   none  |
-        |filter_U0                |filter                |      259|      259|  1.295 us |  1.295 us |   259|   259|   none  |
-        |Loop_read_stream_pro_U0  |Loop_read_stream_pro  |      258|      258|  1.290 us |  1.290 us |   258|   258|   none  |
+        |create_codeword_U0       |create_codeword       |     1311|     1311| 13.110 us | 13.110 us |  1311|  1311|   none  |
+        |truncate_tree_U0         |truncate_tree         |     1123|     1231| 11.230 us | 12.310 us |  1123|  1231|   none  |
+        |canonize_tree_U0         |canonize_tree         |      258|     2306|  2.580 us | 23.060 us |   258|  2306|   none  |
+        |Loop_copy_sorted_pro_U0  |Loop_copy_sorted_pro  |        1|     1023| 10.000 ns | 10.230 us |     1|  1023|   none  |
+        |Loop_read_stream_pro_U0  |Loop_read_stream_pro  |      258|      258|  2.580 us |  2.580 us |   258|   258|   none  |
+        |filter_U0                |filter                |      258|      258|  2.580 us |  2.580 us |   258|   258|   none  |
         |Block_proc_U0            |Block_proc            |        0|        0|    0 ns   |    0 ns   |     0|     0|   none  |
         |Block_huffman_encodi_U0  |Block_huffman_encodi  |        0|        0|    0 ns   |    0 ns   |     0|     0|   none  |
         +-------------------------+----------------------+---------+---------+-----------+-----------+------+------+---------+
@@ -66,16 +66,16 @@
 |DSP              |        -|      -|       -|      -|    -|
 |Expression       |        -|      -|       0|     86|    -|
 |FIFO             |        6|      -|     201|    342|    -|
-|Instance         |       10|      -|    3737|   6752|    0|
+|Instance         |       10|      -|    2663|   6119|    0|
 |Memory           |       12|      -|      44|     34|    0|
 |Multiplexer      |        -|      -|       -|    135|    -|
 |Register         |        -|      -|      15|      -|    -|
 +-----------------+---------+-------+--------+-------+-----+
-|Total            |       28|      0|    3997|   7349|    0|
+|Total            |       28|      0|    2923|   6716|    0|
 +-----------------+---------+-------+--------+-------+-----+
 |Available        |      280|    220|  106400|  53200|    0|
 +-----------------+---------+-------+--------+-------+-----+
-|Utilization (%)  |       10|      0|       3|     13|    0|
+|Utilization (%)  |       10|      0|       2|     12|    0|
 +-----------------+---------+-------+--------+-------+-----+
 
 + Detail: 
@@ -85,18 +85,18 @@
     +-----------------------------------+---------------------------------+---------+-------+------+------+-----+
     |Block_huffman_encodi_U0            |Block_huffman_encodi             |        0|      0|    11|    38|    0|
     |Block_proc_U0                      |Block_proc                       |        0|      0|    11|    29|    0|
-    |Loop_copy_sorted_pro_U0            |Loop_copy_sorted_pro             |        0|      0|    83|   142|    0|
+    |Loop_copy_sorted_pro_U0            |Loop_copy_sorted_pro             |        0|      0|    41|   136|    0|
     |Loop_read_stream_pro_U0            |Loop_read_stream_pro             |        0|      0|    58|   121|    0|
-    |canonize_tree_U0                   |canonize_tree                    |        0|      0|    99|   248|    0|
-    |compute_bit_length_U0              |compute_bit_length               |        1|      0|   356|   623|    0|
-    |create_codeword_U0                 |create_codeword                  |        0|      0|   281|   535|    0|
-    |create_tree_U0                     |create_tree                      |        4|      0|   610|   865|    0|
-    |filter_U0                          |filter                           |        0|      0|    67|   162|    0|
+    |canonize_tree_U0                   |canonize_tree                    |        0|      0|    80|   245|    0|
+    |compute_bit_length_U0              |compute_bit_length               |        1|      0|   238|   543|    0|
+    |create_codeword_U0                 |create_codeword                  |        0|      0|   172|   506|    0|
+    |create_tree_U0                     |create_tree                      |        4|      0|   535|   842|    0|
+    |filter_U0                          |filter                           |        0|      0|    25|   159|    0|
     |huffman_encoding_AXILiteS_s_axi_U  |huffman_encoding_AXILiteS_s_axi  |        0|      0|    74|   104|    0|
-    |sort_U0                            |sort                             |        5|      0|  1935|  3408|    0|
-    |truncate_tree_U0                   |truncate_tree                    |        0|      0|   152|   477|    0|
+    |sort_U0                            |sort                             |        5|      0|  1297|  2968|    0|
+    |truncate_tree_U0                   |truncate_tree                    |        0|      0|   121|   428|    0|
     +-----------------------------------+---------------------------------+---------+-------+------+------+-----+
-    |Total                              |                                 |       10|      0|  3737|  6752|    0|
+    |Total                              |                                 |       10|      0|  2663|  6119|    0|
     +-----------------------------------+---------------------------------+---------+-------+------+------+-----+
 
     * DSP48E: 
@@ -106,24 +106,24 @@
     +--------------------------+----------------------+---------+----+----+-----+------+-----+------+-------------+
     |          Memory          |        Module        | BRAM_18K| FF | LUT| URAM| Words| Bits| Banks| W*Bits*Banks|
     +--------------------------+----------------------+---------+----+----+-----+------+-----+------+-------------+
-    |length_histogram_V_U      |huffman_encoding_Bew  |        0|  18|   9|    0|    64|    9|     2|         1152|
-    |truncated_length_his_1_U  |huffman_encoding_Bew  |        0|  18|   9|    0|    64|    9|     2|         1152|
-    |truncated_length_his_U    |huffman_encoding_CeG  |        1|   0|   0|    0|    64|    9|     2|         1152|
-    |symbol_bits_V_U           |huffman_encoding_Ee0  |        1|   0|   0|    0|   256|    5|     2|         2560|
-    |filtered_value_V_U        |huffman_encoding_ncg  |        1|   0|   0|    0|   256|    9|     2|         4608|
-    |sorted_0_U                |huffman_encoding_ncg  |        1|   0|   0|    0|   256|    9|     2|         4608|
-    |sorted_copy2_value_V_U    |huffman_encoding_ncg  |        1|   0|   0|    0|   256|    9|     2|         4608|
-    |filtered_frequency_V_U    |huffman_encoding_ocq  |        1|   0|   0|    0|   256|   32|     2|        16384|
-    |sorted_1_U                |huffman_encoding_ocq  |        1|   0|   0|    0|   256|   32|     2|        16384|
-    |parent_V_U                |huffman_encoding_sc4  |        1|   0|   0|    0|   255|    9|     2|         4590|
-    |left_V_U                  |huffman_encoding_sc4  |        1|   0|   0|    0|   255|    9|     2|         4590|
-    |right_V_U                 |huffman_encoding_sc4  |        1|   0|   0|    0|   255|    9|     2|         4590|
-    |stream_buffer_1_U         |huffman_encoding_vdy  |        1|   0|   0|    0|   256|    6|     2|         3072|
-    |stream_buffer_2_U         |huffman_encoding_vdy  |        1|   0|   0|    0|   256|    6|     2|         3072|
-    |stream_buffer_3_U         |huffman_encoding_xdS  |        0|   2|   4|    0|   256|    1|     2|          512|
-    |stream_buffer_4_U         |huffman_encoding_xdS  |        0|   2|   4|    0|   256|    1|     2|          512|
-    |stream_buffer_5_U         |huffman_encoding_xdS  |        0|   2|   4|    0|   256|    1|     2|          512|
-    |stream_buffer_6_U         |huffman_encoding_xdS  |        0|   2|   4|    0|   256|    1|     2|          512|
+    |length_histogram_V_U      |huffman_encoding_Aem  |        0|  18|   9|    0|    64|    9|     2|         1152|
+    |truncated_length_his_1_U  |huffman_encoding_Aem  |        0|  18|   9|    0|    64|    9|     2|         1152|
+    |truncated_length_his_U    |huffman_encoding_Bew  |        1|   0|   0|    0|    64|    9|     2|         1152|
+    |symbol_bits_V_U           |huffman_encoding_DeQ  |        1|   0|   0|    0|   256|    5|     2|         2560|
+    |filtered_value_V_U        |huffman_encoding_mb6  |        1|   0|   0|    0|   256|    9|     2|         4608|
+    |sorted_0_U                |huffman_encoding_mb6  |        1|   0|   0|    0|   256|    9|     2|         4608|
+    |sorted_copy2_value_V_U    |huffman_encoding_mb6  |        1|   0|   0|    0|   256|    9|     2|         4608|
+    |filtered_frequency_V_U    |huffman_encoding_ncg  |        1|   0|   0|    0|   256|   32|     2|        16384|
+    |sorted_1_U                |huffman_encoding_ncg  |        1|   0|   0|    0|   256|   32|     2|        16384|
+    |parent_V_U                |huffman_encoding_rcU  |        1|   0|   0|    0|   255|    9|     2|         4590|
+    |left_V_U                  |huffman_encoding_rcU  |        1|   0|   0|    0|   255|    9|     2|         4590|
+    |right_V_U                 |huffman_encoding_rcU  |        1|   0|   0|    0|   255|    9|     2|         4590|
+    |stream_buffer_1_U         |huffman_encoding_udo  |        1|   0|   0|    0|   256|    6|     2|         3072|
+    |stream_buffer_2_U         |huffman_encoding_udo  |        1|   0|   0|    0|   256|    6|     2|         3072|
+    |stream_buffer_3_U         |huffman_encoding_wdI  |        0|   2|   4|    0|   256|    1|     2|          512|
+    |stream_buffer_4_U         |huffman_encoding_wdI  |        0|   2|   4|    0|   256|    1|     2|          512|
+    |stream_buffer_5_U         |huffman_encoding_wdI  |        0|   2|   4|    0|   256|    1|     2|          512|
+    |stream_buffer_6_U         |huffman_encoding_wdI  |        0|   2|   4|    0|   256|    1|     2|          512|
     +--------------------------+----------------------+---------+----+----+-----+------+-----+------+-------------+
     |Total                     |                      |       12|  44|  34|    0|  4029|  166|    36|        74570|
     +--------------------------+----------------------+---------+----+----+-----+------+-----+------+-------------+

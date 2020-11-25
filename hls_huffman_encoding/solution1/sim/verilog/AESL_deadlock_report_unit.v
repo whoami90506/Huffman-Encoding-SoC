@@ -458,9 +458,9 @@ module AESL_deadlock_report_unit #( parameter PROC_NUM = 4 ) (
                                 $fdisplay(fp, "Dependence_Channel_status NULL");
                             end
                         end
-                        if ((~AESL_inst_huffman_encoding.start_for_Block_hFfa_U.if_full_n & AESL_inst_huffman_encoding.Block_huffman_encodi_U0.ap_done)) begin
+                        if ((~AESL_inst_huffman_encoding.start_for_Block_hEe0_U.if_full_n & AESL_inst_huffman_encoding.Block_huffman_encodi_U0.ap_done)) begin
                             chan_path = "";
-                            if ((~AESL_inst_huffman_encoding.start_for_Block_hFfa_U.if_full_n & AESL_inst_huffman_encoding.Block_huffman_encodi_U0.ap_done)) begin
+                            if ((~AESL_inst_huffman_encoding.start_for_Block_hEe0_U.if_full_n & AESL_inst_huffman_encoding.Block_huffman_encodi_U0.ap_done)) begin
                                 $display("//      Deadlock detected: can be a false alarm due to leftover data,");
                                 $display("//      please try cosim_design -disable_deadlock_detection");
                             end
@@ -489,9 +489,9 @@ module AESL_deadlock_report_unit #( parameter PROC_NUM = 4 ) (
                                 $fdisplay(fp, "Dependence_Channel_status NULL");
                             end
                         end
-                        if ((~AESL_inst_huffman_encoding.start_for_Block_hFfa_U.if_empty_n & (AESL_inst_huffman_encoding.Block_huffman_encodi_U0.ap_ready | AESL_inst_huffman_encoding.Block_huffman_encodi_U0.ap_idle))) begin
+                        if ((~AESL_inst_huffman_encoding.start_for_Block_hEe0_U.if_empty_n & (AESL_inst_huffman_encoding.Block_huffman_encodi_U0.ap_ready | AESL_inst_huffman_encoding.Block_huffman_encodi_U0.ap_idle))) begin
                             chan_path = "";
-                            if ((~AESL_inst_huffman_encoding.start_for_Block_hFfa_U.if_empty_n & (AESL_inst_huffman_encoding.Block_huffman_encodi_U0.ap_ready | AESL_inst_huffman_encoding.Block_huffman_encodi_U0.ap_idle))) begin
+                            if ((~AESL_inst_huffman_encoding.start_for_Block_hEe0_U.if_empty_n & (AESL_inst_huffman_encoding.Block_huffman_encodi_U0.ap_ready | AESL_inst_huffman_encoding.Block_huffman_encodi_U0.ap_idle))) begin
                                 $display("//      Deadlock detected: can be a false alarm due to leftover data,");
                                 $display("//      please try cosim_design -disable_deadlock_detection");
                             end
@@ -734,9 +734,9 @@ module AESL_deadlock_report_unit #( parameter PROC_NUM = 4 ) (
                                 $fdisplay(fp, "Dependence_Channel_status NULL");
                             end
                         end
-                        if ((~AESL_inst_huffman_encoding.start_for_create_Gfk_U.if_full_n & AESL_inst_huffman_encoding.create_tree_U0.ap_done)) begin
+                        if ((~AESL_inst_huffman_encoding.start_for_create_Ffa_U.if_full_n & AESL_inst_huffman_encoding.create_tree_U0.ap_done)) begin
                             chan_path = "";
-                            if ((~AESL_inst_huffman_encoding.start_for_create_Gfk_U.if_full_n & AESL_inst_huffman_encoding.create_tree_U0.ap_done)) begin
+                            if ((~AESL_inst_huffman_encoding.start_for_create_Ffa_U.if_full_n & AESL_inst_huffman_encoding.create_tree_U0.ap_done)) begin
                                 $display("//      Deadlock detected: can be a false alarm due to leftover data,");
                                 $display("//      please try cosim_design -disable_deadlock_detection");
                             end
@@ -799,9 +799,9 @@ module AESL_deadlock_report_unit #( parameter PROC_NUM = 4 ) (
                                 $fdisplay(fp, "Dependence_Channel_status NULL");
                             end
                         end
-                        if ((~AESL_inst_huffman_encoding.start_for_Block_pHfu_U.if_full_n & AESL_inst_huffman_encoding.Block_proc_U0.ap_done)) begin
+                        if ((~AESL_inst_huffman_encoding.start_for_Block_pGfk_U.if_full_n & AESL_inst_huffman_encoding.Block_proc_U0.ap_done)) begin
                             chan_path = "";
-                            if ((~AESL_inst_huffman_encoding.start_for_Block_pHfu_U.if_full_n & AESL_inst_huffman_encoding.Block_proc_U0.ap_done)) begin
+                            if ((~AESL_inst_huffman_encoding.start_for_Block_pGfk_U.if_full_n & AESL_inst_huffman_encoding.Block_proc_U0.ap_done)) begin
                                 $display("//      Deadlock detected: can be a false alarm due to leftover data,");
                                 $display("//      please try cosim_design -disable_deadlock_detection");
                             end
@@ -866,9 +866,9 @@ module AESL_deadlock_report_unit #( parameter PROC_NUM = 4 ) (
                                 $fdisplay(fp, "Dependence_Channel_status NULL");
                             end
                         end
-                        if ((~AESL_inst_huffman_encoding.start_for_create_Gfk_U.if_empty_n & (AESL_inst_huffman_encoding.create_tree_U0.ap_ready | AESL_inst_huffman_encoding.create_tree_U0.ap_idle))) begin
+                        if ((~AESL_inst_huffman_encoding.start_for_create_Ffa_U.if_empty_n & (AESL_inst_huffman_encoding.create_tree_U0.ap_ready | AESL_inst_huffman_encoding.create_tree_U0.ap_idle))) begin
                             chan_path = "";
-                            if ((~AESL_inst_huffman_encoding.start_for_create_Gfk_U.if_empty_n & (AESL_inst_huffman_encoding.create_tree_U0.ap_ready | AESL_inst_huffman_encoding.create_tree_U0.ap_idle))) begin
+                            if ((~AESL_inst_huffman_encoding.start_for_create_Ffa_U.if_empty_n & (AESL_inst_huffman_encoding.create_tree_U0.ap_ready | AESL_inst_huffman_encoding.create_tree_U0.ap_idle))) begin
                                 $display("//      Deadlock detected: can be a false alarm due to leftover data,");
                                 $display("//      please try cosim_design -disable_deadlock_detection");
                             end
@@ -1369,9 +1369,9 @@ module AESL_deadlock_report_unit #( parameter PROC_NUM = 4 ) (
                                 $fdisplay(fp, "Dependence_Channel_status NULL");
                             end
                         end
-                        if ((~AESL_inst_huffman_encoding.start_for_Block_pHfu_U.if_empty_n & (AESL_inst_huffman_encoding.Block_proc_U0.ap_ready | AESL_inst_huffman_encoding.Block_proc_U0.ap_idle))) begin
+                        if ((~AESL_inst_huffman_encoding.start_for_Block_pGfk_U.if_empty_n & (AESL_inst_huffman_encoding.Block_proc_U0.ap_ready | AESL_inst_huffman_encoding.Block_proc_U0.ap_idle))) begin
                             chan_path = "";
-                            if ((~AESL_inst_huffman_encoding.start_for_Block_pHfu_U.if_empty_n & (AESL_inst_huffman_encoding.Block_proc_U0.ap_ready | AESL_inst_huffman_encoding.Block_proc_U0.ap_idle))) begin
+                            if ((~AESL_inst_huffman_encoding.start_for_Block_pGfk_U.if_empty_n & (AESL_inst_huffman_encoding.Block_proc_U0.ap_ready | AESL_inst_huffman_encoding.Block_proc_U0.ap_idle))) begin
                                 $display("//      Deadlock detected: can be a false alarm due to leftover data,");
                                 $display("//      please try cosim_design -disable_deadlock_detection");
                             end

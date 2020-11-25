@@ -7,7 +7,7 @@
 
 module huffman_encoding_ncg
 #(parameter
-    DataWidth    = 9,
+    DataWidth    = 32,
     AddressRange = 32,
     AddressWidth = 8,
     BufferCount  = 2,

@@ -19,7 +19,7 @@ using namespace sc_dt;
 struct create_tree_frequibs_ram : public sc_core::sc_module {
 
   static const unsigned DataWidth = 32;
-  static const unsigned AddressRange = 128;
+  static const unsigned AddressRange = 127;
   static const unsigned AddressWidth = 7;
 
 //latency = 1
@@ -95,7 +95,7 @@ SC_MODULE(create_tree_frequibs) {
 
 
 static const unsigned DataWidth = 32;
-static const unsigned AddressRange = 128;
+static const unsigned AddressRange = 127;
 static const unsigned AddressWidth = 7;
 
 sc_core::sc_in <sc_lv<AddressWidth> > address0;

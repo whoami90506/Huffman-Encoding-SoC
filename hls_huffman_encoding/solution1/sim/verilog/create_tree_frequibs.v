@@ -7,7 +7,7 @@ module create_tree_frequibs_ram (addr0, ce0, d0, we0, q0, addr1, ce1, q1,  clk);
 
 parameter DWIDTH = 32;
 parameter AWIDTH = 7;
-parameter MEM_SIZE = 128;
+parameter MEM_SIZE = 127;
 
 input[AWIDTH-1:0] addr0;
 input ce0;
@@ -58,7 +58,7 @@ module create_tree_frequibs(
     q1);
 
 parameter DataWidth = 32'd32;
-parameter AddressRange = 32'd128;
+parameter AddressRange = 32'd127;
 parameter AddressWidth = 32'd7;
 input reset;
 input clk;

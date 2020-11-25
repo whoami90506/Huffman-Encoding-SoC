@@ -5,77 +5,96 @@
 
 `timescale 1ns/1ps
 
-module huffman_encoding_g8j
-#(parameter
-    ID = 1,             // core ID, unused in RTL
-    din0_WIDTH = 32,   // data bitwidth
-    din1_WIDTH = 32,     // shift control bitwidth
-    dout_WIDTH = 32,   // output bitwidth
-    OP = 1,             // opcode: 0-shl, 1-lshr, 2-ashr
-    NUM_STAGE = 2       // stage number
+module huffman_encoding_g8j #(
+parameter
+    ID                = 0,
+    NUM_STAGE         = 1,
+    din0_WIDTH       = 32,
+    din1_WIDTH       = 32,
+    din2_WIDTH       = 32,
+    din3_WIDTH       = 32,
+    din4_WIDTH       = 32,
+    din5_WIDTH       = 32,
+    din6_WIDTH       = 32,
+    din7_WIDTH       = 32,
+    din8_WIDTH       = 32,
+    din9_WIDTH       = 32,
+    din10_WIDTH       = 32,
+    din11_WIDTH       = 32,
+    din12_WIDTH       = 32,
+    din13_WIDTH       = 32,
+    din14_WIDTH       = 32,
+    din15_WIDTH       = 32,
+    din16_WIDTH         = 32,
+    dout_WIDTH            = 32
 )(
-    input  wire                  clk,
-    input  wire                  reset,
-    input  wire                  ce,
-    input  wire [din0_WIDTH-1:0] din0,
-    input  wire [din0_WIDTH-1:0] din1,
-    output reg  [dout_WIDTH-1:0] dout
-);
+    input  [8 : 0]     din0,
+    input  [8 : 0]     din1,
+    input  [8 : 0]     din2,
+    input  [8 : 0]     din3,
+    input  [8 : 0]     din4,
+    input  [8 : 0]     din5,
+    input  [8 : 0]     din6,
+    input  [8 : 0]     din7,
+    input  [8 : 0]     din8,
+    input  [8 : 0]     din9,
+    input  [8 : 0]     din10,
+    input  [8 : 0]     din11,
+    input  [8 : 0]     din12,
+    input  [8 : 0]     din13,
+    input  [8 : 0]     din14,
+    input  [8 : 0]     din15,
+    input  [3 : 0]    din16,
+    output [8 : 0]   dout);
 
-//------------------------Parameter----------------------
-localparam K = 1+((din1_WIDTH - 1)/NUM_STAGE);
-localparam LATENCY = NUM_STAGE -1;
+// puts internal signals
+wire [3 : 0]     sel;
+// level 1 signals
+wire [8 : 0]         mux_1_0;
+wire [8 : 0]         mux_1_1;
+wire [8 : 0]         mux_1_2;
+wire [8 : 0]         mux_1_3;
+wire [8 : 0]         mux_1_4;
+wire [8 : 0]         mux_1_5;
+wire [8 : 0]         mux_1_6;
+wire [8 : 0]         mux_1_7;
+// level 2 signals
+wire [8 : 0]         mux_2_0;
+wire [8 : 0]         mux_2_1;
+wire [8 : 0]         mux_2_2;
+wire [8 : 0]         mux_2_3;
+// level 3 signals
+wire [8 : 0]         mux_3_0;
+wire [8 : 0]         mux_3_1;
+// level 4 signals
+wire [8 : 0]         mux_4_0;
 
-//------------------------Local signal-------------------
-reg  [dout_WIDTH-1:0] dout_array[LATENCY-1:0];
-reg  [din1_WIDTH-1:0] din1_cast_array[LATENCY-1:0];
-wire [din1_WIDTH-1:0] din1_cast;
-wire [din1_WIDTH-1:0] din1_mask;
+assign sel = din16;
 
-//------------------------Body---------------------------
-always @(posedge clk) begin
-    if (reset == 1'b1) begin
-        dout_array[0] <= {din0_WIDTH{1'b0}};
-        din1_cast_array[0] <= {din1_WIDTH{1'b0}};
-    end else if (ce) begin
-        case (OP)
-            0: dout_array[0] <= din0<<(din1_cast&(din1_mask<<(LATENCY*K)));
-            1: dout_array[0] <= din0>>(din1_cast&(din1_mask<<(LATENCY*K)));
-            2: dout_array[0] <= $signed(din0)>>>(din1_cast&(din1_mask<<(LATENCY*K)));
-            default: dout_array[0] <= dout_array[0];
-        endcase
-        din1_cast_array[0] <= din1_cast;
-    end
-end
+// Generate level 1 logic
+assign mux_1_0 = (sel[0] == 0)? din0 : din1;
+assign mux_1_1 = (sel[0] == 0)? din2 : din3;
+assign mux_1_2 = (sel[0] == 0)? din4 : din5;
+assign mux_1_3 = (sel[0] == 0)? din6 : din7;
+assign mux_1_4 = (sel[0] == 0)? din8 : din9;
+assign mux_1_5 = (sel[0] == 0)? din10 : din11;
+assign mux_1_6 = (sel[0] == 0)? din12 : din13;
+assign mux_1_7 = (sel[0] == 0)? din14 : din15;
 
-genvar i;
-generate for (i=1; i<LATENCY; i=i+1) begin:pipeshift
-    always @(posedge clk) begin
-        if (reset == 1'b1) begin
-            dout_array[i] <= {din0_WIDTH{1'b0}};
-            din1_cast_array[i] <= {din1_WIDTH{1'b0}};
-        end else if (ce) begin
-            case (OP)
-                0: dout_array[i] <= dout_array[i-1]<<(din1_cast_array[i-1]&(din1_mask<<((LATENCY-i)*K)));
-                1: dout_array[i] <= dout_array[i-1]>>(din1_cast_array[i-1]&(din1_mask<<((LATENCY-i)*K)));
-                2: dout_array[i] <= $signed(dout_array[i-1])>>>(din1_cast_array[i-1]&(din1_mask<<((LATENCY-i)*K)));
-                default: dout_array[i] <= dout_array[i];
-            endcase
-            din1_cast_array[i] <= din1_cast_array[i-1];
-        end
-    end
-end endgenerate
+// Generate level 2 logic
+assign mux_2_0 = (sel[1] == 0)? mux_1_0 : mux_1_1;
+assign mux_2_1 = (sel[1] == 0)? mux_1_2 : mux_1_3;
+assign mux_2_2 = (sel[1] == 0)? mux_1_4 : mux_1_5;
+assign mux_2_3 = (sel[1] == 0)? mux_1_6 : mux_1_7;
 
-always @(*) begin
-    case (OP)
-        0: dout = dout_array[LATENCY-1]<<(din1_cast_array[LATENCY-1]&din1_mask);
-        1: dout = dout_array[LATENCY-1]>>(din1_cast_array[LATENCY-1]&din1_mask);
-        2: dout = $signed(dout_array[LATENCY-1])>>>(din1_cast_array[LATENCY-1]&din1_mask);
-        default: dout = {dout_WIDTH{1'b0}};
-    endcase
-end
+// Generate level 3 logic
+assign mux_3_0 = (sel[2] == 0)? mux_2_0 : mux_2_1;
+assign mux_3_1 = (sel[2] == 0)? mux_2_2 : mux_2_3;
 
-assign din1_mask = {{(din1_WIDTH-K){1'b0}},{K{1'b1}}};
-assign din1_cast = $unsigned(din1[din1_WIDTH-1:0]);
+// Generate level 4 logic
+assign mux_4_0 = (sel[3] == 0)? mux_3_0 : mux_3_1;
+
+// output logic
+assign dout = mux_4_0;
 
 endmodule

@@ -22,14 +22,14 @@
 #include "canonize_tree.h"
 #include "create_codeword.h"
 #include "Block_proc.h"
+#include "huffman_encoding_mb6.h"
 #include "huffman_encoding_ncg.h"
-#include "huffman_encoding_ocq.h"
-#include "huffman_encoding_sc4.h"
-#include "huffman_encoding_vdy.h"
-#include "huffman_encoding_xdS.h"
+#include "huffman_encoding_rcU.h"
+#include "huffman_encoding_udo.h"
+#include "huffman_encoding_wdI.h"
+#include "huffman_encoding_Aem.h"
 #include "huffman_encoding_Bew.h"
-#include "huffman_encoding_CeG.h"
-#include "huffman_encoding_Ee0.h"
+#include "huffman_encoding_DeQ.h"
 #include "fifo_w41_d256_A.h"
 #include "fifo_w9_d2_A.h"
 #include "fifo_w9_d3_A.h"
@@ -37,9 +37,9 @@
 #include "fifo_w32_d256_A.h"
 #include "fifo_w9_d5_A.h"
 #include "start_for_filter_U0.h"
-#include "start_for_Block_hFfa.h"
-#include "start_for_create_Gfk.h"
-#include "start_for_Block_pHfu.h"
+#include "start_for_Block_hEe0.h"
+#include "start_for_create_Ffa.h"
+#include "start_for_Block_pGfk.h"
 #include "huffman_encoding_AXILiteS_s_axi.h"
 
 namespace ap_rtl {
@@ -107,24 +107,24 @@ struct huffman_encoding : public sc_module {
     ofstream mHdltvinHandle;
     ofstream mHdltvoutHandle;
     huffman_encoding_AXILiteS_s_axi<C_S_AXI_AXILITES_ADDR_WIDTH,C_S_AXI_AXILITES_DATA_WIDTH>* huffman_encoding_AXILiteS_s_axi_U;
-    huffman_encoding_ncg* filtered_value_V_U;
-    huffman_encoding_ocq* filtered_frequency_V_U;
-    huffman_encoding_ncg* sorted_0_U;
-    huffman_encoding_ocq* sorted_1_U;
-    huffman_encoding_ncg* sorted_copy2_value_V_U;
-    huffman_encoding_sc4* parent_V_U;
-    huffman_encoding_sc4* left_V_U;
-    huffman_encoding_sc4* right_V_U;
-    huffman_encoding_vdy* stream_buffer_1_U;
-    huffman_encoding_vdy* stream_buffer_2_U;
-    huffman_encoding_xdS* stream_buffer_3_U;
-    huffman_encoding_xdS* stream_buffer_4_U;
-    huffman_encoding_xdS* stream_buffer_5_U;
-    huffman_encoding_xdS* stream_buffer_6_U;
-    huffman_encoding_Bew* length_histogram_V_U;
-    huffman_encoding_CeG* truncated_length_his_U;
-    huffman_encoding_Bew* truncated_length_his_1_U;
-    huffman_encoding_Ee0* symbol_bits_V_U;
+    huffman_encoding_mb6* filtered_value_V_U;
+    huffman_encoding_ncg* filtered_frequency_V_U;
+    huffman_encoding_mb6* sorted_0_U;
+    huffman_encoding_ncg* sorted_1_U;
+    huffman_encoding_mb6* sorted_copy2_value_V_U;
+    huffman_encoding_rcU* parent_V_U;
+    huffman_encoding_rcU* left_V_U;
+    huffman_encoding_rcU* right_V_U;
+    huffman_encoding_udo* stream_buffer_1_U;
+    huffman_encoding_udo* stream_buffer_2_U;
+    huffman_encoding_wdI* stream_buffer_3_U;
+    huffman_encoding_wdI* stream_buffer_4_U;
+    huffman_encoding_wdI* stream_buffer_5_U;
+    huffman_encoding_wdI* stream_buffer_6_U;
+    huffman_encoding_Aem* length_histogram_V_U;
+    huffman_encoding_Bew* truncated_length_his_U;
+    huffman_encoding_Aem* truncated_length_his_1_U;
+    huffman_encoding_DeQ* symbol_bits_V_U;
     Loop_read_stream_pro* Loop_read_stream_pro_U0;
     filter* filter_U0;
     Block_huffman_encodi* Block_huffman_encodi_U0;
@@ -147,9 +147,9 @@ struct huffman_encoding : public sc_module {
     fifo_w9_d2_A* extLd_loc_c19_U;
     fifo_w9_d2_A* extLd_loc_c20_U;
     start_for_filter_U0* start_for_filter_U0_U;
-    start_for_Block_hFfa* start_for_Block_hFfa_U;
-    start_for_create_Gfk* start_for_create_Gfk_U;
-    start_for_Block_pHfu* start_for_Block_pHfu_U;
+    start_for_Block_hEe0* start_for_Block_hEe0_U;
+    start_for_create_Ffa* start_for_create_Ffa_U;
+    start_for_Block_pGfk* start_for_Block_pGfk_U;
     sc_signal< sc_logic > ap_rst_n_inv;
     sc_signal< sc_logic > ap_start;
     sc_signal< sc_logic > ap_ready;

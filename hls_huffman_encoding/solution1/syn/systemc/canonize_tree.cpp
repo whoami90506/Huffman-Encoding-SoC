@@ -14,13 +14,12 @@ namespace ap_rtl {
 
 const sc_logic canonize_tree::ap_const_logic_1 = sc_dt::Log_1;
 const sc_logic canonize_tree::ap_const_logic_0 = sc_dt::Log_0;
-const sc_lv<7> canonize_tree::ap_ST_fsm_state1 = "1";
-const sc_lv<7> canonize_tree::ap_ST_fsm_state2 = "10";
-const sc_lv<7> canonize_tree::ap_ST_fsm_state3 = "100";
-const sc_lv<7> canonize_tree::ap_ST_fsm_state4 = "1000";
-const sc_lv<7> canonize_tree::ap_ST_fsm_state5 = "10000";
-const sc_lv<7> canonize_tree::ap_ST_fsm_state6 = "100000";
-const sc_lv<7> canonize_tree::ap_ST_fsm_state7 = "1000000";
+const sc_lv<6> canonize_tree::ap_ST_fsm_state1 = "1";
+const sc_lv<6> canonize_tree::ap_ST_fsm_state2 = "10";
+const sc_lv<6> canonize_tree::ap_ST_fsm_state3 = "100";
+const sc_lv<6> canonize_tree::ap_ST_fsm_state4 = "1000";
+const sc_lv<6> canonize_tree::ap_ST_fsm_state5 = "10000";
+const sc_lv<6> canonize_tree::ap_ST_fsm_state6 = "100000";
 const sc_lv<32> canonize_tree::ap_const_lv32_0 = "00000000000000000000000000000000";
 const sc_lv<32> canonize_tree::ap_const_lv32_1 = "1";
 const sc_lv<32> canonize_tree::ap_const_lv32_2 = "10";
@@ -30,7 +29,6 @@ const sc_lv<32> canonize_tree::ap_const_lv32_4 = "100";
 const sc_lv<1> canonize_tree::ap_const_lv1_1 = "1";
 const sc_lv<32> canonize_tree::ap_const_lv32_5 = "101";
 const sc_lv<9> canonize_tree::ap_const_lv9_0 = "000000000";
-const sc_lv<32> canonize_tree::ap_const_lv32_6 = "110";
 const sc_lv<9> canonize_tree::ap_const_lv9_40 = "1000000";
 const sc_lv<5> canonize_tree::ap_const_lv5_0 = "00000";
 const sc_lv<9> canonize_tree::ap_const_lv9_100 = "100000000";
@@ -62,9 +60,6 @@ canonize_tree::canonize_tree(sc_module_name name) : sc_module(name), mVcdFile(0)
     SC_METHOD(thread_ap_CS_fsm_state6);
     sensitive << ( ap_CS_fsm );
 
-    SC_METHOD(thread_ap_CS_fsm_state7);
-    sensitive << ( ap_CS_fsm );
-
     SC_METHOD(thread_ap_block_state1);
     sensitive << ( ap_start );
     sensitive << ( ap_done_reg );
@@ -90,7 +85,7 @@ canonize_tree::canonize_tree(sc_module_name name) : sc_module(name), mVcdFile(0)
     SC_METHOD(thread_codeword_length_histogram_V_ce0);
     sensitive << ( ap_CS_fsm_state4 );
 
-    SC_METHOD(thread_count_V_2_fu_229_p2);
+    SC_METHOD(thread_count_V_2_fu_239_p2);
     sensitive << ( t_V_5_reg_151 );
 
     SC_METHOD(thread_i_fu_174_p2);
@@ -101,13 +96,13 @@ canonize_tree::canonize_tree(sc_module_name name) : sc_module(name), mVcdFile(0)
     sensitive << ( i_0_i_i_reg_116 );
 
     SC_METHOD(thread_icmp_ln21_fu_190_p2);
-    sensitive << ( val_assign6_loc_read_reg_244 );
+    sensitive << ( val_assign6_loc_read_reg_245 );
     sensitive << ( ap_CS_fsm_state3 );
     sensitive << ( i_op_assign_reg_139 );
 
     SC_METHOD(thread_icmp_ln879_4_fu_218_p2);
     sensitive << ( codeword_length_histogram_V_q0 );
-    sensitive << ( icmp_ln879_reg_272 );
+    sensitive << ( icmp_ln879_reg_273 );
     sensitive << ( ap_CS_fsm_state5 );
 
     SC_METHOD(thread_icmp_ln879_fu_201_p2);
@@ -130,25 +125,25 @@ canonize_tree::canonize_tree(sc_module_name name) : sc_module(name), mVcdFile(0)
 
     SC_METHOD(thread_symbol_bits_V_address0);
     sensitive << ( ap_CS_fsm_state2 );
-    sensitive << ( ap_CS_fsm_state7 );
+    sensitive << ( ap_CS_fsm_state6 );
     sensitive << ( zext_ln12_fu_180_p1 );
-    sensitive << ( zext_ln544_9_fu_235_p1 );
+    sensitive << ( zext_ln544_9_fu_229_p1 );
 
     SC_METHOD(thread_symbol_bits_V_ce0);
     sensitive << ( ap_CS_fsm_state2 );
-    sensitive << ( ap_CS_fsm_state7 );
+    sensitive << ( ap_CS_fsm_state6 );
 
     SC_METHOD(thread_symbol_bits_V_d0);
     sensitive << ( ap_CS_fsm_state2 );
-    sensitive << ( ap_CS_fsm_state7 );
-    sensitive << ( trunc_ln209_fu_239_p1 );
+    sensitive << ( ap_CS_fsm_state6 );
+    sensitive << ( trunc_ln209_fu_234_p1 );
 
     SC_METHOD(thread_symbol_bits_V_we0);
     sensitive << ( ap_CS_fsm_state2 );
+    sensitive << ( ap_CS_fsm_state6 );
     sensitive << ( icmp_ln11_fu_168_p2 );
-    sensitive << ( ap_CS_fsm_state7 );
 
-    SC_METHOD(thread_trunc_ln209_fu_239_p1);
+    SC_METHOD(thread_trunc_ln209_fu_234_p1);
     sensitive << ( length_V_1_fu_58 );
 
     SC_METHOD(thread_val_assign6_loc_blk_n);
@@ -169,8 +164,8 @@ canonize_tree::canonize_tree(sc_module_name name) : sc_module(name), mVcdFile(0)
     SC_METHOD(thread_zext_ln32_fu_224_p1);
     sensitive << ( i_op_assign_reg_139 );
 
-    SC_METHOD(thread_zext_ln544_9_fu_235_p1);
-    sensitive << ( sorted_value_V_load_reg_299 );
+    SC_METHOD(thread_zext_ln544_9_fu_229_p1);
+    sensitive << ( sorted_value_V_q0 );
 
     SC_METHOD(thread_zext_ln544_fu_213_p1);
     sensitive << ( length_V_fu_207_p2 );
@@ -184,14 +179,14 @@ canonize_tree::canonize_tree(sc_module_name name) : sc_module(name), mVcdFile(0)
     sensitive << ( ap_CS_fsm_state2 );
     sensitive << ( ap_CS_fsm_state3 );
     sensitive << ( icmp_ln879_fu_201_p2 );
-    sensitive << ( icmp_ln879_reg_272 );
+    sensitive << ( icmp_ln879_reg_273 );
     sensitive << ( icmp_ln21_fu_190_p2 );
     sensitive << ( ap_CS_fsm_state5 );
     sensitive << ( icmp_ln879_4_fu_218_p2 );
     sensitive << ( icmp_ln11_fu_168_p2 );
 
     ap_done_reg = SC_LOGIC_0;
-    ap_CS_fsm = "0000001";
+    ap_CS_fsm = "000001";
     static int apTFileNum = 0;
     stringstream apTFilenSS;
     apTFilenSS << "canonize_tree_sc_trace_" << apTFileNum ++;
@@ -226,37 +221,34 @@ canonize_tree::canonize_tree(sc_module_name name) : sc_module(name), mVcdFile(0)
     sc_trace(mVcdFile, ap_CS_fsm, "ap_CS_fsm");
     sc_trace(mVcdFile, ap_CS_fsm_state1, "ap_CS_fsm_state1");
     sc_trace(mVcdFile, val_assign6_loc_blk_n, "val_assign6_loc_blk_n");
-    sc_trace(mVcdFile, val_assign6_loc_read_reg_244, "val_assign6_loc_read_reg_244");
+    sc_trace(mVcdFile, val_assign6_loc_read_reg_245, "val_assign6_loc_read_reg_245");
     sc_trace(mVcdFile, ap_block_state1, "ap_block_state1");
     sc_trace(mVcdFile, i_fu_174_p2, "i_fu_174_p2");
     sc_trace(mVcdFile, ap_CS_fsm_state2, "ap_CS_fsm_state2");
     sc_trace(mVcdFile, k_fu_195_p2, "k_fu_195_p2");
-    sc_trace(mVcdFile, k_reg_267, "k_reg_267");
+    sc_trace(mVcdFile, k_reg_268, "k_reg_268");
     sc_trace(mVcdFile, ap_CS_fsm_state3, "ap_CS_fsm_state3");
     sc_trace(mVcdFile, icmp_ln879_fu_201_p2, "icmp_ln879_fu_201_p2");
-    sc_trace(mVcdFile, icmp_ln879_reg_272, "icmp_ln879_reg_272");
+    sc_trace(mVcdFile, icmp_ln879_reg_273, "icmp_ln879_reg_273");
     sc_trace(mVcdFile, icmp_ln21_fu_190_p2, "icmp_ln21_fu_190_p2");
     sc_trace(mVcdFile, length_V_fu_207_p2, "length_V_fu_207_p2");
-    sc_trace(mVcdFile, length_V_reg_276, "length_V_reg_276");
+    sc_trace(mVcdFile, length_V_reg_277, "length_V_reg_277");
     sc_trace(mVcdFile, ap_CS_fsm_state4, "ap_CS_fsm_state4");
     sc_trace(mVcdFile, ap_CS_fsm_state5, "ap_CS_fsm_state5");
     sc_trace(mVcdFile, icmp_ln879_4_fu_218_p2, "icmp_ln879_4_fu_218_p2");
-    sc_trace(mVcdFile, sorted_value_V_load_reg_299, "sorted_value_V_load_reg_299");
+    sc_trace(mVcdFile, count_V_2_fu_239_p2, "count_V_2_fu_239_p2");
     sc_trace(mVcdFile, ap_CS_fsm_state6, "ap_CS_fsm_state6");
-    sc_trace(mVcdFile, count_V_2_fu_229_p2, "count_V_2_fu_229_p2");
-    sc_trace(mVcdFile, count_V_2_reg_304, "count_V_2_reg_304");
     sc_trace(mVcdFile, i_0_i_i_reg_116, "i_0_i_i_reg_116");
     sc_trace(mVcdFile, icmp_ln11_fu_168_p2, "icmp_ln11_fu_168_p2");
     sc_trace(mVcdFile, p_066_0_i_i_reg_127, "p_066_0_i_i_reg_127");
-    sc_trace(mVcdFile, ap_CS_fsm_state7, "ap_CS_fsm_state7");
     sc_trace(mVcdFile, i_op_assign_reg_139, "i_op_assign_reg_139");
     sc_trace(mVcdFile, t_V_5_reg_151, "t_V_5_reg_151");
     sc_trace(mVcdFile, zext_ln12_fu_180_p1, "zext_ln12_fu_180_p1");
     sc_trace(mVcdFile, zext_ln544_fu_213_p1, "zext_ln544_fu_213_p1");
     sc_trace(mVcdFile, zext_ln32_fu_224_p1, "zext_ln32_fu_224_p1");
-    sc_trace(mVcdFile, zext_ln544_9_fu_235_p1, "zext_ln544_9_fu_235_p1");
+    sc_trace(mVcdFile, zext_ln544_9_fu_229_p1, "zext_ln544_9_fu_229_p1");
     sc_trace(mVcdFile, length_V_1_fu_58, "length_V_1_fu_58");
-    sc_trace(mVcdFile, trunc_ln209_fu_239_p1, "trunc_ln209_fu_239_p1");
+    sc_trace(mVcdFile, trunc_ln209_fu_234_p1, "trunc_ln209_fu_234_p1");
     sc_trace(mVcdFile, ap_NS_fsm, "ap_NS_fsm");
 #endif
 
@@ -295,16 +287,16 @@ void canonize_tree::thread_ap_clk_no_reset_() {
     if ((esl_seteq<1,1,1>(ap_const_logic_1, ap_CS_fsm_state2.read()) && 
          esl_seteq<1,1,1>(ap_const_lv1_1, icmp_ln11_fu_168_p2.read()))) {
         i_op_assign_reg_139 = ap_const_lv9_0;
-    } else if (esl_seteq<1,1,1>(ap_const_logic_1, ap_CS_fsm_state7.read())) {
-        i_op_assign_reg_139 = k_reg_267.read();
+    } else if (esl_seteq<1,1,1>(ap_const_logic_1, ap_CS_fsm_state6.read())) {
+        i_op_assign_reg_139 = k_reg_268.read();
     }
     if (((esl_seteq<1,1,1>(ap_const_logic_1, ap_CS_fsm_state5.read()) && 
-          esl_seteq<1,1,1>(icmp_ln879_reg_272.read(), ap_const_lv1_1) && 
+          esl_seteq<1,1,1>(icmp_ln879_reg_273.read(), ap_const_lv1_1) && 
           esl_seteq<1,1,1>(ap_const_lv1_0, icmp_ln879_4_fu_218_p2.read())) || 
          (esl_seteq<1,1,1>(ap_const_logic_1, ap_CS_fsm_state5.read()) && 
-          esl_seteq<1,1,1>(icmp_ln879_reg_272.read(), ap_const_lv1_1) && 
+          esl_seteq<1,1,1>(icmp_ln879_reg_273.read(), ap_const_lv1_1) && 
           esl_seteq<1,1,1>(ap_const_lv1_1, icmp_ln879_4_fu_218_p2.read())))) {
-        length_V_1_fu_58 = length_V_reg_276.read();
+        length_V_1_fu_58 = length_V_reg_277.read();
     } else if ((esl_seteq<1,1,1>(ap_const_logic_1, ap_CS_fsm_state2.read()) && 
                 esl_seteq<1,1,1>(ap_const_lv1_1, icmp_ln11_fu_168_p2.read()))) {
         length_V_1_fu_58 = ap_const_lv9_40;
@@ -312,11 +304,11 @@ void canonize_tree::thread_ap_clk_no_reset_() {
     if ((esl_seteq<1,1,1>(ap_const_logic_1, ap_CS_fsm_state2.read()) && 
          esl_seteq<1,1,1>(ap_const_lv1_1, icmp_ln11_fu_168_p2.read()))) {
         p_066_0_i_i_reg_127 = ap_const_lv9_0;
-    } else if (esl_seteq<1,1,1>(ap_const_logic_1, ap_CS_fsm_state7.read())) {
-        p_066_0_i_i_reg_127 = count_V_2_reg_304.read();
+    } else if (esl_seteq<1,1,1>(ap_const_logic_1, ap_CS_fsm_state6.read())) {
+        p_066_0_i_i_reg_127 = count_V_2_fu_239_p2.read();
     }
     if ((esl_seteq<1,1,1>(ap_const_logic_1, ap_CS_fsm_state5.read()) && 
-         esl_seteq<1,1,1>(icmp_ln879_reg_272.read(), ap_const_lv1_1) && 
+         esl_seteq<1,1,1>(icmp_ln879_reg_273.read(), ap_const_lv1_1) && 
          esl_seteq<1,1,1>(ap_const_lv1_0, icmp_ln879_4_fu_218_p2.read()))) {
         t_V_5_reg_151 = codeword_length_histogram_V_q0.read();
     } else if ((esl_seteq<1,1,1>(ap_const_logic_1, ap_CS_fsm_state3.read()) && 
@@ -324,21 +316,17 @@ void canonize_tree::thread_ap_clk_no_reset_() {
                 esl_seteq<1,1,1>(icmp_ln879_fu_201_p2.read(), ap_const_lv1_0))) {
         t_V_5_reg_151 = p_066_0_i_i_reg_127.read();
     }
-    if (esl_seteq<1,1,1>(ap_const_logic_1, ap_CS_fsm_state6.read())) {
-        count_V_2_reg_304 = count_V_2_fu_229_p2.read();
-        sorted_value_V_load_reg_299 = sorted_value_V_q0.read();
-    }
     if ((esl_seteq<1,1,1>(ap_const_logic_1, ap_CS_fsm_state3.read()) && esl_seteq<1,1,1>(icmp_ln21_fu_190_p2.read(), ap_const_lv1_0))) {
-        icmp_ln879_reg_272 = icmp_ln879_fu_201_p2.read();
+        icmp_ln879_reg_273 = icmp_ln879_fu_201_p2.read();
     }
     if (esl_seteq<1,1,1>(ap_const_logic_1, ap_CS_fsm_state3.read())) {
-        k_reg_267 = k_fu_195_p2.read();
+        k_reg_268 = k_fu_195_p2.read();
     }
     if (esl_seteq<1,1,1>(ap_const_logic_1, ap_CS_fsm_state4.read())) {
-        length_V_reg_276 = length_V_fu_207_p2.read();
+        length_V_reg_277 = length_V_fu_207_p2.read();
     }
     if ((esl_seteq<1,1,1>(ap_const_logic_1, ap_CS_fsm_state1.read()) && !(esl_seteq<1,1,1>(ap_const_logic_0, ap_start.read()) || esl_seteq<1,1,1>(ap_done_reg.read(), ap_const_logic_1) || esl_seteq<1,1,1>(ap_const_logic_0, val_assign6_loc_empty_n.read())))) {
-        val_assign6_loc_read_reg_244 = val_assign6_loc_dout.read();
+        val_assign6_loc_read_reg_245 = val_assign6_loc_dout.read();
     }
 }
 
@@ -364,10 +352,6 @@ void canonize_tree::thread_ap_CS_fsm_state5() {
 
 void canonize_tree::thread_ap_CS_fsm_state6() {
     ap_CS_fsm_state6 = ap_CS_fsm.read()[5];
-}
-
-void canonize_tree::thread_ap_CS_fsm_state7() {
-    ap_CS_fsm_state7 = ap_CS_fsm.read()[6];
 }
 
 void canonize_tree::thread_ap_block_state1() {
@@ -413,8 +397,8 @@ void canonize_tree::thread_codeword_length_histogram_V_ce0() {
     }
 }
 
-void canonize_tree::thread_count_V_2_fu_229_p2() {
-    count_V_2_fu_229_p2 = (!ap_const_lv9_1FF.is_01() || !t_V_5_reg_151.read().is_01())? sc_lv<9>(): (sc_bigint<9>(ap_const_lv9_1FF) + sc_biguint<9>(t_V_5_reg_151.read()));
+void canonize_tree::thread_count_V_2_fu_239_p2() {
+    count_V_2_fu_239_p2 = (!ap_const_lv9_1FF.is_01() || !t_V_5_reg_151.read().is_01())? sc_lv<9>(): (sc_bigint<9>(ap_const_lv9_1FF) + sc_biguint<9>(t_V_5_reg_151.read()));
 }
 
 void canonize_tree::thread_i_fu_174_p2() {
@@ -426,7 +410,7 @@ void canonize_tree::thread_icmp_ln11_fu_168_p2() {
 }
 
 void canonize_tree::thread_icmp_ln21_fu_190_p2() {
-    icmp_ln21_fu_190_p2 = (!i_op_assign_reg_139.read().is_01() || !val_assign6_loc_read_reg_244.read().is_01())? sc_lv<1>(): sc_lv<1>(i_op_assign_reg_139.read() == val_assign6_loc_read_reg_244.read());
+    icmp_ln21_fu_190_p2 = (!i_op_assign_reg_139.read().is_01() || !val_assign6_loc_read_reg_245.read().is_01())? sc_lv<1>(): sc_lv<1>(i_op_assign_reg_139.read() == val_assign6_loc_read_reg_245.read());
 }
 
 void canonize_tree::thread_icmp_ln879_4_fu_218_p2() {
@@ -458,8 +442,8 @@ void canonize_tree::thread_sorted_value_V_ce0() {
 }
 
 void canonize_tree::thread_symbol_bits_V_address0() {
-    if (esl_seteq<1,1,1>(ap_const_logic_1, ap_CS_fsm_state7.read())) {
-        symbol_bits_V_address0 =  (sc_lv<8>) (zext_ln544_9_fu_235_p1.read());
+    if (esl_seteq<1,1,1>(ap_const_logic_1, ap_CS_fsm_state6.read())) {
+        symbol_bits_V_address0 =  (sc_lv<8>) (zext_ln544_9_fu_229_p1.read());
     } else if (esl_seteq<1,1,1>(ap_const_logic_1, ap_CS_fsm_state2.read())) {
         symbol_bits_V_address0 =  (sc_lv<8>) (zext_ln12_fu_180_p1.read());
     } else {
@@ -469,7 +453,7 @@ void canonize_tree::thread_symbol_bits_V_address0() {
 
 void canonize_tree::thread_symbol_bits_V_ce0() {
     if ((esl_seteq<1,1,1>(ap_const_logic_1, ap_CS_fsm_state2.read()) || 
-         esl_seteq<1,1,1>(ap_const_logic_1, ap_CS_fsm_state7.read()))) {
+         esl_seteq<1,1,1>(ap_const_logic_1, ap_CS_fsm_state6.read()))) {
         symbol_bits_V_ce0 = ap_const_logic_1;
     } else {
         symbol_bits_V_ce0 = ap_const_logic_0;
@@ -477,8 +461,8 @@ void canonize_tree::thread_symbol_bits_V_ce0() {
 }
 
 void canonize_tree::thread_symbol_bits_V_d0() {
-    if (esl_seteq<1,1,1>(ap_const_logic_1, ap_CS_fsm_state7.read())) {
-        symbol_bits_V_d0 = trunc_ln209_fu_239_p1.read();
+    if (esl_seteq<1,1,1>(ap_const_logic_1, ap_CS_fsm_state6.read())) {
+        symbol_bits_V_d0 = trunc_ln209_fu_234_p1.read();
     } else if (esl_seteq<1,1,1>(ap_const_logic_1, ap_CS_fsm_state2.read())) {
         symbol_bits_V_d0 = ap_const_lv5_0;
     } else {
@@ -487,17 +471,17 @@ void canonize_tree::thread_symbol_bits_V_d0() {
 }
 
 void canonize_tree::thread_symbol_bits_V_we0() {
-    if (((esl_seteq<1,1,1>(ap_const_logic_1, ap_CS_fsm_state2.read()) && 
-          esl_seteq<1,1,1>(ap_const_lv1_0, icmp_ln11_fu_168_p2.read())) || 
-         esl_seteq<1,1,1>(ap_const_logic_1, ap_CS_fsm_state7.read()))) {
+    if ((esl_seteq<1,1,1>(ap_const_logic_1, ap_CS_fsm_state6.read()) || 
+         (esl_seteq<1,1,1>(ap_const_logic_1, ap_CS_fsm_state2.read()) && 
+          esl_seteq<1,1,1>(ap_const_lv1_0, icmp_ln11_fu_168_p2.read())))) {
         symbol_bits_V_we0 = ap_const_logic_1;
     } else {
         symbol_bits_V_we0 = ap_const_logic_0;
     }
 }
 
-void canonize_tree::thread_trunc_ln209_fu_239_p1() {
-    trunc_ln209_fu_239_p1 = length_V_1_fu_58.read().range(5-1, 0);
+void canonize_tree::thread_trunc_ln209_fu_234_p1() {
+    trunc_ln209_fu_234_p1 = length_V_1_fu_58.read().range(5-1, 0);
 }
 
 void canonize_tree::thread_val_assign6_loc_blk_n() {
@@ -526,8 +510,8 @@ void canonize_tree::thread_zext_ln32_fu_224_p1() {
     zext_ln32_fu_224_p1 = esl_zext<64,9>(i_op_assign_reg_139.read());
 }
 
-void canonize_tree::thread_zext_ln544_9_fu_235_p1() {
-    zext_ln544_9_fu_235_p1 = esl_zext<64,9>(sorted_value_V_load_reg_299.read());
+void canonize_tree::thread_zext_ln544_9_fu_229_p1() {
+    zext_ln544_9_fu_229_p1 = esl_zext<64,9>(sorted_value_V_q0.read());
 }
 
 void canonize_tree::thread_zext_ln544_fu_213_p1() {
@@ -564,20 +548,17 @@ void canonize_tree::thread_ap_NS_fsm() {
             break;
         case 16 : 
             if ((esl_seteq<1,1,1>(ap_const_logic_1, ap_CS_fsm_state5.read()) && (esl_seteq<1,1,1>(ap_const_lv1_0, icmp_ln879_4_fu_218_p2.read()) || 
-  esl_seteq<1,1,1>(icmp_ln879_reg_272.read(), ap_const_lv1_0)))) {
+  esl_seteq<1,1,1>(icmp_ln879_reg_273.read(), ap_const_lv1_0)))) {
                 ap_NS_fsm = ap_ST_fsm_state6;
             } else {
                 ap_NS_fsm = ap_ST_fsm_state4;
             }
             break;
         case 32 : 
-            ap_NS_fsm = ap_ST_fsm_state7;
-            break;
-        case 64 : 
             ap_NS_fsm = ap_ST_fsm_state3;
             break;
         default : 
-            ap_NS_fsm =  (sc_lv<7>) ("XXXXXXX");
+            ap_NS_fsm =  (sc_lv<6>) ("XXXXXX");
             break;
     }
 }

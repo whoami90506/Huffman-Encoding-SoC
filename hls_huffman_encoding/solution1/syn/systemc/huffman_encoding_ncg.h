@@ -13,7 +13,7 @@
 #include "huffman_encoding_ncg_memcore.h"
 
 SC_MODULE(huffman_encoding_ncg) {
-    static const unsigned int DataWidth    = 9;
+    static const unsigned int DataWidth    = 32;
     static const unsigned int AddressRange = 32;
     static const unsigned int AddressWidth = 8;
     static const unsigned int BufferCount  = 2;

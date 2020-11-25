@@ -9,26 +9,26 @@
 <ProductFamily>zynq</ProductFamily>
 <Part>xc7z020-clg484-1</Part>
 <TopModelName>sort</TopModelName>
-<TargetClockPeriod>5.00</TargetClockPeriod>
-<ClockUncertainty>0.63</ClockUncertainty>
+<TargetClockPeriod>10.00</TargetClockPeriod>
+<ClockUncertainty>1.25</ClockUncertainty>
 </UserAssignments>
 
 <PerformanceEstimates>
 <PipelineType>none</PipelineType>
 <SummaryOfTimingAnalysis>
 <unit>ns</unit>
-<EstimatedClockPeriod>4.559</EstimatedClockPeriod>
+<EstimatedClockPeriod>8.108</EstimatedClockPeriod>
 </SummaryOfTimingAnalysis>
 <SummaryOfOverallLatency>
 <unit>clock cycles</unit>
-<Best-caseLatency>379</Best-caseLatency>
+<Best-caseLatency>347</Best-caseLatency>
 <Average-caseLatency>undef</Average-caseLatency>
-<Worst-caseLatency>4732</Worst-caseLatency>
-<Best-caseRealTimeLatency>1.895 us</Best-caseRealTimeLatency>
+<Worst-caseLatency>4699</Worst-caseLatency>
+<Best-caseRealTimeLatency>3.470 us</Best-caseRealTimeLatency>
 <Average-caseRealTimeLatency>undef</Average-caseRealTimeLatency>
-<Worst-caseRealTimeLatency>23.660 us</Worst-caseRealTimeLatency>
-<Interval-min>379</Interval-min>
-<Interval-max>4732</Interval-max>
+<Worst-caseRealTimeLatency>46.990 us</Worst-caseRealTimeLatency>
+<Interval-min>347</Interval-min>
+<Interval-max>4699</Interval-max>
 </SummaryOfOverallLatency>
 <SummaryOfLoopLatency>
 <copy_in_to_sorting>
@@ -41,24 +41,24 @@
 <Latency>
 <range>
 <min>0</min>
-<max>257</max>
+<max>256</max>
 </range>
 </Latency>
 <PipelineII>1</PipelineII>
-<PipelineDepth>3</PipelineDepth>
+<PipelineDepth>2</PipelineDepth>
 </copy_in_to_sorting>
 <radix_sort>
 <TripCount>8</TripCount>
 <Latency>
 <range>
-<min>376</min>
-<max>4472</max>
+<min>344</min>
+<max>4440</max>
 </range>
 </Latency>
 <IterationLatency>
 <range>
-<min>47</min>
-<max>559</max>
+<min>43</min>
+<max>555</max>
 </range>
 </IterationLatency>
 <init_histogram>
@@ -76,18 +76,18 @@
 </TripCount>
 <Latency>
 <range>
-<min>4</min>
-<max>260</max>
+<min>2</min>
+<max>258</max>
 </range>
 </Latency>
 <PipelineII>1</PipelineII>
-<PipelineDepth>6</PipelineDepth>
+<PipelineDepth>3</PipelineDepth>
 </compute_histogram>
 <find_digit_location>
 <TripCount>15</TripCount>
-<Latency>16</Latency>
+<Latency>15</Latency>
 <PipelineII>1</PipelineII>
-<PipelineDepth>2</PipelineDepth>
+<PipelineDepth>1</PipelineDepth>
 </find_digit_location>
 <re_sort>
 <TripCount>
@@ -98,12 +98,12 @@
 </TripCount>
 <Latency>
 <range>
-<min>2</min>
-<max>258</max>
+<min>1</min>
+<max>257</max>
 </range>
 </Latency>
 <PipelineII>1</PipelineII>
-<PipelineDepth>4</PipelineDepth>
+<PipelineDepth>3</PipelineDepth>
 </re_sort>
 </radix_sort>
 </SummaryOfLoopLatency>
@@ -112,8 +112,8 @@
 <AreaEstimates>
 <Resources>
 <BRAM_18K>5</BRAM_18K>
-<FF>1935</FF>
-<LUT>3408</LUT>
+<FF>1297</FF>
+<LUT>2968</LUT>
 <URAM>0</URAM>
 <DSP48E>0</DSP48E>
 </Resources>

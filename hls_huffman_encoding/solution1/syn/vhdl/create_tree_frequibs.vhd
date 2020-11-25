@@ -12,7 +12,7 @@ entity create_tree_frequibs_ram is
             MEM_TYPE    : string := "block"; 
             DWIDTH     : integer := 32; 
             AWIDTH     : integer := 7; 
-            MEM_SIZE    : integer := 128
+            MEM_SIZE    : integer := 127
     ); 
     port (
           addr0     : in std_logic_vector(AWIDTH-1 downto 0); 
@@ -97,7 +97,7 @@ use IEEE.std_logic_1164.all;
 entity create_tree_frequibs is
     generic (
         DataWidth : INTEGER := 32;
-        AddressRange : INTEGER := 128;
+        AddressRange : INTEGER := 127;
         AddressWidth : INTEGER := 7);
     port (
         reset : IN STD_LOGIC;

@@ -5,94 +5,101 @@
 
 library IEEE;
 use IEEE.std_logic_1164.all;
-use IEEE.numeric_std.all;
+use IEEE.NUMERIC_STD.all;
 
 entity huffman_encoding_g8j is
-    generic (
-      ID : INTEGER := 1;            --core ID, unused in RTL
-      din0_WIDTH : INTEGER := 32;  --data bitwidth
-      din1_WIDTH : INTEGER := 32;    --shift control bitwidth
-      dout_WIDTH : INTEGER := 32;  --output bitwidth
-      OP : INTEGER := 1;            --opcode: 0-shl, 1-lshr, 2-ashr
-      NUM_STAGE : INTEGER := 2      --stage number
-  );
-    port (
-      clk : IN STD_LOGIC;
-      reset : IN STD_LOGIC;
-      ce : IN STD_LOGIC;
-      din0 : IN STD_LOGIC_VECTOR (din0_WIDTH-1 downto 0);
-      din1 : IN STD_LOGIC_VECTOR (din0_WIDTH-1 downto 0);
-      dout : OUT STD_LOGIC_VECTOR (dout_WIDTH-1 downto 0)
-  );
-end entity huffman_encoding_g8j;
+generic (
+    ID            :integer := 0;
+    NUM_STAGE     :integer := 1;
+    din0_WIDTH       :integer := 32;
+    din1_WIDTH       :integer := 32;
+    din2_WIDTH       :integer := 32;
+    din3_WIDTH       :integer := 32;
+    din4_WIDTH       :integer := 32;
+    din5_WIDTH       :integer := 32;
+    din6_WIDTH       :integer := 32;
+    din7_WIDTH       :integer := 32;
+    din8_WIDTH       :integer := 32;
+    din9_WIDTH       :integer := 32;
+    din10_WIDTH       :integer := 32;
+    din11_WIDTH       :integer := 32;
+    din12_WIDTH       :integer := 32;
+    din13_WIDTH       :integer := 32;
+    din14_WIDTH       :integer := 32;
+    din15_WIDTH       :integer := 32;
+    din16_WIDTH       :integer := 32;
+    dout_WIDTH        :integer := 32);
+port (
+    din0   :in  std_logic_vector(8 downto 0);
+    din1   :in  std_logic_vector(8 downto 0);
+    din2   :in  std_logic_vector(8 downto 0);
+    din3   :in  std_logic_vector(8 downto 0);
+    din4   :in  std_logic_vector(8 downto 0);
+    din5   :in  std_logic_vector(8 downto 0);
+    din6   :in  std_logic_vector(8 downto 0);
+    din7   :in  std_logic_vector(8 downto 0);
+    din8   :in  std_logic_vector(8 downto 0);
+    din9   :in  std_logic_vector(8 downto 0);
+    din10   :in  std_logic_vector(8 downto 0);
+    din11   :in  std_logic_vector(8 downto 0);
+    din12   :in  std_logic_vector(8 downto 0);
+    din13   :in  std_logic_vector(8 downto 0);
+    din14   :in  std_logic_vector(8 downto 0);
+    din15   :in  std_logic_vector(8 downto 0);
+    din16   :in  std_logic_vector(3 downto 0);
+    dout     :out std_logic_vector(8 downto 0));
+end entity;
+
 architecture rtl of huffman_encoding_g8j is
-    constant K : INTEGER := (din1_WIDTH + NUM_STAGE - 1)/NUM_STAGE;
-    constant LATENCY : INTEGER := NUM_STAGE - 1;
-    type dout_array_type is array (0 to LATENCY-1) of STD_LOGIC_VECTOR(dout_WIDTH-1 downto 0);
-    signal dout_array : dout_array_type;
-    type din1_cast_array_type is array (0 to LATENCY-1) of STD_LOGIC_VECTOR(din1_WIDTH-1 downto 0);
-    signal din1_cast_array : din1_cast_array_type;
-    signal din0_reg : STD_LOGIC_VECTOR(din0_WIDTH-1 downto 0);
-    signal din1_reg : STD_LOGIC_VECTOR(din0_WIDTH-1 downto 0);
-    signal dout_tmp : STD_LOGIC_VECTOR(dout_WIDTH-1 downto 0);
-    signal din1_cast : STD_LOGIC_VECTOR(din1_WIDTH-1 downto 0);
-    signal din1_mask : STD_LOGIC_VECTOR(din1_WIDTH-1 downto 0);
+    -- puts internal signals
+    signal sel    : std_logic_vector(3 downto 0);
+    -- level 1 signals
+    signal mux_1_0    : std_logic_vector(8 downto 0);
+    signal mux_1_1    : std_logic_vector(8 downto 0);
+    signal mux_1_2    : std_logic_vector(8 downto 0);
+    signal mux_1_3    : std_logic_vector(8 downto 0);
+    signal mux_1_4    : std_logic_vector(8 downto 0);
+    signal mux_1_5    : std_logic_vector(8 downto 0);
+    signal mux_1_6    : std_logic_vector(8 downto 0);
+    signal mux_1_7    : std_logic_vector(8 downto 0);
+    -- level 2 signals
+    signal mux_2_0    : std_logic_vector(8 downto 0);
+    signal mux_2_1    : std_logic_vector(8 downto 0);
+    signal mux_2_2    : std_logic_vector(8 downto 0);
+    signal mux_2_3    : std_logic_vector(8 downto 0);
+    -- level 3 signals
+    signal mux_3_0    : std_logic_vector(8 downto 0);
+    signal mux_3_1    : std_logic_vector(8 downto 0);
+    -- level 4 signals
+    signal mux_4_0    : std_logic_vector(8 downto 0);
 begin
-    din0_reg <= din0;
-    din1_reg <= din1;
-    din1_mask(din1_WIDTH-1 downto K) <= (others => '0');
-    din1_mask(K-1 downto 0) <= (others => '1');
-    din1_cast <= ('0' & din1_reg(din1_WIDTH-2 downto 0)) when (din1_WIDTH>=32) else
-            din1_reg(din1_WIDTH-1 downto 0);
-    dout <= dout_tmp;
 
-    dout_tmp <= STD_LOGIC_VECTOR(shift_left(UNSIGNED(dout_array(LATENCY-1)),to_integer(UNSIGNED(din1_cast_array(LATENCY-1) and din1_mask)))) when (OP = 0) else
-            STD_LOGIC_VECTOR(shift_right(UNSIGNED(dout_array(LATENCY-1)),to_integer(UNSIGNED(din1_cast_array(LATENCY-1) and din1_mask)))) when (OP = 1) else
-            STD_LOGIC_VECTOR(shift_right(SIGNED(dout_array(LATENCY-1)),to_integer(UNSIGNED(din1_cast_array(LATENCY-1) and din1_mask)))) when (OP = 2) else
-            (others => '0');
+sel <= din16;
 
-    proc_dout_array_0 : process (clk)
-    begin
-        if (clk'event and clk = '1') then
-            if (reset = '1') then
-                dout_array(0) <=  (others => '0');
-                din1_cast_array(0) <=  (others => '0');
-            else
-                if (ce = '1') then
-                    if (OP = 0) then
-                        dout_array(0) <= STD_LOGIC_VECTOR(shift_left(UNSIGNED(din0_reg),to_integer(UNSIGNED(din1_cast and STD_LOGIC_VECTOR(shift_left(UNSIGNED(din1_mask), (LATENCY*K)))))));
-                    elsif (OP = 1) then
-                        dout_array(0) <= STD_LOGIC_VECTOR(shift_right(UNSIGNED(din0_reg),to_integer(UNSIGNED(din1_cast and STD_LOGIC_VECTOR(shift_left(UNSIGNED(din1_mask), (LATENCY*K)))))));
-                    elsif (OP = 2) then
-                        dout_array(0) <= STD_LOGIC_VECTOR(shift_right(SIGNED(din0_reg),to_integer(UNSIGNED(din1_cast and STD_LOGIC_VECTOR(shift_left(UNSIGNED(din1_mask), (LATENCY*K)))))));
-                    end if;
-                    din1_cast_array(0) <=  din1_cast;
-                end if;
-            end if;
-        end if;
-    end process;
+-- Generate level 1 logic
+mux_1_0 <= din0 when sel(0) = '0' else din1;
+mux_1_1 <= din2 when sel(0) = '0' else din3;
+mux_1_2 <= din4 when sel(0) = '0' else din5;
+mux_1_3 <= din6 when sel(0) = '0' else din7;
+mux_1_4 <= din8 when sel(0) = '0' else din9;
+mux_1_5 <= din10 when sel(0) = '0' else din11;
+mux_1_6 <= din12 when sel(0) = '0' else din13;
+mux_1_7 <= din14 when sel(0) = '0' else din15;
 
-    dout_array_loop:for i IN 1 TO (LATENCY-1) GENERATE
-        proc_dout_array_i : process(clk)
-        begin
-            if (clk'event and clk = '1') then
-                if (reset = '1') then
-                    dout_array(i) <=  (others => '0');
-                    din1_cast_array(i) <=  (others => '0');
-                else
-                   if (ce = '1') then
-                       if (OP = 0) then
-                           dout_array(i) <= STD_LOGIC_VECTOR(shift_left(UNSIGNED(dout_array(i-1)),to_integer(UNSIGNED(din1_cast_array(i-1) and STD_LOGIC_VECTOR(shift_left(UNSIGNED(din1_mask), ((LATENCY-i)*K)))))));
-                       elsif (OP = 1) then
-                           dout_array(i) <= STD_LOGIC_VECTOR(shift_right(UNSIGNED(dout_array(i-1)),to_integer(UNSIGNED(din1_cast_array(i-1) and STD_LOGIC_VECTOR(shift_left(UNSIGNED(din1_mask), ((LATENCY-i)*K)))))));
-                       elsif (OP = 2) then
-                           dout_array(i) <= STD_LOGIC_VECTOR(shift_right(SIGNED(dout_array(i-1)),to_integer(UNSIGNED(din1_cast_array(i-1) and STD_LOGIC_VECTOR(shift_left(UNSIGNED(din1_mask), ((LATENCY-i)*K)))))));
-                       end if;
-                       din1_cast_array(i) <=  din1_cast_array(i-1);
-                   end if;
-               end if;
-            end if;
-        end process;
-    END GENERATE dout_array_loop;
+-- Generate level 2 logic
+mux_2_0 <= mux_1_0 when sel(1) = '0' else mux_1_1;
+mux_2_1 <= mux_1_2 when sel(1) = '0' else mux_1_3;
+mux_2_2 <= mux_1_4 when sel(1) = '0' else mux_1_5;
+mux_2_3 <= mux_1_6 when sel(1) = '0' else mux_1_7;
 
-end rtl;
+-- Generate level 3 logic
+mux_3_0 <= mux_2_0 when sel(2) = '0' else mux_2_1;
+mux_3_1 <= mux_2_2 when sel(2) = '0' else mux_2_3;
+
+-- Generate level 4 logic
+mux_4_0 <= mux_3_0 when sel(3) = '0' else mux_3_1;
+
+-- output logic
+dout <= mux_4_0;
+
+end architecture;

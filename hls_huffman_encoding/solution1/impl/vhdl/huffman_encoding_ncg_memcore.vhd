@@ -10,7 +10,7 @@ use ieee.std_logic_unsigned.all;
 entity huffman_encoding_ncg_memcore_ram is 
     generic(
             MEM_TYPE    : string := "block"; 
-            DWIDTH     : integer := 9; 
+            DWIDTH     : integer := 32; 
             AWIDTH     : integer := 9; 
             MEM_SIZE    : integer := 512
     ); 
@@ -101,7 +101,7 @@ use IEEE.std_logic_1164.all;
 
 entity huffman_encoding_ncg_memcore is
     generic (
-        DataWidth : INTEGER := 9;
+        DataWidth : INTEGER := 32;
         AddressRange : INTEGER := 512;
         AddressWidth : INTEGER := 9);
     port (

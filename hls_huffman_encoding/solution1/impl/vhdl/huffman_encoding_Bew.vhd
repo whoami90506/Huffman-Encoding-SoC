@@ -12,6 +12,7 @@ entity huffman_encoding_Bew  is
         AddressRange : integer := 32;
         AddressWidth : integer := 6;
         BufferCount  : integer := 2;
+        MemLatency   : integer := 1;
         IndexWidth   : integer := 1
     );
     port (
@@ -27,6 +28,11 @@ entity huffman_encoding_Bew  is
         i_address0 : in  std_logic_vector(AddressWidth-1 downto 0);
         i_d0       : in  std_logic_vector(DataWidth-1 downto 0);
         i_q0       : out std_logic_vector(DataWidth-1 downto 0);
+        i_ce1      : in  std_logic;
+        i_we1      : in  std_logic;
+        i_address1 : in  std_logic_vector(AddressWidth-1 downto 0);
+        i_d1       : in  std_logic_vector(DataWidth-1 downto 0);
+        i_q1       : out std_logic_vector(DataWidth-1 downto 0);
         -- target
         t_ce       : in  std_logic;
         t_read     : in  std_logic;
@@ -35,7 +41,12 @@ entity huffman_encoding_Bew  is
         t_we0      : in  std_logic;
         t_address0 : in  std_logic_vector(AddressWidth-1 downto 0);
         t_d0       : in  std_logic_vector(DataWidth-1 downto 0);
-        t_q0       : out std_logic_vector(DataWidth-1 downto 0)
+        t_q0       : out std_logic_vector(DataWidth-1 downto 0);
+        t_ce1      : in  std_logic;
+        t_we1      : in  std_logic;
+        t_address1 : in  std_logic_vector(AddressWidth-1 downto 0);
+        t_d1       : in  std_logic_vector(DataWidth-1 downto 0);
+        t_q1       : out std_logic_vector(DataWidth-1 downto 0)
     );
 end entity;
 
@@ -47,12 +58,12 @@ port (
     reset    : in  std_logic;
     ce0      : in  std_logic;
     we0      : in  std_logic;
-    address0 : in  std_logic_vector(6 downto 0);
+    address0 : in  std_logic_vector(5 downto 0);
     d0       : in  std_logic_vector(8 downto 0);
     q0       : out std_logic_vector(8 downto 0);
     ce1      : in  std_logic;
     we1      : in  std_logic;
-    address1 : in  std_logic_vector(6 downto 0);
+    address1 : in  std_logic_vector(5 downto 0);
     d1       : in  std_logic_vector(8 downto 0);
     q1       : out std_logic_vector(8 downto 0)
 );
@@ -61,36 +72,79 @@ end component;
 -- control/status
 signal iptr     : unsigned(IndexWidth-1 downto 0) := (others => '0'); -- initiator index
 signal tptr     : unsigned(IndexWidth-1 downto 0) := (others => '0'); -- target index
+signal prev_iptr     : unsigned(IndexWidth-1 downto 0) := (others => '0'); -- previous initiator index
+signal prev_tptr     : unsigned(IndexWidth-1 downto 0) := (others => '0'); -- previous target index
 signal count    : unsigned(IndexWidth downto 0)   := (others => '0'); -- count of written buffers
 signal full_n   : std_logic := '1'; -- whether all buffers are written
 signal empty_n  : std_logic := '0'; -- whether none of the buffers is written
 signal push_buf : std_logic;        -- finish writing a buffer
 signal pop_buf  : std_logic;        -- finish reading a buffer
-signal memcore_iaddr: std_logic_vector(AddressWidth+IndexWidth-1 downto 0);
-signal memcore_taddr: std_logic_vector(AddressWidth+IndexWidth-1 downto 0);
+type AddrArray is array (0 to BufferCount-1) of std_logic_vector(AddressWidth-1 downto 0);
+type BitArray  is array (0 to BufferCount-1) of std_logic;
+type BitArrayWe  is array (0 to BufferCount-1) of std_logic;
+type DataArray is array (0 to BufferCount-1) of std_logic_vector(DataWidth-1 downto 0);
+
+-- buffer signals
+signal buf_ce0 : BitArray;
+signal buf_we0 : BitArrayWe;
+signal buf_a0  : AddrArray;
+signal buf_d0  : DataArray;
+signal buf_q0  : DataArray;
+signal buf_ce1 : BitArray;
+signal buf_we1 : BitArrayWe;
+signal buf_a1  : AddrArray;
+signal buf_d1  : DataArray;
+signal buf_q1  : DataArray;
 
 begin
-
-    memcore_iaddr <= i_address0 & std_logic_vector(iptr);
-    memcore_taddr <= t_address0 & std_logic_vector(tptr);
-    huffman_encoding_Bew_memcore_U : component huffman_encoding_Bew_memcore
-    port map (
-        clk      => clk,
-        reset    => reset,
-        ce0      => i_ce0,
-        we0      => i_we0,
-        address0 => memcore_iaddr,
-        d0       => i_d0,
-        q0       => i_q0,
-
-        ce1      => t_ce0,
-        we1      => t_we0,
-        address1 => memcore_taddr,
-        d1       => t_d0,
-        q1       => t_q0
+    ----------------- instantiate buffers -----------------
+    gen_buffer : for i in 0 to BufferCount-1 generate begin
+        huffman_encoding_Bew_memcore_U : component huffman_encoding_Bew_memcore
+        port map (
+            clk      => clk,
+            reset    => reset,
+            ce0      => buf_ce0(i),
+            we0      => buf_we0(i),
+            address0 => buf_a0(i),
+            d0       => buf_d0(i),
+            q0       => buf_q0(i),
+            ce1      => buf_ce1(i),
+            we1      => buf_we1(i),
+            address1 => buf_a1(i),
+            d1       => buf_d1(i),
+            q1       => buf_q1(i)
         );
+    end generate;
+
+    ----------------- buffer signals ----------------------
+    connect_buffer : for i in 0 to BufferCount-1 generate begin
+        buf_ce0(i) <= i_ce0 when iptr = i else
+                      t_ce0 when tptr = i and empty_n = '1' else
+                      '0';
+        buf_we0(i) <= i_we0 when iptr = i else
+                      t_we0 when tptr = i and empty_n = '1' else
+                      '0';
+        buf_a0(i)  <= i_address0 when iptr = i else
+                      t_address0;
+        buf_d0(i)  <= i_d0 when iptr = i else
+                      t_d0;
+        buf_ce1(i) <= i_ce1 when iptr = i else
+                      t_ce1 when tptr = i and empty_n = '1' else
+                      '0';
+        buf_we1(i) <= i_we1 when iptr = i else
+                      t_we1 when tptr = i and empty_n = '1' else
+                      '0';
+        buf_a1(i)  <= i_address1 when iptr = i else
+                      t_address1;
+        buf_d1(i)  <= i_d1 when iptr = i else
+                      t_d1;
+    end generate;
 
     ----------------- output ------------------------------
+    i_q0      <= buf_q0(to_integer(prev_iptr));
+    t_q0      <= buf_q0(to_integer(prev_tptr));
+    i_q1      <= buf_q1(to_integer(prev_iptr));
+    t_q1      <= buf_q1(to_integer(prev_tptr));
     i_full_n  <= full_n;
     t_empty_n <= empty_n;
 
@@ -109,6 +163,19 @@ begin
                 else
                     iptr <= iptr + 1;
                 end if;
+            end if;
+        end if;
+    end process;
+
+    -- prev_iptr prev_tptr
+    process(clk) begin
+        if (clk'event and clk='1') then
+            if (reset = '1') then
+                prev_iptr<= (others => '0');
+                prev_tptr<= (others => '0');
+            else
+                prev_iptr <= iptr;
+                prev_tptr <= tptr;
             end if;
         end if;
     end process;

@@ -9,59 +9,59 @@
 <ProductFamily>zynq</ProductFamily>
 <Part>xc7z020-clg484-1</Part>
 <TopModelName>truncate_tree</TopModelName>
-<TargetClockPeriod>5.00</TargetClockPeriod>
-<ClockUncertainty>0.63</ClockUncertainty>
+<TargetClockPeriod>10.00</TargetClockPeriod>
+<ClockUncertainty>1.25</ClockUncertainty>
 </UserAssignments>
 
 <PerformanceEstimates>
 <PipelineType>none</PipelineType>
 <SummaryOfTimingAnalysis>
 <unit>ns</unit>
-<EstimatedClockPeriod>4.145</EstimatedClockPeriod>
+<EstimatedClockPeriod>6.467</EstimatedClockPeriod>
 </SummaryOfTimingAnalysis>
 <SummaryOfOverallLatency>
 <unit>clock cycles</unit>
-<Best-caseLatency>1467</Best-caseLatency>
-<Average-caseLatency>1575</Average-caseLatency>
-<Worst-caseLatency>1575</Worst-caseLatency>
-<Best-caseRealTimeLatency>7.335 us</Best-caseRealTimeLatency>
-<Average-caseRealTimeLatency>7.875 us</Average-caseRealTimeLatency>
-<Worst-caseRealTimeLatency>7.875 us</Worst-caseRealTimeLatency>
-<Interval-min>1467</Interval-min>
-<Interval-max>1575</Interval-max>
+<Best-caseLatency>1123</Best-caseLatency>
+<Average-caseLatency>1231</Average-caseLatency>
+<Worst-caseLatency>1231</Worst-caseLatency>
+<Best-caseRealTimeLatency>11.230 us</Best-caseRealTimeLatency>
+<Average-caseRealTimeLatency>12.310 us</Average-caseRealTimeLatency>
+<Worst-caseRealTimeLatency>12.310 us</Worst-caseRealTimeLatency>
+<Interval-min>1123</Interval-min>
+<Interval-max>1231</Interval-max>
 </SummaryOfOverallLatency>
 <SummaryOfLoopLatency>
 <copy_input>
 <TripCount>64</TripCount>
-<Latency>192</Latency>
-<IterationLatency>3</IterationLatency>
+<Latency>128</Latency>
+<IterationLatency>2</IterationLatency>
 </copy_input>
 <move_nodes>
 <TripCount>36</TripCount>
 <Latency>
 <range>
-<min>1080</min>
-<max>1188</max>
+<min>864</min>
+<max>972</max>
 </range>
 </Latency>
 <IterationLatency>
 <range>
-<min>30</min>
-<max>33</max>
+<min>24</min>
+<max>27</max>
 </range>
 </IterationLatency>
 <reorder>
 <TripCount>3</TripCount>
 <Latency>
 <range>
-<min>28</min>
-<max>31</max>
+<min>22</min>
+<max>25</max>
 </range>
 </Latency>
 <IterationLatency>
 <range>
-<min>9</min>
-<max>10</max>
+<min>7</min>
+<max>8</max>
 </range>
 </IterationLatency>
 <reorder.1>
@@ -73,16 +73,16 @@
 </move_nodes>
 <copy_output>
 <TripCount>64</TripCount>
-<Latency>192</Latency>
-<IterationLatency>3</IterationLatency>
+<Latency>128</Latency>
+<IterationLatency>2</IterationLatency>
 </copy_output>
 </SummaryOfLoopLatency>
 </PerformanceEstimates>
 
 <AreaEstimates>
 <Resources>
-<FF>152</FF>
-<LUT>477</LUT>
+<FF>121</FF>
+<LUT>428</LUT>
 <BRAM_18K>0</BRAM_18K>
 <DSP48E>0</DSP48E>
 <URAM>0</URAM>

@@ -362,7 +362,7 @@ module AESL_deadlock_detector (
 
     assign proc_dep_vld_vec_1[0] = dl_detect_out ? proc_dep_vld_vec_1_reg[0] : (~AESL_inst_huffman_encoding.filter_U0.in_data_V_blk_n | (~AESL_inst_huffman_encoding.start_for_filter_U0_U.if_empty_n & (AESL_inst_huffman_encoding.filter_U0.ap_ready | AESL_inst_huffman_encoding$filter_U0$ap_idle)));
     assign proc_dep_vld_vec_1[1] = dl_detect_out ? proc_dep_vld_vec_1_reg[1] : (~AESL_inst_huffman_encoding.filtered_value_V_U.i_full_n & AESL_inst_huffman_encoding.filter_U0.ap_done & deadlock_detector.ap_done_reg_1 & ~AESL_inst_huffman_encoding.filtered_value_V_U.t_read | ~AESL_inst_huffman_encoding.filtered_frequency_V_U.i_full_n & AESL_inst_huffman_encoding.filter_U0.ap_done & deadlock_detector.ap_done_reg_1 & ~AESL_inst_huffman_encoding.filtered_frequency_V_U.t_read);
-    assign proc_dep_vld_vec_1[2] = dl_detect_out ? proc_dep_vld_vec_1_reg[2] : (~AESL_inst_huffman_encoding.filter_U0.n_out_blk_n | (~AESL_inst_huffman_encoding.start_for_Block_hFfa_U.if_full_n & AESL_inst_huffman_encoding.Block_huffman_encodi_U0.ap_done));
+    assign proc_dep_vld_vec_1[2] = dl_detect_out ? proc_dep_vld_vec_1_reg[2] : (~AESL_inst_huffman_encoding.filter_U0.n_out_blk_n | (~AESL_inst_huffman_encoding.start_for_Block_hEe0_U.if_full_n & AESL_inst_huffman_encoding.Block_huffman_encodi_U0.ap_done));
     always @ (negedge reset or posedge clock) begin
         if (~reset) begin
             proc_dep_vld_vec_1_reg <= 'b0;
@@ -416,7 +416,7 @@ module AESL_deadlock_detector (
         .token_out_vec(token_out_vec_2),
         .dl_detect_out(dl_in_vec[2]));
 
-    assign proc_dep_vld_vec_2[0] = dl_detect_out ? proc_dep_vld_vec_2_reg[0] : (~AESL_inst_huffman_encoding.Block_huffman_encodi_U0.n_blk_n | (~AESL_inst_huffman_encoding.start_for_Block_hFfa_U.if_empty_n & (AESL_inst_huffman_encoding.Block_huffman_encodi_U0.ap_ready | AESL_inst_huffman_encoding$Block_huffman_encodi_U0$ap_idle)));
+    assign proc_dep_vld_vec_2[0] = dl_detect_out ? proc_dep_vld_vec_2_reg[0] : (~AESL_inst_huffman_encoding.Block_huffman_encodi_U0.n_blk_n | (~AESL_inst_huffman_encoding.start_for_Block_hEe0_U.if_empty_n & (AESL_inst_huffman_encoding.Block_huffman_encodi_U0.ap_ready | AESL_inst_huffman_encoding$Block_huffman_encodi_U0$ap_idle)));
     assign proc_dep_vld_vec_2[1] = dl_detect_out ? proc_dep_vld_vec_2_reg[1] : (~AESL_inst_huffman_encoding.Block_huffman_encodi_U0.n_out_blk_n);
     always @ (negedge reset or posedge clock) begin
         if (~reset) begin
@@ -523,9 +523,9 @@ module AESL_deadlock_detector (
 
     assign proc_dep_vld_vec_4[0] = dl_detect_out ? proc_dep_vld_vec_4_reg[0] : (~AESL_inst_huffman_encoding.Loop_copy_sorted_pro_U0.n_blk_n);
     assign proc_dep_vld_vec_4[1] = dl_detect_out ? proc_dep_vld_vec_4_reg[1] : (~AESL_inst_huffman_encoding.sorted_0_U.t_empty_n & (AESL_inst_huffman_encoding.Loop_copy_sorted_pro_U0.ap_ready | AESL_inst_huffman_encoding.Loop_copy_sorted_pro_U0.ap_idle) & ~AESL_inst_huffman_encoding.sorted_0_U.i_write | ~AESL_inst_huffman_encoding.sorted_1_U.t_empty_n & (AESL_inst_huffman_encoding.Loop_copy_sorted_pro_U0.ap_ready | AESL_inst_huffman_encoding.Loop_copy_sorted_pro_U0.ap_idle) & ~AESL_inst_huffman_encoding.sorted_1_U.i_write);
-    assign proc_dep_vld_vec_4[2] = dl_detect_out ? proc_dep_vld_vec_4_reg[2] : (~AESL_inst_huffman_encoding.Loop_copy_sorted_pro_U0.sorted_copy1_0_blk_n | ~AESL_inst_huffman_encoding.Loop_copy_sorted_pro_U0.sorted_copy1_1_blk_n | ~AESL_inst_huffman_encoding.Loop_copy_sorted_pro_U0.extLd_out_out_blk_n | (~AESL_inst_huffman_encoding.start_for_create_Gfk_U.if_full_n & AESL_inst_huffman_encoding.create_tree_U0.ap_done));
+    assign proc_dep_vld_vec_4[2] = dl_detect_out ? proc_dep_vld_vec_4_reg[2] : (~AESL_inst_huffman_encoding.Loop_copy_sorted_pro_U0.sorted_copy1_0_blk_n | ~AESL_inst_huffman_encoding.Loop_copy_sorted_pro_U0.sorted_copy1_1_blk_n | ~AESL_inst_huffman_encoding.Loop_copy_sorted_pro_U0.extLd_out_out_blk_n | (~AESL_inst_huffman_encoding.start_for_create_Ffa_U.if_full_n & AESL_inst_huffman_encoding.create_tree_U0.ap_done));
     assign proc_dep_vld_vec_4[3] = dl_detect_out ? proc_dep_vld_vec_4_reg[3] : (~AESL_inst_huffman_encoding.sorted_copy2_value_V_U.i_full_n & AESL_inst_huffman_encoding.Loop_copy_sorted_pro_U0.ap_done & deadlock_detector.ap_done_reg_3 & ~AESL_inst_huffman_encoding.sorted_copy2_value_V_U.t_read | ~AESL_inst_huffman_encoding.Loop_copy_sorted_pro_U0.val_assign6_out_out_blk_n);
-    assign proc_dep_vld_vec_4[4] = dl_detect_out ? proc_dep_vld_vec_4_reg[4] : (~AESL_inst_huffman_encoding.Loop_copy_sorted_pro_U0.extLd_out_out1_blk_n | (~AESL_inst_huffman_encoding.start_for_Block_pHfu_U.if_full_n & AESL_inst_huffman_encoding.Block_proc_U0.ap_done));
+    assign proc_dep_vld_vec_4[4] = dl_detect_out ? proc_dep_vld_vec_4_reg[4] : (~AESL_inst_huffman_encoding.Loop_copy_sorted_pro_U0.extLd_out_out1_blk_n | (~AESL_inst_huffman_encoding.start_for_Block_pGfk_U.if_full_n & AESL_inst_huffman_encoding.Block_proc_U0.ap_done));
     always @ (negedge reset or posedge clock) begin
         if (~reset) begin
             proc_dep_vld_vec_4_reg <= 'b0;
@@ -591,7 +591,7 @@ module AESL_deadlock_detector (
         .token_out_vec(token_out_vec_5),
         .dl_detect_out(dl_in_vec[5]));
 
-    assign proc_dep_vld_vec_5[0] = dl_detect_out ? proc_dep_vld_vec_5_reg[0] : (~AESL_inst_huffman_encoding.create_tree_U0.in_value_V_blk_n | ~AESL_inst_huffman_encoding.create_tree_U0.in_frequency_V_blk_n | ~AESL_inst_huffman_encoding.create_tree_U0.extLd_loc_blk_n | (~AESL_inst_huffman_encoding.start_for_create_Gfk_U.if_empty_n & (AESL_inst_huffman_encoding.create_tree_U0.ap_ready | AESL_inst_huffman_encoding$create_tree_U0$ap_idle)));
+    assign proc_dep_vld_vec_5[0] = dl_detect_out ? proc_dep_vld_vec_5_reg[0] : (~AESL_inst_huffman_encoding.create_tree_U0.in_value_V_blk_n | ~AESL_inst_huffman_encoding.create_tree_U0.in_frequency_V_blk_n | ~AESL_inst_huffman_encoding.create_tree_U0.extLd_loc_blk_n | (~AESL_inst_huffman_encoding.start_for_create_Ffa_U.if_empty_n & (AESL_inst_huffman_encoding.create_tree_U0.ap_ready | AESL_inst_huffman_encoding$create_tree_U0$ap_idle)));
     assign proc_dep_vld_vec_5[1] = dl_detect_out ? proc_dep_vld_vec_5_reg[1] : (~AESL_inst_huffman_encoding.parent_V_U.i_full_n & AESL_inst_huffman_encoding.create_tree_U0.ap_done & deadlock_detector.ap_done_reg_4 & ~AESL_inst_huffman_encoding.parent_V_U.t_read | ~AESL_inst_huffman_encoding.left_V_U.i_full_n & AESL_inst_huffman_encoding.create_tree_U0.ap_done & deadlock_detector.ap_done_reg_4 & ~AESL_inst_huffman_encoding.left_V_U.t_read | ~AESL_inst_huffman_encoding.right_V_U.i_full_n & AESL_inst_huffman_encoding.create_tree_U0.ap_done & deadlock_detector.ap_done_reg_4 & ~AESL_inst_huffman_encoding.right_V_U.t_read | ~AESL_inst_huffman_encoding.create_tree_U0.extLd_loc_out_blk_n);
     always @ (negedge reset or posedge clock) begin
         if (~reset) begin
@@ -857,7 +857,7 @@ module AESL_deadlock_detector (
         .token_out_vec(token_out_vec_10),
         .dl_detect_out(dl_in_vec[10]));
 
-    assign proc_dep_vld_vec_10[0] = dl_detect_out ? proc_dep_vld_vec_10_reg[0] : (~AESL_inst_huffman_encoding.Block_proc_U0.extLd_loc_blk_n | (~AESL_inst_huffman_encoding.start_for_Block_pHfu_U.if_empty_n & (AESL_inst_huffman_encoding.Block_proc_U0.ap_ready | AESL_inst_huffman_encoding$Block_proc_U0$ap_idle)));
+    assign proc_dep_vld_vec_10[0] = dl_detect_out ? proc_dep_vld_vec_10_reg[0] : (~AESL_inst_huffman_encoding.Block_proc_U0.extLd_loc_blk_n | (~AESL_inst_huffman_encoding.start_for_Block_pGfk_U.if_empty_n & (AESL_inst_huffman_encoding.Block_proc_U0.ap_ready | AESL_inst_huffman_encoding$Block_proc_U0$ap_idle)));
     always @ (negedge reset or posedge clock) begin
         if (~reset) begin
             proc_dep_vld_vec_10_reg <= 'b0;

@@ -12,7 +12,7 @@
 `define AUTOTB_PER_RESULT_TRANS_FILE "huffman_encoding.performance.result.transaction.xml"
 `define AUTOTB_TOP_INST AESL_inst_apatb_huffman_encoding_top
 `define AUTOTB_MAX_ALLOW_LATENCY  15000000
-`define AUTOTB_CLOCK_PERIOD_DIV2 2.50
+`define AUTOTB_CLOCK_PERIOD_DIV2 5.00
 
 `define AESL_DEPTH_symbol_histogram_V_data_V 1
 `define AESL_DEPTH_symbol_histogram_V_keep_V 1

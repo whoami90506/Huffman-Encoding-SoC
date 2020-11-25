@@ -58,7 +58,7 @@ end;
 architecture behav of huffman_encoding is 
     attribute CORE_GENERATION_INFO : STRING;
     attribute CORE_GENERATION_INFO of behav : architecture is
-    "huffman_encoding,hls_ip_2019_2,{HLS_INPUT_TYPE=cxx,HLS_INPUT_FLOAT=0,HLS_INPUT_FIXED=0,HLS_INPUT_PART=xc7z020-clg484-1,HLS_INPUT_CLOCK=5.000000,HLS_INPUT_ARCH=dataflow,HLS_SYN_CLOCK=4.559500,HLS_SYN_LAT=-1,HLS_SYN_TPT=-1,HLS_SYN_MEM=28,HLS_SYN_DSP=0,HLS_SYN_FF=3997,HLS_SYN_LUT=7349,HLS_VERSION=2019_2}";
+    "huffman_encoding,hls_ip_2019_2,{HLS_INPUT_TYPE=cxx,HLS_INPUT_FLOAT=0,HLS_INPUT_FIXED=0,HLS_INPUT_PART=xc7z020-clg484-1,HLS_INPUT_CLOCK=10.000000,HLS_INPUT_ARCH=dataflow,HLS_SYN_CLOCK=8.108500,HLS_SYN_LAT=-1,HLS_SYN_TPT=-1,HLS_SYN_MEM=28,HLS_SYN_DSP=0,HLS_SYN_FF=2923,HLS_SYN_LUT=6716,HLS_VERSION=2019_2}";
     constant C_S_AXI_DATA_WIDTH : INTEGER range 63 downto 0 := 20;
     constant C_S_AXI_WSTRB_WIDTH : INTEGER range 63 downto 0 := 4;
     constant C_S_AXI_ADDR_WIDTH : INTEGER range 63 downto 0 := 20;
@@ -877,7 +877,7 @@ architecture behav of huffman_encoding is
     end component;
 
 
-    component huffman_encoding_ncg IS
+    component huffman_encoding_mb6 IS
     generic (
         DataWidth : INTEGER;
         AddressRange : INTEGER;
@@ -904,7 +904,7 @@ architecture behav of huffman_encoding is
     end component;
 
 
-    component huffman_encoding_ocq IS
+    component huffman_encoding_ncg IS
     generic (
         DataWidth : INTEGER;
         AddressRange : INTEGER;
@@ -931,7 +931,7 @@ architecture behav of huffman_encoding is
     end component;
 
 
-    component huffman_encoding_sc4 IS
+    component huffman_encoding_rcU IS
     generic (
         DataWidth : INTEGER;
         AddressRange : INTEGER;
@@ -964,7 +964,7 @@ architecture behav of huffman_encoding is
     end component;
 
 
-    component huffman_encoding_vdy IS
+    component huffman_encoding_udo IS
     generic (
         DataWidth : INTEGER;
         AddressRange : INTEGER;
@@ -991,7 +991,7 @@ architecture behav of huffman_encoding is
     end component;
 
 
-    component huffman_encoding_xdS IS
+    component huffman_encoding_wdI IS
     generic (
         DataWidth : INTEGER;
         AddressRange : INTEGER;
@@ -1018,7 +1018,7 @@ architecture behav of huffman_encoding is
     end component;
 
 
-    component huffman_encoding_Bew IS
+    component huffman_encoding_Aem IS
     generic (
         DataWidth : INTEGER;
         AddressRange : INTEGER;
@@ -1045,7 +1045,7 @@ architecture behav of huffman_encoding is
     end component;
 
 
-    component huffman_encoding_CeG IS
+    component huffman_encoding_Bew IS
     generic (
         DataWidth : INTEGER;
         AddressRange : INTEGER;
@@ -1082,7 +1082,7 @@ architecture behav of huffman_encoding is
     end component;
 
 
-    component huffman_encoding_Ee0 IS
+    component huffman_encoding_DeQ IS
     generic (
         DataWidth : INTEGER;
         AddressRange : INTEGER;
@@ -1214,7 +1214,7 @@ architecture behav of huffman_encoding is
     end component;
 
 
-    component start_for_Block_hFfa IS
+    component start_for_Block_hEe0 IS
     port (
         clk : IN STD_LOGIC;
         reset : IN STD_LOGIC;
@@ -1229,7 +1229,7 @@ architecture behav of huffman_encoding is
     end component;
 
 
-    component start_for_create_Gfk IS
+    component start_for_create_Ffa IS
     port (
         clk : IN STD_LOGIC;
         reset : IN STD_LOGIC;
@@ -1244,7 +1244,7 @@ architecture behav of huffman_encoding is
     end component;
 
 
-    component start_for_Block_pHfu IS
+    component start_for_Block_pGfk IS
     port (
         clk : IN STD_LOGIC;
         reset : IN STD_LOGIC;
@@ -1329,7 +1329,7 @@ begin
         num_nonzero_symbols => Block_proc_U0_num_nonzero_symbols,
         num_nonzero_symbols_ap_vld => Block_proc_U0_num_nonzero_symbols_ap_vld);
 
-    filtered_value_V_U : component huffman_encoding_ncg
+    filtered_value_V_U : component huffman_encoding_mb6
     generic map (
         DataWidth => 9,
         AddressRange => 256,
@@ -1354,7 +1354,7 @@ begin
         t_empty_n => filtered_value_V_t_empty_n,
         t_read => sort_U0_ap_ready);
 
-    filtered_frequency_V_U : component huffman_encoding_ocq
+    filtered_frequency_V_U : component huffman_encoding_ncg
     generic map (
         DataWidth => 32,
         AddressRange => 256,
@@ -1379,7 +1379,7 @@ begin
         t_empty_n => filtered_frequency_V_t_empty_n,
         t_read => sort_U0_ap_ready);
 
-    sorted_0_U : component huffman_encoding_ncg
+    sorted_0_U : component huffman_encoding_mb6
     generic map (
         DataWidth => 9,
         AddressRange => 256,
@@ -1404,7 +1404,7 @@ begin
         t_empty_n => sorted_0_t_empty_n,
         t_read => Loop_copy_sorted_pro_U0_ap_ready);
 
-    sorted_1_U : component huffman_encoding_ocq
+    sorted_1_U : component huffman_encoding_ncg
     generic map (
         DataWidth => 32,
         AddressRange => 256,
@@ -1429,7 +1429,7 @@ begin
         t_empty_n => sorted_1_t_empty_n,
         t_read => Loop_copy_sorted_pro_U0_ap_ready);
 
-    sorted_copy2_value_V_U : component huffman_encoding_ncg
+    sorted_copy2_value_V_U : component huffman_encoding_mb6
     generic map (
         DataWidth => 9,
         AddressRange => 256,
@@ -1454,7 +1454,7 @@ begin
         t_empty_n => sorted_copy2_value_V_t_empty_n,
         t_read => canonize_tree_U0_ap_ready);
 
-    parent_V_U : component huffman_encoding_sc4
+    parent_V_U : component huffman_encoding_rcU
     generic map (
         DataWidth => 9,
         AddressRange => 255,
@@ -1485,7 +1485,7 @@ begin
         t_empty_n => parent_V_t_empty_n,
         t_read => compute_bit_length_U0_ap_ready);
 
-    left_V_U : component huffman_encoding_sc4
+    left_V_U : component huffman_encoding_rcU
     generic map (
         DataWidth => 9,
         AddressRange => 255,
@@ -1516,7 +1516,7 @@ begin
         t_empty_n => left_V_t_empty_n,
         t_read => compute_bit_length_U0_ap_ready);
 
-    right_V_U : component huffman_encoding_sc4
+    right_V_U : component huffman_encoding_rcU
     generic map (
         DataWidth => 9,
         AddressRange => 255,
@@ -1547,7 +1547,7 @@ begin
         t_empty_n => right_V_t_empty_n,
         t_read => compute_bit_length_U0_ap_ready);
 
-    stream_buffer_1_U : component huffman_encoding_vdy
+    stream_buffer_1_U : component huffman_encoding_udo
     generic map (
         DataWidth => 6,
         AddressRange => 256,
@@ -1572,7 +1572,7 @@ begin
         t_empty_n => stream_buffer_1_t_empty_n,
         t_read => create_codeword_U0_ap_ready);
 
-    stream_buffer_2_U : component huffman_encoding_vdy
+    stream_buffer_2_U : component huffman_encoding_udo
     generic map (
         DataWidth => 6,
         AddressRange => 256,
@@ -1597,7 +1597,7 @@ begin
         t_empty_n => stream_buffer_2_t_empty_n,
         t_read => create_codeword_U0_ap_ready);
 
-    stream_buffer_3_U : component huffman_encoding_xdS
+    stream_buffer_3_U : component huffman_encoding_wdI
     generic map (
         DataWidth => 1,
         AddressRange => 256,
@@ -1622,7 +1622,7 @@ begin
         t_empty_n => stream_buffer_3_t_empty_n,
         t_read => create_codeword_U0_ap_ready);
 
-    stream_buffer_4_U : component huffman_encoding_xdS
+    stream_buffer_4_U : component huffman_encoding_wdI
     generic map (
         DataWidth => 1,
         AddressRange => 256,
@@ -1647,7 +1647,7 @@ begin
         t_empty_n => stream_buffer_4_t_empty_n,
         t_read => create_codeword_U0_ap_ready);
 
-    stream_buffer_5_U : component huffman_encoding_xdS
+    stream_buffer_5_U : component huffman_encoding_wdI
     generic map (
         DataWidth => 1,
         AddressRange => 256,
@@ -1672,7 +1672,7 @@ begin
         t_empty_n => stream_buffer_5_t_empty_n,
         t_read => create_codeword_U0_ap_ready);
 
-    stream_buffer_6_U : component huffman_encoding_xdS
+    stream_buffer_6_U : component huffman_encoding_wdI
     generic map (
         DataWidth => 1,
         AddressRange => 256,
@@ -1697,7 +1697,7 @@ begin
         t_empty_n => stream_buffer_6_t_empty_n,
         t_read => create_codeword_U0_ap_ready);
 
-    length_histogram_V_U : component huffman_encoding_Bew
+    length_histogram_V_U : component huffman_encoding_Aem
     generic map (
         DataWidth => 9,
         AddressRange => 64,
@@ -1722,7 +1722,7 @@ begin
         t_empty_n => length_histogram_V_t_empty_n,
         t_read => truncate_tree_U0_ap_ready);
 
-    truncated_length_his_U : component huffman_encoding_CeG
+    truncated_length_his_U : component huffman_encoding_Bew
     generic map (
         DataWidth => 9,
         AddressRange => 64,
@@ -1757,7 +1757,7 @@ begin
         t_empty_n => truncated_length_his_t_empty_n,
         t_read => canonize_tree_U0_ap_ready);
 
-    truncated_length_his_1_U : component huffman_encoding_Bew
+    truncated_length_his_1_U : component huffman_encoding_Aem
     generic map (
         DataWidth => 9,
         AddressRange => 64,
@@ -1782,7 +1782,7 @@ begin
         t_empty_n => truncated_length_his_1_t_empty_n,
         t_read => create_codeword_U0_ap_ready);
 
-    symbol_bits_V_U : component huffman_encoding_Ee0
+    symbol_bits_V_U : component huffman_encoding_DeQ
     generic map (
         DataWidth => 5,
         AddressRange => 256,
@@ -2286,7 +2286,7 @@ begin
         if_empty_n => start_for_filter_U0_empty_n,
         if_read => filter_U0_ap_ready);
 
-    start_for_Block_hFfa_U : component start_for_Block_hFfa
+    start_for_Block_hEe0_U : component start_for_Block_hEe0
     port map (
         clk => ap_clk,
         reset => ap_rst_n_inv,
@@ -2299,7 +2299,7 @@ begin
         if_empty_n => start_for_Block_huffman_encodi_U0_empty_n,
         if_read => Block_huffman_encodi_U0_ap_ready);
 
-    start_for_create_Gfk_U : component start_for_create_Gfk
+    start_for_create_Ffa_U : component start_for_create_Ffa
     port map (
         clk => ap_clk,
         reset => ap_rst_n_inv,
@@ -2312,7 +2312,7 @@ begin
         if_empty_n => start_for_create_tree_U0_empty_n,
         if_read => create_tree_U0_ap_ready);
 
-    start_for_Block_pHfu_U : component start_for_Block_pHfu
+    start_for_Block_pGfk_U : component start_for_Block_pGfk
     port map (
         clk => ap_clk,
         reset => ap_rst_n_inv,
